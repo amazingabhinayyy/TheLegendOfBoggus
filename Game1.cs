@@ -13,6 +13,7 @@ namespace Sprint2_Attempt3
         SpriteBatch spriteBatch;
 
         private IController keyboardController;
+        public IController keyController { set {keyboardController = value; } }
 
         private IEnemy currentEnemy;
         public IEnemy enemy
@@ -21,7 +22,7 @@ namespace Sprint2_Attempt3
             set { currentEnemy = value; }
         }
         private Link link;
-        public ILink Link { get { return link; } set {; } }
+        public ILink Link { get { return link; } set {link = (Link)value; } }
 
 
         public Game1()
@@ -56,6 +57,9 @@ namespace Sprint2_Attempt3
             spriteBatch = new SpriteBatch(GraphicsDevice);
             keyboardController = new KeyboardController(this);
             EnemySpriteFactory.Instance.LoadAllTextures(this.Content);
+            /*
+             * can we make it so that we don't need to spawn Keese until necessary
+             * */
             currentEnemy = new Keese();
             currentEnemy.Spawn();
             LinkSpriteFactory.Instance.LoadAllTextures(Content);

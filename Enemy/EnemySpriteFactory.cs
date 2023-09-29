@@ -6,6 +6,7 @@ using Sprint2_Attempt3.Enemy.Gel;
 using Sprint2_Attempt3.Enemy.Zol;
 using Sprint2_Attempt3.Enemy.SpikeTrap;
 using Sprint2_Attempt3.Enemy.Dodongo;
+using Sprint2_Attempt3.Enemy.Goriya;
 
 namespace Sprint2_Attempt3.Enemy
 {
@@ -159,6 +160,27 @@ namespace Sprint2_Attempt3.Enemy
         public IEnemySprite CreateMovingRightAttackedDodongoSprite()
         {
             return new MovingRightAttackedDodongoSprite(BossEnemyTexture);
+        }
+
+        public IEnemySprite CreateMovingUpGoriyaSprite()
+        {
+            return new MovingUpGoriyaSprite(EnemyTexture);
+        }
+        public IEnemySprite CreateMovingDownGoriyaSprite()
+        {
+            return new MovingDownGoriyaSprite(EnemyTexture);
+        }
+        public IEnemySprite CreateMovingRightGoriyaSprite()
+        {
+            return new MovingRightGoriyaSprite(EnemyTexture);
+        }
+        public IEnemySprite CreateMovingLeftGoriyaSprite()
+        {
+            return new MovingLeftGoriyaSprite(EnemyTexture);
+        }
+        public IEnemySprite CreateShootingStillLeftGoriyaSprite()
+        {
+            return new ShootingStillLeftGoriyaSprite(EnemyTexture);
         }
     }
 }
