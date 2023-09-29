@@ -52,6 +52,12 @@ namespace Sprint2_Attempt3
         public static Rectangle GoriyaBlueUp { get { return new Rectangle(101, 52, 14, 17); } }
         public static Rectangle GoriyaBlueRight { get { return new Rectangle(117, 52, 14, 17); } }
         public static Rectangle GoriyaBlueRight2 { get { return new Rectangle(135, 52, 14, 17); } }
+
+        public static Rectangle GoriyaRedDown { get { return new Rectangle(135, 35, 32, 16); } }
+        public static Rectangle GoriyaRedUp { get { return new Rectangle(135, 35, 32, 16); } }
+        public static Rectangle GoriyaRedRight { get { return new Rectangle(135, 35, 32, 16); } }
+        public static Rectangle GoriyaRedRight2 { get { return new Rectangle(135, 35, 32, 16); } }
+
         public static Rectangle GoriyaBoomerang1 { get { return new Rectangle(1, 74, 7, 17); } }
         public static Rectangle GoriyaBoomerang2 { get { return new Rectangle(10, 74, 9, 17); } }
         public static Rectangle GoriyaBoomerang3 { get { return new Rectangle(20, 76, 7, 17); } }

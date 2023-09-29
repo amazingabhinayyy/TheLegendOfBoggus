@@ -25,7 +25,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             Goriya.State = new MovingUpGoriyaState(Goriya);
         }
         public void ChangeAttackedStatus() {
-            Goriya.State.ChangeAttackedStatus();
+            Goriya.State = new MovingAttackedLeftGoriyaState(Goriya);
         }
         public void Update()
         {

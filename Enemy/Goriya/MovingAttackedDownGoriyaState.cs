@@ -4,12 +4,12 @@ using Sprint2_Attempt3.Enemy.Keese;
 
 namespace Sprint2_Attempt3.Enemy.Goriya
 {
-    internal class MovingDownGoriyaState : IEnemyState
+    internal class MovingAttackedDownGoriyaState : IEnemyState
     {
         private Goriya Goriya;
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
-        public MovingDownGoriyaState(Goriya Goriya)
+        public MovingAttackedDownGoriyaState(Goriya Goriya)
         {
             this.Goriya = Goriya;
             sprite = EnemySpriteFactory.Instance.CreateMovingDownGoriyaSprite();
@@ -17,10 +17,10 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         }
         public void ChangeDirection()
         {
-            Goriya.State = new MovingLeftGoriyaState(Goriya);
+            Goriya.State = new MovingAttackedLeftGoriyaState(Goriya);
         }
         public void ChangeAttackedStatus() {
-            Goriya.State = new MovingAttackedDownGoriyaState(Goriya);
+            Goriya.State = new MovingDownGoriyaState(Goriya);
         }
         public void Update()
         {

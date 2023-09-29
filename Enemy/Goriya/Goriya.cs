@@ -8,7 +8,6 @@ namespace Sprint2_Attempt3.Enemy.Goriya
     {
         private IEnemyState state;
         private int count;
-        private bool changeDirection;
         public IEnemyState State
         {
             get { return state; }
@@ -35,7 +34,6 @@ namespace Sprint2_Attempt3.Enemy.Goriya
 
             this.positionX = x;
             this.positionY = y;
-            changeDirection = false;
         }
         public void Generate() {
             state = new MovingLeftGoriyaState(this);
