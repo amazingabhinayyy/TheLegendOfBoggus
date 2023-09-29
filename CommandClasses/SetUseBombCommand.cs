@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 
 namespace Sprint2_Attempt3.CommandClasses
 {
-    public class MoveLinkRight : ICommand
+    public class SetUseBombCommand : ICommand
     {
         private Game1 game;
-        public MoveLinkRight(Game1 game)
-        {
+        public SetUseBombCommand(Game1 game) 
+        { 
             this.game = game;
         }
 
-        public void Execute()
-        {
-            game.Link.MoveRight();
+        public void Execute() {
+            game.Link.UseBomb();
         }
     }
 }

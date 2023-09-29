@@ -15,13 +15,21 @@ namespace Sprint2_Attempt3
         public KeyboardController(Game1 game)
         {
             this.game1 = game;
+            commandMapping = new Dictionary<Keys, ICommand>();
+            RegisterCommands();
+        }
 
+        public void RegisterCommands()
+        {
             //Link movements
             commandMapping.Add(Keys.W, new MoveLinkUp(game1));
             commandMapping.Add(Keys.S, new MoveLinkDown(game1));
             commandMapping.Add(Keys.A, new MoveLinkLeft(game1));
             commandMapping.Add(Keys.D, new MoveLinkRight(game1));
-
+            commandMapping.Add(Keys.E, new SetDamageLinkCommand(game1));
+            commandMapping.Add(Keys.Z, new SetAttackLinkCommand(game1));
+            commandMapping.Add(Keys.N, new SetAttackLinkCommand(game1));
+            commandMapping.Add(Keys.None, new SetIdleLinkCommand(game1));
             //item switching
             commandMapping.Add(Keys.D1, new SwitchToItem1(game1));
             commandMapping.Add(Keys.D2, new SwitchToItem2(game1));
@@ -44,6 +52,7 @@ namespace Sprint2_Attempt3
             commandMapping.Add(Keys.Q, new Quit(game1));
             commandMapping.Add(Keys.R, new Reset(game1));
         }
+    
 
 
 

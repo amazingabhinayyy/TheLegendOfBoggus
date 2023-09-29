@@ -6,19 +6,18 @@ using System.Threading.Tasks;
 
 namespace Sprint2_Attempt3.CommandClasses
 {
-    internal class Reset : ICommand
+    public class SetDamageLinkCommand : ICommand
     {
-        private Game1 game1;
-        public Reset(Game1 game) { 
-            this.game1= game;
+        private Game1 game;
+        public SetDamageLinkCommand(Game1 game) 
+        {
+            this.game = game;
         }
 
         public void Execute()
         {
-            /*
-            * TODO:
-            * call quit method
-            */
+            game.Link.GetDamaged();
         }
+
     }
 }

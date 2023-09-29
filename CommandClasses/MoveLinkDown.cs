@@ -1,26 +1,26 @@
-﻿using Sprint2_Attempt3.CommandClasses;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using Sprint2_Attempt3.CommandClasses;
 
-
-namespace Sprint2_Attempt3
+namespace Sprint2_Attempt3.CommandClasses
 {
-    internal class MoveLinkDown : ICommand
+    public class MoveLinkDown : ICommand
     {
-        private Game1 game1;
-        public MoveLinkDown(Game1 game) {
-            this.game1 = game;
+        private Game1 game;
+        public MoveLinkDown(Game1 game)
+        {
+            this.game = game;
         }
+
 
         public void Execute()
         {
-            /*
-             * TODO:
-             * call move link down method
-             */
+            game.Link.MoveDown();
         }
+
     }
 }

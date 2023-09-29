@@ -15,12 +15,15 @@ namespace Sprint2_Attempt3
         private IController keyboardController;
 
         private IEnemy currentEnemy;
-
         public IEnemy enemy
         {
             get { return currentEnemy; }
             set { currentEnemy = value; }
         }
+        private Link link;
+        public ILink Link { get { return link; } set {; } }
+
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -55,6 +58,8 @@ namespace Sprint2_Attempt3
             EnemySpriteFactory.Instance.LoadAllTextures(this.Content);
             currentEnemy = new Keese();
             currentEnemy.Spawn();
+            LinkSpriteFactory.Instance.LoadAllTextures(Content);
+            link = new Link();
         }
 
         /// <summary>
@@ -80,6 +85,7 @@ namespace Sprint2_Attempt3
 
             keyboardController.Update();
             currentEnemy.Update();
+            link.Update();
             base.Update(gameTime);
         }
 
@@ -98,7 +104,7 @@ namespace Sprint2_Attempt3
             spriteBatch.Begin();
 
             currentEnemy.Draw(spriteBatch);
-
+            link.Draw(spriteBatch, Color.White);
             spriteBatch.End();
             base.Draw(gameTime);
         }
