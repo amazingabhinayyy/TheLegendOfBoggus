@@ -55,9 +55,6 @@ namespace Sprint2_Attempt3
             commandMapping.Add(Keys.R, new Reset(game1));
         }
     
-
-
-
         public void Update(GameTime gameTime)
         {
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();

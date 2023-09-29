@@ -1,13 +1,14 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 using Sprint2_Attempt3.Enemy;
 
 namespace Sprint2_Attempt3
 {
     internal class GoriyaBoomerang : IEnemyProjectile
     {
-        priate float timeSinceLastUpdate;
-        private IEnemyProjectile state;
-
+        private float timeSinceLastUpdate;
+        private IEnemyProjectileState state;
+        private int count;
 
         public IEnemyProjectileState State
         {
@@ -15,14 +16,14 @@ namespace Sprint2_Attempt3
             set { state = value; }
         }
         public void Generate() { 
-            state = new MovingLeftKeeseState(this);
+            
         }
         public GoriyaBoomerang()
         {
             count = 0;
         }
        
-        public void Update(GameTime gametime)
+        public void Update(GameTime gameTime)
         {
             timeSinceLastUpdate += (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (timeSinceLastUpdate<0.5f)
@@ -32,7 +33,7 @@ namespace Sprint2_Attempt3
         }
         public void Draw(SpriteBatch spriteBatch,int x, int y)
         {
-            state.Draw(spriteBatch);
+            state.Draw(spriteBatch, x, y);
         }
     }
 }
