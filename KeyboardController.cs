@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Sprint2_Attempt3.CommandClasses;
@@ -25,9 +26,13 @@ namespace Sprint2_Attempt3
         {
             //Link movements
             commandMapping.Add(Keys.W, new MoveLinkUp(game1));
+            commandMapping.Add(Keys.Up, new MoveLinkUp(game1));
             commandMapping.Add(Keys.S, new MoveLinkDown(game1));
+            commandMapping.Add(Keys.Down, new MoveLinkDown(game1));
             commandMapping.Add(Keys.A, new MoveLinkLeft(game1));
+            commandMapping.Add(Keys.Left, new MoveLinkLeft(game1));
             commandMapping.Add(Keys.D, new MoveLinkRight(game1));
+            commandMapping.Add(Keys.Right, new MoveLinkLeft(game1));
             commandMapping.Add(Keys.E, new SetDamageLinkCommand(game1));
             commandMapping.Add(Keys.Z, new SetAttackLinkCommand(game1));
             commandMapping.Add(Keys.N, new SetAttackLinkCommand(game1));
@@ -70,8 +75,11 @@ namespace Sprint2_Attempt3
                         commandMapping[key].Execute();
                     }
                 }
-                timeSinceLastUpdate = 0;
-                
+                timeSinceLastUpdate = 0;               
+            }
+            if (!(pressedKeys.Contains(Keys.W) || pressedKeys.Contains(Keys.S) || pressedKeys.Contains(Keys.A) || pressedKeys.Contains(Keys.D)))
+            {
+                commandMapping[Keys.None].Execute();
             }
 
             /*
