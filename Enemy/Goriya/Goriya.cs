@@ -37,7 +37,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         }
         public void ChangeAttackedStatus()
         {
-            state = new DeathAnimationState(this);
+            state.ChangeAttackedStatus();
         }
 
         public void Shoot()
