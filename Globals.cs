@@ -17,12 +17,12 @@ namespace Sprint2_Attempt3
 {
     internal class Globals
     {
-        public const float scale = 8.0f;
+        public const float scale = 3.0f;
 
         //my futile attempt to avoid making a Projectile class, probably will delete
         public static bool changeDirection = false;
 
-        public static IEnemy[] enemies = { new Keese(), new Rope(), new Gel(), new Zol(), new SpikeTrap(), new Dodongo(), new Goriya() };
+        public static IEnemy[] enemies = { new Keese(200,200), new Rope(200, 200), new Gel(200, 200), new Zol(200, 200), new SpikeTrap(200, 200), new Dodongo(200, 200), new Goriya(200, 200) };
         public static Rectangle KeeseSprite1 { get { return new Rectangle(33, 34, 16, 8); } }
         public static Rectangle KeeseSprite2 { get { return new Rectangle(34, 43, 16, 11); } }
         

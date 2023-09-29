@@ -6,18 +6,12 @@ namespace Sprint2_Attempt3.Enemy.Goriya
     internal class MovingDownGoriyaSprite : IEnemySprite
     {
         private Texture2D texture;
-        private Rectangle sourceRectangle;
         private SpriteEffects spriteEffects;
         private int currentFrame;
-        private int x;
-        private int y;
         public MovingDownGoriyaSprite(Texture2D texture)
         {
             this.texture = texture;
-            sourceRectangle = Globals.GoriyaBlueDown;
             currentFrame = 0;
-            x = 200;
-            y = 200;
         }
 
         public void Update()
@@ -35,7 +29,6 @@ namespace Sprint2_Attempt3.Enemy.Goriya
                     spriteEffects = SpriteEffects.FlipHorizontally;
 
                 }
-                y += 1;
             }
             else
             {
@@ -43,7 +36,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, int x, int y, Rectangle sourceRectangle)
         {
             spriteBatch.Draw(
                 texture,

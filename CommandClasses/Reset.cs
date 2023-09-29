@@ -16,7 +16,7 @@ namespace Sprint2_Attempt3.CommandClasses
 
         public void Execute()
         {
-            game1.enemy = new Keese();
+            game1.enemy = new Keese(200, 200);
             game1.enemy.Spawn();
             game1.Link = new Link();
         }

@@ -14,10 +14,27 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             get { return state; }
             set { state = value; }
         }
+        private int positionX;
+        private int positionY;
 
-        public Goriya()
+        public int X
+        {
+            get { return positionX; }
+            set { positionX = value; }
+        }
+
+        public int Y
+        {
+            get { return positionY; }
+            set { positionY = value; }
+        }
+
+        public Goriya(int x, int y)
         {
             count = 0;
+
+            this.positionX = x;
+            this.positionY = y;
             changeDirection = false;
         }
         public void Generate() {
@@ -39,20 +56,13 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         {
             state.ChangeAttackedStatus();
         }
-
-        public void Shoot()
-        {
-            state = new ShootingStillLeftGoriyaState(this);
-        }
        
         public void Update()
         {
             count++;
             if (count % 100 == 0||Globals.changeDirection)
             {
-                Shoot();
-                ChangeDirection();
-                
+                ChangeDirection();   
             }
             state.Update();
         }

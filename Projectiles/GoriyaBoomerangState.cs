@@ -1,12 +1,15 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
 
+using Microsoft.Xna.Framework;
+
 namespace Sprint2_Attempt3.Enemy.Goriya
 {
     internal class GoriyaBoomerangState : IEnemyState
     {
         private Goriya Goriya;
         private IEnemySprite sprite;
+        private Rectangle sourceRectangle;
         private static EnemySpriteFactory enemySpriteFactory;
         public GoriyaBoomerangState(Goriya Goriya)
         {
@@ -28,7 +31,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch);
+            sprite.Draw(spriteBatch, Goriya.X, Goriya.Y, sourceRectangle);
         }
     }
 }

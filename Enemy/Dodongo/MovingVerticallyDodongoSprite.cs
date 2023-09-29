@@ -1,22 +1,20 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace Sprint2_Attempt3.Enemy.Zol
+namespace Sprint2_Attempt3.Enemy.Dodongo
 {
-    internal class MovingRightZolSprite : IEnemySprite
+    internal class MovingVerticallyDodongoSprite : IEnemySprite
     {
         private Texture2D texture;
         private Rectangle sourceRectangle;
+        private SpriteEffects spriteEffect;
         private int currentFrame;
-        private int x;
-        private int y;
-        public MovingRightZolSprite(Texture2D texture)
+        public MovingVerticallyDodongoSprite(Texture2D texture)
         {
             this.texture = texture;
-            sourceRectangle = Globals.ZolSprite1;
+            sourceRectangle = Globals.DodongoDown;
+            spriteEffect = SpriteEffects.None;
             currentFrame = 0;
-            x = 200;
-            y = 200;
         }
 
         public void Update()
@@ -26,15 +24,14 @@ namespace Sprint2_Attempt3.Enemy.Zol
             {
                 if (currentFrame < 15)
                 {
-                    sourceRectangle = Globals.ZolSprite1;
+                    spriteEffect = SpriteEffects.None;
 
                 }
                 else
                 {
-                    sourceRectangle = Globals.ZolSprite2;
+                    spriteEffect = SpriteEffects.FlipHorizontally;
 
                 }
-                x += 1;
             }
             else
             {
@@ -42,7 +39,7 @@ namespace Sprint2_Attempt3.Enemy.Zol
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, int x, int y, Rectangle sourceRectangle)
         {
             spriteBatch.Draw(
                 texture,
@@ -52,7 +49,7 @@ namespace Sprint2_Attempt3.Enemy.Zol
                 0f,
                 new Vector2(0, 0),
                 Globals.scale,
-                SpriteEffects.None,
+                spriteEffect,
                 0f
             );
         }

@@ -60,7 +60,7 @@ namespace Sprint2_Attempt3
             /*
              * can we make it so that we don't need to spawn Keese until necessary
              * */
-            currentEnemy = new Keese();
+            currentEnemy = new Keese(200,200);
             currentEnemy.Spawn();
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
             link = new Link();

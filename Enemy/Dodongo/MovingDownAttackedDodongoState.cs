@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
 namespace Sprint2_Attempt3.Enemy.Dodongo
 {
@@ -6,11 +7,12 @@ namespace Sprint2_Attempt3.Enemy.Dodongo
     {
         private Dodongo dodongo;
         private IEnemySprite sprite;
+        private Rectangle sourceRectangle;
         public MovingDownAttackedDodongoState(Dodongo dodongo)
         {
             this.dodongo = dodongo;
-
-            sprite = EnemySpriteFactory.Instance.CreateMovingDownAttackedDodongoSprite();
+            sprite = EnemySpriteFactory.Instance.CreateDodongoSprite();
+            sourceRectangle = Globals.DodongoDownAttacked;
 
         }
         public void ChangeDirection()
@@ -21,11 +23,10 @@ namespace Sprint2_Attempt3.Enemy.Dodongo
         }
         public void Update()
         {
-            sprite.Update();
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch);
+            sprite.Draw(spriteBatch, dodongo.X, dodongo.Y, sourceRectangle);
         }
     }
 }

@@ -1,28 +1,20 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace Sprint2_Attempt3.Enemy.Dodongo
+namespace Sprint2_Attempt3.Enemy.Rope
 {
-    internal class MovingUpAttackedDodongoSprite : IEnemySprite
+    internal class RopeSprite : IEnemySprite
     {
         private Texture2D texture;
-        private Rectangle sourceRectangle;
-        private int x;
-        private int y;
-        public MovingUpAttackedDodongoSprite(Texture2D texture)
+
+        public RopeSprite(Texture2D texture)
         {
             this.texture = texture;
-            sourceRectangle = Globals.DodongoUpAttacked;
-            x = 200;
-            y = 200;
         }
 
-        public void Update()
-        {
+        public void Update() {}
 
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, int x, int y, Rectangle sourceRectangle)
         {
             spriteBatch.Draw(
                 texture,

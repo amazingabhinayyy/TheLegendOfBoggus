@@ -13,7 +13,6 @@ namespace Sprint2_Attempt3
     {
 
         private Game1 game1;
-        //private static IEnemy[] enemies = { new Keese(), new Rope(), new Gel(), new Zol(), new SpikeTrap(), new Dodongo() };
         private static IEnemy[] enemies = Globals.enemies; 
         private static int enemyIndex = 0;
 
