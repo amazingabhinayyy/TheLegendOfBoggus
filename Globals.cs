@@ -9,7 +9,7 @@ namespace Sprint2_Attempt3
 {
     internal class Globals
     {
-        public const float scale = 8.0f;
+        public const float scale = 2.0f;
 
         public static Rectangle KeeseSprite1 { get { return new Rectangle(33, 34, 16, 8); } }
         public static Rectangle KeeseSprite2 { get { return new Rectangle(34, 43, 16, 11); } }
