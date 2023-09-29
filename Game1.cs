@@ -87,7 +87,7 @@ namespace Sprint2_Attempt3
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            keyboardController.Update();
+            keyboardController.Update(gameTime);
             currentEnemy.Update();
             link.Update();
             base.Update(gameTime);
