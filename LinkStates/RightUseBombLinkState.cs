@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
-using Sprint2_Attempt3.Items;
 
 namespace Sprint2_Attempt3.LinkStates
 {
@@ -17,7 +16,7 @@ namespace Sprint2_Attempt3.LinkStates
             this.link = link;
             link.Sprite = LinkSpriteFactory.Instance.CreateRightUseBombLinkSprite();
             link.ItemPosition = new Vector2(link.position.X + 45, link.position.Y);
-            link.ItemState = new BombState(link);
+            link.Items.Add(LinkSpriteFactory.Instance.CreateBombItem());
             frameCounter = 0;
         }
         public void BecomeIdle()

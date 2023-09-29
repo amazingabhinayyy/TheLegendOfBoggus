@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint2_Attempt3
+namespace Sprint2_Attempt3.LinkSprites
 {
     public class UpAttackLinkSprite : ISprite
     {
@@ -23,31 +23,25 @@ namespace Sprint2_Attempt3
         public void Update()
         {
             currentFrame++;
-            if (currentFrame == 60)
-            {
-                currentFrame = 0;
-            }
         }
  
-
-
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
         {
             destinationRectangle = new Rectangle((int)location.X, (int)location.Y, 45, 45);
 
-            if (currentFrame >= 15 && currentFrame < 30)
+            if (currentFrame >= 7 && currentFrame < 15)
             {
                 sourceRectangle = new Rectangle(18, 109, 15, 15);
             }
-            else if (currentFrame >= 30 && currentFrame < 45)
+            else if (currentFrame >= 15 && currentFrame < 22)
             {
                 sourceRectangle = new Rectangle(35, 109, 15, 15);
             }
-            else if (currentFrame >= 45 && currentFrame < 60)
+            else if (currentFrame >= 22 && currentFrame < 30)
             {
                 sourceRectangle = new Rectangle(52, 109, 15, 15);
             }
-            else if (currentFrame >= 0 && currentFrame < 15)
+            else if (currentFrame >= 0 && currentFrame < 7)
             {
                 sourceRectangle = new Rectangle(1, 109, 15, 15);
             }

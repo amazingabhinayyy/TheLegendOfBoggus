@@ -11,13 +11,13 @@ namespace Sprint2_Attempt3.LinkSprites
     public class LeftUseBombLinkSprite : ISprite
     {
         private Texture2D linkTexture;
-        private Rectangle sourceRectangleLink;
-        private Rectangle destinationRectangleLink;
+        private Rectangle sourceRectangle;
+        private Rectangle destinationRectangle;
 
         public LeftUseBombLinkSprite(Texture2D linkTexture)
         {
             this.linkTexture = linkTexture;
-            sourceRectangleLink = new Rectangle(106, 10, 17, 16);
+            sourceRectangle = new Rectangle(124, 11, 15, 15);
         }
 
         public void Update()
@@ -25,9 +25,9 @@ namespace Sprint2_Attempt3.LinkSprites
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
         {
-            destinationRectangleLink = new Rectangle((int)location.X, (int)location.Y, 51, 48);
+            destinationRectangle = new Rectangle((int)location.X, (int)location.Y, 45, 45);
 
-            spriteBatch.Draw(linkTexture, destinationRectangleLink, sourceRectangleLink, color);
+            spriteBatch.Draw(linkTexture, destinationRectangle, sourceRectangle, color, 0, new Vector2(0), SpriteEffects.FlipHorizontally, 0);
         }
     }
 }
