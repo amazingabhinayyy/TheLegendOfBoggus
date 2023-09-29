@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Sprint2;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Enemy.Rope;
@@ -22,6 +23,10 @@ namespace Sprint2_Attempt3
         }
         private Link link;
         public ILink Link { get { return link; } set {; } }
+
+        private Block block;
+        public IBlock Block { get { return block; } set {; } }
+
 
 
         public Game1()
@@ -60,6 +65,8 @@ namespace Sprint2_Attempt3
             currentEnemy.Spawn();
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
             link = new Link();
+            BlockSpriteFactory.Instance.LoadAllTextures(Content);
+            block = new Block();
         }
 
         /// <summary>
@@ -86,6 +93,7 @@ namespace Sprint2_Attempt3
             keyboardController.Update();
             currentEnemy.Update();
             link.Update();
+            block.Update();
             base.Update(gameTime);
         }
 
@@ -106,6 +114,7 @@ namespace Sprint2_Attempt3
             currentEnemy.Draw(spriteBatch);
             link.Draw(spriteBatch, Color.White);
             spriteBatch.End();
+            block.Draw(spriteBatch, Color.White);
             base.Draw(gameTime);
         }
     }
