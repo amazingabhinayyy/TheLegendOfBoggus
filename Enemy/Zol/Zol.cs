@@ -12,10 +12,26 @@ namespace Sprint2_Attempt3.Enemy.Zol
             get { return state; }
             set { state = value; }
         }
+        private int positionX;
+        private int positionY;
 
-        public Zol()
+        public int X
+        {
+            get { return positionX; }
+            set { positionX = value; }
+        }
+
+        public int Y
+        {
+            get { return positionY; }
+            set { positionY = value; }
+        }
+        public Zol(int x, int y)
         {
             count = 0;
+
+            this.positionX = x;
+            this.positionY = y;
         }
         public void Generate() {
             state = new MovingLeftZolState(this);

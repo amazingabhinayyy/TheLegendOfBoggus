@@ -1,22 +1,16 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace Sprint2_Attempt3.Enemy.Gel
+namespace Sprint2_Attempt3.Enemy.Goriya
 {
-    internal class MovingRightGelSprite : IEnemySprite
+    internal class MovingUpGoriyaSprite : IEnemySprite
     {
         private Texture2D texture;
-        private Rectangle sourceRectangle;
+        private SpriteEffects spriteEffects;
         private int currentFrame;
-        private int x;
-        private int y;
-        public MovingRightGelSprite(Texture2D texture)
+        public MovingUpGoriyaSprite(Texture2D texture)
         {
             this.texture = texture;
-            sourceRectangle = Globals.GelSprite1;
-            currentFrame = 0;
-            x = 200;
-            y = 200;
         }
 
         public void Update()
@@ -26,15 +20,13 @@ namespace Sprint2_Attempt3.Enemy.Gel
             {
                 if (currentFrame < 15)
                 {
-                    sourceRectangle = Globals.GelSprite1;
+                    spriteEffects = SpriteEffects.None;
 
                 }
                 else
                 {
-                    sourceRectangle = Globals.GelSprite2;
-
+                    spriteEffects = SpriteEffects.FlipHorizontally;
                 }
-                x += 1;
             }
             else
             {
@@ -42,7 +34,7 @@ namespace Sprint2_Attempt3.Enemy.Gel
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, int x, int y, Rectangle sourceRectangle)
         {
             spriteBatch.Draw(
                 texture,
@@ -52,7 +44,7 @@ namespace Sprint2_Attempt3.Enemy.Gel
                 0f,
                 new Vector2(0, 0),
                 Globals.scale,
-                SpriteEffects.None,
+                spriteEffects,
                 0f
             );
         }

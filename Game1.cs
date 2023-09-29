@@ -13,6 +13,7 @@ namespace Sprint2_Attempt3
         SpriteBatch spriteBatch;
 
         private IController keyboardController;
+        public IController keyController { set {keyboardController = value; } }
 
         private IEnemy currentEnemy;
         public IEnemy enemy
@@ -21,7 +22,7 @@ namespace Sprint2_Attempt3
             set { currentEnemy = value; }
         }
         private Link link;
-        public ILink Link { get { return link; } set {; } }
+        public ILink Link { get { return link; } set {link = (Link)value; } }
 
 
         public Game1()
@@ -56,7 +57,10 @@ namespace Sprint2_Attempt3
             spriteBatch = new SpriteBatch(GraphicsDevice);
             keyboardController = new KeyboardController(this);
             EnemySpriteFactory.Instance.LoadAllTextures(this.Content);
-            currentEnemy = new Keese();
+            /*
+             * can we make it so that we don't need to spawn Keese until necessary
+             * */
+            currentEnemy = new Keese(200,200);
             currentEnemy.Spawn();
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
             link = new Link();
@@ -83,7 +87,7 @@ namespace Sprint2_Attempt3
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            keyboardController.Update();
+            keyboardController.Update(gameTime);
             currentEnemy.Update();
             link.Update();
             base.Update(gameTime);

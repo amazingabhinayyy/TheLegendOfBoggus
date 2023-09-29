@@ -1,16 +1,28 @@
 ﻿using Microsoft.Xna.Framework;
+using Sprint2_Attempt3.Enemy.Dodongo;
+using Sprint2_Attempt3.Enemy.Gel;
+using Sprint2_Attempt3.Enemy.Keese;
+using Sprint2_Attempt3.Enemy.Rope;
+using Sprint2_Attempt3.Enemy.SpikeTrap;
+using Sprint2_Attempt3.Enemy.Zol;
+using Sprint2_Attempt3.Enemy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sprint2_Attempt3.Enemy.Goriya;
 
 namespace Sprint2_Attempt3
 {
     internal class Globals
     {
-        public const float scale = 2.0f;
+        public const float scale = 3.0f;
 
+        //my futile attempt to avoid making a Projectile class, probably will delete
+        public static bool changeDirection = false;
+
+        public static IEnemy[] enemies = { new Keese(200,200), new Rope(200, 200), new Gel(200, 200), new Zol(200, 200), new SpikeTrap(200, 200), new Dodongo(200, 200), new Goriya(200, 200) };
         public static Rectangle KeeseSprite1 { get { return new Rectangle(33, 34, 16, 8); } }
         public static Rectangle KeeseSprite2 { get { return new Rectangle(34, 43, 16, 11); } }
         
@@ -35,6 +47,16 @@ namespace Sprint2_Attempt3
         public static Rectangle DodongoUpAttacked { get { return new Rectangle(52, 35, 16, 16); } }
         public static Rectangle DodongoDownAttacked { get { return new Rectangle(17, 35, 17, 16); } }
         public static Rectangle DodongoRightAttacked { get { return new Rectangle(135, 35, 32, 16); } }
+
+        public static Rectangle GoriyaBlueDown { get { return new Rectangle(84, 52, 14, 17); } } 
+        public static Rectangle GoriyaBlueUp { get { return new Rectangle(101, 52, 14, 17); } }
+        public static Rectangle GoriyaBlueRight { get { return new Rectangle(117, 52, 14, 17); } }
+        public static Rectangle GoriyaBlueRight2 { get { return new Rectangle(135, 52, 14, 17); } }
+        public static Rectangle GoriyaBoomerang1 { get { return new Rectangle(1, 74, 7, 17); } }
+        public static Rectangle GoriyaBoomerang2 { get { return new Rectangle(10, 74, 9, 17); } }
+        public static Rectangle GoriyaBoomerang3 { get { return new Rectangle(20, 76, 7, 17); } }
+        
+        
 
         public static Rectangle StalfosSprite { get { return new Rectangle(34, 18, 15, 16); } }
     }

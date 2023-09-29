@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Sprint2_Attempt3.CommandClasses;
 
@@ -8,7 +9,7 @@ namespace Sprint2_Attempt3
     public class KeyboardController : IController
     {
         private Game1 game1;
-
+        private float timeSinceLastUpdate;
         private Dictionary<Keys, ICommand> commandMapping = new Dictionary<Keys, ICommand>();
         private bool pressed = true;
 
@@ -17,6 +18,7 @@ namespace Sprint2_Attempt3
             this.game1 = game;
             commandMapping = new Dictionary<Keys, ICommand>();
             RegisterCommands();
+            timeSinceLastUpdate = 0;
         }
 
         public void RegisterCommands()
@@ -53,14 +55,28 @@ namespace Sprint2_Attempt3
             commandMapping.Add(Keys.R, new Reset(game1));
         }
     
-
-
-
-        public void Update()
+        public void Update(GameTime gameTime)
         {
-
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
-            if (pressedKeys.Length > 0&&pressed)
+
+            timeSinceLastUpdate += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (pressedKeys.Length > 0 && timeSinceLastUpdate>0.5f)
+            {
+                foreach (Keys key in pressedKeys)
+                {
+                    if (commandMapping.ContainsKey(key))
+                    {
+                        commandMapping[key].Execute();
+                    }
+                }
+                timeSinceLastUpdate = 0;
+                
+            }
+
+            /*
+            Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
+            if (pressedKeys.Length > 0 && pressed)
             {
                 foreach (Keys key in pressedKeys)
                 {
@@ -73,15 +89,12 @@ namespace Sprint2_Attempt3
             }
             else
             {
-                if(pressedKeys.Length == 0)
+                if (pressedKeys.Length == 0)
                 {
                     pressed = true;
                 }
-            }
-            /*else
-            {
-                commandMapping[Keys.None].Execute();
             }*/
+
         }
     }
 }

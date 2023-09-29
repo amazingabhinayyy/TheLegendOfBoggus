@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
 
 namespace Sprint2_Attempt3.Enemy.SpikeTrap
@@ -7,28 +8,28 @@ namespace Sprint2_Attempt3.Enemy.SpikeTrap
     {
         private SpikeTrap spikeTrap;
         private IEnemySprite sprite;
-        private static EnemySpriteFactory enemySpriteFactory;
+        private Rectangle sourceRectangle;
         public MovingRightSpikeTrapState(SpikeTrap spikeTrap)
         {
             this.spikeTrap = spikeTrap;
-            enemySpriteFactory = new EnemySpriteFactory();
-            sprite = EnemySpriteFactory.Instance.CreateMovingRightSpikeTrapSprite();
-
+            sprite = EnemySpriteFactory.Instance.CreateSpkieTrapSprite();
+            sourceRectangle = Globals.SpikeTrapSprite;
         }
         public void ChangeDirection()
         {
-            spikeTrap .State = new MovingDownSpikeTrapState(spikeTrap);
+            spikeTrap.State = new MovingDownSpikeTrapState(spikeTrap);
         }
-        public void ChangeAttackedStatus() {
-            
+        public void ChangeAttackedStatus()
+        {
+
         }
         public void Update()
         {
-            sprite.Update();
+            spikeTrap.X += 1;
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch);
+            sprite.Draw(spriteBatch, spikeTrap.X, spikeTrap.Y, sourceRectangle);
         }
     }
 }

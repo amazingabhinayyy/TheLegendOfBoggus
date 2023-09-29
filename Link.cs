@@ -14,8 +14,8 @@ namespace Sprint2_Attempt3
         public IState State { get; set; }
         public IItemSprite ItemSprite { get; set; }
         public IItemState ItemState { get; set; }
-
-        public Link()
+        
+       public Link()
         {
             StartLinkState();
         }

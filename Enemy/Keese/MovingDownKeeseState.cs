@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
 namespace Sprint2_Attempt3.Enemy.Keese
 {
@@ -6,10 +7,14 @@ namespace Sprint2_Attempt3.Enemy.Keese
     {
         private Keese keese;
         private IEnemySprite sprite;
+        private int currentFrame;
+        private Rectangle sourceRectangle;
         public MovingDownKeeseState(Keese keese)
         {
             this.keese = keese;
-            sprite = EnemySpriteFactory.Instance.CreateMovingDownKeeseSprite();
+            this.currentFrame = 0;
+            this.sprite = EnemySpriteFactory.Instance.CreateKeeseSprite();
+            this.sourceRectangle = Globals.KeeseSprite1;
         }
         public void ChangeDirection()
         {
@@ -20,11 +25,29 @@ namespace Sprint2_Attempt3.Enemy.Keese
         }
         public void Update()
         {
-            sprite.Update();
+            currentFrame++;
+            if (currentFrame < 30)
+            {
+                if (currentFrame < 15)
+                {
+                    sourceRectangle = Globals.KeeseSprite1;
+
+                }
+                else
+                {
+                    sourceRectangle = Globals.KeeseSprite2;
+
+                }
+                keese.Y += 1;
+            }
+            else
+            {
+                currentFrame = 0;
+            }
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch);
+            sprite.Draw(spriteBatch, keese.X, keese.Y, sourceRectangle);
         }
     }
 }

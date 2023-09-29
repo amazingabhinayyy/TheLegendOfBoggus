@@ -2,27 +2,30 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
 
-namespace Sprint2_Attempt3.Enemy.Gel
+namespace Sprint2_Attempt3.Enemy.Goriya
 {
-    internal class MovingDownGelState : IEnemyState
+    internal class MovingLeftGoriyaState : IEnemyState
     {
-        private Gel gel;
+        private Goriya Goriya;
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
         private int currentFrame;
-        public MovingDownGelState(Gel gel)
+        private static EnemySpriteFactory enemySpriteFactory;
+        public MovingLeftGoriyaState(Goriya Goriya)
         {
-            this.gel = gel;
-            sprite = EnemySpriteFactory.Instance.CreateGelSprite();
-            sourceRectangle = Globals.GelSprite1;
+            this.Goriya = Goriya;
+            enemySpriteFactory = new EnemySpriteFactory();
+            sprite = EnemySpriteFactory.Instance.CreateMovingLeftGoriyaSprite();
             currentFrame = 0;
+            sourceRectangle = Globals.GoriyaBlueRight;
+
         }
         public void ChangeDirection()
         {
-            gel.State = new MovingLeftGelState(gel);
+            Goriya.State = new MovingUpGoriyaState(Goriya);
         }
         public void ChangeAttackedStatus() {
-            gel.State = new DeathAnimationState(gel);
+            Goriya.State.ChangeAttackedStatus();
         }
         public void Update()
         {
@@ -31,15 +34,15 @@ namespace Sprint2_Attempt3.Enemy.Gel
             {
                 if (currentFrame < 15)
                 {
-                    sourceRectangle = Globals.GelSprite1;
+                    sourceRectangle = Globals.GoriyaBlueRight;
 
                 }
                 else
                 {
-                    sourceRectangle = Globals.GelSprite2;
+                    sourceRectangle = Globals.GoriyaBlueRight2;
 
                 }
-                gel.Y += 1;
+                Goriya.X -= 1;
             }
             else
             {
@@ -48,7 +51,7 @@ namespace Sprint2_Attempt3.Enemy.Gel
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, gel.X, gel.Y, sourceRectangle);
+            sprite.Draw(spriteBatch, Goriya.X, Goriya.Y, sourceRectangle);
         }
     }
 }

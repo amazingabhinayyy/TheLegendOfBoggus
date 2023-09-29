@@ -1,12 +1,19 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
+using System;
 
-namespace Sprint2_Attempt3.Enemy.Dodongo
+namespace Sprint2_Attempt3.Enemy.Goriya
 {
-    internal class Dodongo : IEnemy
+    internal class Goriya : IEnemy
     {
         private IEnemyState state;
         private int count;
+        private bool changeDirection;
+        public IEnemyState State
+        {
+            get { return state; }
+            set { state = value; }
+        }
         private int positionX;
         private int positionY;
 
@@ -21,20 +28,17 @@ namespace Sprint2_Attempt3.Enemy.Dodongo
             get { return positionY; }
             set { positionY = value; }
         }
-        public IEnemyState State
-        {
-            get { return state; }
-            set { state = value; }
-        }
-        public void Generate() { 
-            state = new MovingLeftDodongoState(this);
-        }
-        public Dodongo(int x, int y)
+
+        public Goriya(int x, int y)
         {
             count = 0;
 
             this.positionX = x;
             this.positionY = y;
+            changeDirection = false;
+        }
+        public void Generate() {
+            state = new MovingLeftGoriyaState(this);
         }
         public void Spawn()
         {
@@ -52,12 +56,13 @@ namespace Sprint2_Attempt3.Enemy.Dodongo
         {
             state.ChangeAttackedStatus();
         }
+       
         public void Update()
         {
             count++;
-            if (count % 100 == 0)
+            if (count % 100 == 0||Globals.changeDirection)
             {
-                state.ChangeDirection();
+                ChangeDirection();   
             }
             state.Update();
         }
