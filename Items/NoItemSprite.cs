@@ -7,12 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint2_Attempt3
+namespace Sprint2_Attempt3.Items
 {
     public class NoItemSprite : IItemSprite
     {
-        public NoItemSprite() 
-        { 
+        public NoItemSprite()
+        {
         }
 
         public void Update()

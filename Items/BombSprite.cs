@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Sprint2_Attempt3
+namespace Sprint2_Attempt3.Items
 {
     public class BombSprite : IItemSprite
     {
@@ -18,7 +18,7 @@ namespace Sprint2_Attempt3
         private Rectangle destinationRectangle;
         private int currentFrame;
         private Texture2D texture;
-        public BombSprite(Texture2D texture) 
+        public BombSprite(Texture2D texture)
         {
             this.texture = texture;
             sourceRectangle = new Rectangle(129, 185, 8, 15);
@@ -34,7 +34,7 @@ namespace Sprint2_Attempt3
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
         {
-            if(currentFrame == 1)
+            if (currentFrame == 1)
             {
                 xLoc = (int)location.X;
                 yLoc = (int)location.Y;

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.LinkSprites;
 using System;
 using System.Collections.Generic;
