@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Sprint2_Attempt3.CommandClasses;
 
@@ -58,9 +59,8 @@ namespace Sprint2_Attempt3
 
         public void Update()
         {
-
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
-            if (pressedKeys.Length > 0&&pressed)
+            if (pressedKeys.Length > 0 && pressed)
             {
                 foreach (Keys key in pressedKeys)
                 {
@@ -73,11 +73,25 @@ namespace Sprint2_Attempt3
             }
             else
             {
-                if(pressedKeys.Length == 0)
+                if (pressedKeys.Length == 0)
                 {
                     pressed = true;
                 }
             }
+            /*
+            Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
+            if (pressedKeys.Length > 0)
+            {
+                foreach (Keys key in pressedKeys)
+                {
+                    if (commandMapping.ContainsKey(key))
+                    {
+                        commandMapping[key].Execute();
+                    }
+                }
+               
+            */
+
             /*else
             {
                 commandMapping[Keys.None].Execute();
