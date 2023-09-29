@@ -16,7 +16,6 @@ namespace Sprint2_Attempt3.CommandClasses
 
         public void Execute()
         {
-            game1.keyController = new KeyboardController(game1);
             game1.enemy = new Keese();
             game1.enemy.Spawn();
             game1.Link = new Link();
