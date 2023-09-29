@@ -4,14 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Sprint2_Attempt3;
 
-namespace Sprint2_Attempt3.Enemy
+namespace Sprint2_Attempt3.Projectile
 {
-    public interface IEnemyProjectile
+    internal interface IEnemyProjectileSprite
     {
-        public void Generate();
-        public void Update(GameTime gametime);
+        public void Update();
         public void Draw(SpriteBatch spriteBatch, int x, int y);
+
     }
 }
