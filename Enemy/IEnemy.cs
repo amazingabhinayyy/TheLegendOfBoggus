@@ -9,6 +9,16 @@ namespace Sprint2_Attempt3.Enemy
 {
     public interface IEnemy
     {
+        public int X { 
+            get { return X; } 
+            set { X = value; }
+        }
+        public int Y
+        {
+            get { return Y; }
+            set { Y = value; }
+        }
+
         public void Generate();
         public void Spawn();
         public void ChangeDirection();

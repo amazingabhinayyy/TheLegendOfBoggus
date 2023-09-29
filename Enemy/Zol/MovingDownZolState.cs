@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
 
 namespace Sprint2_Attempt3.Enemy.Zol
@@ -7,10 +8,14 @@ namespace Sprint2_Attempt3.Enemy.Zol
     {
         private Zol zol;
         private IEnemySprite sprite;
+        private Rectangle sourceRectangle;
+        private int currentFrame;
         public MovingDownZolState(Zol zol)
         {
             this.zol = zol;
-            sprite = EnemySpriteFactory.Instance.CreateMovingDownZolSprite();
+            sprite = EnemySpriteFactory.Instance.CreateZolSprite();
+            sourceRectangle = Globals.ZolSprite1;
+            currentFrame = 0;
         }
         public void ChangeDirection()
         {
@@ -21,11 +26,29 @@ namespace Sprint2_Attempt3.Enemy.Zol
         }
         public void Update()
         {
-            sprite.Update();
+            currentFrame++;
+            if (currentFrame < 30)
+            {
+                if (currentFrame < 15)
+                {
+                    sourceRectangle = Globals.ZolSprite1;
+
+                }
+                else
+                {
+                    sourceRectangle = Globals.ZolSprite2;
+
+                }
+                zol.Y += 1;
+            }
+            else
+            {
+                currentFrame = 0;
+            }
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch);
+            sprite.Draw(spriteBatch, zol.X, zol.Y, sourceRectangle);
         }
     }
 }

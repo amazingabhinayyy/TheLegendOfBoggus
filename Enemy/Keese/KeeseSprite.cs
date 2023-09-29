@@ -1,28 +1,24 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace Sprint2_Attempt3.Enemy.Dodongo
+namespace Sprint2_Attempt3.Enemy.Keese
 {
-    internal class MovingRightAttackedDodongoSprite : IEnemySprite
+    internal class KeeseSprite : IEnemySprite
     {
         private Texture2D texture;
-        private Rectangle sourceRectangle;
-        private int x;
-        private int y;
-        public MovingRightAttackedDodongoSprite(Texture2D texture)
+        private int currentFrame;
+        public KeeseSprite(Texture2D texture)
         {
             this.texture = texture;
-            sourceRectangle = Globals.DodongoRightAttacked;
-            x = 200;
-            y = 200;
+            currentFrame = 0;
         }
 
         public void Update()
         {
-
+            
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, int x, int y, Rectangle sourceRectangle)
         {
             spriteBatch.Draw(
                 texture,

@@ -3,26 +3,19 @@ using Microsoft.Xna.Framework;
 
 namespace Sprint2_Attempt3.Enemy.SpikeTrap
 {
-    internal class MovingRightSpikeTrapSprite : IEnemySprite
+    internal class SpikeTrapSprite : IEnemySprite
     {
         private Texture2D texture;
-        private Rectangle sourceRectangle;
-        private int x;
-        private int y;
-        public MovingRightSpikeTrapSprite(Texture2D texture)
+        public SpikeTrapSprite(Texture2D texture)
         {
             this.texture = texture;
-            sourceRectangle = Globals.SpikeTrapSprite;
-            x = 200;
-            y = 200;
         }
 
         public void Update()
         {
-            x += 1;
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, int x, int y, Rectangle sourceRectangle)
         {
             spriteBatch.Draw(
                 texture,
