@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 
+using Sprint2_Attempt3.Items;
+
 namespace Sprint2_Attempt3.LinkStates
 {
     public class DownUseBombLinkState : IState
