@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint2_Attempt3.Items;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Sprint2_Attempt3
 {
@@ -14,6 +15,7 @@ namespace Sprint2_Attempt3
         public IState State { get; set; }
         public IItemSprite ItemSprite { get; set; }
         public IItemState ItemState { get; set; }
+        public List<IItemSprite> Items { get; set; }
 
         public Link()
         {
@@ -63,15 +65,17 @@ namespace Sprint2_Attempt3
         public void StartLinkState()
         {
             State = new DownIdleLinkState(this);
-            ItemState = new NoItemState(this);
+            Items = new List<IItemSprite>();
         }
         public void Update()
         {
             State.Update();
             Sprite.Update();
             AttackSprite.Update();
-            ItemState.Update();
-            ItemSprite.Update();
+            for(int c = 0; c < Items.Count; c++)
+            {
+                Items[c].Update(this);
+            }
 
         }
 
@@ -79,7 +83,10 @@ namespace Sprint2_Attempt3
         {
             Sprite.Draw(_spriteBatch, position, color);
             AttackSprite.Draw(_spriteBatch, position, color);
-            ItemSprite.Draw(_spriteBatch, ItemPosition, Color.White);
+            foreach (IItemSprite item in Items)
+            {
+                item.Draw(_spriteBatch, ItemPosition, Color.White);
+            }
             
         }
 

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Sprint2_Attempt3.CommandClasses
 {
-    internal class SetUseArrownCommand : ICommand
+    internal class SetUseArrowCommand : ICommand
     {
         private Game1 game;
-        public SetUseArrownCommand(Game1 game) 
+        public SetUseArrowCommand(Game1 game) 
         { 
             this.game = game;
         }
