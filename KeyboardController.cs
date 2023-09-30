@@ -13,6 +13,7 @@ namespace Sprint2_Attempt3
         private float timeSinceLastUpdate;
         private Dictionary<Keys, ICommand> commandMapping = new Dictionary<Keys, ICommand>();
         private bool pressed = true;
+        private List<Keys> heldKeys = new List<Keys>();
 
         public KeyboardController(Game1 game)
         {
@@ -63,19 +64,32 @@ namespace Sprint2_Attempt3
         public void Update(GameTime gameTime)
         {
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
+            for(int c = 0; c < heldKeys.Count; c++)
+            {
+                if (!(pressedKeys.Contains(heldKeys[c])))
+                {
+                    heldKeys.Remove(heldKeys[c]);
+                    c--;
+                }
+            }
 
             timeSinceLastUpdate += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (pressedKeys.Length > 0 && timeSinceLastUpdate>0.5f)
+            if (pressedKeys.Length > 0 && timeSinceLastUpdate>0.1f)
             {
                 foreach (Keys key in pressedKeys)
                 {
-                    if (commandMapping.ContainsKey(key))
+                    if (commandMapping.ContainsKey(key) && !(heldKeys.Contains(key)))
                     {
                         commandMapping[key].Execute();
+                        //The if condition hold keys that can be held
+                        if(!(key.Equals(Keys.W) || key.Equals(Keys.A) || key.Equals(Keys.S)|| key.Equals(Keys.D)))
+                        {
+                            heldKeys.Add(key);
+                        }
                     }
                 }
-                timeSinceLastUpdate = 0;               
+                timeSinceLastUpdate = 0;     
             }
             if (!(pressedKeys.Contains(Keys.W) || pressedKeys.Contains(Keys.S) || pressedKeys.Contains(Keys.A) || pressedKeys.Contains(Keys.D)))
             {

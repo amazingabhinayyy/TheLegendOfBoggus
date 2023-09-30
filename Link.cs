@@ -77,7 +77,6 @@ namespace Sprint2_Attempt3
             {
                 Items[c].Update(this);
             }
-
         }
 
         public void Draw(SpriteBatch _spriteBatch, Color color)

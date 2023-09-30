@@ -15,7 +15,7 @@ namespace Sprint2_Attempt3
         private ILink decoratedLink;
         private int timer;
         public IState State { get; set; }
-        public DamageLinkDecorator(Link decoratedLink, Game1 game)
+        public DamageLinkDecorator(ILink decoratedLink, Game1 game)
         {
             this.decoratedLink = decoratedLink;
             this.game = game;
@@ -28,19 +28,19 @@ namespace Sprint2_Attempt3
         }
         public void MoveLeft()
         {
-
+            decoratedLink.MoveLeft();
         }
         public void MoveRight()
         {
-
+            decoratedLink.MoveRight();
         }
         public void MoveUp()
         {
-
+            decoratedLink.MoveUp();
         }
         public void MoveDown()
         {
-
+            decoratedLink.MoveDown();
         }
 
         public void BecomeIdle()
@@ -49,7 +49,7 @@ namespace Sprint2_Attempt3
         }
         public void Attack()
         {
-
+            decoratedLink.Attack();
         }
         public void UseBomb()
         {
@@ -77,7 +77,7 @@ namespace Sprint2_Attempt3
 
         public void RemoveDecorator()
         {
-            game.Link = (Link)decoratedLink;
+            game.Link = decoratedLink;
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
