@@ -44,12 +44,10 @@ namespace Sprint2_Attempt3
 
         public static Rectangle GoriyaGreenDown { get { return new Rectangle(84, 1, 14, 16); } }
         public static Rectangle GoriyaGreenUp { get { return new Rectangle(101, 1, 14, 16); } }
-        public static Rectangle GoriyaGreenRight { get { return new Rectangle(117, 1, 14, 16); } }
         public static Rectangle GoriyaGreenRight2 { get { return new Rectangle(135, 1, 15, 16); } }
         public static Rectangle GoriyaTealDown { get { return new Rectangle(84, 18, 14, 16); } }
         public static Rectangle GoriyaTealUp { get { return new Rectangle(101, 18, 14, 16); } }
         public static Rectangle GoriyaTealRight { get { return new Rectangle(117, 18, 14, 16); } }
-        public static Rectangle GoriyaTealRight2 { get { return new Rectangle(135, 18, 15, 16); } }
         public static Rectangle GoriyaRedDown { get { return new Rectangle(84, 35, 14, 16); } }
         public static Rectangle GoriyaRedUp { get { return new Rectangle(101, 35, 14, 16); } }
         public static Rectangle GoriyaRedRight { get { return new Rectangle(117, 35, 14, 16); } }
@@ -59,12 +57,9 @@ namespace Sprint2_Attempt3
         public static Rectangle GoriyaBlueRight { get { return new Rectangle(117, 52, 14, 16); } }
         public static Rectangle GoriyaBlueRight2 { get { return new Rectangle(135, 52, 15, 16); } }
 
-        public static Rectangle HandGreen1 { get { return new Rectangle(50, 1, 17, 16); } }
         public static Rectangle HandGreen2 { get { return new Rectangle(68, 1, 16, 16); } }
         public static Rectangle HandTeal1 { get { return new Rectangle(50, 18, 17, 16); } }
-        public static Rectangle HandTeal2 { get { return new Rectangle(68, 18, 16, 16); } }
         public static Rectangle HandBlue1 { get { return new Rectangle(50, 35, 17, 16); } }
-        public static Rectangle HandBlue2 { get { return new Rectangle(68, 35, 16, 16); } }
         public static Rectangle HandRed1 { get { return new Rectangle(50, 52, 17, 16); } }
         public static Rectangle HandRed2 { get { return new Rectangle(68, 52, 16, 16); } }
 
