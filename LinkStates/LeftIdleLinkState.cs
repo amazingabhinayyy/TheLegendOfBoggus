@@ -1,11 +1,10 @@
-﻿using Sprint2_Attempt3.LinkStates;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint2_Attempt3
+namespace Sprint2_Attempt3.LinkStates
 {
     public class LeftIdleLinkState : IState
     {

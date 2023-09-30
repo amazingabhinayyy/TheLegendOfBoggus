@@ -1,28 +1,22 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace Sprint2_Attempt3.Enemy.SpikeTrap
+namespace Sprint2_Attempt3.Enemy.Goriya
 {
-    internal class MovingLeftSpikeTrapSprite : IEnemySprite
+    internal class MovingLeftGoriyaSprite : IEnemySprite
     {
         private Texture2D texture;
-        private Rectangle sourceRectangle;
-        private int x;
-        private int y;
-        public MovingLeftSpikeTrapSprite(Texture2D texture)
+        public MovingLeftGoriyaSprite(Texture2D texture)
         {
             this.texture = texture;
-            sourceRectangle = Globals.SpikeTrapSprite;
-            x = 200;
-            y = 200;
         }
 
         public void Update()
         {
-            x -= 1;
+            
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, int x, int y, Rectangle sourceRectangle)
         {
             spriteBatch.Draw(
                 texture,
@@ -32,7 +26,7 @@ namespace Sprint2_Attempt3.Enemy.SpikeTrap
                 0f,
                 new Vector2(0, 0),
                 Globals.scale,
-                SpriteEffects.None,
+                SpriteEffects.FlipHorizontally,
                 0f
             );
         }

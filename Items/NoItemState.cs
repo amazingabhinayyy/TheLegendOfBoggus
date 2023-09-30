@@ -10,7 +10,7 @@ namespace Sprint2_Attempt3.Items
     {
         public NoItemState(Link link)
         {
-            link.ItemSprite = LinkSpriteFactory.Instance.RemoveItem();
+            link.ItemSprite = LinkSpriteFactory.Instance.CreateNoItem();
         }
 
         public void Update()

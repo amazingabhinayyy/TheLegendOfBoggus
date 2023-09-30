@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sprint2_Attempt3.Enemy.Keese;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,10 +16,9 @@ namespace Sprint2_Attempt3.CommandClasses
 
         public void Execute()
         {
-            /*
-            * TODO:
-            * call quit method
-            */
+            game1.enemy = new Keese(200, 200);
+            game1.enemy.Spawn();
+            game1.Link = new Link();
         }
     }
 }

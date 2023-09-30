@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Sprint2_Attempt3.CommandClasses;
 
@@ -8,32 +10,38 @@ namespace Sprint2_Attempt3
     public class KeyboardController : IController
     {
         private Game1 game1;
-
+        private float timeSinceLastUpdate;
         private Dictionary<Keys, ICommand> commandMapping = new Dictionary<Keys, ICommand>();
         private bool pressed = true;
+        private List<Keys> heldKeys = new List<Keys>();
 
         public KeyboardController(Game1 game)
         {
             this.game1 = game;
             commandMapping = new Dictionary<Keys, ICommand>();
             RegisterCommands();
+            timeSinceLastUpdate = 0;
         }
 
         public void RegisterCommands()
         {
             //Link movements
             commandMapping.Add(Keys.W, new MoveLinkUp(game1));
+            commandMapping.Add(Keys.Up, new MoveLinkUp(game1));
             commandMapping.Add(Keys.S, new MoveLinkDown(game1));
+            commandMapping.Add(Keys.Down, new MoveLinkDown(game1));
             commandMapping.Add(Keys.A, new MoveLinkLeft(game1));
+            commandMapping.Add(Keys.Left, new MoveLinkLeft(game1));
             commandMapping.Add(Keys.D, new MoveLinkRight(game1));
+            commandMapping.Add(Keys.Right, new MoveLinkLeft(game1));
             commandMapping.Add(Keys.E, new SetDamageLinkCommand(game1));
             commandMapping.Add(Keys.Z, new SetAttackLinkCommand(game1));
             commandMapping.Add(Keys.N, new SetAttackLinkCommand(game1));
             commandMapping.Add(Keys.None, new SetIdleLinkCommand(game1));
             //item switching
-            commandMapping.Add(Keys.D1, new SwitchToItem1(game1));
-            commandMapping.Add(Keys.D2, new SwitchToItem2(game1));
-            commandMapping.Add(Keys.D3, new SwitchToItem3(game1));
+            commandMapping.Add(Keys.D1, new SetUseBombCommand(game1));
+            commandMapping.Add(Keys.D2, new SetUseBoomerangCommand(game1));
+            commandMapping.Add(Keys.D3, new SetUseArrowCommand(game1));
             commandMapping.Add(Keys.X, new SwitchToSecondaryItem1(game1));
             commandMapping.Add(Keys.M, new SwitchToSecondaryItem2(game1));
 
@@ -53,14 +61,44 @@ namespace Sprint2_Attempt3
             commandMapping.Add(Keys.R, new Reset(game1));
         }
     
-
-
-
-        public void Update()
+        public void Update(GameTime gameTime)
         {
-
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
-            if (pressedKeys.Length > 0&&pressed)
+            for(int c = 0; c < heldKeys.Count; c++)
+            {
+                if (!(pressedKeys.Contains(heldKeys[c])))
+                {
+                    heldKeys.Remove(heldKeys[c]);
+                    c--;
+                }
+            }
+
+            timeSinceLastUpdate += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (pressedKeys.Length > 0 && timeSinceLastUpdate>0.1f)
+            {
+                foreach (Keys key in pressedKeys)
+                {
+                    if (commandMapping.ContainsKey(key) && !(heldKeys.Contains(key)))
+                    {
+                        commandMapping[key].Execute();
+                        //The if condition hold keys that can be held
+                        if(!(key.Equals(Keys.W) || key.Equals(Keys.A) || key.Equals(Keys.S)|| key.Equals(Keys.D)))
+                        {
+                            heldKeys.Add(key);
+                        }
+                    }
+                }
+                timeSinceLastUpdate = 0;     
+            }
+            if (!(pressedKeys.Contains(Keys.W) || pressedKeys.Contains(Keys.S) || pressedKeys.Contains(Keys.A) || pressedKeys.Contains(Keys.D)))
+            {
+                commandMapping[Keys.None].Execute();
+            }
+
+            /*
+            Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
+            if (pressedKeys.Length > 0 && pressed)
             {
                 foreach (Keys key in pressedKeys)
                 {
@@ -73,15 +111,12 @@ namespace Sprint2_Attempt3
             }
             else
             {
-                if(pressedKeys.Length == 0)
+                if (pressedKeys.Length == 0)
                 {
                     pressed = true;
                 }
-            }
-            /*else
-            {
-                commandMapping[Keys.None].Execute();
             }*/
+
         }
     }
 }

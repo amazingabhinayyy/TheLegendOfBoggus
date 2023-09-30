@@ -3,22 +3,18 @@ using Microsoft.Xna.Framework;
 
 namespace Sprint2_Attempt3.Enemy.Dodongo
 {
-    internal class MovingUpDodongoSprite : IEnemySprite
+    internal class MovingVerticallyDodongoSprite : IEnemySprite
     {
         private Texture2D texture;
         private Rectangle sourceRectangle;
         private SpriteEffects spriteEffect;
         private int currentFrame;
-        private int x;
-        private int y;
-        public MovingUpDodongoSprite(Texture2D texture)
+        public MovingVerticallyDodongoSprite(Texture2D texture)
         {
             this.texture = texture;
-            sourceRectangle = Globals.DodongoUp;
+            sourceRectangle = Globals.DodongoDown;
             spriteEffect = SpriteEffects.None;
             currentFrame = 0;
-            x = 200;
-            y = 200;
         }
 
         public void Update()
@@ -36,7 +32,6 @@ namespace Sprint2_Attempt3.Enemy.Dodongo
                     spriteEffect = SpriteEffects.FlipHorizontally;
 
                 }
-                y -= 1;
             }
             else
             {
@@ -44,7 +39,7 @@ namespace Sprint2_Attempt3.Enemy.Dodongo
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, int x, int y, Rectangle sourceRectangle)
         {
             spriteBatch.Draw(
                 texture,

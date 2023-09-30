@@ -6,6 +6,7 @@ using Sprint2_Attempt3.Enemy.Gel;
 using Sprint2_Attempt3.Enemy.Zol;
 using Sprint2_Attempt3.Enemy.SpikeTrap;
 using Sprint2_Attempt3.Enemy.Dodongo;
+using Sprint2_Attempt3.Enemy.Goriya;
 
 namespace Sprint2_Attempt3.Enemy
 {
@@ -44,105 +45,38 @@ namespace Sprint2_Attempt3.Enemy
         {
             return new DeathAnimationSprite(GenerationTexture);
         }
-        public IEnemySprite CreateMovingUpKeeseSprite()
+        public IEnemySprite CreateKeeseSprite()
         {
-            return new MovingUpKeeseSprite(EnemyTexture);
+            return new KeeseSprite(EnemyTexture);
         }
-        public IEnemySprite CreateMovingDownKeeseSprite()
+        public IEnemySprite CreateRopeSprite()
         {
-            return new MovingDownKeeseSprite(EnemyTexture);
-        }
-        public IEnemySprite CreateMovingLeftKeeseSprite()
-        {
-            return new MovingLeftKeeseSprite(EnemyTexture);
-        }
-        public IEnemySprite CreateMovingRightKeeseSprite()
-        {
-            return new MovingRightKeeseSprite(EnemyTexture);
-        }
- 
-        public IEnemySprite CreateMovingUpRopeSprite()
-        {
-            return new MovingUpRopeSprite(EnemyTexture);
-        }
-        public IEnemySprite CreateMovingDownRopeSprite()
-        {
-            return new MovingDownRopeSprite(EnemyTexture);
+            return new RopeSprite(EnemyTexture);
         }
         public IEnemySprite CreateMovingLeftRopeSprite()
         {
             return new MovingLeftRopeSprite(EnemyTexture);
         }
-        public IEnemySprite CreateMovingRightRopeSprite()
+        public IEnemySprite CreateZolSprite()
         {
-            return new MovingRightRopeSprite(EnemyTexture);
+            return new ZolSprite(EnemyTexture);
+        }
+        public IEnemySprite CreateGelSprite()
+        {
+            return new GelSprite(EnemyTexture);
+        }
+        public IEnemySprite CreateSpkieTrapSprite()
+        {
+            return new SpikeTrapSprite(EnemyTexture);
         }
 
-        public IEnemySprite CreateMovingUpGelSprite()
+        public IEnemySprite CreateDodongoSprite()
         {
-            return new MovingUpGelSprite(EnemyTexture);
+            return new DodongoSprite(BossEnemyTexture);
         }
-        public IEnemySprite CreateMovingDownGelSprite()
+        public IEnemySprite CreateMovingVerticallyDodongoSprite()
         {
-            return new MovingDownGelSprite(EnemyTexture);
-        }
-        public IEnemySprite CreateMovingLeftGelSprite()
-        {
-            return new MovingLeftGelSprite(EnemyTexture);
-        }
-        public IEnemySprite CreateMovingRightGelSprite()
-        {
-            return new MovingRightGelSprite(EnemyTexture);
-        }
-
-        public IEnemySprite CreateMovingUpZolSprite()
-        {
-            return new MovingUpZolSprite(EnemyTexture);
-        }
-        public IEnemySprite CreateMovingDownZolSprite()
-        {
-            return new MovingDownZolSprite(EnemyTexture);
-        }
-        public IEnemySprite CreateMovingLeftZolSprite()
-        {
-            return new MovingLeftZolSprite(EnemyTexture);
-        }
-        public IEnemySprite CreateMovingRightZolSprite()
-        {
-            return new MovingRightZolSprite(EnemyTexture);
-        }
-        public IEnemySprite CreateMovingUpSpikeTrapSprite()
-        {
-            return new MovingUpSpikeTrapSprite(EnemyTexture);
-        }
-        public IEnemySprite CreateMovingDownSpikeTrapSprite()
-        {
-            return new MovingDownSpikeTrapSprite(EnemyTexture);
-        }
-        public IEnemySprite CreateMovingLeftSpikeTrapSprite()
-        {
-            return new MovingLeftSpikeTrapSprite(EnemyTexture);
-        }
-        public IEnemySprite CreateMovingRightSpikeTrapSprite()
-        {
-            return new MovingRightSpikeTrapSprite(EnemyTexture);
-        }
-
-        public IEnemySprite CreateMovingUpDodongoSprite()
-        {
-            return new MovingUpDodongoSprite(BossEnemyTexture);
-        }
-        public IEnemySprite CreateMovingUpAttackedDodongoSprite()
-        {
-            return new MovingUpAttackedDodongoSprite(BossEnemyTexture);
-        }
-        public IEnemySprite CreateMovingDownDodongoSprite()
-        {
-            return new MovingDownDodongoSprite(BossEnemyTexture);
-        }
-        public IEnemySprite CreateMovingDownAttackedDodongoSprite()
-        {
-            return new MovingDownAttackedDodongoSprite(BossEnemyTexture);
+            return new MovingVerticallyDodongoSprite(BossEnemyTexture);
         }
         public IEnemySprite CreateMovingLeftDodongoSprite()
         {
@@ -152,13 +86,22 @@ namespace Sprint2_Attempt3.Enemy
         {
             return new MovingLeftAttackedDodongoSprite(BossEnemyTexture);
         }
-        public IEnemySprite CreateMovingRightDodongoSprite()
+
+        public IEnemySprite CreateMovingUpGoriyaSprite()
         {
-            return new MovingRightDodongoSprite(BossEnemyTexture);
+            return new MovingUpGoriyaSprite(EnemyTexture);
         }
-        public IEnemySprite CreateMovingRightAttackedDodongoSprite()
+        public IEnemySprite CreateMovingDownGoriyaSprite()
         {
-            return new MovingRightAttackedDodongoSprite(BossEnemyTexture);
+            return new MovingDownGoriyaSprite(EnemyTexture);
+        }
+        public IEnemySprite CreateMovingRightGoriyaSprite()
+        {
+            return new MovingRightGoriyaSprite(EnemyTexture);
+        }
+        public IEnemySprite CreateMovingLeftGoriyaSprite()
+        {
+            return new MovingLeftGoriyaSprite(EnemyTexture);
         }
     }
 }

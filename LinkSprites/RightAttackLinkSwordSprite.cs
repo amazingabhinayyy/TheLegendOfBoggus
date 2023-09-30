@@ -7,11 +7,10 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace Sprint2_Attempt3
+namespace Sprint2_Attempt3.LinkSprites
 {
     public class RightAttackLinkSwordSprite : ISprite
     {
-        private Link link;
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;
         private int currentFrame;
@@ -26,7 +25,7 @@ namespace Sprint2_Attempt3
         public void Update()
         {
             currentFrame++;
-            if (currentFrame >= 60)
+            if (currentFrame >= 30)
             {
                 currentFrame = 0;
             }
@@ -36,22 +35,22 @@ namespace Sprint2_Attempt3
             //+16 x, +8 y
             destinationRectangle = new Rectangle(((int)location.X+ 7), ((int)location.Y + 24), 15, 15);
 
-            if (currentFrame >= 15 && currentFrame < 30)
+            if (currentFrame >= 7 && currentFrame < 15)
             {
-                destinationRectangle = new Rectangle(((int)location.X + 45), ((int)location.Y + 24), 33, 9);
-                sourceRectangle = new Rectangle(34, 85, 11, 3);
+                destinationRectangle = new Rectangle(((int)location.X + 45), ((int)location.Y + 24), 36, 9);
+                sourceRectangle = new Rectangle(34, 85, 12, 3);
             }
-            else if (currentFrame >= 30 && currentFrame < 45)
+            else if (currentFrame >= 15 && currentFrame < 22)
             {
-                destinationRectangle = new Rectangle(((int)location.X + 45), ((int)location.Y + 24), 21, 9);
-                sourceRectangle = new Rectangle(60, 85, 7, 3);
+                destinationRectangle = new Rectangle(((int)location.X + 45), ((int)location.Y + 24), 27, 9);
+                sourceRectangle = new Rectangle(60, 85, 9, 3);
             }
-            else if (currentFrame >= 45 && currentFrame < 60)
+            else if (currentFrame >= 22 && currentFrame < 30)
             {
-                destinationRectangle = new Rectangle(((int)location.X + 45), ((int)location.Y + 24), 9, 9);
-                sourceRectangle = new Rectangle(85, 85, 3, 3);
+                destinationRectangle = new Rectangle(((int)location.X + 45), ((int)location.Y + 24), 12, 9);
+                sourceRectangle = new Rectangle(85, 85, 4, 3);
             }
-            else if (currentFrame >= 0 && currentFrame < 15)
+            else if (currentFrame >= 0 && currentFrame < 7)
             {
                 destinationRectangle = new Rectangle(((int)location.X + 45), ((int)location.Y + 24), 0, 0);
                 sourceRectangle = new Rectangle(1, 47, 0, 0);

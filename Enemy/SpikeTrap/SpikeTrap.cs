@@ -12,10 +12,26 @@ namespace Sprint2_Attempt3.Enemy.SpikeTrap
             get { return state; }
             set { state = value; }
         }
+        private int positionX;
+        private int positionY;
 
-        public SpikeTrap()
+        public int X
+        {
+            get { return positionX; }
+            set { positionX = value; }
+        }
+
+        public int Y
+        {
+            get { return positionY; }
+            set { positionY = value; }
+        }
+        public SpikeTrap(int x, int y)
         {
             count = 0;
+
+            this.positionX = x;
+            this.positionY = y;
         }
         public void Generate() {
             state = new MovingLeftSpikeTrapState(this);
