@@ -2,28 +2,28 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
 
-namespace Sprint2_Attempt3.Enemy.Goriya
+namespace Sprint2_Attempt3.Enemy.Hand
 {
-    internal class MovingLeftGoriyaState : IEnemyState
+    internal class MovingLeftHandState : IEnemyState
     {
-        private Goriya Goriya;
+        private Hand Hand;
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
         private int currentFrame;
-        public MovingLeftGoriyaState(Goriya Goriya)
+        public MovingLeftHandState(Hand Hand)
         {
-            this.Goriya = Goriya;
-            sprite = EnemySpriteFactory.Instance.CreateMovingLeftGoriyaSprite();
+            this.Hand = Hand;
+            sprite = EnemySpriteFactory.Instance.CreateMovingLeftHandSprite();
             currentFrame = 0;
-            sourceRectangle = Globals.GoriyaRedRight;
+            sourceRectangle = Globals.HandRed1;
 
         }
         public void ChangeDirection()
         {
-            Goriya.State = new MovingUpGoriyaState(Goriya);
+            Hand.State = new MovingUpHandState(Hand);
         }
         public void ChangeAttackedStatus() {
-            Goriya.State = new MovingAttackedLeftGoriyaState(Goriya);
+            Hand.State = new MovingAttackedLeftHandState(Hand);
         }
         public void Update()
         {
@@ -32,24 +32,24 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             {
                 if (currentFrame < 15)
                 {
-                    sourceRectangle = Globals.GoriyaRedRight;
+                    sourceRectangle = Globals.HandRed1;
 
                 }
                 else
                 {
-                    sourceRectangle = Globals.GoriyaRedRight2;
+                    sourceRectangle = Globals.HandRed2;
 
                 }
-                Goriya.X -= 1;
             }
             else
             {
                 currentFrame = 0;
             }
+            Hand.X -= 1;
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, Goriya.X, Goriya.Y, sourceRectangle);
+            sprite.Draw(spriteBatch, Hand.X, Hand.Y, sourceRectangle);
         }
     }
 }

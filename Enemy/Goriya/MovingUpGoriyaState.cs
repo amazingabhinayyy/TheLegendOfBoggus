@@ -9,20 +9,18 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         private Goriya Goriya;
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
-        private static EnemySpriteFactory enemySpriteFactory;
         public MovingUpGoriyaState(Goriya Goriya)
         {
             this.Goriya = Goriya;
-            enemySpriteFactory = new EnemySpriteFactory();
             sprite = EnemySpriteFactory.Instance.CreateMovingUpGoriyaSprite();
-            sourceRectangle = Globals.GoriyaBlueUp;
+            sourceRectangle = Globals.GoriyaRedUp;
         }
         public void ChangeDirection()
         {
             Goriya.State = new MovingRightGoriyaState(Goriya);
         }
         public void ChangeAttackedStatus() {
-            Goriya.State.ChangeAttackedStatus();
+            Goriya.State = new MovingAttackedUpGoriyaState(Goriya);
         }
         public void Update()
         {

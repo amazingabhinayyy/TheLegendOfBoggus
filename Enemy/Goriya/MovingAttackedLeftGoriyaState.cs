@@ -4,13 +4,13 @@ using Sprint2_Attempt3.Enemy.Keese;
 
 namespace Sprint2_Attempt3.Enemy.Goriya
 {
-    internal class MovingLeftGoriyaState : IEnemyState
+    internal class MovingAttackedLeftGoriyaState : IEnemyState
     {
         private Goriya Goriya;
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
         private int currentFrame;
-        public MovingLeftGoriyaState(Goriya Goriya)
+        public MovingAttackedLeftGoriyaState(Goriya Goriya)
         {
             this.Goriya = Goriya;
             sprite = EnemySpriteFactory.Instance.CreateMovingLeftGoriyaSprite();
@@ -20,32 +20,40 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         }
         public void ChangeDirection()
         {
-            Goriya.State = new MovingUpGoriyaState(Goriya);
+            Goriya.State = new MovingAttackedUpGoriyaState(Goriya);
         }
         public void ChangeAttackedStatus() {
-            Goriya.State = new MovingAttackedLeftGoriyaState(Goriya);
+            Goriya.State = new MovingLeftGoriyaState(Goriya);
         }
         public void Update()
         {
+            
             currentFrame++;
-            if (currentFrame < 30)
+            if (currentFrame <= 20)
             {
-                if (currentFrame < 15)
+                if (currentFrame == 5)
                 {
-                    sourceRectangle = Globals.GoriyaRedRight;
-
+                    sourceRectangle = Globals.GoriyaGreenRight2;
                 }
-                else
+                else if (currentFrame == 10)
+                {
+                    sourceRectangle = Globals.GoriyaTealRight;
+                }
+                else if (currentFrame == 15)
                 {
                     sourceRectangle = Globals.GoriyaRedRight2;
-
                 }
-                Goriya.X -= 1;
+                else if (currentFrame == 20)
+                {
+                    sourceRectangle = Globals.GoriyaBlueRight;
+                }
             }
             else
             {
                 currentFrame = 0;
             }
+            Goriya.X -= 1;
+
         }
         public void Draw(SpriteBatch spriteBatch)
         {

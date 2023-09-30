@@ -2,9 +2,9 @@
 using Sprint2_Attempt3.Enemy.Keese;
 using System;
 
-namespace Sprint2_Attempt3.Enemy.Goriya
+namespace Sprint2_Attempt3.Enemy.Stalfos
 {
-    internal class Goriya : IEnemy
+    internal class Stalfos : IEnemy
     {
         private IEnemyState state;
         private int count;
@@ -28,7 +28,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             set { positionY = value; }
         }
 
-        public Goriya(int x, int y)
+        public Stalfos(int x, int y)
         {
             count = 0;
 
@@ -36,7 +36,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             this.positionY = y;
         }
         public void Generate() {
-            state = new MovingLeftGoriyaState(this);
+            state = new MovingLeftStalfosState(this);
         }
         public void Spawn()
         {

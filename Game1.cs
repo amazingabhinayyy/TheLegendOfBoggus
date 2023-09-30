@@ -13,7 +13,10 @@ namespace Sprint2_Attempt3
         SpriteBatch spriteBatch;
 
         private IController keyboardController;
-        public IController keyController { set {keyboardController = value; } }
+        public IController KeyController { 
+            get { return keyboardController; }
+            set {keyboardController = value; } 
+        }
 
         private IEnemy currentEnemy;
         public IEnemy enemy
@@ -22,7 +25,10 @@ namespace Sprint2_Attempt3
             set { currentEnemy = value; }
         }
         private Link link;
-        public ILink Link { get { return link; } set {link = (Link)value; } }
+        public ILink Link { 
+            get { return link; } 
+            set {link = (Link)value; } 
+        }
 
 
         public Game1()
@@ -41,6 +47,7 @@ namespace Sprint2_Attempt3
         protected override void Initialize()
         {
             keyboardController = new KeyboardController(this);
+            EnemySpriteFactory enemySpriteFactory = new EnemySpriteFactory();
 
             base.Initialize();
 
