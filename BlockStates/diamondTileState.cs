@@ -13,8 +13,13 @@ namespace Sprint2
         public diamondTileState(Block block)
         {
             this.block = block;
-
+        }
+        public void diamondTile()
+        {
             block.Sprite = BlockSpriteFactory.Instance.CreateDiamondTile();
+        }
+        public void plainTile() { 
+        
         }
 
         public void Update()

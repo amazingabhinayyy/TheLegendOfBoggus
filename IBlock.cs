@@ -14,5 +14,7 @@ namespace Sprint2
         public void Draw(SpriteBatch spriteBatch, Color color);
         void CreateDiamondTile();
         void CreatePlainTile();
+        public void plainTile();
+        public void diamondTile();
     }
 }

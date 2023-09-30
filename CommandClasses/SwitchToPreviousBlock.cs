@@ -17,7 +17,7 @@ namespace Sprint2_Attempt3
 
         public void Execute()
         {
-            game.Block.CreateDiamondTile();
+            game.Block.diamondTile();
         }
     }
 }

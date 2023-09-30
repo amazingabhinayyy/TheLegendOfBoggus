@@ -14,6 +14,11 @@ namespace Sprint2_Attempt3
         SpriteBatch spriteBatch;
 
         private IController keyboardController;
+        public IController KeyController
+        {
+            get { return keyboardController; }
+            set { keyboardController = value; }
+        }
 
         private IEnemy currentEnemy;
         public IEnemy enemy

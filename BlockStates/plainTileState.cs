@@ -16,7 +16,14 @@ namespace Sprint2
 
             block.Sprite = BlockSpriteFactory.Instance.CreatePlainTile();
         }
-
+        public void diamondTile()
+        {
+            
+        }
+        public void plainTile()
+        {
+            block.Sprite = BlockSpriteFactory.Instance.CreatePlainTile();
+        }
         public void Update()
         {
 

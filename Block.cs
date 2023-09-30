@@ -27,6 +27,16 @@ namespace Sprint2
         {
             State = new plainTileState(this);
         }
+
+        public void diamondTile()
+        {
+            State.diamondTile();
+        }
+
+        public void plainTile()
+        {
+            State.plainTile();
+        }
         public void Update()
         {
             State.Update();

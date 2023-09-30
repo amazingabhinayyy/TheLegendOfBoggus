@@ -9,5 +9,7 @@ namespace Sprint2.BlockStates
     public interface IStateTiles
     {
         public void Update();
+        public void diamondTile();
+        public void plainTile();
     }
 }
