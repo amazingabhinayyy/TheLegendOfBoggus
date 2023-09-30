@@ -42,7 +42,7 @@ namespace Sprint2_Attempt3.Player.LinkSprites
                 sourceRectangle = new Rectangle(52, 11, 15, 15);
             }
 
-            spriteBatch.Draw(linkTexture, destinationRectangle, sourceRectangle, Color.White, 0, new Vector2(0), SpriteEffects.FlipHorizontally, 0);
+            spriteBatch.Draw(linkTexture, destinationRectangle, sourceRectangle, color, 0, new Vector2(0), SpriteEffects.FlipHorizontally, 0);
         }
     }
 }

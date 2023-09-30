@@ -51,7 +51,7 @@ namespace Sprint2_Attempt3.Player.LinkStates
         public void Update()
         {
             count++;
-            if (count > 60)
+            if (count > 30)
             {
                 FinishAttack();
             }

@@ -11,7 +11,6 @@ namespace Sprint2_Attempt3.Player.LinkSprites
 {
     public class UpAttackLinkSwordSprite : ISprite
     {
-        private Link link;
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;
         private int currentFrame;
@@ -26,7 +25,7 @@ namespace Sprint2_Attempt3.Player.LinkSprites
         public void Update()
         {
             currentFrame++;
-            if (currentFrame >= 60)
+            if (currentFrame >= 30)
             {
                 currentFrame = 0;
             }
@@ -36,22 +35,22 @@ namespace Sprint2_Attempt3.Player.LinkSprites
             //+5 x, -12 y
             destinationRectangle = new Rectangle((int)location.X + 7, (int)location.Y - 15, 15, 15);
 
-            if (currentFrame >= 15 && currentFrame < 30)
+            if (currentFrame >= 7 && currentFrame < 15)
             {
                 destinationRectangle = new Rectangle((int)location.X + 17, (int)location.Y - 33, 9, 33);
                 sourceRectangle = new Rectangle(23, 97, 3, 11);
             }
-            else if (currentFrame >= 30 && currentFrame < 45)
+            else if (currentFrame >= 15 && currentFrame < 22)
             {
                 destinationRectangle = new Rectangle((int)location.X + 17, (int)location.Y - 21, 9, 21);
                 sourceRectangle = new Rectangle(40, 98, 3, 7);
             }
-            else if (currentFrame >= 45 && currentFrame < 60)
+            else if (currentFrame >= 22 && currentFrame < 30)
             {
                 destinationRectangle = new Rectangle((int)location.X + 17, (int)location.Y - 9, 9, 9);
                 sourceRectangle = new Rectangle(57, 106, 3, 3);
             }
-            else if (currentFrame >= 0 && currentFrame < 15)
+            else if (currentFrame >= 0 && currentFrame < 7)
             {
                 destinationRectangle = new Rectangle((int)location.X + 17, (int)location.Y, 0, 0);
                 sourceRectangle = new Rectangle(1, 63, 0, 0);

@@ -118,7 +118,7 @@ namespace Sprint2_Attempt3.Player
         {
             return new RightUseBombLinkSprite(linkTexture);
         }
-        public IItemSprite RemoveItem()
+        public IItemSprite CreateNoItem()
         {
             return new NoItemSprite();
         }

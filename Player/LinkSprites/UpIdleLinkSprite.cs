@@ -24,7 +24,7 @@ namespace Sprint2_Attempt3.Player.LinkSprites
 
             sourceRectangle = new Rectangle(69, 11, 15, 15);
             targetRectangle = new Rectangle((int)position.X, (int)position.Y, 45, 45);
-            _spriteBatch.Draw(link2D, targetRectangle, sourceRectangle, Color.White);
+            _spriteBatch.Draw(link2D, targetRectangle, sourceRectangle, color);
         }
 
         public void Update()

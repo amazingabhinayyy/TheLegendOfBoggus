@@ -17,15 +17,15 @@ namespace Sprint2_Attempt3.Player.LinkStates
             this.link = link;
             link.Sprite = LinkSpriteFactory.Instance.CreateDownUseBombLinkSprite();
             link.ItemPosition = new Vector2(link.position.X, link.position.Y + 45);
-            link.ItemState = new BombState(link);
+            link.Items.Add(LinkSpriteFactory.Instance.CreateBombItem());
             frameCounter = 0;
+        }
+        public void Stop()
+        {
+            link.State = new DownIdleLinkState(link);
         }
         public void BecomeIdle()
         {
-            if (frameCounter >= 10)
-            {
-                link.State = new DownIdleLinkState(link);
-            }
         }
         public void MoveUp()
         {
@@ -52,6 +52,10 @@ namespace Sprint2_Attempt3.Player.LinkStates
         public void Update()
         {
             frameCounter++;
+            if (frameCounter >= 10)
+            {
+                Stop();
+            }
         }
         public void UseBomb()
         {
