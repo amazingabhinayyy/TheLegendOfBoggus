@@ -3,7 +3,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Keese;
-using Sprint2_Attempt3.Enemy.Rope;
+using Sprint2_Attempt3.Block;
+using Sprint2_Attempt3.Player;
 
 namespace Sprint2_Attempt3
 {
@@ -30,6 +31,12 @@ namespace Sprint2_Attempt3
             set {link = (Link)value; } 
         }
 
+        private IBlock block;
+        public IBlock Block
+        {
+            get { return block; }
+            set { block = value; }
+        }
 
         public Game1()
         {
@@ -48,6 +55,7 @@ namespace Sprint2_Attempt3
         {
             keyboardController = new KeyboardController(this);
             EnemySpriteFactory enemySpriteFactory = new EnemySpriteFactory();
+            BlockSpriteFactory blockSpriteFactory = new BlockSpriteFactory();
 
             base.Initialize();
 
@@ -64,13 +72,15 @@ namespace Sprint2_Attempt3
             spriteBatch = new SpriteBatch(GraphicsDevice);
             keyboardController = new KeyboardController(this);
             EnemySpriteFactory.Instance.LoadAllTextures(this.Content);
+            LinkSpriteFactory.Instance.LoadAllTextures(Content);
+            BlockSpriteFactory.Instance.LoadAllTextures(Content);
             /*
              * can we make it so that we don't need to spawn Keese until necessary
              * */
             currentEnemy = new Keese(200,200);
             currentEnemy.Spawn();
-            LinkSpriteFactory.Instance.LoadAllTextures(Content);
             link = new Link();
+            block = new BlueFloorBlock(Globals.BlockStartPosition);
         }
 
         /// <summary>
@@ -116,6 +126,7 @@ namespace Sprint2_Attempt3
 
             currentEnemy.Draw(spriteBatch);
             link.Draw(spriteBatch, Color.White);
+            block.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }

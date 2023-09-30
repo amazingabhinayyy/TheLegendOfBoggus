@@ -12,11 +12,17 @@ namespace Sprint2_Attempt3
         private float timeSinceLastUpdate;
         private Dictionary<Keys, ICommand> commandMapping = new Dictionary<Keys, ICommand>();
         private static int enemyIndex;
+        private static int blockIndex;
         private bool pressed = true;
 
         public int EnemyIndex { 
             get { return enemyIndex; }
             set { enemyIndex = value; }
+        }
+        public int BlockIndex
+        {
+            get { return blockIndex; }
+            set { blockIndex = value; }
         }
 
         public KeyboardController(Game1 game)
@@ -39,17 +45,19 @@ namespace Sprint2_Attempt3
             commandMapping.Add(Keys.Z, new SetAttackLinkCommand(game1));
             commandMapping.Add(Keys.N, new SetAttackLinkCommand(game1));
             commandMapping.Add(Keys.None, new SetIdleLinkCommand(game1));
+            
             //item switching
             commandMapping.Add(Keys.D1, new SwitchToItem1(game1));
             commandMapping.Add(Keys.D2, new SwitchToItem2(game1));
             commandMapping.Add(Keys.D3, new SwitchToItem3(game1));
             commandMapping.Add(Keys.X, new SwitchToSecondaryItem1(game1));
             commandMapping.Add(Keys.M, new SwitchToSecondaryItem2(game1));
+            commandMapping.Add(Keys.U, new SwitchToPreviousItem(game1));
+            commandMapping.Add(Keys.I, new SwitchToNextItem(game1));
 
-
-            //Block switching
-            commandMapping.Add(Keys.T, new SwitchToPreviousItem(game1));
-            commandMapping.Add(Keys.Y, new SwitchToNextItem(game1));
+            //block switching
+            commandMapping.Add(Keys.T, new SwitchToPreviousBlock(game1));
+            commandMapping.Add(Keys.Y, new SwitchToNextBlock(game1));
 
             //Enemy switching
             commandMapping.Add(Keys.O, new SwitchToPreviousEnemy(game1));

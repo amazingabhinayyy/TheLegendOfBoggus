@@ -1,9 +1,6 @@
-﻿using Sprint2_Attempt3.Enemy.Keese;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Sprint2_Attempt3.Block;
+using Sprint2_Attempt3.Enemy.Keese;
+using Sprint2_Attempt3.Player;
 
 namespace Sprint2_Attempt3.CommandClasses
 {
@@ -19,6 +16,7 @@ namespace Sprint2_Attempt3.CommandClasses
             game1.enemy = new Keese(200, 200);
             game1.enemy.Spawn();
             game1.Link = new Link();
+            game1.Block = new BlueFloorBlock(Globals.BlockStartPosition);
         }
     }
 }

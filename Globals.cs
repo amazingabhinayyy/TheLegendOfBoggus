@@ -9,16 +9,20 @@ using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Goriya;
 using Sprint2_Attempt3.Enemy.Hand;
 using Sprint2_Attempt3.Enemy.Stalfos;
+using Sprint2_Attempt3.Block;
 
 namespace Sprint2_Attempt3
 {
     internal class Globals
     {
-        public const float scale = 3.0f;
+        public const float scale = 2.0f;
 
         //my futile attempt to avoid making a Projectile class, probably will delete
         public static bool changeDirection = false;
 
+        //enemy rectangles
+
+        public static Vector2 EnemyStartPosition = new Vector2(200, 200);
         public static IEnemy[] enemies = { new Keese(200,200), new Rope(200, 200), new Gel(200, 200), new Zol(200, 200), new SpikeTrap(200, 200), new Dodongo(200, 200), new Goriya(200, 200), new Hand(200,200), new Stalfos(200,200) };
         public static Rectangle KeeseSprite1 { get { return new Rectangle(33, 34, 16, 8); } }
         public static Rectangle KeeseSprite2 { get { return new Rectangle(34, 43, 16, 11); } }
@@ -71,9 +75,21 @@ namespace Sprint2_Attempt3
         public static Rectangle GoriyaBoomerang1 { get { return new Rectangle(1, 74, 7, 17); } }
         public static Rectangle GoriyaBoomerang2 { get { return new Rectangle(10, 74, 9, 17); } }
         public static Rectangle GoriyaBoomerang3 { get { return new Rectangle(20, 76, 7, 17); } }
-        
-        
 
-        public static Rectangle StalfosSprite { get { return new Rectangle(34, 18, 15, 16); } }
+        //Block Rectangles
+        public static Vector2 BlockStartPosition = new Vector2(400, 200);
+        public static IBlock[] blocks = { new BlueFloorBlock(BlockStartPosition), new BlueGapBlock(BlockStartPosition), new BlueSandBlock(BlockStartPosition), new Fire(BlockStartPosition), new Ladder(BlockStartPosition), new PushBlock(BlockStartPosition), new SquareBlock(BlockStartPosition), new StairsBlock(BlockStartPosition), new Statue1Block(BlockStartPosition), new Statue2Block(BlockStartPosition), new WhiteBrickBlock(BlockStartPosition), new WhiteStairsBlock(BlockStartPosition) };
+        public static Rectangle BlueFloor { get { return new Rectangle(1, 1, 16, 16); } }
+        public static Rectangle PushBlock { get { return new Rectangle(18, 1, 16, 16); } }
+        public static Rectangle Statue1 { get { return new Rectangle(35, 1, 16, 16); } }
+        public static Rectangle Statue2 { get { return new Rectangle(52, 1, 16, 16); } }
+        public static Rectangle SqureBlock { get { return new Rectangle(1, 18, 16, 16); } }
+        public static Rectangle BlueSand { get { return new Rectangle(18, 18, 16, 16); } }
+        public static Rectangle BlueGap { get { return new Rectangle(35, 18, 16, 16); } }
+        public static Rectangle Stairs { get { return new Rectangle(52, 18, 16, 16); } }
+        public static Rectangle WhiteBrick { get { return new Rectangle(1, 35, 16, 16); } }
+        public static Rectangle WhiteStairs { get { return new Rectangle(18, 35, 16, 16); } }
+        public static Rectangle Fire { get { return new Rectangle(35, 35, 16, 16); } }
+        public static Rectangle Ladder { get { return new Rectangle(52, 35, 16, 16); } }
     }
 }
