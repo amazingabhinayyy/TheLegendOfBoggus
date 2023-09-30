@@ -21,8 +21,8 @@ namespace Sprint2_Attempt3
             get { return currentEnemy; }
             set { currentEnemy = value; }
         }
-        private Link link;
-        public ILink Link { get { return link; } set {link = (Link)value; } }
+        private ILink link;
+        public ILink Link { get { return link; } set {link = value;} }
 
 
         public Game1()

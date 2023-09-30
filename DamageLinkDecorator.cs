@@ -19,12 +19,12 @@ namespace Sprint2_Attempt3
         {
             this.decoratedLink = decoratedLink;
             this.game = game;
-            game.Link = decoratedLink;
+            game.Link = this;
         }
 
         public void GetDamaged()
         {
-            timer = 1000;
+            timer = 100;
         }
         public void MoveLeft()
         {

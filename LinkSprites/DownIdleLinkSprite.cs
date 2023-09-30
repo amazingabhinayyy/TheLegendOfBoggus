@@ -25,7 +25,7 @@ namespace Sprint2_Attempt3.LinkSprites
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
         {
             destinationRectangle = new Rectangle((int)location.X, (int)location.Y, 45, 45);
-            spriteBatch.Draw(linkTexture, destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.Draw(linkTexture, destinationRectangle, sourceRectangle, color);
         }
     }
 }

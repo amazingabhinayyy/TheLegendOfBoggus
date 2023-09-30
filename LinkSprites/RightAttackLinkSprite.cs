@@ -47,7 +47,7 @@ namespace Sprint2_Attempt3.LinkSprites
                 sourceRectangle = new Rectangle(1, 77, 15, 16);
             }
 
-            spriteBatch.Draw(linkTexture, destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.Draw(linkTexture, destinationRectangle, sourceRectangle, color);
         }
     }
 }
