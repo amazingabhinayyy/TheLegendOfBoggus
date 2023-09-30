@@ -6,12 +6,9 @@ using Sprint2_Attempt3.Enemy.Rope;
 using Sprint2_Attempt3.Enemy.SpikeTrap;
 using Sprint2_Attempt3.Enemy.Zol;
 using Sprint2_Attempt3.Enemy;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Sprint2_Attempt3.Enemy.Goriya;
+using Sprint2_Attempt3.Enemy.Hand;
+using Sprint2_Attempt3.Enemy.Stalfos;
 
 namespace Sprint2_Attempt3
 {
@@ -22,7 +19,7 @@ namespace Sprint2_Attempt3
         //my futile attempt to avoid making a Projectile class, probably will delete
         public static bool changeDirection = false;
 
-        public static IEnemy[] enemies = { new Keese(200,200), new Rope(200, 200), new Gel(200, 200), new Zol(200, 200), new SpikeTrap(200, 200), new Dodongo(200, 200), new Goriya(200, 200) };
+        public static IEnemy[] enemies = { new Keese(200,200), new Rope(200, 200), new Gel(200, 200), new Zol(200, 200), new SpikeTrap(200, 200), new Dodongo(200, 200), new Goriya(200, 200), new Hand(200,200), new Stalfos(200,200) };
         public static Rectangle KeeseSprite1 { get { return new Rectangle(33, 34, 16, 8); } }
         public static Rectangle KeeseSprite2 { get { return new Rectangle(34, 43, 16, 11); } }
         
@@ -37,9 +34,6 @@ namespace Sprint2_Attempt3
 
         public static Rectangle SpikeTrapSprite { get { return new Rectangle(1, 11, 16, 16); } }
         
-        public static Rectangle HandSprite1 { get { return new Rectangle(19, 18, 14, 16); } }
-        public static Rectangle HandSprite2 { get { return new Rectangle(34, 42, 16, 12); } }
-
         public static Rectangle DodongoUp { get { return new Rectangle(35, 35, 15, 16); } }
         public static Rectangle DodongoDown { get { return new Rectangle(1, 35, 15, 16); } }
         public static Rectangle DodongoRight1 { get { return new Rectangle(69, 35, 28, 18); } }
@@ -48,15 +42,36 @@ namespace Sprint2_Attempt3
         public static Rectangle DodongoDownAttacked { get { return new Rectangle(17, 35, 17, 16); } }
         public static Rectangle DodongoRightAttacked { get { return new Rectangle(135, 35, 32, 16); } }
 
-        public static Rectangle GoriyaBlueDown { get { return new Rectangle(84, 52, 14, 17); } } 
-        public static Rectangle GoriyaBlueUp { get { return new Rectangle(101, 52, 14, 17); } }
-        public static Rectangle GoriyaBlueRight { get { return new Rectangle(117, 52, 14, 17); } }
-        public static Rectangle GoriyaBlueRight2 { get { return new Rectangle(135, 52, 14, 17); } }
+        public static Rectangle GoriyaGreenDown { get { return new Rectangle(84, 1, 14, 16); } }
+        public static Rectangle GoriyaGreenUp { get { return new Rectangle(101, 1, 14, 16); } }
+        public static Rectangle GoriyaGreenRight { get { return new Rectangle(117, 1, 14, 16); } }
+        public static Rectangle GoriyaGreenRight2 { get { return new Rectangle(135, 1, 15, 16); } }
+        public static Rectangle GoriyaTealDown { get { return new Rectangle(84, 18, 14, 16); } }
+        public static Rectangle GoriyaTealUp { get { return new Rectangle(101, 18, 14, 16); } }
+        public static Rectangle GoriyaTealRight { get { return new Rectangle(117, 18, 14, 16); } }
+        public static Rectangle GoriyaTealRight2 { get { return new Rectangle(135, 18, 15, 16); } }
+        public static Rectangle GoriyaRedDown { get { return new Rectangle(84, 35, 14, 16); } }
+        public static Rectangle GoriyaRedUp { get { return new Rectangle(101, 35, 14, 16); } }
+        public static Rectangle GoriyaRedRight { get { return new Rectangle(117, 35, 14, 16); } }
+        public static Rectangle GoriyaRedRight2 { get { return new Rectangle(135, 35, 15, 16); } }
+        public static Rectangle GoriyaBlueDown { get { return new Rectangle(84, 52, 14, 16); } }
+        public static Rectangle GoriyaBlueUp { get { return new Rectangle(101, 52, 14, 16); } }
+        public static Rectangle GoriyaBlueRight { get { return new Rectangle(117, 52, 14, 16); } }
+        public static Rectangle GoriyaBlueRight2 { get { return new Rectangle(135, 52, 15, 16); } }
 
-        public static Rectangle GoriyaRedDown { get { return new Rectangle(135, 35, 32, 16); } }
-        public static Rectangle GoriyaRedUp { get { return new Rectangle(135, 35, 32, 16); } }
-        public static Rectangle GoriyaRedRight { get { return new Rectangle(135, 35, 32, 16); } }
-        public static Rectangle GoriyaRedRight2 { get { return new Rectangle(135, 35, 32, 16); } }
+        public static Rectangle HandGreen1 { get { return new Rectangle(50, 1, 17, 16); } }
+        public static Rectangle HandGreen2 { get { return new Rectangle(68, 1, 16, 16); } }
+        public static Rectangle HandTeal1 { get { return new Rectangle(50, 18, 17, 16); } }
+        public static Rectangle HandTeal2 { get { return new Rectangle(68, 18, 16, 16); } }
+        public static Rectangle HandBlue1 { get { return new Rectangle(50, 35, 17, 16); } }
+        public static Rectangle HandBlue2 { get { return new Rectangle(68, 35, 16, 16); } }
+        public static Rectangle HandRed1 { get { return new Rectangle(50, 52, 17, 16); } }
+        public static Rectangle HandRed2 { get { return new Rectangle(68, 52, 16, 16); } }
+
+        public static Rectangle StalfosGreen { get { return new Rectangle(1, 34, 15, 16); } }
+        public static Rectangle StalfosTeal { get { return new Rectangle(17, 34, 15, 16); } }
+        public static Rectangle StalfosRed { get { return new Rectangle(1, 51, 15, 16); } }
+        public static Rectangle StalfosBlue { get { return new Rectangle(17, 51, 15, 16); } }
 
         public static Rectangle GoriyaBoomerang1 { get { return new Rectangle(1, 74, 7, 17); } }
         public static Rectangle GoriyaBoomerang2 { get { return new Rectangle(10, 74, 9, 17); } }

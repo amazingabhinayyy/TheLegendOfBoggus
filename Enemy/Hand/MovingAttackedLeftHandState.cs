@@ -2,28 +2,28 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
 
-namespace Sprint2_Attempt3.Enemy.Goriya
+namespace Sprint2_Attempt3.Enemy.Hand
 {
-    internal class MovingAttackedLeftGoriyaState : IEnemyState
+    internal class MovingAttackedLeftHandState : IEnemyState
     {
-        private Goriya Goriya;
+        private Hand Hand;
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
         private int currentFrame;
-        public MovingAttackedLeftGoriyaState(Goriya Goriya)
+        public MovingAttackedLeftHandState(Hand Hand)
         {
-            this.Goriya = Goriya;
-            sprite = EnemySpriteFactory.Instance.CreateMovingLeftGoriyaSprite();
+            this.Hand = Hand;
+            sprite = EnemySpriteFactory.Instance.CreateMovingLeftHandSprite();
             currentFrame = 0;
-            sourceRectangle = Globals.GoriyaRedRight;
+            sourceRectangle = Globals.HandRed1;
 
         }
         public void ChangeDirection()
         {
-            Goriya.State = new MovingAttackedUpGoriyaState(Goriya);
+            Hand.State = new MovingAttackedUpHandState(Hand);
         }
         public void ChangeAttackedStatus() {
-            Goriya.State = new MovingLeftGoriyaState(Goriya);
+            Hand.State = new MovingLeftHandState(Hand);
         }
         public void Update()
         {
@@ -33,31 +33,31 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             {
                 if (currentFrame == 5)
                 {
-                    sourceRectangle = Globals.GoriyaGreenRight2;
+                    sourceRectangle = Globals.HandGreen2;
                 }
                 else if (currentFrame == 10)
                 {
-                    sourceRectangle = Globals.GoriyaTealRight;
+                    sourceRectangle = Globals.HandTeal1;
                 }
                 else if (currentFrame == 15)
                 {
-                    sourceRectangle = Globals.GoriyaRedRight2;
+                    sourceRectangle = Globals.HandRed2;
                 }
                 else if (currentFrame == 20)
                 {
-                    sourceRectangle = Globals.GoriyaBlueRight;
+                    sourceRectangle = Globals.HandBlue1;
                 }
             }
             else
             {
                 currentFrame = 0;
             }
-            Goriya.X -= 1;
+            Hand.X -= 1;
 
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, Goriya.X, Goriya.Y, sourceRectangle);
+            sprite.Draw(spriteBatch, Hand.X, Hand.Y, sourceRectangle);
         }
     }
 }

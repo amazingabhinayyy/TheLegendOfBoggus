@@ -13,7 +13,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         {
             this.Goriya = Goriya;
             sprite = EnemySpriteFactory.Instance.CreateMovingDownGoriyaSprite();
-            sourceRectangle = Globals.GoriyaBlueDown;
+            sourceRectangle = Globals.GoriyaRedDown;
         }
         public void ChangeDirection()
         {

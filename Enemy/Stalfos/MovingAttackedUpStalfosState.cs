@@ -2,62 +2,60 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
 
-namespace Sprint2_Attempt3.Enemy.Goriya
+namespace Sprint2_Attempt3.Enemy.Stalfos
 {
-    internal class MovingAttackedLeftGoriyaState : IEnemyState
+    internal class MovingAttackedUpStalfosState : IEnemyState
     {
-        private Goriya Goriya;
+        private Stalfos Stalfos;
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
         private int currentFrame;
-        public MovingAttackedLeftGoriyaState(Goriya Goriya)
+        public MovingAttackedUpStalfosState(Stalfos Stalfos)
         {
-            this.Goriya = Goriya;
-            sprite = EnemySpriteFactory.Instance.CreateMovingLeftGoriyaSprite();
+            this.Stalfos = Stalfos;
+            sprite = EnemySpriteFactory.Instance.CreateStalfosSprite();
+            sourceRectangle = Globals.StalfosRed;
             currentFrame = 0;
-            sourceRectangle = Globals.GoriyaRedRight;
-
         }
         public void ChangeDirection()
         {
-            Goriya.State = new MovingAttackedUpGoriyaState(Goriya);
+            Stalfos.State = new MovingAttackedRightStalfosState(Stalfos);
         }
         public void ChangeAttackedStatus() {
-            Goriya.State = new MovingLeftGoriyaState(Goriya);
+            Stalfos.State = new MovingUpStalfosState(Stalfos);
         }
         public void Update()
         {
-            
             currentFrame++;
             if (currentFrame <= 20)
             {
                 if (currentFrame == 5)
                 {
-                    sourceRectangle = Globals.GoriyaGreenRight2;
+                    sourceRectangle = Globals.StalfosGreen;
                 }
                 else if (currentFrame == 10)
                 {
-                    sourceRectangle = Globals.GoriyaTealRight;
+                    sourceRectangle = Globals.StalfosTeal;
                 }
                 else if (currentFrame == 15)
                 {
-                    sourceRectangle = Globals.GoriyaRedRight2;
+                    sourceRectangle = Globals.StalfosRed;
                 }
                 else if (currentFrame == 20)
                 {
-                    sourceRectangle = Globals.GoriyaBlueRight;
+                    sourceRectangle = Globals.StalfosBlue;
                 }
             }
             else
             {
                 currentFrame = 0;
             }
-            Goriya.X -= 1;
-
+            Stalfos.Y -= 1;
+            sprite.Update();
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, Goriya.X, Goriya.Y, sourceRectangle);
+            sprite.Draw(spriteBatch, Stalfos.X, Stalfos.Y, sourceRectangle);
         }
     }
 }

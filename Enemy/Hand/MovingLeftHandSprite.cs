@@ -1,12 +1,12 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace Sprint2_Attempt3.Enemy.Keese
+namespace Sprint2_Attempt3.Enemy.Hand
 {
-    internal class KeeseSprite : IEnemySprite
+    internal class MovingLeftHandSprite : IEnemySprite
     {
         private Texture2D texture;
-        public KeeseSprite(Texture2D texture)
+        public MovingLeftHandSprite(Texture2D texture)
         {
             this.texture = texture;
         }
@@ -26,7 +26,7 @@ namespace Sprint2_Attempt3.Enemy.Keese
                 0f,
                 new Vector2(0, 0),
                 Globals.scale,
-                SpriteEffects.None,
+                SpriteEffects.FlipHorizontally,
                 0f
             );
         }

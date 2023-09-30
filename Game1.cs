@@ -47,6 +47,7 @@ namespace Sprint2_Attempt3
         protected override void Initialize()
         {
             keyboardController = new KeyboardController(this);
+            EnemySpriteFactory enemySpriteFactory = new EnemySpriteFactory();
 
             base.Initialize();
 
