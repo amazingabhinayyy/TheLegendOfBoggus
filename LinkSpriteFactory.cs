@@ -34,7 +34,7 @@ namespace Sprint2_Attempt3
 
             public void LoadAllTextures(ContentManager content)
             {
-                linkTexture = content.Load<Texture2D>("LinkPlayerSpriteSheet");
+                linkTexture = content.Load<Texture2D>("LinkPlayerSpriteSheetFinal");
                 // More Content.Load calls follow
                 //...
             }

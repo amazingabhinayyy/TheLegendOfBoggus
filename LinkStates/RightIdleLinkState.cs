@@ -55,7 +55,7 @@ namespace Sprint2_Attempt3.LinkStates
         }
         public void UseBoomerang()
         {
-
+            link.State = new RightUseBoomerangState(link);
         }
     }
 }
