@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Sprint2_Attempt3.Link;
 
 namespace Sprint2_Attempt3.Items
 {
@@ -18,6 +19,7 @@ namespace Sprint2_Attempt3.Items
         private Texture2D texture;
         private SpriteEffects flip = SpriteEffects.None;
         private float rotate;
+        private LinkDirection Direction;
         public Arrow(Texture2D texture)
         {
             this.texture = texture;
@@ -26,28 +28,34 @@ namespace Sprint2_Attempt3.Items
         }
         public void Update(Link link)
         {
-            switch (link.Direction)
+            if(currentFrame == 0)
             {
-                case Link.LinkDirection.Right:
-                    xLoc += 2;
-                    break;
-                case Link.LinkDirection.Left:
-                    flip = SpriteEffects.FlipHorizontally;
-                    xLoc -= 2;
-                    break;
-                case Link.LinkDirection.Up:
-                    yLoc -= 2;
-                    rotate = MathHelper.ToRadians(270);
-                    break;
-                case Link.LinkDirection.Down:
-                    yLoc += 2;
-                    rotate = MathHelper.ToRadians(90);
-                    break;
+                Direction = link.Direction;
             }
-
             if (currentFrame == 60)
             {
                 link.Items.Remove(this);
+            }
+            else if (currentFrame >= 0 && currentFrame < 55)
+            {
+                switch (Direction)
+                {
+                    case Link.LinkDirection.Right:
+                        xLoc += 2;
+                        break;
+                    case Link.LinkDirection.Left:
+                        flip = SpriteEffects.FlipHorizontally;
+                        xLoc -= 2;
+                        break;
+                    case Link.LinkDirection.Up:
+                        yLoc -= 2;
+                        rotate = MathHelper.ToRadians(270);
+                        break;
+                    case Link.LinkDirection.Down:
+                        yLoc += 2;
+                        rotate = MathHelper.ToRadians(90);
+                        break;
+                }
             }
             currentFrame++;
 

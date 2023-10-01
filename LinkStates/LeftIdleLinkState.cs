@@ -52,7 +52,7 @@ namespace Sprint2_Attempt3.LinkStates
         }
         public void UseArrow()
         {
-
+            link.State = new LeftUseArrowState(link);
         }
         public void UseBoomerang()
         {
