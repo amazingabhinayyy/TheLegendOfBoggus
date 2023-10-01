@@ -63,5 +63,13 @@ namespace Sprint2_Attempt3.LinkStates
         {
 
         }
+        public void UseFire()
+        {
+
+        }
+        public void UseThrowingSword()
+        {
+
+        }
     }
 }

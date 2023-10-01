@@ -148,6 +148,10 @@ namespace Sprint2_Attempt3
         {
             return new BlueArrow(linkTexture);
         }
+        public IItemSprite CreateFireItem()
+        {
+            return new Fire(linkTexture);
+        }
 
 
         // More public ISprite returning methods follow

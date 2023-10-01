@@ -71,6 +71,14 @@ namespace Sprint2_Attempt3
         {
             decoratedLink.UseBlueArrow();
         }
+        public void UseFire()
+        {
+            decoratedLink.UseFire();
+        }
+        public void UseThrowingSword()
+        {
+            decoratedLink.UseThrowingSword();
+        }
 
 
         public void Update()

@@ -73,6 +73,14 @@ namespace Sprint2_Attempt3.LinkStates
         {
             link.State = new UpUseBlueArrowState(link);
         }
+        public void UseFire()
+        {
+            link.State = new UpUseFireState(link);
+        }
+        public void UseThrowingSword()
+        {
+
+        }
 
     }
 }
