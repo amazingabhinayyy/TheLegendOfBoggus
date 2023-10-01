@@ -59,5 +59,9 @@ namespace Sprint2_Attempt3.LinkStates
 
         }
         public void UseBlueBoomerang() { }
+        public void UseBlueArrow()
+        {
+
+        }
     }
 }

@@ -41,18 +41,18 @@ namespace Sprint2_Attempt3.Items
                 switch (Direction)
                 {
                     case Link.LinkDirection.Right:
-                        xLoc += 2;
+                        xLoc += 3;
                         break;
                     case Link.LinkDirection.Left:
                         flip = SpriteEffects.FlipHorizontally;
-                        xLoc -= 2;
+                        xLoc -= 3;
                         break;
                     case Link.LinkDirection.Up:
-                        yLoc -= 2;
+                        yLoc -= 3;
                         rotate = MathHelper.ToRadians(270);
                         break;
                     case Link.LinkDirection.Down:
-                        yLoc += 2;
+                        yLoc += 3;
                         rotate = MathHelper.ToRadians(90);
                         break;
                 }

@@ -7,23 +7,22 @@ using Microsoft.Xna.Framework;
 
 namespace Sprint2_Attempt3.LinkStates
 {
-    public class DownUseBoomerangState : IState
+    public class UpUseBlueArrowState : IState
     {
         private Link link;
         private int frameCounter;
-        public DownUseBoomerangState(Link link)
+        public UpUseBlueArrowState(Link link)
         {
             this.link = link;
-            link.Sprite = LinkSpriteFactory.Instance.CreateDownItemLinkSprite();
-            //Constant are to make the item spawn infront of link and adjust for roation
-            link.ItemPosition = new Vector2(link.position.X + 48, link.position.Y + 45);
-            link.Items.Add(LinkSpriteFactory.Instance.CreateBoomerangItem());
-            link.Direction = Link.LinkDirection.Down;
+            link.Sprite = LinkSpriteFactory.Instance.CreateUpItemLinkSprite();
+            link.ItemPosition = new Vector2(link.position.X, link.position.Y);
+            link.Items.Add(LinkSpriteFactory.Instance.CreateBlueArrowItem());
+            link.Direction = Link.LinkDirection.Up;
             frameCounter = 0;
         }
         public void Stop()
         {
-            link.State = new DownIdleLinkState(link);
+            link.State = new UpIdleLinkState(link);
         }
         public void BecomeIdle()
         {
@@ -76,3 +75,4 @@ namespace Sprint2_Attempt3.LinkStates
         }
     }
 }
+

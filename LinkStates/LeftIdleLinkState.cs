@@ -62,5 +62,9 @@ namespace Sprint2_Attempt3.LinkStates
         {
             link.State = new LeftUseBlueBoomerangState(link);
         }
+        public void UseBlueArrow()
+        {
+            link.State = new LeftUseBlueArrowState(link);
+        }
     }
 }

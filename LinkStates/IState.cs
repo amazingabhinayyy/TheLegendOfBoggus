@@ -19,6 +19,7 @@ namespace Sprint2_Attempt3
         public void UseArrow();
         public void UseBoomerang();
         public void UseBlueBoomerang();
+        public void UseBlueArrow();
         public void Update();
     }
 }
