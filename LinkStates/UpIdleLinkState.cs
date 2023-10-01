@@ -59,11 +59,11 @@ namespace Sprint2_Attempt3.LinkStates
         }
         public void UseArrow()
         {
-
+            link.State = new UpUseArrowState(link);
         }
         public void UseBoomerang()
         {
-
+            link.State = new UpUseBoomerangState(link); 
         }
 
     }

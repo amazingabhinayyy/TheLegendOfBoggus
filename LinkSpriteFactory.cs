@@ -34,7 +34,7 @@ namespace Sprint2_Attempt3
 
             public void LoadAllTextures(ContentManager content)
             {
-                linkTexture = content.Load<Texture2D>("LinkPlayerSpriteSheet");
+                linkTexture = content.Load<Texture2D>("LinkPlayerSpriteSheetFinal");
                 // More Content.Load calls follow
                 //...
             }
@@ -108,21 +108,21 @@ namespace Sprint2_Attempt3
             return new SwordPlaceholderSprite(linkTexture);
         }
 
-        public ISprite CreateDownUseBombLinkSprite()
+        public ISprite CreateDownItemLinkSprite()
         {
-            return new DownUseBombLinkSprite(linkTexture);
+            return new DownUseItemLinkSprite(linkTexture);
         }
-        public ISprite CreateUpUseBombLinkSprite()
+        public ISprite CreateUpItemLinkSprite()
         {
-            return new UpUseBombLinkSprite(linkTexture);
+            return new UpUseItemLinkSprite(linkTexture);
         }
-        public ISprite CreateLeftUseBombLinkSprite()
+        public ISprite CreateLeftItemLinkSprite()
         {
-            return new LeftUseBombLinkSprite(linkTexture);
+            return new LeftUseItemLinkSprite(linkTexture);
         }
-        public ISprite CreateRightUseBombLinkSprite()
+        public ISprite CreateRightItemLinkSprite()
         {
-            return new RightUseBombLinkSprite(linkTexture);
+            return new RightUseItemLinkSprite(linkTexture);
         }
         public IItemSprite CreateNoItem()
         {
@@ -130,7 +130,15 @@ namespace Sprint2_Attempt3
         }
         public IItemSprite CreateBombItem()
         {
-            return new BombSprite(linkTexture);
+            return new Bomb(linkTexture);
+        }
+        public IItemSprite CreateArrowItem()
+        {
+            return new Arrow(linkTexture);
+        }
+        public IItemSprite CreateBoomerangItem()
+        {
+            return new Boomerang(linkTexture);
         }
 
 
