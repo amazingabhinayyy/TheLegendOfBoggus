@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint2_Attempt3.Items
+namespace Sprint2_Attempt3.LinkStates
 {
-    public interface IItemState
+    internal class RightBoomerangState
     {
-        public void Update();
-        public void NoItemActive();
     }
 }

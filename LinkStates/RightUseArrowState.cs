@@ -7,23 +7,24 @@ using Microsoft.Xna.Framework;
 
 namespace Sprint2_Attempt3.LinkStates
 {
-    public class UpUseBombLinkState : IState
+    public class RightUseArrowState : IState
     {
         private Link link;
         private int frameCounter;
-        public UpUseBombLinkState(Link link)
+        public RightUseArrowState(Link link)
         {
             this.link = link;
-            link.Sprite = LinkSpriteFactory.Instance.CreateUpItemLinkSprite();
-            link.ItemPosition = new Vector2(link.position.X, link.position.Y - 45);
-            link.Items.Add(LinkSpriteFactory.Instance.CreateBombItem());
+            link.Sprite = LinkSpriteFactory.Instance.CreateRightItemLinkSprite();
+            link.ItemPosition = new Vector2(link.position.X + 45, link.position.Y);
+            link.Items.Add(LinkSpriteFactory.Instance.CreateArrowItem());
+            link.Direction = Link.LinkDirection.Right;
             frameCounter = 0;
         }
         public void BecomeIdle()
         {
             if (frameCounter >= 10)
             {
-                link.State = new UpIdleLinkState(link);
+                link.State = new RightIdleLinkState(link);
             }
         }
         public void MoveUp()

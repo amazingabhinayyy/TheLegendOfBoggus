@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace Sprint2_Attempt3.LinkSprites
 {
-    public class RightUseBombLinkSprite : ISprite
+    public class LeftUseItemLinkSprite : ISprite
     {
         private Texture2D linkTexture;
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;
 
-        public RightUseBombLinkSprite(Texture2D linkTexture)
+        public LeftUseItemLinkSprite(Texture2D linkTexture)
         {
             this.linkTexture = linkTexture;
             sourceRectangle = new Rectangle(124, 11, 15, 15);
@@ -27,7 +27,8 @@ namespace Sprint2_Attempt3.LinkSprites
         {
             destinationRectangle = new Rectangle((int)location.X, (int)location.Y, 45, 45);
 
-            spriteBatch.Draw(linkTexture, destinationRectangle, sourceRectangle, color);
+            spriteBatch.Draw(linkTexture, destinationRectangle, sourceRectangle, color, 0, new Vector2(0), SpriteEffects.FlipHorizontally, 0);
         }
     }
 }
+
