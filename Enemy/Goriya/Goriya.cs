@@ -1,5 +1,7 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
+using Sprint2_Attempt3.Projectiles;
 using System;
 
 namespace Sprint2_Attempt3.Enemy.Goriya
@@ -9,6 +11,16 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         private IEnemyState state;
         private int count;
         private bool changeDirection;
+        private IEnemyProjectile boomerang;
+
+        /*Might Not Need*/
+        public IEnemyProjectile Boomerang
+        {
+            get { return boomerang; }
+            set { boomerang = value; }
+        }
+
+
         public IEnemyState State
         {
             get { return state; }
@@ -36,6 +48,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             this.positionX = x;
             this.positionY = y;
             changeDirection = false;
+            boomerang = new GoriyaBoomerang(positionX, positionY);
         }
         public void Generate() {
             state = new MovingLeftGoriyaState(this);
@@ -57,11 +70,13 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             state.ChangeAttackedStatus();
         }
        
+       
         public void Update()
         {
             count++;
-            if (count % 100 == 0||Globals.changeDirection)
+            if (count % 100 == 0)
             {
+                boomerang.Update();
                 ChangeDirection();   
             }
             state.Update();

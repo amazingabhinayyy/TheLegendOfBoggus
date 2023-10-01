@@ -6,11 +6,10 @@ namespace Sprint2_Attempt3.Enemy.Keese
     internal class KeeseSprite : IEnemySprite
     {
         private Texture2D texture;
-        private int currentFrame;
         public KeeseSprite(Texture2D texture)
         {
             this.texture = texture;
-            currentFrame = 0;
+          
         }
 
         public void Update()

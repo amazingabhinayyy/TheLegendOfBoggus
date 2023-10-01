@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using Sprint2_Attempt3.Enemy;
+using Sprint2_Attempt3.Projectiles;
+using Sprint2_Attempt3.Projectile;
 
 namespace Sprint2_Attempt3
 {
@@ -8,32 +9,35 @@ namespace Sprint2_Attempt3
     {
         private float timeSinceLastUpdate;
         private IEnemyProjectileState state;
-        private int count;
-
+        private Vector2 position;
+        public Vector2 Position { get { return position; } set { position = value; } }
         public IEnemyProjectileState State
         {
             get { return state; }
             set { state = value; }
         }
-        public void Generate() { 
-            
+        public void Generate() {
+            //change
+            state = new MovingLeftBoomerangState(this);
         }
-        public GoriyaBoomerang()
+        public GoriyaBoomerang(int x, int y)
         {
-            count = 0;
+             position = new Vector2(x, y);
         }
        
-        public void Update(GameTime gameTime)
+        public void Update(/*GameTime gameTime*/)
         {
             timeSinceLastUpdate += (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (timeSinceLastUpdate<0.5f)
             {
                 state.Update();
+                timeSinceLastUpdate = 0;
             }
         }
         public void Draw(SpriteBatch spriteBatch,int x, int y)
         {
             state.Draw(spriteBatch, x, y);
         }
+
     }
 }
