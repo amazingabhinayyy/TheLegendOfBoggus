@@ -140,6 +140,10 @@ namespace Sprint2_Attempt3
         {
             return new Boomerang(linkTexture);
         }
+        public IItemSprite CreateBlueBoomerangItem()
+        {
+            return new BlueBoomerang(linkTexture);
+        }
 
 
         // More public ISprite returning methods follow

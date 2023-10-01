@@ -42,6 +42,7 @@ namespace Sprint2_Attempt3
             commandMapping.Add(Keys.D1, new SetUseBombCommand(game1));
             commandMapping.Add(Keys.D2, new SetUseBoomerangCommand(game1));
             commandMapping.Add(Keys.D3, new SetUseArrowCommand(game1));
+            commandMapping.Add(Keys.D4, new SetUseBlueBoomerangCommand(game1));
             commandMapping.Add(Keys.X, new SwitchToSecondaryItem1(game1));
             commandMapping.Add(Keys.M, new SwitchToSecondaryItem2(game1));
 

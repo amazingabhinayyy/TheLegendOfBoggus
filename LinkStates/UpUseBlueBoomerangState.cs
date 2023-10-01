@@ -3,32 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
 
 namespace Sprint2_Attempt3.LinkStates
 {
-    public class LeftAttackLinkState : IState
+    public class UpUseBlueBoomerangState : IState
     {
         private Link link;
-        private int count = 0;
-        public LeftAttackLinkState(Link link)
+        private int frameCounter;
+        public UpUseBlueBoomerangState(Link link)
         {
             this.link = link;
-            link.Sprite = LinkSpriteFactory.Instance.CreateLeftAttackLinkSprite();
-            link.AttackSprite = LinkSpriteFactory.Instance.CreateLeftAttackLinkSwordSprite();
+            link.Sprite = LinkSpriteFactory.Instance.CreateUpItemLinkSprite();
+            link.ItemPosition = new Vector2(link.position.X, link.position.Y);
+            link.Items.Add(LinkSpriteFactory.Instance.CreateBlueBoomerangItem());
+            link.Direction = Link.LinkDirection.Up;
+            frameCounter = 0;
         }
-        public void FinishAttack()
+        public void Stop()
         {
-            link.State = new LeftIdleLinkState(link);
-            link.AttackSprite = LinkSpriteFactory.Instance.CreateSwordPlaceholderSprite();
+            link.State = new UpIdleLinkState(link);
         }
         public void BecomeIdle()
         {
         }
         public void MoveUp()
         {
+
         }
         public void MoveDown()
         {
+
         }
         public void MoveLeft()
         {
@@ -46,15 +51,14 @@ namespace Sprint2_Attempt3.LinkStates
         }
         public void Update()
         {
-            count++;
-            if (count > 30)
+            frameCounter++;
+            if (frameCounter >= 10)
             {
-                FinishAttack();
+                Stop();
             }
         }
         public void UseBomb()
         {
-
         }
         public void UseArrow()
         {

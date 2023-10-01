@@ -63,9 +63,10 @@ namespace Sprint2_Attempt3
         {
 
         }
+        public void UseBlueBoomerang() { }
 
 
-        public void Update()
+    public void Update()
         {
             timer--;
             if (timer == 0)

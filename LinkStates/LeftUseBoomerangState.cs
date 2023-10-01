@@ -15,7 +15,7 @@ namespace Sprint2_Attempt3.LinkStates
         {
             this.link = link;
             link.Sprite = LinkSpriteFactory.Instance.CreateLeftItemLinkSprite();
-            link.ItemPosition = new Vector2(link.position.X - 40, link.position.Y);
+            link.ItemPosition = new Vector2(link.position.X - 30, link.position.Y);
             link.Items.Add(LinkSpriteFactory.Instance.CreateBoomerangItem());
             link.Direction = Link.LinkDirection.Left;
             frameCounter = 0;
@@ -64,6 +64,7 @@ namespace Sprint2_Attempt3.LinkStates
         {
 
         }
+        public void UseBlueBoomerang() { }
     }
 }
 
