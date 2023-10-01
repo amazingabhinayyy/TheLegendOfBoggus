@@ -7,6 +7,8 @@ using Sprint2_Attempt3.Enemy.Zol;
 using Sprint2_Attempt3.Enemy.SpikeTrap;
 using Sprint2_Attempt3.Enemy.Dodongo;
 using Sprint2_Attempt3.Enemy.Goriya;
+using Sprint2_Attempt3.Enemy.Hand;
+using Sprint2_Attempt3.Enemy.Stalfos;
 
 namespace Sprint2_Attempt3.Enemy
 {
@@ -36,7 +38,7 @@ namespace Sprint2_Attempt3.Enemy
             BossEnemyTexture = content.Load<Texture2D>("Bosses");
             GenerationTexture = content.Load<Texture2D>("characterGenerationSprite");
         }
-
+        //Spawn and animation sprites
         public IEnemySprite CreateSpawnAnimationSprite()
         {
             return new SpawnAnimationSprite(GenerationTexture);
@@ -45,10 +47,12 @@ namespace Sprint2_Attempt3.Enemy
         {
             return new DeathAnimationSprite(GenerationTexture);
         }
+        //keese sprite
         public IEnemySprite CreateKeeseSprite()
         {
             return new KeeseSprite(EnemyTexture);
         }
+        //rope sprites
         public IEnemySprite CreateRopeSprite()
         {
             return new RopeSprite(EnemyTexture);
@@ -57,19 +61,36 @@ namespace Sprint2_Attempt3.Enemy
         {
             return new MovingLeftRopeSprite(EnemyTexture);
         }
+        //zol sprite
         public IEnemySprite CreateZolSprite()
         {
             return new ZolSprite(EnemyTexture);
         }
+        //gel sprite
         public IEnemySprite CreateGelSprite()
         {
             return new GelSprite(EnemyTexture);
         }
+        //spiketrap sprite
         public IEnemySprite CreateSpkieTrapSprite()
         {
             return new SpikeTrapSprite(EnemyTexture);
         }
-
+        //hand sprites
+        public IEnemySprite CreateHandSprite()
+        {
+            return new HandSprite(EnemyTexture);
+        }
+        public IEnemySprite CreateMovingLeftHandSprite()
+        {
+            return new MovingLeftHandSprite(EnemyTexture);
+        }
+        //stalfos sprite
+        public IEnemySprite CreateStalfosSprite()
+        {
+            return new StalfosSprite(EnemyTexture);
+        }
+        //dodongo sprite
         public IEnemySprite CreateDodongoSprite()
         {
             return new DodongoSprite(BossEnemyTexture);
@@ -86,7 +107,7 @@ namespace Sprint2_Attempt3.Enemy
         {
             return new MovingLeftAttackedDodongoSprite(BossEnemyTexture);
         }
-
+        //Goriya sprite
         public IEnemySprite CreateMovingUpGoriyaSprite()
         {
             return new MovingUpGoriyaSprite(EnemyTexture);

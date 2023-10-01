@@ -10,12 +10,12 @@ namespace Sprint2_Attempt3
     {
         private int frameCounter;
         private Link link;
-        public BombState(Link link) 
+        public BombState(Link link)
         {
             this.link = link;
             link.ItemSprite = LinkSpriteFactory.Instance.CreateBombItem();
             frameCounter = 0;
-        } 
+        }
         public void Update()
         {
             frameCounter++;

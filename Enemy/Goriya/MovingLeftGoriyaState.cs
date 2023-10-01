@@ -10,14 +10,12 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
         private int currentFrame;
-        private static EnemySpriteFactory enemySpriteFactory;
         public MovingLeftGoriyaState(Goriya Goriya)
         {
             this.Goriya = Goriya;
-            enemySpriteFactory = new EnemySpriteFactory();
             sprite = EnemySpriteFactory.Instance.CreateMovingLeftGoriyaSprite();
             currentFrame = 0;
-            sourceRectangle = Globals.GoriyaBlueRight;
+            sourceRectangle = Globals.GoriyaRedRight;
 
         }
         public void ChangeDirection()
@@ -25,7 +23,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             Goriya.State = new MovingUpGoriyaState(Goriya);
         }
         public void ChangeAttackedStatus() {
-            Goriya.State.ChangeAttackedStatus();
+            Goriya.State = new MovingAttackedLeftGoriyaState(Goriya);
         }
         public void Update()
         {
@@ -34,12 +32,12 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             {
                 if (currentFrame < 15)
                 {
-                    sourceRectangle = Globals.GoriyaBlueRight;
+                    sourceRectangle = Globals.GoriyaRedRight;
 
                 }
                 else
                 {
-                    sourceRectangle = Globals.GoriyaBlueRight2;
+                    sourceRectangle = Globals.GoriyaRedRight2;
 
                 }
                 Goriya.X -= 1;

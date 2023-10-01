@@ -6,10 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint2_Attempt3 { 
+namespace Sprint2_Attempt3
+{
     public interface IItemSprite
     {
-        public void Update();
+        public void Update(Link link);
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color);
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint2_Attempt3
+namespace Sprint2_Attempt3.LinkStates
 {
     public class LeftAttackLinkState : IState
     {
@@ -47,7 +47,7 @@ namespace Sprint2_Attempt3
         public void Update()
         {
             count++;
-            if (count > 60)
+            if (count > 30)
             {
                 FinishAttack();
             }

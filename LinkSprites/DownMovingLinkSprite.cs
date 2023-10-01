@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint2_Attempt3
+namespace Sprint2_Attempt3.LinkSprites
 {
     public class DownMovingLinkSprite : ISprite
     {
@@ -44,7 +44,7 @@ namespace Sprint2_Attempt3
             }
 
 
-            spriteBatch.Draw(linkTexture, destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.Draw(linkTexture, destinationRectangle, sourceRectangle, color);
 
         }
     }

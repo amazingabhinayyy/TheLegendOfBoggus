@@ -9,7 +9,6 @@ namespace Sprint2_Attempt3.Enemy.Keese
         public KeeseSprite(Texture2D texture)
         {
             this.texture = texture;
-          
         }
 
         public void Update()

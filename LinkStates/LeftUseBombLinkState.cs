@@ -16,7 +16,7 @@ namespace Sprint2_Attempt3.LinkStates
             this.link = link;
             link.Sprite = LinkSpriteFactory.Instance.CreateLeftUseBombLinkSprite();
             link.ItemPosition = new Vector2(link.position.X - 45, link.position.Y);
-            link.ItemState = new BombState(link);
+            link.Items.Add(LinkSpriteFactory.Instance.CreateBombItem());
             frameCounter = 0;
         }
         public void BecomeIdle()

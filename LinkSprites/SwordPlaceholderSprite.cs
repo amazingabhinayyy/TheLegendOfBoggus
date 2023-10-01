@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace Sprint2_Attempt3
+namespace Sprint2_Attempt3.LinkSprites
 {
     public class SwordPlaceholderSprite : ISprite
     {

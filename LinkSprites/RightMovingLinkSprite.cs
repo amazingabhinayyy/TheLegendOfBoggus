@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint2_Attempt3
+namespace Sprint2_Attempt3.LinkSprites
 {
     public class RightMovingLinkSprite : ISprite
     {
@@ -42,7 +42,7 @@ namespace Sprint2_Attempt3
                 sourceRectangle = new Rectangle(52, 11, 15, 15);
             }
 
-            spriteBatch.Draw(linkTexture, destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.Draw(linkTexture, destinationRectangle, sourceRectangle, color);
         }
     }
 }
