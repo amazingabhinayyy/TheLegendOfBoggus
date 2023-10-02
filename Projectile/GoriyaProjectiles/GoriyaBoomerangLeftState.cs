@@ -93,6 +93,7 @@ internal class GoriyaBoomerangLeftState : IEnemyProjectileState
     }
     public void Draw(SpriteBatch spriteBatch)
     {
-        sprite.Draw(spriteBatch, (int)goriyaBoomerang.Position2.X - 9, (int)goriyaBoomerang.Position2.Y + 8, Globals.GoriyaBoomerangLeft[spriteIndex], Globals.GoriyaBoomerangLeftEffects[spriteIndex], Globals.originsLeft[spriteIndex]);
+        Globals.currentIndex = spriteIndex;
+        sprite.Draw(spriteBatch, (int)goriyaBoomerang.Position2.X - 9, (int)goriyaBoomerang.Position2.Y + 8, Globals.GoriyaBoomerangLeft[spriteIndex]);
     }
 }

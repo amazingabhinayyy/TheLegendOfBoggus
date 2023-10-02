@@ -13,7 +13,8 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         private int currentFrame;
         private int currentBoomerangFrame;
         private IEnemyProjectile boomerang;
-       
+        private int elapsedFrameCount;
+        private int endFrame;
         public AttackWithBoomerangLeftState(Goriya Goriya)
         {
             this.Goriya = Goriya;
@@ -22,16 +23,14 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             currentBoomerangFrame = 0;
             sourceRectangle = Globals.GoriyaRedRight;
             boomerang = Goriya.Boomerang;
-         
+            elapsedFrameCount = 0;
+            endFrame = 20;
+
 
         }
         public void ChangeDirection()
         {
-            if (Goriya.end)
-            {
                 Goriya.State = new MovingUpGoriyaState(Goriya);
-                Goriya.end = false;
-            }
         }
         public void ChangeAttackedStatus() {
             Goriya.State = new MovingAttackedLeftGoriyaState(Goriya);
@@ -57,9 +56,8 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             {
                 currentFrame = 0;
             }
-            
-            boomerang.Update();
-
+            elapsedFrameCount++;
+            if()
 
         }
         public void Draw(SpriteBatch spriteBatch)

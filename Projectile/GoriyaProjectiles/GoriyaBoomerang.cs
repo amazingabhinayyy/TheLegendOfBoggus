@@ -10,7 +10,8 @@ namespace Sprint2_Attempt3.Projectile.GoriyaProjectiles
         private IEnemyProjectileState state;
         private Vector2 position2;
         private int count;
-
+        private bool throwing;
+        public bool Throwing { get { return throwing; } set { throwing = value; } }
         private bool goLeft;
         public bool GoLeft
         {
