@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Sprint2;
 using Sprint2_Attempt3.CommandClasses;
 
-namespace Sprint2_Attempt3
+namespace Sprint2_Attempt3.CommandClasses
 {
     internal class SwitchToPreviousBlock : ICommand
     {
