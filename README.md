@@ -28,4 +28,4 @@ Known Bugs
 When block switching, when switching to quickly the block will not always switch
 
 Documentation
-Documentation for the team's meeting notes, code reviews, and task board can be found on the notion page here : https://woozy-buckaroo-6ec.notion.site/CSE-3902-Documentation-edd64f49e6c24c07b0f65ea4e5d2ca19?pvs=4)https://woozy-buckaroo-6ec.notion.site/CSE-3902-Documentation-edd64f49e6c24c07b0f65ea4e5d2ca19?pvs=4
+Documentation for the team's meeting notes, code reviews, and task board can be found on the notion page here : https://woozy-buckaroo-6ec.notion.site/CSE-3902-Documentation-edd64f49e6c24c07b0f65ea4e5d2ca19
