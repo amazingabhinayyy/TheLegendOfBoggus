@@ -13,7 +13,6 @@ namespace Sprint2_Attempt3
         private float timeSinceLastUpdate;
         private Dictionary<Keys, ICommand> commandMapping = new Dictionary<Keys, ICommand>();
         private static int enemyIndex;
-        private bool pressed = true;
         private List<Keys> heldKeys = new List<Keys>();
 
         public int EnemyIndex { 
