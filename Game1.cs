@@ -4,6 +4,9 @@ using Microsoft.Xna.Framework.Input;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Enemy.Rope;
+using Sprint2_Attempt3.ItemClasses;
+using System;
+using System.Diagnostics;
 
 namespace Sprint2_Attempt3
 {
@@ -15,13 +18,21 @@ namespace Sprint2_Attempt3
         private IController keyboardController;
 
         private IEnemy currentEnemy;
+
+        public int currentItemInd;
         public IEnemy enemy
         {
             get { return currentEnemy; }
             set { currentEnemy = value; }
         }
         private Link link;
+        //delete later
+        //private RupeeItem item;
+        private Item item;
+        public int itemIndex;
         public ILink Link { get { return link; } set {; } }
+        //public IJustItemSprite Item { get { return item; } set {; } }
+        public IItem Item { get { return item; } set {; } }
 
 
         public Game1()
@@ -29,6 +40,8 @@ namespace Sprint2_Attempt3
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+            currentItemInd = 0;
+            itemIndex = 0;
         }
 
         /// <summary>
@@ -60,6 +73,10 @@ namespace Sprint2_Attempt3
             currentEnemy.Spawn();
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
             link = new Link();
+            //delete later
+            ItemSpriteFactory.Instance.LoadAllTextures(Content);
+            //item = new RupeeItem(ItemSpriteFactory.itemTexture, ItemSpriteFactory.rupeePos, ItemSpriteFactory.rupeeSrc);
+            item = new Item();
         }
 
         /// <summary>
@@ -86,6 +103,9 @@ namespace Sprint2_Attempt3
             keyboardController.Update();
             currentEnemy.Update();
             link.Update();
+            //deletelater
+            item.Update();
+            //Debug.WriteLine(itemIndex);
             base.Update(gameTime);
         }
 
@@ -102,9 +122,12 @@ namespace Sprint2_Attempt3
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-
+            //delete later
+            //item = CreateRupeeItem();
             currentEnemy.Draw(spriteBatch);
             link.Draw(spriteBatch, Color.White);
+            //delete later
+            item.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }
