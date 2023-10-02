@@ -18,7 +18,7 @@ namespace Sprint2_Attempt3.LinkSprites
         {
             this.linkTexture = linkTexture;
             currentFrame = 0;
-            sourceRectangle = new Rectangle(35, 11, 15, 15);
+            sourceRectangle = new Rectangle(52, 11, 15, 15);
         }
         public void Update()
         {
@@ -35,11 +35,11 @@ namespace Sprint2_Attempt3.LinkSprites
 
             if (currentFrame >= 0 && currentFrame <= 10)
             {
-                sourceRectangle = new Rectangle(35, 11, 15, 15);
+                sourceRectangle = new Rectangle(52, 11, 15, 15);
             }
             else
             {
-                sourceRectangle = new Rectangle(52, 11, 15, 15);
+                sourceRectangle = new Rectangle(35, 11, 15, 15);
             }
 
             spriteBatch.Draw(linkTexture, destinationRectangle, sourceRectangle, color);

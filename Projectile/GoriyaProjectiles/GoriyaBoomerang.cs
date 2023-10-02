@@ -1,9 +1,8 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using Sprint2_Attempt3.Projectile;
 using Sprint2_Attempt3.Enemy.Keese;
 
-namespace Sprint2_Attempt3.Projectile
+namespace Sprint2_Attempt3.Projectile.GoriyaProjectiles
 {
     internal class GoriyaBoomerang : IEnemyProjectile
     {
@@ -64,11 +63,12 @@ namespace Sprint2_Attempt3.Projectile
             get { return state; }
             set { state = value; }
         }
-        public void GenerateLeft() {
+        public void GenerateLeft()
+        {
             state = new GoriyaBoomerangLeftState(this);
             initialX = (int)position2.X;
             goLeft = true;
-            
+
         }
         public void GenerateRight()
         {
@@ -94,11 +94,11 @@ namespace Sprint2_Attempt3.Projectile
         public GoriyaBoomerang(Vector2 boomerangPosition)
         {
             position2 = boomerangPosition;
-            
+
             //finished = false;
-         
+
         }
-       
+
         public void Update(/*GameTime gameTime*/)
         {
             /*

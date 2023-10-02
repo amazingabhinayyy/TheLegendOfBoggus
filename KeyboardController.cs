@@ -13,7 +13,6 @@ namespace Sprint2_Attempt3
         private float timeSinceLastUpdate;
         private Dictionary<Keys, ICommand> commandMapping = new Dictionary<Keys, ICommand>();
         private static int enemyIndex;
-        private bool pressed = true;
         private List<Keys> heldKeys = new List<Keys>();
 
         public int EnemyIndex { 
@@ -40,7 +39,7 @@ namespace Sprint2_Attempt3
             commandMapping.Add(Keys.A, new MoveLinkLeft(game1));
             commandMapping.Add(Keys.Left, new MoveLinkLeft(game1));
             commandMapping.Add(Keys.D, new MoveLinkRight(game1));
-            commandMapping.Add(Keys.Right, new MoveLinkLeft(game1));
+            commandMapping.Add(Keys.Right, new MoveLinkRight(game1));
             commandMapping.Add(Keys.E, new SetDamageLinkCommand(game1));
             commandMapping.Add(Keys.Z, new SetAttackLinkCommand(game1));
             commandMapping.Add(Keys.N, new SetAttackLinkCommand(game1));
@@ -92,7 +91,7 @@ namespace Sprint2_Attempt3
                     {
                         commandMapping[key].Execute();
                         //The if condition hold keys that can be held
-                        if(!(key.Equals(Keys.W) || key.Equals(Keys.A) || key.Equals(Keys.S)|| key.Equals(Keys.D)))
+                        if(!(key.Equals(Keys.W) || key.Equals(Keys.A) || key.Equals(Keys.S)|| key.Equals(Keys.D) || key.Equals(Keys.Down) || key.Equals(Keys.Up) || key.Equals(Keys.Right) || key.Equals(Keys.Left)))
                         {
                             heldKeys.Add(key);
                         }
@@ -100,7 +99,7 @@ namespace Sprint2_Attempt3
                 }
                 timeSinceLastUpdate = 0;     
             }
-            if (!(pressedKeys.Contains(Keys.W) || pressedKeys.Contains(Keys.S) || pressedKeys.Contains(Keys.A) || pressedKeys.Contains(Keys.D)))
+            if (!(pressedKeys.Contains(Keys.W) || pressedKeys.Contains(Keys.S) || pressedKeys.Contains(Keys.A) || pressedKeys.Contains(Keys.D) || pressedKeys.Contains(Keys.Up) || pressedKeys.Contains(Keys.Down) || pressedKeys.Contains(Keys.Left) || pressedKeys.Contains(Keys.Right)))
             {
                 commandMapping[Keys.None].Execute();
             }

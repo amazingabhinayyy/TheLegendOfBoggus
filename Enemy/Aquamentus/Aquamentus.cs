@@ -1,35 +1,41 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
-using Sprint2_Attempt3.Projectile.GoriyaProjectiles;
+using Sprint2_Attempt3.Items;
+using Sprint2_Attempt3.Projectile.AquamentusProjectiles;
 using Sprint2_Attempt3.Projectile;
 using System;
 
-namespace Sprint2_Attempt3.Enemy.Goriya
+namespace Sprint2_Attempt3.Enemy.Aquamentus
 {
-    internal class Goriya : IEnemy
+    internal class Aquamentus : IEnemy
     {
         private IEnemyState state;
+        public IEnemyState State
+        {
+            get { return state; }
+            set { state = value; }
+        }
+
         private int count;
-        private int idleX;
         public static bool end;
         public bool End
         {
             get { return end; }
             set { end = value; }
         }
-        public int IdleX
+        private IEnemyProjectile fireball;
+        public IEnemyProjectile Fireball
         {
-            get { return idleX; }
-            set { idleX = value; }
+            get { return fireball; }
+            set { fireball = value; }
         }
 
-        private IEnemyProjectile boomerang;
-        private Vector2 boomerangPosition;
-        public Vector2 BoomerangPosition
+        private Vector2 fireballPosition;
+        public Vector2 FireballPosition
         {
-            get { return boomerangPosition; }
-            set { boomerangPosition = value;}
+            get { return fireballPosition; }
+            set { fireballPosition = value;}
         }
 
         /*can I make this private*/
@@ -43,21 +49,8 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             get { return direction; }
             set { direction = value; }
         }
+
        
-
-        /*Might Not Need*/
-        public IEnemyProjectile Boomerang
-        {
-            get { return boomerang; }
-            set { boomerang = value; }
-        }
-
-
-        public IEnemyState State
-        {
-            get { return state; }
-            set { state = value; }
-        }
         private int positionX;
         private int positionY;
 
@@ -73,20 +66,19 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             set { positionY = value; }
         }
 
-        public Goriya(int x, int y)
+        public Aquamentus(int x, int y)
         {
             count = 0;
-
+            end = false;
             this.positionX = x;
             this.positionY = y;
-            end = false;
-            boomerangPosition = new Vector2(positionX, positionY);
-            boomerang = new GoriyaBoomerang(boomerangPosition);
+            fireballPosition = new Vector2(positionX, positionY);
+            fireball = new AquamentusFireball(fireballPosition);
             direction = ProjectileDirection.Left;   
             
         }
         public void Generate() {
-            state = new MovingLeftGoriyaState(this);
+            state = new MovingLeftAquamentusState(this);
         }
         public void Spawn()
         {
@@ -102,32 +94,29 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         }
         public void ChangeAttackedStatus()
         {
+            /*change*/
             state.ChangeAttackedStatus();
         }
-        /*
-        public void AttackWithBoomerang()
-        {
-            //Need to change so can go with different states 
-            boomerangPosition = new Vector2(X, Y);
-            boomerang = new GoriyaBoomerang(boomerangPosition);
-            state = new AttackWithBoomerangState(this);
-
-        }*/
+       
 
 
         public void Update()
         {
-            count++;
-            if (count % 100 == 0||end)
-            {
-                //((GoriyaBoomerang)boomerang).Finished = false;
-                ChangeDirection();   
-            }
             state.Update();
+            if (((AquamentusFireball)fireball).Fire)
+            {
+                //((AquamentusFireball)fireball).Fire = false;
+                fireball.Update();
+            }
         }
         public void Draw(SpriteBatch spriteBatch)
         {
             state.Draw(spriteBatch);
+            if (((AquamentusFireball)fireball).Fire)
+            {
+                //((AquamentusFireball)fireball).Fire = false;
+            fireball.Draw(spriteBatch);
+            }
         }
     }
 }
