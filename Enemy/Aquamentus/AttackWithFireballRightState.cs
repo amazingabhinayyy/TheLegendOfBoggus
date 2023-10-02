@@ -26,7 +26,7 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
             sourceRectangle = Globals.AquamentusGreenLeftMouthOpen;
             fireball = Aquamentus.Fireball;
             elapsedFrameCount = 0;
-            endFrame = 20;
+            endFrame = 10;
 
         }
         public void ChangeDirection()

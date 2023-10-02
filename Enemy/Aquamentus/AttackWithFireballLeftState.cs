@@ -28,7 +28,7 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
             fireball = Aquamentus.Fireball;
             
             elapsedFrameCount = 0;
-            endFrame = 20;
+            endFrame = 10;
          
 
         }
