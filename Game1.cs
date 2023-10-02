@@ -31,7 +31,7 @@ namespace Sprint2_Attempt3
             set { currentEnemy = value; }
         }
 
-        private Link link;
+        private ILink link;
         private Item item;
         public int itemIndex;
         public IItem Item { get { return item; } set {; } }
