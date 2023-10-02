@@ -35,25 +35,8 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         }
         public void Update()
         {
-            currentFrame++;
-            if (currentFrame < 30)
-            {
-                if (currentFrame < 15)
-                {
-                    sourceRectangle = Globals.GoriyaRedRight;
-
-                }
-                else
-                {
-                    sourceRectangle = Globals.GoriyaRedRight2;
-
-                }
-
-            }
-            else
-            {
-                currentFrame = 0;
-            }
+            
+            sprite.Update();
 
             if (!((GoriyaBoomerang)Goriya.Boomerang).Throwing)
             {

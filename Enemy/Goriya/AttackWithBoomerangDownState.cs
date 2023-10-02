@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Projectile;
+using Sprint2_Attempt3.Projectile.GoriyaProjectiles;
 
 namespace Sprint2_Attempt3.Enemy.Goriya
 {
@@ -36,7 +37,10 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         {
             
             sprite.Update();
-            boomerang.Update();
+            if (!((GoriyaBoomerang)Goriya.Boomerang).Throwing)
+            {
+                ChangeDirection();
+            }
 
 
         }

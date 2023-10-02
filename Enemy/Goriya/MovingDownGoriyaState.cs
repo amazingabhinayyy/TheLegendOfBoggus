@@ -10,11 +10,15 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         private Goriya Goriya;
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
+        private int elaspedFrameCount;
+        private int endFrame;
         public MovingDownGoriyaState(Goriya Goriya)
         {
             this.Goriya = Goriya;
             sprite = EnemySpriteFactory.Instance.CreateMovingDownGoriyaSprite();
             sourceRectangle = Globals.GoriyaRedDown;
+            elaspedFrameCount = 0;
+            endFrame = 100;
         }
         public void ChangeDirection()
         {
@@ -31,6 +35,11 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         {
             Goriya.Y += 1;
             sprite.Update();
+            elaspedFrameCount++;
+            if (elaspedFrameCount >= endFrame)
+            {
+                ChangeDirection();
+            }
         }
         public void Draw(SpriteBatch spriteBatch)
         {

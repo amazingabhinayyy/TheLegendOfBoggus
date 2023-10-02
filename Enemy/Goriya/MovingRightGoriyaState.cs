@@ -11,12 +11,16 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
         private int currentFrame;
+        private int elaspedFrameCount;
+        private int endFrame;
         public MovingRightGoriyaState(Goriya Goriya)
         {
             this.Goriya = Goriya;
             sprite = EnemySpriteFactory.Instance.CreateMovingRightGoriyaSprite();
             sourceRectangle = Globals.GoriyaRedRight;
             currentFrame = 0;
+            elaspedFrameCount = 0;
+            endFrame = 100;
 
         }
         public void ChangeDirection()
@@ -50,6 +54,11 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             else
             {
                 currentFrame = 0;
+            }
+            elaspedFrameCount++;
+            if (elaspedFrameCount >= endFrame)
+            {
+                ChangeDirection();
             }
         }
         public void Draw(SpriteBatch spriteBatch)

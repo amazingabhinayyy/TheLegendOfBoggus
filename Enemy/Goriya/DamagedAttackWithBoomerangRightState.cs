@@ -1,38 +1,36 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
+using Sprint2_Attempt3.Projectile;
 using Sprint2_Attempt3.Projectile.GoriyaProjectiles;
 
 namespace Sprint2_Attempt3.Enemy.Goriya
 {
-    internal class MovingAttackedRightGoriyaState : IEnemyState
+    internal class DamagedAttackWithBoomerangRightState : IEnemyState
     {
         private Goriya Goriya;
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
         private int currentFrame;
-        private int elaspedFrameCount;
-        private int endFrame;
-        public MovingAttackedRightGoriyaState(Goriya Goriya)
+        private int currentBoomerangFrame;
+        private IEnemyProjectile boomerang;
+       
+        public DamagedAttackWithBoomerangRightState(Goriya Goriya)
         {
             this.Goriya = Goriya;
             sprite = EnemySpriteFactory.Instance.CreateMovingRightGoriyaSprite();
-            sourceRectangle = Globals.GoriyaBlueRight;
             currentFrame = 0;
-            elaspedFrameCount = 0;
-            endFrame = 100;
+            currentBoomerangFrame = 0;
+            sourceRectangle = Globals.GoriyaRedRight;
+            boomerang = Goriya.Boomerang;
+         
 
         }
         public void ChangeDirection()
         {
-            Goriya.BoomerangPosition = new Vector2(Goriya.X, Goriya.Y);
-            Goriya.Boomerang = new GoriyaBoomerang(Goriya.BoomerangPosition);
-            ((GoriyaBoomerang)Goriya.Boomerang).GenerateRight();
-            ((GoriyaBoomerang)Goriya.Boomerang).Throwing = true;
-            Goriya.State = new DamagedAttackWithBoomerangRightState(Goriya);
+                Goriya.State = new MovingAttackedDownGoriyaState(Goriya);
         }
-        public void ChangeAttackedStatus()
-        {
+        public void ChangeAttackedStatus() {
             Goriya.State = new MovingRightGoriyaState(Goriya);
         }
         public void Update()
@@ -56,23 +54,23 @@ namespace Sprint2_Attempt3.Enemy.Goriya
                 {
                     sourceRectangle = Globals.GoriyaBlueRight;
                 }
-                Goriya.X += 1;
+         
             }
             else
             {
                 currentFrame = 0;
             }
-            elaspedFrameCount++;
-            if (elaspedFrameCount >= endFrame)
+            if (!((GoriyaBoomerang)Goriya.Boomerang).Throwing)
             {
                 ChangeDirection();
             }
+
+
         }
-    
-    
         public void Draw(SpriteBatch spriteBatch)
         {
             sprite.Draw(spriteBatch, Goriya.X, Goriya.Y, sourceRectangle);
+          
         }
     }
 }
