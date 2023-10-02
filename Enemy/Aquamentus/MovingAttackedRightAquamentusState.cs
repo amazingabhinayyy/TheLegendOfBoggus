@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
+using Sprint2_Attempt3.Projectile.AquamentusProjectiles;
 
 namespace Sprint2_Attempt3.Enemy.Aquamentus
 {
@@ -10,17 +11,25 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
         private int currentFrame;
+        private int elaspedFrameCount;
+        private int endFrame;
         public MovingAttackedRightAquamentusState(Aquamentus Aquamentus)
         {
             this.Aquamentus = Aquamentus;
             sprite = EnemySpriteFactory.Instance.CreateMovingRightAquamentusSprite();
             sourceRectangle = Globals.AquamentusOrangeLeft1;
             currentFrame = 0;
+            this.Aquamentus.Direction = Aquamentus.ProjectileDirection.Right;
+            elaspedFrameCount = 0;
+            endFrame = 100;
 
         }
         public void ChangeDirection()
         {
-            Aquamentus.State = new MovingAttackedLeftAquamentusState(Aquamentus);
+            Aquamentus.FireballPosition = new Vector2(Aquamentus.X, Aquamentus.Y);
+            Aquamentus.Fireball = new AquamentusFireball(Aquamentus.FireballPosition);
+            ((AquamentusFireball)Aquamentus.Fireball).GenerateRight();
+            Aquamentus.State = new AttackedAttackWithFireballRightState(Aquamentus);
         }
         public void ChangeAttackedStatus() {
             Aquamentus.State = new MovingRightAquamentusState(Aquamentus);
@@ -42,13 +51,17 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
                 {
                     sourceRectangle = Globals.AquamentusOrangeLeft2;
                 }
-                
+                Aquamentus.X += 1;
             }
             else
             {
                 currentFrame = 0;
             }
-            Aquamentus.X += 1;
+            elaspedFrameCount++;
+            if (elaspedFrameCount >= endFrame)
+            {
+                ChangeDirection();
+            }
         }
         public void Draw(SpriteBatch spriteBatch)
         {

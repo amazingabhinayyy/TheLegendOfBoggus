@@ -68,7 +68,7 @@ internal class AquamentusFireballLeftState : IEnemyProjectileState
             traveledDistance += change;
             if (traveledDistance>=projDistance)
             {
-                    Aquamentus.end = true;
+                    AquamentusFireball.Fire = false;
             }
             
         }

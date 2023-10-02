@@ -102,16 +102,21 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
 
         public void Update()
         {
-            count++;
-            if (count % 100 == 0/*||end*/)
-            {
-                ChangeDirection();   
-            }
             state.Update();
+            if (((AquamentusFireball)fireball).Fire)
+            {
+                //((AquamentusFireball)fireball).Fire = false;
+                fireball.Update();
+            }
         }
         public void Draw(SpriteBatch spriteBatch)
         {
             state.Draw(spriteBatch);
+            if (((AquamentusFireball)fireball).Fire)
+            {
+                //((AquamentusFireball)fireball).Fire = false;
+            fireball.Draw(spriteBatch);
+            }
         }
     }
 }

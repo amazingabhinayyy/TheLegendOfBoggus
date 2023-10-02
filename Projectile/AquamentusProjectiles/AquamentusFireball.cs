@@ -9,12 +9,13 @@ namespace Sprint2_Attempt3.Projectile.AquamentusProjectiles
         private float timeSinceLastUpdate;
         private IEnemyProjectileState state;
         private Vector2 position2;
-        private int count;
-
-    
-
-
         public Vector2 Position2 { get { return position2; } set { position2 = value; } }
+        private int count;
+        private bool fire;
+        public bool Fire { get { return fire; } set { fire = value; } }
+
+
+
         public IEnemyProjectileState State
         {
             get { return state; }
@@ -37,7 +38,7 @@ namespace Sprint2_Attempt3.Projectile.AquamentusProjectiles
         public AquamentusFireball(Vector2 fireballPosition)
         {
             position2 = fireballPosition;
-
+            fire = false;
 
         }
 

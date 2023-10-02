@@ -2,6 +2,8 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Projectile;
+using Sprint2_Attempt3.Projectile.AquamentusProjectiles;
+using System.Timers;
 
 namespace Sprint2_Attempt3.Enemy.Aquamentus
 {
@@ -10,10 +12,12 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
         private Aquamentus Aquamentus;
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
+        private Rectangle[] sourceRectangles = { Globals.AquamentusGreenLeftMouthOpen, Globals.AquamentusGreenLeftMouthOpen2 };
         private int currentFrame;
         private int currentFireballFrame;
         private IEnemyProjectile fireball;
-       
+        private int elapsedFrameCount;
+        private int endFrame;
         public AttackWithFireballLeftState(Aquamentus Aquamentus)
         {
             this.Aquamentus = Aquamentus;
@@ -22,16 +26,15 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
             currentFireballFrame = 0;
             sourceRectangle = Globals.AquamentusGreenLeftMouthOpen;
             fireball = Aquamentus.Fireball;
+            
+            elapsedFrameCount = 0;
+            endFrame = 20;
          
 
         }
         public void ChangeDirection()
         {
-            if (Aquamentus.end)
-            {
-                Aquamentus.State = new MovingRightAquamentusState(Aquamentus);
-                Aquamentus.end = false;
-            }
+            Aquamentus.State = new MovingRightAquamentusState(Aquamentus);
         }
         public void ChangeAttackedStatus() {
             Aquamentus.State = new MovingAttackedLeftAquamentusState(Aquamentus);
@@ -43,12 +46,12 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
             {
                 if (currentFrame < 15)
                 {
-                    sourceRectangle = Globals.AquamentusGreenLeftMouthOpen;
+                    sourceRectangle = sourceRectangles[0];
 
                 }
                 else
                 {
-                    sourceRectangle = Globals.AquamentusGreenLeftMouthOpen2;
+                    sourceRectangle = sourceRectangles[1];
 
                 }
                
@@ -57,15 +60,25 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
             {
                 currentFrame = 0;
             }
-            
-            fireball.Update();
+            elapsedFrameCount++;
+            if (elapsedFrameCount >= endFrame *1.2)
+            {
+                ChangeDirection();
+            }
+            if (elapsedFrameCount >= endFrame)
+            {
+                ((AquamentusFireball)fireball).Fire = true;
+                sourceRectangles[0] = Globals.AquamentusGreenLeft;
+                sourceRectangles[1] = Globals.AquamentusGreenLeft2;
+
+            }
 
 
         }
         public void Draw(SpriteBatch spriteBatch)
         {
             sprite.Draw(spriteBatch, Aquamentus.X, Aquamentus.Y, sourceRectangle);
-            fireball.Draw(spriteBatch);
+          
         }
     }
 }

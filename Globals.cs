@@ -97,7 +97,7 @@ namespace Sprint2_Attempt3
         public static Rectangle AquamentusGreenLeft2 { get { return new Rectangle(76, 0, 24, 33); } }
         public static Rectangle AquamentusGreenLeftMouthOpen { get { return new Rectangle(0, 0, 24, 33); } }
         public static Rectangle AquamentusGreenLeftMouthOpen2 { get { return new Rectangle(26, 0, 24, 33); } }
-        public static Rectangle AquamentusOrangeLeft1 { get { return new Rectangle(149, 0, 24, 33); } }
+        public static Rectangle AquamentusOrangeLeft1 { get { return new Rectangle(140, 0, 24, 33); } }
         public static Rectangle AquamentusBlueLeft { get { return new Rectangle(171, 0, 24, 33); } }
         public static Rectangle AquamentusOrangeLeft2 { get { return new Rectangle(202, 0, 24, 33); } }
         public static Rectangle AquamentusFireball1 { get { return new Rectangle(100, 3, 9, 11); } }

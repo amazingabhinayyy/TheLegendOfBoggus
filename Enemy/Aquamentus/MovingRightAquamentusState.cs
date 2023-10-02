@@ -11,12 +11,17 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
         private int currentFrame;
+        private int elaspedFrameCount;
+        private int endFrame;
         public MovingRightAquamentusState(Aquamentus Aquamentus)
         {
             this.Aquamentus = Aquamentus;
             sprite = EnemySpriteFactory.Instance.CreateMovingRightAquamentusSprite();
             sourceRectangle = Globals.AquamentusGreenLeft;
-            currentFrame = 0;
+            currentFrame = 0; 
+            this.Aquamentus.Direction = Aquamentus.ProjectileDirection.Right;
+            elaspedFrameCount = 0;
+            endFrame = 100;
 
         }
         public void ChangeDirection()
@@ -49,6 +54,11 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
             else
             {
                 currentFrame = 0;
+            }
+            elaspedFrameCount++;
+            if (elaspedFrameCount >= endFrame)
+            {
+                ChangeDirection();
             }
         }
         public void Draw(SpriteBatch spriteBatch)

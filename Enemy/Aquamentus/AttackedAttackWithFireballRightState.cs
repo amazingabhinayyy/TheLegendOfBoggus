@@ -6,7 +6,7 @@ using Sprint2_Attempt3.Projectile.AquamentusProjectiles;
 
 namespace Sprint2_Attempt3.Enemy.Aquamentus
 {
-    internal class AttackWithFireballRightState : IEnemyState
+    internal class AttackedAttackWithFireballRightState : IEnemyState
     {
         private Aquamentus Aquamentus;
         private IEnemySprite sprite;
@@ -17,7 +17,7 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
         private IEnemyProjectile fireball;
         private int elapsedFrameCount;
         private int endFrame;
-        public AttackWithFireballRightState(Aquamentus Aquamentus)
+        public AttackedAttackWithFireballRightState(Aquamentus Aquamentus)
         {
             this.Aquamentus = Aquamentus;
             sprite = EnemySpriteFactory.Instance.CreateMovingRightAquamentusSprite();
@@ -32,7 +32,7 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
         public void ChangeDirection()
         {
             
-                Aquamentus.State = new MovingLeftAquamentusState(Aquamentus);
+                Aquamentus.State = new MovingAttackedLeftAquamentusState(Aquamentus);
                 
         }
         public void ChangeAttackedStatus() {
@@ -43,17 +43,19 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
             currentFrame++;
             if (currentFrame < 30)
             {
-                if (currentFrame < 15)
+                if (currentFrame == 5)
                 {
-                    sourceRectangle = sourceRectangles[0];
-
+                    sourceRectangle = Globals.AquamentusOrangeLeft1;
                 }
-                else
+                else if (currentFrame == 10)
                 {
-                    sourceRectangle = sourceRectangles[1];
-
+                    sourceRectangle = Globals.AquamentusBlueLeft;
                 }
-               
+                else if (currentFrame == 15)
+                {
+                    sourceRectangle = Globals.AquamentusOrangeLeft2;
+                }
+
             }
             else
             {
@@ -68,8 +70,6 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
             if (elapsedFrameCount >= endFrame)
             {
                 ((AquamentusFireball)fireball).Fire = true;
-                sourceRectangles[0] = Globals.AquamentusGreenLeft;
-                sourceRectangles[1] = Globals.AquamentusGreenLeft2;
 
             }
 
