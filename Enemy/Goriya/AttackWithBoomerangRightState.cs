@@ -5,26 +5,33 @@ using Sprint2_Attempt3.Projectile;
 
 namespace Sprint2_Attempt3.Enemy.Goriya
 {
-    internal class MovingRightGoriyaState : IEnemyState
+    internal class AttackWithBoomerangRightState : IEnemyState
     {
         private Goriya Goriya;
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
         private int currentFrame;
-        public MovingRightGoriyaState(Goriya Goriya)
+        private int currentBoomerangFrame;
+        private IEnemyProjectile boomerang;
+       
+        public AttackWithBoomerangRightState(Goriya Goriya)
         {
             this.Goriya = Goriya;
             sprite = EnemySpriteFactory.Instance.CreateMovingRightGoriyaSprite();
-            sourceRectangle = Globals.GoriyaRedRight;
             currentFrame = 0;
+            currentBoomerangFrame = 0;
+            sourceRectangle = Globals.GoriyaRedRight;
+            boomerang = Goriya.Boomerang;
+         
 
         }
         public void ChangeDirection()
         {
-            Goriya.BoomerangPosition = new Vector2(Goriya.X, Goriya.Y);
-            Goriya.Boomerang = new GoriyaBoomerang(Goriya.BoomerangPosition);
-            ((GoriyaBoomerang)Goriya.Boomerang).GenerateRight();
-            Goriya.State = new AttackWithBoomerangRightState(Goriya);
+            if (Goriya.end)
+            {
+                Goriya.State = new MovingDownGoriyaState(Goriya);
+                Goriya.end = false;
+            }
         }
         public void ChangeAttackedStatus() {
             Goriya.State = new MovingAttackedRightGoriyaState(Goriya);
@@ -44,16 +51,21 @@ namespace Sprint2_Attempt3.Enemy.Goriya
                     sourceRectangle = Globals.GoriyaRedRight2;
 
                 }
-                Goriya.X += 1;
+               
             }
             else
             {
                 currentFrame = 0;
             }
+            
+            boomerang.Update();
+
+
         }
         public void Draw(SpriteBatch spriteBatch)
         {
             sprite.Draw(spriteBatch, Goriya.X, Goriya.Y, sourceRectangle);
+            boomerang.Draw(spriteBatch);
         }
     }
 }

@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using Sprint2_Attempt3.Projectile;
 
-namespace Sprint2_Attempt3.Enemy.Goriya
+namespace Sprint2_Attempt3.Projectile
 {
     internal class GoriyaBoomerangSprite : IEnemyProjectileSprite
     {
@@ -22,7 +22,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
           
         }
 
-        public void Draw(SpriteBatch spriteBatch, int x, int y, Rectangle sourceRectangle)
+        public void Draw(SpriteBatch spriteBatch, int x, int y, Rectangle sourceRectangle,SpriteEffects effect,Vector2 origin)
         {
             spriteBatch.Draw(
                 texture,
@@ -32,7 +32,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
                 0f,
                 new Vector2(0, 0),
                 Globals.scale,
-                SpriteEffects.FlipHorizontally,
+                effect,
                 0f
             );
         }

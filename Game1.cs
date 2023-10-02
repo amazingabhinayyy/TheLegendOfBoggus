@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Enemy.Rope;
+using Sprint2_Attempt3.Projectile;
 
 namespace Sprint2_Attempt3
 {
@@ -70,6 +71,7 @@ namespace Sprint2_Attempt3
             currentEnemy = new Keese(200,200);
             currentEnemy.Spawn();
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
+            EnemyProjectileSpriteFactory.Instance.LoadAllTextures(Content);
             link = new Link();
         }
 

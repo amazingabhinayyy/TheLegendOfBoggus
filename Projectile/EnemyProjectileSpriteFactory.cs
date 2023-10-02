@@ -9,7 +9,7 @@ using Sprint2_Attempt3.Enemy.Dodongo;
 using Sprint2_Attempt3.Enemy.Goriya;
 using Sprint2_Attempt3.Projectile;
 
-namespace Sprint2_Attempt3.Projectiles
+namespace Sprint2_Attempt3.Projectile
 {
     internal class EnemyProjectileSpriteFactory
     {
@@ -38,11 +38,11 @@ namespace Sprint2_Attempt3.Projectiles
             GenerationTexture = content.Load<Texture2D>("characterGenerationSprite");
         }
 
-        public IEnemyProjectileSprite CreateMovingLeftBoomerang()
+        public IEnemyProjectileSprite MovingBoomerang()
         {
             return new GoriyaBoomerangSprite(EnemyTexture);
         }
-       
-        
+
+
     }
 }
