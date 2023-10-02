@@ -128,11 +128,11 @@ namespace Sprint2_Attempt3.Enemy
 
         public IEnemySprite CreateMovingLeftAquamentusSprite()
         {
-            return new MovingLeftAquamentusSprite(EnemyTexture);
+            return new MovingLeftAquamentusSprite(BossEnemyTexture);
         }
         public IEnemySprite CreateMovingRightAquamentusSprite()
         {
-            return new MovingRightAquamentusSprite(EnemyTexture);
+            return new MovingRightAquamentusSprite(BossEnemyTexture);
         }
     }
 }

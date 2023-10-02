@@ -5,23 +5,23 @@ using Sprint2_Attempt3.Projectile;
 
 namespace Sprint2_Attempt3.Enemy.Aquamentus
 {
-    internal class AttackWithBoomerangRightState : IEnemyState
+    internal class AttackWithFireballRightState : IEnemyState
     {
         private Aquamentus Aquamentus;
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
         private int currentFrame;
-        private int currentBoomerangFrame;
-        private IEnemyProjectile boomerang;
+        private int currentFireballFrame;
+        private IEnemyProjectile fireball;
        
-        public AttackWithBoomerangRightState(Aquamentus Aquamentus)
+        public AttackWithFireballRightState(Aquamentus Aquamentus)
         {
             this.Aquamentus = Aquamentus;
             sprite = EnemySpriteFactory.Instance.CreateMovingRightAquamentusSprite();
             currentFrame = 0;
-            currentBoomerangFrame = 0;
-            sourceRectangle = Globals.AquamentusRedRight;
-            boomerang = Aquamentus.Boomerang;
+            currentFireballFrame = 0;
+            sourceRectangle = Globals.AquamentusGreenLeftMouthOpen;
+            fireball = Aquamentus.Fireball;
          
 
         }
@@ -29,7 +29,7 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
         {
             if (Aquamentus.end)
             {
-                Aquamentus.State = new MovingDownAquamentusState(Aquamentus);
+                Aquamentus.State = new MovingLeftAquamentusState(Aquamentus);
                 Aquamentus.end = false;
             }
         }
@@ -43,12 +43,12 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
             {
                 if (currentFrame < 15)
                 {
-                    sourceRectangle = Globals.AquamentusRedRight;
+                    sourceRectangle = Globals.AquamentusGreenLeftMouthOpen;
 
                 }
                 else
                 {
-                    sourceRectangle = Globals.AquamentusRedRight2;
+                    sourceRectangle = Globals.AquamentusGreenLeftMouthOpen2;
 
                 }
                
@@ -58,14 +58,14 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
                 currentFrame = 0;
             }
             
-            boomerang.Update();
+            fireball.Update();
 
 
         }
         public void Draw(SpriteBatch spriteBatch)
         {
             sprite.Draw(spriteBatch, Aquamentus.X, Aquamentus.Y, sourceRectangle);
-            boomerang.Draw(spriteBatch);
+            fireball.Draw(spriteBatch);
         }
     }
 }

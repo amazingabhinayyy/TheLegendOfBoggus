@@ -26,7 +26,7 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
                 0f,
                 new Vector2(0, 0),
                 Globals.scale,
-                SpriteEffects.None,
+                SpriteEffects.FlipHorizontally,
                 0f
             );
         }

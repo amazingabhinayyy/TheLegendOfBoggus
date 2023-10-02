@@ -15,16 +15,16 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
         {
             this.Aquamentus = Aquamentus;
             sprite = EnemySpriteFactory.Instance.CreateMovingRightAquamentusSprite();
-            sourceRectangle = Globals.AquamentusRedRight;
+            sourceRectangle = Globals.AquamentusGreenLeft;
             currentFrame = 0;
 
         }
         public void ChangeDirection()
         {
-            Aquamentus.BoomerangPosition = new Vector2(Aquamentus.X, Aquamentus.Y);
-            Aquamentus.Boomerang = new AquamentusBoomerang(Aquamentus.BoomerangPosition);
-            ((AquamentusBoomerang)Aquamentus.Boomerang).GenerateRight();
-            Aquamentus.State = new AttackWithBoomerangRightState(Aquamentus);
+            Aquamentus.FireballPosition = new Vector2(Aquamentus.X, Aquamentus.Y);
+            Aquamentus.Fireball = new AquamentusFireball(Aquamentus.FireballPosition);
+            ((AquamentusFireball)Aquamentus.Fireball).GenerateRight();
+            Aquamentus.State = new AttackWithFireballRightState(Aquamentus);
         }
         public void ChangeAttackedStatus() {
             Aquamentus.State = new MovingAttackedRightAquamentusState(Aquamentus);
@@ -36,12 +36,12 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
             {
                 if (currentFrame < 15)
                 {
-                    sourceRectangle = Globals.AquamentusRedRight;
+                    sourceRectangle = Globals.AquamentusGreenLeft;
 
                 }
                 else
                 {
-                    sourceRectangle = Globals.AquamentusRedRight2;
+                    sourceRectangle = Globals.AquamentusGreenLeft2;
 
                 }
                 Aquamentus.X += 1;

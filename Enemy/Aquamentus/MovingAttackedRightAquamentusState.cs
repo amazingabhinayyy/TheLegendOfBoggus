@@ -14,13 +14,13 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
         {
             this.Aquamentus = Aquamentus;
             sprite = EnemySpriteFactory.Instance.CreateMovingRightAquamentusSprite();
-            sourceRectangle = Globals.AquamentusBlueRight;
+            sourceRectangle = Globals.AquamentusOrangeLeft1;
             currentFrame = 0;
 
         }
         public void ChangeDirection()
         {
-            Aquamentus.State = new MovingAttackedDownAquamentusState(Aquamentus);
+            Aquamentus.State = new MovingAttackedLeftAquamentusState(Aquamentus);
         }
         public void ChangeAttackedStatus() {
             Aquamentus.State = new MovingRightAquamentusState(Aquamentus);
@@ -32,20 +32,17 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
             {
                 if (currentFrame == 5)
                 {
-                    sourceRectangle = Globals.AquamentusGreenRight2;
+                    sourceRectangle = Globals.AquamentusOrangeLeft1;
                 }
                 else if (currentFrame == 10)
                 {
-                    sourceRectangle = Globals.AquamentusTealRight;
+                    sourceRectangle = Globals.AquamentusBlueLeft;
                 }
                 else if (currentFrame == 15)
                 {
-                    sourceRectangle = Globals.AquamentusRedRight2;
+                    sourceRectangle = Globals.AquamentusOrangeLeft2;
                 }
-                else if (currentFrame == 20)
-                {
-                    sourceRectangle = Globals.AquamentusBlueRight;
-                }
+                
             }
             else
             {

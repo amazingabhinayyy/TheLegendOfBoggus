@@ -11,6 +11,7 @@ using Sprint2_Attempt3.Enemy.Hand;
 using Sprint2_Attempt3.Enemy.Stalfos;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Aquamentus;
+using Sprint2_Attempt3.Projectile.AquamentusProjectiles;
 
 namespace Sprint2_Attempt3
 {
@@ -87,18 +88,29 @@ namespace Sprint2_Attempt3
         public static Rectangle[] GoriyaBoomerangUp = { GoriyaBoomerang1, GoriyaBoomerang2, GoriyaBoomerang2, GoriyaBoomerang2, GoriyaBoomerang1, GoriyaBoomerang2, GoriyaBoomerang3, GoriyaBoomerang2 }; 
         public static Rectangle[] GoriyaBoomerangRight = { GoriyaBoomerang1, GoriyaBoomerang2, GoriyaBoomerang2, GoriyaBoomerang2, GoriyaBoomerang1, GoriyaBoomerang2, GoriyaBoomerang3, GoriyaBoomerang2 }; 
         public static Rectangle[] GoriyaBoomerangDown = { GoriyaBoomerang1, GoriyaBoomerang2, GoriyaBoomerang2, GoriyaBoomerang2, GoriyaBoomerang1, GoriyaBoomerang2, GoriyaBoomerang3, GoriyaBoomerang2 };
-        public static int boomerangSpeed = 1;
-        public static int boomerangSpriteSwitchSpeed = 60;
+        public static int boomerangSpeed = 3;
+        public static int boomerangSpriteSwitchSpeed = 20;
         
         public static Rectangle StalfosSprite { get { return new Rectangle(34, 18, 15, 16); } }
 
-        public static Rectangle AquamentusGreenLeft { get { return new Rectangle(50, 0, 25, 33); } }
-        public static Rectangle AquamentusGreenLeft2 { get { return new Rectangle(75, 0, 25, 33); } }
-        public static Rectangle AquamentusGreenLeftMouthOpen { get { return new Rectangle(0, 0, 25, 33); } }
-        public static Rectangle AquamentusGreenLeftMouthOpen2 { get { return new Rectangle(25, 0, 25, 33); } }
+        public static Rectangle AquamentusGreenLeft { get { return new Rectangle(51, 0, 24, 33); } }
+        public static Rectangle AquamentusGreenLeft2 { get { return new Rectangle(76, 0, 24, 33); } }
+        public static Rectangle AquamentusGreenLeftMouthOpen { get { return new Rectangle(0, 0, 24, 33); } }
+        public static Rectangle AquamentusGreenLeftMouthOpen2 { get { return new Rectangle(26, 0, 24, 33); } }
+        public static Rectangle AquamentusOrangeLeft1 { get { return new Rectangle(149, 0, 24, 33); } }
+        public static Rectangle AquamentusBlueLeft { get { return new Rectangle(171, 0, 24, 33); } }
+        public static Rectangle AquamentusOrangeLeft2 { get { return new Rectangle(202, 0, 24, 33); } }
         public static Rectangle AquamentusFireball1 { get { return new Rectangle(100, 3, 9, 11); } }
         public static Rectangle AquamentusFireball2 { get { return new Rectangle(109, 3, 9, 11); } }
         public static Rectangle AquamentusFireball3 { get { return new Rectangle(118, 3, 9, 11); } }
         public static Rectangle AquamentusFireball4 { get { return new Rectangle(127, 3, 9, 11); } }
+        public static int fireballSpeed = 2;
+        public static int fireballSpriteSwitchSpeed = 40;
+
+        public static Rectangle[] AquamentusFireballLeft = {AquamentusFireball1, AquamentusFireball2, AquamentusFireball3, AquamentusFireball4, AquamentusFireball1, AquamentusFireball2, AquamentusFireball3, AquamentusFireball4 };
+        public static SpriteEffects[] AquamentusFireballLeftEffects = { SpriteEffects.None, SpriteEffects.None, SpriteEffects.None, SpriteEffects.None, SpriteEffects.None, SpriteEffects.None, SpriteEffects.None, SpriteEffects.None };
+        public static Vector2 temp = new Vector2(0, 0);
+        public static Vector2[] AquamentusOriginsLeft = { temp, temp, temp, temp, temp, temp, temp, temp };
+        public static int fireBallMaxDistance = 100;
     }
 }

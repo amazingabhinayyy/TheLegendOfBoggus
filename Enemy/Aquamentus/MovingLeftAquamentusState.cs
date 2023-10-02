@@ -23,13 +23,16 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
 
         }
         public void ChangeDirection()
-        {/*
-            //Aquamentus.End = false;
+        {
+          
+
+            
+            Aquamentus.End = false;
             Aquamentus.FireballPosition = new Vector2(Aquamentus.X, Aquamentus.Y);
             Aquamentus.Fireball = new AquamentusFireball(Aquamentus.FireballPosition);
             ((AquamentusFireball)Aquamentus.Fireball).GenerateLeft();
             Aquamentus.State = new AttackWithFireballLeftState(Aquamentus);
-            */
+            
         }
         public void ChangeAttackedStatus() {
             Aquamentus.State = new MovingAttackedLeftAquamentusState(Aquamentus);

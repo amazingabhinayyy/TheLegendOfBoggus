@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Items;
+using Sprint2_Attempt3.Projectile.AquamentusProjectiles;
 using Sprint2_Attempt3.Projectile;
 using System;
 
@@ -17,7 +18,12 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
         }
 
         private int count;
-       
+        public static bool end;
+        public bool End
+        {
+            get { return end; }
+            set { end = value; }
+        }
         private IEnemyProjectile fireball;
         public IEnemyProjectile Fireball
         {
@@ -63,7 +69,7 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
         public Aquamentus(int x, int y)
         {
             count = 0;
-
+            end = false;
             this.positionX = x;
             this.positionY = y;
             fireballPosition = new Vector2(positionX, positionY);
