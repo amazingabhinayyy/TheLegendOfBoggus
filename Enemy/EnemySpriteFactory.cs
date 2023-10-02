@@ -9,6 +9,7 @@ using Sprint2_Attempt3.Enemy.Dodongo;
 using Sprint2_Attempt3.Enemy.Goriya;
 using Sprint2_Attempt3.Enemy.Hand;
 using Sprint2_Attempt3.Enemy.Stalfos;
+using Sprint2_Attempt3.Enemy.Aquamentus;
 
 namespace Sprint2_Attempt3.Enemy
 {
@@ -123,6 +124,15 @@ namespace Sprint2_Attempt3.Enemy
         public IEnemySprite CreateMovingLeftGoriyaSprite()
         {
             return new MovingLeftGoriyaSprite(EnemyTexture);
+        }
+
+        public IEnemySprite CreateMovingLeftAquamentusSprite()
+        {
+            return new MovingLeftAquamentusSprite(EnemyTexture);
+        }
+        public IEnemySprite CreateMovingRightAquamentusSprite()
+        {
+            return new MovingRightAquamentusSprite(EnemyTexture);
         }
     }
 }

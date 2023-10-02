@@ -1,28 +1,22 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using Sprint2_Attempt3.Projectile;
 
-namespace Sprint2_Attempt3.Projectile
+namespace Sprint2_Attempt3.Enemy.Aquamentus
 {
-    internal class GoriyaBoomerangSprite : IEnemyProjectileSprite
+    internal class MovingRightAquamentusSprite : IEnemySprite
     {
         private Texture2D texture;
-       
-
-    
-        public GoriyaBoomerangSprite(Texture2D texture)
+        public MovingRightAquamentusSprite(Texture2D texture)
         {
             this.texture = texture;
-           
-           
         }
 
         public void Update()
         {
-          
+            
         }
 
-        public void Draw(SpriteBatch spriteBatch, int x, int y, Rectangle sourceRectangle,SpriteEffects effect,Vector2 origin)
+        public void Draw(SpriteBatch spriteBatch, int x, int y, Rectangle sourceRectangle)
         {
             spriteBatch.Draw(
                 texture,
@@ -32,11 +26,9 @@ namespace Sprint2_Attempt3.Projectile
                 0f,
                 new Vector2(0, 0),
                 Globals.scale,
-                effect,
+                SpriteEffects.None,
                 0f
             );
         }
-
-    
     }
 }

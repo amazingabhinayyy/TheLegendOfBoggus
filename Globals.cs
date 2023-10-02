@@ -10,6 +10,7 @@ using Sprint2_Attempt3.Enemy.Goriya;
 using Sprint2_Attempt3.Enemy.Hand;
 using Sprint2_Attempt3.Enemy.Stalfos;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint2_Attempt3.Enemy.Aquamentus;
 
 namespace Sprint2_Attempt3
 {
@@ -20,7 +21,7 @@ namespace Sprint2_Attempt3
         //my futile attempt to avoid making a Projectile class, probably will delete
         public static bool changeDirection = false;
 
-        public static IEnemy[] enemies = { new Keese(200,200), new Rope(200, 200), new Gel(200, 200), new Zol(200, 200), new SpikeTrap(200, 200), new Dodongo(200, 200), new Goriya(200, 200), new Hand(200,200), new Stalfos(200,200) };
+        public static IEnemy[] enemies = { new Keese(200,200), new Rope(200, 200), new Gel(200, 200), new Zol(200, 200), new SpikeTrap(200, 200), new Dodongo(200, 200), new Goriya(200, 200), new Hand(200,200), new Stalfos(200,200), new Aquamentus(200,200) };
         public static Rectangle KeeseSprite1 { get { return new Rectangle(33, 34, 16, 8); } }
         public static Rectangle KeeseSprite2 { get { return new Rectangle(34, 43, 16, 11); } }
 
@@ -58,6 +59,8 @@ namespace Sprint2_Attempt3
         public static Rectangle GoriyaBlueRight { get { return new Rectangle(117, 52, 14, 16); } }
         public static Rectangle GoriyaBlueRight2 { get { return new Rectangle(135, 52, 15, 16); } }
 
+     
+
         public static Rectangle HandGreen2 { get { return new Rectangle(68, 1, 16, 16); } }
         public static Rectangle HandTeal1 { get { return new Rectangle(50, 18, 17, 16); } }
         public static Rectangle HandBlue1 { get { return new Rectangle(50, 35, 17, 16); } }
@@ -88,5 +91,14 @@ namespace Sprint2_Attempt3
         public static int boomerangSpriteSwitchSpeed = 60;
         
         public static Rectangle StalfosSprite { get { return new Rectangle(34, 18, 15, 16); } }
+
+        public static Rectangle AquamentusGreenLeft { get { return new Rectangle(50, 0, 25, 33); } }
+        public static Rectangle AquamentusGreenLeft2 { get { return new Rectangle(75, 0, 25, 33); } }
+        public static Rectangle AquamentusGreenLeftMouthOpen { get { return new Rectangle(0, 0, 25, 33); } }
+        public static Rectangle AquamentusGreenLeftMouthOpen2 { get { return new Rectangle(25, 0, 25, 33); } }
+        public static Rectangle AquamentusFireball1 { get { return new Rectangle(100, 3, 9, 11); } }
+        public static Rectangle AquamentusFireball2 { get { return new Rectangle(109, 3, 9, 11); } }
+        public static Rectangle AquamentusFireball3 { get { return new Rectangle(118, 3, 9, 11); } }
+        public static Rectangle AquamentusFireball4 { get { return new Rectangle(127, 3, 9, 11); } }
     }
 }
