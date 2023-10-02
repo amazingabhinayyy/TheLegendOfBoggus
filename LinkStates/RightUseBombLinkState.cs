@@ -19,12 +19,13 @@ namespace Sprint2_Attempt3.LinkStates
             link.Items.Add(LinkSpriteFactory.Instance.CreateBombItem());
             frameCounter = 0;
         }
+        public void Stop()
+        {
+            link.State = new RightIdleLinkState(link);
+        }
         public void BecomeIdle()
         {
-            if (frameCounter >= 10)
-            {
-                link.State = new RightIdleLinkState(link);
-            }
+       
         }
         public void MoveUp()
         {
@@ -39,6 +40,7 @@ namespace Sprint2_Attempt3.LinkStates
         }
         public void MoveRight()
         {
+
         }
         public void GetDamaged()
         {
@@ -51,6 +53,10 @@ namespace Sprint2_Attempt3.LinkStates
         public void Update()
         {
             frameCounter++;
+            if (frameCounter >= 10)
+            {
+                Stop();
+            }
         }
         public void UseBomb()
         {

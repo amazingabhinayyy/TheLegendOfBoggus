@@ -48,28 +48,31 @@ namespace Sprint2_Attempt3.LinkStates
         }
         public void UseBomb()
         {
-
+            link.State = new UpUseBombLinkState(link);
         }
         public void UseArrow()
         {
-
+            link.State = new UpUseArrowState(link);
         }
         public void UseBoomerang()
         {
-
+            link.State = new UpUseBoomerangState(link);
         }
-        public void UseBlueBoomerang() { }
+        public void UseBlueBoomerang() 
+        {
+            link.State = new UpUseBlueBoomerangState(link);
+        }
         public void UseBlueArrow()
         {
-
+            link.State = new UpUseBlueArrowState(link);
         }
         public void UseFire()
         {
-
+            link.State = new UpUseFireState(link);
         }
         public void UseThrowingSword()
         {
-
+           
         }
     }
 }
