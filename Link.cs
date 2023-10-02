@@ -65,11 +65,28 @@ namespace Sprint2_Attempt3
         {
             State.UseBoomerang();
         }
+        public void UseBlueBoomerang() 
+        {
+            State.UseBlueBoomerang();
+        }
+        public void UseBlueArrow()
+        {
+            State.UseBlueArrow();
+        }
+        public void UseFire()
+        {
+            State.UseFire();
+        }
+        public void UseThrowingSword()
+        {
+            State.UseThrowingSword();
+        }
         public void StartLinkState()
         {
             State = new DownIdleLinkState(this);
             Items = new List<IItemSprite>();
         }
+
         public void Update()
         {
             State.Update();

@@ -7,25 +7,25 @@ using Microsoft.Xna.Framework;
 
 namespace Sprint2_Attempt3.LinkStates
 {
-    public class RightUseBoomerangState : IState
+    public class UpUseBlueBoomerangState : IState
     {
         private Link link;
         private int frameCounter;
-        public RightUseBoomerangState(Link link)
+        public UpUseBlueBoomerangState(Link link)
         {
             this.link = link;
-            link.Sprite = LinkSpriteFactory.Instance.CreateRightItemLinkSprite();
-            link.ItemPosition = new Vector2(link.position.X + 45, link.position.Y);
-            link.Items.Add(LinkSpriteFactory.Instance.CreateBoomerangItem());
-            link.Direction = Link.LinkDirection.Right;
+            link.Sprite = LinkSpriteFactory.Instance.CreateUpItemLinkSprite();
+            link.ItemPosition = new Vector2(link.position.X, link.position.Y);
+            link.Items.Add(LinkSpriteFactory.Instance.CreateBlueBoomerangItem());
+            link.Direction = Link.LinkDirection.Up;
             frameCounter = 0;
+        }
+        public void Stop()
+        {
+            link.State = new UpIdleLinkState(link);
         }
         public void BecomeIdle()
         {
-            if (frameCounter >= 10)
-            {
-                link.State = new RightIdleLinkState(link);
-            }
         }
         public void MoveUp()
         {
@@ -52,6 +52,10 @@ namespace Sprint2_Attempt3.LinkStates
         public void Update()
         {
             frameCounter++;
+            if (frameCounter >= 10)
+            {
+                Stop();
+            }
         }
         public void UseBomb()
         {

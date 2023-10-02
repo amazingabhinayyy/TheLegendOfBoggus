@@ -9,7 +9,7 @@ using static Sprint2_Attempt3.Link;
 
 namespace Sprint2_Attempt3.Items
 {
-    public class Arrow : IItemSprite
+    public class BlueArrow : IItemSprite
     {
         private int xLoc;
         private int yLoc;
@@ -20,15 +20,15 @@ namespace Sprint2_Attempt3.Items
         private SpriteEffects flip = SpriteEffects.None;
         private float rotate;
         private LinkDirection Direction;
-        public Arrow(Texture2D texture)
+        public BlueArrow(Texture2D texture)
         {
             this.texture = texture;
-            sourceRectangle = new Rectangle(10, 185, 15, 15);
+            sourceRectangle = new Rectangle(36, 185, 15, 15);
             currentFrame = 0;
         }
         public void Update(Link link)
         {
-            if(currentFrame == 0)
+            if (currentFrame == 0)
             {
                 Direction = link.Direction;
             }
@@ -41,18 +41,18 @@ namespace Sprint2_Attempt3.Items
                 switch (Direction)
                 {
                     case Link.LinkDirection.Right:
-                        xLoc += 3;
+                        xLoc += 5;
                         break;
                     case Link.LinkDirection.Left:
                         flip = SpriteEffects.FlipHorizontally;
-                        xLoc -= 3;
+                        xLoc -= 5;
                         break;
                     case Link.LinkDirection.Up:
-                        yLoc -= 3;
+                        yLoc -= 5;
                         rotate = MathHelper.ToRadians(270);
                         break;
                     case Link.LinkDirection.Down:
-                        yLoc += 3;
+                        yLoc += 5;
                         rotate = MathHelper.ToRadians(90);
                         break;
                 }
