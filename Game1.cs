@@ -5,7 +5,6 @@ using Sprint2;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Enemy.Rope;
-using Sprint2_Attempt3.Projectile;
 
 namespace Sprint2_Attempt3
 {
@@ -27,22 +26,21 @@ namespace Sprint2_Attempt3
             get { return currentEnemy; }
             set { currentEnemy = value; }
         }
+        private Link link;
+        public ILink Link { get { return link; } set {; } }
 
         private Block block;
         public IBlock Block { get { return block; } set {; } }
 
+        public int blockIndex;
 
-        private Link link;
-        public ILink Link { 
-            get { return link; } 
-            set {link = (Link)value; } 
-        }
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+            blockIndex = 0;
         }
 
         /// <summary>
@@ -54,8 +52,6 @@ namespace Sprint2_Attempt3
         protected override void Initialize()
         {
             keyboardController = new KeyboardController(this);
-            EnemySpriteFactory enemySpriteFactory = new EnemySpriteFactory();
-
             base.Initialize();
 
 
@@ -71,13 +67,9 @@ namespace Sprint2_Attempt3
             spriteBatch = new SpriteBatch(GraphicsDevice);
             keyboardController = new KeyboardController(this);
             EnemySpriteFactory.Instance.LoadAllTextures(this.Content);
-            /*
-             * can we make it so that we don't need to spawn Keese until necessary
-             * */
-            currentEnemy = new Keese(200,200);
+            currentEnemy = new Keese();
             currentEnemy.Spawn();
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
-            EnemyProjectileSpriteFactory.Instance.LoadAllTextures(Content);
             link = new Link();
             BlockSpriteFactory.Instance.LoadAllTextures(Content);
             block = new Block();
@@ -127,8 +119,8 @@ namespace Sprint2_Attempt3
 
             currentEnemy.Draw(spriteBatch);
             link.Draw(spriteBatch, Color.White);
+            block.Draw(spriteBatch);
             spriteBatch.End();
-            block.Draw(spriteBatch, Color.White);
             base.Draw(gameTime);
         }
     }

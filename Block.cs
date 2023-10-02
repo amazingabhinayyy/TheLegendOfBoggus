@@ -11,31 +11,35 @@ namespace Sprint2
         public Vector2 position;
         BlockSpriteFactory spriteFactory;
 
-        public ISprite Sprite { get; set; }
+        public IBlockSprite Sprite { get; set; }
         public IStateTiles State { get; set; }
 
         public Block()
         {
-            State = new plainTileState(this);
+            StartBlockState();
         }
-        public void CreateDiamondTile()
+        public void ChangeToDiamondTile()
         {
-            State = new diamondTileState(this);
-        }
-
-        public void CreatePlainTile()
-        {
-            State = new plainTileState(this);
+            State.ChangeToDiamondTile();
         }
 
-        public void diamondTile()
+        public void ChangeToPlainTile()
         {
-            State.diamondTile();
+            State.ChangeToPlainTile();
+        }
+        public void ChangeToUpChunk()
+        {
+            State.ChangeToUpChunk();
         }
 
-        public void plainTile()
+        public void ChangeToSideChunk()
         {
-            State.plainTile();
+            State.ChangeToSideChunk();
+        }
+
+        public void StartBlockState()
+        {
+            State = new PlainTileState(this);
         }
         public void Update()
         {
@@ -43,9 +47,9 @@ namespace Sprint2
             Sprite.Update();
         }
 
-        public void Draw(SpriteBatch _spriteBatch, Color color)
+        public void Draw(SpriteBatch _spriteBatch)
         {
-            Sprite.Draw(_spriteBatch, position, color);
+            Sprite.Draw(_spriteBatch);
         }
 
     }

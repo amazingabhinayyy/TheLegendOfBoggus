@@ -16,7 +16,8 @@ namespace Sprint2_Attempt3
         private bool pressed = true;
         private List<Keys> heldKeys = new List<Keys>();
 
-        public int EnemyIndex { 
+        public int EnemyIndex
+        {
             get { return enemyIndex; }
             set { enemyIndex = value; }
         }
@@ -40,7 +41,7 @@ namespace Sprint2_Attempt3
             commandMapping.Add(Keys.A, new MoveLinkLeft(game1));
             commandMapping.Add(Keys.Left, new MoveLinkLeft(game1));
             commandMapping.Add(Keys.D, new MoveLinkRight(game1));
-            commandMapping.Add(Keys.Right, new MoveLinkLeft(game1));
+            commandMapping.Add(Keys.Right, new MoveLinkRight(game1));
             commandMapping.Add(Keys.E, new SetDamageLinkCommand(game1));
             commandMapping.Add(Keys.Z, new SetAttackLinkCommand(game1));
             commandMapping.Add(Keys.N, new SetAttackLinkCommand(game1));
@@ -48,17 +49,17 @@ namespace Sprint2_Attempt3
             //item switching
             commandMapping.Add(Keys.D1, new SetUseBombCommand(game1));
             commandMapping.Add(Keys.D2, new SetUseBoomerangCommand(game1));
-            commandMapping.Add(Keys.D3, new SetUseArrowCommand(game1));
-            commandMapping.Add(Keys.D4, new SetUseBlueBoomerangCommand(game1));
-            commandMapping.Add(Keys.D5, new SetUseBlueArrowCommand(game1));
-            commandMapping.Add(Keys.D6, new SetUseFireCommand(game1));
+            //commandMapping.Add(Keys.D3, new SetUseArrowCommand(game1));
+            //commandMapping.Add(Keys.D4, new SetUseBlueBoomerangCommand(game1));
+            //commandMapping.Add(Keys.D5, new SetUseBlueArrowCommand(game1));
+            //commandMapping.Add(Keys.D6, new SetUseFireCommand(game1));
             commandMapping.Add(Keys.X, new SwitchToSecondaryItem1(game1));
             commandMapping.Add(Keys.M, new SwitchToSecondaryItem2(game1));
 
 
             //Block switching
-            commandMapping.Add(Keys.T, new SwitchToPreviousItem(game1));
-            commandMapping.Add(Keys.Y, new SwitchToNextItem(game1));
+            commandMapping.Add(Keys.T, new SwitchToPreviousBlock(game1));
+            commandMapping.Add(Keys.Y, new SwitchToNextBlock(game1));
 
             //Enemy switching
             commandMapping.Add(Keys.O, new SwitchToPreviousEnemy(game1));
@@ -70,11 +71,11 @@ namespace Sprint2_Attempt3
             commandMapping.Add(Keys.Q, new Quit(game1));
             commandMapping.Add(Keys.R, new Reset(game1));
         }
-    
+
         public void Update(GameTime gameTime)
         {
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
-            for(int c = 0; c < heldKeys.Count; c++)
+            for (int c = 0; c < heldKeys.Count; c++)
             {
                 if (!(pressedKeys.Contains(heldKeys[c])))
                 {
@@ -85,7 +86,7 @@ namespace Sprint2_Attempt3
 
             timeSinceLastUpdate += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (pressedKeys.Length > 0 && timeSinceLastUpdate>0.1f)
+            if (pressedKeys.Length > 0 && timeSinceLastUpdate > 0.1f)
             {
                 foreach (Keys key in pressedKeys)
                 {
@@ -93,15 +94,15 @@ namespace Sprint2_Attempt3
                     {
                         commandMapping[key].Execute();
                         //The if condition hold keys that can be held
-                        if(!(key.Equals(Keys.W) || key.Equals(Keys.A) || key.Equals(Keys.S)|| key.Equals(Keys.D)))
+                        if (!(key.Equals(Keys.W) || key.Equals(Keys.A) || key.Equals(Keys.S) || key.Equals(Keys.D) || key.Equals(Keys.Down) || key.Equals(Keys.Up) || key.Equals(Keys.Right) || key.Equals(Keys.Left)))
                         {
                             heldKeys.Add(key);
                         }
                     }
                 }
-                timeSinceLastUpdate = 0;     
+                timeSinceLastUpdate = 0;
             }
-            if (!(pressedKeys.Contains(Keys.W) || pressedKeys.Contains(Keys.S) || pressedKeys.Contains(Keys.A) || pressedKeys.Contains(Keys.D)))
+            if (!(pressedKeys.Contains(Keys.W) || pressedKeys.Contains(Keys.S) || pressedKeys.Contains(Keys.A) || pressedKeys.Contains(Keys.D) || pressedKeys.Contains(Keys.Up) || pressedKeys.Contains(Keys.Down) || pressedKeys.Contains(Keys.Left) || pressedKeys.Contains(Keys.Right)))
             {
                 commandMapping[Keys.None].Execute();
             }
