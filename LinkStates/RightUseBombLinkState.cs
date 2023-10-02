@@ -14,7 +14,7 @@ namespace Sprint2_Attempt3.LinkStates
         public RightUseBombLinkState(Link link)
         {
             this.link = link;
-            link.Sprite = LinkSpriteFactory.Instance.CreateRightUseBombLinkSprite();
+            link.Sprite = LinkSpriteFactory.Instance.CreateRightItemLinkSprite();
             link.ItemPosition = new Vector2(link.position.X + 45, link.position.Y);
             link.Items.Add(LinkSpriteFactory.Instance.CreateBombItem());
             frameCounter = 0;

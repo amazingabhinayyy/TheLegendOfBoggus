@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Sprint2_Attempt3.Items
 {
-    public class BombSprite : IItemSprite
+    public class Bomb : IItemSprite
     {
         private int xLoc;
         private int yLoc;
@@ -18,18 +18,18 @@ namespace Sprint2_Attempt3.Items
         private Rectangle destinationRectangle;
         private int currentFrame;
         private Texture2D texture;
-        public BombSprite(Texture2D texture)
+        public Bomb(Texture2D texture)
         {
             this.texture = texture;
             sourceRectangle = new Rectangle(129, 185, 8, 15);
             currentFrame = 0;
         }
-        public void Update()
+        public void Update(Link link)
         {
             currentFrame++;
             if (currentFrame == 60)
             {
-                currentFrame = 0;
+                link.Items.Remove(this);
             }
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)

@@ -15,7 +15,7 @@ namespace Sprint2_Attempt3.Items
         {
         }
 
-        public void Update()
+        public void Update(Link link)
         {
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)

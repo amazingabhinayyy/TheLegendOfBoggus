@@ -1,23 +1,23 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
-using Microsoft.Xna.Framework;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Sprint2_Attempt3.LinkSprites
 {
-    public class DownUseBombLinkSprite : ISprite
+    public class UpUseItemLinkSprite : ISprite
     {
         private Texture2D linkTexture;
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;
 
-        public DownUseBombLinkSprite(Texture2D linkTexture) 
+        public UpUseItemLinkSprite(Texture2D linkTexture)
         {
             this.linkTexture = linkTexture;
-            sourceRectangle = new Rectangle(106, 10, 15, 15);
+            sourceRectangle = new Rectangle(141, 11, 15, 15);
         }
 
         public void Update()
@@ -31,3 +31,4 @@ namespace Sprint2_Attempt3.LinkSprites
         }
     }
 }
+
