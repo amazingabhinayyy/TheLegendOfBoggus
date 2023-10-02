@@ -9,29 +9,34 @@ using System.ComponentModel;
 
 namespace Sprint2
 {
-    public class diamondTile : ISprite
+    public class DiamondTile : IBlockSprite
     {
-        private Rectangle sourceRectangle;
-        private Rectangle destinationRectangle;
-        private int currentFrame;
+        private Rectangle diamondSource;
+        private int destX, destY;
         private Texture2D tilesSet;
-        public diamondTile(Texture2D tilesSet)
+        public DiamondTile(Texture2D tilesSet, Vector2 Pos, Rectangle diamondSource)
         {
-            sourceRectangle = new Rectangle(17, 0, 16, 16);
-            currentFrame = 0;
             this.tilesSet = tilesSet;
+            this.destX = (int)Pos.X;
+            this.destY = (int)Pos.Y;
+            this.diamondSource = diamondSource;
         }
 
         public void Update()
         {
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
+        public Rectangle DestRectangle()
         {
-            destinationRectangle = new Rectangle(125, 125, 48, 48);
-            spriteBatch.Begin();
-            spriteBatch.Draw(tilesSet, destinationRectangle, sourceRectangle, Color.White);
-            spriteBatch.End();
+            int width = this.diamondSource.Width;
+            int height = this.diamondSource.Height;
+            return new Rectangle(destX, destY, width * 3, height * 3);
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            Rectangle scrRectangle = this.diamondSource;
+            spriteBatch.Draw(tilesSet, DestRectangle(), scrRectangle, Color.White);
         }
     }
 }

@@ -10,11 +10,11 @@ namespace Sprint2
 {
     public interface IBlock
     {
+        public void ChangeToPlainTile();
+        public void ChangeToDiamondTile();
+        public void ChangeToSideChunk();
+        public void ChangeToUpChunk();
         public void Update();
-        public void Draw(SpriteBatch spriteBatch, Color color);
-        void CreateDiamondTile();
-        void CreatePlainTile();
-        public void plainTile();
-        public void diamondTile();
+
     }
 }

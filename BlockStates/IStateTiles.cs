@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sprint2_Attempt3;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +9,10 @@ namespace Sprint2.BlockStates
 {
     public interface IStateTiles
     {
+        public void ChangeToDiamondTile();
+        public void ChangeToPlainTile();
+        public void ChangeToUpChunk();
+        public void ChangeToSideChunk();
         public void Update();
-        public void diamondTile();
-        public void plainTile();
     }
 }

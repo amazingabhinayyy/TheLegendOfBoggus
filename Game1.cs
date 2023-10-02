@@ -32,6 +32,7 @@ namespace Sprint2_Attempt3
         private Block block;
         public IBlock Block { get { return block; } set {; } }
 
+        public int blockIndex;
 
 
         public Game1()
@@ -39,6 +40,7 @@ namespace Sprint2_Attempt3
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+            blockIndex = 0;
         }
 
         /// <summary>
@@ -50,7 +52,6 @@ namespace Sprint2_Attempt3
         protected override void Initialize()
         {
             keyboardController = new KeyboardController(this);
-
             base.Initialize();
 
 
@@ -95,7 +96,7 @@ namespace Sprint2_Attempt3
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            keyboardController.Update();
+            keyboardController.Update(gameTime);
             currentEnemy.Update();
             link.Update();
             block.Update();
@@ -118,8 +119,8 @@ namespace Sprint2_Attempt3
 
             currentEnemy.Draw(spriteBatch);
             link.Draw(spriteBatch, Color.White);
+            block.Draw(spriteBatch);
             spriteBatch.End();
-            block.Draw(spriteBatch, Color.White);
             base.Draw(gameTime);
         }
     }
