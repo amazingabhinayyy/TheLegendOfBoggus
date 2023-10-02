@@ -27,11 +27,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         }
         public void ChangeDirection()
         {
-            if (Goriya.end)
-            {
                 Goriya.State = new MovingLeftGoriyaState(Goriya);
-                Goriya.end = false;
-            }
         }
         public void ChangeAttackedStatus() {
             Goriya.State = new MovingAttackedLeftGoriyaState(Goriya);
@@ -47,7 +43,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         public void Draw(SpriteBatch spriteBatch)
         {
             sprite.Draw(spriteBatch, Goriya.X, Goriya.Y, sourceRectangle);
-            boomerang.Draw(spriteBatch);
+        
         }
     }
 }

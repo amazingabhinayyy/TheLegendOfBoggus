@@ -37,7 +37,7 @@ internal class GoriyaBoomerangLeftState : IEnemyProjectileState
         spriteIndex = 0;
         currentFrame = 0;
         currentFrame2 = 0;
-        //finished = false;
+    
         goLeft = goriyaBoomerang.GoLeft;
         change = Globals.boomerangSpeed;
 
@@ -78,10 +78,8 @@ internal class GoriyaBoomerangLeftState : IEnemyProjectileState
                 goriyaBoomerang.Position2 = new Vector2(goriyaBoomerang.Position2.X + change, goriyaBoomerang.Position2.Y);
                 if (goriyaBoomerang.Position2.X >= goriyaBoomerang.InitialX - 9)
                 {
-                    Goriya.end = true;
+                    goriyaBoomerang.Throwing = false;
                     goriyaBoomerang.GoLeft = true;
-                    //finished = true;
-
                 }
             }
         }

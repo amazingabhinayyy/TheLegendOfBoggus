@@ -79,9 +79,7 @@ internal class GoriyaBoomerangDownState : IEnemyProjectileState
                 goriyaBoomerang.Position2 = new Vector2(goriyaBoomerang.Position2.X, goriyaBoomerang.Position2.Y - change);
                 if (goriyaBoomerang.Position2.Y <= goriyaBoomerang.InitialY + 17)
                 {
-                    Goriya.end = true;
                     goriyaBoomerang.GoDown = true;
-                    //finished = true;
 
                 }
             }

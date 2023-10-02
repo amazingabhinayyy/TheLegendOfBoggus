@@ -29,6 +29,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             Goriya.BoomerangPosition = new Vector2(Goriya.X, Goriya.Y);
             Goriya.Boomerang = new GoriyaBoomerang(Goriya.BoomerangPosition);
             ((GoriyaBoomerang)Goriya.Boomerang).GenerateLeft();
+            ((GoriyaBoomerang)Goriya.Boomerang).Throwing = true;
             Goriya.State = new AttackWithBoomerangLeftState(Goriya);
         }
         public void ChangeAttackedStatus() {

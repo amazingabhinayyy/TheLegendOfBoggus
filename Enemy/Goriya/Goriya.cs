@@ -113,6 +113,10 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         public void Draw(SpriteBatch spriteBatch)
         {
             state.Draw(spriteBatch);
+            if (((GoriyaBoomerang)boomerang).Throwing)
+            {
+                boomerang.Draw(spriteBatch);
+            }
         }
     }
 }

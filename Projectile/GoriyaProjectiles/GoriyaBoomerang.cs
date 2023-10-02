@@ -109,13 +109,13 @@ namespace Sprint2_Attempt3.Projectile.GoriyaProjectiles
                 state.Update();
                 timeSinceLastUpdate = 0;
             }*/
-            //
+            /*
             count++;
             if (count % 100 == 0)
             {
                 //state = new GoriyaBoomerangLeftState(this);
             }
-            //finished = ((GoriyaBoomerangLeftState)state).Finished;
+            //finished = ((GoriyaBoomerangLeftState)state).Finished;*/
             state.Update();
 
 
