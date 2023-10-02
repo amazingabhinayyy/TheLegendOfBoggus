@@ -80,8 +80,8 @@ internal class AquamentusFireballLeftState : IEnemyProjectileState
     }
     public void Draw(SpriteBatch spriteBatch)
     {
-        sprite.Draw(spriteBatch, (int)AquamentusFireball.Position2.X+12, (int)(AquamentusFireball.Position2.Y+0.35*traveledDistance), Globals.AquamentusFireballLeft[spriteIndex], Globals.AquamentusFireballLeftEffects[spriteIndex], Globals.AquamentusOriginsLeft[spriteIndex]);
-        sprite.Draw(spriteBatch, (int)AquamentusFireball.Position2.X+12, (int)(AquamentusFireball.Position2.Y), Globals.AquamentusFireballLeft[spriteIndex], Globals.AquamentusFireballLeftEffects[spriteIndex], Globals.AquamentusOriginsLeft[spriteIndex]);
-        sprite.Draw(spriteBatch, (int)AquamentusFireball.Position2.X+12, (int)(AquamentusFireball.Position2.Y-0.35*traveledDistance), Globals.AquamentusFireballLeft[spriteIndex], Globals.AquamentusFireballLeftEffects[spriteIndex], Globals.AquamentusOriginsLeft[spriteIndex]);
+        sprite.Draw(spriteBatch, (int)AquamentusFireball.Position2.X+12, (int)(AquamentusFireball.Position2.Y+0.35*traveledDistance), Globals.AquamentusFireballLeft[spriteIndex]);
+        sprite.Draw(spriteBatch, (int)AquamentusFireball.Position2.X+12, (int)(AquamentusFireball.Position2.Y), Globals.AquamentusFireballLeft[spriteIndex]);
+        sprite.Draw(spriteBatch, (int)AquamentusFireball.Position2.X+12, (int)(AquamentusFireball.Position2.Y-0.35*traveledDistance), Globals.AquamentusFireballLeft[spriteIndex]);
     }
 }

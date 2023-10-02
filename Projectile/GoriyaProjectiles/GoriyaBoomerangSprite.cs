@@ -6,12 +6,13 @@ namespace Sprint2_Attempt3.Projectile.GoriyaProjectiles
     internal class GoriyaBoomerangSprite : IEnemyProjectileSprite
     {
         private Texture2D texture;
-
+        
 
 
         public GoriyaBoomerangSprite(Texture2D texture)
         {
             this.texture = texture;
+            
 
 
         }
@@ -21,7 +22,7 @@ namespace Sprint2_Attempt3.Projectile.GoriyaProjectiles
 
         }
 
-        public void Draw(SpriteBatch spriteBatch, int x, int y, Rectangle sourceRectangle, SpriteEffects effect, Vector2 origin)
+        public void Draw(SpriteBatch spriteBatch, int x, int y, Rectangle sourceRectangle)
         {
             spriteBatch.Draw(
                 texture,
@@ -31,7 +32,7 @@ namespace Sprint2_Attempt3.Projectile.GoriyaProjectiles
                 0f,
                 new Vector2(0, 0),
                 Globals.scale,
-                effect,
+                Globals.GoriyaBoomerangLeftEffects[Globals.currentIndex],
                 0f
             );
         }
