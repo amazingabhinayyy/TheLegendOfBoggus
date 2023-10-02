@@ -64,5 +64,18 @@ namespace Sprint2_Attempt3.LinkStates
         {
 
         }
+        public void UseBlueBoomerang() { }
+        public void UseBlueArrow()
+        {
+
+        }
+        public void UseFire()
+        {
+
+        }
+        public void UseThrowingSword()
+        {
+
+        }
     }
 }

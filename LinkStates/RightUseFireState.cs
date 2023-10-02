@@ -7,16 +7,17 @@ using Microsoft.Xna.Framework;
 
 namespace Sprint2_Attempt3.LinkStates
 {
-    public class RightUseBoomerangState : IState
+    public class RightUseFireState : IState
     {
         private Link link;
         private int frameCounter;
-        public RightUseBoomerangState(Link link)
+        public RightUseFireState(Link link)
         {
             this.link = link;
             link.Sprite = LinkSpriteFactory.Instance.CreateRightItemLinkSprite();
+            //Constant is to make the item spawn infront of link
             link.ItemPosition = new Vector2(link.position.X + 45, link.position.Y);
-            link.Items.Add(LinkSpriteFactory.Instance.CreateBoomerangItem());
+            link.Items.Add(LinkSpriteFactory.Instance.CreateFireItem());
             link.Direction = Link.LinkDirection.Right;
             frameCounter = 0;
         }
