@@ -32,14 +32,9 @@ namespace Sprint2_Attempt3
         }
 
         private Link link;
-        //delete later
-        //private RupeeItem item;
         private Item item;
         public int itemIndex;
-        public ILink Link { get { return link; } set {; } }
-        //public IJustItemSprite Item { get { return item; } set {; } }
         public IItem Item { get { return item; } set {; } }
-
         public ILink Link { 
             get { return link; } 
             set {link = (Link)value; } 
