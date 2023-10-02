@@ -18,6 +18,11 @@ namespace Sprint2_Attempt3
         public void UseBomb();
         public void UseArrow();
         public void UseBoomerang();
+        public void UseBlueBoomerang();
+        public void UseBlueArrow();
+        public void UseFire();
+        public void UseThrowingSword();
         public void Update();
+
     }
 }

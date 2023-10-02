@@ -15,32 +15,32 @@ namespace Sprint2_Attempt3
         private ILink decoratedLink;
         private int timer;
         public IState State { get; set; }
-        public DamageLinkDecorator(Link decoratedLink, Game1 game)
+        public DamageLinkDecorator(ILink decoratedLink, Game1 game)
         {
             this.decoratedLink = decoratedLink;
             this.game = game;
-            game.Link = decoratedLink;
+            game.Link = this;
         }
 
         public void GetDamaged()
         {
-            timer = 1000;
+            timer = 100;
         }
         public void MoveLeft()
         {
-
+            decoratedLink.MoveLeft();
         }
         public void MoveRight()
         {
-
+            decoratedLink.MoveRight();
         }
         public void MoveUp()
         {
-
+            decoratedLink.MoveUp();
         }
         public void MoveDown()
         {
-
+            decoratedLink.MoveDown();
         }
 
         public void BecomeIdle()
@@ -49,19 +49,35 @@ namespace Sprint2_Attempt3
         }
         public void Attack()
         {
-
+            decoratedLink.Attack();
         }
         public void UseBomb()
         {
-
+            decoratedLink.UseBomb();
         }
         public void UseArrow()
         {
-
+            decoratedLink.UseArrow();
         }
         public void UseBoomerang()
         {
-
+            decoratedLink.UseBoomerang();
+        }
+        public void UseBlueBoomerang() 
+        {
+            decoratedLink.UseBlueBoomerang();
+        }
+        public void UseBlueArrow()
+        {
+            decoratedLink.UseBlueArrow();
+        }
+        public void UseFire()
+        {
+            decoratedLink.UseFire();
+        }
+        public void UseThrowingSword()
+        {
+            decoratedLink.UseThrowingSword();
         }
 
 
@@ -77,7 +93,7 @@ namespace Sprint2_Attempt3
 
         public void RemoveDecorator()
         {
-            game.Link = (Link)decoratedLink;
+            game.Link = decoratedLink;
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)

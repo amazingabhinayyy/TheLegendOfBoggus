@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint2_Attempt3
+namespace Sprint2_Attempt3.LinkStates
 {
     public class UpDamagedLinkState : IState
     {
@@ -55,6 +55,21 @@ namespace Sprint2_Attempt3
 
         }
         public void UseBoomerang()
+        {
+        } 
+        public void UseBlueBoomerang()
+        {
+
+        }
+        public void UseBlueArrow()
+        {
+
+        }
+        public void UseFire()
+        {
+
+        }
+        public void UseThrowingSword()
         {
 
         }

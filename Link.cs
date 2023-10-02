@@ -1,6 +1,8 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint2_Attempt3.Items;
+using System.Collections.Generic;
+using System.ComponentModel;
+using Sprint2_Attempt3.LinkStates;
 
 namespace Sprint2_Attempt3
 {
@@ -14,6 +16,9 @@ namespace Sprint2_Attempt3
         public IState State { get; set; }
         public IItemSprite ItemSprite { get; set; }
         public IItemState ItemState { get; set; }
+        public List<IItemSprite> Items { get; set; }
+        public enum LinkDirection { Left, Right, Up, Down };
+        public LinkDirection Direction { get; set; }
 
         public Link()
         {
@@ -60,26 +65,47 @@ namespace Sprint2_Attempt3
         {
             State.UseBoomerang();
         }
+        public void UseBlueBoomerang() 
+        {
+            State.UseBlueBoomerang();
+        }
+        public void UseBlueArrow()
+        {
+            State.UseBlueArrow();
+        }
+        public void UseFire()
+        {
+            State.UseFire();
+        }
+        public void UseThrowingSword()
+        {
+            State.UseThrowingSword();
+        }
         public void StartLinkState()
         {
             State = new DownIdleLinkState(this);
-            ItemState = new NoItemState(this);
+            Items = new List<IItemSprite>();
         }
+
         public void Update()
         {
             State.Update();
             Sprite.Update();
             AttackSprite.Update();
-            ItemState.Update();
-            ItemSprite.Update();
-
+            for(int c = 0; c < Items.Count; c++)
+            {
+                Items[c].Update(this);
+            }
         }
 
         public void Draw(SpriteBatch _spriteBatch, Color color)
         {
             Sprite.Draw(_spriteBatch, position, color);
             AttackSprite.Draw(_spriteBatch, position, color);
-            ItemSprite.Draw(_spriteBatch, ItemPosition, Color.White);
+            foreach (IItemSprite item in Items)
+            {
+                item.Draw(_spriteBatch, ItemPosition, Color.White);
+            }
             
         }
 

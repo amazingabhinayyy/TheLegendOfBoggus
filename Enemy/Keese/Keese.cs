@@ -7,6 +7,20 @@ namespace Sprint2_Attempt3.Enemy.Keese
     {
         private IEnemyState state;
         private int count;
+        private int positionX;
+        private int positionY;
+
+        public int X
+        {
+            get { return positionX; }
+            set { positionX = value; }
+        }
+
+        public int Y
+        {
+            get { return positionY; }
+            set { positionY = value; }
+        }
         public IEnemyState State
         {
             get { return state; }
@@ -15,9 +29,11 @@ namespace Sprint2_Attempt3.Enemy.Keese
         public void Generate() { 
             state = new MovingLeftKeeseState(this);
         }
-        public Keese()
+        public Keese(int x, int y)
         {
             count = 0;
+            this.positionX = x;
+            this.positionY = y;
         }
         public void Spawn()
         {

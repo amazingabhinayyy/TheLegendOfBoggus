@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Enemy.Rope;
+using Sprint2_Attempt3.Projectile;
 using Sprint2_Attempt3.ItemClasses;
 using System;
 using System.Diagnostics;
@@ -16,6 +17,10 @@ namespace Sprint2_Attempt3
         SpriteBatch spriteBatch;
 
         private IController keyboardController;
+        public IController KeyController { 
+            get { return keyboardController; }
+            set {keyboardController = value; } 
+        }
 
         private IEnemy currentEnemy;
 
@@ -25,6 +30,7 @@ namespace Sprint2_Attempt3
             get { return currentEnemy; }
             set { currentEnemy = value; }
         }
+
         private Link link;
         //delete later
         //private RupeeItem item;
@@ -34,6 +40,10 @@ namespace Sprint2_Attempt3
         //public IJustItemSprite Item { get { return item; } set {; } }
         public IItem Item { get { return item; } set {; } }
 
+        public ILink Link { 
+            get { return link; } 
+            set {link = (Link)value; } 
+        }
 
         public Game1()
         {
@@ -53,6 +63,7 @@ namespace Sprint2_Attempt3
         protected override void Initialize()
         {
             keyboardController = new KeyboardController(this);
+            EnemySpriteFactory enemySpriteFactory = new EnemySpriteFactory();
 
             base.Initialize();
 
@@ -69,9 +80,13 @@ namespace Sprint2_Attempt3
             spriteBatch = new SpriteBatch(GraphicsDevice);
             keyboardController = new KeyboardController(this);
             EnemySpriteFactory.Instance.LoadAllTextures(this.Content);
-            currentEnemy = new Keese();
+            /*
+             * can we make it so that we don't need to spawn Keese until necessary
+             * */
+            currentEnemy = new Keese(200,200);
             currentEnemy.Spawn();
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
+            EnemyProjectileSpriteFactory.Instance.LoadAllTextures(Content);
             link = new Link();
             //delete later
             ItemSpriteFactory.Instance.LoadAllTextures(Content);
@@ -100,7 +115,7 @@ namespace Sprint2_Attempt3
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            keyboardController.Update();
+            keyboardController.Update(gameTime);
             currentEnemy.Update();
             link.Update();
             //deletelater
