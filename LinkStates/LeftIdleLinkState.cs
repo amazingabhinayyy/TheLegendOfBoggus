@@ -52,9 +52,25 @@ namespace Sprint2_Attempt3.LinkStates
         }
         public void UseArrow()
         {
-
+            link.State = new LeftUseArrowState(link);
         }
-        public void UseBoomerang()
+        public void UseBoomerang() 
+        {
+            link.State = new LeftUseBoomerangState(link);
+        }
+        public void UseBlueBoomerang() 
+        {
+            link.State = new LeftUseBlueBoomerangState(link);
+        }
+        public void UseBlueArrow()
+        {
+            link.State = new LeftUseBlueArrowState(link);
+        }
+        public void UseFire()
+        {
+            link.State = new LeftUseFireState(link);
+        }
+        public void UseThrowingSword()
         {
 
         }

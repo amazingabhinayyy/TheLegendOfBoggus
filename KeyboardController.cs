@@ -12,14 +12,21 @@ namespace Sprint2_Attempt3
         private Game1 game1;
         private float timeSinceLastUpdate;
         private Dictionary<Keys, ICommand> commandMapping = new Dictionary<Keys, ICommand>();
+        private static int enemyIndex;
         private bool pressed = true;
         private List<Keys> heldKeys = new List<Keys>();
+
+        public int EnemyIndex { 
+            get { return enemyIndex; }
+            set { enemyIndex = value; }
+        }
 
         public KeyboardController(Game1 game)
         {
             this.game1 = game;
             commandMapping = new Dictionary<Keys, ICommand>();
             RegisterCommands();
+            enemyIndex = 0;
             timeSinceLastUpdate = 0;
         }
 
@@ -42,6 +49,9 @@ namespace Sprint2_Attempt3
             commandMapping.Add(Keys.D1, new SetUseBombCommand(game1));
             commandMapping.Add(Keys.D2, new SetUseBoomerangCommand(game1));
             commandMapping.Add(Keys.D3, new SetUseArrowCommand(game1));
+            commandMapping.Add(Keys.D4, new SetUseBlueBoomerangCommand(game1));
+            commandMapping.Add(Keys.D5, new SetUseBlueArrowCommand(game1));
+            commandMapping.Add(Keys.D6, new SetUseFireCommand(game1));
             commandMapping.Add(Keys.X, new SwitchToSecondaryItem1(game1));
             commandMapping.Add(Keys.M, new SwitchToSecondaryItem2(game1));
 

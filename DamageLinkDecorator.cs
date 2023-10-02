@@ -53,15 +53,31 @@ namespace Sprint2_Attempt3
         }
         public void UseBomb()
         {
-
+            decoratedLink.UseBomb();
         }
         public void UseArrow()
         {
-
+            decoratedLink.UseArrow();
         }
         public void UseBoomerang()
         {
-
+            decoratedLink.UseBoomerang();
+        }
+        public void UseBlueBoomerang() 
+        {
+            decoratedLink.UseBlueBoomerang();
+        }
+        public void UseBlueArrow()
+        {
+            decoratedLink.UseBlueArrow();
+        }
+        public void UseFire()
+        {
+            decoratedLink.UseFire();
+        }
+        public void UseThrowingSword()
+        {
+            decoratedLink.UseThrowingSword();
         }
 
 

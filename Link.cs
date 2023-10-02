@@ -17,6 +17,8 @@ namespace Sprint2_Attempt3
         public IItemSprite ItemSprite { get; set; }
         public IItemState ItemState { get; set; }
         public List<IItemSprite> Items { get; set; }
+        public enum LinkDirection { Left, Right, Up, Down };
+        public LinkDirection Direction { get; set; }
 
         public Link()
         {
@@ -63,11 +65,28 @@ namespace Sprint2_Attempt3
         {
             State.UseBoomerang();
         }
+        public void UseBlueBoomerang() 
+        {
+            State.UseBlueBoomerang();
+        }
+        public void UseBlueArrow()
+        {
+            State.UseBlueArrow();
+        }
+        public void UseFire()
+        {
+            State.UseFire();
+        }
+        public void UseThrowingSword()
+        {
+            State.UseThrowingSword();
+        }
         public void StartLinkState()
         {
             State = new DownIdleLinkState(this);
             Items = new List<IItemSprite>();
         }
+
         public void Update()
         {
             State.Update();
