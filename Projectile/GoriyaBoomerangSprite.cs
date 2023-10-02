@@ -1,22 +1,28 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Sprint2_Attempt3.Projectile;
 
-namespace Sprint2_Attempt3.Enemy.Keese
+namespace Sprint2_Attempt3.Projectile
 {
-    internal class KeeseSprite : IEnemySprite
+    internal class GoriyaBoomerangSprite : IEnemyProjectileSprite
     {
         private Texture2D texture;
-        public KeeseSprite(Texture2D texture)
+       
+
+    
+        public GoriyaBoomerangSprite(Texture2D texture)
         {
             this.texture = texture;
+           
+           
         }
 
         public void Update()
         {
-            
+          
         }
 
-        public void Draw(SpriteBatch spriteBatch, int x, int y, Rectangle sourceRectangle)
+        public void Draw(SpriteBatch spriteBatch, int x, int y, Rectangle sourceRectangle,SpriteEffects effect,Vector2 origin)
         {
             spriteBatch.Draw(
                 texture,
@@ -26,9 +32,11 @@ namespace Sprint2_Attempt3.Enemy.Keese
                 0f,
                 new Vector2(0, 0),
                 Globals.scale,
-                SpriteEffects.None,
+                effect,
                 0f
             );
         }
+
+    
     }
 }

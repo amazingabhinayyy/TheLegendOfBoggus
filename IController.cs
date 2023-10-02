@@ -10,6 +10,11 @@ namespace Sprint2_Attempt3
 {
     public interface IController
     {
+        public int EnemyIndex
+        {
+            get { return EnemyIndex; }
+            set { EnemyIndex = value; }
+        }
         void Update(GameTime gametime);
 
     }

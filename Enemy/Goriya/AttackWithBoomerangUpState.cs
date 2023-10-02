@@ -5,35 +5,46 @@ using Sprint2_Attempt3.Projectile;
 
 namespace Sprint2_Attempt3.Enemy.Goriya
 {
-    internal class MovingUpGoriyaState : IEnemyState
+    internal class AttackWithBoomerangUpState : IEnemyState
     {
         private Goriya Goriya;
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
-        public MovingUpGoriyaState(Goriya Goriya)
+        private int currentFrame;
+        private int currentBoomerangFrame;
+        private IEnemyProjectile boomerang;
+       
+        public AttackWithBoomerangUpState(Goriya Goriya)
         {
             this.Goriya = Goriya;
             sprite = EnemySpriteFactory.Instance.CreateMovingUpGoriyaSprite();
+            currentFrame = 0;
+            currentBoomerangFrame = 0;
             sourceRectangle = Globals.GoriyaRedUp;
+            boomerang = Goriya.Boomerang;
+         
+
         }
         public void ChangeDirection()
         {
-            Goriya.BoomerangPosition = new Vector2(Goriya.X, Goriya.Y);
-            Goriya.Boomerang = new GoriyaBoomerang(Goriya.BoomerangPosition);
-            ((GoriyaBoomerang)Goriya.Boomerang).GenerateUp();
-            Goriya.State = new AttackWithBoomerangUpState(Goriya);
+            if (Goriya.end)
+            {
+                Goriya.State = new MovingRightGoriyaState(Goriya);
+                Goriya.end = false;
+            }
         }
         public void ChangeAttackedStatus() {
             Goriya.State = new MovingAttackedUpGoriyaState(Goriya);
         }
         public void Update()
         {
-            Goriya.Y -= 1;
             sprite.Update();
+            boomerang.Update();
         }
         public void Draw(SpriteBatch spriteBatch)
         {
             sprite.Draw(spriteBatch, Goriya.X, Goriya.Y, sourceRectangle);
+            boomerang.Draw(spriteBatch);
         }
     }
 }

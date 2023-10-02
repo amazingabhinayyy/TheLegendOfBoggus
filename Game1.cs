@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Enemy.Rope;
+using Sprint2_Attempt3.Projectile;
 
 namespace Sprint2_Attempt3
 {
@@ -13,7 +14,10 @@ namespace Sprint2_Attempt3
         SpriteBatch spriteBatch;
 
         private IController keyboardController;
-        public IController keyController { set {keyboardController = value; } }
+        public IController KeyController { 
+            get { return keyboardController; }
+            set {keyboardController = value; } 
+        }
 
         private IEnemy currentEnemy;
         public IEnemy enemy
@@ -21,9 +25,12 @@ namespace Sprint2_Attempt3
             get { return currentEnemy; }
             set { currentEnemy = value; }
         }
-        private ILink link;
-        public ILink Link { get { return link; } set {link = value;} }
 
+        private Link link;
+        public ILink Link { 
+            get { return link; } 
+            set {link = (Link)value; } 
+        }
 
         public Game1()
         {
@@ -41,6 +48,7 @@ namespace Sprint2_Attempt3
         protected override void Initialize()
         {
             keyboardController = new KeyboardController(this);
+            EnemySpriteFactory enemySpriteFactory = new EnemySpriteFactory();
 
             base.Initialize();
 
@@ -63,6 +71,7 @@ namespace Sprint2_Attempt3
             currentEnemy = new Keese(200,200);
             currentEnemy.Spawn();
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
+            EnemyProjectileSpriteFactory.Instance.LoadAllTextures(Content);
             link = new Link();
         }
 

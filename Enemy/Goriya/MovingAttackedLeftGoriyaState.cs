@@ -1,55 +1,59 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
-using Sprint2_Attempt3.Projectile;
 
 namespace Sprint2_Attempt3.Enemy.Goriya
 {
-    internal class MovingRightGoriyaState : IEnemyState
+    internal class MovingAttackedLeftGoriyaState : IEnemyState
     {
         private Goriya Goriya;
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
         private int currentFrame;
-        public MovingRightGoriyaState(Goriya Goriya)
+        public MovingAttackedLeftGoriyaState(Goriya Goriya)
         {
             this.Goriya = Goriya;
-            sprite = EnemySpriteFactory.Instance.CreateMovingRightGoriyaSprite();
-            sourceRectangle = Globals.GoriyaRedRight;
+            sprite = EnemySpriteFactory.Instance.CreateMovingLeftGoriyaSprite();
             currentFrame = 0;
+            sourceRectangle = Globals.GoriyaRedRight;
 
         }
         public void ChangeDirection()
         {
-            Goriya.BoomerangPosition = new Vector2(Goriya.X, Goriya.Y);
-            Goriya.Boomerang = new GoriyaBoomerang(Goriya.BoomerangPosition);
-            ((GoriyaBoomerang)Goriya.Boomerang).GenerateRight();
-            Goriya.State = new AttackWithBoomerangRightState(Goriya);
+            Goriya.State = new MovingAttackedUpGoriyaState(Goriya);
         }
         public void ChangeAttackedStatus() {
-            Goriya.State = new MovingAttackedRightGoriyaState(Goriya);
+            Goriya.State = new MovingLeftGoriyaState(Goriya);
         }
         public void Update()
         {
+            
             currentFrame++;
-            if (currentFrame < 30)
+            if (currentFrame <= 20)
             {
-                if (currentFrame < 15)
+                if (currentFrame == 5)
                 {
-                    sourceRectangle = Globals.GoriyaRedRight;
-
+                    sourceRectangle = Globals.GoriyaGreenRight2;
                 }
-                else
+                else if (currentFrame == 10)
+                {
+                    sourceRectangle = Globals.GoriyaTealRight;
+                }
+                else if (currentFrame == 15)
                 {
                     sourceRectangle = Globals.GoriyaRedRight2;
-
                 }
-                Goriya.X += 1;
+                else if (currentFrame == 20)
+                {
+                    sourceRectangle = Globals.GoriyaBlueRight;
+                }
             }
             else
             {
                 currentFrame = 0;
             }
+            Goriya.X -= 1;
+
         }
         public void Draw(SpriteBatch spriteBatch)
         {

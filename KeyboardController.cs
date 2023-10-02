@@ -12,14 +12,21 @@ namespace Sprint2_Attempt3
         private Game1 game1;
         private float timeSinceLastUpdate;
         private Dictionary<Keys, ICommand> commandMapping = new Dictionary<Keys, ICommand>();
+        private static int enemyIndex;
         private bool pressed = true;
         private List<Keys> heldKeys = new List<Keys>();
+
+        public int EnemyIndex { 
+            get { return enemyIndex; }
+            set { enemyIndex = value; }
+        }
 
         public KeyboardController(Game1 game)
         {
             this.game1 = game;
             commandMapping = new Dictionary<Keys, ICommand>();
             RegisterCommands();
+            enemyIndex = 0;
             timeSinceLastUpdate = 0;
         }
 

@@ -1,22 +1,17 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace Sprint2_Attempt3.Enemy.Goriya
+namespace Sprint2_Attempt3.Enemy.Stalfos
 {
-    internal class GoriyaBoomerangSprite : IEnemySprite
+    internal class StalfosSprite : IEnemySprite
     {
         private Texture2D texture;
-        private Rectangle sourceRectangle;
+        private SpriteEffects spriteEffects;
         private int currentFrame;
-        private int x;
-        private int y;
-        public GoriyaBoomerangSprite(Texture2D texture)
+        public StalfosSprite(Texture2D texture)
         {
             this.texture = texture;
-            sourceRectangle = Globals.GoriyaBlueRight;
             currentFrame = 0;
-            x = 200;
-            y = 200;
         }
 
         public void Update()
@@ -26,15 +21,13 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             {
                 if (currentFrame < 15)
                 {
-                    sourceRectangle = Globals.GoriyaBlueRight;
+                    spriteEffects = SpriteEffects.None;
 
                 }
                 else
                 {
-                    sourceRectangle = Globals.GoriyaBlueRight2;
-
+                    spriteEffects = SpriteEffects.FlipHorizontally;
                 }
-              
             }
             else
             {
@@ -52,7 +45,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
                 0f,
                 new Vector2(0, 0),
                 Globals.scale,
-                SpriteEffects.FlipHorizontally,
+                spriteEffects,
                 0f
             );
         }
