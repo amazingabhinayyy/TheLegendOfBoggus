@@ -17,7 +17,7 @@ namespace Sprint2_Attempt3.LinkSprites
         public DownMovingLinkSprite(Texture2D linkTexture) 
         {
             this.linkTexture = linkTexture;
-            sourceRectangle = new Rectangle(1, 11, 15, 15);
+            sourceRectangle = new Rectangle(18, 11, 15, 15);
             currentFrame = 0;
         }
 
@@ -36,11 +36,11 @@ namespace Sprint2_Attempt3.LinkSprites
 
             if(currentFrame >= 0 && currentFrame <= 10)
             {
-                sourceRectangle = new Rectangle(1, 11, 15, 15);
+                sourceRectangle = new Rectangle(18, 11, 15, 15);
             }
             else
             {
-                sourceRectangle = new Rectangle(18, 11, 15, 15);
+                sourceRectangle = new Rectangle(1, 11, 15, 15);
             }
 
 

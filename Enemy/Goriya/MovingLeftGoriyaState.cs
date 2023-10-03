@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
-using Sprint2_Attempt3.Projectile;
+using Sprint2_Attempt3.Projectile.GoriyaProjectiles;
 
 namespace Sprint2_Attempt3.Enemy.Goriya
 {
@@ -11,6 +11,8 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
         private int currentFrame;
+        private int elaspedFrameCount;
+        private int endFrame;
         public MovingLeftGoriyaState(Goriya Goriya)
         {
             this.Goriya = Goriya;
@@ -18,15 +20,16 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             currentFrame = 0;
             sourceRectangle = Globals.GoriyaRedRight;
             this.Goriya.Direction = Goriya.ProjectileDirection.Left;
-           
+            elaspedFrameCount = 0;
+            endFrame = 100;
 
         }
         public void ChangeDirection()
         {
-            Goriya.End = false;
             Goriya.BoomerangPosition = new Vector2(Goriya.X, Goriya.Y);
             Goriya.Boomerang = new GoriyaBoomerang(Goriya.BoomerangPosition);
             ((GoriyaBoomerang)Goriya.Boomerang).GenerateLeft();
+            ((GoriyaBoomerang)Goriya.Boomerang).Throwing = true;
             Goriya.State = new AttackWithBoomerangLeftState(Goriya);
         }
         public void ChangeAttackedStatus() {
@@ -52,6 +55,11 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             else
             {
                 currentFrame = 0;
+            }
+            elaspedFrameCount++;
+            if (elaspedFrameCount >= endFrame)
+            {
+                ChangeDirection();
             }
         }
         public void Draw(SpriteBatch spriteBatch)

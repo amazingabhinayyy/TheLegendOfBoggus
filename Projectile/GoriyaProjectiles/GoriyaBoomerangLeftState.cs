@@ -4,13 +4,13 @@ using Sprint2_Attempt3.Enemy.Keese;
 using System;
 using Sprint2_Attempt3.Enemy.Goriya;
 
-namespace Sprint2_Attempt3.Projectile;
+namespace Sprint2_Attempt3.Projectile.GoriyaProjectiles;
 
 internal class GoriyaBoomerangLeftState : IEnemyProjectileState
 {
     private GoriyaBoomerang goriyaBoomerang;
     private IEnemyProjectileSprite sprite;
-    
+
     private static EnemyProjectileSpriteFactory enemyProjectileSpriteFactory;
     private bool goLeft;
     /*private bool finished;
@@ -24,7 +24,7 @@ internal class GoriyaBoomerangLeftState : IEnemyProjectileState
     private int currentFrame;
     private int currentFrame2;
     private int change;
-  
+
 
 
     public GoriyaBoomerangLeftState(GoriyaBoomerang goriyaBoomerang)
@@ -32,18 +32,18 @@ internal class GoriyaBoomerangLeftState : IEnemyProjectileState
         this.goriyaBoomerang = goriyaBoomerang;
         enemyProjectileSpriteFactory = new EnemyProjectileSpriteFactory();
         sprite = EnemyProjectileSpriteFactory.Instance.MovingBoomerang();
-        
+
         timeSinceLastUpdate = 0;
         spriteIndex = 0;
-        this.currentFrame = 0;
-        this.currentFrame2 = 0;
-        //finished = false;
+        currentFrame = 0;
+        currentFrame2 = 0;
+    
         goLeft = goriyaBoomerang.GoLeft;
         change = Globals.boomerangSpeed;
-  
+
     }
 
-   
+
     public void Update(/*gameTime gametime*/)
     {
         /*
@@ -58,7 +58,7 @@ internal class GoriyaBoomerangLeftState : IEnemyProjectileState
         if (currentFrame < Globals.boomerangSpriteSwitchSpeed)
         {
             currentFrame2++;
-            spriteIndex = (int)currentFrame2 / 10;
+            spriteIndex = currentFrame2 / 10;
             if (spriteIndex > 7)
             {
                 spriteIndex = 0;
@@ -68,20 +68,18 @@ internal class GoriyaBoomerangLeftState : IEnemyProjectileState
             if (goLeft)
             {
                 goriyaBoomerang.Position2 = new Vector2(goriyaBoomerang.Position2.X - change, goriyaBoomerang.Position2.Y);
-                if (goriyaBoomerang.Position2.X<=10)
+                if (goriyaBoomerang.Position2.X <= 10)
                 {
                     goriyaBoomerang.GoLeft = false;
                 }
             }
-            else 
+            else
             {
                 goriyaBoomerang.Position2 = new Vector2(goriyaBoomerang.Position2.X + change, goriyaBoomerang.Position2.Y);
                 if (goriyaBoomerang.Position2.X >= goriyaBoomerang.InitialX - 9)
                 {
-                    Goriya.end = true;
+                    goriyaBoomerang.Throwing = false;
                     goriyaBoomerang.GoLeft = true;
-                    //finished = true;
-                   
                 }
             }
         }
@@ -93,6 +91,7 @@ internal class GoriyaBoomerangLeftState : IEnemyProjectileState
     }
     public void Draw(SpriteBatch spriteBatch)
     {
-        sprite.Draw(spriteBatch, (int)goriyaBoomerang.Position2.X-9, (int)goriyaBoomerang.Position2.Y+8, Globals.GoriyaBoomerangLeft[spriteIndex], Globals.GoriyaBoomerangLeftEffects[spriteIndex], Globals.originsLeft[spriteIndex]);
+        Globals.currentIndex = spriteIndex;
+        sprite.Draw(spriteBatch, (int)goriyaBoomerang.Position2.X - 9, (int)goriyaBoomerang.Position2.Y + 8, Globals.GoriyaBoomerangLeft[spriteIndex]);
     }
 }

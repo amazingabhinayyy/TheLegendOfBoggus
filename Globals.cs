@@ -10,6 +10,8 @@ using Sprint2_Attempt3.Enemy.Goriya;
 using Sprint2_Attempt3.Enemy.Hand;
 using Sprint2_Attempt3.Enemy.Stalfos;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint2_Attempt3.Enemy.Aquamentus;
+using Sprint2_Attempt3.Projectile.AquamentusProjectiles;
 
 namespace Sprint2_Attempt3
 {
@@ -20,7 +22,7 @@ namespace Sprint2_Attempt3
         //my futile attempt to avoid making a Projectile class, probably will delete
         public static bool changeDirection = false;
 
-        public static IEnemy[] enemies = { new Keese(200,200), new Rope(200, 200), new Gel(200, 200), new Zol(200, 200), new SpikeTrap(200, 200), new Dodongo(200, 200), new Goriya(200, 200), new Hand(200,200), new Stalfos(200,200) };
+        public static IEnemy[] enemies = { new Keese(200,200), new Rope(200, 200), new Gel(200, 200), new Zol(200, 200), new SpikeTrap(200, 200), new Dodongo(200, 200), new Goriya(200, 200), new Hand(200,200), new Stalfos(200,200), new Aquamentus(200,200) };
         public static Rectangle KeeseSprite1 { get { return new Rectangle(33, 34, 16, 8); } }
         public static Rectangle KeeseSprite2 { get { return new Rectangle(34, 43, 16, 11); } }
 
@@ -58,6 +60,8 @@ namespace Sprint2_Attempt3
         public static Rectangle GoriyaBlueRight { get { return new Rectangle(117, 52, 14, 16); } }
         public static Rectangle GoriyaBlueRight2 { get { return new Rectangle(135, 52, 15, 16); } }
 
+     
+
         public static Rectangle HandGreen2 { get { return new Rectangle(68, 1, 16, 16); } }
         public static Rectangle HandTeal1 { get { return new Rectangle(50, 18, 17, 16); } }
         public static Rectangle HandBlue1 { get { return new Rectangle(50, 35, 17, 16); } }
@@ -70,23 +74,39 @@ namespace Sprint2_Attempt3
         public static Rectangle StalfosBlue { get { return new Rectangle(17, 51, 15, 16); } }
 
         public static Rectangle GoriyaBoomerang1 { get { return new Rectangle(0, 74, 7, 9); } }
-        public static Vector2 boomerangOrigin1 = new Vector2(4, 78);
         public static Rectangle GoriyaBoomerang2 { get { return new Rectangle(10, 74, 9, 9); } }
-        public static Vector2 boomerangOrigin2 = new Vector2(14, 79);
         public static Rectangle GoriyaBoomerang3 { get { return new Rectangle(20, 76, 9, 6); } }
-        public static Vector2 boomerangOrigin3 = new Vector2(24, 80);
 
-
+        public static int currentIndex = 0;
         public static Rectangle[] GoriyaBoomerangLeft = { GoriyaBoomerang1, GoriyaBoomerang2, GoriyaBoomerang3, GoriyaBoomerang2, GoriyaBoomerang1, GoriyaBoomerang2, GoriyaBoomerang3, GoriyaBoomerang2 };
         public static SpriteEffects[] GoriyaBoomerangLeftEffects = { SpriteEffects.None, SpriteEffects.None, SpriteEffects.None, SpriteEffects.FlipHorizontally, SpriteEffects.FlipHorizontally, SpriteEffects.FlipHorizontally | SpriteEffects.FlipVertically, SpriteEffects.FlipVertically, SpriteEffects.FlipVertically };
-        public static Vector2[] originsLeft = { boomerangOrigin1, boomerangOrigin2, boomerangOrigin3, boomerangOrigin2, boomerangOrigin1, boomerangOrigin2, boomerangOrigin3, boomerangOrigin2 };
 
         public static Rectangle[] GoriyaBoomerangUp = { GoriyaBoomerang1, GoriyaBoomerang2, GoriyaBoomerang2, GoriyaBoomerang2, GoriyaBoomerang1, GoriyaBoomerang2, GoriyaBoomerang3, GoriyaBoomerang2 }; 
         public static Rectangle[] GoriyaBoomerangRight = { GoriyaBoomerang1, GoriyaBoomerang2, GoriyaBoomerang2, GoriyaBoomerang2, GoriyaBoomerang1, GoriyaBoomerang2, GoriyaBoomerang3, GoriyaBoomerang2 }; 
         public static Rectangle[] GoriyaBoomerangDown = { GoriyaBoomerang1, GoriyaBoomerang2, GoriyaBoomerang2, GoriyaBoomerang2, GoriyaBoomerang1, GoriyaBoomerang2, GoriyaBoomerang3, GoriyaBoomerang2 };
-        public static int boomerangSpeed = 1;
-        public static int boomerangSpriteSwitchSpeed = 60;
+        public static int boomerangSpeed = 3;
+        public static int boomerangSpriteSwitchSpeed = 20;
         
         public static Rectangle StalfosSprite { get { return new Rectangle(34, 18, 15, 16); } }
+
+        public static Rectangle AquamentusGreenLeft { get { return new Rectangle(51, 0, 24, 33); } }
+        public static Rectangle AquamentusGreenLeft2 { get { return new Rectangle(76, 0, 24, 33); } }
+        public static Rectangle AquamentusGreenLeftMouthOpen { get { return new Rectangle(0, 0, 24, 33); } }
+        public static Rectangle AquamentusGreenLeftMouthOpen2 { get { return new Rectangle(26, 0, 24, 33); } }
+        public static Rectangle AquamentusOrangeLeft1 { get { return new Rectangle(140, 0, 24, 33); } }
+        public static Rectangle AquamentusBlueLeft { get { return new Rectangle(171, 0, 24, 33); } }
+        public static Rectangle AquamentusOrangeLeft2 { get { return new Rectangle(202, 0, 24, 33); } }
+        public static Rectangle AquamentusFireball1 { get { return new Rectangle(100, 3, 9, 11); } }
+        public static Rectangle AquamentusFireball2 { get { return new Rectangle(109, 3, 9, 11); } }
+        public static Rectangle AquamentusFireball3 { get { return new Rectangle(118, 3, 9, 11); } }
+        public static Rectangle AquamentusFireball4 { get { return new Rectangle(127, 3, 9, 11); } }
+        public static int fireballSpeed = 2;
+        public static int fireballSpriteSwitchSpeed = 40;
+
+        public static Rectangle[] AquamentusFireballLeft = {AquamentusFireball1, AquamentusFireball2, AquamentusFireball3, AquamentusFireball4, AquamentusFireball1, AquamentusFireball2, AquamentusFireball3, AquamentusFireball4 };
+        public static SpriteEffects[] AquamentusFireballLeftEffects = { SpriteEffects.None, SpriteEffects.None, SpriteEffects.None, SpriteEffects.None, SpriteEffects.None, SpriteEffects.None, SpriteEffects.None, SpriteEffects.None };
+        public static Vector2 temp = new Vector2(0, 0);
+        public static Vector2[] AquamentusOriginsLeft = { temp, temp, temp, temp, temp, temp, temp, temp };
+        public static int fireBallMaxDistance = 100;
     }
 }

@@ -5,6 +5,10 @@ using Sprint2;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Enemy.Rope;
+using Sprint2_Attempt3.Projectile;
+using Sprint2_Attempt3.ItemClasses;
+using System;
+using System.Diagnostics;
 
 namespace Sprint2_Attempt3
 {
@@ -26,8 +30,15 @@ namespace Sprint2_Attempt3
             get { return currentEnemy; }
             set { currentEnemy = value; }
         }
-        private Link link;
-        public ILink Link { get { return link; } set {; } }
+
+        private ILink link;
+        private Item item;
+        public int itemIndex;
+        public IItem Item { get { return item; } set {; } }
+        public ILink Link { 
+            get { return link; } 
+            set {link = value; } 
+        }
 
         private Block block;
         public IBlock Block { get { return block; } set {; } }
@@ -41,6 +52,7 @@ namespace Sprint2_Attempt3
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
             blockIndex = 0;
+            itemIndex = 0;
         }
 
         /// <summary>
@@ -71,6 +83,8 @@ namespace Sprint2_Attempt3
             currentEnemy.Spawn();
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
             link = new Link();
+            ItemSpriteFactory.Instance.LoadAllTextures(Content);
+            item = new Item();
             BlockSpriteFactory.Instance.LoadAllTextures(Content);
             block = new Block();
         }
@@ -99,6 +113,7 @@ namespace Sprint2_Attempt3
             keyboardController.Update(gameTime);
             currentEnemy.Update();
             link.Update();
+            item.Update();
             block.Update();
             base.Update(gameTime);
         }
@@ -116,9 +131,9 @@ namespace Sprint2_Attempt3
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-
             currentEnemy.Draw(spriteBatch);
             link.Draw(spriteBatch, Color.White);
+            item.Draw(spriteBatch);
             block.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
