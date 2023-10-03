@@ -30,9 +30,9 @@ namespace Sprint2_Attempt3
         }
 
         private ILink link;
-        private Item item;
+        private IItem item;
         public int itemIndex;
-        public IItem Item { get { return item; } set {; } }
+        public IItem Item { get { return item; } set {item = value; } }
         public ILink Link { 
             get { return link; } 
             set {link = value; } 
