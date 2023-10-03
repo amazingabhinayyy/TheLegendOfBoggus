@@ -15,12 +15,15 @@ namespace Sprint2
 {
     public class BlockSpriteFactory
     {
-        private static Texture2D tilesSet;
+        private static Texture2D blocks;
         private static Vector2 diamondPos;
         private static Vector2 plainPos;
         private static Vector2 upChunkPos;
         private static Vector2 sideChunkPos;
         private static Vector2 StartPosition;
+        private static Vector2 blackBlockPos;
+        private static Vector2 dotTilePos;
+
 
         private static BlockSpriteFactory instance = new BlockSpriteFactory();
 
@@ -35,13 +38,13 @@ namespace Sprint2
         private BlockSpriteFactory()
         {
             StartPosition = new Vector2(125, 125);
-            plainPos = diamondPos = upChunkPos = sideChunkPos = StartPosition;
+            plainPos = diamondPos = upChunkPos = sideChunkPos = blackBlockPos = dotTilePos = StartPosition;
 
         }
 
         public void LoadAllTextures(ContentManager content)
         {
-            tilesSet = content.Load<Texture2D>("tilesSet");
+            blocks = content.Load<Texture2D>("blocks");
 
         }
 
@@ -49,24 +52,34 @@ namespace Sprint2
         public static Rectangle diamondScr = new Rectangle(17, 0, 16, 16);
         public static Rectangle upChunkScr = new Rectangle(34, 0, 16, 16);
         public static Rectangle sideChunkScr = new Rectangle(51, 0, 16, 16);
+        public static Rectangle blackBlockScr = new Rectangle(0, 17, 16, 16);
+        public static Rectangle dotTileScr = new Rectangle(17, 17, 16, 16);
 
         public IBlockSprite CreatePlainTile()
         {
-            return new PlainTile(tilesSet, plainPos, plainScr);
+            return new PlainTile(blocks, plainPos, plainScr);
         }
 
         public IBlockSprite CreateDiamondTile()
         {
-            return new DiamondTile(tilesSet, diamondPos, diamondScr);
+            return new DiamondTile(blocks, diamondPos, diamondScr);
         }
 
         public IBlockSprite CreateUpChunk()
         {
-            return new UpChunk(tilesSet, upChunkPos, upChunkScr);
+            return new UpChunk(blocks, upChunkPos, upChunkScr);
         }
         public IBlockSprite CreateSideChunk()
         {
-            return new SideChunk(tilesSet, sideChunkPos, sideChunkScr);
+            return new SideChunk(blocks, sideChunkPos, sideChunkScr);
+        }
+        public IBlockSprite CreateBlackBlock()
+        {
+            return new SideChunk(blocks, blackBlockPos, blackBlockScr);
+        }
+        public IBlockSprite CreateDotTile()
+        {
+            return new SideChunk(blocks, dotTilePos, dotTileScr);
         }
     }
 }

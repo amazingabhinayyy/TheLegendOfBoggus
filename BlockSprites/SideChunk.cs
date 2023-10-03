@@ -13,10 +13,10 @@ namespace Sprint2
     {
         private Rectangle sideChunkSource;
         private int destX, destY;
-        private Texture2D tilesSet;
-        public SideChunk(Texture2D tilesSet, Vector2 Pos, Rectangle sideChunkSource)
+        private Texture2D blocks;
+        public SideChunk(Texture2D blocks, Vector2 Pos, Rectangle sideChunkSource)
         {
-            this.tilesSet = tilesSet;
+            this.blocks = blocks;
             this.destX = (int)Pos.X;
             this.destY = (int)Pos.Y;
             this.sideChunkSource = sideChunkSource;
@@ -36,7 +36,7 @@ namespace Sprint2
         public void Draw(SpriteBatch spriteBatch)
         {
             Rectangle scrRectangle = this.sideChunkSource;
-            spriteBatch.Draw(tilesSet, DestRectangle(), scrRectangle, Color.White);
+            spriteBatch.Draw(blocks, DestRectangle(), scrRectangle, Color.White);
         }
     }
 }

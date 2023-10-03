@@ -36,7 +36,14 @@ namespace Sprint2
         {
             State.ChangeToSideChunk();
         }
-
+        public void ChangeToBlackBlock()
+        {
+            State.ChangeToBlackBlock();
+        }
+        public void ChangeToDotTile()
+        {
+            State.ChangeToDotTile();
+        }
         public void StartBlockState()
         {
             State = new PlainTileState(this);

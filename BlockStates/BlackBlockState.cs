@@ -7,16 +7,15 @@ using System.Threading.Tasks;
 
 namespace Sprint2
 {
-    public class PlainTileState : BlockStates.IStateTiles
+    public class DotTileState : BlockStates.IStateTiles
     {
         private Block block;
         private Game1 game1;
 
-        public PlainTileState(Block block)
+        public DotTileState(Block block)
         {
             this.block = block;
-
-            block.Sprite = BlockSpriteFactory.Instance.CreatePlainTile();
+            block.Sprite = BlockSpriteFactory.Instance.CreateDotTile();
         }
         public void ChangeToDiamondTile()
         {

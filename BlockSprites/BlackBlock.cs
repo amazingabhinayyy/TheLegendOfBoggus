@@ -9,17 +9,17 @@ using System.ComponentModel;
 
 namespace Sprint2
 {
-    public class DiamondTile : IBlockSprite
+    public class BlackBlock : IBlockSprite
     {
-        private Rectangle diamondSource;
+        private Rectangle blackBlockSource;
         private int destX, destY;
         private Texture2D blocks;
-        public DiamondTile(Texture2D blocks, Vector2 Pos, Rectangle diamondSource)
+        public BlackBlock(Texture2D blocks, Vector2 Pos, Rectangle diamondSource)
         {
             this.blocks = blocks;
             this.destX = (int)Pos.X;
             this.destY = (int)Pos.Y;
-            this.diamondSource = diamondSource;
+            this.blackBlockSource = blackBlockSource;
         }
 
         public void Update()
@@ -28,14 +28,14 @@ namespace Sprint2
 
         public Rectangle DestRectangle()
         {
-            int width = this.diamondSource.Width;
-            int height = this.diamondSource.Height;
+            int width = this.blackBlockSource.Width;
+            int height = this.blackBlockSource.Height;
             return new Rectangle(destX, destY, width * 3, height * 3);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Rectangle scrRectangle = this.diamondSource;
+            Rectangle scrRectangle = this.blackBlockSource;
             spriteBatch.Draw(blocks, DestRectangle(), scrRectangle, Color.White);
         }
     }

@@ -13,10 +13,10 @@ namespace Sprint2
     {
         private Rectangle plainSource;
         private int destX, destY;
-        private Texture2D tilesSet;
-        public PlainTile(Texture2D tilesSet, Vector2 Pos, Rectangle plainSource)
+        private Texture2D blocks;
+        public PlainTile(Texture2D blocks, Vector2 Pos, Rectangle plainSource)
         {
-            this.tilesSet = tilesSet;
+            this.blocks = blocks;
             this.destX = (int)Pos.X;
             this.destY = (int)Pos.Y;
             this.plainSource = plainSource;
@@ -36,7 +36,7 @@ namespace Sprint2
         public void Draw(SpriteBatch spriteBatch)
         {
             Rectangle scrRectangle = this.plainSource;
-            spriteBatch.Draw(tilesSet, DestRectangle(), scrRectangle, Color.White);
+            spriteBatch.Draw(blocks, DestRectangle(), scrRectangle, Color.White);
         }
     }
 }
