@@ -14,6 +14,9 @@ namespace Sprint2
         public void ChangeToDiamondTile();
         public void ChangeToSideChunk();
         public void ChangeToUpChunk();
+        public void ChangeToBlackBlock();
+        public void ChangeToDotTile();
+
         public void Update();
 
         public void Draw(SpriteBatch spriteBatch);
