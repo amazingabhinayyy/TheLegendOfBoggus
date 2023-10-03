@@ -29,7 +29,7 @@ namespace Sprint2_Attempt3.CommandClasses
             * TODO:
             * call switch to next item method
             */
-            if (game1.blockIndex == 6)
+            if (game1.blockIndex == 8)
             {
                 game1.blockIndex -= 2;
             }
@@ -58,6 +58,12 @@ namespace Sprint2_Attempt3.CommandClasses
                     break;
                 case 5:
                     game1.Block.ChangeToWhiteStairs();
+                    break;
+                case 6: 
+                    game1.Block.ChangeToStaircaseTileChunk();
+                    break;
+                case 7:
+                    game1.Block.ChangeToBlueTileChunk();
                     break;
             }
         }

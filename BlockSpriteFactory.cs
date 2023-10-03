@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Input;
+using Sprint2_Attempt3.BlockSprites;
 //using System.Numerics;
 
 namespace Sprint2
@@ -51,6 +52,8 @@ namespace Sprint2
         public static Rectangle diamondScr = new Rectangle(17, 0, 16, 16);
         public static Rectangle upChunkScr = new Rectangle(34, 0, 16, 16);
         public static Rectangle sideChunkScr = new Rectangle(51, 0, 16, 16);
+        public static Rectangle staircaseScr = new Rectangle(51, 17, 16, 16);
+        public static Rectangle blueTileScr = new Rectangle(34, 17, 16, 16);
         public static Rectangle whiteStairScr = new Rectangle(17, 34, 16, 16);
         public static Rectangle whiteBrickScr = new Rectangle(0, 34, 16, 16);
 
@@ -71,6 +74,14 @@ namespace Sprint2
         public IBlockSprite CreateSideChunk()
         {
             return new SideChunk(tilesSet, sideChunkPos, sideChunkScr);
+        }
+        public IBlockSprite CreateStaircaseTile()
+        {
+            return new StaircaseTile(tilesSet, sideChunkPos, staircaseScr);
+        }
+        public IBlockSprite CreateBlueTile()
+        {
+            return new BlueTile(tilesSet, sideChunkPos, blueTileScr);
         }
         public IBlockSprite CreateWhiteBrick()
         {
