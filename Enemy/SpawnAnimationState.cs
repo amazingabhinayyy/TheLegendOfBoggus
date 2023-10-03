@@ -1,36 +1,51 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
+using Sprint2_Attempt3.Enemy.Zol;
+using Microsoft.Xna.Framework;
 
 namespace Sprint2_Attempt3.Enemy.Keese
 {
     internal class SpawnAnimationState : IEnemyState
     {
         private IEnemy enemy;
-        private SpawnAnimationSprite sprite;
+        private IEnemySprite sprite;
+        private Rectangle sourceRectangle;
+        private int currentFrame;
         private static EnemySpriteFactory enemySpriteFactory;
         public SpawnAnimationState(IEnemy enemy)
         {
             this.enemy = enemy;
             enemySpriteFactory = new EnemySpriteFactory();
-            sprite = (SpawnAnimationSprite)EnemySpriteFactory.Instance.CreateSpawnAnimationSprite();
-
+            sprite = EnemySpriteFactory.Instance.CreateSpawnAnimationSprite();
+            sourceRectangle = new Rectangle(1, 1, 16, 16);
+            currentFrame = 0;
+            enemy.X = 200;
+            enemy.Y = 200;
         }
         public void ChangeDirection()
-        {
-            
+        {            
         }
         public void ChangeAttackedStatus() {
 
         }
         public void Update()
         {
-            if (sprite.Spawn) {
+            currentFrame++;
+            if (currentFrame == 10)
+            {
+                sourceRectangle.X = 18;
+            }
+            else if (currentFrame == 20)
+            {
+                sourceRectangle.X = 35;
+            }
+            else if (currentFrame == 30)
+            {
                 enemy.Generate();
             }
-            sprite.Update();
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch);
+            sprite.Draw(spriteBatch, enemy.X, enemy.Y, sourceRectangle);
         }
     }
 }

@@ -16,10 +16,7 @@ namespace Sprint2_Attempt3.CommandClasses
 
         public void Execute()
         {
-            /*
-            * TODO:
-            * call quit method
-            */
+            game1.Exit();
         }
     }
 }

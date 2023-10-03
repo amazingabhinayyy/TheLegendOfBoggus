@@ -5,8 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 
-using Sprint2_Attempt3.Items;
-
 namespace Sprint2_Attempt3.LinkStates
 {
     public class DownUseBombLinkState : IState
@@ -16,17 +14,17 @@ namespace Sprint2_Attempt3.LinkStates
         public DownUseBombLinkState(Link link)
         {
             this.link = link;
-            link.Sprite = LinkSpriteFactory.Instance.CreateDownUseBombLinkSprite();
+            link.Sprite = LinkSpriteFactory.Instance.CreateDownItemLinkSprite();
             link.ItemPosition = new Vector2(link.position.X, link.position.Y + 45);
-            link.ItemState = new BombState(link);
+            link.Items.Add(LinkSpriteFactory.Instance.CreateBombItem());
             frameCounter = 0;
+        }
+        public void Stop()
+        {
+            link.State = new DownIdleLinkState(link);
         }
         public void BecomeIdle()
         {
-            if (frameCounter >= 10)
-            {
-                link.State = new DownIdleLinkState(link);
-            }
         }
         public void MoveUp()
         {
@@ -53,6 +51,10 @@ namespace Sprint2_Attempt3.LinkStates
         public void Update()
         {
             frameCounter++;
+            if (frameCounter >= 10)
+            {
+                Stop();
+            }
         }
         public void UseBomb()
         {
@@ -62,6 +64,19 @@ namespace Sprint2_Attempt3.LinkStates
 
         }
         public void UseBoomerang()
+        {
+
+        }
+        public void UseBlueBoomerang() { }
+        public void UseBlueArrow()
+        {
+
+        }
+        public void UseFire()
+        {
+
+        }
+        public void UseThrowingSword()
         {
 
         }

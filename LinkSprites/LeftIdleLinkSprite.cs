@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint2_Attempt3
+namespace Sprint2_Attempt3.LinkSprites
 {
     public class LeftIdleLinkSprite : ISprite
     {
@@ -26,7 +26,7 @@ namespace Sprint2_Attempt3
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
         {
             destinationRectangle = new Rectangle((int)location.X, (int)location.Y, 45, 45);
-            spriteBatch.Draw(linkTexture, destinationRectangle, sourceRectangle, Color.White, 0, new Vector2(0), SpriteEffects.FlipHorizontally, 0);
+            spriteBatch.Draw(linkTexture, destinationRectangle, sourceRectangle, color, 0, new Vector2(0), SpriteEffects.FlipHorizontally, 0);
 
         }
     }

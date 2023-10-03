@@ -1,11 +1,10 @@
-﻿using Sprint2_Attempt3.LinkStates;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint2_Attempt3
+namespace Sprint2_Attempt3.LinkStates
 {
     public class UpIdleLinkState : IState
     {
@@ -60,9 +59,25 @@ namespace Sprint2_Attempt3
         }
         public void UseArrow()
         {
-
+            link.State = new UpUseArrowState(link);
         }
         public void UseBoomerang()
+        {
+            link.State = new UpUseBoomerangState(link); 
+        }
+        public void UseBlueBoomerang() 
+        {
+            link.State = new UpUseBlueBoomerangState(link);
+        }
+        public void UseBlueArrow()
+        {
+            link.State = new UpUseBlueArrowState(link);
+        }
+        public void UseFire()
+        {
+            link.State = new UpUseFireState(link);
+        }
+        public void UseThrowingSword()
         {
 
         }
