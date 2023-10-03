@@ -60,8 +60,8 @@ namespace Sprint2_Attempt3
 
 
             //Block switching
-            commandMapping.Add(Keys.T, new SwitchToPreviousItem(game1));
-            commandMapping.Add(Keys.Y, new SwitchToNextItem(game1));
+            commandMapping.Add(Keys.I, new SwitchToPreviousItem(game1));
+            commandMapping.Add(Keys.U, new SwitchToNextItem(game1));
 
             //Enemy switching
             commandMapping.Add(Keys.O, new SwitchToPreviousEnemy(game1));
