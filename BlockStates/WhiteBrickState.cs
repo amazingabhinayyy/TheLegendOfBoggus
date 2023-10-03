@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace Sprint2
 {
-    public class SideChunkState : BlockStates.IStateTiles
+    public class WhiteBrickState : BlockStates.IStateTiles
     {
         private Block block;
         private Game1 game1;
 
-        public SideChunkState(Block block)
+        public WhiteBrickState(Block block)
         {
             this.block = block;
 
-            block.Sprite = BlockSpriteFactory.Instance.CreateSideChunk();
+            block.Sprite = BlockSpriteFactory.Instance.CreateWhiteBrick();
         }
         public void ChangeToDiamondTile()
         {
@@ -28,7 +28,7 @@ namespace Sprint2
         }
         public void ChangeToUpChunk()
         {
-            block.State = new UpChunkState(block);      
+            block.State = new UpChunkState(block);
         }
         public void ChangeToSideChunk()
         {
@@ -48,5 +48,6 @@ namespace Sprint2
 
         }
 
+       
     }
 }

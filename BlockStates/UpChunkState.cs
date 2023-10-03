@@ -34,6 +34,15 @@ namespace Sprint2
         {
             block.State = new SideChunkState(block);
         }
+        public void ChangeToWhiteBrick()
+        {
+            block.State = new WhiteBrickState(block);
+        }
+
+        public void ChangeToWhiteStairs()
+        {
+            block.State = new WhiteStairState(block);
+        }
         public void Update()
         {
 
