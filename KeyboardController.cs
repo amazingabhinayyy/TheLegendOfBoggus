@@ -153,7 +153,7 @@ namespace Sprint2_Attempt3
                     {
                         commandMapping[key].Execute();
                         //The if condition hold keys that can be held
-                        if(!(key.Equals(Keys.W) || key.Equals(Keys.A) || key.Equals(Keys.S)|| key.Equals(Keys.D) || key.Equals(Keys.Down) || key.Equals(Keys.Up) || key.Equals(Keys.Right) || key.Equals(Keys.Left)))
+                        if(!(moveKeys.Contains(key)))
                         {
                             heldKeys.Add(key);
                         }
