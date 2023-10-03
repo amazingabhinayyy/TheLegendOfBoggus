@@ -56,7 +56,6 @@ namespace Sprint2_Attempt3.ItemStates
         }
         public void ChangeToTriforcePiece()
         {
-            //item.ItemState = new TriforcePieceItemState(item);
         }
         public void ChangeToBow()
         {

@@ -72,7 +72,6 @@ namespace Sprint2_Attempt3.ItemStates
         }
         public void ChangeToBluePotion()
         {
-            //item.ItemState = new BluePotionItemState(item);
         }
         public void Update()
         {

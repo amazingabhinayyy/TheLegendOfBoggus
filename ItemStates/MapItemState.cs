@@ -44,7 +44,6 @@ namespace Sprint2_Attempt3.ItemStates
         }
         public void ChangeToMap()
         {
-            //item.ItemState = new MapItemState(item);
         }
         public void ChangeToKey()
         {

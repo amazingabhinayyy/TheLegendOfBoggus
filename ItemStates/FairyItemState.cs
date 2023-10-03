@@ -40,7 +40,6 @@ namespace Sprint2_Attempt3.ItemStates
         }
         public void ChangeToFairy()
         {
-            //item.ItemState = new FairyItemState(item);
         }
         public void ChangeToMap()
         {

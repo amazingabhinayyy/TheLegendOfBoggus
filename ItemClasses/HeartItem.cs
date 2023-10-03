@@ -17,6 +17,7 @@ namespace Sprint2_Attempt3.ItemClasses
         private int currentFrame;
         private int totalFrames;
         private int time;
+        private Rectangle srcRectangle;
         public HeartItem(Texture2D heartTexture, Vector2 Pos, Rectangle heartSource)
         {
             texture = heartTexture;
@@ -24,18 +25,19 @@ namespace Sprint2_Attempt3.ItemClasses
             this.desty = (int)Pos.Y;
             this.heartSource = heartSource;
             currentFrame = 1;
-            totalFrames = 2;
+            totalFrames = 3;
             time = 0;
+            srcRectangle = this.heartSource;
         }
 
         public void Update()
         {
-            if (time % 15 == 0)
+            if (time % 8 == 0)
             {
                 currentFrame++;
                 if (currentFrame == totalFrames)
                 {
-                    currentFrame = 0;
+                    currentFrame = 1;
                 }
             }
             time++;
@@ -49,15 +51,14 @@ namespace Sprint2_Attempt3.ItemClasses
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            Rectangle srcRectangle = this.heartSource;
             if (currentFrame == 1)
             {
                 srcRectangle = this.heartSource;
+
             }
             else if (currentFrame == 2)
             {
                 srcRectangle = ItemSpriteFactory.blueheartSrc;
-                Debug.WriteLine("test");
             }
             spriteBatch.Draw(texture, DestRectangle(), srcRectangle, Color.White);
         }

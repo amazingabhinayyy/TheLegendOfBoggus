@@ -28,7 +28,6 @@ namespace Sprint2_Attempt3.ItemStates
         }
         public void ChangeToCompass()
         {
-            //item.ItemState = new CompassItemState(item);
         }
         public void ChangeToHeart()
         {

@@ -24,20 +24,15 @@ namespace Sprint2_Attempt3.CommandClasses
             * TODO:
             * call switch to next item method
             */
-            // switchItem(itemNumber)
-            //nextItem();
-            //Debug.WriteLine("TEST");
             if (game1.itemIndex > 0)
             {
                 game1.itemIndex--;
             }
-            //Debug.Write(itemIndex);
 
             switch (game1.itemIndex)
             {
                 case 0:
                     game1.Item.ChangeToRupee();
-                    //item.ChangeToRupee();
                     break;
                 case 1:
                     game1.Item.ChangeToBomb();

@@ -36,7 +36,6 @@ namespace Sprint2_Attempt3.ItemStates
         }
         public void ChangeToBoomerang()
         {
-            //item.ItemState = new BoomerangItemState(item);
         }
         public void ChangeToFairy()
         {
