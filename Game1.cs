@@ -87,6 +87,7 @@ namespace Sprint2_Attempt3
             item = new Item();
             BlockSpriteFactory.Instance.LoadAllTextures(Content);
             block = new Block();
+            EnemyProjectileSpriteFactory.Instance.LoadAllTextures(Content);
         }
 
         /// <summary>
