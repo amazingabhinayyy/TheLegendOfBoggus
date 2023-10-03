@@ -67,7 +67,7 @@ namespace Sprint2_Attempt3
             spriteBatch = new SpriteBatch(GraphicsDevice);
             keyboardController = new KeyboardController(this);
             EnemySpriteFactory.Instance.LoadAllTextures(this.Content);
-            currentEnemy = new Keese();
+            currentEnemy = new Keese(200, 200);
             currentEnemy.Spawn();
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
             link = new Link();
