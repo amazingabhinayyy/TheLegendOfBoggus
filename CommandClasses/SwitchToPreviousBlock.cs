@@ -29,7 +29,11 @@ namespace Sprint2_Attempt3.CommandClasses
             * TODO:
             * call switch to next item method
             */
-            if (game1.blockIndex > 0)
+            if (game1.blockIndex == 11)
+            {
+                game1.blockIndex -= 2;
+            }
+            if (game1.blockIndex >= 0)
             {
                 game1.blockIndex--;
             }
@@ -38,10 +42,10 @@ namespace Sprint2_Attempt3.CommandClasses
             switch (game1.blockIndex)
             {
                 case 0:
-                    game1.Block.ChangeToDiamondTile();
+                    game1.Block.ChangeToPlainTile();
                     break;
                 case 1:
-                    game1.Block.ChangeToPlainTile();
+                    game1.Block.ChangeToDiamondTile();
                     break;
                 case 2:
                     game1.Block.ChangeToSideChunk();
@@ -50,9 +54,21 @@ namespace Sprint2_Attempt3.CommandClasses
                     game1.Block.ChangeToUpChunk();
                     break;
                 case 4:
-                    game1.Block.ChangeToBlackBlock();
+                    game1.Block.ChangeToWhiteBrick(); ;
                     break;
                 case 5:
+                    game1.Block.ChangeToWhiteStairs();
+                    break;
+                case 6: 
+                    game1.Block.ChangeToStaircaseTileChunk();
+                    break;
+                case 7:
+                    game1.Block.ChangeToBlueTileChunk();
+                    break;
+                case 8:
+                    game1.Block.ChangeToBlackBlock();
+                    break;
+                case 9:
                     game1.Block.ChangeToDotTile();
                     break;
             }

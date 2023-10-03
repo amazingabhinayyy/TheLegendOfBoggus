@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Input;
+using Sprint2_Attempt3.BlockSprites;
 //using System.Numerics;
 
 namespace Sprint2
@@ -20,6 +21,8 @@ namespace Sprint2
         private static Vector2 plainPos;
         private static Vector2 upChunkPos;
         private static Vector2 sideChunkPos;
+        private static Vector2 whiteStairPos;
+        private static Vector2 whiteBrickPos;
         private static Vector2 StartPosition;
         private static Vector2 blackBlockPos;
         private static Vector2 dotTilePos;
@@ -38,13 +41,13 @@ namespace Sprint2
         private BlockSpriteFactory()
         {
             StartPosition = new Vector2(125, 125);
-            plainPos = diamondPos = upChunkPos = sideChunkPos = blackBlockPos = dotTilePos = StartPosition;
+            plainPos = diamondPos = upChunkPos = sideChunkPosblackBlockPos = dotTilePos = whiteStairPos=whiteBrickPos=StartPosition;
 
         }
 
         public void LoadAllTextures(ContentManager content)
         {
-            blocks = content.Load<Texture2D>("blocks");
+            tilesSet = content.Load<Texture2D>("blocks");
 
         }
 
@@ -52,6 +55,10 @@ namespace Sprint2
         public static Rectangle diamondScr = new Rectangle(17, 0, 16, 16);
         public static Rectangle upChunkScr = new Rectangle(34, 0, 16, 16);
         public static Rectangle sideChunkScr = new Rectangle(51, 0, 16, 16);
+        public static Rectangle staircaseScr = new Rectangle(51, 17, 16, 16);
+        public static Rectangle blueTileScr = new Rectangle(34, 17, 16, 16);
+        public static Rectangle whiteStairScr = new Rectangle(17, 34, 16, 16);
+        public static Rectangle whiteBrickScr = new Rectangle(0, 34, 16, 16);
         public static Rectangle blackBlockScr = new Rectangle(0, 17, 16, 16);
         public static Rectangle dotTileScr = new Rectangle(17, 17, 16, 16);
 
@@ -80,6 +87,22 @@ namespace Sprint2
         public IBlockSprite CreateDotTile()
         {
             return new SideChunk(blocks, dotTilePos, dotTileScr);
+        }
+        public IBlockSprite CreateStaircaseTile()
+        {
+            return new StaircaseTile(tilesSet, sideChunkPos, staircaseScr);
+        }
+        public IBlockSprite CreateBlueTile()
+        {
+            return new BlueTile(tilesSet, sideChunkPos, blueTileScr);
+        }
+        public IBlockSprite CreateWhiteBrick()
+        {
+            return new SideChunk(tilesSet, whiteBrickPos, whiteBrickScr);
+        }
+        public IBlockSprite CreateWhiteStair()
+        {
+            return new SideChunk(tilesSet, whiteStairPos, whiteStairScr);
         }
     }
 }

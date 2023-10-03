@@ -36,6 +36,15 @@ namespace Sprint2
         {
             State.ChangeToSideChunk();
         }
+        public void ChangeToStaircaseTileChunk()
+        {
+            State.ChangeToStaircaseChuck();
+        }
+        public void ChangeToBlueTileChunk()
+        {
+            State.ChangeToBlueTileChuck();
+        }
+
         public void ChangeToBlackBlock()
         {
             State.ChangeToBlackBlock();
@@ -48,6 +57,15 @@ namespace Sprint2
         {
             State = new PlainTileState(this);
         }
+        public void ChangeToWhiteBrick()
+        {
+            State.ChangeToWhiteBrick();
+        }
+
+        public void ChangeToWhiteStairs()
+        {
+            State.ChangeToWhiteStairs();
+        }
         public void Update()
         {
             State.Update();
@@ -59,5 +77,6 @@ namespace Sprint2
             Sprite.Draw(_spriteBatch);
         }
 
+        
     }
 }

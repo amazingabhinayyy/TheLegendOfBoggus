@@ -47,7 +47,7 @@ namespace Sprint2_Attempt3.LinkStates
         }
         public void Stop()
         {
-            link.State = new RightIdleLinkState(link);
+            link.State = new UpIdleLinkState(link);
         }
         public void Update()
         {
