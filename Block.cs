@@ -36,6 +36,14 @@ namespace Sprint2
         {
             State.ChangeToSideChunk();
         }
+        public void ChangeToStaircaseTileChunk()
+        {
+            State.ChangeToStaircaseChuck();
+        }
+        public void ChangeToBlueTileChunk()
+        {
+            State.ChangeToBlueTileChuck();
+        }
 
         public void StartBlockState()
         {

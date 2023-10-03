@@ -49,6 +49,12 @@ namespace Sprint2_Attempt3.CommandClasses
                 case 3:
                     game1.Block.ChangeToUpChunk();
                     break;
+                case 4: 
+                    game1.Block.ChangeToStaircaseTileChunk();
+                    break;
+                case 5:
+                    game1.Block.ChangeToBlueTileChunk();
+                    break;
             }
         }
 

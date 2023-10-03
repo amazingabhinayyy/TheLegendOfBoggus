@@ -13,6 +13,8 @@ namespace Sprint2.BlockStates
         public void ChangeToPlainTile();
         public void ChangeToUpChunk();
         public void ChangeToSideChunk();
+        public void ChangeToStaircaseChuck();
+        public void ChangeToBlueTileChuck();
         public void Update();
     }
 }

@@ -7,15 +7,16 @@ using System.Threading.Tasks;
 
 namespace Sprint2
 {
-    public class DiamondTileState : BlockStates.IStateTiles
+    public class StaircaseTileState : BlockStates.IStateTiles
     {
         private Block block;
         private Game1 game1;
 
-        public DiamondTileState(Block block)
+        public StaircaseTileState(Block block)
         {
             this.block = block;
-            block.Sprite = BlockSpriteFactory.Instance.CreateDiamondTile();
+
+            block.Sprite = BlockSpriteFactory.Instance.CreateStaircaseTile();
         }
         public void ChangeToDiamondTile()
         {
@@ -35,13 +36,11 @@ namespace Sprint2
         }
         public void ChangeToStaircaseChuck()
         {
-            block.State = new StaircaseTileState(block);
         }
         public void ChangeToBlueTileChuck()
         {
             block.State = new BlueTileState(block);
         }
-
         public void Update()
         {
 
