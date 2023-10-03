@@ -21,6 +21,7 @@ namespace Sprint2
         private static Vector2 plainPos;
         private static Vector2 upChunkPos;
         private static Vector2 sideChunkPos;
+        private static Vector2 sideChunkPosblackBlockPos;
         private static Vector2 whiteStairPos;
         private static Vector2 whiteBrickPos;
         private static Vector2 StartPosition;
@@ -41,13 +42,13 @@ namespace Sprint2
         private BlockSpriteFactory()
         {
             StartPosition = new Vector2(125, 125);
-            plainPos = diamondPos = upChunkPos = sideChunkPosblackBlockPos = dotTilePos = whiteStairPos=whiteBrickPos=StartPosition;
+            plainPos = diamondPos = upChunkPos = blackBlockPos=sideChunkPos = sideChunkPosblackBlockPos = dotTilePos = whiteStairPos=whiteBrickPos=StartPosition;
 
         }
 
         public void LoadAllTextures(ContentManager content)
         {
-            tilesSet = content.Load<Texture2D>("blocks");
+            blocks = content.Load<Texture2D>("blocks");
 
         }
 
@@ -90,19 +91,19 @@ namespace Sprint2
         }
         public IBlockSprite CreateStaircaseTile()
         {
-            return new StaircaseTile(tilesSet, sideChunkPos, staircaseScr);
+            return new StaircaseTile(blocks, sideChunkPos, staircaseScr);
         }
         public IBlockSprite CreateBlueTile()
         {
-            return new BlueTile(tilesSet, sideChunkPos, blueTileScr);
+            return new BlueTile(blocks, sideChunkPos, blueTileScr);
         }
         public IBlockSprite CreateWhiteBrick()
         {
-            return new SideChunk(tilesSet, whiteBrickPos, whiteBrickScr);
+            return new SideChunk(blocks, whiteBrickPos, whiteBrickScr);
         }
         public IBlockSprite CreateWhiteStair()
         {
-            return new SideChunk(tilesSet, whiteStairPos, whiteStairScr);
+            return new SideChunk(blocks, whiteStairPos, whiteStairScr);
         }
     }
 }

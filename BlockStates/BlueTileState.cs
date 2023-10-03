@@ -46,6 +46,14 @@ namespace Sprint2
         {
             block.State = new StaircaseTileState(block);
         }
+        public void ChangeToBlackBlock()
+        {
+            block.State = new BlackBlockState(block);
+        }
+        public void ChangeToDotTile()
+        {
+            block.State = new DotTileState(block);
+        }
         public void ChangeToBlueTileChuck()
         {
         }

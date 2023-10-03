@@ -50,6 +50,14 @@ namespace Sprint2
         {
             block.State = new WhiteBrickState(block);
         }
+        public void ChangeToBlackBlock()
+        {
+            block.State = new BlackBlockState(block);
+        }
+        public void ChangeToDotTile()
+        {
+            block.State = new DotTileState(block);
+        }
         public void Update()
         {
 

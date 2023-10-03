@@ -29,7 +29,7 @@ namespace Sprint2_Attempt3.CommandClasses
             * TODO:
             * call switch to next item method
             */
-            if (game1.blockIndex == 11)
+            if (game1.blockIndex == 10)
             {
                 game1.blockIndex -= 2;
             }
