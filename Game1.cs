@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Sprint2;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Enemy.Rope;
@@ -17,9 +18,10 @@ namespace Sprint2_Attempt3
         SpriteBatch spriteBatch;
 
         private IController keyboardController;
-        public IController KeyController { 
+        public IController KeyController
+        {
             get { return keyboardController; }
-            set {keyboardController = value; } 
+            set { keyboardController = value; }
         }
 
         private IEnemy currentEnemy;
@@ -38,11 +40,18 @@ namespace Sprint2_Attempt3
             set {link = value; } 
         }
 
+        private Block block;
+        public IBlock Block { get { return block; } set {; } }
+
+        public int blockIndex;
+
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+            blockIndex = 0;
             itemIndex = 0;
         }
 
@@ -55,8 +64,6 @@ namespace Sprint2_Attempt3
         protected override void Initialize()
         {
             keyboardController = new KeyboardController(this);
-            EnemySpriteFactory enemySpriteFactory = new EnemySpriteFactory();
-
             base.Initialize();
 
 
@@ -72,16 +79,14 @@ namespace Sprint2_Attempt3
             spriteBatch = new SpriteBatch(GraphicsDevice);
             keyboardController = new KeyboardController(this);
             EnemySpriteFactory.Instance.LoadAllTextures(this.Content);
-            /*
-             * can we make it so that we don't need to spawn Keese until necessary
-             * */
-            currentEnemy = new Keese(200,200);
+            currentEnemy = new Keese(200, 200);
             currentEnemy.Spawn();
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
-            EnemyProjectileSpriteFactory.Instance.LoadAllTextures(Content);
             link = new Link();
             ItemSpriteFactory.Instance.LoadAllTextures(Content);
             item = new Item();
+            BlockSpriteFactory.Instance.LoadAllTextures(Content);
+            block = new Block();
         }
 
         /// <summary>
@@ -109,6 +114,7 @@ namespace Sprint2_Attempt3
             currentEnemy.Update();
             link.Update();
             item.Update();
+            block.Update();
             base.Update(gameTime);
         }
 
@@ -128,6 +134,7 @@ namespace Sprint2_Attempt3
             currentEnemy.Draw(spriteBatch);
             link.Draw(spriteBatch, Color.White);
             item.Draw(spriteBatch);
+            block.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }

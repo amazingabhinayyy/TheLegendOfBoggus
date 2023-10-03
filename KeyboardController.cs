@@ -19,7 +19,8 @@ namespace Sprint2_Attempt3
         private static int enemyIndex;
         private List<Keys> heldKeys = new List<Keys>();
 
-        public int EnemyIndex { 
+        public int EnemyIndex
+        {
             get { return enemyIndex; }
             set { enemyIndex = value; }
         }
@@ -59,7 +60,9 @@ namespace Sprint2_Attempt3
             commandMapping.Add(Keys.M, new SwitchToSecondaryItem2(game1));
 
 
-            //Block switching
+            //Block and item switching
+            commandMapping.Add(Keys.T, new SwitchToPreviousBlock(game1));
+            commandMapping.Add(Keys.Y, new SwitchToNextBlock(game1));
             commandMapping.Add(Keys.U, new SwitchToPreviousItem(game1));
             commandMapping.Add(Keys.I, new SwitchToNextItem(game1));
 
@@ -145,7 +148,7 @@ namespace Sprint2_Attempt3
 
             timeSinceLastUpdate += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (pressedKeys.Length > 0 && timeSinceLastUpdate>0.1f)
+            if (pressedKeys.Length > 0 && timeSinceLastUpdate > 0.1f)
             {
                 foreach (Keys key in pressedKeys)
                 {
@@ -159,7 +162,7 @@ namespace Sprint2_Attempt3
                         }
                     }
                 }
-                timeSinceLastUpdate = 0;     
+                timeSinceLastUpdate = 0;
             }
             if (!(pressedKeys.Contains(Keys.W) || pressedKeys.Contains(Keys.S) || pressedKeys.Contains(Keys.A) || pressedKeys.Contains(Keys.D) || pressedKeys.Contains(Keys.Up) || pressedKeys.Contains(Keys.Down) || pressedKeys.Contains(Keys.Left) || pressedKeys.Contains(Keys.Right)))
             {

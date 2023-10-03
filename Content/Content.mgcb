@@ -85,18 +85,6 @@
 /processorParam:TextureFormat=Color
 /build:LinkPlayerSpriteSheet2.png
 
-#begin LinkPlayerSpriteSheet2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:LinkPlayerSpriteSheet2.png
-
 #begin LinkPlayerSpriteSheetFinal.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -108,4 +96,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:LinkPlayerSpriteSheetFinal.png
+
+#begin tilesSet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:tilesSet.png
 
