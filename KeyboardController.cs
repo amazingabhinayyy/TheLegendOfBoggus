@@ -49,14 +49,13 @@ namespace Sprint2_Attempt3
             commandMapping.Add(Keys.N, new SetAttackLinkCommand(game1));
             commandMapping.Add(Keys.None, new SetIdleLinkCommand(game1));
             //item switching
-            commandMapping.Add(Keys.D1, new SetUseBombCommand(game1));
-            commandMapping.Add(Keys.D2, new SetUseBoomerangCommand(game1));
-            commandMapping.Add(Keys.D3, new SetUseArrowCommand(game1));
-            commandMapping.Add(Keys.D4, new SetUseBlueBoomerangCommand(game1));
-            commandMapping.Add(Keys.D5, new SetUseBlueArrowCommand(game1));
-            commandMapping.Add(Keys.D6, new SetUseFireCommand(game1));
+            commandMapping.Add(Keys.D1, new SwitchToItem1(game1));
+            commandMapping.Add(Keys.D2, new SwitchToItem2(game1));
+            commandMapping.Add(Keys.D3, new SwitchToItem3(game1));
             commandMapping.Add(Keys.X, new SwitchToSecondaryItem1(game1));
             commandMapping.Add(Keys.M, new SwitchToSecondaryItem2(game1));
+            commandMapping.Add(Keys.U, new SwitchToPreviousItem(game1));
+            commandMapping.Add(Keys.I, new SwitchToNextItem(game1));
 
 
             //Block switching
