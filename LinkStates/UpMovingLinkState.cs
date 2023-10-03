@@ -36,7 +36,7 @@ namespace Sprint2_Attempt3.LinkStates
         }
         public void GetDamaged()
         {
-            link.State = new UpDamagedLinkState(link);
+            
         }
         public void Attack()
         {
