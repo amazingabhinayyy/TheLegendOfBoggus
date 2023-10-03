@@ -16,5 +16,7 @@ namespace Sprint2
         public void ChangeToUpChunk();
         public void Update();
 
+        public void Draw(SpriteBatch spriteBatch);
+
     }
 }

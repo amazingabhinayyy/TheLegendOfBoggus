@@ -40,8 +40,8 @@ namespace Sprint2_Attempt3
             set {link = value; } 
         }
 
-        private Block block;
-        public IBlock Block { get { return block; } set {; } }
+        private IBlock block;
+        public IBlock Block { get { return block; } set {block = value; } }
 
         public int blockIndex;
 
