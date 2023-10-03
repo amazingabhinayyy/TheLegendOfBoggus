@@ -16,7 +16,7 @@ namespace Sprint2
         {
             this.block = block;
 
-            block.Sprite = BlockSpriteFactory.Instance.CreateStaircaseTile();
+            block.Sprite = BlockSpriteFactory.Instance.CreateBlueTile();
         }
         public void ChangeToDiamondTile()
         {
@@ -25,6 +25,14 @@ namespace Sprint2
         public void ChangeToPlainTile()
         {
             block.State = new PlainTileState(block);
+        }
+        public void ChangeToWhiteStairs()
+        {
+            block.State = new WhiteStairState(block);
+        }
+        public void ChangeToWhiteBrick()
+        {
+            block.State = new WhiteBrickState(block);
         }
         public void ChangeToUpChunk()
         {
