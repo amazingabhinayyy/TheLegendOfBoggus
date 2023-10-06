@@ -7,7 +7,8 @@ using Sprint2_Attempt3.Enemy.Zol;
 using Sprint2_Attempt3.Enemy.SpikeTrap;
 using Sprint2_Attempt3.Enemy.Dodongo;
 using Sprint2_Attempt3.Enemy.Goriya;
-using Sprint2_Attempt3.Projectile;
+using Sprint2_Attempt3.Projectile.GoriyaProjectiles;
+using Sprint2_Attempt3.Projectile.AquamentusProjectiles;
 
 namespace Sprint2_Attempt3.Projectile
 {
@@ -41,6 +42,10 @@ namespace Sprint2_Attempt3.Projectile
         public IEnemyProjectileSprite MovingBoomerang()
         {
             return new GoriyaBoomerangSprite(EnemyTexture);
+        }
+        public IEnemyProjectileSprite MovingFireball()
+        {
+            return new AquamentusFireballSprite(BossEnemyTexture);
         }
 
 

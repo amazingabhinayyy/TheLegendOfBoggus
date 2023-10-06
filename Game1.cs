@@ -37,7 +37,7 @@ namespace Sprint2_Attempt3
         public IItem Item { get { return item; } set {; } }
         public ILink Link { 
             get { return link; } 
-            set {link = (Link)value; } 
+            set {link = value; } 
         }
 
         public Game1()

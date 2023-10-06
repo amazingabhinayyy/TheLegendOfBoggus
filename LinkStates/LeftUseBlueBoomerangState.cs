@@ -20,12 +20,13 @@ namespace Sprint2_Attempt3.LinkStates
             link.Direction = Link.LinkDirection.Left;
             frameCounter = 0;
         }
+        public void Stop()
+        {
+            link.State = new LeftIdleLinkState(link);
+        }
         public void BecomeIdle()
         {
-            if (frameCounter >= 10)
-            {
-                link.State = new LeftIdleLinkState(link);
-            }
+           
         }
         public void MoveUp()
         {
@@ -52,6 +53,10 @@ namespace Sprint2_Attempt3.LinkStates
         public void Update()
         {
             frameCounter++;
+            if(frameCounter >= 10)
+            {
+                Stop();
+            }
         }
         public void UseBomb()
         {
