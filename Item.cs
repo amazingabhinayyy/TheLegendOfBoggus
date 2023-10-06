@@ -8,12 +8,7 @@ namespace Sprint2_Attempt3
     public class Item : IItem
     {
         public Vector2 position;
-        /*public Vector2 ItemPosition { get; set; }*/
-
-        /*public ISprite AttackSprite { get; set; }*/
         public IJustItemSprite ItemSprite { get; set; }
-        /*public IState State { get; set; }
-        public IItemSprite ItemSprite { get; set; }*/
         public IJustItemState ItemState { get; set; }
 
         public Item()
@@ -83,11 +78,9 @@ namespace Sprint2_Attempt3
         public void StartItemState()
         {
             ItemState = new RupeeItemState(this);
-            /*ItemState = new NoItemState(this);*/
         }
         public void Update()
         {
-            //State.Update();
             ItemState.Update();
             ItemSprite.Update();
 
@@ -96,7 +89,6 @@ namespace Sprint2_Attempt3
         public void Draw(SpriteBatch _spriteBatch)
         {
             ItemSprite.Draw(_spriteBatch);
-            //AttackSprite.Draw(_spriteBatch, position, color);
 
         }
 

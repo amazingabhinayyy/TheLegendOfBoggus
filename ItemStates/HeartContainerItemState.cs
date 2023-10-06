@@ -52,7 +52,6 @@ namespace Sprint2_Attempt3.ItemStates
         }
         public void ChangeToHeartContainer()
         {
-            //item.ItemState = new HeartContainerItemState(item);
         }
         public void ChangeToTriforcePiece()
         {

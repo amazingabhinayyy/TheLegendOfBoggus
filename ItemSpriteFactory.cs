@@ -5,12 +5,10 @@ using Sprint2_Attempt3.ItemClasses;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-//using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Input;
-//using System.Numerics;
 
 namespace Sprint2_Attempt3
 {
@@ -35,10 +33,6 @@ namespace Sprint2_Attempt3
         public static Vector2 StartPosition;
 
 
-
-
-
-        //private static List<IItem> itemList = new List<IItem>();
 
         private static ItemSpriteFactory instance = new ItemSpriteFactory();
 
@@ -68,18 +62,22 @@ namespace Sprint2_Attempt3
 
         public static Rectangle bombSrc = new Rectangle(135, 0, 9, 15);
         public static Rectangle clockSrc = new Rectangle(57, 0, 13, 17);
-        public static Rectangle compassSrc = new Rectangle(258, 1, 11, 12); //???
-        public static Rectangle heartSrc = new Rectangle(0, 0, 7, 8); 
+        public static Rectangle compassSrc = new Rectangle(258, 1, 11, 12);
+        public static Rectangle heartSrc = new Rectangle(0, 0, 7, 8);
+        public static Rectangle blueheartSrc = new Rectangle(0, 8, 7, 8); 
         public static Rectangle keySrc = new Rectangle(240, 0, 8, 16);
         public static Rectangle mapSrc = new Rectangle(88, 0, 8, 16);
         public static Rectangle rupeeSrc = new Rectangle(72, 0, 8, 16);
+        public static Rectangle bluerupeeSrc = new Rectangle(72, 16, 8, 16); 
 
         public static Rectangle heartcontainerSrc = new Rectangle(25, 0, 13, 14);
         public static Rectangle triforcepieceSrc = new Rectangle(275, 3, 10, 10);
+        public static Rectangle bluetriforcepieceSrc = new Rectangle(275, 19, 10, 10);
         public static Rectangle boomerangSrc = new Rectangle(129, 3, 5, 8);
         public static Rectangle bowSrc = new Rectangle(144, 0, 8, 16);
         public static Rectangle arrowSrc = new Rectangle(154, 0, 5, 16);
-        public static Rectangle fairySrc = new Rectangle(48, 0, 8, 16); //???
+        public static Rectangle fairySrc = new Rectangle(40, 0, 8, 16);
+        public static Rectangle fairytwoSrc = new Rectangle(48, 0, 8, 16);
         public static Rectangle bluecandleSrc = new Rectangle(160, 16, 8, 16);
         public static Rectangle bluepotionSrc = new Rectangle(80, 16, 8, 16);
 

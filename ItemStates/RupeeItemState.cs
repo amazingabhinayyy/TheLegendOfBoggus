@@ -17,7 +17,7 @@ namespace Sprint2_Attempt3.ItemStates
         }
         public void ChangeToRupee() 
         { 
-            //item.ItemState = new RupeeItemState(item);
+            
         }
         public void ChangeToBomb()
         {

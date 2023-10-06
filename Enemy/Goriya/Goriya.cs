@@ -4,20 +4,15 @@ using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Projectile.GoriyaProjectiles;
 using Sprint2_Attempt3.Projectile;
 using System;
+using Sprint2_Attempt3.Projectile.AquamentusProjectiles;
 
 namespace Sprint2_Attempt3.Enemy.Goriya
 {
     internal class Goriya : IEnemy
     {
         private IEnemyState state;
-        private int count;
+       
         private int idleX;
-        public static bool end;
-        public bool End
-        {
-            get { return end; }
-            set { end = value; }
-        }
         public int IdleX
         {
             get { return idleX; }
@@ -25,6 +20,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         }
 
         private IEnemyProjectile boomerang;
+
         private Vector2 boomerangPosition;
         public Vector2 BoomerangPosition
         {
@@ -75,11 +71,9 @@ namespace Sprint2_Attempt3.Enemy.Goriya
 
         public Goriya(int x, int y)
         {
-            count = 0;
 
             this.positionX = x;
             this.positionY = y;
-            end = false;
             boomerangPosition = new Vector2(positionX, positionY);
             boomerang = new GoriyaBoomerang(boomerangPosition);
             direction = ProjectileDirection.Left;   
@@ -104,30 +98,25 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         {
             state.ChangeAttackedStatus();
         }
-        /*
-        public void AttackWithBoomerang()
-        {
-            //Need to change so can go with different states 
-            boomerangPosition = new Vector2(X, Y);
-            boomerang = new GoriyaBoomerang(boomerangPosition);
-            state = new AttackWithBoomerangState(this);
-
-        }*/
+     
 
 
         public void Update()
         {
-            count++;
-            if (count % 100 == 0||end)
-            {
-                //((GoriyaBoomerang)boomerang).Finished = false;
-                ChangeDirection();   
-            }
+            
             state.Update();
+            if (((GoriyaBoomerang)boomerang).Throwing)
+            {
+                boomerang.Update();
+            }
         }
         public void Draw(SpriteBatch spriteBatch)
         {
             state.Draw(spriteBatch);
+            if (((GoriyaBoomerang)boomerang).Throwing)
+            {
+                boomerang.Draw(spriteBatch);
+            }
         }
     }
 }

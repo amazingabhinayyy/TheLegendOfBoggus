@@ -24,7 +24,6 @@ namespace Sprint2_Attempt3.ItemStates
         }
         public void ChangeToClock()
         {
-            //item.ItemState = new ClockItemState(item);
         }
         public void ChangeToCompass()
         {

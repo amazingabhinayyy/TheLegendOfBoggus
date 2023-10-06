@@ -11,7 +11,6 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
         private Aquamentus Aquamentus;
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
-        private Rectangle[] sourceRectangles = { Globals.AquamentusGreenLeftMouthOpen, Globals.AquamentusGreenLeftMouthOpen2 };
         private int currentFrame;
         private int currentFireballFrame;
         private IEnemyProjectile fireball;

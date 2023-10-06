@@ -42,21 +42,16 @@ namespace Sprint2_Attempt3.CommandClasses
             * TODO:
             * call switch to next item method
             */
-            // switchItem(itemNumber)
-            //nextItem();
-            //Debug.WriteLine("TEST");
             if (game1.itemIndex <= 13)
             {
                 game1.itemIndex++;
             }
-            //Debug.Write(itemIndex);
 
 
             switch (game1.itemIndex)
             {
                 case 0:
                     game1.Item.ChangeToRupee();
-                    //item.ChangeToRupee();
                     break;
                 case 1:
                     game1.Item.ChangeToBomb();
@@ -75,7 +70,6 @@ namespace Sprint2_Attempt3.CommandClasses
                     break;
                 case 6:
                     game1.Item.ChangeToFairy();
-                    //Debug.WriteLine("Test");
                     break;
                 case 7:
                     game1.Item.ChangeToMap();

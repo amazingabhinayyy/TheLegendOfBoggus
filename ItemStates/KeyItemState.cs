@@ -48,7 +48,6 @@ namespace Sprint2_Attempt3.ItemStates
         }
         public void ChangeToKey()
         {
-            //item.ItemState = new KeyItemState(item);
         }
         public void ChangeToHeartContainer()
         {

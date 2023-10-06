@@ -1,4 +1,5 @@
-﻿using Sprint2_Attempt3.Enemy.Keese;
+﻿using Sprint2;
+using Sprint2_Attempt3.Enemy.Keese;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,8 @@ namespace Sprint2_Attempt3.CommandClasses
             game1.enemy = new Keese(200, 200);
             game1.enemy.Spawn();
             game1.Link = new Link();
+            game1.Item = new Item();
+            game1.Block = new Block();
         }
     }
 }

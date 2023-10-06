@@ -94,7 +94,6 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
         }
         public void ChangeAttackedStatus()
         {
-            /*change*/
             state.ChangeAttackedStatus();
         }
        
@@ -105,7 +104,6 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
             state.Update();
             if (((AquamentusFireball)fireball).Fire)
             {
-                //((AquamentusFireball)fireball).Fire = false;
                 fireball.Update();
             }
         }
@@ -114,7 +112,6 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
             state.Draw(spriteBatch);
             if (((AquamentusFireball)fireball).Fire)
             {
-                //((AquamentusFireball)fireball).Fire = false;
             fireball.Draw(spriteBatch);
             }
         }

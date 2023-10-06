@@ -21,7 +21,6 @@ namespace Sprint2_Attempt3.ItemStates
         }
         public void ChangeToBomb()
         {
-            //item.ItemState = new BombItemState(item);
         }
         public void ChangeToClock()
         {

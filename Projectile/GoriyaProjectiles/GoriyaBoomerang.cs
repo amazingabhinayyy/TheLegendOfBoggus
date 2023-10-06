@@ -10,7 +10,8 @@ namespace Sprint2_Attempt3.Projectile.GoriyaProjectiles
         private IEnemyProjectileState state;
         private Vector2 position2;
         private int count;
-
+        private bool throwing;
+        public bool Throwing { get { return throwing; } set { throwing = value; } }
         private bool goLeft;
         public bool GoLeft
         {
@@ -108,13 +109,13 @@ namespace Sprint2_Attempt3.Projectile.GoriyaProjectiles
                 state.Update();
                 timeSinceLastUpdate = 0;
             }*/
-            //
+            /*
             count++;
             if (count % 100 == 0)
             {
                 //state = new GoriyaBoomerangLeftState(this);
             }
-            //finished = ((GoriyaBoomerangLeftState)state).Finished;
+            //finished = ((GoriyaBoomerangLeftState)state).Finished;*/
             state.Update();
 
 

@@ -68,7 +68,6 @@ namespace Sprint2_Attempt3.ItemStates
         }
         public void ChangeToBlueCandle()
         {
-            //item.ItemState = new BlueCandleItemState(item);
         }
         public void ChangeToBluePotion()
         {

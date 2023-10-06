@@ -13,16 +13,33 @@ namespace Sprint2_Attempt3.ItemClasses
         private Texture2D texture;
         public int destx, desty;
         public Rectangle triforcepieceSource;
+        private int currentFrame;
+        private int totalFrames;
+        private int time;
+        private Rectangle srcRectangle;
         public TriforcePieceItem(Texture2D triforcepieceTexture, Vector2 Pos, Rectangle triforcepieceSource)
         {
             texture = triforcepieceTexture;
             this.destx = (int)Pos.X;
             this.desty = (int)Pos.Y;
             this.triforcepieceSource = triforcepieceSource;
+            currentFrame = 1;
+            totalFrames = 3;
+            time = 0;
+            srcRectangle = this.triforcepieceSource;
         }
 
         public void Update()
         {
+            if (time % 8 == 0)
+            {
+                currentFrame++;
+                if (currentFrame == totalFrames)
+                {
+                    currentFrame = 1;
+                }
+            }
+            time++;
         }
 
         public Rectangle DestRectangle()
@@ -33,7 +50,15 @@ namespace Sprint2_Attempt3.ItemClasses
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            Rectangle srcRectangle = this.triforcepieceSource;
+            if (currentFrame == 1)
+            {
+                srcRectangle = this.triforcepieceSource;
+
+            }
+            else if (currentFrame == 2)
+            {
+                srcRectangle = ItemSpriteFactory.bluetriforcepieceSrc;
+            }
             spriteBatch.Draw(texture, DestRectangle(), srcRectangle, Color.White);
         }
     }

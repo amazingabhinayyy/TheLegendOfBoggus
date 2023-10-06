@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Sprint2;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Enemy.Rope;
@@ -17,33 +18,45 @@ namespace Sprint2_Attempt3
         SpriteBatch spriteBatch;
 
         private IController keyboardController;
-        public IController KeyController { 
+        public IController KeyController
+        {
             get { return keyboardController; }
-            set {keyboardController = value; } 
+            set { keyboardController = value; }
         }
 
         private IEnemy currentEnemy;
-
+        public int currentItemInd;
         public IEnemy enemy
         {
             get { return currentEnemy; }
             set { currentEnemy = value; }
         }
-
         private ILink link;
-        private Item item;
+        private IItem item;
+        private Link link;
+        public IItem Item { get { return item; } set {item = value; } }
         public int itemIndex;
         public IItem Item { get { return item; } set {; } }
+=========
+        private ILink link;
+>>>>>>>>> Temporary merge branch 2
         public ILink Link { 
             get { return link; } 
             set {link = value; } 
         }
 
-        public Game1()
+        private IBlock block;
+        public IBlock Block { get { return block; } set {block = value; } }
+
+        public int blockIndex;
+
+
+            blockIndex = 0;
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+            currentItemInd = 0;
             itemIndex = 0;
         }
 
@@ -56,8 +69,6 @@ namespace Sprint2_Attempt3
         protected override void Initialize()
         {
             keyboardController = new KeyboardController(this);
-            EnemySpriteFactory enemySpriteFactory = new EnemySpriteFactory();
-
             base.Initialize();
 
 
@@ -73,16 +84,15 @@ namespace Sprint2_Attempt3
             spriteBatch = new SpriteBatch(GraphicsDevice);
             keyboardController = new KeyboardController(this);
             EnemySpriteFactory.Instance.LoadAllTextures(this.Content);
-            /*
-             * can we make it so that we don't need to spawn Keese until necessary
-             * */
-            currentEnemy = new Keese(200,200);
+            currentEnemy = new Keese(200, 200);
             currentEnemy.Spawn();
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
-            EnemyProjectileSpriteFactory.Instance.LoadAllTextures(Content);
             link = new Link();
             ItemSpriteFactory.Instance.LoadAllTextures(Content);
             item = new Item();
+            BlockSpriteFactory.Instance.LoadAllTextures(Content);
+            block = new Block();
+            EnemyProjectileSpriteFactory.Instance.LoadAllTextures(Content);
         }
 
         /// <summary>
@@ -105,11 +115,12 @@ namespace Sprint2_Attempt3
             // TODO: Add your update logic here
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
+            block.Update();
             keyboardController.Update(gameTime);
             currentEnemy.Update();
             link.Update();
             item.Update();
+            //Debug.WriteLine(itemIndex);
             base.Update(gameTime);
         }
 
@@ -129,6 +140,7 @@ namespace Sprint2_Attempt3
             currentEnemy.Draw(spriteBatch);
             link.Draw(spriteBatch, Color.White);
             item.Draw(spriteBatch);
+            block.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }

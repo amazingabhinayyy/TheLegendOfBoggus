@@ -19,7 +19,8 @@ namespace Sprint2_Attempt3
         private static int enemyIndex;
         private List<Keys> heldKeys = new List<Keys>();
 
-        public int EnemyIndex { 
+        public int EnemyIndex
+        {
             get { return enemyIndex; }
             set { enemyIndex = value; }
         }
@@ -49,18 +50,21 @@ namespace Sprint2_Attempt3
             commandMapping.Add(Keys.N, new SetAttackLinkCommand(game1));
             commandMapping.Add(Keys.None, new SetIdleLinkCommand(game1));
             //item switching
-            //commandMapping.Add(Keys.D1, new SwitchToItem1(game1));
-            //commandMapping.Add(Keys.D2, new SwitchToItem2(game1));
-            //commandMapping.Add(Keys.D3, new SwitchToItem3(game1));
-            //commandMapping.Add(Keys.X, new SwitchToSecondaryItem1(game1));
-            //commandMapping.Add(Keys.M, new SwitchToSecondaryItem2(game1));
+            commandMapping.Add(Keys.D1, new SetUseBombCommand(game1));
+            commandMapping.Add(Keys.D2, new SetUseBoomerangCommand(game1));
+            commandMapping.Add(Keys.D3, new SetUseArrowCommand(game1));
+            commandMapping.Add(Keys.D4, new SetUseBlueBoomerangCommand(game1));
+            commandMapping.Add(Keys.D5, new SetUseBlueArrowCommand(game1));
+            commandMapping.Add(Keys.D6, new SetUseFireCommand(game1));
+            commandMapping.Add(Keys.X, new SwitchToSecondaryItem1(game1));
+            commandMapping.Add(Keys.M, new SwitchToSecondaryItem2(game1));
+
+
+            //Block and item switching
+            commandMapping.Add(Keys.T, new SwitchToPreviousBlock(game1));
+            commandMapping.Add(Keys.Y, new SwitchToNextBlock(game1));
             commandMapping.Add(Keys.U, new SwitchToPreviousItem(game1));
             commandMapping.Add(Keys.I, new SwitchToNextItem(game1));
-
-
-            //Block switching
-            commandMapping.Add(Keys.T, new SwitchToPreviousItem(game1));
-            commandMapping.Add(Keys.Y, new SwitchToNextItem(game1));
 
             //Enemy switching
             commandMapping.Add(Keys.O, new SwitchToPreviousEnemy(game1));
@@ -75,7 +79,7 @@ namespace Sprint2_Attempt3
             moveKeyTime.Add(Keys.W, 0);
             moveKeyTime.Add(Keys.A, 0);
             moveKeyTime.Add(Keys.S, 0);
-            moveKeyTime.Add(Keys.D, 0); 
+            moveKeyTime.Add(Keys.D, 0);
             moveKeyTime.Add(Keys.Up, 0);
             moveKeyTime.Add(Keys.Down, 0);
             moveKeyTime.Add(Keys.Left, 0);
@@ -144,7 +148,7 @@ namespace Sprint2_Attempt3
 
             timeSinceLastUpdate += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (pressedKeys.Length > 0 && timeSinceLastUpdate>0.1f)
+            if (pressedKeys.Length > 0 && timeSinceLastUpdate > 0.1f)
             {
                 foreach (Keys key in pressedKeys)
                 {
@@ -152,13 +156,13 @@ namespace Sprint2_Attempt3
                     {
                         commandMapping[key].Execute();
                         //The if condition hold keys that can be held
-                        if(!(key.Equals(Keys.W) || key.Equals(Keys.A) || key.Equals(Keys.S)|| key.Equals(Keys.D) || key.Equals(Keys.Down) || key.Equals(Keys.Up) || key.Equals(Keys.Right) || key.Equals(Keys.Left)))
+                        if(!(moveKeys.Contains(key)))
                         {
                             heldKeys.Add(key);
                         }
                     }
                 }
-                timeSinceLastUpdate = 0;     
+                timeSinceLastUpdate = 0;
             }
             if (!(pressedKeys.Contains(Keys.W) || pressedKeys.Contains(Keys.S) || pressedKeys.Contains(Keys.A) || pressedKeys.Contains(Keys.D) || pressedKeys.Contains(Keys.Up) || pressedKeys.Contains(Keys.Down) || pressedKeys.Contains(Keys.Left) || pressedKeys.Contains(Keys.Right)))
             {

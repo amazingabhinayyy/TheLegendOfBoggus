@@ -60,7 +60,6 @@ namespace Sprint2_Attempt3.ItemStates
         }
         public void ChangeToBow()
         {
-            //item.ItemState = new BowItemState(item);
         }
         public void ChangeToArrow()
         {

@@ -79,10 +79,8 @@ internal class GoriyaBoomerangRightState : IEnemyProjectileState
                 goriyaBoomerang.Position2 = new Vector2(goriyaBoomerang.Position2.X - change, goriyaBoomerang.Position2.Y);
                 if (goriyaBoomerang.Position2.X <= goriyaBoomerang.InitialX + 17)
                 {
-                    Goriya.end = true;
+                    goriyaBoomerang.Throwing = false;
                     goriyaBoomerang.GoRight = true;
-                    //finished = true;
-
                 }
             }
         }
@@ -93,7 +91,9 @@ internal class GoriyaBoomerangRightState : IEnemyProjectileState
 
     }
     public void Draw(SpriteBatch spriteBatch)
-    {
-        sprite.Draw(spriteBatch, (int)goriyaBoomerang.Position2.X + 9, (int)goriyaBoomerang.Position2.Y + 8, Globals.GoriyaBoomerangLeft[spriteIndex], Globals.GoriyaBoomerangLeftEffects[spriteIndex], Globals.originsLeft[spriteIndex]);
+    { 
+
+        Globals.currentIndex = spriteIndex;
+        sprite.Draw(spriteBatch, (int)goriyaBoomerang.Position2.X + 9, (int)goriyaBoomerang.Position2.Y + 8, Globals.GoriyaBoomerangLeft[spriteIndex]);
     }
 }
