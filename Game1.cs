@@ -24,14 +24,13 @@ namespace Sprint2_Attempt3
 
         private IEnemy currentEnemy;
 
-        public int currentItemInd;
         public IEnemy enemy
         {
             get { return currentEnemy; }
             set { currentEnemy = value; }
         }
 
-        private Link link;
+        private ILink link;
         private Item item;
         public int itemIndex;
         public IItem Item { get { return item; } set {; } }
@@ -45,7 +44,6 @@ namespace Sprint2_Attempt3
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-            currentItemInd = 0;
             itemIndex = 0;
         }
 
@@ -83,9 +81,7 @@ namespace Sprint2_Attempt3
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
             EnemyProjectileSpriteFactory.Instance.LoadAllTextures(Content);
             link = new Link();
-            //delete later
             ItemSpriteFactory.Instance.LoadAllTextures(Content);
-            //item = new RupeeItem(ItemSpriteFactory.itemTexture, ItemSpriteFactory.rupeePos, ItemSpriteFactory.rupeeSrc);
             item = new Item();
         }
 
@@ -113,9 +109,7 @@ namespace Sprint2_Attempt3
             keyboardController.Update(gameTime);
             currentEnemy.Update();
             link.Update();
-            //deletelater
             item.Update();
-            //Debug.WriteLine(itemIndex);
             base.Update(gameTime);
         }
 
@@ -132,11 +126,8 @@ namespace Sprint2_Attempt3
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            //delete later
-            //item = CreateRupeeItem();
             currentEnemy.Draw(spriteBatch);
             link.Draw(spriteBatch, Color.White);
-            //delete later
             item.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
