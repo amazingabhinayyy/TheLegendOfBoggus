@@ -18,6 +18,9 @@ namespace Sprint2_Attempt3
     internal class Globals
     {
         public const float scale = 3.0f;
+        public const int ScreenHeight = 480;
+        public const int ScreenWidth = 800;
+
 
         //my futile attempt to avoid making a Projectile class, probably will delete
         public static bool changeDirection = false;
@@ -108,5 +111,48 @@ namespace Sprint2_Attempt3
         public static Vector2 temp = new Vector2(0, 0);
         public static Vector2[] AquamentusOriginsLeft = { temp, temp, temp, temp, temp, temp, temp, temp };
         public static int fireBallMaxDistance = 100;
+
+        public static Rectangle Dungeon1 { get { return new Rectangle(516, 886, 255, 175); } }
+        public static Rectangle Dungeon2 { get { return new Rectangle(127, 3, 9, 11); } }
+        public static Rectangle Dungeon3 { get { return new Rectangle(127, 3, 9, 11); } }
+        public static Rectangle Dungeon4 { get { return new Rectangle(127, 3, 9, 11); } }
+        public static Rectangle Dungeon5 { get { return new Rectangle(127, 3, 9, 11); } }
+        public static Rectangle Dungeon6 { get { return new Rectangle(127, 3, 9, 11); } }
+        public static Rectangle Dungeon7 { get { return new Rectangle(127, 3, 9, 11); } }
+        public static Rectangle Dungeon8 { get { return new Rectangle(127, 3, 9, 11); } }
+        public static Rectangle Dungeon9 { get { return new Rectangle(127, 3, 9, 11); } }
+        public static Rectangle Dungeon10 { get { return new Rectangle(127, 3, 9, 11); } }
+        public static Rectangle Dungeon11 { get { return new Rectangle(127, 3, 9, 11); } }
+        public static Rectangle Dungeon12 { get { return new Rectangle(127, 3, 9, 11); } }
+        public static Rectangle Dungeon13 { get { return new Rectangle(127, 3, 9, 11); } }
+        public static Rectangle Dungeon14 { get { return new Rectangle(127, 3, 9, 11); } }
+        public static Rectangle Dungeon15 { get { return new Rectangle(127, 3, 9, 11); } }
+        public static Rectangle Dungeon16 { get { return new Rectangle(127, 3, 9, 11); } }
+        public static Rectangle Dungeon17 { get { return new Rectangle(127, 3, 9, 11); } }
+
+        public static Vector2 NorthDoorPosition { get { return new Vector2(0,0); } }
+        public static Vector2 SouthDoorPosition { get { return new Vector2(0, 0); } }
+        public static Vector2 EastDoorPosition { get { return new Vector2(0, 0); } }
+        public static Vector2 WestDoorPosition { get { return new Vector2(0, 0); } }
+
+        public static Rectangle OpenNorthDoor { get { return new Rectangle(127, 3, 9, 11); } }
+        public static Rectangle OpenSouthDoor { get { return new Rectangle(127, 3, 9, 11); } }
+        public static Rectangle OpenEastDoor { get { return new Rectangle(127, 3, 9, 11); } }
+        public static Rectangle OpenWestDoor { get { return new Rectangle(127, 3, 9, 11); } }
+
+        public static Rectangle ClosedNorthDoor { get { return new Rectangle(127, 3, 9, 11); } }
+        public static Rectangle ClosedSouthDoor { get { return new Rectangle(127, 3, 9, 11); } }
+        public static Rectangle ClosedEastDoor { get { return new Rectangle(127, 3, 9, 11); } }
+        public static Rectangle ClosedWestDoor { get { return new Rectangle(127, 3, 9, 11); } }
+
+        public static Rectangle DiamondLockedNorthDoor { get { return new Rectangle(127, 3, 9, 11); } }
+        public static Rectangle DiamondLockedSouthDoor { get { return new Rectangle(127, 3, 9, 11); } }
+        public static Rectangle DiamondLockedEastDoor { get { return new Rectangle(127, 3, 9, 11); } }
+        public static Rectangle DiamondLockedWestDoor { get { return new Rectangle(127, 3, 9, 11); } }
+
+        public static Rectangle DamagedNorthDoor { get { return new Rectangle(127, 3, 9, 11); } }
+        public static Rectangle DamagedSouthDoor { get { return new Rectangle(127, 3, 9, 11); } }
+        public static Rectangle DamagedEastDoor { get { return new Rectangle(127, 3, 9, 11); } }
+        public static Rectangle DamagedWestDoor { get { return new Rectangle(127, 3, 9, 11); } }
     }
 }

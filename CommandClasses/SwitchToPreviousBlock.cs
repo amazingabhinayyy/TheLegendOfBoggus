@@ -42,34 +42,34 @@ namespace Sprint2_Attempt3.CommandClasses
             switch (game1.blockIndex)
             {
                 case 0:
-                    game1.Block.ChangeToPlainTile();
+                    game1.block.ChangeToPlainTile();
                     break;
                 case 1:
-                    game1.Block.ChangeToDiamondTile();
+                    game1.block.ChangeToDiamondTile();
                     break;
                 case 2:
-                    game1.Block.ChangeToSideChunk();
+                    game1.block.ChangeToSideChunk();
                     break;
                 case 3:
-                    game1.Block.ChangeToUpChunk();
+                    game1.block.ChangeToUpChunk();
                     break;
                 case 4:
-                    game1.Block.ChangeToWhiteBrick(); ;
+                    game1.block.ChangeToWhiteBrick(); ;
                     break;
                 case 5:
-                    game1.Block.ChangeToWhiteStairs();
+                    game1.block.ChangeToWhiteStairs();
                     break;
                 case 6: 
-                    game1.Block.ChangeToStaircaseTileChunk();
+                    game1.block.ChangeToStaircaseTileChunk();
                     break;
                 case 7:
-                    game1.Block.ChangeToBlueTileChunk();
+                    game1.block.ChangeToBlueTileChunk();
                     break;
                 case 8:
-                    game1.Block.ChangeToBlackBlock();
+                    game1.block.ChangeToBlackBlock();
                     break;
                 case 9:
-                    game1.Block.ChangeToDotTile();
+                    game1.block.ChangeToDotTile();
                     break;
             }
         }
