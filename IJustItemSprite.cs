@@ -11,6 +11,8 @@ namespace Sprint2_Attempt3
     public interface IJustItemSprite
     {
         void Update();
+        Spawn();
+        Collected();
         Rectangle DestRectangle();
         void Draw(SpriteBatch spriteBatch);
     }
