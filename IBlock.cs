@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using Sprint2_Attempt3;
 
 namespace Sprint2
 {
-    public interface IBlock
+    public interface IBlock : IGameObject
     {
         public void ChangeToPlainTile();
         public void ChangeToDiamondTile();
