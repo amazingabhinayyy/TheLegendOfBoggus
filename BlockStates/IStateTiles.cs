@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sprint2.BlockStates
 {
-    public interface IStateTiles
+    public interface IStateTiles : IGameObject
     {
         public void ChangeToDiamondTile();
         public void ChangeToPlainTile();

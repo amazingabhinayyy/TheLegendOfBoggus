@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sprint2_Attempt3
 {
-    public interface IItem
+    public interface IItem : IGameObject
     {
         public void ChangeToRupee();
         public void ChangeToBomb();
