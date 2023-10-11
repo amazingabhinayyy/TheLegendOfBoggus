@@ -15,7 +15,7 @@ namespace Sprint2_Attempt3.CommandClasses
         }
 
         public void Execute() {
-            game.Link.UseBomb();
+            game.link.UseBomb();
         }
     }
 }

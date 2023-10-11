@@ -19,7 +19,7 @@ namespace Sprint2_Attempt3
         {
             this.decoratedLink = decoratedLink;
             this.game = game;
-            game.Link = this;
+            game.link = this;
         }
 
         public void GetDamaged()
@@ -93,7 +93,7 @@ namespace Sprint2_Attempt3
 
         public void RemoveDecorator()
         {
-            game.Link = decoratedLink;
+            game.link = decoratedLink;
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)

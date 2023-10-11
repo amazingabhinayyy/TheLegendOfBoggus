@@ -9,7 +9,6 @@ namespace Sprint2
     public class Block : IBlock
     {
         public Vector2 position;
-        BlockSpriteFactory spriteFactory;
 
         public IBlockSprite Sprite { get; set; }
         public IStateTiles State { get; set; }

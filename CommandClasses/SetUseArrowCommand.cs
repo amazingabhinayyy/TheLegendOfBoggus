@@ -16,7 +16,7 @@ namespace Sprint2_Attempt3.CommandClasses
 
         public void Execute()
         {
-            game.Link.UseArrow();
+            game.link.UseArrow();
         }
     }
 }
