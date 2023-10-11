@@ -1,4 +1,5 @@
 ﻿using Sprint2;
+using Sprint2_Attempt3.Dungeon.DungeonRooms;
 using Sprint2_Attempt3.Enemy.Keese;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace Sprint2_Attempt3.CommandClasses
             game1.link = new Link();
             game1.item = new Item();
             game1.block = new Block();
+            game1.dungeonRoom = new DungeonRoom1();
         }
     }
 }

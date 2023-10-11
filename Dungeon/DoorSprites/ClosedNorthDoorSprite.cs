@@ -18,7 +18,6 @@ namespace Sprint2_Attempt3.Dungeon.DoorSprites
                 Color.White,
                 0f,
                 new Vector2(0, 0),
-                Globals.scale,
                 SpriteEffects.None,
                 0f
             );

@@ -4,12 +4,9 @@ using Microsoft.Xna.Framework.Input;
 using Sprint2;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Keese;
-using Sprint2_Attempt3.Enemy.Rope;
 using Sprint2_Attempt3.Projectile;
-using Sprint2_Attempt3.ItemClasses;
-using System;
-using System.Diagnostics;
 using Sprint2_Attempt3.Dungeon;
+using Sprint2_Attempt3.Dungeon.DungeonRooms;
 
 namespace Sprint2_Attempt3
 {
@@ -24,7 +21,7 @@ namespace Sprint2_Attempt3
         private IItem Item;
         private ILink Character;
         private IBlock Block;
-        private IDungeon Dungeon;
+        private IDungeonRoom DungeonRoom;
 
         public IController keyController
         {
@@ -52,10 +49,10 @@ namespace Sprint2_Attempt3
             set {Block = value; } 
         }
 
-        public IDungeon dungeon
+        public IDungeonRoom dungeonRoom
         {
-            get { return Dungeon; }
-            set { Dungeon = value; }
+            get { return DungeonRoom; }
+            set { DungeonRoom = value; }
         }
 
         public Game1()
@@ -96,7 +93,7 @@ namespace Sprint2_Attempt3
             DungeonSpriteFactory.Instance.LoadAllTextures(Content);
             enemy = new Keese(200, 200);
             enemy.Spawn();
-            dungeon = new Dungeon1();
+            dungeonRoom = new DungeonRoom1();
             link = new Link();
             item = new Item();
             block = new Block();
@@ -144,7 +141,7 @@ namespace Sprint2_Attempt3
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            dungeon.Draw(spriteBatch);
+            dungeonRoom.Draw(spriteBatch);
             enemy.Draw(spriteBatch);
             item.Draw(spriteBatch);
             link.Draw(spriteBatch, Color.White);

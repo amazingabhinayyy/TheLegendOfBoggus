@@ -33,8 +33,8 @@ namespace Sprint2_Attempt3.Dungeon
             DoorTexture = content.Load<Texture2D>("DoorSprites");
         }
 
-        public DungeonSprite CreateDungeonSprite() {
-            return new DungeonSprite(DungeonTexture);
+        public DungeonRoomSprite CreateDungeonRoomSprite() {
+            return new DungeonRoomSprite(DungeonTexture);
         }
        
         public IDoorSprite CreateOpenNorthDoorSprite() {

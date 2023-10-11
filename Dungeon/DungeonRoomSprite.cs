@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Sprint2_Attempt3.Dungeon
 {
-    internal class DungeonSprite
+    internal class DungeonRoomSprite
     {
         Texture2D texture;
-        public DungeonSprite(Texture2D texture)
+        public DungeonRoomSprite(Texture2D texture)
         {
             this.texture = texture;
         }
