@@ -1,13 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Sprint2;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Keese;
-using Sprint2_Attempt3.Projectile;
 using Sprint2_Attempt3.Dungeon;
 using Sprint2_Attempt3.Dungeon.DungeonRooms;
 using Sprint2_Attempt3.Blocks;
+using Sprint2_Attempt3.Player;
+using Sprint2_Attempt3.Items;
+using Sprint2_Attempt3.Enemy.Projectile;
 
 namespace Sprint2_Attempt3
 {

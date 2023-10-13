@@ -2,9 +2,9 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Items;
-using Sprint2_Attempt3.Projectile.AquamentusProjectiles;
-using Sprint2_Attempt3.Projectile;
 using System;
+using Sprint2_Attempt3.Enemy.Projectile;
+using Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles;
 
 namespace Sprint2_Attempt3.Enemy.Aquamentus
 {

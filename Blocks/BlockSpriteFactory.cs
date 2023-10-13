@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Blocks.BlockSprites;
-using Sprint2;
 //using System.Numerics;
 
 namespace Sprint2_Attempt3.Blocks

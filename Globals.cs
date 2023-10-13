@@ -11,7 +11,6 @@ using Sprint2_Attempt3.Enemy.Hand;
 using Sprint2_Attempt3.Enemy.Stalfos;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Aquamentus;
-using Sprint2_Attempt3.Projectile.AquamentusProjectiles;
 using Sprint2_Attempt3.Dungeon;
 using Sprint2_Attempt3.Dungeon.DungeonRooms;
 

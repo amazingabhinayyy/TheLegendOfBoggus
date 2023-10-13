@@ -10,10 +10,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Sprint2_Attempt3.ItemClasses;
+using Sprint2_Attempt3.Items.ItemClasses;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System.Diagnostics;
+using Sprint2_Attempt3.Items;
 //using System.Numerics;
 //using System.Drawing;
 
@@ -25,7 +26,7 @@ namespace Sprint2_Attempt3.CommandClasses
         /*private Vector2 position;
         private Texture2D texture;
         private Rectangle source;*/
-        private Item item;
+        private IItem item;
         private int itemIndex;
         //private int itemNumber;
         public SwitchToNextItem(Game1 game) {
