@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
-using Sprint2_Attempt3.Projectile.GoriyaProjectiles;
+using Sprint2_Attempt3.Enemy.Projectile.GoriyaProjectiles;
 
 namespace Sprint2_Attempt3.Enemy.Goriya
 {
