@@ -6,20 +6,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using Sprint2_Attempt3.Blocks;
 
-namespace Sprint2
+namespace Sprint2_Attempt3.Blocks.BlockSprites
 {
-    public class UpChunk : IBlockSprite
+    public class SideChunk : IBlockSprite
     {
-        private Rectangle upChunkSource;
+        private Rectangle sideChunkSource;
         private int destX, destY;
         private Texture2D blocks;
-        public UpChunk(Texture2D blocks, Vector2 Pos, Rectangle upChunkSource)
+        public SideChunk(Texture2D blocks, Vector2 Pos, Rectangle sideChunkSource)
         {
             this.blocks = blocks;
-            this.destX = (int)Pos.X;
-            this.destY = (int)Pos.Y;
-            this.upChunkSource = upChunkSource;
+            destX = (int)Pos.X;
+            destY = (int)Pos.Y;
+            this.sideChunkSource = sideChunkSource;
         }
 
         public void Update()
@@ -28,14 +29,14 @@ namespace Sprint2
 
         public Rectangle DestRectangle()
         {
-            int width = this.upChunkSource.Width;
-            int height = this.upChunkSource.Height;
+            int width = sideChunkSource.Width;
+            int height = sideChunkSource.Height;
             return new Rectangle(destX, destY, width * 3, height * 3);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Rectangle scrRectangle = this.upChunkSource;
+            Rectangle scrRectangle = sideChunkSource;
             spriteBatch.Draw(blocks, DestRectangle(), scrRectangle, Color.White);
         }
     }

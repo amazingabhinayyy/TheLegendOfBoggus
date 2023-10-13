@@ -1,11 +1,4 @@
-﻿using Sprint2_Attempt3;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Sprint2
+﻿namespace Sprint2_Attempt3.Blocks.BlockStates
 {
     public class BlueTileState : BlockStates.IStateTiles
     {

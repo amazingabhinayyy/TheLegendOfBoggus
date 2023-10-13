@@ -1,10 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint2.BlockStates;
-using Sprint2_Attempt3;
-using Sprint2_Attempt3.Items;
+using Sprint2;
+using Sprint2_Attempt3.Blocks.BlockStates;
 
-namespace Sprint2
+namespace Sprint2_Attempt3.Blocks
 {
     public class Block : IBlock
     {
@@ -76,6 +75,6 @@ namespace Sprint2
             Sprite.Draw(_spriteBatch);
         }
 
-        
+
     }
 }

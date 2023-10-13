@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint2
+namespace Sprint2_Attempt3.Blocks
 {
     public interface IBlockSprite
     {

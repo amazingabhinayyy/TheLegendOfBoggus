@@ -1,18 +1,11 @@
 ﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-//using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework.Input;
-using Sprint2_Attempt3.BlockSprites;
+using Sprint2_Attempt3.Blocks.BlockSprites;
+using Sprint2;
 //using System.Numerics;
 
-namespace Sprint2
+namespace Sprint2_Attempt3.Blocks
 {
     public class BlockSpriteFactory
     {
@@ -42,7 +35,7 @@ namespace Sprint2
         private BlockSpriteFactory()
         {
             StartPosition = new Vector2(125, 125);
-            plainPos = diamondPos = upChunkPos = blackBlockPos=sideChunkPos = sideChunkPosblackBlockPos = dotTilePos = whiteStairPos=whiteBrickPos=StartPosition;
+            plainPos = diamondPos = upChunkPos = blackBlockPos = sideChunkPos = sideChunkPosblackBlockPos = dotTilePos = whiteStairPos = whiteBrickPos = StartPosition;
 
         }
 

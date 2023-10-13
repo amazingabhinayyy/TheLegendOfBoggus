@@ -1,22 +1,15 @@
-﻿using Sprint2_Attempt3;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Sprint2
+﻿namespace Sprint2_Attempt3.Blocks.BlockStates
 {
-    public class UpChunkState : BlockStates.IStateTiles
+    public class WhiteBrickState : IStateTiles
     {
         private Block block;
         private Game1 game1;
 
-        public UpChunkState(Block block)
+        public WhiteBrickState(Block block)
         {
             this.block = block;
 
-            block.Sprite = BlockSpriteFactory.Instance.CreateUpChunk();
+            block.Sprite = BlockSpriteFactory.Instance.CreateWhiteBrick();
         }
         public void ChangeToDiamondTile()
         {
@@ -34,14 +27,6 @@ namespace Sprint2
         {
             block.State = new SideChunkState(block);
         }
-        public void ChangeToStaircaseChuck()
-        {
-            block.State = new StaircaseTileState(block);
-        }
-        public void ChangeToBlueTileChuck()
-        {
-            block.State = new BlueTileState(block);
-        }
         public void ChangeToWhiteBrick()
         {
             block.State = new WhiteBrickState(block);
@@ -50,6 +35,14 @@ namespace Sprint2
         public void ChangeToWhiteStairs()
         {
             block.State = new WhiteStairState(block);
+        }
+        public void ChangeToStaircaseChuck()
+        {
+            block.State = new StaircaseTileState(block);
+        }
+        public void ChangeToBlueTileChuck()
+        {
+            block.State = new BlueTileState(block);
         }
         public void ChangeToBlackBlock()
         {
@@ -63,6 +56,7 @@ namespace Sprint2
         {
 
         }
+
 
     }
 }

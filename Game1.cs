@@ -7,6 +7,7 @@ using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Projectile;
 using Sprint2_Attempt3.Dungeon;
 using Sprint2_Attempt3.Dungeon.DungeonRooms;
+using Sprint2_Attempt3.Blocks;
 
 namespace Sprint2_Attempt3
 {

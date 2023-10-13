@@ -6,20 +6,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using Sprint2_Attempt3.Blocks;
 
-namespace Sprint2
+namespace Sprint2_Attempt3.Blocks.BlockSprites
 {
-    public class BlackBlock : IBlockSprite
+    public class DiamondTile : IBlockSprite
     {
-        private Rectangle blackBlockSource;
+        private Rectangle diamondSource;
         private int destX, destY;
         private Texture2D blocks;
-        public BlackBlock(Texture2D blocks, Vector2 Pos, Rectangle diamondSource)
+        public DiamondTile(Texture2D blocks, Vector2 Pos, Rectangle diamondSource)
         {
             this.blocks = blocks;
-            this.destX = (int)Pos.X;
-            this.destY = (int)Pos.Y;
-            this.blackBlockSource = blackBlockSource;
+            destX = (int)Pos.X;
+            destY = (int)Pos.Y;
+            this.diamondSource = diamondSource;
         }
 
         public void Update()
@@ -28,14 +29,14 @@ namespace Sprint2
 
         public Rectangle DestRectangle()
         {
-            int width = this.blackBlockSource.Width;
-            int height = this.blackBlockSource.Height;
+            int width = diamondSource.Width;
+            int height = diamondSource.Height;
             return new Rectangle(destX, destY, width * 3, height * 3);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Rectangle scrRectangle = this.blackBlockSource;
+            Rectangle scrRectangle = diamondSource;
             spriteBatch.Draw(blocks, DestRectangle(), scrRectangle, Color.White);
         }
     }
