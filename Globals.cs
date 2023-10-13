@@ -135,27 +135,27 @@ namespace Sprint2_Attempt3
 
         public static Rectangle NorthDoorPosition { get { return new Rectangle(348,0, 105, 87); } }
         public static Rectangle SouthDoorPosition { get { return new Rectangle(348, 393, 105, 87); } }
-        public static Rectangle EastDoorPosition { get { return new Rectangle(0, 197, 98, 90); } }
-        public static Rectangle WestDoorPosition { get { return new Rectangle(700, 197, 99, 90); } }
+        public static Rectangle EastDoorPosition { get { return new Rectangle(701, 197, 98, 90); } }
+        public static Rectangle WestDoorPosition { get { return new Rectangle(0, 197, 99, 90); } }
 
         public static Rectangle OpenNorthDoor { get { return new Rectangle(848, 11, 31, 32); } }
         public static Rectangle OpenSouthDoor { get { return new Rectangle(848, 110, 31, 32); } }
-        public static Rectangle OpenEastDoor { get { return new Rectangle(848, 44, 31, 32); } }
-        public static Rectangle OpenWestDoor { get { return new Rectangle(848, 77, 31, 32); } }
+        public static Rectangle OpenEastDoor { get { return new Rectangle(848, 77, 31, 32); } }
+        public static Rectangle OpenWestDoor { get { return new Rectangle(848, 44, 31, 32); } }
 
         public static Rectangle ClosedNorthDoor { get { return new Rectangle(881, 11, 31, 32); } }
         public static Rectangle ClosedSouthDoor { get { return new Rectangle(881, 110, 31, 32); } }
-        public static Rectangle ClosedEastDoor { get { return new Rectangle(881, 44, 31, 32); } }
-        public static Rectangle ClosedWestDoor { get { return new Rectangle(881, 77, 31, 32); } }
+        public static Rectangle ClosedEastDoor { get { return new Rectangle(881, 77, 31, 32); } }
+        public static Rectangle ClosedWestDoor { get { return new Rectangle(881, 44, 31, 32); } }
 
         public static Rectangle DiamondLockedNorthDoor { get { return new Rectangle(914, 11, 31, 32); } }
         public static Rectangle DiamondLockedSouthDoor { get { return new Rectangle(914, 110, 31, 32); } }
-        public static Rectangle DiamondLockedEastDoor { get { return new Rectangle(914, 44, 31, 32); } }
-        public static Rectangle DiamondLockedWestDoor { get { return new Rectangle(914, 77, 31, 32); } }
+        public static Rectangle DiamondLockedEastDoor { get { return new Rectangle(914, 77, 31, 32); } }
+        public static Rectangle DiamondLockedWestDoor { get { return new Rectangle(914, 44, 31, 32); } }
 
         public static Rectangle DamagedNorthDoor { get { return new Rectangle(947, 11, 31, 32); } }
         public static Rectangle DamagedSouthDoor { get { return new Rectangle(947, 110, 31, 32); } }
-        public static Rectangle DamagedEastDoor { get { return new Rectangle(947, 44, 31, 32); } }
-        public static Rectangle DamagedWestDoor { get { return new Rectangle(947, 77, 31, 32); } }
+        public static Rectangle DamagedEastDoor { get { return new Rectangle(947, 77, 31, 32); } }
+        public static Rectangle DamagedWestDoor { get { return new Rectangle(947, 44, 31, 32); } }
     }
 }
