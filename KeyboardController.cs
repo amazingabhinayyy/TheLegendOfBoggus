@@ -17,6 +17,8 @@ namespace Sprint2_Attempt3
         private int currentMoveKeyValue = 10;
         private Keys currentMoveKey;
         private static int enemyIndex;
+
+        private static int roomIndex;
         private List<Keys> heldKeys = new List<Keys>();
 
         public int EnemyIndex
@@ -25,12 +27,19 @@ namespace Sprint2_Attempt3
             set { enemyIndex = value; }
         }
 
+        public int RoomIndex
+        {
+            get { return roomIndex; }
+            set { roomIndex = value; }
+        }
+
         public KeyboardController(Game1 game)
         {
             this.game1 = game;
             commandMapping = new Dictionary<Keys, ICommand>();
             RegisterCommands();
-            enemyIndex = 0;
+            EnemyIndex = 0;
+            RoomIndex = 0;
             timeSinceLastUpdate = 0;
         }
 
@@ -71,6 +80,10 @@ namespace Sprint2_Attempt3
             commandMapping.Add(Keys.P, new SwitchToNextEnemy(game1));
             commandMapping.Add(Keys.L, new ChangeEnemyAttackedStatus(game1));
             commandMapping.Add(Keys.K, new KillEnemy(game1));
+
+            //room switching
+            commandMapping.Add(Keys.G, new SwitchToPreviousDungeonRoom(game1));
+            commandMapping.Add(Keys.H, new SwitchToNextDungeonRoom(game1));
 
             //other controls
             commandMapping.Add(Keys.Q, new Quit(game1));

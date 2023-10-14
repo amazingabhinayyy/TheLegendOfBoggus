@@ -1,14 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Sprint2;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Keese;
-using Sprint2_Attempt3.Enemy.Rope;
-using Sprint2_Attempt3.Projectile;
-using Sprint2_Attempt3.ItemClasses;
-using System;
-using System.Diagnostics;
+using Sprint2_Attempt3.Dungeon;
+using Sprint2_Attempt3.Dungeon.DungeonRooms;
+using Sprint2_Attempt3.Blocks;
+using Sprint2_Attempt3.Player;
+using Sprint2_Attempt3.Items;
+using Sprint2_Attempt3.Enemy.Projectile;
 
 namespace Sprint2_Attempt3
 {
@@ -16,48 +16,52 @@ namespace Sprint2_Attempt3
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        public int itemIndex;
+        public int blockIndex;
+        private IController kController;
+        private IEnemy Enemy;
+        private IItem Item;
+        private ILink Character;
+        private IBlock Block;
+        private IDungeonRoom DungeonRoom;
 
-        private IController keyboardController;
-        public IController KeyController
+        public IController keyController
         {
-            get { return keyboardController; }
-            set { keyboardController = value; }
+            get { return kController; }
+            set { kController = value; }
         }
 
-        private IEnemy currentEnemy;
-        public int currentItemInd;
         public IEnemy enemy
         {
-            get { return currentEnemy; }
-            set { currentEnemy = value; }
+            get { return Enemy; }
+            set { Enemy = value; }
         }
-        private ILink link;
-        private IItem item;
-        private Link link;
-        public IItem Item { get { return item; } set {item = value; } }
-        public int itemIndex;
-        public IItem Item { get { return item; } set {; } }
-=========
-        private ILink link;
->>>>>>>>> Temporary merge branch 2
-        public ILink Link { 
-            get { return link; } 
-            set {link = value; } 
+        
+        public IItem item { 
+            get { return Item; } 
+            set {Item = value; } 
+        }
+        public ILink link { 
+            get { return Character; } 
+            set {Character = value; } 
         }
 
-        private IBlock block;
-        public IBlock Block { get { return block; } set {block = value; } }
+        public IBlock block { 
+            get { return Block; } 
+            set {Block = value; } 
+        }
 
-        public int blockIndex;
-
+        public IDungeonRoom dungeonRoom
+        {
+            get { return DungeonRoom; }
+            set { DungeonRoom = value; }
+        }
 
             blockIndex = 0;
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-            currentItemInd = 0;
-            itemIndex = 0;
         }
 
         /// <summary>
@@ -68,9 +72,9 @@ namespace Sprint2_Attempt3
         /// </summary>
         protected override void Initialize()
         {
-            keyboardController = new KeyboardController(this);
             base.Initialize();
-
+            itemIndex = 0;
+            blockIndex = 0;
 
         }
 
@@ -82,17 +86,19 @@ namespace Sprint2_Attempt3
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            keyboardController = new KeyboardController(this);
+            keyController = new KeyboardController(this);
             EnemySpriteFactory.Instance.LoadAllTextures(this.Content);
-            currentEnemy = new Keese(200, 200);
-            currentEnemy.Spawn();
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
-            link = new Link();
             ItemSpriteFactory.Instance.LoadAllTextures(Content);
-            item = new Item();
             BlockSpriteFactory.Instance.LoadAllTextures(Content);
-            block = new Block();
             EnemyProjectileSpriteFactory.Instance.LoadAllTextures(Content);
+            DungeonSpriteFactory.Instance.LoadAllTextures(Content);
+            enemy = new Keese(200, 200);
+            enemy.Spawn();
+            dungeonRoom = new DungeonRoom1();
+            link = new Link();
+            item = new Item();
+            block = new Block();
         }
 
         /// <summary>
@@ -115,9 +121,9 @@ namespace Sprint2_Attempt3
             // TODO: Add your update logic here
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-            block.Update();
-            keyboardController.Update(gameTime);
-            currentEnemy.Update();
+
+            keyController.Update(gameTime);
+            enemy.Update();
             link.Update();
             item.Update();
             //Debug.WriteLine(itemIndex);
@@ -137,9 +143,10 @@ namespace Sprint2_Attempt3
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            currentEnemy.Draw(spriteBatch);
-            link.Draw(spriteBatch, Color.White);
+            dungeonRoom.Draw(spriteBatch);
+            enemy.Draw(spriteBatch);
             item.Draw(spriteBatch);
+            link.Draw(spriteBatch, Color.White);
             block.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);

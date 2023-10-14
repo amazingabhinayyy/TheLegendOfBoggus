@@ -11,13 +11,17 @@ using Sprint2_Attempt3.Enemy.Hand;
 using Sprint2_Attempt3.Enemy.Stalfos;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Aquamentus;
-using Sprint2_Attempt3.Projectile.AquamentusProjectiles;
+using Sprint2_Attempt3.Dungeon;
+using Sprint2_Attempt3.Dungeon.DungeonRooms;
 
 namespace Sprint2_Attempt3
 {
     internal class Globals
     {
         public const float scale = 3.0f;
+        public const int ScreenHeight = 480;
+        public const int ScreenWidth = 800;
+
 
         //my futile attempt to avoid making a Projectile class, probably will delete
         public static bool changeDirection = false;
@@ -108,5 +112,50 @@ namespace Sprint2_Attempt3
         public static Vector2 temp = new Vector2(0, 0);
         public static Vector2[] AquamentusOriginsLeft = { temp, temp, temp, temp, temp, temp, temp, temp };
         public static int fireBallMaxDistance = 100;
+
+        public static IDungeonRoom[] rooms = { new DungeonRoom1(), new DungeonRoom2(), new DungeonRoom3(), new DungeonRoom4(), new DungeonRoom5(), new DungeonRoom6(), new DungeonRoom7(), new DungeonRoom8(), new DungeonRoom9(), new DungeonRoom10(), new DungeonRoom11(), new DungeonRoom12(), new DungeonRoom13(), new DungeonRoom14(), new DungeonRoom15(), new DungeonRoom16(), new DungeonRoom17(), new DungeonRoom18(), };
+        public static Rectangle Dungeon1 { get { return new Rectangle(515, 886, 256, 176); } }
+        public static Rectangle Dungeon2 { get { return new Rectangle(258, 886, 256, 176); } }
+        public static Rectangle Dungeon3 { get { return new Rectangle(772, 886, 256, 176); } }
+        public static Rectangle Dungeon4 { get { return new Rectangle(515, 709, 256, 176); } }
+        public static Rectangle Dungeon5 { get { return new Rectangle(258, 532, 256, 176); } }
+        public static Rectangle Dungeon6 { get { return new Rectangle(515, 532, 256, 176); } }
+        public static Rectangle Dungeon7 { get { return new Rectangle(772, 532, 256, 176); } }
+        public static Rectangle Dungeon8 { get { return new Rectangle(1, 355, 256, 176); } }
+        public static Rectangle Dungeon9 { get { return new Rectangle(258, 355, 256, 176  ); } }
+        public static Rectangle Dungeon10 { get { return new Rectangle(515, 355, 256, 176); } }
+        public static Rectangle Dungeon11 { get { return new Rectangle(772, 355, 256, 176); } }
+        public static Rectangle Dungeon12 { get { return new Rectangle(1029, 355, 256, 176); } }
+        public static Rectangle Dungeon13 { get { return new Rectangle(515, 178, 256, 176); } }
+        public static Rectangle Dungeon14 { get { return new Rectangle(1029, 178, 256, 176); } }
+        public static Rectangle Dungeon15 { get { return new Rectangle(1286, 178, 256, 176); } }
+        public static Rectangle Dungeon16 { get { return new Rectangle(1, 1, 256, 160); } }
+        public static Rectangle Dungeon17 { get { return new Rectangle(258, 1, 256, 176); } }
+        public static Rectangle Dungeon18 { get { return new Rectangle(515, 1, 256, 176); } }
+
+        public static Rectangle NorthDoorPosition { get { return new Rectangle(348,0, 105, 87); } }
+        public static Rectangle SouthDoorPosition { get { return new Rectangle(348, 393, 105, 87); } }
+        public static Rectangle EastDoorPosition { get { return new Rectangle(0, 197, 98, 90); } }
+        public static Rectangle WestDoorPosition { get { return new Rectangle(700, 197, 99, 90); } }
+
+        public static Rectangle OpenNorthDoor { get { return new Rectangle(848, 11, 31, 32); } }
+        public static Rectangle OpenSouthDoor { get { return new Rectangle(848, 110, 31, 32); } }
+        public static Rectangle OpenEastDoor { get { return new Rectangle(848, 44, 31, 32); } }
+        public static Rectangle OpenWestDoor { get { return new Rectangle(848, 77, 31, 32); } }
+
+        public static Rectangle ClosedNorthDoor { get { return new Rectangle(881, 11, 31, 32); } }
+        public static Rectangle ClosedSouthDoor { get { return new Rectangle(881, 110, 31, 32); } }
+        public static Rectangle ClosedEastDoor { get { return new Rectangle(881, 44, 31, 32); } }
+        public static Rectangle ClosedWestDoor { get { return new Rectangle(881, 77, 31, 32); } }
+
+        public static Rectangle DiamondLockedNorthDoor { get { return new Rectangle(914, 11, 31, 32); } }
+        public static Rectangle DiamondLockedSouthDoor { get { return new Rectangle(914, 110, 31, 32); } }
+        public static Rectangle DiamondLockedEastDoor { get { return new Rectangle(914, 44, 31, 32); } }
+        public static Rectangle DiamondLockedWestDoor { get { return new Rectangle(914, 77, 31, 32); } }
+
+        public static Rectangle DamagedNorthDoor { get { return new Rectangle(947, 11, 31, 32); } }
+        public static Rectangle DamagedSouthDoor { get { return new Rectangle(947, 110, 31, 32); } }
+        public static Rectangle DamagedEastDoor { get { return new Rectangle(947, 44, 31, 32); } }
+        public static Rectangle DamagedWestDoor { get { return new Rectangle(947, 77, 31, 32); } }
     }
 }

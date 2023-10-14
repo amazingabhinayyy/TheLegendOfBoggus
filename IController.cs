@@ -15,6 +15,12 @@ namespace Sprint2_Attempt3
             get { return EnemyIndex; }
             set { EnemyIndex = value; }
         }
+
+        public int RoomIndex
+        {
+            get { return EnemyIndex; }
+            set { RoomIndex = value; }
+        }
         void Update(GameTime gametime);
 
     }

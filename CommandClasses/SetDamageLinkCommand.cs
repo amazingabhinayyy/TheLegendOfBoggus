@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sprint2_Attempt3.Player;
 
 namespace Sprint2_Attempt3.CommandClasses
 {
@@ -16,7 +17,7 @@ namespace Sprint2_Attempt3.CommandClasses
 
         public void Execute()
         {
-            DamageLinkDecorator damagedLink = new DamageLinkDecorator(game.Link, game);
+            DamageLinkDecorator damagedLink = new DamageLinkDecorator(game.link, game);
             damagedLink.GetDamaged();
         }
 

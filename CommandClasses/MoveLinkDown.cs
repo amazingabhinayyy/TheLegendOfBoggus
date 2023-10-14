@@ -19,7 +19,7 @@ namespace Sprint2_Attempt3.CommandClasses
 
         public void Execute()
         {
-            game.Link.MoveDown();
+            game.link.MoveDown();
         }
 
     }

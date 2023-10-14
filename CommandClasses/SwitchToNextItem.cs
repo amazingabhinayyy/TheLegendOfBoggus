@@ -10,10 +10,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Sprint2_Attempt3.ItemClasses;
+using Sprint2_Attempt3.Items.ItemClasses;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System.Diagnostics;
+using Sprint2_Attempt3.Items;
 //using System.Numerics;
 //using System.Drawing;
 
@@ -25,7 +26,7 @@ namespace Sprint2_Attempt3.CommandClasses
         /*private Vector2 position;
         private Texture2D texture;
         private Rectangle source;*/
-        private Item item;
+        private IItem item;
         private int itemIndex;
         //private int itemNumber;
         public SwitchToNextItem(Game1 game) {
@@ -51,49 +52,49 @@ namespace Sprint2_Attempt3.CommandClasses
             switch (game1.itemIndex)
             {
                 case 0:
-                    game1.Item.ChangeToRupee();
+                    game1.item.ChangeToRupee();
                     break;
                 case 1:
-                    game1.Item.ChangeToBomb();
+                    game1.item.ChangeToBomb();
                     break;
                 case 2:
-                    game1.Item.ChangeToClock();
+                    game1.item.ChangeToClock();
                     break;
                 case 3:
-                    game1.Item.ChangeToCompass();
+                    game1.item.ChangeToCompass();
                     break;
                 case 4:
-                    game1.Item.ChangeToHeart();
+                    game1.item.ChangeToHeart();
                     break;
                 case 5:
-                    game1.Item.ChangeToBoomerang();
+                    game1.item.ChangeToBoomerang();
                     break;
                 case 6:
-                    game1.Item.ChangeToFairy();
+                    game1.item.ChangeToFairy();
                     break;
                 case 7:
-                    game1.Item.ChangeToMap();
+                    game1.item.ChangeToMap();
                     break;
                 case 8:
-                    game1.Item.ChangeToKey();
+                    game1.item.ChangeToKey();
                     break;
                 case 9:
-                    game1.Item.ChangeToHeartContainer();
+                    game1.item.ChangeToHeartContainer();
                     break;
                 case 10:
-                    game1.Item.ChangeToTriforcePiece();
+                    game1.item.ChangeToTriforcePiece();
                     break;
                 case 11:
-                    game1.Item.ChangeToBow();
+                    game1.item.ChangeToBow();
                     break;
                 case 12:
-                    game1.Item.ChangeToArrow();
+                    game1.item.ChangeToArrow();
                     break;
                 case 13:
-                    game1.Item.ChangeToBlueCandle();
+                    game1.item.ChangeToBlueCandle();
                     break;
                 case 14:
-                    game1.Item.ChangeToBluePotion();
+                    game1.item.ChangeToBluePotion();
                     break;
             }
         }

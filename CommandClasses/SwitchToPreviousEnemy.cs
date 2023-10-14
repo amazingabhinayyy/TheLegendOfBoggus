@@ -16,7 +16,7 @@ namespace Sprint2_Attempt3
 
         public void Execute()
         {
-            enemyIndex = game1.KeyController.EnemyIndex;
+            enemyIndex = game1.keyController.EnemyIndex;
             if (enemyIndex >=1)
             {
                 game1.enemy = enemies[enemyIndex - 1];
@@ -27,7 +27,7 @@ namespace Sprint2_Attempt3
                 enemyIndex = enemies.Length - 1;
                 game1.enemy = enemies[enemies.Length-1];
             }
-            game1.KeyController.EnemyIndex = enemyIndex;
+            game1.keyController.EnemyIndex = enemyIndex;
             game1.enemy.Spawn();
         }
 
