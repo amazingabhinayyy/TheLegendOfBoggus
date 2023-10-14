@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
+using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Enemy;
 
 namespace Sprint2_Attempt3.Collision
@@ -27,7 +28,7 @@ namespace Sprint2_Attempt3.Collision
         {
             if(linkPosition.X < 50 || linkPosition.X > 750 || linkPosition.Y < 50 || linkPosition.Y > 450)
             {
-                //link.Stop?
+                //link.Stop?s
             }
             foreach (IEnemy enemy in Globals.enemies)
             {
@@ -41,6 +42,22 @@ namespace Sprint2_Attempt3.Collision
                 }
 
             }
+            /*
+             * want to use this for blocks. since we do not have a block thing going on it will not run if this is not commented.
+            foreach(IBlock block in Globals.blocks)
+            {
+                if (block.X > (linkPosition.X - 90) && (block.X + 90) < linkPosition.X)
+                {
+                    //link.stop?
+                }
+                if (block.Y > (linkPosition.Y - 90) && (block.Y + 90) < linkPosition.Y)
+                {
+                    //link.stop?
+                }
+            }
+            */
+
+
 
         }
     }
