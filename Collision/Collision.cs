@@ -40,6 +40,15 @@ namespace Sprint2_Attempt3.Collision
                 {
                     //link.GetDamaged?
                 }
+                /*I think update sword variables to link sword global?
+                if (enemy.X > (linkSword.X) && (enemy.X ) < linkSword.X)
+                {
+                    //enemy.kill?
+                }
+                if (enemy.Y > (linkSword.Y) && (enemy.Y) < linkSword.Y)
+                {
+                    //enemy.kill?
+                }*/
 
             }
             /*
