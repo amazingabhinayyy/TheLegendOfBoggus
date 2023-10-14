@@ -4,22 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using Sprint2_Attempt3.Interfaces;
 using Sprint2_Attempt3.Player;
+using Sprint2_Attempt3.Player.Items;
 
 namespace Sprint2_Attempt3.Player.LinkStates
 {
-    public class DownUseFireState : IState
+    public class DownUseFireState : ILinkState
     {
         private Link link;
         private int frameCounter;
         public DownUseFireState(Link link)
         {
             this.link = link;
-            link.Sprite = LinkSpriteFactory.Instance.CreateDownItemLinkSprite();
-            //Constant is to make the item spawn infront of link
-            link.ItemPosition = new Vector2(link.position.X, link.position.Y + 45);
-            link.Items.Add(LinkSpriteFactory.Instance.CreateFireItem());
-            link.Direction = Link.LinkDirection.Down;
+            link.Sprite = LinkSpriteFactory.Instance.CreateDownItemLinkSprite(); ;
+            link.Items.Add(new DownFire(link));
             frameCounter = 0;
         }
         public void Stop()

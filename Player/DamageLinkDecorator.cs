@@ -6,7 +6,7 @@ using System.Linq;
 using System.Runtime.Intrinsics.Arm;
 using System.Text;
 using System.Threading.Tasks;
-using Sprint2_Attempt3.Player.LinkStates;
+using Sprint2_Attempt3.Interfaces;
 
 namespace Sprint2_Attempt3.Player
 {
@@ -15,7 +15,7 @@ namespace Sprint2_Attempt3.Player
         private Game1 game;
         private ILink decoratedLink;
         private int timer;
-        public IState State { get; set; }
+        public ILinkState State { get; set; }
         public DamageLinkDecorator(ILink decoratedLink, Game1 game)
         {
             this.decoratedLink = decoratedLink;

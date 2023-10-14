@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Sprint2_Attempt3.Interfaces;
 
 namespace Sprint2_Attempt3.Player.LinkSprites
 {
-    public class LeftAttackLinkSwordSprite : ISprite
+    public class LeftAttackLinkSwordSprite : ILinkSprite
     {
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;

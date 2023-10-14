@@ -1,10 +1,11 @@
 ﻿using Sprint2_Attempt3.Player;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Sprint2_Attempt3.Interfaces;
 
 namespace Sprint2_Attempt3.Player.LinkSprites
 {
-    public class DownAttackLinkSprite : ISprite
+    public class DownAttackLinkSprite : ILinkSprite
     {
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;

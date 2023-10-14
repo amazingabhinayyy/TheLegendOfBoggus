@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint2_Attempt3.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Sprint2_Attempt3.Player.LinkSprites
 {
-    public class UpIdleLinkSprite : ISprite
+    public class UpIdleLinkSprite : ILinkSprite
     {
         Texture2D link2D;
 

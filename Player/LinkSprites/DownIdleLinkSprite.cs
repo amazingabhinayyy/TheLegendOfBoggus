@@ -5,10 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sprint2_Attempt3.Interfaces;
 
 namespace Sprint2_Attempt3.Player.LinkSprites
 {
-    public class DownIdleLinkSprite : ISprite
+    public class DownIdleLinkSprite : ILinkSprite
     {
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;

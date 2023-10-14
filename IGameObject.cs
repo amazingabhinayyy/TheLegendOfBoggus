@@ -8,5 +8,6 @@ namespace Sprint2_Attempt3
 {
     public interface IGameObject
     {
+        
     }
 }

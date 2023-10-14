@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace Sprint2_Attempt3.Player
+namespace Sprint2_Attempt3.Interfaces
 {
     public interface ILink : IGameObject
     {

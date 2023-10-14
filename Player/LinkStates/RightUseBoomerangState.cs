@@ -4,21 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using Sprint2_Attempt3.Interfaces;
 using Sprint2_Attempt3.Player;
+using Sprint2_Attempt3.Player.Items;
 
 namespace Sprint2_Attempt3.Player.LinkStates
 {
-    public class RightUseBoomerangState : IState
+    public class RightUseBoomerangState : ILinkState
     {
         private Link link;
         private int frameCounter;
         public RightUseBoomerangState(Link link)
         {
             this.link = link;
-            link.Sprite = LinkSpriteFactory.Instance.CreateRightItemLinkSprite();
-            link.ItemPosition = new Vector2(link.position.X + 45, link.position.Y);
-            link.Items.Add(LinkSpriteFactory.Instance.CreateBoomerangItem());
-            link.Direction = Link.LinkDirection.Right;
+            link.Sprite = LinkSpriteFactory.Instance.CreateRightItemLinkSprite(); ;
+            link.Items.Add(new RightBoomerang(link));
             frameCounter = 0;
         }
         public void BecomeIdle()

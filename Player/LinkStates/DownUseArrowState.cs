@@ -4,22 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using Sprint2_Attempt3.Interfaces;
 using Sprint2_Attempt3.Player;
+using Sprint2_Attempt3.Player.Items;
 
 namespace Sprint2_Attempt3.Player.LinkStates
 {
-    public class DownUseArrowState : IState
+    public class DownUseArrowState : ILinkState
     {
         private Link link;
         private int frameCounter;
         public DownUseArrowState(Link link)
         {
             this.link = link;
-            link.Sprite = LinkSpriteFactory.Instance.CreateDownItemLinkSprite();
-            //Constant are to make the item spawn infront of link and adjust for roation
-            link.ItemPosition = new Vector2(link.position.X + 48, link.position.Y + 45);
-            link.Items.Add(LinkSpriteFactory.Instance.CreateArrowItem());
-            link.Direction = Link.LinkDirection.Down;
+            link.Sprite = LinkSpriteFactory.Instance.CreateDownItemLinkSprite(); ;
+            link.Items.Add(new DownArrow(link));
             frameCounter = 0;
         }
         public void Stop()

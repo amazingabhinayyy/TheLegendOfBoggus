@@ -2,7 +2,7 @@
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint2_Attempt3.Player.LinkSprites;
+using Sprint2_Attempt3.Interfaces;
 using Sprint2_Attempt3.Player.LinkStates;
 using System.Collections.Generic;
 
@@ -13,15 +13,12 @@ namespace Sprint2_Attempt3.Player
         public Vector2 position;
         public Vector2 ItemPosition { get; set; }
 
-        public ISprite AttackSprite { get; set; }
-        public ISprite Sprite { get; set; }
-        public IState State { get; set; }
-        public IItemSprite ItemSprite { get; set; }
-        public IItemState ItemState { get; set; }
-        public List<IItemSprite> Items { get; set; }
+        public ILinkSprite AttackSprite { get; set; }
+        public ILinkSprite Sprite { get; set; }
+        public ILinkState State { get; set; }
+        public List<ILinkItem> Items { get; set; }
         public enum LinkDirection { Left, Right, Up, Down };
-        public LinkDirection Direction { get; set; }
-
+        public LinkDirection Direction { get; set; } 
         public Link()
         {
             StartLinkState();
@@ -86,7 +83,7 @@ namespace Sprint2_Attempt3.Player
         public void StartLinkState()
         {
             State = new DownIdleLinkState(this);
-            Items = new List<IItemSprite>();
+            Items = new List<ILinkItem>();
         }
 
         public void Update()
@@ -96,7 +93,7 @@ namespace Sprint2_Attempt3.Player
             AttackSprite.Update();
             for (int c = 0; c < Items.Count; c++)
             {
-                Items[c].Update(this);
+                Items[c].Update();
             }
         }
 
@@ -104,9 +101,9 @@ namespace Sprint2_Attempt3.Player
         {
             Sprite.Draw(_spriteBatch, position, color);
             AttackSprite.Draw(_spriteBatch, position, color);
-            foreach (IItemSprite item in Items)
+            foreach (ILinkItem item in Items)
             {
-                item.Draw(_spriteBatch, ItemPosition, Color.White);
+                item.Draw(_spriteBatch);
             }
 
         }
