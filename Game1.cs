@@ -145,9 +145,9 @@ namespace Sprint2_Attempt3
             spriteBatch.Begin();
             dungeonRoom.Draw(spriteBatch);
             enemy.Draw(spriteBatch);
-            item.Draw(spriteBatch);
+            //item.Draw(spriteBatch);
             link.Draw(spriteBatch, Color.White);
-            block.Draw(spriteBatch);
+            //block.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }
