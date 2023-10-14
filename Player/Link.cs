@@ -20,8 +20,7 @@ namespace Sprint2_Attempt3.Player
         public IItemState ItemState { get; set; }
         public List<IItemSprite> Items { get; set; }
         public enum LinkDirection { Left, Right, Up, Down };
-        public LinkDirection Direction { get; set; }
-
+        public LinkDirection Direction { get; set; } 
         public Link()
         {
             StartLinkState();

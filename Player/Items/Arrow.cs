@@ -21,10 +21,11 @@ namespace Sprint2_Attempt3.Player.Items
         private SpriteEffects flip = SpriteEffects.None;
         private float rotate;
         private LinkDirection Direction;
+        public Rectangle ArrowCollisionRectangle { get; private set; }
         public Arrow(Texture2D texture)
         {
             this.texture = texture;
-            sourceRectangle = new Rectangle(10, 185, 15, 15);
+            sourceRectangle = new Rectangle(10, 190, 15, 5);
             currentFrame = 0;
         }
         public void Update(Link link)
@@ -43,6 +44,7 @@ namespace Sprint2_Attempt3.Player.Items
                 {
                     case LinkDirection.Right:
                         xLoc += 3;
+                        ArrowCollisionRectangle = new Rectangle(xLoc, yLoc, 45, 15);
                         break;
                     case LinkDirection.Left:
                         flip = SpriteEffects.FlipHorizontally;
@@ -70,7 +72,7 @@ namespace Sprint2_Attempt3.Player.Items
             }
             else if (currentFrame < 55)
             {
-                destinationRectangle = new Rectangle(xLoc, yLoc, 45, 45);
+                destinationRectangle = new Rectangle(xLoc, yLoc, 15, 45);
             }
             else
             {
