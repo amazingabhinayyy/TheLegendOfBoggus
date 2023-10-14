@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Sprint2_Attempt3.Interfaces;
 using Sprint2_Attempt3.Player;
+using Sprint2_Attempt3.Player.Items;
 
 namespace Sprint2_Attempt3.Player.LinkStates
 {
@@ -16,9 +17,8 @@ namespace Sprint2_Attempt3.Player.LinkStates
         public DownUseBombLinkState(Link link)
         {
             this.link = link;
-            link.Sprite = LinkSpriteFactory.Instance.CreateDownItemLinkSprite();
-            link.ItemPosition = new Vector2(link.position.X, link.position.Y + 45);
-            link.Items.Add(LinkSpriteFactory.Instance.CreateBombItem());
+            link.Sprite = LinkSpriteFactory.Instance.CreateDownItemLinkSprite();;
+            link.Items.Add(new DownBomb(link));
             frameCounter = 0;
         }
         public void Stop()

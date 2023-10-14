@@ -119,33 +119,29 @@ namespace Sprint2_Attempt3.Player
         {
             return new RightUseItemLinkSprite(linkTexture);
         }
-        public IItemSprite CreateNoItem()
+        public ILinkItemSprite CreateBombItem()
         {
-            return new NoItemSprite();
+            return new BombSprite(linkTexture);
         }
-        public IItemSprite CreateBombItem()
+        public ILinkItemSprite CreateArrowItem()
         {
-            return new Bomb(linkTexture);
+            return new ArrowSprite(linkTexture);
         }
-        public IItemSprite CreateArrowItem()
+        public ILinkItemSprite CreateBoomerangItem()
         {
-            return new Arrow(linkTexture);
+            return new BoomerangSprite(linkTexture);
         }
-        public IItemSprite CreateBoomerangItem()
+        public ILinkItemSprite CreateBlueBoomerangItem()
         {
-            return new Boomerang(linkTexture);
+            return new BlueBoomerangSprite(linkTexture);
         }
-        public IItemSprite CreateBlueBoomerangItem()
+        public ILinkItemSprite CreateBlueArrowItem()
         {
-            return new BlueBoomerang(linkTexture);
+            return new BlueArrowSprite(linkTexture);
         }
-        public IItemSprite CreateBlueArrowItem()
+        public ILinkItemSprite CreateFireItem()
         {
-            return new BlueArrow(linkTexture);
-        }
-        public IItemSprite CreateFireItem()
-        {
-            return new Fire(linkTexture);
+            return new FireSprite(linkTexture);
         }
 
 
