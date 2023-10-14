@@ -12,16 +12,10 @@ namespace Sprint2_Attempt3.Player
     {
         public Vector2 position;
         public Vector2 ItemPosition { get; set; }
-<<<<<<< Updated upstream:LinkPlayer/Link.cs
 
         public ILinkSprite AttackSprite { get; set; }
         public ILinkSprite Sprite { get; set; }
         public ILinkState State { get; set; }
-=======
-        public ISprite AttackSprite { get; set; }
-        public ISprite Sprite { get; set; }
-        public IState State { get; set; }
->>>>>>> Stashed changes:Link.cs
         public IItemSprite ItemSprite { get; set; }
         public IItemState ItemState { get; set; }
         public List<IItemSprite> Items { get; set; }
