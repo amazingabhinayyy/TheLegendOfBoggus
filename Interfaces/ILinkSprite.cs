@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint2_Attempt3.Player.LinkSprites
+namespace Sprint2_Attempt3.Interfaces
 {
-    public interface ISprite
+    public interface ILinkSprite
     {
         //will not deal with position that will be handled in respective state class
         public void Update();

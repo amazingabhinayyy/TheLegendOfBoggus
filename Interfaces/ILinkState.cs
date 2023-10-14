@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint2_Attempt3.Player.LinkStates
+namespace Sprint2_Attempt3.Interfaces
 {
-    public interface IState
+    public interface ILinkState
     {
         public void MoveUp();
         public void MoveDown();

@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using Sprint2_Attempt3.Interfaces;
 using Sprint2_Attempt3.Player;
 
 namespace Sprint2_Attempt3.Player.LinkStates
 {
-    public class RightUseArrowState : IState
+    public class RightUseArrowState : ILinkState
     {
         private Link link;
         private int frameCounter;

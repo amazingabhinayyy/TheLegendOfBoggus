@@ -1,6 +1,8 @@
-﻿namespace Sprint2_Attempt3.Player.LinkStates
+﻿using Sprint2_Attempt3.Interfaces;
+
+namespace Sprint2_Attempt3.Player.LinkStates
 {
-    public class DownAttackLinkState : IState
+    public class DownAttackLinkState : ILinkState
     {
         private Link link;
         private int count = 0;
