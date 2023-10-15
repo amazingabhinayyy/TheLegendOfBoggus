@@ -1,6 +1,8 @@
-﻿namespace Sprint2_Attempt3.Player.LinkStates
+﻿using Sprint2_Attempt3.Interfaces;
+
+namespace Sprint2_Attempt3.Player.LinkStates
 {
-    public class LeftIdleLinkState : IState
+    public class LeftIdleLinkState : ILinkState
     {
         private Link link;
         public LeftIdleLinkState(Link link)

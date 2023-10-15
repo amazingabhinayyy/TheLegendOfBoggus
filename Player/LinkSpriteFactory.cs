@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint2_Attempt3.Interfaces;
 using Sprint2_Attempt3.Player.Items;
 using Sprint2_Attempt3.Player.LinkSprites;
 
@@ -33,88 +34,88 @@ namespace Sprint2_Attempt3.Player
             //...
         }
 
-        public ISprite CreateDownAttackLinkSprite()
+        public ILinkSprite CreateDownAttackLinkSprite()
         {
             return new DownAttackLinkSprite(linkTexture);
         }
-        public ISprite CreateDownIdleLinkSprite()
+        public ILinkSprite CreateDownIdleLinkSprite()
         {
             return new DownIdleLinkSprite(linkTexture);
         }
-        public ISprite CreateDownMovingLinkSprite()
+        public ILinkSprite CreateDownMovingLinkSprite()
         {
             return new DownMovingLinkSprite(linkTexture);
         }
-        public ISprite CreateLeftAttackLinkSprite()
+        public ILinkSprite CreateLeftAttackLinkSprite()
         {
             return new LeftAttackLinkSprite(linkTexture);
         }
-        public ISprite CreateLeftIdleLinkSprite()
+        public ILinkSprite CreateLeftIdleLinkSprite()
         {
             return new LeftIdleLinkSprite(linkTexture);
         }
-        public ISprite CreateLeftMovingLinkSprite()
+        public ILinkSprite CreateLeftMovingLinkSprite()
         {
             return new LeftMovingLinkSprite(linkTexture);
         }
-        public ISprite CreateRightAttackLinkSprite()
+        public ILinkSprite CreateRightAttackLinkSprite()
         {
             return new RightAttackLinkSprite(linkTexture);
         }
-        public ISprite CreateRightIdleLinkSprite()
+        public ILinkSprite CreateRightIdleLinkSprite()
         {
             return new RightIdleLinkSprite(linkTexture);
         }
-        public ISprite CreateRightMovingLinkSprite()
+        public ILinkSprite CreateRightMovingLinkSprite()
         {
             return new RightMovingLinkSprite(linkTexture);
         }
-        public ISprite CreateUpAttackLinkSprite()
+        public ILinkSprite CreateUpAttackLinkSprite()
         {
             return new UpAttackLinkSprite(linkTexture);
         }
-        public ISprite CreateUpIdleLinkSprite()
+        public ILinkSprite CreateUpIdleLinkSprite()
         {
             return new UpIdleLinkSprite(linkTexture);
         }
-        public ISprite CreateUpMovingLinkSprite()
+        public ILinkSprite CreateUpMovingLinkSprite()
         {
             return new UpMovingLinkSprite(linkTexture);
         }
-        public ISprite CreateDownAttackLinkSwordSprite()
+        public ILinkSprite CreateDownAttackLinkSwordSprite()
         {
             return new DownAttackLinkSwordSprite(linkTexture);
         }
-        public ISprite CreateUpAttackLinkSwordSprite()
+        public ILinkSprite CreateUpAttackLinkSwordSprite()
         {
             return new UpAttackLinkSwordSprite(linkTexture);
         }
-        public ISprite CreateLeftAttackLinkSwordSprite()
+        public ILinkSprite CreateLeftAttackLinkSwordSprite()
         {
             return new LeftAttackLinkSwordSprite(linkTexture);
         }
-        public ISprite CreateRightAttackLinkSwordSprite()
+        public ILinkSprite CreateRightAttackLinkSwordSprite()
         {
             return new RightAttackLinkSwordSprite(linkTexture);
         }
-        public ISprite CreateSwordPlaceholderSprite()
+        public ILinkSprite CreateSwordPlaceholderSprite()
         {
             return new SwordPlaceholderSprite(linkTexture);
         }
 
-        public ISprite CreateDownItemLinkSprite()
+        public ILinkSprite CreateDownItemLinkSprite()
         {
             return new DownUseItemLinkSprite(linkTexture);
         }
-        public ISprite CreateUpItemLinkSprite()
+        public ILinkSprite CreateUpItemLinkSprite()
         {
             return new UpUseItemLinkSprite(linkTexture);
         }
-        public ISprite CreateLeftItemLinkSprite()
+        public ILinkSprite CreateLeftItemLinkSprite()
         {
             return new LeftUseItemLinkSprite(linkTexture);
         }
-        public ISprite CreateRightItemLinkSprite()
+        public ILinkSprite CreateRightItemLinkSprite()
         {
             return new RightUseItemLinkSprite(linkTexture);
         }

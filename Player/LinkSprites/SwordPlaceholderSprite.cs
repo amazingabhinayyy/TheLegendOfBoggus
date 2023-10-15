@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Sprint2_Attempt3.Interfaces;
 
 namespace Sprint2_Attempt3.Player.LinkSprites
 {
-    public class SwordPlaceholderSprite : ISprite
+    public class SwordPlaceholderSprite : ILinkSprite
     {
         public SwordPlaceholderSprite(Texture2D linkTexture)
         {

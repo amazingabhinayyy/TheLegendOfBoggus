@@ -5,10 +5,11 @@ using Microsoft.Xna.Framework;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sprint2_Attempt3.Interfaces;
 
 namespace Sprint2_Attempt3.Player.LinkSprites
 {
-    public class DownUseItemLinkSprite : ISprite
+    public class DownUseItemLinkSprite : ILinkSprite
     {
         private Texture2D linkTexture;
         private Rectangle sourceRectangle;

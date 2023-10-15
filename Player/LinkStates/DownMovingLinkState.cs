@@ -1,6 +1,8 @@
-﻿namespace Sprint2_Attempt3.Player.LinkStates
+﻿using Sprint2_Attempt3.Interfaces;
+
+namespace Sprint2_Attempt3.Player.LinkStates
 {
-    public class DownMovingLinkState : IState
+    public class DownMovingLinkState : ILinkState
     {
         private Link link;
         public DownMovingLinkState(Link link)

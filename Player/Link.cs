@@ -2,7 +2,7 @@
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint2_Attempt3.Player.LinkSprites;
+using Sprint2_Attempt3.Interfaces;
 using Sprint2_Attempt3.Player.LinkStates;
 using System.Collections.Generic;
 
@@ -13,9 +13,9 @@ namespace Sprint2_Attempt3.Player
         public Vector2 position;
         public Vector2 ItemPosition { get; set; }
 
-        public ISprite AttackSprite { get; set; }
-        public ISprite Sprite { get; set; }
-        public IState State { get; set; }
+        public ILinkSprite AttackSprite { get; set; }
+        public ILinkSprite Sprite { get; set; }
+        public ILinkState State { get; set; }
         public IItemSprite ItemSprite { get; set; }
         public IItemState ItemState { get; set; }
         public List<IItemSprite> Items { get; set; }
