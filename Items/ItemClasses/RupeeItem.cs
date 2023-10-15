@@ -17,6 +17,8 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         private int totalFrames;
         private int time;
         private Rectangle srcRectangle;
+        public bool isCollected { get; private set; } = false;
+
         public RupeeItem(Texture2D rupeeTexture, Vector2 Pos, Rectangle rupeeSource)
         {
             this.rupeeTexture = rupeeTexture;
@@ -41,7 +43,14 @@ namespace Sprint2_Attempt3.Items.ItemClasses
             }
             time++;
         }
-
+        public void Spawn()
+        {
+            //Draw()
+        }
+        public void Collected()
+        {
+            isCollected = true;
+        }
         public Rectangle DestRectangle()
         {
             int width = rupeeSource.Width;
@@ -59,7 +68,10 @@ namespace Sprint2_Attempt3.Items.ItemClasses
             {
                 srcRectangle = ItemSpriteFactory.bluerupeeSrc;
             }
-            spriteBatch.Draw(rupeeTexture, DestRectangle(), srcRectangle, Color.White);
+            if (!isCollected)
+            {
+                spriteBatch.Draw(rupeeTexture, DestRectangle(), srcRectangle, Color.White);
+            }
         }
     }
 }

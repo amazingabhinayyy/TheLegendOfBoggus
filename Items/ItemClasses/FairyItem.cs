@@ -17,6 +17,8 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         private int totalFrames;
         private int time;
         private Rectangle srcRectangle;
+        public bool isCollected { get; private set; } = false;
+
         public FairyItem(Texture2D fairyTexture, Vector2 Pos, Rectangle fairySource)
         {
             texture = fairyTexture;
@@ -41,7 +43,14 @@ namespace Sprint2_Attempt3.Items.ItemClasses
             }
             time++;
         }
-
+        public void Spawn()
+        {
+            //Draw()
+        }
+        public void Collected()
+        {
+            isCollected = true;
+        }
         public Rectangle DestRectangle()
         {
             int width = fairySource.Width;
@@ -59,7 +68,10 @@ namespace Sprint2_Attempt3.Items.ItemClasses
             {
                 srcRectangle = ItemSpriteFactory.fairytwoSrc;
             }
-            spriteBatch.Draw(texture, DestRectangle(), srcRectangle, Color.White);
+            if (!isCollected)
+            {
+                spriteBatch.Draw(texture, DestRectangle(), srcRectangle, Color.White);
+            }
         }
     }
 }

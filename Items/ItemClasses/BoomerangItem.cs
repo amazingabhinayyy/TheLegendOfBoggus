@@ -13,6 +13,8 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         private Texture2D texture;
         public int destx, desty;
         public Rectangle boomerangSource;
+        public bool isCollected { get; private set; } = false;
+
         public BoomerangItem(Texture2D boomerangTexture, Vector2 Pos, Rectangle boomerangSource)
         {
             texture = boomerangTexture;
@@ -24,6 +26,14 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         public void Update()
         {
         }
+        public void Spawn()
+        {
+            //Draw()
+        }
+        public void Collected()
+        {
+            isCollected = true;
+        }
 
         public Rectangle DestRectangle()
         {
@@ -34,7 +44,10 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         public void Draw(SpriteBatch spriteBatch)
         {
             Rectangle srcRectangle = boomerangSource;
-            spriteBatch.Draw(texture, DestRectangle(), srcRectangle, Color.White);
+            if (!isCollected)
+            {
+                spriteBatch.Draw(texture, DestRectangle(), srcRectangle, Color.White);
+            }
         }
     }
 }

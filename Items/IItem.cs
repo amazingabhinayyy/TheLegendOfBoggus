@@ -25,6 +25,7 @@ namespace Sprint2_Attempt3.Items
         public void ChangeToArrow();
         public void ChangeToBlueCandle();
         public void ChangeToBluePotion();
+        public void ItemCollected();
         public void Update();
 
         public void Draw(SpriteBatch spriteBatch);

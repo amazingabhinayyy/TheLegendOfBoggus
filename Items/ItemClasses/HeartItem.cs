@@ -18,6 +18,8 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         private int totalFrames;
         private int time;
         private Rectangle srcRectangle;
+        public bool isCollected { get; private set; } = false;
+
         public HeartItem(Texture2D heartTexture, Vector2 Pos, Rectangle heartSource)
         {
             texture = heartTexture;
@@ -42,7 +44,14 @@ namespace Sprint2_Attempt3.Items.ItemClasses
             }
             time++;
         }
-
+        public void Spawn()
+        {
+            //Draw()
+        }
+        public void Collected()
+        {
+            isCollected = true;
+        }
         public Rectangle DestRectangle()
         {
             int width = heartSource.Width;
@@ -60,7 +69,10 @@ namespace Sprint2_Attempt3.Items.ItemClasses
             {
                 srcRectangle = ItemSpriteFactory.blueheartSrc;
             }
-            spriteBatch.Draw(texture, DestRectangle(), srcRectangle, Color.White);
+            if (!isCollected)
+            {
+                spriteBatch.Draw(texture, DestRectangle(), srcRectangle, Color.White);
+            }
         }
     }
 }

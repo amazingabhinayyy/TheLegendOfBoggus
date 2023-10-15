@@ -13,6 +13,8 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         private Texture2D texture;
         public int destx, desty;
         public Rectangle clockSource;
+        public bool isCollected { get; private set; } = false;
+
         public ClockItem(Texture2D clockTexture, Vector2 Pos, Rectangle clockSource)
         {
             texture = clockTexture;
@@ -24,6 +26,14 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         public void Update()
         {
         }
+        public void Spawn()
+        {
+            //Draw()
+        }
+        public void Collected()
+        {
+            isCollected = true;
+        }
 
         public Rectangle DestRectangle()
         {
@@ -34,7 +44,10 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         public void Draw(SpriteBatch spriteBatch)
         {
             Rectangle srcRectangle = clockSource;
-            spriteBatch.Draw(texture, DestRectangle(), srcRectangle, Color.White);
+            if (!isCollected)
+            {
+                spriteBatch.Draw(texture, DestRectangle(), srcRectangle, Color.White);
+            }
         }
     }
 }

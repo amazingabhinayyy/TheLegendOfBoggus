@@ -78,6 +78,10 @@ namespace Sprint2_Attempt3.Items
         {
             ItemState = new RupeeItemState(this);
         }
+        public void ItemCollected()
+        {
+            ItemSprite.Collected();
+        }
         public void Update()
         {
             ItemState.Update();

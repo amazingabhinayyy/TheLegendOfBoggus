@@ -13,6 +13,8 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         private Texture2D texture;
         public int destx, desty;
         public Rectangle bluecandleSource;
+        public bool isCollected { get; private set; } = false;
+
         public BlueCandleItem(Texture2D bluecandleTexture, Vector2 Pos, Rectangle bluecandleSource)
         {
             texture = bluecandleTexture;
@@ -24,7 +26,14 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         public void Update()
         {
         }
-
+        public void Spawn()
+        {
+            //Draw()
+        }
+        public void Collected()
+        {
+            isCollected = true;
+        }
         public Rectangle DestRectangle()
         {
             int width = bluecandleSource.Width;
@@ -34,7 +43,10 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         public void Draw(SpriteBatch spriteBatch)
         {
             Rectangle srcRectangle = bluecandleSource;
-            spriteBatch.Draw(texture, DestRectangle(), srcRectangle, Color.White);
+            if (!isCollected)
+            {
+                spriteBatch.Draw(texture, DestRectangle(), srcRectangle, Color.White);
+            }
         }
     }
 }

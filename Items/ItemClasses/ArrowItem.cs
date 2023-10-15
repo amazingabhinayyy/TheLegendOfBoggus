@@ -13,6 +13,8 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         private Texture2D texture;
         public int destx, desty;
         public Rectangle arrowSource;
+        public bool isCollected { get; private set; } = false;
+        //bool firstUpdate = true;
         public ArrowItem(Texture2D arrowTexture, Vector2 Pos, Rectangle arrowSource)
         {
             texture = arrowTexture;
@@ -23,6 +25,20 @@ namespace Sprint2_Attempt3.Items.ItemClasses
 
         public void Update()
         {
+            //if (firstUpdate)
+            //{
+            //  Collected();
+            // firstUpdate = false;
+            // }
+        }
+
+        public void Spawn()
+        {
+            //Draw()
+        }
+        public void Collected()
+        {
+            isCollected = true;
         }
 
         public Rectangle DestRectangle()
@@ -34,7 +50,10 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         public void Draw(SpriteBatch spriteBatch)
         {
             Rectangle srcRectangle = arrowSource;
-            spriteBatch.Draw(texture, DestRectangle(), srcRectangle, Color.White);
+            if (!isCollected)
+            {
+                spriteBatch.Draw(texture, DestRectangle(), srcRectangle, Color.White);
+            }
         }
     }
 }
