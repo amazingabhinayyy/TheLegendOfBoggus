@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Sprint2_Attempt3.Blocks;
+using Sprint2_Attempt3.Collision.SideDetectors;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Interfaces;
 
 namespace Sprint2_Attempt3.Collision
 {
-    public class CollisionHandler : ICollision
+    public class CollisionHandler
     {
         private Vector2 linkPosition;
         private Vector2 linkArrow; 
@@ -21,23 +22,25 @@ namespace Sprint2_Attempt3.Collision
         private Vector2 linkBoomerang;
         private Vector2 linkBlueBoomerang;
         public Vector2 LinkPosition { get; private set; }
-        private List<IGameObject> gameObjectList = new List<IGameObject>();
+        public static List<IGameObject> gameObjectList = new List<IGameObject>();
         private List<IGameObject> copyGameObjectList = new List<IGameObject>();
         public List<IGameObject> GameObjectList { get; set; }
-        public CollisionHandler()
+        private ILink link;
+        public CollisionHandler(ILink link)
         {
-            
+            this.link = link;
         }
-        public void PlayerCollision(ILink link)
+        public void PlayerCollision()
         {
             Rectangle linkRectangle = link.GetHitBox();
             foreach (IGameObject obj in gameObjectList){
                 Rectangle collisionRectangle = obj.GetHitBox();
                 if (collisionRectangle.Intersects(linkRectangle))
                 {
-                    if(obj is IEnemy)
+                    ICollision side = SideDetector(linkRectangle, collisionRectangle);
+                    if (obj is IEnemy)
                     {
-
+                        CollisionResponse.HandlePlayerEnemyCollision(link, (IEnemy)obj, side);
                     }
                     else if (obj is IBlock)
                     {
@@ -46,8 +49,36 @@ namespace Sprint2_Attempt3.Collision
                 }
             }
         }
+        public ICollision SideDetector(Rectangle affectedSprite, Rectangle nonAffectedSprite)
+        {
+            Rectangle intersect = Rectangle.Intersect(affectedSprite, nonAffectedSprite);
+            if(intersect.Width > intersect.Height)
+            {
+                if(affectedSprite.Top < nonAffectedSprite.Top && affectedSprite.Bottom < nonAffectedSprite.Bottom)
+                {
+                    return new TopCollision();
+                }
+                else
+                {
+                    return new BottomCollision();
+                }
+            }
+            else
+            {
+                if(affectedSprite.Left < nonAffectedSprite.Left & affectedSprite.Right < nonAffectedSprite.Right) 
+                {
+                    return new LeftCollision();
+                }
+                else
+                {
+                    return new RightCollision();
+                }
+            }
+        }
         public void Update()
         {
+            PlayerCollision();
+            /*
             if(linkPosition.X < 50 || linkPosition.X > 750 || linkPosition.Y < 50 || linkPosition.Y > 450)
             {
                 //link.Stop?s
@@ -62,7 +93,7 @@ namespace Sprint2_Attempt3.Collision
                 {
                     //link.GetDamaged?
                 }
-                /*I think update sword variables to link sword global?
+                //I think update sword variables to link sword global?
                 if (enemy.X > (linkSword.X) && (enemy.X ) < linkSword.X)
                 {
                     //enemy.kill?
@@ -70,7 +101,7 @@ namespace Sprint2_Attempt3.Collision
                 if (enemy.Y > (linkSword.Y) && (enemy.Y) < linkSword.Y)
                 {
                     //enemy.kill?
-                }*/
+                }
 
             }
             /*
@@ -92,5 +123,4 @@ namespace Sprint2_Attempt3.Collision
 
         }
     }
-
 }

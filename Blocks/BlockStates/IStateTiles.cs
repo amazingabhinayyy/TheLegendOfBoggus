@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sprint2_Attempt3.Blocks.BlockStates
 {
-    public interface IStateTiles : IGameObject
+    public interface IStateTiles //: IGameObject
     {
         public void ChangeToDiamondTile();
         public void ChangeToPlainTile();

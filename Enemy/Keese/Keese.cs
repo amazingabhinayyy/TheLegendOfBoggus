@@ -1,10 +1,11 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Sprint2_Attempt3.Enemy;
+using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3.Enemy.Keese
 {
-    internal class Keese : IEnemy
+    internal class Keese : IEnemy, IGameObject
     {
         private IEnemyState state;
         private int count;
@@ -41,10 +42,13 @@ namespace Sprint2_Attempt3.Enemy.Keese
         public void Spawn()
         {
             state = new SpawnAnimationState(this);
+            CollisionHandler.gameObjectList.Add(this);
+
         }
         public void Kill()
         {
             state = new DeathAnimationState(this);
+            CollisionHandler.gameObjectList.Remove(this);
         }
         public void ChangeDirection()
         {
@@ -76,11 +80,11 @@ namespace Sprint2_Attempt3.Enemy.Keese
         {
             if (currentFrame < 15)
             {
-                return new Rectangle(positionX, positionY, Globals.KeeseSprite1.Width, Globals.KeeseSprite1.Height);
+                return new Rectangle(positionX, positionY, Globals.KeeseSprite1.Width * 2, Globals.KeeseSprite1.Height *2);
             }
             else
             {
-                return new Rectangle(positionX, positionY, Globals.KeeseSprite2.Width, Globals.KeeseSprite2.Height);
+                return new Rectangle(positionX, positionY, Globals.KeeseSprite2.Width * 2, Globals.KeeseSprite2.Height * 2);
             }
         }
     }

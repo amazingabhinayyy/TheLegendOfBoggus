@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 using Sprint2_Attempt3.Enemy.Keese;
 
 namespace Sprint2_Attempt3.Enemy.Dodongo
@@ -64,6 +65,11 @@ namespace Sprint2_Attempt3.Enemy.Dodongo
         public void Draw(SpriteBatch spriteBatch)
         {
             state.Draw(spriteBatch);
+        }
+        public Rectangle GetHitBox()
+        {
+            //To-Do fill in what hit box should be instead of 0s
+            return new Rectangle(0, 0, 0, 0);
         }
     }
 }

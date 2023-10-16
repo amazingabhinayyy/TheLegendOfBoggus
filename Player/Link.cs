@@ -14,9 +14,9 @@ namespace Sprint2_Attempt3.Player
         public ILinkSprite Sprite { get; set; }
         public ILinkState State { get; set; }
         public List<ILinkItem> Items { get; set; }
-        private Rectangle collisionRectangle;
         public Link()
         {
+            CollisionHandler.gameObjectList.Add(this);
             StartLinkState();
         }
 
@@ -84,7 +84,6 @@ namespace Sprint2_Attempt3.Player
 
         public void Update()
         {
-            collisionRectangle = new Rectangle((int)position.X, (int)position.Y, 15, 15);
             State.Update();
             Sprite.Update();
             AttackSprite.Update();
@@ -106,7 +105,12 @@ namespace Sprint2_Attempt3.Player
         }
         public Rectangle GetHitBox()
         {
-            return new Rectangle((int)position.X, (int)position.Y, 15, 15);
+            return new Rectangle((int)position.X, (int)position.Y, 15 * 3, 15 * 3);
+        }
+        public void MoveLink(int changeX, int changeY)
+        {
+            position.X += changeX;
+            position.Y += changeY;
         }
     }
 }

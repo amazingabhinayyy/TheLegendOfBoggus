@@ -27,8 +27,9 @@ namespace Sprint2_Attempt3
         private IBlock Block;
         private IDungeonRoom DungeonRoom;
 
-        public ICollision collision 
+        public CollisionHandler collisionHandler
         { get; private set; }
+        public CollisionResponse collisionResponse { get; private set; }
         public IController keyController
         {
             get { return kController; }
@@ -91,7 +92,6 @@ namespace Sprint2_Attempt3
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             keyController = new KeyboardController(this);
-            collision = new CollisionHandler();
             EnemySpriteFactory.Instance.LoadAllTextures(this.Content);
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
             ItemSpriteFactory.Instance.LoadAllTextures(Content);
@@ -104,6 +104,8 @@ namespace Sprint2_Attempt3
             link = new Link();
             item = new Item();
             block = new Block();
+            collisionHandler = new CollisionHandler(link);
+            collisionResponse = new CollisionResponse(this); 
         }
 
         /// <summary>
@@ -126,7 +128,7 @@ namespace Sprint2_Attempt3
             // TODO: Add your update logic here
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-            collision.Update();
+            collisionHandler.Update();
             keyController.Update(gameTime);
             enemy.Update();
             link.Update();

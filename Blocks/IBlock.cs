@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 
 namespace Sprint2_Attempt3.Blocks
 {
-    public interface IBlock : IGameObject
+    public interface IBlock //: IGameObject
     {
         public void ChangeToPlainTile();
         public void ChangeToDiamondTile();

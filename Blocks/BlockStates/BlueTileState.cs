@@ -1,4 +1,6 @@
-﻿namespace Sprint2_Attempt3.Blocks.BlockStates
+﻿using Microsoft.Xna.Framework;
+
+namespace Sprint2_Attempt3.Blocks.BlockStates
 {
     public class BlueTileState : BlockStates.IStateTiles
     {
@@ -53,6 +55,11 @@
         public void Update()
         {
 
+        }
+        public Rectangle GetHitBox()
+        {
+            //To-Do fill in what hit box should be instead of 0s
+            return new Rectangle(0, 0, 0, 0);
         }
 
     }

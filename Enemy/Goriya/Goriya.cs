@@ -116,5 +116,10 @@ namespace Sprint2_Attempt3.Enemy.Goriya
                 boomerang.Draw(spriteBatch);
             }
         }
+        public Rectangle GetHitBox()
+        {
+            //To-Do fill in what hit box should be instead of 0s
+            return new Rectangle(0, 0, 0, 0);
+        }
     }
 }
