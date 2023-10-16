@@ -36,7 +36,7 @@ namespace Sprint2_Attempt3
             new BlackBlock(Globals.WestSouthCollisionBlock)
         };
 
-            blockIndex = 0;
+        public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
