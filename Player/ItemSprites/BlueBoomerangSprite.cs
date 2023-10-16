@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static Sprint2_Attempt3.Player.Link;
-using Sprint2_Attempt3.Player;
+using Sprint2_Attempt3.Interfaces;
 
 namespace Sprint2_Attempt3.Player.Items
 {

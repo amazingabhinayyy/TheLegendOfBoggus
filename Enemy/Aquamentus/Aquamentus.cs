@@ -115,5 +115,9 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
             fireball.Draw(spriteBatch);
             }
         }
+        public Rectangle GetHitBox()
+        {
+            return new Rectangle(positionX, positionY, Globals.AquamentusGreenLeft.Width, Globals.AquamentusGreenLeft.Height);
+        }
     }
 }

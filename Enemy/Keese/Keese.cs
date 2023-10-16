@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy;
 
 namespace Sprint2_Attempt3.Enemy.Keese
@@ -7,33 +8,19 @@ namespace Sprint2_Attempt3.Enemy.Keese
     {
         private IEnemyState state;
         private int count;
-        private int positionX;
-        private int positionY;
+        public int X { get; set; }
+        public int Y { get; set; }
+        public Rectangle Position => new Rectangle(this.X, this.Y, Globals.KeeseSprite2.Width, Globals.KeeseSprite2.Height);
+        public IEnemyState State { get; set; }
 
-        public int X
-        {
-            get { return positionX; }
-            set { positionX = value; }
-        }
-
-        public int Y
-        {
-            get { return positionY; }
-            set { positionY = value; }
-        }
-        public IEnemyState State
-        {
-            get { return state; }
-            set { state = value; }
-        }
         public void Generate() { 
             state = new MovingLeftKeeseState(this);
         }
         public Keese(int x, int y)
         {
             count = 0;
-            this.positionX = x;
-            this.positionY = y;
+            X = x;
+            Y = y;
         }
         public void Spawn()
         {
@@ -63,6 +50,17 @@ namespace Sprint2_Attempt3.Enemy.Keese
         public void Draw(SpriteBatch spriteBatch)
         {
             state.Draw(spriteBatch);
+        }
+        public Rectangle GetHitBox()
+        {
+            if (currentFrame < 15)
+            {
+                return new Rectangle(positionX, positionY, Globals.KeeseSprite1.Width, Globals.KeeseSprite1.Height);
+            }
+            else
+            {
+                return new Rectangle(positionX, positionY, Globals.KeeseSprite2.Width, Globals.KeeseSprite2.Height);
+            }
         }
     }
 }

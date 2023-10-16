@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using static Sprint2_Attempt3.Player.Link;
+using Sprint2_Attempt3.Interfaces;
 
 namespace Sprint2_Attempt3.Player.Items
 {

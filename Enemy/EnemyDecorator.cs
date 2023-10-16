@@ -10,6 +10,10 @@ namespace Sprint2_Attempt3.Enemy
         { 
             
         }
+
+        public int X { get; set; }
+        public int Y { get; set; }
+
         void IEnemy.ChangeAttackedStatus()
         {
             

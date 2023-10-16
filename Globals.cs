@@ -11,8 +11,8 @@ using Sprint2_Attempt3.Enemy.Hand;
 using Sprint2_Attempt3.Enemy.Stalfos;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Aquamentus;
-using Sprint2_Attempt3.Dungeon;
-using Sprint2_Attempt3.Dungeon.DungeonRooms;
+using Sprint2_Attempt3.Dungeon.Rooms;
+using Sprint2_Attempt3.Dungeon.Rooms.DungeonRooms;
 using System.Collections.Generic;
 
 namespace Sprint2_Attempt3
@@ -23,6 +23,140 @@ namespace Sprint2_Attempt3
         public const int ScreenHeight = 480;
         public const int ScreenWidth = 800;
 
+        public static Dictionary<int, Rectangle> FloorGrid = new Dictionary<int, Rectangle>()
+        {
+            {1, new Rectangle(100, 89, 50, 43) },
+            {2, new Rectangle(150, 89, 50, 43) },
+            {3, new Rectangle(200, 89, 50, 43) },
+            {4, new Rectangle(250, 89, 50, 43) },
+            {5, new Rectangle(300, 89, 50, 43) },
+            {6, new Rectangle(350, 89, 50, 43) },
+            {7, new Rectangle(400, 89, 50, 43) },
+            {8, new Rectangle(450, 89, 50, 43) },
+            {9, new Rectangle(500, 89, 50, 43) },
+            {10, new Rectangle(550, 89, 50, 43) },
+            {11, new Rectangle(600, 89, 50, 43) },
+            {12, new Rectangle(650, 89, 50, 43) },
+
+            {13, new Rectangle(100, 132, 50, 43) },
+            {14, new Rectangle(150, 132, 50, 43) },
+            {15, new Rectangle(200, 132, 50, 43) },
+            {16, new Rectangle(250, 132, 50, 43) },
+            {17, new Rectangle(300, 132, 50, 43) },
+            {18, new Rectangle(350, 132, 50, 43) },
+            {19, new Rectangle(400, 132, 50, 43) },
+            {20, new Rectangle(450, 132, 50, 43) },
+            {21, new Rectangle(500, 132, 50, 43) },
+            {22, new Rectangle(550, 132, 50, 43) },
+            {23, new Rectangle(600, 132, 50, 43) },
+            {24, new Rectangle(650, 132, 50, 43) },
+
+            {25, new Rectangle(100, 175, 50, 43) },
+            {26, new Rectangle(150, 175, 50, 43) },
+            {27, new Rectangle(200, 175, 50, 43) },
+            {28, new Rectangle(250, 175, 50, 43) },
+            {29, new Rectangle(300, 175, 50, 43) },
+            {30, new Rectangle(350, 175, 50, 43) },
+            {31, new Rectangle(400, 175, 50, 43) },
+            {32, new Rectangle(450, 175, 50, 43) },
+            {33, new Rectangle(500, 175, 50, 43) },
+            {34, new Rectangle(550, 175, 50, 43) },
+            {35, new Rectangle(600, 175, 50, 43) },
+            {36, new Rectangle(650, 175, 50, 43) },
+
+            {37, new Rectangle(100, 218, 50, 43) },
+            {38, new Rectangle(150, 218, 50, 43) },
+            {39, new Rectangle(200, 218, 50, 43) },
+            {40, new Rectangle(250, 218, 50, 43) },
+            {41, new Rectangle(300, 218, 50, 43) },
+            {42, new Rectangle(350, 218, 50, 43) },
+            {43, new Rectangle(400, 218, 50, 43) },
+            {44, new Rectangle(450, 218, 50, 43) },
+            {45, new Rectangle(500, 218, 50, 43) },
+            {46, new Rectangle(550, 218, 50, 43) },
+            {47, new Rectangle(600, 218, 50, 43) },
+            {48, new Rectangle(650, 218, 50, 43) },
+
+            {49, new Rectangle(100, 261, 50, 43) },
+            {50, new Rectangle(150, 261, 50, 43) },
+            {51, new Rectangle(200, 261, 50, 43) },
+            {52, new Rectangle(250, 261, 50, 43) },
+            {53, new Rectangle(300, 261, 50, 43) },
+            {54, new Rectangle(350, 261, 50, 43) },
+            {55, new Rectangle(400, 261, 50, 43) },
+            {56, new Rectangle(450, 261, 50, 43) },
+            {57, new Rectangle(500, 261, 50, 43) },
+            {58, new Rectangle(550, 261, 50, 43) },
+            {59, new Rectangle(600, 261, 50, 43) },
+            {60, new Rectangle(650, 261, 50, 43) },
+
+            {61, new Rectangle(100, 304, 50, 43) },
+            {62, new Rectangle(150, 304, 50, 43) },
+            {63, new Rectangle(200, 304, 50, 43) },
+            {64, new Rectangle(250, 304, 50, 43) },
+            {65, new Rectangle(300, 304, 50, 43) },
+            {66, new Rectangle(350, 304, 50, 43) },
+            {67, new Rectangle(400, 304, 50, 43) },
+            {68, new Rectangle(450, 304, 50, 43) },
+            {69, new Rectangle(500, 304, 50, 43) },
+            {70, new Rectangle(550, 304, 50, 43) },
+            {71, new Rectangle(600, 304, 50, 43) },
+            {72, new Rectangle(650, 304, 50, 43) },
+
+            {73, new Rectangle(100, 347, 50, 43) },
+            {74, new Rectangle(150, 347, 50, 43) },
+            {75, new Rectangle(200, 347, 50, 43) },
+            {76, new Rectangle(250, 347, 50, 43) },
+            {77, new Rectangle(300, 347, 50, 43) },
+            {78, new Rectangle(350, 347, 50, 43) },
+            {79, new Rectangle(400, 347, 50, 43) },
+            {80, new Rectangle(450, 347, 50, 43) },
+            {81, new Rectangle(500, 347, 50, 43) },
+            {82, new Rectangle(550, 347, 50, 43) },
+            {83, new Rectangle(600, 347, 50, 43) },
+            {84, new Rectangle(650, 349, 50, 43) }
+        };
+
+        public static Rectangle plainScr { get { return new Rectangle(0, 0, 16, 16); } }
+        public static Rectangle diamondScr { get { return new Rectangle(17, 0, 16, 16); } }
+        public static Rectangle upChunkScr { get { return new Rectangle(34, 0, 16, 16); } }
+        public static Rectangle sideChunkScr { get { return new Rectangle(51, 0, 16, 16); } }
+        public static Rectangle staircaseScr { get { return new Rectangle(51, 17, 16, 16); } }
+        public static Rectangle blueTileScr { get { return new Rectangle(34, 17, 16, 16); } }
+        public static Rectangle whiteStairScr { get { return new Rectangle(17, 34, 16, 16); } }
+        public static Rectangle whiteBrickScr { get { return new Rectangle(0, 34, 16, 16); } }
+        public static Rectangle blackBlockScr { get { return new Rectangle(0, 17, 16, 16); } }
+        public static Rectangle dotTileScr { get { return new Rectangle(17, 17, 16, 16); } }
+
+        public static Rectangle NorthEastCollisionBlock { get { return new Rectangle(0, 0, 348, 87); } }
+        public static Rectangle NorthWestCollisionBlock { get { return new Rectangle(453, 0, 347, 87); } }
+        public static Rectangle SouthEastCollisionBlock { get { return new Rectangle(0, 393, 348, 87); } }
+        public static Rectangle SouthWestCollisionBlock { get { return new Rectangle(453, 393, 347, 87); } }
+        public static Rectangle EastNorthCollisionBlock { get { return new Rectangle(0, 87, 98, 110); } }
+        public static Rectangle EastSouthCollisionBlock { get { return new Rectangle(0, 287, 98, 106); } }
+        public static Rectangle WestNorthCollisionBlock { get { return new Rectangle(700, 87, 99, 110); } }
+        public static Rectangle WestSouthCollisionBlock { get { return new Rectangle(700, 287, 99, 106); } }
+
+        public static Rectangle bombSrc { get { return new Rectangle(135, 0, 9, 15); } }
+        public static Rectangle clockSrc { get { return new Rectangle(57, 0, 13, 17); } }
+        public static Rectangle compassSrc { get { return new Rectangle(258, 1, 11, 12); } }
+        public static Rectangle heartSrc { get { return new Rectangle(0, 0, 7, 8); } }
+        public static Rectangle blueheartSrc { get { return new Rectangle(0, 8, 7, 8); } }
+        public static Rectangle keySrc { get { return new Rectangle(240, 0, 8, 16); } }
+        public static Rectangle mapSrc { get { return new Rectangle(88, 0, 8, 16); } }
+        public static Rectangle rupeeSrc { get { return new Rectangle(72, 0, 8, 16); } }
+        public static Rectangle bluerupeeSrc { get { return new Rectangle(72, 16, 8, 16); } }
+
+        public static Rectangle heartcontainerSrc { get { return new Rectangle(25, 0, 13, 14); } }
+        public static Rectangle triforcepieceSrc { get { return new Rectangle(275, 3, 10, 10); } }
+        public static Rectangle bluetriforcepieceSrc { get { return new Rectangle(275, 19, 10, 10); } }
+        public static Rectangle boomerangSrc { get { return new Rectangle(129, 3, 5, 8); } }
+        public static Rectangle bowSrc { get { return new Rectangle(144, 0, 8, 16); } }
+        public static Rectangle arrowSrc { get { return new Rectangle(154, 0, 5, 16); } }
+        public static Rectangle fairySrc { get { return new Rectangle(40, 0, 8, 16); } }
+        public static Rectangle fairytwoSrc { get { return new Rectangle(48, 0, 8, 16); } }
+        public static Rectangle bluecandleSrc { get { return new Rectangle(160, 16, 8, 16); } }
+        public static Rectangle bluepotionSrc { get { return new Rectangle(80, 16, 8, 16); } }
 
         //my futile attempt to avoid making a Projectile class, probably will delete
         public static bool changeDirection = false;
@@ -64,8 +198,6 @@ namespace Sprint2_Attempt3
         public static Rectangle GoriyaBlueUp { get { return new Rectangle(101, 52, 14, 16); } }
         public static Rectangle GoriyaBlueRight { get { return new Rectangle(117, 52, 14, 16); } }
         public static Rectangle GoriyaBlueRight2 { get { return new Rectangle(135, 52, 15, 16); } }
-
-     
 
         public static Rectangle HandGreen2 { get { return new Rectangle(68, 1, 16, 16); } }
         public static Rectangle HandTeal1 { get { return new Rectangle(50, 18, 17, 16); } }
@@ -136,23 +268,23 @@ namespace Sprint2_Attempt3
 
         public static Rectangle NorthDoorPosition { get { return new Rectangle(348,0, 105, 87); } }
         public static Rectangle SouthDoorPosition { get { return new Rectangle(348, 393, 105, 87); } }
-        public static Rectangle EastDoorPosition { get { return new Rectangle(0, 197, 98, 90); } }
-        public static Rectangle WestDoorPosition { get { return new Rectangle(700, 197, 99, 90); } }
+        public static Rectangle EastDoorPosition { get { return new Rectangle(700, 197, 100, 88); } }
+        public static Rectangle WestDoorPosition { get { return new Rectangle(0, 197, 98, 88); } }
 
         public static Rectangle OpenNorthDoor { get { return new Rectangle(848, 11, 31, 32); } }
         public static Rectangle OpenSouthDoor { get { return new Rectangle(848, 110, 31, 32); } }
-        public static Rectangle OpenEastDoor { get { return new Rectangle(848, 44, 31, 32); } }
-        public static Rectangle OpenWestDoor { get { return new Rectangle(848, 77, 31, 32); } }
+        public static Rectangle OpenWestDoor { get { return new Rectangle(848, 44, 31, 32); } }
+        public static Rectangle OpenEastDoor { get { return new Rectangle(848, 77, 31, 32); } }
 
         public static Rectangle ClosedNorthDoor { get { return new Rectangle(881, 11, 31, 32); } }
         public static Rectangle ClosedSouthDoor { get { return new Rectangle(881, 110, 31, 32); } }
-        public static Rectangle ClosedEastDoor { get { return new Rectangle(881, 44, 31, 32); } }
-        public static Rectangle ClosedWestDoor { get { return new Rectangle(881, 77, 31, 32); } }
+        public static Rectangle ClosedWestDoor { get { return new Rectangle(881, 44, 31, 32); } }
+        public static Rectangle ClosedEasttDoor { get { return new Rectangle(881, 77, 31, 32); } }
 
         public static Rectangle DiamondLockedNorthDoor { get { return new Rectangle(914, 11, 31, 32); } }
         public static Rectangle DiamondLockedSouthDoor { get { return new Rectangle(914, 110, 31, 32); } }
-        public static Rectangle DiamondLockedEastDoor { get { return new Rectangle(914, 44, 31, 32); } }
-        public static Rectangle DiamondLockedWestDoor { get { return new Rectangle(914, 77, 31, 32); } }
+        public static Rectangle DiamondLockedWestDoor { get { return new Rectangle(914, 44, 31, 32); } }
+        public static Rectangle DiamondLockedEastDoor { get { return new Rectangle(914, 77, 31, 32); } }
 
         public static Rectangle DamagedNorthDoor { get { return new Rectangle(947, 11, 31, 32); } }
         public static Rectangle DamagedSouthDoor { get { return new Rectangle(947, 110, 31, 32); } }
