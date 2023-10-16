@@ -21,8 +21,18 @@ namespace Sprint2_Attempt3
         public ILink link { get; set; }
         private IController keyController;
         public IDungeonRoom dungeonRoom { get; set; }
-        public IRoom room { get; set;}
-        private IBlock block;
+        public IRoom room { get; set; }
+
+        private IBlock[] blocks = { 
+            new BlackBlock(Globals.NorthEastCollisionBlock),
+            new BlackBlock(Globals.NorthWestCollisionBlock),
+            new BlackBlock(Globals.SouthEastCollisionBlock),
+            new BlackBlock(Globals.SouthWestCollisionBlock),
+            new BlackBlock(Globals.EastNorthCollisionBlock),
+            new BlackBlock(Globals.EastSouthCollisionBlock),
+            new BlackBlock(Globals.WestNorthCollisionBlock),
+            new BlackBlock(Globals.WestSouthCollisionBlock)
+        };
 
         public Game1()
         {
@@ -61,7 +71,6 @@ namespace Sprint2_Attempt3
             keyController = new KeyboardController(this);
             dungeonRoom = new DungeonRoom1();
             link = new Link();
-            block = new PlainTile(Globals.FloorGrid[84]);
             room = new Room(this);
         }
 
@@ -103,7 +112,9 @@ namespace Sprint2_Attempt3
 
             spriteBatch.Begin();
             room.Draw(spriteBatch);
-            block.Draw(spriteBatch);
+            foreach(IBlock block in blocks) { 
+                block.Draw(spriteBatch);
+            }
             spriteBatch.End();
             base.Draw(gameTime);
         }
