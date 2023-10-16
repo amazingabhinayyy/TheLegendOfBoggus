@@ -1,15 +1,16 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Sprint2_Attempt3.Enemy;
-using Sprint2_Attempt3.Enemy.Keese;
+using Sprint2_Attempt3.Dungeon.Rooms.DungeonRooms;
+using Sprint2_Attempt3.Dungeon.Rooms;
 using Sprint2_Attempt3.Dungeon;
-using Sprint2_Attempt3.Dungeon.DungeonRooms;
-using Sprint2_Attempt3.Blocks;
+using Sprint2_Attempt3.Player.Interfaces;
+using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Player;
 using Sprint2_Attempt3.Items;
+using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Enemy.Projectile;
-using Sprint2_Attempt3.Player.Interfaces;
+using Sprint2_Attempt3.Blocks.BlockSprites;
 
 namespace Sprint2_Attempt3
 {
@@ -17,46 +18,11 @@ namespace Sprint2_Attempt3
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        public int itemIndex;
-        public int blockIndex;
-        private IController kController;
-        private IEnemy Enemy;
-        private IItem Item;
-        private ILink Character;
-        private IBlock Block;
-        private IDungeonRoom DungeonRoom;
-
-        public IController keyController
-        {
-            get { return kController; }
-            set { kController = value; }
-        }
-
-        public IEnemy enemy
-        {
-            get { return Enemy; }
-            set { Enemy = value; }
-        }
-        
-        public IItem item { 
-            get { return Item; } 
-            set {Item = value; } 
-        }
-        public ILink link { 
-            get { return Character; } 
-            set {Character = value; } 
-        }
-
-        public IBlock block { 
-            get { return Block; } 
-            set {Block = value; } 
-        }
-
-        public IDungeonRoom dungeonRoom
-        {
-            get { return DungeonRoom; }
-            set { DungeonRoom = value; }
-        }
+        public ILink link { get; set; }
+        private IController keyController;
+        public IDungeonRoom dungeonRoom { get; set; }
+        public IRoom room { get; set;}
+        private IBlock block;
 
         public Game1()
         {
@@ -74,8 +40,6 @@ namespace Sprint2_Attempt3
         protected override void Initialize()
         {
             base.Initialize();
-            itemIndex = 0;
-            blockIndex = 0;
 
         }
 
@@ -87,19 +51,18 @@ namespace Sprint2_Attempt3
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            keyController = new KeyboardController(this);
+            
             EnemySpriteFactory.Instance.LoadAllTextures(this.Content);
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
             ItemSpriteFactory.Instance.LoadAllTextures(Content);
             BlockSpriteFactory.Instance.LoadAllTextures(Content);
             EnemyProjectileSpriteFactory.Instance.LoadAllTextures(Content);
             DungeonSpriteFactory.Instance.LoadAllTextures(Content);
-            enemy = new Keese(200, 200);
-            enemy.Spawn();
+            keyController = new KeyboardController(this);
             dungeonRoom = new DungeonRoom1();
             link = new Link();
-            item = new Item();
-            block = new Block();
+            block = new PlainTile(Globals.FloorGrid[84]);
+            room = new Room(this);
         }
 
         /// <summary>
@@ -124,10 +87,7 @@ namespace Sprint2_Attempt3
                 Exit();
 
             keyController.Update(gameTime);
-            enemy.Update();
-            link.Update();
-            item.Update();
-            block.Update();
+            room.Update();
             base.Update(gameTime);
         }
 
@@ -139,15 +99,10 @@ namespace Sprint2_Attempt3
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            // TODO: Add your drawing code here
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
             spriteBatch.Begin();
-            dungeonRoom.Draw(spriteBatch);
-            enemy.Draw(spriteBatch);
-            item.Draw(spriteBatch);
-            link.Draw(spriteBatch, Color.White);
+            room.Draw(spriteBatch);
             block.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);

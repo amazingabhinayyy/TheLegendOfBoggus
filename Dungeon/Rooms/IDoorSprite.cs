@@ -4,17 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
 
-namespace Sprint2_Attempt3.Blocks
+namespace Sprint2_Attempt3.Dungeon.Rooms
 {
-    public interface IBlock : IGameObject
+    public interface IDoorSprite
     {
         public void Draw(SpriteBatch spriteBatch);
-
     }
 }
-
-
-
-
