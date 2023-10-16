@@ -45,6 +45,7 @@ namespace Sprint2_Attempt3.Enemy.Keese
                 currentFrame = 0;
             }
         }
+
         public void Draw(SpriteBatch spriteBatch)
         {
             sprite.Draw(spriteBatch, keese.X, keese.Y, sourceRectangle);
