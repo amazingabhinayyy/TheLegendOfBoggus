@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint2_Attempt3.Interfaces;
+using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Player.Items;
 using Sprint2_Attempt3.Player.LinkSprites;
 

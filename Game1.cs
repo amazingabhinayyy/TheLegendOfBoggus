@@ -9,7 +9,7 @@ using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Player;
 using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Enemy.Projectile;
-using Sprint2_Attempt3.Interfaces;
+using Sprint2_Attempt3.Player.Interfaces;
 
 namespace Sprint2_Attempt3
 {

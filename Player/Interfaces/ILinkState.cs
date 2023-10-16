@@ -1,17 +1,20 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Sprint2_Attempt3.Interfaces
+namespace Sprint2_Attempt3.Player.Interfaces
 {
-    public interface ILink : IGameObject
+    public interface ILinkState
     {
-        public void BecomeIdle();
         public void MoveUp();
         public void MoveDown();
         public void MoveLeft();
         public void MoveRight();
-        public void Attack();
         public void GetDamaged();
+        public void BecomeIdle();
+        public void Attack();
         public void UseBomb();
         public void UseArrow();
         public void UseBoomerang();
@@ -20,6 +23,6 @@ namespace Sprint2_Attempt3.Interfaces
         public void UseFire();
         public void UseThrowingSword();
         public void Update();
-        public void Draw(SpriteBatch spriteBatch, Color color);
+
     }
 }
