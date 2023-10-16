@@ -10,6 +10,7 @@ using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Hand;
 using Sprint2_Attempt3.Interfaces;
 using Sprint2_Attempt3.Collision;
+using Sprint2_Attempt3.Collision.SideCollisionHandlers;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -37,7 +38,8 @@ namespace Sprint2_Attempt3.Collision
                 Rectangle collisionRectangle = obj.GetHitBox();
                 if (collisionRectangle.Intersects(linkRectangle))
                 {
-                    if(obj is IEnemy)
+                    ICollision side = SideDetector(linkRectangle, collisionRectangle);
+                    if (obj is IEnemy)
                     {
                         if (obj is Hand)
                         {
@@ -77,6 +79,32 @@ namespace Sprint2_Attempt3.Collision
                 }
             }
         }
+        public ICollision SideDetector(Rectangle affectedSprite, Rectangle nonAffectedSprite)
+        {
+            Rectangle intersect = Rectangle.Intersect(affectedSprite, nonAffectedSprite);
+            if (intersect.Width > intersect.Height)
+            {
+                if (affectedSprite.Top < nonAffectedSprite.Top && affectedSprite.Bottom < nonAffectedSprite.Bottom)
+                {
+                    return new TopCollision();
+                }
+                else
+                {
+                    return new BottomCollision();
+                }
+            }
+            else
+            {
+                if (affectedSprite.Left < nonAffectedSprite.Left & affectedSprite.Right < nonAffectedSprite.Right)
+                {
+                    return new LeftCollision();
+                }
+                else
+                {
+                    return new RightCollision();
+                }
+            }
+        }
 
         public void CheckEnemyCollision(IEnemy enemy)
         {
@@ -88,11 +116,11 @@ namespace Sprint2_Attempt3.Collision
                 {
                     if (obj is ILinkItem)
                     {
-                        EnemyCollisionHandler.Kill();
+                        EnemyItemCollisionHandler.Kill();
                     }
                     else if (obj is IBlock)
                     {
-                        EnemyCollisionHandler.CorrectPositioning();
+                        EnemyBlockCollisionHandler.CorrectPositioning();
                     }
                 }
             }

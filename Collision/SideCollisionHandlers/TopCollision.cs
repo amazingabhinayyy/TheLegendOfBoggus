@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Sprint2_Attempt3.Player;
 
-namespace Sprint2_Attempt3.Collision.SideDetectors
+namespace Sprint2_Attempt3.Collision.SideCollisionHandlers
 {
     public class TopCollision : ICollision
     {

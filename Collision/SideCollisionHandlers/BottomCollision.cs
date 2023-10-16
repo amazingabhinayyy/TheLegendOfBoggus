@@ -5,15 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint2_Attempt3.Collision.SideDetectors
+namespace Sprint2_Attempt3.Collision.SideCollisionHandlers
 {
-    public class LeftCollision : ICollision
+    public class BottomCollision : ICollision
     {
-        public LeftCollision() { }
+        public BottomCollision() { }
 
         public void LinkEnemyKnockback(Link link)
         {
-            link.position.X -= 100;
+            link.position.Y += 100;
         }
     }
 }
