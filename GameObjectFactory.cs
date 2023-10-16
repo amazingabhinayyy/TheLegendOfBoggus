@@ -28,7 +28,7 @@ namespace Sprint2_Attempt3
         }
 
         public GameObjectFactory() { }
-
+        /*
         public IEnemy CreateNewKeese(Vector2 position) {
             return new Keese(position);
         }
@@ -68,6 +68,7 @@ namespace Sprint2_Attempt3
         {
             return new Zol(position);
         }
+        */
         public IBlock CreateNewBlock() { return new Block(); }
         public IItem CreateNewItem() { return new Item(); }
     }
