@@ -17,7 +17,8 @@ namespace Sprint2_Attempt3.Player.LinkStates
         public LeftUseBlueBoomerangState(Link link)
         {
             this.link = link;
-            link.Sprite = LinkSpriteFactory.Instance.CreateLeftItemLinkSprite(); ;
+            link.Sprite = LinkSpriteFactory.Instance.CreateLeftItemLinkSprite();
+            //room.gameobjects.add(new LeftBlueBoomerang)
             link.Items.Add(new LeftBlueBoomerang(link));
             frameCounter = 0;
         }
