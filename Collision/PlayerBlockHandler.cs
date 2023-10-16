@@ -16,12 +16,13 @@ namespace Sprint2_Attempt3.Collision
         public void HandlePlayerBlockCollision(ILink link, IBlock block, int direction)
         {
             Vector2 blockPosition = block.Position;
-            int height =  block.Height;
+            int height = block.Height;
             int width = block.Width;
-            if(block is StaircaseTile)
+            if (block is StaircaseTile)
             {
                 //transitionSecretRoom
-            } else if (block is pushableBlock)
+            }
+            else if (block is pushableBlock)
             {
                 block.push();
                 link.CorrectPositioning(block);
@@ -34,4 +35,5 @@ namespace Sprint2_Attempt3.Collision
 
 
         }
+    }
 }

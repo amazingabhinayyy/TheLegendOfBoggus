@@ -107,10 +107,5 @@ namespace Sprint2_Attempt3.Player
         {
             return new Rectangle((int)position.X, (int)position.Y, 15 * 3, 15 * 3);
         }
-        public void MoveLink(int changeX, int changeY)
-        {
-            position.X += changeX;
-            position.Y += changeY;
-        }
     }
 }
