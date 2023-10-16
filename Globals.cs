@@ -305,6 +305,10 @@ namespace Sprint2_Attempt3
 
         public static List<Rectangle> WallBlocks = new List<Rectangle>
         {
+            NorthEastCollisionBlock, NorthWestCollisionBlock, SouthEastCollisionBlock,
+            SouthWestCollisionBlock, EastNorthCollisionBlock, EastSouthCollisionBlock, 
+            WestNorthCollisionBlock, WestSouthCollisionBlock
+            /*
             //WallTopLeft
             new Rectangle(0, 0, 348, 87),
             //WallTopRight
@@ -321,7 +325,8 @@ namespace Sprint2_Attempt3
             new Rectangle(0, 287, 98, 110),
             //SideBottomRight
             new Rectangle(703, 287, 98, 110)
-        };
+            */
+    };
     }
 
 }

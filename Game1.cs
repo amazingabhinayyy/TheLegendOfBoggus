@@ -39,6 +39,8 @@ namespace Sprint2_Attempt3
         { get; private set; }
         public IController keyController {get; set;}
 
+        private BlockCollisionClass blockCollision;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -79,6 +81,8 @@ namespace Sprint2_Attempt3
             item = new Heart(new Vector2(0, 0), true);
             link = new Link();
             room = new Room(this);
+
+            blockCollision = new BlockCollisionClass(this);
         }
 
         /// <summary>
@@ -102,6 +106,9 @@ namespace Sprint2_Attempt3
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
             collision.Update();
+
+            blockCollision.Update();
+
             keyController.Update(gameTime);
             room.Update();
             base.Update(gameTime);

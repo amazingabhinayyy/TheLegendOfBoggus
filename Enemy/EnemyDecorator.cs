@@ -1,5 +1,6 @@
 ﻿
 
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Sprint2_Attempt3.Enemy
@@ -11,6 +12,10 @@ namespace Sprint2_Attempt3.Enemy
             
         }
 
+        public Rectangle GetHitBox()
+        {
+            return new Rectangle(0, 0, 0, 0);
+        }
         public int X { get; set; }
         public int Y { get; set; }
 

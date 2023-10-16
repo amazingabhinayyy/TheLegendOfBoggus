@@ -17,6 +17,11 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             set { idleX = value; }
         }
 
+        public Rectangle GetHitBox()
+        {
+            return new Rectangle(0, 0, 0, 0);
+        }
+
         private IEnemyProjectile boomerang;
 
         private Vector2 boomerangPosition;

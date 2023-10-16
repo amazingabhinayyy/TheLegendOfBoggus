@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,10 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         protected IDoorSprite eastDoor;
         protected IDoorSprite westDoor;
 
+        public Rectangle GetHitBox()
+        {
+            return new Rectangle(0, 0, 0, 0);
+        }
         public bool NorthDoorWalkable { get; set; }
         public bool SouthDoorWalkable { get; set; }
         public bool EastDoorWalkable { get; set; }

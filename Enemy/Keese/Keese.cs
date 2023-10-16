@@ -53,14 +53,15 @@ namespace Sprint2_Attempt3.Enemy.Keese
         }
         public Rectangle GetHitBox()
         {
-            if (currentFrame < 15)
+            /*if (currentFrame < 15)
             {
                 return new Rectangle(positionX, positionY, Globals.KeeseSprite1.Width, Globals.KeeseSprite1.Height);
             }
             else
             {
                 return new Rectangle(positionX, positionY, Globals.KeeseSprite2.Width, Globals.KeeseSprite2.Height);
-            }
+            }*/
+            return new Rectangle(0, 0, 0, 0);
         }
     }
 }

@@ -29,6 +29,7 @@ namespace Sprint2_Attempt3.Collision
             // Stop movement in the X direction (horizontal)
             if (intersection.Width < intersection.Height)
             {
+                //System.Diagnostics.Debug.WriteLine("test");
                 // Collision occurred from left (object hits block on its left side)
                 if (spriteObject.Center.X < wall.Center.X)
                 {

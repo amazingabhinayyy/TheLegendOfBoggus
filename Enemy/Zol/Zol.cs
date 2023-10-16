@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
 
 namespace Sprint2_Attempt3.Enemy.Zol
@@ -15,6 +16,10 @@ namespace Sprint2_Attempt3.Enemy.Zol
         private int positionX;
         private int positionY;
 
+        public Rectangle GetHitBox()
+        {
+            return new Rectangle(0, 0, 0, 0);
+        }
         public int X
         {
             get { return positionX; }

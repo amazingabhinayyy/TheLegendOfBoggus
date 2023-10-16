@@ -23,6 +23,10 @@ namespace Sprint2_Attempt3.Player
             game.link = this;
         }
 
+        public Rectangle GetHitBox()
+        {
+            return new Rectangle(0, 0, 0, 0);
+        }
         public void GetDamaged()
         {
             timer = 100;

@@ -9,6 +9,8 @@ using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Player;
+using Sprint2_Attempt3.Interfaces;
+using System.ComponentModel;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -21,15 +23,20 @@ namespace Sprint2_Attempt3.Collision
         public List<Rectangle> wallBlocks;
         public Rectangle linkObject;
         public Rectangle enemyObject;
-        public BlockCollisionClass()
+        //private Link link;
+        private Game1 game1;
+        public BlockCollisionClass(Game1 game1)
         {
             wallBlocks = Globals.WallBlocks;
             //spriteObject = new Rectangle(0, 0, 0, 0);
-            linkObject = Link.GetHitBox();
+            //this.link = link;
+            this.game1 = game1;
+            linkObject = this.game1.link.GetHitBox();
+           
         }
         public void Update()
         {
-            
+
             /*foreach (Enemy enemy in Globals)
             {
                 enemyObject = enemy.GetHitBox();
@@ -45,8 +52,15 @@ namespace Sprint2_Attempt3.Collision
                 collided = CheckCollision.CheckProjectileWallCollision(projectileObject, wallBlocks);
             }
             */
-    
+
+            linkObject = this.game1.link.GetHitBox();
+            //System.Diagnostics.Debug.WriteLine((int)linkObject.X);
             collided = CheckCollision.CheckPlayerWallCollision(linkObject, wallBlocks);
+            /*if (!collided)
+            {
+                System.Diagnostics.Debug.WriteLine(collided);
+            }*/
+            
         }
     }
 

@@ -4,6 +4,8 @@ using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Player.LinkStates;
 using System.Collections.Generic;
 using Sprint2_Attempt3.Collision;
+using Sprint2_Attempt3.Interfaces;
+using System;
 
 namespace Sprint2_Attempt3.Player
 {
@@ -104,8 +106,9 @@ namespace Sprint2_Attempt3.Player
             }
 
         }
-        public static Rectangle GetHitBox()
+        public Rectangle GetHitBox()
         {
+            //System.Diagnostics.Debug.WriteLine((int)position.X);
             return new Rectangle((int)position.X, (int)position.Y, 15, 15);
         }
     }

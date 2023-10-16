@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
 using System;
 
@@ -8,6 +9,11 @@ namespace Sprint2_Attempt3.Enemy.Hand
     {
         private IEnemyState state;
         private int count;
+
+        public Rectangle GetHitBox()
+        {
+            return new Rectangle(0, 0, 0, 0);
+        }
         public IEnemyState State
         {
             get { return state; }

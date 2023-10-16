@@ -19,6 +19,10 @@ namespace Sprint2_Attempt3.Items
         protected bool spawned;
         protected bool exists;
 
+        public Rectangle GetHitBox()
+        {
+            return new Rectangle(0, 0, 0, 0);
+        }
         public Rectangle position { get { return Position; } }
 
         public ItemSecondary() {
