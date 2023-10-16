@@ -288,7 +288,28 @@ namespace Sprint2_Attempt3
 
         public static Rectangle DamagedNorthDoor { get { return new Rectangle(947, 11, 31, 32); } }
         public static Rectangle DamagedSouthDoor { get { return new Rectangle(947, 110, 31, 32); } }
-        public static Rectangle DamagedWestDoor { get { return new Rectangle(947, 44, 31, 32); } }
-        public static Rectangle DamagedEastDoor { get { return new Rectangle(947, 77, 31, 32); } }
+        public static Rectangle DamagedEastDoor { get { return new Rectangle(947, 44, 31, 32); } }
+        public static Rectangle DamagedWestDoor { get { return new Rectangle(947, 77, 31, 32); } }
+
+        public static List<Rectangle> WallBlocks = new List<Rectangle>
+        {
+            //WallTopLeft
+            new Rectangle(0, 0, 348, 87),
+            //WallTopRight
+            new Rectangle(453, 0, 348, 87),
+            //SideUpperLeft
+            new Rectangle(0, 87, 98, 110),
+            //SideUpperRight
+            new Rectangle(703, 87, 98, 110),
+            //WallBottomLeft
+            new Rectangle(0, 397, 348, 87),
+            //WallBottomRight
+            new Rectangle(453, 397, 348, 87),
+            //SideBottomLeft
+            new Rectangle(0, 287, 98, 110),
+            //SideBottomRight
+            new Rectangle(703, 287, 98, 110)
+        };
     }
+
 }
