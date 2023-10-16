@@ -13,6 +13,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Aquamentus;
 using Sprint2_Attempt3.Dungeon;
 using Sprint2_Attempt3.Dungeon.DungeonRooms;
+using System.Collections.Generic;
 
 namespace Sprint2_Attempt3
 {
@@ -159,14 +160,36 @@ namespace Sprint2_Attempt3
         public static Rectangle DamagedWestDoor { get { return new Rectangle(947, 77, 31, 32); } }
 
         //Blocks
-        //
-        public static Rectangle WallTopLeft { get { return new Rectangle(0, 0, 348, 87); } }
+        /*
+        * public static Rectangle WallTopLeft { get { return new Rectangle(0, 0, 348, 87); } }
         public static Rectangle WallTopRight { get { return new Rectangle(453, 0, 348, 87); } }
         public static Rectangle SideUpperLeft { get { return new Rectangle(0, 87, 98, 110); } }
         public static Rectangle SideUpperRight { get { return new Rectangle(703, 87, 98, 110); } }
         public static Rectangle WallBottomLeft { get { return new Rectangle(0, 397, 348, 87); } }
         public static Rectangle WallBottomRight { get { return new Rectangle(453, 397, 348, 87); } }
         public static Rectangle SideBottomLeft { get { return new Rectangle(0, 287, 98, 110); } }
-        public static Rectangle SideBottomRight { get { return new Rectangle( 703, 287, 98, 110); } }
+        public static Rectangle SideBottomRight { get { return new Rectangle(703, 287, 98, 110); } }
+        */
+
+        public static List<Rectangle> WallBlocks = new List<Rectangle>
+        {
+            //WallTopLeft
+            new Rectangle(0, 0, 348, 87),
+            //WallTopRight
+            new Rectangle(453, 0, 348, 87),
+            //SideUpperLeft
+            new Rectangle(0, 87, 98, 110),
+            //SideUpperRight
+            new Rectangle(703, 87, 98, 110),
+            //WallBottomLeft
+            new Rectangle(0, 397, 348, 87),
+            //WallBottomRight
+            new Rectangle(453, 397, 348, 87),
+            //SideBottomLeft
+            new Rectangle(0, 287, 98, 110),
+            //SideBottomRight
+            new Rectangle(703, 287, 98, 110)
+        };
     }
+
 }
