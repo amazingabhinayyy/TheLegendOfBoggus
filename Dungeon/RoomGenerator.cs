@@ -1,4 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
+using Sprint2_Attempt3.Blocks;
+using Sprint2_Attempt3.Blocks.BlockSprites;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Aquamentus;
 using Sprint2_Attempt3.Enemy.Dodongo;
@@ -10,6 +12,7 @@ using Sprint2_Attempt3.Enemy.Rope;
 using Sprint2_Attempt3.Enemy.SpikeTrap;
 using Sprint2_Attempt3.Enemy.Stalfos;
 using Sprint2_Attempt3.Enemy.Zol;
+using Sprint2_Attempt3.Items;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -47,9 +50,11 @@ namespace Sprint2_Attempt3.Dungeon
                     }
                     else if (words[0].Equals("Block"))
                     {
+                        objectList.Add(GetBlock(words[1], int.Parse(words[2])));
                     }
                     else if (words[0].Equals("Item"))
                     {
+                        objectList.Add(GetItem(words[1], int.Parse(words[2]), bool.Parse(words[3])));
                     }
 
                 }
@@ -101,6 +106,114 @@ namespace Sprint2_Attempt3.Dungeon
                 enemy = new Zol(x, y);
             }
             return enemy;
+        }
+
+        private IBlock GetBlock(String Block, int position)
+        {
+            IBlock block = null;
+            if (Block.Equals("BlackBlock"))
+            {
+                block = new BlackBlock(Globals.FloorGrid[position]);
+            }
+            else if (Block.Equals("BlueTile"))
+            {
+                block = new BlueTile(Globals.FloorGrid[position]);
+            }
+            else if (Block.Equals("DotTile"))
+            {
+                block = new DotTile(Globals.FloorGrid[position]);
+            }
+            else if (Block.Equals("PlainTile"))
+            {
+                block = new PlainTile(Globals.FloorGrid[position]);
+            }
+            else if (Block.Equals("SideChunk"))
+            {
+                block = new SideChunk(Globals.FloorGrid[position]);
+            }
+            else if (Block.Equals("StaircaseTile"))
+            {
+                block = new StaircaseTile(Globals.FloorGrid[position]);
+            }
+            else if (Block.Equals("UpChunk"))
+            {
+                block = new UpChunk(Globals.FloorGrid[position]);
+            }
+            else if (Block.Equals("WhiteBrick"))
+            {
+                block = new WhiteBrick(Globals.FloorGrid[position]);
+            }
+            else if (Block.Equals("WhiteStaircase"))
+            {
+                block = new WhiteStair(Globals.FloorGrid[position]);
+            }
+            return block;
+        }
+
+        private IItem GetItem(String Item, int position, bool spawned)
+        {
+            IItem item = null;
+            /*if (Item.Equals("Arrow"))
+            {
+                item = new BlackBlock(Globals.FloorGrid[position]);
+            }
+            else if (Item.Equals("BlueCandle"))
+            {
+                item = new BlueTile(Globals.FloorGrid[position]);
+            }
+            else if (Item.Equals("BluePotion"))
+            {
+                item = new DotTile(Globals.FloorGrid[position]);
+            }
+            else if (Item.Equals("Bomb"))
+            {
+                item = new PlainTile(Globals.FloorGrid[position]);
+            }
+            else if (Item.Equals("Boomerang"))
+            {
+                item = new SideChunk(Globals.FloorGrid[position]);
+            }
+            else if (Item.Equals("Bow"))
+            {
+                item = new StaircaseTile(Globals.FloorGrid[position]);
+            }
+            else if (Item.Equals("Clock"))
+            {
+                item = new UpChunk(Globals.FloorGrid[position]);
+            }
+            else if (Item.Equals("Compass"))
+            {
+                item = new WhiteBrick(Globals.FloorGrid[position]);
+            }
+            else if (Item.Equals("Fairy"))
+            {
+                item = new WhiteStair(Globals.FloorGrid[position]);
+            }
+            else if (Item.Equals("HeartContainer"))
+            {
+                item = new PlainTile(Globals.FloorGrid[position]);
+            }
+            else if (Item.Equals("Heart"))
+            {
+                item = new SideChunk(Globals.FloorGrid[position]);
+            }
+            else if (Item.Equals("Key"))
+            {
+                item = new StaircaseTile(Globals.FloorGrid[position]);
+            }
+            else if (Item.Equals("Map"))
+            {
+                item = new UpChunk(Globals.FloorGrid[position]);
+            }
+            else if (Item.Equals("Rupee"))
+            {
+                item = new WhiteBrick(Globals.FloorGrid[position]);
+            }
+            else if (Item.Equals("Triforce"))
+            {
+                item = new WhiteStair(Globals.FloorGrid[position]);
+            }*/
+            return item;
         }
 
         public List<IGameObject> GenerateRoom1() {

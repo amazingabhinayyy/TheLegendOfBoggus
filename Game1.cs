@@ -11,6 +11,7 @@ using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Blocks.BlockSprites;
+using Sprint2_Attempt3.Items.ItemClasses;
 
 namespace Sprint2_Attempt3
 {
@@ -18,6 +19,7 @@ namespace Sprint2_Attempt3
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        public IItem item;
         public ILink link { get; set; }
         private IController keyController;
         public IDungeonRoom dungeonRoom { get; set; }
@@ -70,6 +72,7 @@ namespace Sprint2_Attempt3
             DungeonSpriteFactory.Instance.LoadAllTextures(Content);
             keyController = new KeyboardController(this);
             dungeonRoom = new DungeonRoom1();
+            item = new Heart(new Vector2(0, 0), true);
             link = new Link();
             room = new Room(this);
         }
@@ -112,9 +115,6 @@ namespace Sprint2_Attempt3
 
             spriteBatch.Begin();
             room.Draw(spriteBatch);
-            foreach(IBlock block in blocks) { 
-                block.Draw(spriteBatch);
-            }
             spriteBatch.End();
             base.Draw(gameTime);
         }

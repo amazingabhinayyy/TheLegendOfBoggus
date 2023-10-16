@@ -7,7 +7,6 @@ namespace Sprint2_Attempt3.Blocks
     {
         public Rectangle position { get; set; }
         protected Rectangle sourceRectangle { get; set; }
-        public IBlockSprite Sprite { get; set; }
 
         public BlockSecondary() { }
 

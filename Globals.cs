@@ -23,26 +23,6 @@ namespace Sprint2_Attempt3
         public const int ScreenHeight = 480;
         public const int ScreenWidth = 800;
 
-        public static Rectangle plainScr { get { return new Rectangle(0, 0, 16, 16); } }
-        public static Rectangle diamondScr { get { return new Rectangle(17, 0, 16, 16); } }
-        public static Rectangle upChunkScr { get { return new Rectangle(34, 0, 16, 16); } }
-        public static Rectangle sideChunkScr { get { return new Rectangle(51, 0, 16, 16); } }
-        public static Rectangle staircaseScr { get { return new Rectangle(51, 17, 16, 16); } }
-        public static Rectangle blueTileScr { get { return new Rectangle(34, 17, 16, 16); } }
-        public static Rectangle whiteStairScr { get { return new Rectangle(17, 34, 16, 16); } }
-        public static Rectangle whiteBrickScr { get { return new Rectangle(0, 34, 16, 16); } }
-        public static Rectangle blackBlockScr { get { return new Rectangle(0, 17, 16, 16); } }
-        public static Rectangle dotTileScr { get { return new Rectangle(17, 17, 16, 16); } }
-
-        public static Rectangle NorthEastCollisionBlock { get { return new Rectangle(0, 0, 348, 87); } }
-        public static Rectangle NorthWestCollisionBlock { get { return new Rectangle(453, 0, 347, 87); } }
-        public static Rectangle SouthEastCollisionBlock { get { return new Rectangle(0, 393, 348, 87); } }
-        public static Rectangle SouthWestCollisionBlock { get { return new Rectangle(453, 393, 347, 87); } }
-        public static Rectangle EastNorthCollisionBlock { get { return new Rectangle(0, 87, 98, 110); } }
-        public static Rectangle EastSouthCollisionBlock { get { return new Rectangle(0, 287, 98, 106); } }
-        public static Rectangle WestNorthCollisionBlock { get { return new Rectangle(700, 87, 99, 110); } }
-        public static Rectangle WestSouthCollisionBlock { get { return new Rectangle(700, 287, 99, 106); } }
-
         public static Dictionary<int, Rectangle> FloorGrid = new Dictionary<int, Rectangle>()
         {
             {1, new Rectangle(100, 89, 50, 43) },
@@ -136,6 +116,47 @@ namespace Sprint2_Attempt3
             {83, new Rectangle(600, 347, 50, 43) },
             {84, new Rectangle(650, 349, 50, 43) }
         };
+
+        public static Rectangle plainScr { get { return new Rectangle(0, 0, 16, 16); } }
+        public static Rectangle diamondScr { get { return new Rectangle(17, 0, 16, 16); } }
+        public static Rectangle upChunkScr { get { return new Rectangle(34, 0, 16, 16); } }
+        public static Rectangle sideChunkScr { get { return new Rectangle(51, 0, 16, 16); } }
+        public static Rectangle staircaseScr { get { return new Rectangle(51, 17, 16, 16); } }
+        public static Rectangle blueTileScr { get { return new Rectangle(34, 17, 16, 16); } }
+        public static Rectangle whiteStairScr { get { return new Rectangle(17, 34, 16, 16); } }
+        public static Rectangle whiteBrickScr { get { return new Rectangle(0, 34, 16, 16); } }
+        public static Rectangle blackBlockScr { get { return new Rectangle(0, 17, 16, 16); } }
+        public static Rectangle dotTileScr { get { return new Rectangle(17, 17, 16, 16); } }
+
+        public static Rectangle NorthEastCollisionBlock { get { return new Rectangle(0, 0, 348, 87); } }
+        public static Rectangle NorthWestCollisionBlock { get { return new Rectangle(453, 0, 347, 87); } }
+        public static Rectangle SouthEastCollisionBlock { get { return new Rectangle(0, 393, 348, 87); } }
+        public static Rectangle SouthWestCollisionBlock { get { return new Rectangle(453, 393, 347, 87); } }
+        public static Rectangle EastNorthCollisionBlock { get { return new Rectangle(0, 87, 98, 110); } }
+        public static Rectangle EastSouthCollisionBlock { get { return new Rectangle(0, 287, 98, 106); } }
+        public static Rectangle WestNorthCollisionBlock { get { return new Rectangle(700, 87, 99, 110); } }
+        public static Rectangle WestSouthCollisionBlock { get { return new Rectangle(700, 287, 99, 106); } }
+
+        public static Rectangle bombSrc { get { return new Rectangle(135, 0, 9, 15); } }
+        public static Rectangle clockSrc { get { return new Rectangle(57, 0, 13, 17); } }
+        public static Rectangle compassSrc { get { return new Rectangle(258, 1, 11, 12); } }
+        public static Rectangle heartSrc { get { return new Rectangle(0, 0, 7, 8); } }
+        public static Rectangle blueheartSrc { get { return new Rectangle(0, 8, 7, 8); } }
+        public static Rectangle keySrc { get { return new Rectangle(240, 0, 8, 16); } }
+        public static Rectangle mapSrc { get { return new Rectangle(88, 0, 8, 16); } }
+        public static Rectangle rupeeSrc { get { return new Rectangle(72, 0, 8, 16); } }
+        public static Rectangle bluerupeeSrc { get { return new Rectangle(72, 16, 8, 16); } }
+
+        public static Rectangle heartcontainerSrc { get { return new Rectangle(25, 0, 13, 14); } }
+        public static Rectangle triforcepieceSrc { get { return new Rectangle(275, 3, 10, 10); } }
+        public static Rectangle bluetriforcepieceSrc { get { return new Rectangle(275, 19, 10, 10); } }
+        public static Rectangle boomerangSrc { get { return new Rectangle(129, 3, 5, 8); } }
+        public static Rectangle bowSrc { get { return new Rectangle(144, 0, 8, 16); } }
+        public static Rectangle arrowSrc { get { return new Rectangle(154, 0, 5, 16); } }
+        public static Rectangle fairySrc { get { return new Rectangle(40, 0, 8, 16); } }
+        public static Rectangle fairytwoSrc { get { return new Rectangle(48, 0, 8, 16); } }
+        public static Rectangle bluecandleSrc { get { return new Rectangle(160, 16, 8, 16); } }
+        public static Rectangle bluepotionSrc { get { return new Rectangle(80, 16, 8, 16); } }
 
         //my futile attempt to avoid making a Projectile class, probably will delete
         public static bool changeDirection = false;
