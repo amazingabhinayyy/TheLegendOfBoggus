@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Enemy;
+using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -16,11 +17,34 @@ namespace Sprint2_Attempt3.Collision
         {
 
         }
-        public static bool CheckWallCollision(Rectangle spriteObject, List<Rectangle> WallBlocks)
+        public static bool CheckEnemyWallCollision(Rectangle spriteObject, List<Rectangle> WallBlocks)
         {
             foreach (Rectangle wall in WallBlocks)
                 if (spriteObject.Intersects(wall))
                 {
+                    HandleCollision.HandleEnemyBlockCollision();
+                    return true;
+                }
+            return false;
+        }
+
+        public static bool CheckProjectileWallCollision(Rectangle spriteObject, List<Rectangle> WallBlocks)
+        {
+            foreach (Rectangle wall in WallBlocks)
+                if (spriteObject.Intersects(wall))
+                {
+                    HandleCollision.HandleProjectileBlockCollision();
+                    return true;
+                }
+            return false;
+        }
+
+        public static bool CheckPlayerWallCollision(Rectangle spriteObject, List<Rectangle> WallBlocks)
+        {
+            foreach (Rectangle wall in WallBlocks)
+                if (spriteObject.Intersects(wall))
+                {
+                    HandleCollision.HandlePlayerBlockCollision();
                     return true;
                 }
             return false;

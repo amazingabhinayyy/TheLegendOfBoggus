@@ -16,17 +16,17 @@ namespace Sprint2_Attempt3.Collision
         {
 
         }
-        public static bool HandleEnemyBlockCollision()
+        public static void HandleEnemyBlockCollision()
         {
             //handle collision
         }
 
-        public static bool HandleProjectileBlockCollision()
+        public static void HandleProjectileBlockCollision()
         {
             //handle collision
         }
 
-        public static bool HandlePlayerBlockCollision()
+        public static void HandlePlayerBlockCollision()
         {
             //handle collision
         }

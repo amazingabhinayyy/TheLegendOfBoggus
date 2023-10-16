@@ -25,31 +25,23 @@ namespace Sprint2_Attempt3.Collision
         }
         public void Update()
         {
+            
             foreach (Enemy in Globals)
             {
-                collided = CheckCollision.CheckWallCollision(spriteObject, wallBlocks);
-                if (collided)
+                collided = CheckCollision.CheckEnemyWallCollision(spriteObject, wallBlocks);
+                /*if (collided)
                 {
                     HandleEnemyBlockCollision();
-                }
+                }*/
             }
 
             foreach (projectiles in Globals)
             {
-                collided = CheckCollision.CheckWallCollision(spriteObject, wallBlocks);
-                if (collided)
-                {
-                    HandleProjectileBlockCollision();
-                }
+                collided = CheckCollision.CheckProjectileWallCollision(spriteObject, wallBlocks);
             }
             
             
-            collided = CheckCollision.CheckWallCollision(linkObject, wallBlocks);
-            if (collided)
-            {
-                HandlePlayerBlockCollision();
-            }
-
+            collided = CheckCollision.CheckPlayerWallCollision(linkObject, wallBlocks);
         }
     }
 
