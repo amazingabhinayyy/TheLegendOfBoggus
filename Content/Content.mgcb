@@ -133,3 +133,8 @@
 /processorParam:TextureFormat=Color
 /build:LinkPlayerSpriteSheetFinal.png
 
+#begin Room1.csv
+/importer:
+/processor:
+/build:Room1.csv
+

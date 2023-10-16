@@ -25,17 +25,6 @@ namespace Sprint2_Attempt3
         public IDungeonRoom dungeonRoom { get; set; }
         public IRoom room { get; set; }
 
-        private IBlock[] blocks = { 
-            new BlackBlock(Globals.NorthEastCollisionBlock),
-            new BlackBlock(Globals.NorthWestCollisionBlock),
-            new BlackBlock(Globals.SouthEastCollisionBlock),
-            new BlackBlock(Globals.SouthWestCollisionBlock),
-            new BlackBlock(Globals.EastNorthCollisionBlock),
-            new BlackBlock(Globals.EastSouthCollisionBlock),
-            new BlackBlock(Globals.WestNorthCollisionBlock),
-            new BlackBlock(Globals.WestSouthCollisionBlock)
-        };
-
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -70,11 +59,12 @@ namespace Sprint2_Attempt3
             BlockSpriteFactory.Instance.LoadAllTextures(Content);
             EnemyProjectileSpriteFactory.Instance.LoadAllTextures(Content);
             DungeonSpriteFactory.Instance.LoadAllTextures(Content);
+            RoomGenerator.Instance.LoadAllFiles(Content);
             keyController = new KeyboardController(this);
             dungeonRoom = new DungeonRoom1();
             item = new Heart(new Vector2(0, 0), true);
             link = new Link();
-            room = new Room(this);
+            room = new Room1(this);
         }
 
         /// <summary>

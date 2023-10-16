@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Blocks;
+using Sprint2_Attempt3.Dungeon.Rooms;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Items;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace Sprint2_Attempt3.Dungeon
     public abstract class RoomSecondary : IRoom
     {
         protected static List<IGameObject> gameObjects;
+        protected IDungeonRoom room;
         protected Game1 game1;
 
         public void Update() { 
@@ -27,7 +29,7 @@ namespace Sprint2_Attempt3.Dungeon
         }
 
         public void Draw(SpriteBatch spriteBatch) {
-            game1.dungeonRoom.Draw(spriteBatch);
+            room.Draw(spriteBatch);
             
             foreach (IEnemy enemy in gameObjects)
             {

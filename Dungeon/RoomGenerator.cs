@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Blocks.BlockSprites;
 using Sprint2_Attempt3.Enemy;
@@ -13,6 +15,7 @@ using Sprint2_Attempt3.Enemy.SpikeTrap;
 using Sprint2_Attempt3.Enemy.Stalfos;
 using Sprint2_Attempt3.Enemy.Zol;
 using Sprint2_Attempt3.Items;
+using Sprint2_Attempt3.Items.ItemClasses;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,6 +26,7 @@ namespace Sprint2_Attempt3.Dungeon
     {
 
         private static RoomGenerator instance = new RoomGenerator();
+        private static FileStream[] fileStreams = new FileStream[18];
 
         public static RoomGenerator Instance
         {
@@ -33,18 +37,24 @@ namespace Sprint2_Attempt3.Dungeon
         }
         public RoomGenerator()
         {
+        }
+        public void LoadAllFiles(ContentManager content) {
+            /*for (int i = 0; i < fileStreams.Length; i++)
+            {
+                fileStreams[i] = content.Load<FileStream>("Room" + (i + 1) + ".csv");
+            }*/
 
         }
 
-        private List<IGameObject> LoadFile(string fileName) {
+        public List<IGameObject> LoadFile(int fileNumber) {
             List<IGameObject> objectList = new List<IGameObject>();
-            
-            StreamReader sr = new StreamReader(fileName);
+
+            StreamReader sr = new StreamReader(fileStreams[fileNumber]);
             while (!sr.EndOfStream) { 
                 var line = sr.ReadLine();
                 if (line != null)
                 {
-                    var words = line.Split(";");
+                    var words = line.Split(",");
                     if (words[0].Equals("Enemy")) {
                         objectList.Add(GetEnemy(words[1], int.Parse(words[2]), int.Parse(words[3])));
                     }
@@ -54,7 +64,7 @@ namespace Sprint2_Attempt3.Dungeon
                     }
                     else if (words[0].Equals("Item"))
                     {
-                        objectList.Add(GetItem(words[1], int.Parse(words[2]), bool.Parse(words[3])));
+                        objectList.Add(GetItem(words[1], new Vector2(int.Parse(words[2]), int.Parse(words[3])), bool.Parse(words[4])));
                     }
 
                 }
@@ -150,142 +160,70 @@ namespace Sprint2_Attempt3.Dungeon
             return block;
         }
 
-        private IItem GetItem(String Item, int position, bool spawned)
+        private IItem GetItem(String Item, Vector2 position, bool spawned)
         {
             IItem item = null;
-            /*if (Item.Equals("Arrow"))
+            if (Item.Equals("Arrow"))
             {
-                item = new BlackBlock(Globals.FloorGrid[position]);
+                item = new Arrow(position, spawned);
             }
             else if (Item.Equals("BlueCandle"))
             {
-                item = new BlueTile(Globals.FloorGrid[position]);
+                item = new BlueCandle(position, spawned);
             }
             else if (Item.Equals("BluePotion"))
             {
-                item = new DotTile(Globals.FloorGrid[position]);
+                item = new BluePotion(position, spawned);
             }
             else if (Item.Equals("Bomb"))
             {
-                item = new PlainTile(Globals.FloorGrid[position]);
+                item = new Bomb(position, spawned);
             }
             else if (Item.Equals("Boomerang"))
             {
-                item = new SideChunk(Globals.FloorGrid[position]);
+                item = new Boomerang(position, spawned);
             }
             else if (Item.Equals("Bow"))
             {
-                item = new StaircaseTile(Globals.FloorGrid[position]);
+                item = new Bow(position, spawned);
             }
             else if (Item.Equals("Clock"))
             {
-                item = new UpChunk(Globals.FloorGrid[position]);
+                item = new Clock(position, spawned);
             }
             else if (Item.Equals("Compass"))
             {
-                item = new WhiteBrick(Globals.FloorGrid[position]);
+                item = new Compass(position, spawned);
             }
             else if (Item.Equals("Fairy"))
             {
-                item = new WhiteStair(Globals.FloorGrid[position]);
+                item = new Fairy(position, spawned);
             }
             else if (Item.Equals("HeartContainer"))
             {
-                item = new PlainTile(Globals.FloorGrid[position]);
+                item = new HeartContainer(position, spawned);
             }
             else if (Item.Equals("Heart"))
             {
-                item = new SideChunk(Globals.FloorGrid[position]);
+                item = new Heart(position, spawned);
             }
             else if (Item.Equals("Key"))
             {
-                item = new StaircaseTile(Globals.FloorGrid[position]);
+                item = new Key(position, spawned);
             }
             else if (Item.Equals("Map"))
             {
-                item = new UpChunk(Globals.FloorGrid[position]);
+                item = new Map(position, spawned);
             }
             else if (Item.Equals("Rupee"))
             {
-                item = new WhiteBrick(Globals.FloorGrid[position]);
+                item = new Rupee(position, spawned);
             }
             else if (Item.Equals("Triforce"))
             {
-                item = new WhiteStair(Globals.FloorGrid[position]);
-            }*/
+                item = new TriforcePiece(position, spawned);
+            }
             return item;
-        }
-
-        public List<IGameObject> GenerateRoom1() {
-            return LoadFile("Room1File.csv");
-        }
-        public List<IGameObject> GenerateRoom2()
-        {
-            return LoadFile("Room2File.csv");
-        }
-        public List<IGameObject> GenerateRoom3()
-        {
-            return LoadFile("Room3File.csv");
-        }
-        public List<IGameObject> GenerateRoom4()
-        {
-            return LoadFile("Room4File.csv");
-        }
-        public List<IGameObject> GenerateRoom5()
-        {
-            return LoadFile("Room5File.csv");
-        }
-        public List<IGameObject> GenerateRoom6()
-        {
-            return LoadFile("Room6File.csv");
-        }
-        public List<IGameObject> GenerateRoom7()
-        {
-            return LoadFile("Room7File.csv");
-        }
-        public List<IGameObject> GenerateRoom8()
-        {
-            return LoadFile("Room8File.csv");
-        }
-        public List<IGameObject> GenerateRoom9()
-        {
-            return LoadFile("Room9File.csv");
-        }
-        public List<IGameObject> GenerateRoom10()
-        {
-            return LoadFile("Room9File.csv");
-        }
-        public List<IGameObject> GenerateRoom11()
-        {
-            return LoadFile("Room11File.csv");
-        }
-        public List<IGameObject> GenerateRoom12()
-        {
-            return LoadFile("Room12File.csv");
-        }
-        public List<IGameObject> GenerateRoom13()
-        {
-            return LoadFile("Room13File.csv");
-        }
-        public List<IGameObject> GenerateRoom14()
-        {
-            return LoadFile("Room14File.csv");
-        }
-        public List<IGameObject> GenerateRoom15()
-        {
-            return LoadFile("Room15File.csv");
-        }
-        public List<IGameObject> GenerateRoom16()
-        {
-            return LoadFile("Room16File.csv");
-        }
-        public List<IGameObject> GenerateRoom17()
-        {
-            return LoadFile("Room17File.csv");
-        }
-        public List<IGameObject> GenerateRoom18()
-        {
-            return LoadFile("Room18File.csv");
         }
     }
 }

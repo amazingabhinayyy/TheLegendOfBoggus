@@ -22,7 +22,7 @@ namespace Sprint2_Attempt3.CommandClasses
         public void Execute()
         {
             game1.link = new Link();
-            game1.room = new Room(game1);
+            game1.room = new Room1(game1);
             game1.dungeonRoom = new DungeonRoom1();
         }
     }
