@@ -61,5 +61,15 @@ namespace Sprint2_Attempt3.Collision
                 }
             }
         }
+
+        public static void HandleEnemyBlockCollision(Rectangle spriteObject, Rectangle wall)
+        {
+            //changeDirection method from Avery
+        }
+
+        public static void HandleProjectileBlockCollision(Rectangle spriteObject, Rectangle wall)
+        {
+            //change sprite to poof animation
+        }
     }
 }
