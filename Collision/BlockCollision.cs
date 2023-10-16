@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Audio;
 using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Collision;
+using Sprint2_Attempt3.Player;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -16,31 +17,35 @@ namespace Sprint2_Attempt3.Collision
         private Vector2 linkPosition;
         public Vector2 LinkPosition { get; private set; }
         public bool collided;
-        public Rectangle spriteObject;
+        public Rectangle projectileObject;
         public List<Rectangle> wallBlocks;
+        public Rectangle linkObject;
+        public Rectangle enemyObject;
         public BlockCollisionClass()
         {
             wallBlocks = Globals.WallBlocks;
-            spriteObject = new Rectangle(0, 0, 0, 0);
+            //spriteObject = new Rectangle(0, 0, 0, 0);
+            linkObject = Link.GetHitBox();
         }
         public void Update()
         {
             
-            foreach (Enemy in Globals)
+            /*foreach (Enemy enemy in Globals)
             {
-                collided = CheckCollision.CheckEnemyWallCollision(spriteObject, wallBlocks);
+                enemyObject = enemy.GetHitBox();
+                collided = CheckCollision.CheckEnemyWallCollision(enemyObject, wallBlocks);
                 /*if (collided)
                 {
                     HandleEnemyBlockCollision();
-                }*/
+                }
             }
 
             foreach (projectiles in Globals)
             {
-                collided = CheckCollision.CheckProjectileWallCollision(spriteObject, wallBlocks);
+                collided = CheckCollision.CheckProjectileWallCollision(projectileObject, wallBlocks);
             }
-            
-            
+            */
+    
             collided = CheckCollision.CheckPlayerWallCollision(linkObject, wallBlocks);
         }
     }

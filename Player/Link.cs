@@ -1,24 +1,20 @@
-
-
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Interfaces;
 using Sprint2_Attempt3.Player.LinkStates;
 using System.Collections.Generic;
+using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3.Player
 {
     public class Link : ILink
     {
         public Vector2 position;
-        public Vector2 ItemPosition { get; set; }
-
         public ILinkSprite AttackSprite { get; set; }
         public ILinkSprite Sprite { get; set; }
         public ILinkState State { get; set; }
         public List<ILinkItem> Items { get; set; }
-        public enum LinkDirection { Left, Right, Up, Down };
-        public LinkDirection Direction { get; set; } 
+        private Rectangle collisionRectangle;
         public Link()
         {
             StartLinkState();
@@ -88,6 +84,7 @@ namespace Sprint2_Attempt3.Player
 
         public void Update()
         {
+            collisionRectangle = new Rectangle((int)position.X, (int)position.Y, 15, 15);
             State.Update();
             Sprite.Update();
             AttackSprite.Update();
@@ -107,6 +104,9 @@ namespace Sprint2_Attempt3.Player
             }
 
         }
-
+        public Rectangle GetHitBox()
+        {
+            return new Rectangle((int)position.X, (int)position.Y, 15, 15);
+        }
     }
 }
