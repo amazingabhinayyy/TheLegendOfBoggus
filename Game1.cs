@@ -12,6 +12,7 @@ using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Blocks.BlockSprites;
 using Sprint2_Attempt3.Items.ItemClasses;
+using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3
 {
@@ -21,7 +22,6 @@ namespace Sprint2_Attempt3
         SpriteBatch spriteBatch;
         public IItem item;
         public ILink link { get; set; }
-        private IController keyController;
         public IDungeonRoom dungeonRoom { get; set; }
         public IRoom room { get; set; }
 
@@ -35,8 +35,11 @@ namespace Sprint2_Attempt3
             new BlackBlock(Globals.WestNorthCollisionBlock),
             new BlackBlock(Globals.WestSouthCollisionBlock)
         };
+        public ICollision collision 
+        { get; private set; }
+        public IController keyController {get; set;}
 
-            blockIndex = 0;
+        public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -63,7 +66,8 @@ namespace Sprint2_Attempt3
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            
+            keyController = new KeyboardController(this);
+            collision = new CollisionHandler();
             EnemySpriteFactory.Instance.LoadAllTextures(this.Content);
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
             ItemSpriteFactory.Instance.LoadAllTextures(Content);
@@ -97,7 +101,7 @@ namespace Sprint2_Attempt3
             // TODO: Add your update logic here
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
+            collision.Update();
             keyController.Update(gameTime);
             room.Update();
             base.Update(gameTime);
@@ -120,3 +124,6 @@ namespace Sprint2_Attempt3
         }
     }
 }
+
+
+

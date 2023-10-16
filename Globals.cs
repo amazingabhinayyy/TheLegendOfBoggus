@@ -213,7 +213,7 @@ namespace Sprint2_Attempt3
         public static Rectangle GoriyaBoomerang1 { get { return new Rectangle(0, 74, 7, 9); } }
         public static Rectangle GoriyaBoomerang2 { get { return new Rectangle(10, 74, 9, 9); } }
         public static Rectangle GoriyaBoomerang3 { get { return new Rectangle(20, 76, 9, 6); } }
-
+        
         public static int currentIndex = 0;
         public static Rectangle[] GoriyaBoomerangLeft = { GoriyaBoomerang1, GoriyaBoomerang2, GoriyaBoomerang3, GoriyaBoomerang2, GoriyaBoomerang1, GoriyaBoomerang2, GoriyaBoomerang3, GoriyaBoomerang2 };
         public static SpriteEffects[] GoriyaBoomerangLeftEffects = { SpriteEffects.None, SpriteEffects.None, SpriteEffects.None, SpriteEffects.FlipHorizontally, SpriteEffects.FlipHorizontally, SpriteEffects.FlipHorizontally | SpriteEffects.FlipVertically, SpriteEffects.FlipVertically, SpriteEffects.FlipVertically };

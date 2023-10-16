@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint2_Attempt3.Player
+namespace Sprint2_Attempt3.Player.Items
 {
-    public interface IItemState
+    internal class ThrowingSwordSprite
     {
-        public void Update();
-        public void NoItemActive();
     }
 }

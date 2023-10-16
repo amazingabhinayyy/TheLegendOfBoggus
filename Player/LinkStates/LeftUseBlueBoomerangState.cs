@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Sprint2_Attempt3.Player;
 using Sprint2_Attempt3.Player.Interfaces;
+using Sprint2_Attempt3.Player.Items;
 
 namespace Sprint2_Attempt3.Player.LinkStates
 {
@@ -16,10 +17,8 @@ namespace Sprint2_Attempt3.Player.LinkStates
         public LeftUseBlueBoomerangState(Link link)
         {
             this.link = link;
-            link.Sprite = LinkSpriteFactory.Instance.CreateLeftItemLinkSprite();
-            link.ItemPosition = new Vector2(link.position.X - 30, link.position.Y);
-            link.Items.Add(LinkSpriteFactory.Instance.CreateBlueBoomerangItem());
-            link.Direction = Link.LinkDirection.Left;
+            link.Sprite = LinkSpriteFactory.Instance.CreateLeftItemLinkSprite(); ;
+            link.Items.Add(new LeftBlueBoomerang(link));
             frameCounter = 0;
         }
         public void Stop()
