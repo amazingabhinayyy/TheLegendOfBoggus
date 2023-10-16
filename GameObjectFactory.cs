@@ -68,8 +68,8 @@ namespace Sprint2_Attempt3
         {
             return new Zol(position);
         }
-        */
+        
         public IBlock CreateNewBlock() { return new Block(); }
-        public IItem CreateNewItem() { return new Item(); }
+        public IItem CreateNewItem() { return new Item(); }*/
     }
 }
