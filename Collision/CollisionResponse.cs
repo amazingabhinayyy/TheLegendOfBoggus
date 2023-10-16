@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.Xna.Framework;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint2_Attempt3
+namespace Sprint2_Attempt3.Collision
 {
-    public interface IGameObject
+    public class CollisionResponse
     {
-        public Rectangle GetHitBox();
+        public CollisionResponse()
+        {
+
+        }
+
     }
 }

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint2_Attempt3.Player
+namespace Sprint2_Attempt3.Interfaces
 {
     public interface ILinkItemSprite
     {

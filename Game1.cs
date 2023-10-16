@@ -91,7 +91,7 @@ namespace Sprint2_Attempt3
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             keyController = new KeyboardController(this);
-            collision = new CollisionClass();
+            collision = new CollisionHandler();
             EnemySpriteFactory.Instance.LoadAllTextures(this.Content);
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
             ItemSpriteFactory.Instance.LoadAllTextures(Content);
@@ -158,3 +158,6 @@ namespace Sprint2_Attempt3
         }
     }
 }
+
+
+

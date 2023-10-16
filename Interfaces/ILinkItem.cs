@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint2_Attempt3.Player
+namespace Sprint2_Attempt3.Interfaces
 {
-    public interface ILinkItem
+    public interface ILinkItem : IGameObject
     {
-        public enum ItemDirection { Left, Right, Up, Down };
         public void Update();
         public void Draw(SpriteBatch spriteBatch);
     }
