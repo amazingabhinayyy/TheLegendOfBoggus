@@ -22,6 +22,11 @@ namespace Sprint2_Attempt3
         public const int ScreenHeight = 480;
         public const int ScreenWidth = 800;
 
+        public const int cornerX = 100;
+        public const int width = 50;
+        public const int cornerY = 89;
+        public const int height = 43;
+
 
         //my futile attempt to avoid making a Projectile class, probably will delete
         public static bool changeDirection = false;

@@ -10,6 +10,7 @@ using Sprint2_Attempt3.Player;
 using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Player.Interfaces;
+using System.Collections.Generic;
 
 namespace Sprint2_Attempt3
 {
@@ -25,6 +26,18 @@ namespace Sprint2_Attempt3
         private ILink Character;
         private IBlock Block;
         private IDungeonRoom DungeonRoom;
+
+        public struct GameObjectPair
+        {
+            public IGameObject Object { get; }
+            public Rectangle Rect { get; }
+            public GameObjectPair(IGameObject obj, Rectangle rectangle)
+            {
+                Object = obj;
+                Rect = rectangle;
+            }
+        }
+        private List<GameObjectPair> objects;
 
         public IController keyController
         {
