@@ -10,20 +10,19 @@ using Sprint2_Attempt3.Interfaces;
 
 namespace Sprint2_Attempt3.Player.Items
 {
-    public class ArrowSprite : ILinkItemSprite
+    public class ArrowExplodeSprite : ILinkItemSprite
     {
         private Rectangle destinationRectangle;
         private int currentFrame;
         private Texture2D texture;
         public Rectangle ArrowCollisionRectangle { get; private set; }
-        public ArrowSprite(Texture2D texture)
+        public ArrowExplodeSprite(Texture2D texture)
         {
             this.texture = texture;
             currentFrame = 0;
         }
         public void Update()
         {
-            currentFrame++;
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Rectangle srcRec, SpriteEffects flip)
         {

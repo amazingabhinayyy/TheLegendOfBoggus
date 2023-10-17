@@ -144,6 +144,10 @@ namespace Sprint2_Attempt3.Player
         {
             return new FireSprite(linkTexture);
         }
+        public ILinkItemSprite CreateArrowExplosion()
+        {
+            return new ArrowExplodeSprite(linkTexture);
+        }
 
 
         // More public ISprite returning methods follow

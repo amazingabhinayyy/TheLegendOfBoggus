@@ -10,7 +10,7 @@ using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3.Player.Items
 {
-    public class DownArrow : ILinkItem
+    public class DownArrow : ILinkItem, IArrow
     {
         private Link link;
         private int currentFrame;
