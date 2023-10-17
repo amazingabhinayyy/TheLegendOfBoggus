@@ -7,11 +7,16 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using System.IO;
 using System.Reflection;
+using Sprint2_Attempt3.Blocks.BlockSprites;
 
 namespace Sprint2_Attempt3.Dungeon
 {
     public class GenerateDungeonObjects : IGenerateDungeonObjects
     {
+        private int cornerX = Globals.cornerX;
+        private int width = Globals.width;
+        private int cornerY = Globals.cornerY;
+        private int height = Globals.height;
         public struct GameObjectPair
         {
             public IGameObject Object { get; }
@@ -44,7 +49,8 @@ namespace Sprint2_Attempt3.Dungeon
                         switch (obj)
                         {
                             case "rightStatue":
-                                GameObjectPair pair = new GameObjectPair(new  );
+                                Rectangle
+                                GameObjectPair pair = new GameObjectPair(new SideChunk(),new Rectangle(cornerX+j*width,cornerY+i*height,width,height) );
                                 break;
                         }
                     }

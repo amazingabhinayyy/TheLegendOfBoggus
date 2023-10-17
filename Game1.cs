@@ -46,16 +46,7 @@ namespace Sprint2_Attempt3
             set { kController = value; }
         }
 
-        private IBlock[] blocks = { 
-            new BlackBlock(Globals.NorthEastCollisionBlock),
-            new BlackBlock(Globals.NorthWestCollisionBlock),
-            new BlackBlock(Globals.SouthEastCollisionBlock),
-            new BlackBlock(Globals.SouthWestCollisionBlock),
-            new BlackBlock(Globals.EastNorthCollisionBlock),
-            new BlackBlock(Globals.EastSouthCollisionBlock),
-            new BlackBlock(Globals.WestNorthCollisionBlock),
-            new BlackBlock(Globals.WestSouthCollisionBlock)
-        };
+     
 
         public Game1()
         {
@@ -120,7 +111,7 @@ namespace Sprint2_Attempt3
                 Exit();
 
             keyController.Update(gameTime);
-            room.Update();
+            
             base.Update(gameTime);
         }
 
@@ -135,7 +126,7 @@ namespace Sprint2_Attempt3
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
-            room.Draw(spriteBatch);
+            
             spriteBatch.End();
             base.Draw(gameTime);
         }

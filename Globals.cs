@@ -29,32 +29,7 @@ namespace Sprint2_Attempt3
         public const int height = 43;
 
 
-            {61, new Rectangle(100, 304, 50, 43) },
-            {62, new Rectangle(150, 304, 50, 43) },
-            {63, new Rectangle(200, 304, 50, 43) },
-            {64, new Rectangle(250, 304, 50, 43) },
-            {65, new Rectangle(300, 304, 50, 43) },
-            {66, new Rectangle(350, 304, 50, 43) },
-            {67, new Rectangle(400, 304, 50, 43) },
-            {68, new Rectangle(450, 304, 50, 43) },
-            {69, new Rectangle(500, 304, 50, 43) },
-            {70, new Rectangle(550, 304, 50, 43) },
-            {71, new Rectangle(600, 304, 50, 43) },
-            {72, new Rectangle(650, 304, 50, 43) },
-
-            {73, new Rectangle(100, 347, 50, 43) },
-            {74, new Rectangle(150, 347, 50, 43) },
-            {75, new Rectangle(200, 347, 50, 43) },
-            {76, new Rectangle(250, 347, 50, 43) },
-            {77, new Rectangle(300, 347, 50, 43) },
-            {78, new Rectangle(350, 347, 50, 43) },
-            {79, new Rectangle(400, 347, 50, 43) },
-            {80, new Rectangle(450, 347, 50, 43) },
-            {81, new Rectangle(500, 347, 50, 43) },
-            {82, new Rectangle(550, 347, 50, 43) },
-            {83, new Rectangle(600, 347, 50, 43) },
-            {84, new Rectangle(650, 349, 50, 43) }
-        };
+          
 
         public static Rectangle plainScr { get { return new Rectangle(0, 0, 16, 16); } }
         public static Rectangle diamondScr { get { return new Rectangle(17, 0, 16, 16); } }

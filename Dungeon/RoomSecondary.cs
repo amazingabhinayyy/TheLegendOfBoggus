@@ -7,11 +7,11 @@ using System.Collections.Generic;
 
 namespace Sprint2_Attempt3.Dungeon
 {
-    public abstract class RoomSecondary : IRoom
+    public abstract class RoomSecondary : /*IRoom*/
     {
         protected static List<IGameObject> gameObjects;
         protected Game1 game1;
-
+        /*
         public void Update() { 
             //collision handling goes here
 
@@ -22,7 +22,7 @@ namespace Sprint2_Attempt3.Dungeon
             /*foreach (IItem item in gameObjects) { 
                 item.Update();
             }*/
-            
+            /*
             game1.link.Update();
         }
 
@@ -43,8 +43,8 @@ namespace Sprint2_Attempt3.Dungeon
             {
                 block.Draw(spriteBatch);
             }*/
-            
+            /*
             game1.link.Draw(spriteBatch, Color.White);
-        }
+        }*/
     }
 }

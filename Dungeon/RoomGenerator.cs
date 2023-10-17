@@ -21,7 +21,7 @@ namespace Sprint2_Attempt3.Dungeon
 {
     internal class RoomGenerator
     {
-
+        /*
         private static RoomGenerator instance = new RoomGenerator();
 
         public static RoomGenerator Instance
@@ -212,7 +212,7 @@ namespace Sprint2_Attempt3.Dungeon
             else if (Item.Equals("Triforce"))
             {
                 item = new WhiteStair(Globals.FloorGrid[position]);
-            }*/
+            }
             return item;
         }
 
@@ -286,6 +286,6 @@ namespace Sprint2_Attempt3.Dungeon
         public List<IGameObject> GenerateRoom18()
         {
             return LoadFile("Room18File.csv");
-        }
+        }*/
     }
 }
