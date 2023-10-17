@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
+using System;
 
 namespace Sprint2_Attempt3.Enemy.Gel
 {
@@ -10,16 +11,33 @@ namespace Sprint2_Attempt3.Enemy.Gel
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
         private int currentFrame;
+        private Random random;
+        private int direction;
         public MovingUpGelState(Gel gel)
         {
             this.gel = gel;
             sprite = EnemySpriteFactory.Instance.CreateGelSprite();
             sourceRectangle = Globals.GelSprite1;
+            gel.Position = new Rectangle(gel.X, gel.Y, sourceRectangle.Width, sourceRectangle.Height);
             currentFrame = 0;
+            random = new Random();
+            direction = random.Next(0, 2);
         }
         public void ChangeDirection()
         {
-            gel.State = new MovingRightGelState(gel);
+            direction = random.Next(0, 2);
+            switch (direction)
+            {
+                case 0:
+                    gel.State = new MovingLeftGelState(gel);
+                    break;
+                case 1:
+                    gel.State = new MovingDownGelState(gel);
+                    break;
+                case 2:
+                    gel.State = new MovingRightGelState(gel);
+                    break;
+            }
         }
         public void ChangeAttackedStatus()
         {
@@ -41,6 +59,7 @@ namespace Sprint2_Attempt3.Enemy.Gel
 
                 }
                 gel.Y -= 1;
+                gel.Position = new Rectangle(gel.X, gel.Y, sourceRectangle.Width, sourceRectangle.Height);
             }
             else
             {

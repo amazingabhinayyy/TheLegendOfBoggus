@@ -16,30 +16,14 @@ namespace Sprint2_Attempt3
         private List<Keys> moveKeys = new List<Keys>();
         private int currentMoveKeyValue = 10;
         private Keys currentMoveKey;
-        private static int enemyIndex;
 
-        private static int roomIndex;
         private List<Keys> heldKeys = new List<Keys>();
-
-        public int EnemyIndex
-        {
-            get { return enemyIndex; }
-            set { enemyIndex = value; }
-        }
-
-        public int RoomIndex
-        {
-            get { return roomIndex; }
-            set { roomIndex = value; }
-        }
 
         public KeyboardController(Game1 game)
         {
             this.game1 = game;
             commandMapping = new Dictionary<Keys, ICommand>();
             RegisterCommands();
-            EnemyIndex = 0;
-            RoomIndex = 0;
             timeSinceLastUpdate = 0;
         }
 
@@ -65,26 +49,6 @@ namespace Sprint2_Attempt3
             commandMapping.Add(Keys.D4, new SetUseBlueBoomerangCommand(game1));
             commandMapping.Add(Keys.D5, new SetUseBlueArrowCommand(game1));
             commandMapping.Add(Keys.D6, new SetUseFireCommand(game1));
-            commandMapping.Add(Keys.X, new SwitchToSecondaryItem1(game1));
-            commandMapping.Add(Keys.M, new SwitchToSecondaryItem2(game1));
-
-
-            //Block and item switching
-            commandMapping.Add(Keys.T, new SwitchToPreviousBlock(game1));
-            commandMapping.Add(Keys.Y, new SwitchToNextBlock(game1));
-            commandMapping.Add(Keys.U, new SwitchToPreviousItem(game1));
-            commandMapping.Add(Keys.I, new SwitchToNextItem(game1));
-
-            //Enemy switching
-            commandMapping.Add(Keys.O, new SwitchToPreviousEnemy(game1));
-            commandMapping.Add(Keys.P, new SwitchToNextEnemy(game1));
-            commandMapping.Add(Keys.L, new ChangeEnemyAttackedStatus(game1));
-            commandMapping.Add(Keys.K, new KillEnemy(game1));
-
-            //room switching
-            commandMapping.Add(Keys.G, new SwitchToPreviousDungeonRoom(game1));
-            commandMapping.Add(Keys.H, new SwitchToNextDungeonRoom(game1));
-
             //other controls
             commandMapping.Add(Keys.Q, new Quit(game1));
             commandMapping.Add(Keys.R, new Reset(game1));

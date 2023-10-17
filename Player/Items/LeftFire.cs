@@ -28,7 +28,6 @@ namespace Sprint2_Attempt3.Player.Items
             sprite = LinkSpriteFactory.Instance.CreateFireItem();
             SetPosition();
         }
-
         public void SetPosition()
         {
             itemPosition = new Vector2((int)link.position.X - 45, (int)link.position.Y);

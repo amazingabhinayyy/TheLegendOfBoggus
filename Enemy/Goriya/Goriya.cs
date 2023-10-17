@@ -6,114 +6,47 @@ using Sprint2_Attempt3.Enemy.Projectile.GoriyaProjectiles;
 
 namespace Sprint2_Attempt3.Enemy.Goriya
 {
-    internal class Goriya : IEnemy
+    internal class Goriya : EnemySecondary
     {
-        private IEnemyState state;
-       
-        private int idleX;
-        public int IdleX
-        {
-            get { return idleX; }
-            set { idleX = value; }
-        }
-
-        private IEnemyProjectile boomerang;
-
-        private Vector2 boomerangPosition;
-        public Vector2 BoomerangPosition
-        {
-            get { return boomerangPosition; }
-            set { boomerangPosition = value;}
-        }
+        public int IdleX { get; set; }
+        public Vector2 BoomerangPosition { get; set; }
+        public ProjectileDirection Direction { get; set; }
+        public IEnemyProjectile Boomerang { get; set; }
 
         /*can I make this private*/
         public enum ProjectileDirection
         {
             Left, Top, Right, Bottom
         }
-        private ProjectileDirection direction;
-        public ProjectileDirection Direction
-        {
-            get { return direction; }
-            set { direction = value; }
-        }
-       
-
-        /*Might Not Need*/
-        public IEnemyProjectile Boomerang
-        {
-            get { return boomerang; }
-            set { boomerang = value; }
-        }
-
-
-        public IEnemyState State
-        {
-            get { return state; }
-            set { state = value; }
-        }
-        private int positionX;
-        private int positionY;
-
-        public int X
-        {
-            get { return positionX; }
-            set { positionX = value; }
-        }
-
-        public int Y
-        {
-            get { return positionY; }
-            set { positionY = value; }
-        }
 
         public Goriya(int x, int y)
         {
 
-            this.positionX = x;
-            this.positionY = y;
-            boomerangPosition = new Vector2(positionX, positionY);
-            boomerang = new GoriyaBoomerang(boomerangPosition);
-            direction = ProjectileDirection.Left;   
+            this.X = x;
+            this.Y = y;
+            BoomerangPosition = new Vector2(X, Y);
+            Boomerang = new GoriyaBoomerang(BoomerangPosition);
+            Direction = ProjectileDirection.Left;   
             
         }
-        public void Generate() {
-            state = new MovingLeftGoriyaState(this);
+        public override void Generate() {
+            State = new MovingLeftGoriyaState(this);
         }
-        public void Spawn()
-        {
-            state = new SpawnAnimationState(this);
-        }
-        public void Kill()
-        {
-            state = new DeathAnimationState(this);
-        }
-        public void ChangeDirection()
-        {
-            state.ChangeDirection();
-        }
-        public void ChangeAttackedStatus()
-        {
-            state.ChangeAttackedStatus();
-        }
-     
-
-
-        public void Update()
+        public override void Update()
         {
             
-            state.Update();
-            if (((GoriyaBoomerang)boomerang).Throwing)
+            State.Update();
+            if (((GoriyaBoomerang)Boomerang).Throwing)
             {
-                boomerang.Update();
+                Boomerang.Update();
             }
         }
-        public void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
-            state.Draw(spriteBatch);
-            if (((GoriyaBoomerang)boomerang).Throwing)
+            State.Draw(spriteBatch);
+            if (((GoriyaBoomerang)Boomerang).Throwing)
             {
-                boomerang.Draw(spriteBatch);
+                Boomerang.Draw(spriteBatch);
             }
         }
         public Rectangle GetHitBox()

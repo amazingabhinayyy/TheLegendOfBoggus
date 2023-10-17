@@ -27,7 +27,6 @@ namespace Sprint2_Attempt3.Player.Items
             sprite = LinkSpriteFactory.Instance.CreateBoomerangItem();
             SetPosition();
         }
-
         public void SetPosition()
         {
             itemPosition = new Vector2((int)link.position.X - 23, (int)link.position.Y + 12);
