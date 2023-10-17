@@ -83,7 +83,7 @@ namespace Sprint2_Attempt3
             EnemyProjectileSpriteFactory.Instance.LoadAllTextures(Content);
             DungeonSpriteFactory.Instance.LoadAllTextures(Content);
             keyController = new KeyboardController(this);
-            dungeonRoom = new DungeonRoom1();
+            DungeonRoom = new DungeonRoom1();
             item = new Heart(new Vector2(0, 0), true);
             link = new Link();
             room = new Room(this);
