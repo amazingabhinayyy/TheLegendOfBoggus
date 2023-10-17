@@ -82,7 +82,7 @@ namespace Sprint2_Attempt3
             link = new Link();
             room = new Room(this);
 
-            blockCollision = new BlockCollisionClass(this);
+            blockCollision = new BlockCollisionClass(this, link);
         }
 
         /// <summary>

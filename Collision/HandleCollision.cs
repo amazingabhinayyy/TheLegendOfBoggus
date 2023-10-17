@@ -7,16 +7,20 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Enemy;
+using Sprint2_Attempt3.Player;
+using Sprint2_Attempt3.Player.Interfaces;
 
 namespace Sprint2_Attempt3.Collision
 {
     internal class HandleCollision
     {
-        public HandleCollision()
-        {
+        //private Link link;
 
+        public HandleCollision(Link link)
+        {
+            //this.link = link;
         }
-        public static void HandleLinkBlockCollision(Rectangle spriteObject, Rectangle wall)
+        public static void HandleLinkBlockCollision(Rectangle spriteObject, Rectangle wall, ILink link)
         {
             // Determine the direction of the collision (e.g., from which side the collision occurs)
             // You can use the intersection rectangle to determine this
@@ -35,14 +39,14 @@ namespace Sprint2_Attempt3.Collision
                 {
                     // prevent movement to the right
                     // set the object's X position to the left edge of the wall - object's width
-                    spriteObject.X = wall.Left - spriteObject.Width;
+                    //link.position.X = wall.Left - spriteObject.Width;
                 }
                 // Collision occured from right (object hits block on its right side)
                 else
                 {
                     // prevent movement to the left
                     // set the object's left X position to the right edge of the wall
-                    spriteObject.X = wall.Right;
+                    //link.position = new Vector2(wall.Right, link.position.Y);
                 }
             }
             // Stop movement in the Y direction (vertical)
@@ -53,14 +57,14 @@ namespace Sprint2_Attempt3.Collision
                 {
                     // Collision occurred from the top, so prevent movement downward
                     // You can set the object's Y position to the top edge of the wall
-                    spriteObject.Y = wall.Top - spriteObject.Height;
+                    //link.position = new Vector2(link.position.X, wall.Top - link.GetHitBox().Height);
                 }
                 // Collision occurred from the bottom
                 else
                 {
                     // Collision occurred from the bottom, so prevent movement upward
                     // You can set the object's Y position to the bottom edge of the wall
-                    spriteObject.Y = wall.Bottom;
+                    //link.position = new Vector2(link.position.X, wall.Bottom);
                 }
             }
         }
