@@ -18,8 +18,6 @@ namespace Sprint2_Attempt3.Enemy.Keese
             sprite = EnemySpriteFactory.Instance.CreateSpawnAnimationSprite();
             sourceRectangle = new Rectangle(1, 1, 16, 16);
             currentFrame = 0;
-            enemy.X = 200;
-            enemy.Y = 200;
         }
         public void ChangeDirection()
         {            
