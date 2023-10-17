@@ -20,7 +20,6 @@ namespace Sprint2_Attempt3.Player
         {
             StartLinkState();
         }
-
         public void GetDamaged()
         {
             State.GetDamaged();
