@@ -53,6 +53,7 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
                     sourceRectangle = Globals.AquamentusOrangeLeft2;
                 }
                 Aquamentus.X += 1;
+                Aquamentus.Position = new Rectangle(Aquamentus.X, Aquamentus.Y, sourceRectangle.Width, sourceRectangle.Height);
             }
             else
             {

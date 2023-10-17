@@ -51,9 +51,5 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
             Fireball.Draw(spriteBatch);
             }
         }
-        public override Rectangle GetHitBox()
-        {
-            return new Rectangle(X, Y, Globals.AquamentusGreenLeft.Width, Globals.AquamentusGreenLeft.Height);
-        }
     }
 }

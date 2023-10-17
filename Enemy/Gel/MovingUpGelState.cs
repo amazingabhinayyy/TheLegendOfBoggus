@@ -18,6 +18,7 @@ namespace Sprint2_Attempt3.Enemy.Gel
             this.gel = gel;
             sprite = EnemySpriteFactory.Instance.CreateGelSprite();
             sourceRectangle = Globals.GelSprite1;
+            gel.Position = new Rectangle(gel.X, gel.Y, sourceRectangle.Width, sourceRectangle.Height);
             currentFrame = 0;
             random = new Random();
             direction = random.Next(0, 2);
@@ -58,6 +59,7 @@ namespace Sprint2_Attempt3.Enemy.Gel
 
                 }
                 gel.Y -= 1;
+                gel.Position = new Rectangle(gel.X, gel.Y, sourceRectangle.Width, sourceRectangle.Height);
             }
             else
             {

@@ -58,6 +58,7 @@ namespace Sprint2_Attempt3.Enemy.Zol
 
                 }
                 zol.X += 1;
+                zol.Position = new Rectangle(zol.X, zol.Y, sourceRectangle.Width, sourceRectangle.Height);
             }
             else
             {

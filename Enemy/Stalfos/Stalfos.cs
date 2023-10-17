@@ -15,10 +15,5 @@ namespace Sprint2_Attempt3.Enemy.Stalfos
         public override void Generate() {
             State = new MovingLeftStalfosState(this);
         }
-
-        public override Rectangle GetHitBox()
-        {
-            return new Rectangle(X,Y,0,0);
-        }
     }
 }

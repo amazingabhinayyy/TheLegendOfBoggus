@@ -15,9 +15,5 @@ namespace Sprint2_Attempt3.Enemy.Dodongo
         {
             State = new MovingLeftDodongoState(this);
         }
-        public override Rectangle GetHitBox()
-        {
-            return new Rectangle(X, Y, Globals.DodongoDown.Width, Globals.DodongoDown.Height);
-        }
     }
 }

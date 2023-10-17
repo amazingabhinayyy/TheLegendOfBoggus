@@ -25,6 +25,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             currentFrame = 0;
             currentBoomerangFrame = 0;
             sourceRectangle = Globals.GoriyaRedRight;
+            Goriya.Position = new Rectangle(Goriya.X, Goriya.Y, sourceRectangle.Width, sourceRectangle.Height);
             boomerang = Goriya.Boomerang;
             
 
@@ -57,6 +58,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
                 {
                     sourceRectangle = Globals.GoriyaBlueRight;
                 }
+                Goriya.Position = new Rectangle(Goriya.X, Goriya.Y, sourceRectangle.Width, sourceRectangle.Height);
             }
             else
             {

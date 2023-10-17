@@ -70,6 +70,7 @@ namespace Sprint2_Attempt3.Enemy.Stalfos
                 currentFrame = 0;
             }
             Stalfos.X -= 1;
+            Stalfos.Position = new Rectangle(Stalfos.X, Stalfos.Y, sourceRectangle.Width, sourceRectangle.Height);
             sprite.Update();
 
         }

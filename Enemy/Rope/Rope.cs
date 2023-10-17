@@ -14,9 +14,5 @@ namespace Sprint2_Attempt3.Enemy.Rope
         public override void Generate() {
             State = new MovingLeftRopeState(this);
         }
-        public override Rectangle GetHitBox()
-        {
-            return new Rectangle(X,Y, 0, 0);
-        }
     }
 }

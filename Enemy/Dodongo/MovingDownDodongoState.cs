@@ -19,6 +19,7 @@ namespace Sprint2_Attempt3.Enemy.Dodongo
             this.dodongo = dodongo;
             sprite = EnemySpriteFactory.Instance.CreateMovingVerticallyDodongoSprite();
             sourceRectangle = Globals.DodongoDown;
+            dodongo.Position = new Rectangle(dodongo.X, dodongo.Y, sourceRectangle.Width, sourceRectangle.Height);
             random = new Random();
             direction = random.Next(0, 2);
         }
@@ -44,6 +45,7 @@ namespace Sprint2_Attempt3.Enemy.Dodongo
         public void Update()
         {
             dodongo.Y += 1;
+            dodongo.Position = new Rectangle(dodongo.X, dodongo.Y, sourceRectangle.Width, sourceRectangle.Height);
             sprite.Update();
         }
         public void Draw(SpriteBatch spriteBatch)

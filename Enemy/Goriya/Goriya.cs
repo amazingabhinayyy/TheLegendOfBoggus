@@ -49,9 +49,5 @@ namespace Sprint2_Attempt3.Enemy.Goriya
                 Boomerang.Draw(spriteBatch);
             }
         }
-        public override Rectangle GetHitBox()
-        {
-            return new Rectangle(X, Y, 0, 0);
-        }
     }
 }

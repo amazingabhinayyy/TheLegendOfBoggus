@@ -18,6 +18,7 @@ namespace Sprint2_Attempt3.Enemy
         public int X { get; set; }
         public int Y { get; set; }
         public IEnemyState State { get; set; }
+        public Rectangle Position { get; set; }
 
         public abstract void Generate();
         public EnemySecondary()
@@ -59,6 +60,8 @@ namespace Sprint2_Attempt3.Enemy
         {
             State.Draw(spriteBatch);
         }
-        public abstract Rectangle GetHitBox();
+        public Rectangle GetHitBox() {
+            return Position;
+        }
     }
 }

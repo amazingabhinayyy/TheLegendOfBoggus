@@ -16,9 +16,5 @@ namespace Sprint2_Attempt3.Enemy.Keese
         {
             State = new MovingLeftKeeseState(this);
         }
-        public override Rectangle GetHitBox()
-        {
-            return new Rectangle(X, Y, Globals.KeeseSprite2.Width, Globals.KeeseSprite2.Height);
-        }
     }
 }
