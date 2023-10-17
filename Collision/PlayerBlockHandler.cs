@@ -3,6 +3,7 @@ using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Blocks.BlockSprites;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Interfaces;
+using Sprint2_Attempt3.Player.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

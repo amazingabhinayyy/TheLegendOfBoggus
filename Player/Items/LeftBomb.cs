@@ -27,11 +27,6 @@ namespace Sprint2_Attempt3.Player.Items
             sprite = LinkSpriteFactory.Instance.CreateBombItem();
             SetPosition();
         }
-
-        public Rectangle GetHitBox()
-        {
-            return new Rectangle(0, 0, 0, 0);
-        }
         public void SetPosition()
         {
             itemPosition = new Vector2((int)link.position.X - 24, (int)link.position.Y + 11);

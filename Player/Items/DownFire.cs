@@ -27,10 +27,6 @@ namespace Sprint2_Attempt3.Player.Items
             SetPosition();
         }
 
-        public Rectangle GetHitBox()
-        {
-            return new Rectangle(0, 0, 0, 0);
-        }
         public void SetPosition()
         {
             itemPosition = new Vector2((int)link.position.X, (int)link.position.Y + 45);

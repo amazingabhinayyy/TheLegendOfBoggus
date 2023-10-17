@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint2_Attempt3.Enemy.Hand;
+using Sprint2_Attempt3.Player.Interfaces;
 
 namespace Sprint2_Attempt3.Collision
 {

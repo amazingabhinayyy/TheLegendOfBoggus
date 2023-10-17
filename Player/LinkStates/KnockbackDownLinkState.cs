@@ -1,4 +1,5 @@
 ﻿using Sprint2_Attempt3.Interfaces;
+using Sprint2_Attempt3.Player.Interfaces;
 
 namespace Sprint2_Attempt3.Player.LinkStates
 {

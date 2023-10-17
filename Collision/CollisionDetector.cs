@@ -11,6 +11,7 @@ using Sprint2_Attempt3.Enemy.Hand;
 using Sprint2_Attempt3.Interfaces;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Collision.SideCollisionHandlers;
+using Sprint2_Attempt3.Player.Interfaces;
 
 namespace Sprint2_Attempt3.Collision
 {
