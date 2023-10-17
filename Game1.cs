@@ -14,6 +14,8 @@ using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Blocks.BlockSprites;
 using Sprint2_Attempt3.Enemy.Keese;
+using Sprint2_Attempt3.Enemy.Stalfos;
+using Sprint2_Attempt3.Enemy.Aquamentus;
 
 namespace Sprint2_Attempt3
 {
@@ -26,8 +28,8 @@ namespace Sprint2_Attempt3
         private CollisionHandler collisionHandler { get; set; }
         public ILink link { get; set; }
         public IEnemy enemy { get; set; }
-        public IDungeonRoom dungeonRoom { get; set; }
         public IRoom room { get; set; }
+
         private IBlock[] blocks = { 
             new BlackBlock(Globals.NorthEastCollisionBlock),
             new BlackBlock(Globals.NorthWestCollisionBlock),
@@ -81,10 +83,10 @@ namespace Sprint2_Attempt3
             DungeonSpriteFactory.Instance.LoadAllTextures(Content);
             RoomGenerator.Instance.LoadAllFiles(Content);
             keyController = new KeyboardController(this);
-            dungeonRoom = new DungeonRoom1();
-            enemy = new Keese(200, 200);
+            room = new Room1(this);
+            enemy = new Aquamentus(200, 200);
             enemy.Spawn();
-            link = new Link();
+            link = new Link(this);
             collisionDetector = new CollisionDetector(this);
             collisionResponse = new CollisionResponse(this); 
         }
@@ -115,8 +117,6 @@ namespace Sprint2_Attempt3
             enemy.Update();
             base.Update(gameTime);
         }
-
-
 
         /// <summary>
         /// This is called when the game should draw itself.

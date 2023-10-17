@@ -2,10 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3.Enemy
 {
@@ -15,6 +12,7 @@ namespace Sprint2_Attempt3.Enemy
         protected int currentFrame;
         private int distance;
         private Random random;
+        private bool exists;
         public int X { get; set; }
         public int Y { get; set; }
         public IEnemyState State { get; set; }
@@ -27,14 +25,18 @@ namespace Sprint2_Attempt3.Enemy
             distance = random.Next(50, 200);
             count = 0;
             currentFrame = 0;
+            exists = true;
         }
         public void Spawn()
         {
             State = new SpawnAnimationState(this);
+            CollisionDetector.GameObjectList.Add(this);
         }
         public void Kill()
         {
             State = new DeathAnimationState(this);
+            CollisionDetector.GameObjectList.Remove(this);
+            exists = false;
         }
         public void ChangeDirection()
         {
@@ -58,7 +60,10 @@ namespace Sprint2_Attempt3.Enemy
         }
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            State.Draw(spriteBatch);
+            if (exists)
+            {
+                State.Draw(spriteBatch);
+            }
         }
         public Rectangle GetHitBox() {
             return Position;

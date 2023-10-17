@@ -23,16 +23,11 @@ namespace Sprint2_Attempt3.Dungeon
             //gameObjects = RoomGenerator.Instance.LoadFile(0);
 
             gameObjects = new List<IGameObject> { 
-                new Aquamentus(100, 200),
-                new Dodongo(120, 300),
-                new Gel(140, 400),
-                new Goriya(160, 200),
-                new Hand(180, 300),
-                new Keese(200, 400),
-                new Rope(220, 200),
-                new SpikeTrap(240, 300),
-                new Stalfos(260, 400),
-                new Zol(300, 200)
+                new Gel(200,200),
+                new Zol(250,200),
+                new Hand(300,200),
+                new Rope(350,200),
+                new Stalfos(400,200)
             };
             foreach (IEnemy enemy in gameObjects) {
                 enemy.Spawn();

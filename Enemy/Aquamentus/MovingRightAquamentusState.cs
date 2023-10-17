@@ -19,6 +19,7 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
             this.Aquamentus = Aquamentus;
             sprite = EnemySpriteFactory.Instance.CreateMovingRightAquamentusSprite();
             sourceRectangle = Globals.AquamentusGreenLeft;
+            Aquamentus.Position = new Rectangle(Aquamentus.X, Aquamentus.Y, sourceRectangle.Width, sourceRectangle.Height);
             currentFrame = 0; 
             this.Aquamentus.Direction = Aquamentus.ProjectileDirection.Right;
             elaspedFrameCount = 0;
