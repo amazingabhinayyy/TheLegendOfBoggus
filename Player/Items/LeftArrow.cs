@@ -10,7 +10,7 @@ using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3.Player.Items
 {
-    public class LeftArrow : ILinkItem
+    public class LeftArrow : ILinkItem, IArrow
     {
         private Link link;
         private int currentFrame;
@@ -34,13 +34,17 @@ namespace Sprint2_Attempt3.Player.Items
             flip = SpriteEffects.FlipHorizontally;
             sourceRectangle = new Rectangle(10, 190, 15, 5);                   
         }
+        public void RemoveItem()
+        {
+            link.Items.Remove(this);
+            CollisionDetector.GameObjectList.Remove(this);
+        }
 
         public void Update()
         {
             if (currentFrame == 60)
             {
-                link.Items.Remove(this);
-                CollisionDetector.GameObjectList.Remove(this);
+                RemoveItem();
             }
             sprite.Update();
             currentFrame++;

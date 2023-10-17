@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Interfaces;
 using Sprint2_Attempt3.Player.Items;
 using Sprint2_Attempt3.Player.LinkSprites;
+using Sprint2_Attempt3.Player.Interfaces;
 
 namespace Sprint2_Attempt3.Player
 {
@@ -137,6 +138,10 @@ namespace Sprint2_Attempt3.Player
         public ILinkItemSprite CreateFireItem()
         {
             return new FireSprite(linkTexture);
+        }
+        public ILinkItemSprite CreateArrowExplosion()
+        {
+            return new ArrowExplodeSprite(linkTexture);
         }
 
 

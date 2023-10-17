@@ -1,6 +1,6 @@
 ﻿using Sprint2_Attempt3.CommandClasses;
 using Sprint2_Attempt3.Enemy;
-using Sprint2_Attempt3.Interfaces;
+using Sprint2_Attempt3.Player.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

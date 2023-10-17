@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -19,6 +20,10 @@ namespace Sprint2_Attempt3.Collision
             if(item is IBoomerang)
             {
                 
+            }
+            else if(item is IArrow)
+            {
+                enemy.Kill();
             }
             else
             {

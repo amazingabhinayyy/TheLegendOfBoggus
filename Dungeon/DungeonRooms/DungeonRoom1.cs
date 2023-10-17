@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
+using Sprint2_Attempt3.Dungeon.DoorSprites;
 
 namespace Sprint2_Attempt3.Dungeon.DungeonRooms
 {
@@ -9,11 +10,11 @@ namespace Sprint2_Attempt3.Dungeon.DungeonRooms
         public DungeonRoom1()
         {
             sprite = DungeonSpriteFactory.Instance.CreateDungeonRoomSprite();
-            northDoor = DungeonSpriteFactory.Instance.CreateOpenNorthDoorSprite();
+            northDoor = DungeonSpriteFactory.Instance.CreateClosedNorthDoorSprite();
             southDoor = DungeonSpriteFactory.Instance.CreateOpenSouthDoorSprite();
             eastDoor = DungeonSpriteFactory.Instance.CreateOpenEastDoorSprite();
             westDoor = DungeonSpriteFactory.Instance.CreateOpenWestDoorSprite();
-            NorthDoorWalkable = true;
+            NorthDoorWalkable = false;
             SouthDoorWalkable = true;
             EastDoorWalkable = true;
             WestDoorWalkable = true;
