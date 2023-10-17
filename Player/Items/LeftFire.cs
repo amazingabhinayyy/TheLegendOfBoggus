@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint2_Attempt3.Interfaces;
+using Sprint2_Attempt3.Collision;
 
 
 namespace Sprint2_Attempt3.Player.Items
@@ -39,6 +40,7 @@ namespace Sprint2_Attempt3.Player.Items
             if (currentFrame == 60)
             {
                 link.Items.Remove(this);
+                CollisionDetector.GameObjectList.Remove(this);
             }
             sprite.Update();
             currentFrame++;

@@ -15,5 +15,9 @@ namespace Sprint2_Attempt3.Enemy.Hand
         public override void Generate() {
             State = new MovingLeftHandState(this);
         }
+        public Rectangle GetHitBox()
+        {
+            return new Rectangle(0, 0, 0, 0);
+        }
     }
 }

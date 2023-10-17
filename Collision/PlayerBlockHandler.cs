@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace Sprint2_Attempt3.Collision
 {
     internal class PlayerBlockHandler
-    {
+    {/*
         public void HandlePlayerBlockCollision(ILink link, IBlock block, int direction)
         {
             Vector2 blockPosition = block.Position;
@@ -36,5 +36,6 @@ namespace Sprint2_Attempt3.Collision
 
 
         }
+        */
     }
 }

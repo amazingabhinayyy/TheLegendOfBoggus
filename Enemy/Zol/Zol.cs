@@ -14,5 +14,9 @@ namespace Sprint2_Attempt3.Enemy.Zol
         public override void Generate() {
             State = new MovingLeftZolState(this);
         }
+        public Rectangle GetHitBox()
+        {
+            return new Rectangle(0, 0, 0, 0);
+        }
     }
 }

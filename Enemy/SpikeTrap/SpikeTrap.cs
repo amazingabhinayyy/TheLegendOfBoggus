@@ -13,5 +13,9 @@ namespace Sprint2_Attempt3.Enemy.SpikeTrap
         public override void Generate() {
             State = new MovingLeftSpikeTrapState(this);
         }
+        public Rectangle GetHitBox()
+        {
+            return new Rectangle(0, 0, 0, 0);
+        }
     }
 }

@@ -15,7 +15,7 @@ using Sprint2_Attempt3.Player.Interfaces;
 
 namespace Sprint2_Attempt3.Collision
 {
-    public class CollisionDetector : ICollision
+    public class CollisionDetector
     {
         private Vector2 linkPosition;
         private Vector2 linkArrow; 
@@ -25,12 +25,17 @@ namespace Sprint2_Attempt3.Collision
         private Vector2 linkBoomerang;
         private Vector2 linkBlueBoomerang;
         public Vector2 LinkPosition { get; private set; }
-        private List<IGameObject> gameObjectList = new List<IGameObject>();
+        private static List<IGameObject> gameObjectList = new List<IGameObject>();
         private List<IGameObject> copyGameObjectList = new List<IGameObject>();
-        public List<IGameObject> GameObjectList { get; set; }
-        public CollisionDetector(Game game)
+        public static List<IGameObject> GameObjectList
         {
-            
+            get { return gameObjectList; }
+            set { gameObjectList = value; }
+        }
+        private Game1 game;
+        public CollisionDetector(Game1 game)
+        {
+            this.game = game;
         }
         public void CheckPlayerCollision(ILink link)
         {
@@ -44,15 +49,16 @@ namespace Sprint2_Attempt3.Collision
                     {
                         if (obj is Hand)
                         {
-                            PlayerCollisionHandler.GetCaptured();   
+                            //PlayerCollisionHandler.GetCaptured();   
                         }
                         else
                         {
-                            PlayerEnemyHandler.GetDamaged();
+                            PlayerEnemyHandler.HandlePlayerEnemyCollision(link, (IEnemy)obj, side);
                         }
                     }
                     else if (obj is IBlock)
                     {
+                        /*
                         Rectangle rectangle = Rectangle.Intersect(collisionRectangle, linkRectangle);
                         if(rectangle.Width >= rectangle.Height)
                         {
@@ -74,8 +80,9 @@ namespace Sprint2_Attempt3.Collision
                                 PlayerBlockHandler.CorrectPositioning(Right);
                             }
                         }
+                        */
 
-                        link.CorrectPositioning(rectangle);
+                        //link.CorrectPositioning(rectangle);
                     }
                 }
             }
@@ -110,24 +117,27 @@ namespace Sprint2_Attempt3.Collision
         public void CheckEnemyCollision(IEnemy enemy)
         {
             Rectangle enemyRectangle = enemy.GetHitBox();
-            foreach (IGameObject obj in gameObjectList)
+            for(int c = 0; c < gameObjectList.Count; c++)
             {
-                Rectangle collisionRectangle = obj.GetHitBox();
+                Rectangle collisionRectangle = gameObjectList[c].GetHitBox();
                 if (collisionRectangle.Intersects(enemyRectangle))
                 {
-                    if (obj is ILinkItem)
+                    ICollision side = SideDetector(collisionRectangle, enemyRectangle);
+                    if (gameObjectList[c] is ILinkItem)
                     {
-                        EnemyItemCollisionHandler.Kill();
+                        EnemyItemCollisionHandler.HandleItemEnemyCollision(enemy, (ILinkItem)gameObjectList[c], side);
                     }
-                    else if (obj is IBlock)
+                    else if (gameObjectList[c] is IBlock)
                     {
-                        EnemyBlockCollisionHandler.CorrectPositioning();
+                        //EnemyBlockCollisionHandler.CorrectPositioning();
                     }
                 }
             }
         }
         public void Update()
         {
+            CheckPlayerCollision(game.link);
+            CheckEnemyCollision(game.enemy);
             
             /*
              * want to use this for blocks. since we do not have a block thing going on it will not run if this is not commented.

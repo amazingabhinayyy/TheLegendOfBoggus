@@ -5,6 +5,7 @@ using Sprint2_Attempt3.Player.LinkStates;
 using System.Collections.Generic;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Interfaces;
+using Sprint2_Attempt3.CommandClasses;
 
 namespace Sprint2_Attempt3.Player
 {
@@ -15,14 +16,18 @@ namespace Sprint2_Attempt3.Player
         public ILinkSprite Sprite { get; set; }
         public ILinkState State { get; set; }
         public List<ILinkItem> Items { get; set; }
-        public Link()
+        private Game1 game;
+        public Link(Game1 game)
         {
-            CollisionHandler.gameObjectList.Add(this);
+            this.game = game;
+            CollisionDetector.GameObjectList.Add(this);
             StartLinkState();
         }
         public void GetDamaged()
         {
-            State.GetDamaged();
+            //State.GetDamaged();
+            ICommand damage = new SetDamageLinkCommand(game);
+            damage.Execute();
         }
         public void BecomeIdle()
         {
