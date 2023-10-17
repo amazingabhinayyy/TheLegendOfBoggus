@@ -20,7 +20,7 @@ namespace Sprint2_Attempt3.Enemy.Hand
             sprite = EnemySpriteFactory.Instance.CreateMovingLeftHandSprite();
             currentFrame = 0;
             sourceRectangle = Globals.HandRed1;
-            Hand.Position = new Rectangle(Hand.X, Hand.Y, sourceRectangle.Width, sourceRectangle.Height);
+            Hand.Position = new Rectangle(Hand.X, Hand.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             random = new Random();
             direction = random.Next(0, 2);
 
@@ -65,7 +65,7 @@ namespace Sprint2_Attempt3.Enemy.Hand
                 currentFrame = 0;
             }
             Hand.X -= 1;
-            Hand.Position = new Rectangle(Hand.X, Hand.Y, sourceRectangle.Width, sourceRectangle.Height);
+            Hand.Position = new Rectangle(Hand.X, Hand.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
         }
         public void Draw(SpriteBatch spriteBatch)
         {

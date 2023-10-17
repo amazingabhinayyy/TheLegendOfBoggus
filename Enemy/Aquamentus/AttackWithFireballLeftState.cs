@@ -26,7 +26,7 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
             currentFrame = 0;
             currentFireballFrame = 0;
             sourceRectangle = Globals.AquamentusGreenLeftMouthOpen;
-            Aquamentus.Position = new Rectangle(Aquamentus.X, Aquamentus.Y, sourceRectangle.Width, sourceRectangle.Height);
+            Aquamentus.Position = new Rectangle(Aquamentus.X, Aquamentus.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             fireball = Aquamentus.Fireball;
             
             elapsedFrameCount = 0;
@@ -72,7 +72,7 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
                 sourceRectangles[1] = Globals.AquamentusGreenLeft2;
 
             }
-            Aquamentus.Position = new Rectangle(Aquamentus.X, Aquamentus.Y, sourceRectangle.Width, sourceRectangle.Height);
+            Aquamentus.Position = new Rectangle(Aquamentus.X, Aquamentus.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
         }
         public void Draw(SpriteBatch spriteBatch)
         {

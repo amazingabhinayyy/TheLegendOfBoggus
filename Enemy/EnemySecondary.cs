@@ -12,7 +12,7 @@ namespace Sprint2_Attempt3.Enemy
         protected int currentFrame;
         private int distance;
         private Random random;
-        private bool exists;
+        public bool exists { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
         public IEnemyState State { get; set; }
@@ -36,7 +36,6 @@ namespace Sprint2_Attempt3.Enemy
         {
             State = new DeathAnimationState(this);
             CollisionDetector.GameObjectList.Remove(this);
-            exists = false;
         }
         public void ChangeDirection()
         {

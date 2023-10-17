@@ -19,7 +19,7 @@ namespace Sprint2_Attempt3.Enemy.Zol
             this.zol = zol;
             sprite = EnemySpriteFactory.Instance.CreateZolSprite();
             sourceRectangle = Globals.ZolSprite1;
-            zol.Position = new Rectangle(zol.X, zol.Y, sourceRectangle.Width, sourceRectangle.Height);
+            zol.Position = new Rectangle(zol.X, zol.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             currentFrame = 0;
             random = new Random();
             direction = random.Next(0, 2);
@@ -59,7 +59,7 @@ namespace Sprint2_Attempt3.Enemy.Zol
 
                 }
                 zol.Y += 1;
-                zol.Position = new Rectangle(zol.X, zol.Y, sourceRectangle.Width, sourceRectangle.Height);
+                zol.Position = new Rectangle(zol.X, zol.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             }
             else
             {

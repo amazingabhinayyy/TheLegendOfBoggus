@@ -20,7 +20,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             this.Goriya = Goriya;
             sprite = EnemySpriteFactory.Instance.CreateMovingDownGoriyaSprite();
             sourceRectangle = Globals.GoriyaRedDown;
-            Goriya.Position = new Rectangle(Goriya.X, Goriya.Y, sourceRectangle.Width, sourceRectangle.Height);
+            Goriya.Position = new Rectangle(Goriya.X, Goriya.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             elaspedFrameCount = 0;
             endFrame = 100;
         }
@@ -38,7 +38,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         public void Update()
         {
             Goriya.Y += 1;
-            Goriya.Position = new Rectangle(Goriya.X, Goriya.Y, sourceRectangle.Width, sourceRectangle.Height);
+            Goriya.Position = new Rectangle(Goriya.X, Goriya.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             sprite.Update();
             elaspedFrameCount++;
             if (elaspedFrameCount >= endFrame)

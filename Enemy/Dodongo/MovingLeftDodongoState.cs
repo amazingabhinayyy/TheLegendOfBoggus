@@ -19,7 +19,7 @@ namespace Sprint2_Attempt3.Enemy.Dodongo
             this.dodongo = dodongo;
             sprite = EnemySpriteFactory.Instance.CreateMovingLeftDodongoSprite();
             sourceRectangle = Globals.DodongoRight1;
-            dodongo.Position = new Rectangle(dodongo.X, dodongo.Y, sourceRectangle.Width, sourceRectangle.Height);
+            dodongo.Position = new Rectangle(dodongo.X, dodongo.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             currentFrame = 0;
             random = new Random();
             direction = random.Next(0, 2);
@@ -60,7 +60,7 @@ namespace Sprint2_Attempt3.Enemy.Dodongo
 
                 }
                 dodongo.X -= 1;
-                dodongo.Position = new Rectangle(dodongo.X, dodongo.Y, sourceRectangle.Width, sourceRectangle.Height);
+                dodongo.Position = new Rectangle(dodongo.X, dodongo.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             }
             else
             {
