@@ -13,6 +13,7 @@ using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Blocks.BlockSprites;
 using Sprint2_Attempt3.Items.ItemClasses;
 using Sprint2_Attempt3.Collision;
+using Sprint2_Attempt3.Enemy.Keese;
 
 namespace Sprint2_Attempt3
 {
@@ -24,6 +25,7 @@ namespace Sprint2_Attempt3
         private KeyboardController keyController { get; set; }
         private CollisionHandler collisionHandler { get; set; }
         public ILink link { get; set; }
+        public IEnemy enemy { get; set; }
         public IDungeonRoom dungeonRoom { get; set; }
         public IRoom room { get; set; }
         private IBlock[] blocks = { 
@@ -38,8 +40,6 @@ namespace Sprint2_Attempt3
         };
         public CollisionDetector collisionDetector
         { get; private set; }
-        public CollisionResponse collisionResponse { get; private set; }
-        
         public CollisionResponse collisionResponse { get; private set; }
 
         private BlockCollisionClass blockCollision;
@@ -82,11 +82,9 @@ namespace Sprint2_Attempt3
             RoomGenerator.Instance.LoadAllFiles(Content);
             keyController = new KeyboardController(this);
             dungeonRoom = new DungeonRoom1();
-            item = new Heart(new Vector2(100, 100), true);
-            item.Spawn();
+            enemy = new Keese(200, 200);
+            enemy.Spawn();
             link = new Link();
-            item = new Item();
-            block = new Block();
             collisionDetector = new CollisionDetector(this);
             collisionResponse = new CollisionResponse(this); 
         }
@@ -114,7 +112,7 @@ namespace Sprint2_Attempt3
             collisionDetector.Update();
             keyController.Update(gameTime);
             room.Update();
-            item.Update();
+            enemy.Update();
             base.Update(gameTime);
         }
 
@@ -130,7 +128,7 @@ namespace Sprint2_Attempt3
 
             spriteBatch.Begin();
             room.Draw(spriteBatch);
-            item.Draw(spriteBatch);
+            enemy.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }

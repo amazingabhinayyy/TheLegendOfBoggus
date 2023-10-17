@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Enemy;
+using Sprint2_Attempt3.Player;
 using Sprint2_Attempt3.Player.Interfaces;
 
 namespace Sprint2_Attempt3.Collision
@@ -90,6 +91,11 @@ namespace Sprint2_Attempt3.Collision
 
 
 
+        }
+
+        public void LinkEnemyKnockback(Link link)
+        {
+            throw new NotImplementedException();
         }
     }
 

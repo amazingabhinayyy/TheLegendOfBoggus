@@ -62,6 +62,11 @@ namespace Sprint2_Attempt3.Collision
             }*/
             
         }
+
+        public void LinkEnemyKnockback(Link link)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }
