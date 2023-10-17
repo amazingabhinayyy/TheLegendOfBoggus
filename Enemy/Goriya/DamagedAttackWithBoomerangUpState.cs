@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Enemy.Projectile.GoriyaProjectiles;
+using System;
 
 namespace Sprint2_Attempt3.Enemy.Goriya
 {
@@ -14,7 +15,9 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         private int currentFrame;
         private int currentBoomerangFrame;
         private IEnemyProjectile boomerang;
-       
+        private Random random;
+        private int direction;
+
         public DamagedAttackWithBoomerangUpState(Goriya Goriya)
         {
             this.Goriya = Goriya;

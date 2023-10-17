@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 
 namespace Sprint2_Attempt3.Player.Interfaces
 {
-    public interface ILink : IGameObject
+    public interface ILink
     {
         public void BecomeIdle();
         public void MoveUp();

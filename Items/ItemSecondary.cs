@@ -47,6 +47,10 @@ namespace Sprint2_Attempt3.Items
                 }
             }
         }
+        public Rectangle GetHitBox()
+        {
+            return Position;
+        }
 
     }
 }

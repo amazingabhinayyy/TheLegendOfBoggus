@@ -24,15 +24,15 @@ namespace Sprint2_Attempt3.Collision
             spriteObject = new Rectangle(0, 0, 0, 0);
         }
         public void Update()
-        {
+        {/*
             
             foreach (Enemy in Globals)
             {
                 collided = CheckCollision.CheckEnemyWallCollision(spriteObject, wallBlocks);
-                /*if (collided)
+                if (collided)
                 {
                     HandleEnemyBlockCollision();
-                }*/
+                }
             }
 
             foreach (projectiles in Globals)
@@ -41,7 +41,7 @@ namespace Sprint2_Attempt3.Collision
             }
             
             
-            collided = CheckCollision.CheckPlayerWallCollision(linkObject, wallBlocks);
+            collided = CheckCollision.CheckPlayerWallCollision(linkObject, wallBlocks);*/
         }
     }
 

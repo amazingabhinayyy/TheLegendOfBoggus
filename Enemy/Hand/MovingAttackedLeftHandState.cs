@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
+using System;
 
 namespace Sprint2_Attempt3.Enemy.Hand
 {
@@ -10,17 +11,33 @@ namespace Sprint2_Attempt3.Enemy.Hand
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
         private int currentFrame;
+        private Random random;
+        private int direction;
         public MovingAttackedLeftHandState(Hand Hand)
         {
             this.Hand = Hand;
             sprite = EnemySpriteFactory.Instance.CreateMovingLeftHandSprite();
             currentFrame = 0;
             sourceRectangle = Globals.HandRed1;
+            random = new Random();
+            direction = random.Next(0, 2);
 
         }
         public void ChangeDirection()
         {
-            Hand.State = new MovingAttackedUpHandState(Hand);
+            direction = random.Next(0, 2);
+            switch (direction)
+            {
+                case 0:
+                    Hand.State = new MovingAttackedDownHandState(Hand);
+                    break;
+                case 1:
+                    Hand.State = new MovingAttackedUpHandState(Hand);
+                    break;
+                case 2:
+                    Hand.State = new MovingAttackedRightHandState(Hand);
+                    break;
+            }
         }
         public void ChangeAttackedStatus() {
             Hand.State = new MovingLeftHandState(Hand);

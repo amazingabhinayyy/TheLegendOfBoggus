@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Enemy.Projectile.GoriyaProjectiles;
+using System;
 
 namespace Sprint2_Attempt3.Enemy.Goriya
 {
@@ -12,6 +13,8 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         private Rectangle sourceRectangle;
         private int elaspedFrameCount;
         private int endFrame;
+        private Random random;
+        private int direction;
         public MovingUpGoriyaState(Goriya Goriya)
         {
             this.Goriya = Goriya;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sprint2_Attempt3.Enemy
 {
-    internal interface IEnemyState
+    public interface IEnemyState
     {
         void ChangeDirection();
         void ChangeAttackedStatus();

@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Enemy;
-using Sprint2_Attempt3.Interfaces;
+using Sprint2_Attempt3.Player.Interfaces;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -30,7 +30,7 @@ namespace Sprint2_Attempt3.Collision
         }
         public void PlayerCollision(ILink link)
         {
-            Rectangle linkRectangle = link.GetHitBox();
+            /*Rectangle linkRectangle = link.GetHitBox();
             foreach (IGameObject obj in gameObjectList){
                 Rectangle collisionRectangle = obj.GetHitBox();
                 if (collisionRectangle.Intersects(linkRectangle))
@@ -44,7 +44,7 @@ namespace Sprint2_Attempt3.Collision
 
                     }
                 }
-            }
+            }*/
         }
         public void Update()
         {

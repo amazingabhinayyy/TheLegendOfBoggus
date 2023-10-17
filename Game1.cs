@@ -21,6 +21,8 @@ namespace Sprint2_Attempt3
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         public IItem item;
+        private KeyboardController keyController { get; set; }
+        private CollisionHandler collisionHandler { get; set; }
         public ILink link { get; set; }
         public IDungeonRoom dungeonRoom { get; set; }
         public IRoom room { get; set; }
@@ -64,7 +66,7 @@ namespace Sprint2_Attempt3
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             keyController = new KeyboardController(this);
-            collision = new CollisionHandler();
+            collisionHandler = new CollisionHandler();
             EnemySpriteFactory.Instance.LoadAllTextures(this.Content);
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
             ItemSpriteFactory.Instance.LoadAllTextures(Content);
@@ -74,7 +76,8 @@ namespace Sprint2_Attempt3
             RoomGenerator.Instance.LoadAllFiles(Content);
             keyController = new KeyboardController(this);
             dungeonRoom = new DungeonRoom1();
-            item = new Heart(new Vector2(0, 0), true);
+            item = new Heart(new Vector2(100, 100), true);
+            item.Spawn();
             link = new Link();
             room = new Room1(this);
         }
@@ -99,9 +102,10 @@ namespace Sprint2_Attempt3
             // TODO: Add your update logic here
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-            collision.Update();
+            collisionHandler.Update();
             keyController.Update(gameTime);
             room.Update();
+            item.Update();
             base.Update(gameTime);
         }
 
@@ -117,6 +121,7 @@ namespace Sprint2_Attempt3
 
             spriteBatch.Begin();
             room.Draw(spriteBatch);
+            item.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }

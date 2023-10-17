@@ -4,6 +4,7 @@ using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Player.LinkStates;
 using System.Collections.Generic;
 using Sprint2_Attempt3.Collision;
+using Sprint2_Attempt3.Interfaces;
 
 namespace Sprint2_Attempt3.Player
 {

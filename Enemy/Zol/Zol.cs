@@ -1,69 +1,23 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
 
 namespace Sprint2_Attempt3.Enemy.Zol
 {
-    internal class Zol : IEnemy
+    internal class Zol : EnemySecondary
     {
-        private IEnemyState state;
-        private int count;
-        public IEnemyState State
-        {
-            get { return state; }
-            set { state = value; }
-        }
-        private int positionX;
-        private int positionY;
-
-        public int X
-        {
-            get { return positionX; }
-            set { positionX = value; }
-        }
-
-        public int Y
-        {
-            get { return positionY; }
-            set { positionY = value; }
-        }
         public Zol(int x, int y)
         {
-            count = 0;
+            this.X = x;
+            this.Y = y;
+        }
+        public override void Generate() {
+            State = new MovingLeftZolState(this);
+        }
 
-            this.positionX = x;
-            this.positionY = y;
-        }
-        public void Generate() {
-            state = new MovingLeftZolState(this);
-        }
-        public void Spawn()
+        public override Rectangle GetHitBox()
         {
-            state = new SpawnAnimationState(this);
-        }
-        public void Kill()
-        {
-            state = new DeathAnimationState(this);
-        }
-        public void ChangeDirection()
-        {
-            state.ChangeDirection();
-        }
-        public void ChangeAttackedStatus()
-        {
-            state = new DeathAnimationState(this);
-        }
-        public void Update()
-        {
-            count++;
-            if (count % 100 == 0)
-            {
-                state.ChangeDirection();
-            }
-            state.Update();
-        }
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            state.Draw(spriteBatch);
+            return new Rectangle(X,Y,0,0);
         }
     }
 }

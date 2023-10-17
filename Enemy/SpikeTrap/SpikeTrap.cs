@@ -1,68 +1,21 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Sprint2_Attempt3.Enemy.Keese;
+﻿using Microsoft.Xna.Framework;
 
 namespace Sprint2_Attempt3.Enemy.SpikeTrap
 {
-    internal class SpikeTrap : IEnemy
+    internal class SpikeTrap : EnemySecondary
     {
-        private IEnemyState state;
-        private int count;
-        public IEnemyState State
-        {
-            get { return state; }
-            set { state = value; }
-        }
-        private int positionX;
-        private int positionY;
-
-        public int X
-        {
-            get { return positionX; }
-            set { positionX = value; }
-        }
-
-        public int Y
-        {
-            get { return positionY; }
-            set { positionY = value; }
-        }
         public SpikeTrap(int x, int y)
         {
-            count = 0;
-
-            this.positionX = x;
-            this.positionY = y;
+            this.X = x;
+            this.Y = y;
         }
-        public void Generate() {
-            state = new MovingLeftSpikeTrapState(this);
+        public override void Update() { }
+        public override void Generate() {
+            State = new MovingLeftSpikeTrapState(this);
         }
-        public void Spawn()
+        public override Rectangle GetHitBox()
         {
-            state = new SpawnAnimationState(this);
-        }
-        public void Kill()
-        {
-        }
-        public void ChangeDirection()
-        {
-            state.ChangeDirection();
-        }
-        public void ChangeAttackedStatus()
-        {
-
-        }
-        public void Update()
-        {
-            count++;
-            if (count % 100 == 0)
-            {
-                state.ChangeDirection();
-            }
-            state.Update();
-        }
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            state.Draw(spriteBatch);
+            return new Rectangle (X,Y,0,0);
         }
     }
 }

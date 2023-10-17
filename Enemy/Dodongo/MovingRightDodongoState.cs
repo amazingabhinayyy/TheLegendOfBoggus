@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
 using Microsoft.Xna.Framework;
+using System;
 
 namespace Sprint2_Attempt3.Enemy.Dodongo
 {
@@ -10,16 +11,32 @@ namespace Sprint2_Attempt3.Enemy.Dodongo
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
         private int currentFrame;
+        private Random random;
+        private int direction;
         public MovingRightDodongoState(Dodongo dodongo)
         {
             this.dodongo = dodongo;
             sprite = EnemySpriteFactory.Instance.CreateDodongoSprite();
             sourceRectangle = Globals.DodongoRight2;
             currentFrame = 0;
+            random = new Random();
+            direction = random.Next(0, 2);
         }
         public void ChangeDirection()
         {
-            dodongo.State = new MovingDownDodongoState(dodongo);
+            direction = random.Next(0, 2);
+            switch (direction)
+            {
+                case 0:
+                    dodongo.State = new MovingLeftDodongoState(dodongo);
+                    break;
+                case 1:
+                    dodongo.State = new MovingUpDodongoState(dodongo);
+                    break;
+                case 2:
+                    dodongo.State = new MovingDownDodongoState(dodongo);
+                    break;
+            }
         }
         public void ChangeAttackedStatus()
         {

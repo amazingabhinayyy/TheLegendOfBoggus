@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Enemy.Projectile.GoriyaProjectiles;
+using System;
 
 namespace Sprint2_Attempt3.Enemy.Goriya
 {
@@ -13,6 +14,8 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         private int currentFrame;
         private int elaspedFrameCount;
         private int endFrame;
+        private Random random;
+        private int direction;
         public MovingAttackedLeftGoriyaState(Goriya Goriya)
         {
             this.Goriya = Goriya;
@@ -60,11 +63,6 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             else
             {
                 currentFrame = 0;
-            }
-            elaspedFrameCount++;
-            if (elaspedFrameCount >= endFrame)
-            {
-                ChangeDirection();
             }
         }
         public void Draw(SpriteBatch spriteBatch)

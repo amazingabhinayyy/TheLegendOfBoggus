@@ -22,7 +22,7 @@ namespace Sprint2_Attempt3.Collision
             foreach (Rectangle wall in WallBlocks)
                 if (spriteObject.Intersects(wall))
                 {
-                    HandleCollision.HandleBlockCollision(spriteObject, wall);
+                    //HandleCollision.HandleBlockCollision(spriteObject, wall);
                     return true;
                 }
             return false;
@@ -33,7 +33,7 @@ namespace Sprint2_Attempt3.Collision
             foreach (Rectangle wall in WallBlocks)
                 if (spriteObject.Intersects(wall))
                 {
-                    HandleCollision.HandleBlockCollision(spriteObject, wall);
+                    //HandleCollision.HandleBlockCollision(spriteObject, wall);
                     return true;
                 }
             return false;
@@ -44,7 +44,7 @@ namespace Sprint2_Attempt3.Collision
             foreach (Rectangle wall in WallBlocks)
                 if (spriteObject.Intersects(wall))
                 {
-                    HandleCollision.HandleBlockCollision(spriteObject, wall);
+                    //HandleCollision.HandleBlockCollision(spriteObject, wall);
                     return true;
                 }
             return false;

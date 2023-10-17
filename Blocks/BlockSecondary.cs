@@ -15,6 +15,9 @@ namespace Sprint2_Attempt3.Blocks
             spriteBatch.Draw(BlockSpriteFactory.Instance.blocks, position, sourceRectangle, Color.White);
         }
 
-
+        public Rectangle GetHitBox()
+        {
+            return position;
+        }
     }
 }
