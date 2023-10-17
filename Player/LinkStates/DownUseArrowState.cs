@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
-using Sprint2_Attempt3.Player;
+using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Player.Interfaces;
+using Sprint2_Attempt3.Player;
+using Sprint2_Attempt3.Player.Items;
 
 namespace Sprint2_Attempt3.Player.LinkStates
 {
@@ -17,10 +19,9 @@ namespace Sprint2_Attempt3.Player.LinkStates
         {
             this.link = link;
             link.Sprite = LinkSpriteFactory.Instance.CreateDownItemLinkSprite();
-            //Constant are to make the item spawn infront of link and adjust for roation
-            link.ItemPosition = new Vector2(link.position.X + 48, link.position.Y + 45);
-            link.Items.Add(LinkSpriteFactory.Instance.CreateArrowItem());
-            link.Direction = Link.LinkDirection.Down;
+            DownArrow arrow = new DownArrow(link);
+            link.Items.Add(arrow);
+            CollisionDetector.GameObjectList.Add(arrow);
             frameCounter = 0;
         }
         public void Stop()

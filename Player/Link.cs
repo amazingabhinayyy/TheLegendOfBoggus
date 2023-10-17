@@ -1,35 +1,34 @@
-
-
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint2_Attempt3.Player.Interfaces;
+using Sprint2_Attempt3.Interfaces;
 using Sprint2_Attempt3.Player.LinkStates;
 using System.Collections.Generic;
+using Sprint2_Attempt3.Collision;
+using Sprint2_Attempt3.CommandClasses;
+using Sprint2_Attempt3.Player.Interfaces;
 
 namespace Sprint2_Attempt3.Player
 {
     public class Link : ILink
     {
         public Vector2 position;
-        public Vector2 ItemPosition { get; set; }
-
         public ILinkSprite AttackSprite { get; set; }
         public ILinkSprite Sprite { get; set; }
         public ILinkState State { get; set; }
-        public IItemSprite ItemSprite { get; set; }
-        public IItemState ItemState { get; set; }
-        public List<IItemSprite> Items { get; set; }
-        public enum LinkDirection { Left, Right, Up, Down };
-        public LinkDirection Direction { get; set; }
-
-        public Link()
+        public List<ILinkItem> Items { get; set; }
+        private Game1 game;
+        public Link(Game1 game)
         {
+            this.game = game;
+            CollisionDetector.GameObjectList.Add(this);
             StartLinkState();
         }
 
         public void GetDamaged()
         {
-            State.GetDamaged();
+            //State.GetDamaged();
+            ICommand damage = new SetDamageLinkCommand(game);
+            damage.Execute();
         }
         public void BecomeIdle()
         {
@@ -86,7 +85,7 @@ namespace Sprint2_Attempt3.Player
         public void StartLinkState()
         {
             State = new DownIdleLinkState(this);
-            Items = new List<IItemSprite>();
+            Items = new List<ILinkItem>();
         }
 
         public void Update()
@@ -96,7 +95,7 @@ namespace Sprint2_Attempt3.Player
             AttackSprite.Update();
             for (int c = 0; c < Items.Count; c++)
             {
-                Items[c].Update(this);
+                Items[c].Update();
             }
         }
 
@@ -104,12 +103,15 @@ namespace Sprint2_Attempt3.Player
         {
             Sprite.Draw(_spriteBatch, position, color);
             AttackSprite.Draw(_spriteBatch, position, color);
-            foreach (IItemSprite item in Items)
+            foreach (ILinkItem item in Items)
             {
-                item.Draw(_spriteBatch, ItemPosition, Color.White);
+                item.Draw(_spriteBatch);
             }
 
         }
-
+        public Rectangle GetHitBox()
+        {
+            return new Rectangle((int)position.X, (int)position.Y, 15 * 3, 15 * 3);
+        }
     }
 }

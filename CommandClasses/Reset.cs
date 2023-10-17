@@ -21,8 +21,11 @@ namespace Sprint2_Attempt3.CommandClasses
 
         public void Execute()
         {
-            game1.link = new Link();
-            game1.room = new Room(game1);
+            game1.enemy = new Keese(200, 200);
+            game1.enemy.Spawn();
+            game1.link = new Link(game1);
+            game1.item = new Item();
+            game1.block = new Block();
             game1.dungeonRoom = new DungeonRoom1();
         }
     }

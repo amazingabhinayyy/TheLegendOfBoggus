@@ -1,5 +1,5 @@
 ﻿
-
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Sprint2_Attempt3.Enemy
@@ -47,6 +47,11 @@ namespace Sprint2_Attempt3.Enemy
         void IEnemy.Update()
         {
             
+        }
+        public Rectangle GetHitBox()
+        {
+            //To-Do fill in what hit box should be instead of 0s
+            return new Rectangle(0, 0, 0, 0);
         }
     }
 }

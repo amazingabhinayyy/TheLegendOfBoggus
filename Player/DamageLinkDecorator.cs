@@ -101,6 +101,10 @@ namespace Sprint2_Attempt3.Player
         {
             decoratedLink.Draw(spriteBatch, Color.Red);
         }
+        public Rectangle GetHitBox()
+        {
+            return decoratedLink.GetHitBox();
+        }
 
     }
 }

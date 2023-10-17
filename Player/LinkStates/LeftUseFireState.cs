@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
-using Sprint2_Attempt3.Player;
+using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Player.Interfaces;
+using Sprint2_Attempt3.Player;
+using Sprint2_Attempt3.Player.Items;
 
 namespace Sprint2_Attempt3.Player.LinkStates
 {
@@ -16,11 +18,10 @@ namespace Sprint2_Attempt3.Player.LinkStates
         public LeftUseFireState(Link link)
         {
             this.link = link;
-            link.Sprite = LinkSpriteFactory.Instance.CreateLeftItemLinkSprite();
-            //Constant is to make the item spawn infront of link
-            link.ItemPosition = new Vector2(link.position.X - 45, link.position.Y);
-            link.Items.Add(LinkSpriteFactory.Instance.CreateFireItem());
-            link.Direction = Link.LinkDirection.Left;
+            link.Sprite = LinkSpriteFactory.Instance.CreateLeftItemLinkSprite(); ;
+            LeftFire fire = new LeftFire(link);
+            link.Items.Add(fire);
+            CollisionDetector.GameObjectList.Add(fire);
             frameCounter = 0;
         }
         public void BecomeIdle()

@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
-using Sprint2_Attempt3.Player;
+using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Player.Interfaces;
+using Sprint2_Attempt3.Player;
+using Sprint2_Attempt3.Player.Items;
 
 namespace Sprint2_Attempt3.Player.LinkStates
 {
@@ -16,10 +18,10 @@ namespace Sprint2_Attempt3.Player.LinkStates
         public RightUseBlueBoomerangState(Link link)
         {
             this.link = link;
-            link.Sprite = LinkSpriteFactory.Instance.CreateRightItemLinkSprite();
-            link.ItemPosition = new Vector2(link.position.X + 45, link.position.Y);
-            link.Items.Add(LinkSpriteFactory.Instance.CreateBlueBoomerangItem());
-            link.Direction = Link.LinkDirection.Right;
+            link.Sprite = LinkSpriteFactory.Instance.CreateRightItemLinkSprite(); ;
+            RightBlueBoomerang blueBoomerang = new RightBlueBoomerang(link);
+            link.Items.Add(blueBoomerang);
+            CollisionDetector.GameObjectList.Add(blueBoomerang);
             frameCounter = 0;
         }
         public void BecomeIdle()
