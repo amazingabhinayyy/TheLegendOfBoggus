@@ -7,6 +7,7 @@ using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Interfaces;
 using Sprint2_Attempt3.CommandClasses;
 using Sprint2_Attempt3.Player.Interfaces;
+using Sprint2_Attempt3.Collision.SideCollisionHandlers;
 
 namespace Sprint2_Attempt3.Player
 {
@@ -23,9 +24,23 @@ namespace Sprint2_Attempt3.Player
             CollisionDetector.GameObjectList.Add(this);
             StartLinkState();
         }
-        public void GetDamaged()
+        public void GetDamaged(ICollision side)
         {
             //State.GetDamaged();
+            if(side is BottomCollision)
+            {
+                State = new KnockbackDownLinkState(this);
+            } else if(side is LeftCollision)
+            {
+                State = new KnockbackLeftLinkState(this);
+            } else if(side is RightCollision)
+            {
+                State = new KnockbackRightLinkState(this);
+            }
+            else
+            {
+                State = new KnockbackUpLinkState(this);
+            }
             ICommand damage = new SetDamageLinkCommand(game);
             damage.Execute();
         }

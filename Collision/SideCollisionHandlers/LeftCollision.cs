@@ -1,4 +1,5 @@
 ﻿using Sprint2_Attempt3.Player;
+using Sprint2_Attempt3.Player.LinkStates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace Sprint2_Attempt3.Collision.SideCollisionHandlers
 
         public void LinkEnemyKnockback(Link link)
         {
-            link.position.X -= 100;
+            link.State = new KnockbackRightLinkState(link);
         }
     }
 }

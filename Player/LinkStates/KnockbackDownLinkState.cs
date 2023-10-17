@@ -46,6 +46,7 @@ namespace Sprint2_Attempt3.Player.LinkStates
             {
                 FinishAnimation();
             }
+            currentframe++;
         }
         public void UseBomb()
         {

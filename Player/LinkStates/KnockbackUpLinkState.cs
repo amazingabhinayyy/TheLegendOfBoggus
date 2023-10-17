@@ -2,11 +2,11 @@
 
 namespace Sprint2_Attempt3.Player.LinkStates
 {
-    public class DownKnockbackLinkState : ILinkState
+    public class KnockbackUpLinkState : ILinkState
     {
         int currentframe = 0;
         private Link link;
-        public DownKnockbackLinkState(Link link)
+        public KnockbackUpLinkState(Link link)
         {
             this.link = link;
             link.Sprite = LinkSpriteFactory.Instance.CreateUpIdleLinkSprite();
@@ -46,6 +46,7 @@ namespace Sprint2_Attempt3.Player.LinkStates
             {
                 FinishAnimation();
             }
+            currentframe++;
         }
         public void UseBomb()
         {
