@@ -9,9 +9,9 @@ namespace Sprint2_Attempt3.Dungeon.DungeonRooms
         public DungeonRoom12()
         {
             sprite = DungeonSpriteFactory.Instance.CreateDungeonRoomSprite();
-            northDoor = DungeonSpriteFactory.Instance.CreateOpenNorthDoorSprite();
+            northDoor = DungeonSpriteFactory.Instance.CreateClosedNorthDoorSprite();
             westDoor = DungeonSpriteFactory.Instance.CreateOpenWestDoorSprite();
-            NorthDoorWalkable = true;
+            NorthDoorWalkable = false;
             SouthDoorWalkable = false;
             EastDoorWalkable = false;
             WestDoorWalkable = true;

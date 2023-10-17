@@ -9,12 +9,12 @@ namespace Sprint2_Attempt3.Dungeon.DungeonRooms
         public DungeonRoom18()
         {
             sprite = DungeonSpriteFactory.Instance.CreateDungeonRoomSprite();
-            southDoor = DungeonSpriteFactory.Instance.CreateOpenSouthDoorSprite();
-            westDoor = DungeonSpriteFactory.Instance.CreateOpenWestDoorSprite();
+            southDoor = DungeonSpriteFactory.Instance.CreateClosedSouthDoorSprite();
+            westDoor = DungeonSpriteFactory.Instance.CreateClosedWestDoorSprite();
             NorthDoorWalkable = false;
-            SouthDoorWalkable = true;
+            SouthDoorWalkable = false;
             EastDoorWalkable = false;
-            WestDoorWalkable = true;
+            WestDoorWalkable = false;
         }
         public override void Draw(SpriteBatch spriteBatch)
         {

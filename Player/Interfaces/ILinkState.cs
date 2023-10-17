@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint2_Attempt3.Interfaces
+namespace Sprint2_Attempt3.Player.Interfaces
 {
     public interface ILinkState
     {

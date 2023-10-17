@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using Sprint2_Attempt3.Interfaces;
+using Sprint2_Attempt3.Player.Interfaces;
 
 namespace Sprint2_Attempt3.Player.LinkSprites
 {
