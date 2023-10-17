@@ -122,5 +122,10 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             westDoor = DungeonSpriteFactory.Instance.CreateDamagedWestDoorSprite();
             WestDoorWalkable = true;
         }
+        public Rectangle GetHitBox()
+        {
+            //To-Do fill in what hit box should be instead of 0s
+            return new Rectangle(0, 0, 0, 0);
+        }
     }
 }

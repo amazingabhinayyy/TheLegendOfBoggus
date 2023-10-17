@@ -14,5 +14,10 @@ namespace Sprint2_Attempt3.Enemy.Gel
         public override void Generate() {
             State = new MovingLeftGelState(this);
         }
+        public Rectangle GetHitBox()
+        {
+            //To-Do fill in what hit box should be instead of 0s
+            return new Rectangle(0, 0, 0, 0);
+        }
     }
 }

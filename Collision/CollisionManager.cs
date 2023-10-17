@@ -1,5 +1,4 @@
-using Sprint2_Attempt3.Player;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace Sprint2_Attempt3.Collision
 {
-    public interface ICollision
+    internal class CollisionManager
     {
-        public void LinkEnemyKnockback(Link link);
+        //update where any and all loops occur.
+        public void Update()
+        {
+
+        }
     }
 }

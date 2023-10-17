@@ -1,42 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Sprint2_Attempt3.Player;
-using Sprint2_Attempt3.Player.Interfaces;
-using Sprint2_Attempt3.Player.Items;
+﻿using Sprint2_Attempt3.Interfaces;
 
 namespace Sprint2_Attempt3.Player.LinkStates
 {
-    public class LeftUseBlueBoomerangState : ILinkState
+    public class KnockbackRightLinkState : ILinkState
     {
+        int currentframe = 0;
         private Link link;
-        private int frameCounter;
-        public LeftUseBlueBoomerangState(Link link)
+        public KnockbackRightLinkState(Link link)
         {
             this.link = link;
-            link.Sprite = LinkSpriteFactory.Instance.CreateLeftItemLinkSprite();
-            //room.gameobjects.add(new LeftBlueBoomerang)
-            link.Items.Add(new LeftBlueBoomerang(link));
-            frameCounter = 0;
+            link.Sprite = LinkSpriteFactory.Instance.CreateLeftIdleLinkSprite();
         }
-        public void Stop()
+        public void FinishAnimation()
         {
             link.State = new LeftIdleLinkState(link);
         }
         public void BecomeIdle()
         {
-
         }
         public void MoveUp()
         {
-
         }
         public void MoveDown()
         {
-
         }
         public void MoveLeft()
         {
@@ -50,14 +36,15 @@ namespace Sprint2_Attempt3.Player.LinkStates
         }
         public void Attack()
         {
-
         }
         public void Update()
         {
-            frameCounter++;
-            if (frameCounter >= 10)
+            if (currentframe < 10)
             {
-                Stop();
+                link.position.X += 10;
+            } else
+            {
+                FinishAnimation();
             }
         }
         public void UseBomb()
@@ -65,20 +52,18 @@ namespace Sprint2_Attempt3.Player.LinkStates
         }
         public void UseArrow()
         {
-
         }
         public void UseBoomerang()
         {
-
         }
-        public void UseBlueBoomerang() { }
+        public void UseBlueBoomerang()
+        {
+        }
         public void UseBlueArrow()
         {
-
         }
         public void UseFire()
         {
-
         }
         public void UseThrowingSword()
         {

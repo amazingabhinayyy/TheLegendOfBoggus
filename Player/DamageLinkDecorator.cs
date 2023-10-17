@@ -107,7 +107,7 @@ namespace Sprint2_Attempt3.Player
         }
         public Rectangle GetHitBox()
         {
-            return new Rectangle(0, 0, 15, 15);
+            return decoratedLink.GetHitBox();
         }
 
     }
