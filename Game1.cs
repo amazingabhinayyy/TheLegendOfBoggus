@@ -38,6 +38,8 @@ namespace Sprint2_Attempt3
             new BlackBlock(Globals.WestSouthCollisionBlock)
         };
 
+        private BlockCollisionClass blockCollision;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -79,7 +81,9 @@ namespace Sprint2_Attempt3
             item = new Heart(new Vector2(100, 100), true);
             item.Spawn();
             link = new Link();
-            room = new Room1(this);
+            room = new Room(this);
+
+            blockCollision = new BlockCollisionClass(this);
         }
 
         /// <summary>
@@ -102,7 +106,10 @@ namespace Sprint2_Attempt3
             // TODO: Add your update logic here
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-            collisionHandler.Update();
+            collision.Update();
+
+            blockCollision.Update();
+
             keyController.Update(gameTime);
             room.Update();
             item.Update();

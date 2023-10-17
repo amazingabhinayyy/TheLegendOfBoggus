@@ -107,6 +107,7 @@ namespace Sprint2_Attempt3.Player
         }
         public Rectangle GetHitBox()
         {
+            //System.Diagnostics.Debug.WriteLine((int)position.X);
             return new Rectangle((int)position.X, (int)position.Y, 15, 15);
         }
     }

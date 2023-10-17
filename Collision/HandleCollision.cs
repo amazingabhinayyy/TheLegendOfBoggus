@@ -27,32 +27,35 @@ namespace Sprint2_Attempt3.Collision
             // Then, you can stop movement in that direction
 
             // Stop movement in the X direction (horizontal)
-            if (intersection.Width > intersection.Height)
+            if (intersection.Width < intersection.Height)
             {
-                // Collision occurred from the left or right
+                //System.Diagnostics.Debug.WriteLine("test");
+                // Collision occurred from left (object hits block on its left side)
                 if (spriteObject.Center.X < wall.Center.X)
                 {
-                    // Collision occurred from the left, so prevent movement to the right
-                    // You can set the object's X position to the left edge of the wall
+                    // prevent movement to the right
+                    // set the object's X position to the left edge of the wall - object's width
                     spriteObject.X = wall.Left - spriteObject.Width;
                 }
+                // Collision occured from right (object hits block on its right side)
                 else
                 {
-                    // Collision occurred from the right, so prevent movement to the left
-                    // You can set the object's X position to the right edge of the wall
+                    // prevent movement to the left
+                    // set the object's left X position to the right edge of the wall
                     spriteObject.X = wall.Right;
                 }
             }
             // Stop movement in the Y direction (vertical)
             else
             {
-                // Collision occurred from the top or bottom
+                // Collision occurred from the top (object hits block on its top side)
                 if (spriteObject.Center.Y < wall.Center.Y)
                 {
                     // Collision occurred from the top, so prevent movement downward
                     // You can set the object's Y position to the top edge of the wall
                     spriteObject.Y = wall.Top - spriteObject.Height;
                 }
+                // Collision occurred from the bottom
                 else
                 {
                     // Collision occurred from the bottom, so prevent movement upward

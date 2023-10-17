@@ -22,13 +22,13 @@ namespace Sprint2_Attempt3.Collision
         private Vector2 linkBlueBoomerang;
         public Vector2 LinkPosition { get; private set; }
         private List<IGameObject> gameObjectList = new List<IGameObject>();
-        private List<IGameObject> copyGameObjectList = new List<IGameObject>();
+        private List<IGameObject> copysGameObjectList = new List<IGameObject>();
         public List<IGameObject> GameObjectList { get; set; }
         public CollisionHandler()
         {
             
         }
-        public void PlayerCollision(ILink link)
+        /*public void PlayerCollision(ILink link)
         {
             /*Rectangle linkRectangle = link.GetHitBox();
             foreach (IGameObject obj in gameObjectList){
@@ -44,8 +44,8 @@ namespace Sprint2_Attempt3.Collision
 
                     }
                 }
-            }*/
-        }
+            }
+        }*/
         public void Update()
         {
             if(linkPosition.X < 50 || linkPosition.X > 750 || linkPosition.Y < 50 || linkPosition.Y > 450)
