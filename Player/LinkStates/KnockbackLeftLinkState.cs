@@ -1,5 +1,4 @@
 ﻿using Sprint2_Attempt3.Player.Interfaces;
-
 namespace Sprint2_Attempt3.Player.LinkStates
 {
     public class KnockbackLeftLinkState : ILinkState

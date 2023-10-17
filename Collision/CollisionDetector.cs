@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Audio;
 using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Hand;
+using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Interfaces;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Collision.SideCollisionHandlers;
