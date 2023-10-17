@@ -11,7 +11,6 @@ namespace Sprint2_Attempt3.Player
     public class Link : ILink
     {
         public Vector2 position;
-        public ILinkSprite AttackSprite { get; set; }
         public ILinkSprite Sprite { get; set; }
         public ILinkState State { get; set; }
         public List<ILinkItem> Items { get; set; }
@@ -91,7 +90,6 @@ namespace Sprint2_Attempt3.Player
         {
             State.Update();
             Sprite.Update();
-            AttackSprite.Update();
             for (int c = 0; c < Items.Count; c++)
             {
                 Items[c].Update();
@@ -101,7 +99,6 @@ namespace Sprint2_Attempt3.Player
         public void Draw(SpriteBatch _spriteBatch, Color color)
         {
             Sprite.Draw(_spriteBatch, position, color);
-            AttackSprite.Draw(_spriteBatch, position, color);
             foreach (ILinkItem item in Items)
             {
                 item.Draw(_spriteBatch);

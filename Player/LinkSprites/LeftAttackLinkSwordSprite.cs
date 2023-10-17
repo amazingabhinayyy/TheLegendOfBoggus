@@ -10,7 +10,7 @@ using Sprint2_Attempt3.Interfaces;
 
 namespace Sprint2_Attempt3.Player.LinkSprites
 {
-    public class LeftAttackLinkSwordSprite : ILinkSprite
+    public class LeftAttackLinkSwordSprite : ILinkItemSprite
     {
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;
@@ -31,7 +31,7 @@ namespace Sprint2_Attempt3.Player.LinkSprites
                 currentFrame = 0;
             }
         }
-        public void Draw(SpriteBatch spritebatch, Vector2 location, Color color)
+        public void Draw(SpriteBatch spritebatch, Vector2 location, Rectangle srcRec, SpriteEffects flip)
         {
             //+16 x, +8 y
             destinationRectangle = new Rectangle((int)location.X + -15, (int)location.Y + 24, 15, 15);
