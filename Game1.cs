@@ -12,6 +12,8 @@ using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Collision;
+using Sprint2_Attempt3.Blocks.BlockSprites;
+using Sprint2_Attempt3.Enemy.Keese;
 
 namespace Sprint2_Attempt3
 {
