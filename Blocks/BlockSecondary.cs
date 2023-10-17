@@ -10,11 +10,6 @@ namespace Sprint2_Attempt3.Blocks
 
         public BlockSecondary() { }
 
-        public Rectangle GetHitBox()
-        {
-            return new Rectangle(0, 0, 0, 0);
-        }
-
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(BlockSpriteFactory.Instance.blocks, position, sourceRectangle, Color.White);
