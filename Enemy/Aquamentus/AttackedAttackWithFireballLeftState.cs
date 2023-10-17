@@ -23,7 +23,7 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
             sprite = EnemySpriteFactory.Instance.CreateMovingLeftAquamentusSprite();
             currentFrame = 0;
             sourceRectangle = Globals.AquamentusGreenLeftMouthOpen;
-            Aquamentus.Position = new Rectangle(Aquamentus.X, Aquamentus.Y, sourceRectangle.Width, sourceRectangle.Height);
+            Aquamentus.Position = new Rectangle(Aquamentus.X, Aquamentus.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             fireball = Aquamentus.Fireball;
             
             elapsedFrameCount = 0;
@@ -54,7 +54,7 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
                 {
                     sourceRectangle = Globals.AquamentusOrangeLeft2;
                 }
-                Aquamentus.Position = new Rectangle(Aquamentus.X, Aquamentus.Y, sourceRectangle.Width, sourceRectangle.Height);
+                Aquamentus.Position = new Rectangle(Aquamentus.X, Aquamentus.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             }
             else
             {

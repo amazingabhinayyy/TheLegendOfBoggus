@@ -12,7 +12,6 @@ namespace Sprint2_Attempt3.Enemy.Keese
         private Rectangle sourceRectangle;
         private int currentFrame;
         private static EnemySpriteFactory enemySpriteFactory;
-        private bool dead;
         public DeathAnimationState(IEnemy enemy)
         {
             this.enemy = enemy;
@@ -20,7 +19,6 @@ namespace Sprint2_Attempt3.Enemy.Keese
             sprite = EnemySpriteFactory.Instance.CreateDeathAnimationSprite();
             sourceRectangle = new Rectangle(39, 19, 15, 16);
             currentFrame = 0;
-            dead = false;
         }
         public void ChangeDirection()
         {
@@ -46,12 +44,12 @@ namespace Sprint2_Attempt3.Enemy.Keese
             }
             else if (currentFrame == 40)
             {
-                dead = true;
+                enemy.exists = false;
             }
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (!dead)
+            if (enemy.exists)
             {
                 sprite.Draw(spriteBatch, enemy.X, enemy.Y, sourceRectangle);
             }
