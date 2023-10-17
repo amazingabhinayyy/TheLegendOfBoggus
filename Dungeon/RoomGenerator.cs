@@ -39,10 +39,10 @@ namespace Sprint2_Attempt3.Dungeon
         {
         }
         public void LoadAllFiles(ContentManager content) {
-            /*for (int i = 0; i < fileStreams.Length; i++)
+            for (int i = 0; i < fileStreams.Length; i++)
             {
                 fileStreams[i] = content.Load<FileStream>("Room" + (i + 1) + ".csv");
-            }*/
+            }
 
         }
 
