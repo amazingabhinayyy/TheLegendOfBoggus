@@ -1,5 +1,6 @@
 ﻿using Sprint2_Attempt3.Blocks;
-using Sprint2_Attempt3.Dungeon.DungeonRooms;
+using Sprint2_Attempt3.Dungeon;
+using Sprint2_Attempt3.Dungeon.Rooms.DungeonRooms;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Player;
@@ -20,12 +21,8 @@ namespace Sprint2_Attempt3.CommandClasses
 
         public void Execute()
         {
-            game1.enemy = new Keese(200, 200);
-            game1.enemy.Spawn();
             game1.link = new Link(game1);
-            game1.item = new Item();
-            game1.block = new Block();
-            game1.dungeonRoom = new DungeonRoom1();
+            game1.room = new Room1(game1);
         }
     }
 }

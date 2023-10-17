@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
+using System;
 
 namespace Sprint2_Attempt3.Enemy.Zol
 {
@@ -10,16 +11,32 @@ namespace Sprint2_Attempt3.Enemy.Zol
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
         private int currentFrame;
+        private Random random;
+        private int direction;
         public MovingRightZolState(Zol zol)
         {
             this.zol = zol;
             sprite = EnemySpriteFactory.Instance.CreateZolSprite();
             sourceRectangle = Globals.ZolSprite1;
             currentFrame = 0;
+            random = new Random();
+            direction = random.Next(0, 2);
         }
         public void ChangeDirection()
         {
-            zol.State = new MovingDownZolState(zol);
+            direction = random.Next(0, 2);
+            switch (direction)
+            {
+                case 0:
+                    zol.State = new MovingLeftZolState(zol);
+                    break;
+                case 1:
+                    zol.State = new MovingUpZolState(zol);
+                    break;
+                case 2:
+                    zol.State = new MovingDownZolState(zol);
+                    break;
+            }
         }
         public void ChangeAttackedStatus()
         {
@@ -41,6 +58,7 @@ namespace Sprint2_Attempt3.Enemy.Zol
 
                 }
                 zol.X += 1;
+                zol.Position = new Rectangle(zol.X, zol.Y, sourceRectangle.Width, sourceRectangle.Height);
             }
             else
             {

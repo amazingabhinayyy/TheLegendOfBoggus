@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
+using System;
 
 namespace Sprint2_Attempt3.Enemy.Rope
 {
@@ -10,16 +11,33 @@ namespace Sprint2_Attempt3.Enemy.Rope
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
         private int currentFrame;
+        private Random random;
+        private int direction;
         public MovingUpRopeState(Rope rope)
         {
             this.rope = rope;
             sprite = EnemySpriteFactory.Instance.CreateRopeSprite();
             sourceRectangle = Globals.RopeSprite1;
+            rope.Position = new Rectangle(rope.X, rope.Y, sourceRectangle.Width, sourceRectangle.Height);
             currentFrame = 0;
+            random = new Random();
+            direction = random.Next(0, 2);
         }
         public void ChangeDirection()
         {
-            rope.State = new MovingRightRopeState(rope);
+            direction = random.Next(0, 2);
+            switch (direction)
+            {
+                case 0:
+                    rope.State = new MovingLeftRopeState(rope);
+                    break;
+                case 1:
+                    rope.State = new MovingDownRopeState(rope);
+                    break;
+                case 2:
+                    rope.State = new MovingRightRopeState(rope);
+                    break;
+            }
         }
         public void ChangeAttackedStatus()
         {
@@ -41,6 +59,7 @@ namespace Sprint2_Attempt3.Enemy.Rope
 
                 }
                 rope.Y -= 1;
+                rope.Position = new Rectangle(rope.X, rope.Y, sourceRectangle.Width, sourceRectangle.Height);
             }
             else
             {

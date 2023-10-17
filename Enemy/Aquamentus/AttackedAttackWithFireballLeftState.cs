@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles;
+using System;
 using System.Timers;
 
 namespace Sprint2_Attempt3.Enemy.Aquamentus
@@ -22,12 +23,12 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
             sprite = EnemySpriteFactory.Instance.CreateMovingLeftAquamentusSprite();
             currentFrame = 0;
             sourceRectangle = Globals.AquamentusGreenLeftMouthOpen;
+            Aquamentus.Position = new Rectangle(Aquamentus.X, Aquamentus.Y, sourceRectangle.Width, sourceRectangle.Height);
             fireball = Aquamentus.Fireball;
             
             elapsedFrameCount = 0;
             endFrame = 20;
          
-
         }
         public void ChangeDirection()
         {
@@ -53,7 +54,7 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
                 {
                     sourceRectangle = Globals.AquamentusOrangeLeft2;
                 }
-
+                Aquamentus.Position = new Rectangle(Aquamentus.X, Aquamentus.Y, sourceRectangle.Width, sourceRectangle.Height);
             }
             else
             {
@@ -69,8 +70,6 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
                 ((AquamentusFireball)fireball).Fire = true;
 
             }
-
-
         }
         public void Draw(SpriteBatch spriteBatch)
         {

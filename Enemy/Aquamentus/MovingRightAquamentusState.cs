@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles;
+using System;
 
 namespace Sprint2_Attempt3.Enemy.Aquamentus
 {
@@ -18,6 +19,7 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
             this.Aquamentus = Aquamentus;
             sprite = EnemySpriteFactory.Instance.CreateMovingRightAquamentusSprite();
             sourceRectangle = Globals.AquamentusGreenLeft;
+            Aquamentus.Position = new Rectangle(Aquamentus.X, Aquamentus.Y, sourceRectangle.Width, sourceRectangle.Height);
             currentFrame = 0; 
             this.Aquamentus.Direction = Aquamentus.ProjectileDirection.Right;
             elaspedFrameCount = 0;
@@ -50,6 +52,7 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
 
                 }
                 Aquamentus.X += 1;
+                Aquamentus.Position = new Rectangle(Aquamentus.X, Aquamentus.Y, sourceRectangle.Width, sourceRectangle.Height);
             }
             else
             {

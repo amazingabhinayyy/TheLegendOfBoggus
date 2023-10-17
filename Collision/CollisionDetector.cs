@@ -1,24 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
+﻿using Microsoft.Xna.Framework;
 using Sprint2_Attempt3.Blocks;
+using Sprint2_Attempt3.Collision.SideCollisionHandlers;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Hand;
-using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Interfaces;
-using Sprint2_Attempt3.Collision;
-using Sprint2_Attempt3.Collision.SideCollisionHandlers;
+using Sprint2_Attempt3.Player.Interfaces;
+using System.Collections.Generic;
 
 namespace Sprint2_Attempt3.Collision
 {
     public class CollisionDetector
     {
         private Vector2 linkPosition;
-        private Vector2 linkArrow; 
+        private Vector2 linkArrow;
         private Vector2 linkBlueArrow;
         private Vector2 linkBomb;
         private Vector2 linkFire;
@@ -40,7 +34,8 @@ namespace Sprint2_Attempt3.Collision
         public void CheckPlayerCollision(ILink link)
         {
             Rectangle linkRectangle = link.GetHitBox();
-            foreach (IGameObject obj in gameObjectList){
+            foreach (IGameObject obj in gameObjectList)
+            {
                 Rectangle collisionRectangle = obj.GetHitBox();
                 if (collisionRectangle.Intersects(linkRectangle))
                 {
@@ -117,7 +112,7 @@ namespace Sprint2_Attempt3.Collision
         public void CheckEnemyCollision(IEnemy enemy)
         {
             Rectangle enemyRectangle = enemy.GetHitBox();
-            for(int c = 0; c < gameObjectList.Count; c++)
+            for (int c = 0; c < gameObjectList.Count; c++)
             {
                 Rectangle collisionRectangle = gameObjectList[c].GetHitBox();
                 if (collisionRectangle.Intersects(enemyRectangle))
@@ -138,7 +133,7 @@ namespace Sprint2_Attempt3.Collision
         {
             CheckPlayerCollision(game.link);
             CheckEnemyCollision(game.enemy);
-            
+
             /*
              * want to use this for blocks. since we do not have a block thing going on it will not run if this is not commented.
             foreach(IBlock block in Globals.blocks)

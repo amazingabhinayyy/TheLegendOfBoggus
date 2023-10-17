@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
+using System;
 
 namespace Sprint2_Attempt3.Enemy.Stalfos
 {
@@ -10,17 +11,34 @@ namespace Sprint2_Attempt3.Enemy.Stalfos
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
         private int currentFrame;
+        private Random random;
+        private int direction;
         public MovingLeftStalfosState(Stalfos Stalfos)
         {
             this.Stalfos = Stalfos;
             sprite = EnemySpriteFactory.Instance.CreateStalfosSprite();
             currentFrame = 0;
             sourceRectangle = Globals.StalfosRed;
+            Stalfos.Position = new Rectangle(Stalfos.X, Stalfos.Y, sourceRectangle.Width, sourceRectangle.Height);
+            random = new Random();
+            direction = random.Next(0, 2);
 
         }
         public void ChangeDirection()
         {
-            Stalfos.State = new MovingUpStalfosState(Stalfos);
+            direction = random.Next(0, 2);
+            switch (direction)
+            {
+                case 0:
+                    Stalfos.State = new MovingDownStalfosState(Stalfos);
+                    break;
+                case 1:
+                    Stalfos.State = new MovingUpStalfosState(Stalfos);
+                    break;
+                case 2:
+                    Stalfos.State = new MovingRightStalfosState(Stalfos);
+                    break;
+            }
         }
         public void ChangeAttackedStatus() {
             Stalfos.State = new MovingAttackedLeftStalfosState(Stalfos);
@@ -29,6 +47,7 @@ namespace Sprint2_Attempt3.Enemy.Stalfos
         {
 
             Stalfos.X -= 1;
+            Stalfos.Position = new Rectangle(Stalfos.X, Stalfos.Y, sourceRectangle.Width, sourceRectangle.Height);
             sprite.Update();
         }
         public void Draw(SpriteBatch spriteBatch)
