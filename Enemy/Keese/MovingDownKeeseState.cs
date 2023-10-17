@@ -48,7 +48,6 @@ namespace Sprint2_Attempt3.Enemy.Keese
                 if (currentFrame < 15)
                 {
                     sourceRectangle = Globals.KeeseSprite1;
-
                 }
                 else
                 {

@@ -23,10 +23,6 @@ namespace Sprint2_Attempt3.Player
             game.link = this;
         }
 
-        public Rectangle GetHitBox()
-        {
-            return new Rectangle(0, 0, 0, 0);
-        }
         public void GetDamaged()
         {
             timer = 100;
@@ -104,6 +100,10 @@ namespace Sprint2_Attempt3.Player
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             decoratedLink.Draw(spriteBatch, Color.Red);
+        }
+        public Rectangle GetHitBox()
+        {
+            return decoratedLink.GetHitBox();
         }
 
     }

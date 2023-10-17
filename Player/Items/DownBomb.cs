@@ -18,6 +18,8 @@ namespace Sprint2_Attempt3.Player.Items
         private Vector2 itemPosition;
         private Rectangle sourceRectangle;
         private SpriteEffects flip;
+        private const int HitBoxWidth = 24;
+        private const int HitBoxHeight = 45;
         public DownBomb(Link link)
         {
             this.link = link;
@@ -49,6 +51,10 @@ namespace Sprint2_Attempt3.Player.Items
         public void Draw(SpriteBatch spriteBatch)
         {
             sprite.Draw(spriteBatch, itemPosition, sourceRectangle, flip);
+        }
+        public Rectangle GetHitBox()
+        {
+            return new Rectangle((int)itemPosition.X, (int)itemPosition.Y, HitBoxWidth, HitBoxHeight);
         }
 
     }

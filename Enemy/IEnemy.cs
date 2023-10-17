@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 
 namespace Sprint2_Attempt3.Enemy
 {
-    public interface IEnemy : IGameObject
+    public interface IEnemy //: IGameObject
     {
         public Rectangle Position { get; set; }
         public int X { get; set; }

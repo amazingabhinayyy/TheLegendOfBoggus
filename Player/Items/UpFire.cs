@@ -17,6 +17,8 @@ namespace Sprint2_Attempt3.Player.Items
         private Vector2 itemPosition;
         private SpriteEffects flip;
         private Rectangle sourceRectangle;
+        private const int HitBoxWidth = 45;
+        private const int HitBoxHeight = 45;
         public UpFire(Link link)
         {
             this.link = link;
@@ -55,6 +57,9 @@ namespace Sprint2_Attempt3.Player.Items
         {
             sprite.Draw(spriteBatch, itemPosition, sourceRectangle, flip);
         }
-
+        public Rectangle GetHitBox()
+        {
+            return new Rectangle((int)itemPosition.X, (int)itemPosition.Y, HitBoxWidth, HitBoxHeight);
+        }
     }
 }
