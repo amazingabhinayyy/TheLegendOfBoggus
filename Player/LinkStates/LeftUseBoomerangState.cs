@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Interfaces;
 using Sprint2_Attempt3.Player;
 using Sprint2_Attempt3.Player.Items;
@@ -18,7 +19,9 @@ namespace Sprint2_Attempt3.Player.LinkStates
         {
             this.link = link;
             link.Sprite = LinkSpriteFactory.Instance.CreateLeftItemLinkSprite(); ;
-            link.Items.Add(new LeftBoomerang(link));
+            LeftBoomerang boomerang = new LeftBoomerang(link);
+            link.Items.Add(boomerang);
+            CollisionDetector.GameObjectList.Add(boomerang);
             frameCounter = 0;
         }
         public void BecomeIdle()

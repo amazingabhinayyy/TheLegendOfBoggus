@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 using Sprint2_Attempt3.Enemy.Keese;
 
 namespace Sprint2_Attempt3.Enemy.Rope
@@ -65,6 +66,10 @@ namespace Sprint2_Attempt3.Enemy.Rope
         public void Draw(SpriteBatch spriteBatch)
         {
             state.Draw(spriteBatch);
+        }
+        public Rectangle GetHitBox()
+        {
+            return new Rectangle(0, 0, 0, 0);
         }
     }
 }

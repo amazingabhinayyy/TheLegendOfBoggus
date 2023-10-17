@@ -11,13 +11,13 @@ namespace Sprint2_Attempt3.Collision
 {
     internal class PlayerEnemyHandler
     {
-        public void HandlePlayerEnemyCollision(ILink link, IEnemy enemy)
+        public static void HandlePlayerEnemyCollision(ILink link, IEnemy enemy, ICollision side)
         {
             if(enemy is Hand)
             {
-                link.Leave();
+               // link.Leave();
             } else {
-                link.Knockback();
+                //link.Knockback();
                 link.GetDamaged();
             }
         }

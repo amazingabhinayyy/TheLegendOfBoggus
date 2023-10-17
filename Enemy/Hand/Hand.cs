@@ -69,5 +69,9 @@ namespace Sprint2_Attempt3.Enemy.Hand
         {
             state.Draw(spriteBatch);
         }
+        public Rectangle GetHitBox()
+        {
+            return new Rectangle(0, 0, 0, 0);
+        }
     }
 }

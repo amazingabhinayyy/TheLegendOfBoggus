@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sprint2_Attempt3.Enemy
 {
-    public interface IEnemy //: IGameObject
+    public interface IEnemy : IGameObject
     {
         public int X { 
             get { return X; } 

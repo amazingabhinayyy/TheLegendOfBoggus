@@ -5,7 +5,7 @@ using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3.Enemy.Keese
 {
-    internal class Keese : IEnemy, IGameObject
+    internal class Keese : IEnemy
     {
         private IEnemyState state;
         private int count;
@@ -42,13 +42,13 @@ namespace Sprint2_Attempt3.Enemy.Keese
         public void Spawn()
         {
             state = new SpawnAnimationState(this);
-            CollisionHandler.gameObjectList.Add(this);
+            CollisionDetector.GameObjectList.Add(this);
 
         }
         public void Kill()
         {
             state = new DeathAnimationState(this);
-            CollisionHandler.gameObjectList.Remove(this);
+            CollisionDetector.GameObjectList.Remove(this);
         }
         public void ChangeDirection()
         {

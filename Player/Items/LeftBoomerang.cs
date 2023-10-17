@@ -6,10 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint2_Attempt3.Interfaces;
+using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3.Player.Items
 {
-    public class LeftBoomerang : ILinkItem
+    public class LeftBoomerang : ILinkItem, IBoomerang
     {
         private Link link;
         private int currentFrame;
@@ -39,6 +40,7 @@ namespace Sprint2_Attempt3.Player.Items
             if (currentFrame == 120)
             {
                 link.Items.Remove(this);
+                CollisionDetector.GameObjectList.Remove(this);
             }
 
             int speed;

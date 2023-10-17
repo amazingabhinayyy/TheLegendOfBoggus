@@ -27,7 +27,7 @@ namespace Sprint2_Attempt3
         private IBlock Block;
         private IDungeonRoom DungeonRoom;
 
-        public CollisionHandler collisionHandler
+        public CollisionDetector collisionDetector
         { get; private set; }
         public CollisionResponse collisionResponse { get; private set; }
         public IController keyController
@@ -101,10 +101,10 @@ namespace Sprint2_Attempt3
             enemy = new Keese(200, 200);
             enemy.Spawn();
             dungeonRoom = new DungeonRoom1();
-            link = new Link();
+            link = new Link(this);
             item = new Item();
             block = new Block();
-            collisionHandler = new CollisionHandler(link);
+            collisionDetector = new CollisionDetector(this);
             collisionResponse = new CollisionResponse(this); 
         }
 
@@ -128,7 +128,7 @@ namespace Sprint2_Attempt3
             // TODO: Add your update logic here
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-            collisionHandler.Update();
+            collisionDetector.Update();
             keyController.Update(gameTime);
             enemy.Update();
             link.Update();
