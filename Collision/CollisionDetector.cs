@@ -109,22 +109,27 @@ namespace Sprint2_Attempt3.Collision
             }
         }
 
-        public void CheckEnemyCollision(IEnemy enemy)
+        public void CheckEnemyCollision()
         {
-            Rectangle enemyRectangle = enemy.GetHitBox();
-            for (int c = 0; c < gameObjectList.Count; c++)
+            for (int i = 0; i < gameObjectList.Count; i++)
             {
-                Rectangle collisionRectangle = gameObjectList[c].GetHitBox();
-                if (collisionRectangle.Intersects(enemyRectangle))
-                {
-                    ICollision side = SideDetector(collisionRectangle, enemyRectangle);
-                    if (gameObjectList[c] is ILinkItem)
+                if (gameObjectList[i] is IEnemy) {
+                    Rectangle enemyRectangle = gameObjectList[i].GetHitBox();
+                    for (int c = 0; c < gameObjectList.Count; c++)
                     {
-                        EnemyItemCollisionHandler.HandleItemEnemyCollision(enemy, (ILinkItem)gameObjectList[c], side);
-                    }
-                    else if (gameObjectList[c] is IBlock)
-                    {
-                        //EnemyBlockCollisionHandler.CorrectPositioning();
+                        Rectangle collisionRectangle = gameObjectList[c].GetHitBox();
+                        if (collisionRectangle.Intersects(enemyRectangle))
+                        {
+                            ICollision side = SideDetector(collisionRectangle, enemyRectangle);
+                            if (gameObjectList[c] is ILinkItem)
+                            {
+                                EnemyItemCollisionHandler.HandleItemEnemyCollision((IEnemy)gameObjectList[i], (ILinkItem)gameObjectList[c], side);
+                            }
+                            else if (gameObjectList[c] is IBlock)
+                            {
+                                //EnemyBlockCollisionHandler.CorrectPositioning();
+                            }
+                        }
                     }
                 }
             }
@@ -132,7 +137,7 @@ namespace Sprint2_Attempt3.Collision
         public void Update()
         {
             CheckPlayerCollision(game.link);
-            CheckEnemyCollision(game.enemy);
+            CheckEnemyCollision();
 
             /*
              * want to use this for blocks. since we do not have a block thing going on it will not run if this is not commented.
