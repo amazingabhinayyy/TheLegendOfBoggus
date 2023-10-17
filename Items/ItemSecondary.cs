@@ -18,7 +18,6 @@ namespace Sprint2_Attempt3.Items
         protected int count;
         protected bool spawned;
         protected bool exists;
-
         public Rectangle position { get { return Position; } }
 
         public ItemSecondary() {
