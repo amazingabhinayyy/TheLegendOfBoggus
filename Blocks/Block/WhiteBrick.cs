@@ -12,6 +12,7 @@ namespace Sprint2_Attempt3.Blocks.BlockSprites
 {
     public class WhiteBrick : BlockSecondary
     {
+        public Rectangle position { get; set; }
         public WhiteBrick(Rectangle Position)
         {
             position = Position;

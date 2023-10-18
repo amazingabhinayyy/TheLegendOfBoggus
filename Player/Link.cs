@@ -54,15 +54,15 @@ namespace Sprint2_Attempt3.Player
             }
             else if (side is LeftCollision)
             {
-                State = new StopMovingLeftLinkState(this);
+                //State = new StopMovingLeftLinkState(this);
             }
             else if (side is RightCollision)
             {
-                State = new StopMovingRightLinkState(this);
+                //State = new StopMovingRightLinkState(this);
             }
             else
             {
-                State = new StopMovingUpLinkState(this);
+                //State = new StopMovingUpLinkState(this);
             }
         }
         public void BecomeIdle()

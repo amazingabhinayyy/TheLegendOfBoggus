@@ -12,6 +12,7 @@ namespace Sprint2_Attempt3.Blocks.BlockSprites
 {
     public class WhiteStair : BlockSecondary
     {
+        public Rectangle position { get; set; }
         public WhiteStair(Rectangle Position)
         {
             position = Position;

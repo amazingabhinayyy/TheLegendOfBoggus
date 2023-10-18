@@ -28,6 +28,10 @@ namespace Sprint2_Attempt3.Player
         {
             timer = 100;
         }
+        public void StopMoving(ICollision side)
+        {
+            timer = 100;
+        }
         public void MoveLeft()
         {
             decoratedLink.MoveLeft();

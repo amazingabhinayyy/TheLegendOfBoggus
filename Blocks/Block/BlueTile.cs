@@ -11,6 +11,7 @@ namespace Sprint2_Attempt3.Blocks.BlockSprites
 {
     public class BlueTile : BlockSecondary
     {
+        public Rectangle position { get; set; }
         public BlueTile(Rectangle Position)
         {
             position = Position;

@@ -12,6 +12,7 @@ namespace Sprint2_Attempt3.Blocks.BlockSprites
 {
     public class DiamondTile : BlockSecondary
     {
+        public Rectangle position { get; set; }
         public DiamondTile(Rectangle Position)
         {
             position = Position;

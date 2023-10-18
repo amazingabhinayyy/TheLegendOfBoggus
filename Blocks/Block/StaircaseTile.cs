@@ -11,6 +11,7 @@ namespace Sprint2_Attempt3.Blocks.BlockSprites
 {
     public class StaircaseTile : BlockSecondary
     {
+        public Rectangle position { get; set; }
         public StaircaseTile(Rectangle Position)
         {
             position = Position;

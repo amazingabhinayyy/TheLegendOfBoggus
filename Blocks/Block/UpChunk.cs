@@ -12,6 +12,7 @@ namespace Sprint2_Attempt3.Blocks.BlockSprites
 {
     public class UpChunk : BlockSecondary
     {
+        public Rectangle position { get; set; }
         public UpChunk(Rectangle Position)
         {
             position = Position;

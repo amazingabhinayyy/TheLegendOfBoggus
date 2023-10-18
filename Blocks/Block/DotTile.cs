@@ -12,6 +12,7 @@ namespace Sprint2_Attempt3.Blocks.BlockSprites
 {
     public class DotTile : BlockSecondary
     {
+        public Rectangle position { get; set; }
         public DotTile(Rectangle Position)
         {
             position = Position;
