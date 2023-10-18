@@ -82,6 +82,10 @@ namespace Sprint2_Attempt3.Items
         {
             ItemSprite.Collected();
         }
+        public void ItemSpawn()
+        {
+            ItemSprite.Spawn();
+        }
         public void Update()
         {
             ItemState.Update();

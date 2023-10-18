@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sprint2_Attempt3.Items;
+using Sprint2_Attempt3.Items.ItemStates;
 
 namespace Sprint2_Attempt3.Items.ItemClasses
 {
@@ -13,6 +15,8 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         private Texture2D texture;
         public int destx, desty;
         public Rectangle arrowSource;
+        private Item item;
+       // public IJustItemState itemState;
         public bool isCollected { get; private set; } = false;
         //bool firstUpdate = true;
         public ArrowItem(Texture2D arrowTexture, Vector2 Pos, Rectangle arrowSource)
@@ -34,7 +38,7 @@ namespace Sprint2_Attempt3.Items.ItemClasses
 
         public void Spawn()
         {
-            //Draw()
+            item.ItemState = new ArrowItemState(item);
         }
         public void Collected()
         {
