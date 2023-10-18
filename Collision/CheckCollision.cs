@@ -25,7 +25,7 @@ namespace Sprint2_Attempt3.Collision
         public static bool CheckEnemyWallCollision(Rectangle spriteObject, List<Rectangle> WallBlocks)
         {
             foreach (Rectangle wall in WallBlocks)
-                if (spriteObject.Intersects(wall))
+                if (spriteObject.Intersects(wall)) //intersection.isEmpty??
                 {
                     HandleCollision.HandleEnemyBlockCollision(spriteObject, wall);
                     return true;
@@ -36,7 +36,7 @@ namespace Sprint2_Attempt3.Collision
         public static bool CheckProjectileWallCollision(Rectangle spriteObject, List<Rectangle> WallBlocks)
         {
             foreach (Rectangle wall in WallBlocks)
-                if (spriteObject.Intersects(wall))
+                if (spriteObject.Intersects(wall)) // projectile.getType... boomerang special case
                 {
                     HandleCollision.HandleProjectileBlockCollision(spriteObject, wall);
                     return true;
@@ -46,6 +46,7 @@ namespace Sprint2_Attempt3.Collision
 
         public static bool CheckPlayerWallCollision(Rectangle spriteObject, ILink link)
         {
+            // get spriteObject hitbox + 
             foreach (Rectangle wall in Globals.WallBlocks)
                 if (spriteObject.Intersects(wall))
                 {
