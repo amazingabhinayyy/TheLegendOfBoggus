@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3.Player.Interfaces
 {
@@ -12,7 +13,7 @@ namespace Sprint2_Attempt3.Player.Interfaces
         public void MoveLeft();
         public void MoveRight();
         public void Attack();
-        public void GetDamaged();
+        public void GetDamaged(ICollision side);
         public void UseBomb();
         public void UseArrow();
         public void UseBoomerang();
@@ -22,5 +23,6 @@ namespace Sprint2_Attempt3.Player.Interfaces
         public void UseThrowingSword();
         public void Update();
         public void Draw(SpriteBatch spriteBatch, Color color);
+        
     }
 }

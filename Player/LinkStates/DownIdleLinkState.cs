@@ -10,7 +10,6 @@ namespace Sprint2_Attempt3.Player.LinkStates
         {
             this.link = link;
             link.Sprite = LinkSpriteFactory.Instance.CreateDownIdleLinkSprite();
-            link.AttackSprite = LinkSpriteFactory.Instance.CreateSwordPlaceholderSprite();
         }
         public void BecomeIdle()
         {

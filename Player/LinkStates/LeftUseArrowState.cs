@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
-using Sprint2_Attempt3.Player;
+using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Player.Interfaces;
+using Sprint2_Attempt3.Player;
 using Sprint2_Attempt3.Player.Items;
 
 namespace Sprint2_Attempt3.Player.LinkStates
@@ -18,7 +19,9 @@ namespace Sprint2_Attempt3.Player.LinkStates
         {
             this.link = link;
             link.Sprite = LinkSpriteFactory.Instance.CreateLeftItemLinkSprite(); ;
-            link.Items.Add(new LeftArrow(link));
+            LeftArrow arrow = new LeftArrow(link);
+            link.Items.Add(arrow);
+            CollisionDetector.GameObjectList.Add(arrow);
             frameCounter = 0;
         }
         public void BecomeIdle()

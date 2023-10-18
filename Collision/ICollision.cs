@@ -1,3 +1,4 @@
+using Sprint2_Attempt3.Player;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,6 @@ namespace Sprint2_Attempt3.Collision
 {
     public interface ICollision
     {
-        public void Update();
+        public void LinkEnemyKnockback(Link link);
     }
 }

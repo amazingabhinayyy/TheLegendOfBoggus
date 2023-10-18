@@ -7,10 +7,12 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Sprint2_Attempt3.Player.Interfaces;
+using Sprint2_Attempt3.Interfaces;
+
 
 namespace Sprint2_Attempt3.Player.LinkSprites
 {
-    public class UpAttackLinkSwordSprite : ILinkSprite
+    public class UpAttackLinkSwordSprite : ILinkItemSprite
     {
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;
@@ -31,7 +33,7 @@ namespace Sprint2_Attempt3.Player.LinkSprites
                 currentFrame = 0;
             }
         }
-        public void Draw(SpriteBatch spritebatch, Vector2 location, Color color)
+        public void Draw(SpriteBatch spritebatch, Vector2 location, Rectangle srcRec, SpriteEffects flip)
         {
             //+5 x, -12 y
             destinationRectangle = new Rectangle((int)location.X + 7, (int)location.Y - 15, 15, 15);

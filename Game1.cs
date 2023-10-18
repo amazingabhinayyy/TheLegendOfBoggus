@@ -10,9 +10,12 @@ using Sprint2_Attempt3.Player;
 using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Enemy.Projectile;
-using Sprint2_Attempt3.Blocks.BlockSprites;
-using Sprint2_Attempt3.Items.ItemClasses;
+using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Collision;
+using Sprint2_Attempt3.Blocks.BlockSprites;
+using Sprint2_Attempt3.Enemy.Keese;
+using Sprint2_Attempt3.Enemy.Stalfos;
+using Sprint2_Attempt3.Enemy.Aquamentus;
 
 namespace Sprint2_Attempt3
 {
@@ -21,8 +24,10 @@ namespace Sprint2_Attempt3
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         public IItem item;
+        private KeyboardController keyController { get; set; }
+        private CollisionHandler collisionHandler { get; set; }
         public ILink link { get; set; }
-        public IDungeonRoom dungeonRoom { get; set; }
+        public IEnemy enemy { get; set; }
         public IRoom room { get; set; }
 
         private IBlock[] blocks = { 
@@ -35,9 +40,9 @@ namespace Sprint2_Attempt3
             new BlackBlock(Globals.WestNorthCollisionBlock),
             new BlackBlock(Globals.WestSouthCollisionBlock)
         };
-        public ICollision collision 
+        public CollisionDetector collisionDetector
         { get; private set; }
-        public IController keyController {get; set;}
+        public CollisionResponse collisionResponse { get; private set; }
 
         private BlockCollisionClass blockCollision;
 
@@ -69,20 +74,21 @@ namespace Sprint2_Attempt3
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             keyController = new KeyboardController(this);
-            collision = new CollisionHandler();
+            collisionHandler = new CollisionHandler();
             EnemySpriteFactory.Instance.LoadAllTextures(this.Content);
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
             ItemSpriteFactory.Instance.LoadAllTextures(Content);
             BlockSpriteFactory.Instance.LoadAllTextures(Content);
             EnemyProjectileSpriteFactory.Instance.LoadAllTextures(Content);
             DungeonSpriteFactory.Instance.LoadAllTextures(Content);
+            RoomGenerator.Instance.LoadAllFiles(Content);
             keyController = new KeyboardController(this);
-            dungeonRoom = new DungeonRoom1();
-            item = new Heart(new Vector2(0, 0), true);
-            link = new Link();
-            room = new Room(this);
-
-            blockCollision = new BlockCollisionClass(this, link);
+            room = new Room1(this);
+            enemy = new Aquamentus(200, 200);
+            enemy.Spawn();
+            link = new Link(this);
+            collisionDetector = new CollisionDetector(this);
+            collisionResponse = new CollisionResponse(this); 
         }
 
         /// <summary>
@@ -105,16 +111,12 @@ namespace Sprint2_Attempt3
             // TODO: Add your update logic here
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-            collision.Update();
-
-            blockCollision.Update();
-
+            collisionDetector.Update();
             keyController.Update(gameTime);
             room.Update();
+            enemy.Update();
             base.Update(gameTime);
         }
-
-
 
         /// <summary>
         /// This is called when the game should draw itself.
@@ -126,6 +128,7 @@ namespace Sprint2_Attempt3
 
             spriteBatch.Begin();
             room.Draw(spriteBatch);
+            enemy.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }

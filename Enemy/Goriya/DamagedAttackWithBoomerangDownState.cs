@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Enemy.Projectile.GoriyaProjectiles;
+using System;
 
 namespace Sprint2_Attempt3.Enemy.Goriya
 {
@@ -14,7 +15,9 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         private int currentFrame;
         private int currentBoomerangFrame;
         private IEnemyProjectile boomerang;
-       
+        private Random random;
+        private int direction;
+
         public DamagedAttackWithBoomerangDownState(Goriya Goriya)
         {
             this.Goriya = Goriya;
@@ -22,9 +25,8 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             currentFrame = 0;
             currentBoomerangFrame = 0;
             sourceRectangle = Globals.GoriyaRedDown;
+            Goriya.Position = new Rectangle(Goriya.X, Goriya.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             boomerang = Goriya.Boomerang;
-         
-
         }
         public void ChangeDirection()
         {
@@ -54,6 +56,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
                 {
                     sourceRectangle = Globals.GoriyaBlueDown;
                 }
+                Goriya.Position = new Rectangle(Goriya.X, Goriya.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             }
             else
             {

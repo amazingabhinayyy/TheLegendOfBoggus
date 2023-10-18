@@ -1,9 +1,9 @@
 ﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Interfaces;
-using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Player.Items;
 using Sprint2_Attempt3.Player.LinkSprites;
+using Sprint2_Attempt3.Player.Interfaces;
 
 namespace Sprint2_Attempt3.Player
 {
@@ -83,27 +83,22 @@ namespace Sprint2_Attempt3.Player
         {
             return new UpMovingLinkSprite(linkTexture);
         }
-        public ILinkSprite CreateDownAttackLinkSwordSprite()
+        public ILinkItemSprite CreateDownAttackLinkSwordSprite()
         {
             return new DownAttackLinkSwordSprite(linkTexture);
         }
-        public ILinkSprite CreateUpAttackLinkSwordSprite()
+        public ILinkItemSprite CreateUpAttackLinkSwordSprite()
         {
             return new UpAttackLinkSwordSprite(linkTexture);
         }
-        public ILinkSprite CreateLeftAttackLinkSwordSprite()
+        public ILinkItemSprite CreateLeftAttackLinkSwordSprite()
         {
             return new LeftAttackLinkSwordSprite(linkTexture);
         }
-        public ILinkSprite CreateRightAttackLinkSwordSprite()
+        public ILinkItemSprite CreateRightAttackLinkSwordSprite()
         {
             return new RightAttackLinkSwordSprite(linkTexture);
         }
-        public ILinkSprite CreateSwordPlaceholderSprite()
-        {
-            return new SwordPlaceholderSprite(linkTexture);
-        }
-
         public ILinkSprite CreateDownItemLinkSprite()
         {
             return new DownUseItemLinkSprite(linkTexture);
@@ -143,6 +138,10 @@ namespace Sprint2_Attempt3.Player
         public ILinkItemSprite CreateFireItem()
         {
             return new FireSprite(linkTexture);
+        }
+        public ILinkItemSprite CreateArrowExplosion()
+        {
+            return new ArrowExplodeSprite(linkTexture);
         }
 
 
