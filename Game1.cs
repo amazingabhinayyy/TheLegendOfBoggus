@@ -40,6 +40,8 @@ namespace Sprint2_Attempt3
             new BlackBlock(Globals.WestNorthCollisionBlock),
             new BlackBlock(Globals.WestSouthCollisionBlock)
         };
+
+
         public CollisionDetector collisionDetector
         { get; private set; }
         public CollisionResponse collisionResponse { get; private set; }

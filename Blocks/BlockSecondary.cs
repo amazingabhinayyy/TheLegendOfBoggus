@@ -6,7 +6,10 @@ namespace Sprint2_Attempt3.Blocks
     public abstract class BlockSecondary : IBlock
     {
         public Rectangle position { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
         protected Rectangle sourceRectangle { get; set; }
+        public abstract Rectangle Position { get; set; }
 
         public BlockSecondary() { }
 

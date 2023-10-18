@@ -13,10 +13,11 @@ using System.Threading.Tasks;
 namespace Sprint2_Attempt3.Collision
 {
     internal class PlayerBlockHandler
-    {/*
-        public void HandlePlayerBlockCollision(ILink link, IBlock block, int direction)
+    {
+        public static void HandlePlayerBlockCollision(ILink link, IBlock block, ICollision side)
         {
-            Vector2 blockPosition = block.Position;
+
+            /*Vector2 blockPosition = block.Position;
             int height = block.Height;
             int width = block.Width;
             if (block is StaircaseTile)
@@ -29,13 +30,11 @@ namespace Sprint2_Attempt3.Collision
                 link.CorrectPositioning(block);
             }
             else
-            {
-                link.SetPosition(link.X, block.Y + link.Height);
-            }
-
-
+            {*/
+                link.StopMoving(side);
+            /*}*/
 
         }
-        */
+        
     }
 }

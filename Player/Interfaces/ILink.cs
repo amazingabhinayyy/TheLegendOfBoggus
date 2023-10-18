@@ -13,6 +13,7 @@ namespace Sprint2_Attempt3.Player.Interfaces
         public void MoveRight();
         public void Attack();
         public void GetDamaged(ICollision side);
+        public void StopMoving(ICollision side);
         public void UseBomb();
         public void UseArrow();
         public void UseBoomerang();

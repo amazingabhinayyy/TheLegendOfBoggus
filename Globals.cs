@@ -291,6 +291,8 @@ namespace Sprint2_Attempt3
         public static Rectangle DamagedEastDoor { get { return new Rectangle(947, 44, 31, 32); } }
         public static Rectangle DamagedWestDoor { get { return new Rectangle(947, 77, 31, 32); } }
 
+
+
         public static List<Rectangle> WallBlocks = new List<Rectangle>
         {
             NorthEastCollisionBlock, NorthWestCollisionBlock, SouthEastCollisionBlock,

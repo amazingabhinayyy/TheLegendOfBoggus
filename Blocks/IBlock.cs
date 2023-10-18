@@ -10,6 +10,9 @@ namespace Sprint2_Attempt3.Blocks
 {
     public interface IBlock : IGameObject
     {
+        public Rectangle Position { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
         public void Draw(SpriteBatch spriteBatch);
 
     }

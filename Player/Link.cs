@@ -44,6 +44,27 @@ namespace Sprint2_Attempt3.Player
             ICommand damage = new SetDamageLinkCommand(game);
             damage.Execute();
         }
+
+        public void StopMoving(ICollision side)
+        {
+            //State.GetDamaged();
+            if (side is BottomCollision)
+            {
+                State = new StopMovingDownLinkState(this);
+            }
+            else if (side is LeftCollision)
+            {
+                State = new StopMovingLeftLinkState(this);
+            }
+            else if (side is RightCollision)
+            {
+                State = new StopMovingRightLinkState(this);
+            }
+            else
+            {
+                State = new StopMovingUpLinkState(this);
+            }
+        }
         public void BecomeIdle()
         {
             State.BecomeIdle();
