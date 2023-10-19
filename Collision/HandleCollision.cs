@@ -23,6 +23,8 @@ namespace Sprint2_Attempt3.Collision
         }
         public static void HandleLinkBlockCollision(Rectangle spriteObject, Rectangle wall, Link link)
         {
+            Rectangle intersectRect = Rectangle.Intersect(spriteObject, wall);
+            int width = intersectRect.Width;
             ICollision side = CollisionDetector.SideDetector(spriteObject, wall);
             if (side is BottomCollision)
             {

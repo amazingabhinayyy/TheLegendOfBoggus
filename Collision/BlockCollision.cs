@@ -35,6 +35,7 @@ namespace Sprint2_Attempt3.Collision
             this.game1 = game1;
             this.link = (Link)game1.link;
             linkObject = this.game1.link.GetHitBox();
+            //linkPosition = this.game1.link.position;
            
         }
 
