@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
+using Sprint2_Attempt3.Enemy.Stalfos;
+using System;
 
 namespace Sprint2_Attempt3.Enemy.Rope
 {
@@ -10,16 +12,33 @@ namespace Sprint2_Attempt3.Enemy.Rope
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
         private int currentFrame;
+        private Random random;
+        private int direction;
         public MovingDownRopeState(Rope rope)
         {
             this.rope = rope;
             sprite = EnemySpriteFactory.Instance.CreateRopeSprite();
             sourceRectangle = Globals.RopeSprite1;
+            rope.Position = new Rectangle(rope.X, rope.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             currentFrame = 0;
+            random = new Random();
+            direction = random.Next(0, 2);
         }
         public void ChangeDirection()
         {
-            rope.State = new MovingLeftRopeState(rope);
+            direction = random.Next(0, 2);
+            switch (direction)
+            {
+                case 0:
+                    rope.State = new MovingLeftRopeState(rope);
+                    break;
+                case 1:
+                    rope.State = new MovingUpRopeState(rope);
+                    break;
+                case 2:
+                    rope.State = new MovingRightRopeState(rope);
+                    break;
+            }
         }
         public void ChangeAttackedStatus() {
             rope.State = new DeathAnimationState(rope);
@@ -40,6 +59,7 @@ namespace Sprint2_Attempt3.Enemy.Rope
 
                 }
                 rope.Y += 1;
+                rope.Position = new Rectangle(rope.X, rope.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             }
             else
             {

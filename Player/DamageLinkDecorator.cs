@@ -7,6 +7,7 @@ using System.Runtime.Intrinsics.Arm;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint2_Attempt3.Player.Interfaces;
+using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3.Player
 {
@@ -24,11 +25,7 @@ namespace Sprint2_Attempt3.Player
             game.link = this;
         }
 
-        public Rectangle GetHitBox()
-        {
-            return new Rectangle(0, 0, 0, 0);
-        }
-        public void GetDamaged()
+        public void GetDamaged(ICollision side)
         {
             timer = 100;
         }
@@ -105,6 +102,10 @@ namespace Sprint2_Attempt3.Player
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             decoratedLink.Draw(spriteBatch, Color.Red);
+        }
+        public Rectangle GetHitBox()
+        {
+            return decoratedLink.GetHitBox();
         }
 
     }

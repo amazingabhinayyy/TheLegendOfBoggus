@@ -1,3 +1,5 @@
+﻿using Sprint2_Attempt3.Collision;
+using Sprint2_Attempt3.Player.Items;
 ﻿using Sprint2_Attempt3.Player.Interfaces;
 
 namespace Sprint2_Attempt3.Player.LinkStates
@@ -10,13 +12,13 @@ namespace Sprint2_Attempt3.Player.LinkStates
         {
             this.link = link;
             link.Sprite = LinkSpriteFactory.Instance.CreateDownAttackLinkSprite();
-            link.AttackSprite = LinkSpriteFactory.Instance.CreateDownAttackLinkSwordSprite();
+            DownSword sword = new DownSword(link);
+            link.Items.Add(sword);
+            CollisionDetector.GameObjectList.Add(sword);
         }
         public void FinishAttack()
         {
             link.State = new DownIdleLinkState(link);
-            link.AttackSprite = LinkSpriteFactory.Instance.CreateSwordPlaceholderSprite();
-
         }
         public void BecomeIdle()
         {

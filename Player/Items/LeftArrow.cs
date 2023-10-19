@@ -6,10 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint2_Attempt3.Interfaces;
+using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3.Player.Items
 {
-    public class LeftArrow : ILinkItem
+    public class LeftArrow : ILinkItem, IArrow
     {
         private Link link;
         private int currentFrame;
@@ -17,6 +18,8 @@ namespace Sprint2_Attempt3.Player.Items
         private Vector2 itemPosition;
         private SpriteEffects flip;
         private Rectangle sourceRectangle;
+        private const int HitBoxWidth = 45;
+        private const int HitBoxHeight = 15;
         public LeftArrow(Link link)
         {
             this.link = link;
@@ -25,22 +28,23 @@ namespace Sprint2_Attempt3.Player.Items
             SetPosition();
         }
 
-        public Rectangle GetHitBox()
-        {
-            return new Rectangle(0, 0, 0, 0);
-        }
         public void SetPosition()
         {
             itemPosition = new Vector2((int)link.position.X - 45, (int)link.position.Y + 15);
             flip = SpriteEffects.FlipHorizontally;
             sourceRectangle = new Rectangle(10, 190, 15, 5);                   
         }
+        public void RemoveItem()
+        {
+            link.Items.Remove(this);
+            CollisionDetector.GameObjectList.Remove(this);
+        }
 
         public void Update()
         {
             if (currentFrame == 60)
             {
-                link.Items.Remove(this);
+                RemoveItem();
             }
             sprite.Update();
             currentFrame++;
@@ -50,6 +54,10 @@ namespace Sprint2_Attempt3.Player.Items
         public void Draw(SpriteBatch spriteBatch)
         {
             sprite.Draw(spriteBatch, itemPosition, sourceRectangle, flip);
+        }
+        public Rectangle GetHitBox()
+        {
+            return new Rectangle((int)itemPosition.X, (int)itemPosition.Y, HitBoxWidth, HitBoxHeight);
         }
 
     }

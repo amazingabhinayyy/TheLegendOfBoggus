@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sprint2_Attempt3.Dungeon.Rooms
 {
-    public interface IDungeonRoom : IGameObject
+    public interface IDungeonRoom
     {
         public void Draw(SpriteBatch spriteBatch);
 

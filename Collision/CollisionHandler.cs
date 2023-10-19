@@ -7,7 +7,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Enemy;
-using Sprint2_Attempt3.Interfaces;
+using Sprint2_Attempt3.Player;
+using Sprint2_Attempt3.Player.Interfaces;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -22,7 +23,7 @@ namespace Sprint2_Attempt3.Collision
         private Vector2 linkBlueBoomerang;
         public Vector2 LinkPosition { get; private set; }
         private List<IGameObject> gameObjectList = new List<IGameObject>();
-        private List<IGameObject> copyGameObjectList = new List<IGameObject>();
+        private List<IGameObject> copysGameObjectList = new List<IGameObject>();
         public List<IGameObject> GameObjectList { get; set; }
         public CollisionHandler()
         {
@@ -30,7 +31,7 @@ namespace Sprint2_Attempt3.Collision
         }
         /*public void PlayerCollision(ILink link)
         {
-            Rectangle linkRectangle = link.GetHitBox();
+            /*Rectangle linkRectangle = link.GetHitBox();
             foreach (IGameObject obj in gameObjectList){
                 Rectangle collisionRectangle = obj.GetHitBox();
                 if (collisionRectangle.Intersects(linkRectangle))
@@ -90,6 +91,11 @@ namespace Sprint2_Attempt3.Collision
 
 
 
+        }
+
+        public void LinkEnemyKnockback(Link link)
+        {
+            throw new NotImplementedException();
         }
     }
 
