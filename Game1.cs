@@ -1,8 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Sprint2_Attempt3.Dungeon.Rooms.DungeonRooms;
-using Sprint2_Attempt3.Dungeon.Rooms;
 using Sprint2_Attempt3.Dungeon;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Enemy;
@@ -10,12 +8,12 @@ using Sprint2_Attempt3.Player;
 using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Enemy.Projectile;
-using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Blocks.BlockSprites;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Enemy.Stalfos;
 using Sprint2_Attempt3.Enemy.Aquamentus;
+using Sprint2_Attempt3.Items.ItemClasses;
 
 namespace Sprint2_Attempt3
 {
@@ -27,7 +25,6 @@ namespace Sprint2_Attempt3
         private KeyboardController keyController { get; set; }
         private CollisionHandler collisionHandler { get; set; }
         public ILink link { get; set; }
-        public IEnemy enemy { get; set; }
         public IRoom room { get; set; }
 
         private IBlock[] blocks = { 
@@ -81,12 +78,11 @@ namespace Sprint2_Attempt3
             BlockSpriteFactory.Instance.LoadAllTextures(Content);
             EnemyProjectileSpriteFactory.Instance.LoadAllTextures(Content);
             DungeonSpriteFactory.Instance.LoadAllTextures(Content);
-            RoomGenerator.Instance.LoadAllFiles(Content);
+            RoomGenerator.Instance.LoadAllFiles();
             keyController = new KeyboardController(this);
             room = new Room1(this);
-            enemy = new Aquamentus(200, 200);
-            enemy.Spawn();
             link = new Link(this);
+            item = new HeartContainer(new Vector2(604,216), true);
             collisionDetector = new CollisionDetector(this);
             collisionResponse = new CollisionResponse(this); 
         }
@@ -114,7 +110,7 @@ namespace Sprint2_Attempt3
             collisionDetector.Update();
             keyController.Update(gameTime);
             room.Update();
-            enemy.Update();
+            item.Update();
             base.Update(gameTime);
         }
 
@@ -128,7 +124,7 @@ namespace Sprint2_Attempt3
 
             spriteBatch.Begin();
             room.Draw(spriteBatch);
-            enemy.Draw(spriteBatch);
+            item.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }

@@ -5,10 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint2_Attempt3.Dungeon.Rooms
+namespace Sprint2_Attempt3.Dungeon.Doors
 {
-    public interface IDoorSprite
+    public interface IDoor : IGameObject
     {
+        public void Open();
+        public void Close();
+        public void DiamondLock();
+        public void Damage();
         public void Draw(SpriteBatch spriteBatch);
     }
 }

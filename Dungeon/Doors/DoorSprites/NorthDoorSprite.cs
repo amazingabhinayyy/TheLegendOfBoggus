@@ -1,22 +1,21 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint2_Attempt3.Dungeon.Rooms;
 
-namespace Sprint2_Attempt3.Dungeon.Rooms.DoorSprites
+namespace Sprint2_Attempt3.Dungeon.Doors.DoorSprites
 {
-    internal class DiamondLockedEastDoorSprite : IDoorSprite
+    internal class NorthDoorSprite : IDoorSprite
     {
         private Texture2D texture;
-        public DiamondLockedEastDoorSprite(Texture2D texture)
+        public NorthDoorSprite(Texture2D texture)
         {
             this.texture = texture;
         }
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Rectangle sourceRectangle)
         {
             spriteBatch.Draw(
                 texture,
-                Globals.EastDoorPosition,
-                Globals.DiamondLockedEastDoor,
+                Globals.NorthDoorPosition,
+                sourceRectangle,
                 Color.White,
                 0f,
                 new Vector2(0, 0),
