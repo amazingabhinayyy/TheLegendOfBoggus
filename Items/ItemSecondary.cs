@@ -1,12 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint2_Attempt3.Item;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Sprint2_Attempt3.Items
 {
@@ -16,14 +9,21 @@ namespace Sprint2_Attempt3.Items
         protected Rectangle Position;
         protected Rectangle sourceRectangle;
         protected int count;
-        protected bool spawned;
-        protected bool exists;
+        public bool spawned { get; set; }
+        public bool exists { get; set; }
         public Rectangle position { get { return Position; } }
 
         public ItemSecondary() {
             count = 25;
         }
         public void Spawn() {
+            sprite = ItemSpriteFactory.Instance.CreateSpawnItemSprite();
+            exists = true;
+        }
+        public void Spawn(Rectangle position)
+        {
+            Position.X = position.X;
+            Position.Y = position.Y;
             sprite = ItemSpriteFactory.Instance.CreateSpawnItemSprite();
             exists = true;
         }

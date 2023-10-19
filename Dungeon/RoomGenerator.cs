@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Blocks.BlockSprites;
+using Sprint2_Attempt3.Dungeon.Doors;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Aquamentus;
 using Sprint2_Attempt3.Enemy.Dodongo;
@@ -26,7 +27,7 @@ namespace Sprint2_Attempt3.Dungeon
     {
 
         private static RoomGenerator instance = new RoomGenerator();
-        private static FileStream[] fileStreams = new FileStream[18];
+        private static String[] fileNames = new String[18];
 
         public static RoomGenerator Instance
         {
@@ -38,10 +39,10 @@ namespace Sprint2_Attempt3.Dungeon
         public RoomGenerator()
         {
         }
-        public void LoadAllFiles(ContentManager content) {
-            for (int i = 0; i < fileStreams.Length; i++)
+        public void LoadAllFiles() {
+            for (int i = 0; i < fileNames.Length; i++)
             {
-                //fileStreams[i] = content.Load<FileStream>("Room" + (i + 1) + ".csv");
+                fileNames[i] = "Content/RoomFiles/Room" + (i + 1) + ".csv";
             }
 
         }
@@ -49,7 +50,7 @@ namespace Sprint2_Attempt3.Dungeon
         public List<IGameObject> LoadFile(int fileNumber) {
             List<IGameObject> objectList = new List<IGameObject>();
 
-            StreamReader sr = new StreamReader(fileStreams[fileNumber]);
+            StreamReader sr = new StreamReader(fileNames[fileNumber]);
             while (!sr.EndOfStream) { 
                 var line = sr.ReadLine();
                 if (line != null)
@@ -65,6 +66,12 @@ namespace Sprint2_Attempt3.Dungeon
                     else if (words[0].Equals("Item"))
                     {
                         objectList.Add(GetItem(words[1], new Vector2(int.Parse(words[2]), int.Parse(words[3])), bool.Parse(words[4])));
+                    }
+                    else if (words[0].Equals("Door"))
+                    {
+                        int state = int.Parse(words[2]);
+                        if (state != 5)
+                            objectList.Add(GetDoor(words[1], state));
                     }
 
                 }
@@ -157,6 +164,10 @@ namespace Sprint2_Attempt3.Dungeon
             {
                 block = new WhiteStair(Globals.FloorGrid[position]);
             }
+            else if (Block.Equals("DiamondTile"))
+            {
+                block = new DiamondTile(Globals.FloorGrid[position]);
+            }
             return block;
         }
 
@@ -224,6 +235,27 @@ namespace Sprint2_Attempt3.Dungeon
                 item = new TriforcePiece(position, spawned);
             }
             return item;
+        }
+
+        private IDoor GetDoor(String Door, int state) {
+            IDoor door = null;
+            if (Door.Equals("North"))
+            {
+                door = new NorthDoor(state);
+            }
+            else if (Door.Equals("South"))
+            {
+                door = new SouthDoor(state);
+            }
+            else if (Door.Equals("East"))
+            {
+                door = new EastDoor(state);
+            }
+            else if (Door.Equals("West"))
+            {
+                door = new WestDoor(state);
+            }
+            return door;
         }
     }
 }
