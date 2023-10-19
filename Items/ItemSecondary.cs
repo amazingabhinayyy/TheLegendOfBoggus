@@ -1,12 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint2_Attempt3.Item;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Sprint2_Attempt3.Items
 {
@@ -27,10 +20,10 @@ namespace Sprint2_Attempt3.Items
             sprite = ItemSpriteFactory.Instance.CreateSpawnItemSprite();
             exists = true;
         }
-        public void Spawn(int x, int y)
+        public void Spawn(Rectangle position)
         {
-            Position.X = x; 
-            Position.Y = y;
+            Position.X = position.X;
+            Position.Y = position.Y;
             sprite = ItemSpriteFactory.Instance.CreateSpawnItemSprite();
             exists = true;
         }

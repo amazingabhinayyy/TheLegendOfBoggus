@@ -50,7 +50,7 @@ namespace Sprint2_Attempt3.Dungeon
         public List<IGameObject> LoadFile(int fileNumber) {
             List<IGameObject> objectList = new List<IGameObject>();
 
-            StreamReader sr = new StreamReader("Content/Room15.csv");
+            StreamReader sr = new StreamReader(fileNames[fileNumber]);
             while (!sr.EndOfStream) { 
                 var line = sr.ReadLine();
                 if (line != null)
@@ -67,7 +67,7 @@ namespace Sprint2_Attempt3.Dungeon
                     {
                         objectList.Add(GetItem(words[1], new Vector2(int.Parse(words[2]), int.Parse(words[3])), bool.Parse(words[4])));
                     }
-                    else if (words[0].Equals("Doors"))
+                    else if (words[0].Equals("Door"))
                     {
                         int state = int.Parse(words[2]);
                         if (state != 5)

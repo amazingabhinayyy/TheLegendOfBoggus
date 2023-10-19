@@ -11,7 +11,8 @@ namespace Sprint2_Attempt3.Dungeon
 {
     public abstract class RoomSecondary : IRoom
     {
-        protected static List<IGameObject> gameObjects;
+        protected static List<IGameObject>[] gameObjectLists = { null };
+        protected static int roomNumber;
         protected DungeonRoom room;
         protected Game1 game1;
 
@@ -21,12 +22,9 @@ namespace Sprint2_Attempt3.Dungeon
         public void Update() {
             //collision handling goes here
 
-            foreach (IGameObject obj in gameObjects)
+            foreach (IGameObject obj in gameObjectLists[roomNumber])
             {
-                if (obj is IEnemy)
-                    ((IEnemy)obj).Update();
-                else if (obj is IItem)
-                    ((IItem)obj).Update();
+                obj.Update();
             }
 
             game1.link.Update();
@@ -35,7 +33,7 @@ namespace Sprint2_Attempt3.Dungeon
         public void Draw(SpriteBatch spriteBatch) {
             room.Draw(spriteBatch);
             
-            foreach (IGameObject obj in gameObjects)
+            foreach (IGameObject obj in gameObjectLists[roomNumber])
             {
                 if(obj is IEnemy)
                     ((IEnemy)obj).Draw(spriteBatch);

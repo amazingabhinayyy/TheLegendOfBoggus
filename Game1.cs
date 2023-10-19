@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Sprint2_Attempt3.Dungeon;
+using Sprint2_Attempt3.Dungeon.Rooms;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Player;
@@ -10,10 +10,8 @@ using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Blocks.BlockSprites;
-using Sprint2_Attempt3.Enemy.Keese;
-using Sprint2_Attempt3.Enemy.Stalfos;
-using Sprint2_Attempt3.Enemy.Aquamentus;
 using Sprint2_Attempt3.Items.ItemClasses;
+using Sprint2_Attempt3.Dungeon;
 
 namespace Sprint2_Attempt3
 {
@@ -82,7 +80,7 @@ namespace Sprint2_Attempt3
             keyController = new KeyboardController(this);
             room = new Room1(this);
             link = new Link(this);
-            item = new HeartContainer(new Vector2(604,216), true);
+            item = new Key(new Vector2(512,347), true);
             collisionDetector = new CollisionDetector(this);
             collisionResponse = new CollisionResponse(this); 
         }
@@ -124,7 +122,7 @@ namespace Sprint2_Attempt3
 
             spriteBatch.Begin();
             room.Draw(spriteBatch);
-            item.Draw(spriteBatch);
+            //item.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }

@@ -24,6 +24,7 @@ namespace Sprint2_Attempt3.Dungeon.Doors
                 { 3, () => { Damage(); } }
             };
         }
+        public void Update() { }
         public void Close()
         {
             sourceRectangle.X = 292;
