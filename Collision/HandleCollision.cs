@@ -23,16 +23,19 @@ namespace Sprint2_Attempt3.Collision
         }
         public static void HandleLinkBlockCollision(Rectangle spriteObject, Rectangle wall, Link link)
         {
+            Rectangle intersectRect = Rectangle.Intersect(spriteObject, wall);
+            int width = intersectRect.Width;
             ICollision side = CollisionDetector.SideDetector(spriteObject, wall);
             if (side is BottomCollision)
             {
                 link.BecomeIdle();
-                link.position.Y = wall.Top;
+                link.position.Y = wall.Bottom;
             }
             else if (side is LeftCollision)
             {
                 link.BecomeIdle();
-                link.position.X = wall.Left;
+                link.position.X = (wall.Left - 50);
+                //link.position.X = (wall.Left - width);
             }
             else if (side is RightCollision)
             {
@@ -42,7 +45,8 @@ namespace Sprint2_Attempt3.Collision
             else
             {
                 link.BecomeIdle();
-                link.position.Y = wall.Bottom;
+                link.position.Y = (wall.Top - 50);
+                //link.position.Y = wall.Top - intersectRect.Height;
             }
             /*
             // Determine the direction of the collision (e.g., from which side the collision occurs)
