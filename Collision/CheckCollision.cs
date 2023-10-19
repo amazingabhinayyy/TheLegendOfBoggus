@@ -44,13 +44,14 @@ namespace Sprint2_Attempt3.Collision
             return false;
         }
 
-        public static bool CheckPlayerWallCollision(Rectangle spriteObject, ILink link)
+        public static bool CheckPlayerWallCollision(Rectangle spriteObject, Link link)
         {
             // get spriteObject hitbox + 
             foreach (Rectangle wall in Globals.WallBlocks)
                 if (spriteObject.Intersects(wall))
                 {
-                    link.BecomeIdle();
+                    //link.BecomeIdle();
+                    HandleCollision.HandleLinkBlockCollision(spriteObject, wall, link);
                     return true;
                 }
             return false;

@@ -75,7 +75,7 @@ namespace Sprint2_Attempt3.Collision
                 }
             }
         }
-        public ICollision SideDetector(Rectangle affectedSprite, Rectangle nonAffectedSprite)
+        public static ICollision SideDetector(Rectangle affectedSprite, Rectangle nonAffectedSprite)
         {
             Rectangle intersect = Rectangle.Intersect(affectedSprite, nonAffectedSprite);
             if (intersect.Width > intersect.Height)

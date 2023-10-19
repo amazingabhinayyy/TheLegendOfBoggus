@@ -26,19 +26,19 @@ namespace Sprint2_Attempt3.Collision
         public List<Rectangle> wallBlocks;
         public Rectangle linkObject;
         public Rectangle enemyObject;
-        private ILink link;
+        private Link link;
         private Game1 game1;
         public BlockCollisionClass(Game1 game1)
         {
             wallBlocks = Globals.WallBlocks;
             //spriteObject = new Rectangle(0, 0, 0, 0);
-            this.link = game1.link;
             this.game1 = game1;
+            this.link = (Link)game1.link;
             linkObject = this.game1.link.GetHitBox();
            
         }
 
-        public BlockCollisionClass(Game1 game1, ILink link1)
+        public BlockCollisionClass(Game1 game1, Link link1)
         {
             this.game1 = game1;
             Link = link1;
@@ -65,7 +65,7 @@ namespace Sprint2_Attempt3.Collision
 
             linkObject = this.game1.link.GetHitBox();
             //System.Diagnostics.Debug.WriteLine((int)linkObject.X);
-            collided = CheckCollision.CheckPlayerWallCollision(linkObject, game1.link);
+            collided = CheckCollision.CheckPlayerWallCollision(linkObject, link);
             /*if (!collided)
             {
                 System.Diagnostics.Debug.WriteLine(collided);
