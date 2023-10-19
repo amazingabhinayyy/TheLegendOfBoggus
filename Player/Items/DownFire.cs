@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint2_Attempt3.Interfaces;
+using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3.Player.Items
 {
@@ -17,6 +18,8 @@ namespace Sprint2_Attempt3.Player.Items
         private Vector2 itemPosition;
         private SpriteEffects flip;
         private Rectangle sourceRectangle;
+        private const int HitBoxWidth = 45;
+        private const int HitBoxHeight = 45;
         public DownFire(Link link)
         {
             this.link = link;
@@ -25,10 +28,6 @@ namespace Sprint2_Attempt3.Player.Items
             SetPosition();
         }
 
-        public Rectangle GetHitBox()
-        {
-            return new Rectangle(0, 0, 0, 0);
-        }
         public void SetPosition()
         {
             itemPosition = new Vector2((int)link.position.X, (int)link.position.Y + 45);
@@ -41,6 +40,7 @@ namespace Sprint2_Attempt3.Player.Items
             if (currentFrame == 60)
             {
                 link.Items.Remove(this);
+                CollisionDetector.GameObjectList.Remove(this);
             }
             sprite.Update();
             currentFrame++;
@@ -55,5 +55,9 @@ namespace Sprint2_Attempt3.Player.Items
             sprite.Draw(spriteBatch, itemPosition, sourceRectangle, flip);
         }
 
+        public Rectangle GetHitBox()
+        {
+            return new Rectangle((int)itemPosition.X, (int)itemPosition.Y, HitBoxWidth, HitBoxHeight);
+        }
     }
 }

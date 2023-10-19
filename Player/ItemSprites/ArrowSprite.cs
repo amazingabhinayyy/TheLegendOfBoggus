@@ -27,16 +27,7 @@ namespace Sprint2_Attempt3.Player.Items
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Rectangle srcRec, SpriteEffects flip)
         {
-            
-            if (currentFrame < 55)
-            {
-                destinationRectangle = new Rectangle((int)location.X, (int)location.Y, srcRec.Width * 3, srcRec.Height * 3);
-            }
-            else
-            {
-                srcRec = new Rectangle(53, 185, 7, 15);
-                destinationRectangle = new Rectangle((int)location.X, (int)location.Y, srcRec.Height * 3, srcRec.Height * 3);
-            }
+            destinationRectangle = new Rectangle((int)location.X, (int)location.Y, srcRec.Width * 3, srcRec.Height * 3);
             spriteBatch.Draw(texture, destinationRectangle, srcRec, Color.White, 0, new Vector2(0), flip, 0);
         }
     }

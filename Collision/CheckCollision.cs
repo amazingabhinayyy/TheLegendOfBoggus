@@ -8,19 +8,24 @@ using Microsoft.Xna.Framework.Audio;
 using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Collision;
+using Sprint2_Attempt3.Player;
+using Sprint2_Attempt3.Player.Interfaces;
 
 namespace Sprint2_Attempt3.Collision
 {
     internal class CheckCollision
     {
-        public CheckCollision()
+        public List<Rectangle> wallBlocks;
+        
+        public CheckCollision(Link link)
         {
-
+            wallBlocks = Globals.WallBlocks;
+            
         }
         public static bool CheckEnemyWallCollision(Rectangle spriteObject, List<Rectangle> WallBlocks)
         {
             foreach (Rectangle wall in WallBlocks)
-                if (spriteObject.Intersects(wall))
+                if (spriteObject.Intersects(wall)) //intersection.isEmpty??
                 {
                     HandleCollision.HandleEnemyBlockCollision(spriteObject, wall);
                     return true;
@@ -31,7 +36,7 @@ namespace Sprint2_Attempt3.Collision
         public static bool CheckProjectileWallCollision(Rectangle spriteObject, List<Rectangle> WallBlocks)
         {
             foreach (Rectangle wall in WallBlocks)
-                if (spriteObject.Intersects(wall))
+                if (spriteObject.Intersects(wall)) // projectile.getType... boomerang special case
                 {
                     HandleCollision.HandleProjectileBlockCollision(spriteObject, wall);
                     return true;
@@ -39,13 +44,14 @@ namespace Sprint2_Attempt3.Collision
             return false;
         }
 
-        public static bool CheckPlayerWallCollision(Rectangle spriteObject, List<Rectangle> WallBlocks)
+        public static bool CheckPlayerWallCollision(Rectangle spriteObject, Link link)
         {
-            foreach (Rectangle wall in WallBlocks)
+            // get spriteObject hitbox + 
+            foreach (Rectangle wall in Globals.WallBlocks)
                 if (spriteObject.Intersects(wall))
                 {
-                    //System.Diagnostics.Debug.WriteLine((int)spriteObject.X);
-                    HandleCollision.HandleLinkBlockCollision(spriteObject, wall);
+                    //link.BecomeIdle();
+                    HandleCollision.HandleLinkBlockCollision(spriteObject, wall, link);
                     return true;
                 }
             return false;

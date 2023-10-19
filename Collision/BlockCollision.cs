@@ -11,6 +11,7 @@ using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Player;
 using Sprint2_Attempt3.Interfaces;
 using System.ComponentModel;
+using Sprint2_Attempt3.Player.Interfaces;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -18,23 +19,32 @@ namespace Sprint2_Attempt3.Collision
     {
         private Vector2 linkPosition;
         public Vector2 LinkPosition { get; private set; }
+        public ILink Link { get; }
+
         public bool collided;
         public Rectangle projectileObject;
         public List<Rectangle> wallBlocks;
         public Rectangle linkObject;
         public Rectangle enemyObject;
-        //private Link link;
+        private Link link;
         private Game1 game1;
         public BlockCollisionClass(Game1 game1)
         {
             wallBlocks = Globals.WallBlocks;
             //spriteObject = new Rectangle(0, 0, 0, 0);
-            //this.link = link;
             this.game1 = game1;
+            this.link = (Link)game1.link;
             linkObject = this.game1.link.GetHitBox();
             //linkPosition = this.game1.link.position;
            
         }
+
+        public BlockCollisionClass(Game1 game1, Link link1)
+        {
+            this.game1 = game1;
+            Link = link1;
+        }
+
         public void Update()
         {
 
@@ -55,13 +65,18 @@ namespace Sprint2_Attempt3.Collision
             */
 
             linkObject = this.game1.link.GetHitBox();
-            System.Diagnostics.Debug.WriteLine((int)linkObject.X);
-            collided = CheckCollision.CheckPlayerWallCollision(linkObject, wallBlocks);
+            //System.Diagnostics.Debug.WriteLine((int)linkObject.X);
+            collided = CheckCollision.CheckPlayerWallCollision(linkObject, link);
             /*if (!collided)
             {
                 System.Diagnostics.Debug.WriteLine(collided);
             }*/
             
+        }
+
+        public void LinkEnemyKnockback(Link link)
+        {
+            throw new NotImplementedException();
         }
     }
 

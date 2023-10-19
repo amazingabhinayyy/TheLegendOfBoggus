@@ -4,71 +4,21 @@ using Sprint2_Attempt3.Enemy.Keese;
 
 namespace Sprint2_Attempt3.Enemy.Dodongo
 {
-    internal class Dodongo : IEnemy
+    internal class Dodongo : EnemySecondary
     {
-        private IEnemyState state;
-        private int count;
-        private int positionX;
-        private int positionY;
-
-        public Rectangle GetHitBox()
-        {
-            return new Rectangle(0, 0, 0, 0);
-        }
-        public int X
-        {
-            get { return positionX; }
-            set { positionX = value; }
-        }
-
-        public int Y
-        {
-            get { return positionY; }
-            set { positionY = value; }
-        }
-        public IEnemyState State
-        {
-            get { return state; }
-            set { state = value; }
-        }
-        public void Generate() { 
-            state = new MovingLeftDodongoState(this);
-        }
         public Dodongo(int x, int y)
         {
-            count = 0;
-
-            this.positionX = x;
-            this.positionY = y;
+            this.X = x;
+            this.Y = y;
         }
-        public void Spawn()
+        public override void Generate()
         {
-            state = new SpawnAnimationState(this);
+            State = new MovingLeftDodongoState(this);
         }
-        public void Kill()
+        public Rectangle GetHitBox()
         {
-            state = new DeathAnimationState(this);
-        }
-        public void ChangeDirection()
-        {
-            state.ChangeDirection();
-        }
-        public void ChangeAttackedStatus()
-        {
-            state.ChangeAttackedStatus();
-        }
-        public void Update()
-        {
-            count++;
-            if (count % 100 == 0)
-            {
-                state.ChangeDirection();
-            }
-            state.Update();
-        }
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            state.Draw(spriteBatch);
+            //To-Do fill in what hit box should be instead of 0s
+            return new Rectangle(0, 0, 0, 0);
         }
     }
 }

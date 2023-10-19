@@ -291,18 +291,6 @@ namespace Sprint2_Attempt3
         public static Rectangle DamagedEastDoor { get { return new Rectangle(947, 44, 31, 32); } }
         public static Rectangle DamagedWestDoor { get { return new Rectangle(947, 77, 31, 32); } }
 
-        //Blocks
-        /*
-        * public static Rectangle WallTopLeft { get { return new Rectangle(0, 0, 348, 87); } }
-        public static Rectangle WallTopRight { get { return new Rectangle(453, 0, 348, 87); } }
-        public static Rectangle SideUpperLeft { get { return new Rectangle(0, 87, 98, 110); } }
-        public static Rectangle SideUpperRight { get { return new Rectangle(703, 87, 98, 110); } }
-        public static Rectangle WallBottomLeft { get { return new Rectangle(0, 397, 348, 87); } }
-        public static Rectangle WallBottomRight { get { return new Rectangle(453, 397, 348, 87); } }
-        public static Rectangle SideBottomLeft { get { return new Rectangle(0, 287, 98, 110); } }
-        public static Rectangle SideBottomRight { get { return new Rectangle(703, 287, 98, 110); } }
-        */
-
         public static List<Rectangle> WallBlocks = new List<Rectangle>
         {
             NorthEastCollisionBlock, NorthWestCollisionBlock, SouthEastCollisionBlock,
@@ -326,7 +314,7 @@ namespace Sprint2_Attempt3
             //SideBottomRight
             new Rectangle(703, 287, 98, 110)
             */
-    };
+        };
     }
 
 }

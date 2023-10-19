@@ -1,30 +1,48 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint2_Attempt3.Player.Interfaces;
+using Sprint2_Attempt3.Interfaces;
 using Sprint2_Attempt3.Player.LinkStates;
 using System.Collections.Generic;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Interfaces;
-using System;
+using Sprint2_Attempt3.CommandClasses;
+using Sprint2_Attempt3.Player.Interfaces;
+using Sprint2_Attempt3.Collision.SideCollisionHandlers;
 
 namespace Sprint2_Attempt3.Player
 {
     public class Link : ILink
     {
         public Vector2 position;
-        public ILinkSprite AttackSprite { get; set; }
         public ILinkSprite Sprite { get; set; }
         public ILinkState State { get; set; }
         public List<ILinkItem> Items { get; set; }
-        private Rectangle collisionRectangle;
-        public Link()
+        private Game1 game;
+        public Link(Game1 game)
         {
+            this.game = game;
+            CollisionDetector.GameObjectList.Add(this);
             StartLinkState();
         }
-
-        public void GetDamaged()
+        public void GetDamaged(ICollision side)
         {
-            State.GetDamaged();
+            //State.GetDamaged();
+            if(side is BottomCollision)
+            {
+                State = new KnockbackDownLinkState(this);
+            } else if(side is LeftCollision)
+            {
+                State = new KnockbackLeftLinkState(this);
+            } else if(side is RightCollision)
+            {
+                State = new KnockbackRightLinkState(this);
+            }
+            else
+            {
+                State = new KnockbackUpLinkState(this);
+            }
+            ICommand damage = new SetDamageLinkCommand(game);
+            damage.Execute();
         }
         public void BecomeIdle()
         {
@@ -87,10 +105,8 @@ namespace Sprint2_Attempt3.Player
 
         public void Update()
         {
-            collisionRectangle = new Rectangle((int)position.X, (int)position.Y, 15, 15);
             State.Update();
             Sprite.Update();
-            AttackSprite.Update();
             for (int c = 0; c < Items.Count; c++)
             {
                 Items[c].Update();
@@ -100,7 +116,6 @@ namespace Sprint2_Attempt3.Player
         public void Draw(SpriteBatch _spriteBatch, Color color)
         {
             Sprite.Draw(_spriteBatch, position, color);
-            AttackSprite.Draw(_spriteBatch, position, color);
             foreach (ILinkItem item in Items)
             {
                 item.Draw(_spriteBatch);
@@ -109,8 +124,7 @@ namespace Sprint2_Attempt3.Player
         }
         public Rectangle GetHitBox()
         {
-            //System.Diagnostics.Debug.WriteLine((int)position.X);
-            return new Rectangle((int)position.X, (int)position.Y, 15, 15);
+            return new Rectangle((int)position.X, (int)position.Y, 15 * 3, 15 * 3);
         }
     }
 }
