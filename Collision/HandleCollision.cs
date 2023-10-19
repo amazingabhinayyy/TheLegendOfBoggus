@@ -27,7 +27,9 @@ namespace Sprint2_Attempt3.Collision
             if (side is BottomCollision)
             {
                 link.BecomeIdle();
-                link.position.Y = wall.Top;
+                System.Diagnostics.Debug.WriteLine("link y position:" + link.position.Y);
+                link.position.Y = wall.Bottom;
+                System.Diagnostics.Debug.WriteLine("link y position:" + link.position.Y);
             }
             else if (side is LeftCollision)
             {
@@ -42,7 +44,7 @@ namespace Sprint2_Attempt3.Collision
             else
             {
                 link.BecomeIdle();
-                link.position.Y = wall.Bottom;
+                link.position.Y = wall.Top;
             }
             /*
             // Determine the direction of the collision (e.g., from which side the collision occurs)
