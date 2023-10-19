@@ -32,6 +32,7 @@ namespace Sprint2_Attempt3.Collision
             //this.link = link;
             this.game1 = game1;
             linkObject = this.game1.link.GetHitBox();
+            //linkPosition = this.game1.link.position;
            
         }
         public void Update()
@@ -54,7 +55,7 @@ namespace Sprint2_Attempt3.Collision
             */
 
             linkObject = this.game1.link.GetHitBox();
-            //System.Diagnostics.Debug.WriteLine((int)linkObject.X);
+            System.Diagnostics.Debug.WriteLine((int)linkObject.X);
             collided = CheckCollision.CheckPlayerWallCollision(linkObject, wallBlocks);
             /*if (!collided)
             {

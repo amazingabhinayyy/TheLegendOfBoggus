@@ -44,6 +44,7 @@ namespace Sprint2_Attempt3.Collision
             foreach (Rectangle wall in WallBlocks)
                 if (spriteObject.Intersects(wall))
                 {
+                    //System.Diagnostics.Debug.WriteLine((int)spriteObject.X);
                     HandleCollision.HandleLinkBlockCollision(spriteObject, wall);
                     return true;
                 }

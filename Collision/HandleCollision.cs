@@ -33,6 +33,7 @@ namespace Sprint2_Attempt3.Collision
                 // Collision occurred from left (object hits block on its left side)
                 if (spriteObject.Center.X < wall.Center.X)
                 {
+                    //System.Diagnostics.Debug.WriteLine((int)spriteObject.X);
                     // prevent movement to the right
                     // set the object's X position to the left edge of the wall - object's width
                     spriteObject.X = wall.Left - spriteObject.Width;
@@ -40,9 +41,12 @@ namespace Sprint2_Attempt3.Collision
                 // Collision occured from right (object hits block on its right side)
                 else
                 {
+                    //System.Diagnostics.Debug.WriteLine((int)spriteObject.X);
                     // prevent movement to the left
                     // set the object's left X position to the right edge of the wall
                     spriteObject.X = wall.Right;
+                    //System.Diagnostics.Debug.WriteLine((int)spriteObject.X);
+                    //System.Diagnostics.Debug.WriteLine((int)wall.Right);
                 }
             }
             // Stop movement in the Y direction (vertical)
