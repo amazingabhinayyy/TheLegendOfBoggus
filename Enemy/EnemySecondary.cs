@@ -64,7 +64,7 @@ namespace Sprint2_Attempt3.Enemy
                 State.Draw(spriteBatch);
             }
         }
-        public Rectangle GetHitBox() {
+        public virtual Rectangle GetHitBox() {
             return Position;
         }
     }

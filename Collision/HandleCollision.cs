@@ -29,9 +29,9 @@ namespace Sprint2_Attempt3.Collision
             if (side is BottomCollision)
             {
                 link.BecomeIdle();
-                System.Diagnostics.Debug.WriteLine("link y position:" + link.position.Y);
+                //System.Diagnostics.Debug.WriteLine("link y position:" + link.position.Y);
                 link.position.Y = wall.Bottom;
-                System.Diagnostics.Debug.WriteLine("link y position:" + link.position.Y);
+                //System.Diagnostics.Debug.WriteLine("link y position:" + link.position.Y);
             }
             else if (side is LeftCollision)
             {
@@ -96,9 +96,30 @@ namespace Sprint2_Attempt3.Collision
             }*/
         }
 
-        public static void HandleEnemyBlockCollision(Rectangle spriteObject, Rectangle wall)
+        public static void HandleEnemyBlockCollision(Rectangle spriteObject, Rectangle wall, IEnemy enemy)
         {
+            //System.Diagnostics.Debug.WriteLine("testhandle");
             //changeDirection method from Avery
+            // skeleton/glob/snake = if it hits top or bottom, change direction left or right randomly
+            // bat = change direction randomly - not with blocks (just pass over)
+            // dragon same as first?
+            // hand just passes through?
+            Rectangle intersectRect = Rectangle.Intersect(spriteObject, wall);
+            int width = intersectRect.Width;
+            ICollision side = CollisionDetector.SideDetector(spriteObject, wall);
+            if (side is BottomCollision || side is TopCollision)
+            {
+                // enemy moves left or right
+                //enemy.ChangeDirection();
+                System.Diagnostics.Debug.WriteLine("testcollision");
+                //link.position.Y = wall.Bottom;
+                //System.Diagnostics.Debug.WriteLine("link y position:" + link.position.Y);
+            }
+            else //left or right collision
+            {
+                //enemy moves up or down
+                //enemy.ChangeDirection();
+            }
         }
 
         public static void HandleProjectileBlockCollision(Rectangle spriteObject, Rectangle wall)

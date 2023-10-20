@@ -22,17 +22,20 @@ namespace Sprint2_Attempt3.Collision
             wallBlocks = Globals.WallBlocks;
             
         }
-        public static bool CheckEnemyWallCollision(Rectangle spriteObject, List<Rectangle> WallBlocks)
+        public static bool CheckEnemyWallCollision(Rectangle spriteObject, IEnemy enemy)
         {
-            foreach (Rectangle wall in WallBlocks)
+            foreach (Rectangle wall in Globals.WallBlocks)
+
                 if (spriteObject.Intersects(wall)) //intersection.isEmpty??
                 {
-                    HandleCollision.HandleEnemyBlockCollision(spriteObject, wall);
+                    //System.Diagnostics.Debug.WriteLine("testcollide");
+
+                    HandleCollision.HandleEnemyBlockCollision(spriteObject, wall, enemy);
                     return true;
                 }
             return false;
         }
-
+        /*
         public static bool CheckProjectileWallCollision(Rectangle spriteObject, List<Rectangle> WallBlocks)
         {
             foreach (Rectangle wall in WallBlocks)
@@ -43,7 +46,7 @@ namespace Sprint2_Attempt3.Collision
                 }
             return false;
         }
-
+        */
         public static bool CheckPlayerWallCollision(Rectangle spriteObject, Link link)
         {
             // get spriteObject hitbox + 
