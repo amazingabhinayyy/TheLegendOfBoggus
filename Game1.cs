@@ -26,16 +26,6 @@ namespace Sprint2_Attempt3
         public ILink link { get; set; }
         public IRoom room { get; set; }
 
-        private IBlock[] blocks = { 
-            new BlackBlock(Globals.NorthEastCollisionBlock),
-            new BlackBlock(Globals.NorthWestCollisionBlock),
-            new BlackBlock(Globals.SouthEastCollisionBlock),
-            new BlackBlock(Globals.SouthWestCollisionBlock),
-            new BlackBlock(Globals.EastNorthCollisionBlock),
-            new BlackBlock(Globals.EastSouthCollisionBlock),
-            new BlackBlock(Globals.WestNorthCollisionBlock),
-            new BlackBlock(Globals.WestSouthCollisionBlock)
-        };
         public CollisionDetector collisionDetector
         { get; private set; }
         public CollisionResponse collisionResponse { get; private set; }
@@ -49,23 +39,12 @@ namespace Sprint2_Attempt3
             IsMouseVisible = true;
         }
 
-        /// <summary>
-        /// Allows the game to perform any initialization it needs to before starting to run.
-        /// This is where it can query for any required services and load any non-graphic
-        /// related content.  Calling base.Initialize will enumerate through any components
-        /// and initialize them as well.
-        /// </summary>
         protected override void Initialize()
         {
             base.Initialize();
             RoomGenerator.Instance.LoadAllFiles();
-
         }
 
-        /// <summary>
-        /// LoadContent will be called once per game and is the place to load
-        /// all of your content.
-        /// </summary>
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
@@ -81,32 +60,17 @@ namespace Sprint2_Attempt3
             keyController = new KeyboardController(this);
             room = new Room1(this);
             link = new Link(this);
-            item = new Key(new Vector2(512,347), true);
             collisionDetector = new CollisionDetector(this);
             collisionResponse = new CollisionResponse(this); 
             blockCollision = new BlockCollisionClass(this);
         }
 
-        /// <summary>
-        /// UnloadContent will be called once per game and is the place to unload
-        /// game-specific content.
-        /// </summary>
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
         }
 
-        /// <summary>
-        /// Allows the game to run logic such as updating the world,
-        /// checking for collisions, gathering input, and playing audio.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-
-            // TODO: Add your update logic here
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
             collisionDetector.Update();
             blockCollision.Update();
             keyController.Update(gameTime);
@@ -115,17 +79,12 @@ namespace Sprint2_Attempt3
             base.Update(gameTime);
         }
 
-        /// <summary>
-        /// This is called when the game should draw itself.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
             room.Draw(spriteBatch);
-            //item.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }

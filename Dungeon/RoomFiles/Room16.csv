@@ -1,0 +1,9 @@
+﻿Enemy,Keese,439,158,
+Enemy,Keese,208,257,
+Enemy,Keese,493,335,
+Enemy,Keese,332,284,
+Item,Bow,350,250,TRUE
+Door,North,5,,
+Door,South,5,,
+Door,East,5,,
+Door,West,5,,
