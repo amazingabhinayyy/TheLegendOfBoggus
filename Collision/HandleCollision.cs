@@ -96,17 +96,43 @@ namespace Sprint2_Attempt3.Collision
             }*/
         }
 
-        public static void HandleEnemyBlockCollision(Rectangle spriteObject, Rectangle wall, IEnemy enemy)
+        public static void HandleEnemyBlockCollision(Rectangle spriteObject, Rectangle wall, EnemySecondary enemy)
         {
+            Rectangle intersectRect = Rectangle.Intersect(spriteObject, wall);
+            int width = intersectRect.Width;
+            ICollision side = CollisionDetector.SideDetector(spriteObject, wall);
+            if (side is BottomCollision)
+            {
+                //System.Diagnostics.Debug.WriteLine("link y position:" + link.position.Y);
+                enemy.Y = wall.Bottom;
+                //System.Diagnostics.Debug.WriteLine("link y position:" + link.position.Y);
+                enemy.ChangeDirection();
+            }
+            else if (side is LeftCollision)
+            {
+                enemy.X = wall.Right - wall.Width - 45;
+                enemy.ChangeDirection();
+            }
+            else if (side is RightCollision)
+            {
+                enemy.X = wall.Right;
+                enemy.ChangeDirection();
+            }
+            else
+            {
+                enemy.Y = wall.Top - wall.Height + 40;
+                enemy.ChangeDirection();
+            }
             //System.Diagnostics.Debug.WriteLine("testhandle");
             //changeDirection method from Avery
             // skeleton/glob/snake = if it hits top or bottom, change direction left or right randomly
             // bat = change direction randomly - not with blocks (just pass over)
             // dragon same as first?
             // hand just passes through?
-            Rectangle intersectRect = Rectangle.Intersect(spriteObject, wall);
-            int width = intersectRect.Width;
-            ICollision side = CollisionDetector.SideDetector(spriteObject, wall);
+            //Rectangle intersectRect = Rectangle.Intersect(spriteObject, wall);
+            //int width = intersectRect.Width;
+            
+            /*ICollision side = CollisionDetector.SideDetector(spriteObject, wall);
             if (side is BottomCollision || side is TopCollision)
             {
                 // enemy moves left or right
@@ -118,8 +144,8 @@ namespace Sprint2_Attempt3.Collision
             else //left or right collision
             {
                 //enemy moves up or down
-                //enemy.ChangeDirection();
-            }
+                enemy.ChangeDirection();
+            }*/
         }
 
         public static void HandleProjectileBlockCollision(Rectangle spriteObject, Rectangle wall)

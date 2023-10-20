@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Enemy;
+using Sprint2_Attempt3.Enemy.Hand;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Player;
 using Sprint2_Attempt3.Interfaces;
@@ -27,7 +28,7 @@ namespace Sprint2_Attempt3.Collision
         public Rectangle linkObject;
         public Rectangle enemyObject;
         private Link link;
-        private IEnemy enemy;
+        private EnemySecondary enemy;
         private Game1 game1;
         public BlockCollisionClass(Game1 game1)
         {
@@ -36,8 +37,7 @@ namespace Sprint2_Attempt3.Collision
             this.game1 = game1;
             this.link = (Link)game1.link;
             linkObject = this.game1.link.GetHitBox();
-            this.enemy = game1.enemy;
-            enemyObject = this.game1.enemy.GetHitBox();
+            this.enemy = (EnemySecondary)game1.enemy;
             //gethitbox for enemy? enemy
             //linkPosition = this.game1.link.position;
            
@@ -52,28 +52,19 @@ namespace Sprint2_Attempt3.Collision
         public void Update()
         {
 
-            foreach (IEnemy enemy in Globals.enemies)
+            foreach (IGameObject obj in CollisionDetector.GameObjectList)
             {
-                enemyObject = enemy.GetHitBox();
-                System.Diagnostics.Debug.WriteLine(enemyObject.X);
-                // System.Diagnostics.Debug.WriteLine("testcollide");
-
-                collided = CheckCollision.CheckEnemyWallCollision(enemyObject, enemy);
+                if (obj is IEnemy)
+                {
+                    enemyObject = obj.GetHitBox();
+                    //System.Diagnostics.Debug.WriteLine("testEnemy");
+                    collided = CheckCollision.CheckEnemyWallCollision(enemyObject, enemy);
+                }
             }
 
-            /*foreach (projectiles in Globals)
-            {
-                collided = CheckCollision.CheckProjectileWallCollision(projectileObject, wallBlocks);
-            }
-            */
-
+            
             linkObject = this.game1.link.GetHitBox();
-            //System.Diagnostics.Debug.WriteLine((int)linkObject.X);
             collided = CheckCollision.CheckPlayerWallCollision(linkObject, link);
-            /*if (!collided)
-            {
-                System.Diagnostics.Debug.WriteLine(collided);
-            }*/
             
         }
 
