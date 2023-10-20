@@ -16,8 +16,9 @@ namespace Sprint2_Attempt3
         private List<Keys> moveKeys = new List<Keys>();
         private int currentMoveKeyValue = 10;
         private Keys currentMoveKey;
-
         private List<Keys> heldKeys = new List<Keys>();
+
+        public int RoomIndex { get; set; }
 
         public KeyboardController(Game1 game)
         {
@@ -25,6 +26,7 @@ namespace Sprint2_Attempt3
             commandMapping = new Dictionary<Keys, ICommand>();
             RegisterCommands();
             timeSinceLastUpdate = 0;
+            RoomIndex = 0;
         }
 
         public void RegisterCommands()
@@ -49,9 +51,13 @@ namespace Sprint2_Attempt3
             commandMapping.Add(Keys.D4, new SetUseBlueBoomerangCommand(game1));
             commandMapping.Add(Keys.D5, new SetUseBlueArrowCommand(game1));
             commandMapping.Add(Keys.D6, new SetUseFireCommand(game1));
+            
             //other controls
             commandMapping.Add(Keys.Q, new Quit(game1));
             commandMapping.Add(Keys.R, new Reset(game1));
+
+            //switching rooms
+            commandMapping.Add(Keys.P, new SwitchToNextRoom(game1));
 
             moveKeyTime.Add(Keys.W, 0);
             moveKeyTime.Add(Keys.A, 0);

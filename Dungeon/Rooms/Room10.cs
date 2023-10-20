@@ -32,5 +32,22 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             }
         }
 
+        public override void SwitchToNorthRoom()
+        {
+            roomNumber = 1;
+        }
+        public override void SwitchToSouthRoom()
+        {
+            roomNumber = 1;
+        }
+        public override void SwitchToEastRoom()
+        {
+            roomNumber = 1;
+        }
+        public override void SwitchToWestRoom()
+        {
+            roomNumber = 1;
+        }
+
     }
 }

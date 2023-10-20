@@ -11,13 +11,23 @@ namespace Sprint2_Attempt3.Dungeon
 {
     public abstract class RoomSecondary : IRoom
     {
-        protected static List<IGameObject>[] gameObjectLists = { null };
+        protected static List<IGameObject>[] gameObjectLists = new List<IGameObject>[18];
         protected static int roomNumber;
         protected DungeonRoom room;
         protected Game1 game1;
 
         public RoomSecondary()
         {
+        }
+        public void SwitchRooms() {
+            if (roomNumber < gameObjectLists.Length - 1)
+            {
+                roomNumber++;
+            }
+            else
+            {
+                roomNumber = 0;
+            }
         }
         public void Update() {
             //collision handling goes here
@@ -47,5 +57,11 @@ namespace Sprint2_Attempt3.Dungeon
             
             game1.link.Draw(spriteBatch, Color.White);
         }
+
+        public abstract void SwitchToNorthRoom();
+        public abstract void SwitchToSouthRoom();        
+        public abstract void SwitchToEastRoom();        
+        public abstract void SwitchToWestRoom();
+        
     }
 }

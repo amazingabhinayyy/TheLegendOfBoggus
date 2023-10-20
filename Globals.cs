@@ -13,6 +13,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Aquamentus;
 using Sprint2_Attempt3.Dungeon.Rooms;
 using System.Collections.Generic;
+using Sprint2_Attempt3.Dungeon;
 
 namespace Sprint2_Attempt3
 {

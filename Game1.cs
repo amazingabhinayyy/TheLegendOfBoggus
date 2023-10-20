@@ -20,6 +20,7 @@ namespace Sprint2_Attempt3
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         public IItem item;
+       
         private KeyboardController keyController { get; set; }
         private CollisionHandler collisionHandler { get; set; }
         public ILink link { get; set; }
@@ -57,6 +58,7 @@ namespace Sprint2_Attempt3
         protected override void Initialize()
         {
             base.Initialize();
+            RoomGenerator.Instance.LoadAllFiles();
 
         }
 
@@ -68,7 +70,6 @@ namespace Sprint2_Attempt3
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            keyController = new KeyboardController(this);
             collisionHandler = new CollisionHandler();
             EnemySpriteFactory.Instance.LoadAllTextures(this.Content);
             LinkSpriteFactory.Instance.LoadAllTextures(Content);

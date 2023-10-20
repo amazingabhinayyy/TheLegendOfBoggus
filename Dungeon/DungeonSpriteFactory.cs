@@ -8,7 +8,6 @@ namespace Sprint2_Attempt3.Dungeon
     internal class DungeonSpriteFactory
     {
         private static Texture2D DungeonTexture;
-        private static Texture2D DoorTexture;
         private static DungeonSpriteFactory instance = new DungeonSpriteFactory();
         public static DungeonSpriteFactory Instance
         {
