@@ -29,9 +29,7 @@ namespace Sprint2_Attempt3.Collision
             if (side is BottomCollision)
             {
                 link.BecomeIdle();
-                System.Diagnostics.Debug.WriteLine("link y position:" + link.position.Y);
                 link.position.Y = wall.Bottom;
-                System.Diagnostics.Debug.WriteLine("link y position:" + link.position.Y);
             }
             else if (side is LeftCollision)
             {
