@@ -84,6 +84,7 @@ namespace Sprint2_Attempt3
             item = new Key(new Vector2(512,347), true);
             collisionDetector = new CollisionDetector(this);
             collisionResponse = new CollisionResponse(this); 
+            blockCollision = new BlockCollisionClass(this);
         }
 
         /// <summary>
@@ -107,6 +108,7 @@ namespace Sprint2_Attempt3
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
             collisionDetector.Update();
+            blockCollision.Update();
             keyController.Update(gameTime);
             room.Update();
             item.Update();

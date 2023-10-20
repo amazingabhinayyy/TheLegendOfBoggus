@@ -98,6 +98,7 @@ namespace Sprint2_Attempt3.Player
         }
         public void StartLinkState()
         {
+            position = new Vector2(105, 90);
             State = new DownIdleLinkState(this);
             Items = new List<ILinkItem>();
         }

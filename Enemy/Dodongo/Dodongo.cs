@@ -15,10 +15,10 @@ namespace Sprint2_Attempt3.Enemy.Dodongo
         {
             State = new MovingLeftDodongoState(this);
         }
-        public Rectangle GetHitBox()
+        public override Rectangle GetHitBox()
         {
             //To-Do fill in what hit box should be instead of 0s
-            return new Rectangle(0, 0, 0, 0);
+            return new Rectangle((int)Position.X, (int)Position.Y, 15 * 3, 15 * 3);
         }
     }
 }

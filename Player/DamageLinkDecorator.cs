@@ -16,6 +16,7 @@ namespace Sprint2_Attempt3.Player
         private Game1 game;
         private ILink decoratedLink;
         private int timer;
+        public static Vector2 position;
         public ILinkState State { get; set; }
         public DamageLinkDecorator(ILink decoratedLink, Game1 game)
         {

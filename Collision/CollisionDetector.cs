@@ -32,6 +32,8 @@ namespace Sprint2_Attempt3.Collision
                 Rectangle collisionRectangle = obj.GetHitBox();
                 if (collisionRectangle.Intersects(linkRectangle))
                 {
+                    //Rectangle intersectRect = Rectangle.Intersect(collisionRectangle, linkRectangle);
+
                     ICollision side = SideDetector(linkRectangle, collisionRectangle);
                     if (obj is IEnemy)
                     {
@@ -75,10 +77,11 @@ namespace Sprint2_Attempt3.Collision
                 }
             }
         }
-        public ICollision SideDetector(Rectangle affectedSprite, Rectangle nonAffectedSprite)
+        public static ICollision SideDetector(Rectangle affectedSprite, Rectangle nonAffectedSprite)
         {
             Rectangle intersect = Rectangle.Intersect(affectedSprite, nonAffectedSprite);
             if (intersect.Width > intersect.Height)
+            //if (CollisionRect.Width > CollisionRect.Height)
             {
                 if (affectedSprite.Top < nonAffectedSprite.Top && affectedSprite.Bottom < nonAffectedSprite.Bottom)
                 {
