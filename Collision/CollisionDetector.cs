@@ -11,13 +11,6 @@ namespace Sprint2_Attempt3.Collision
 {
     public class CollisionDetector
     {
-        private Vector2 linkPosition;
-        private Vector2 linkArrow;
-        private Vector2 linkBlueArrow;
-        private Vector2 linkBomb;
-        private Vector2 linkFire;
-        private Vector2 linkBoomerang;
-        private Vector2 linkBlueBoomerang;
         public Vector2 LinkPosition { get; private set; }
         private static List<IGameObject> gameObjectList = new List<IGameObject>();
         private List<IGameObject> copyGameObjectList = new List<IGameObject>();
@@ -98,7 +91,7 @@ namespace Sprint2_Attempt3.Collision
             }
             else
             {
-                if (affectedSprite.Left < nonAffectedSprite.Left & affectedSprite.Right < nonAffectedSprite.Right)
+                if (affectedSprite.Left < nonAffectedSprite.Left && affectedSprite.Right < nonAffectedSprite.Right)
                 {
                     return new LeftCollision();
                 }
