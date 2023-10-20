@@ -103,24 +103,25 @@ namespace Sprint2_Attempt3.Collision
             ICollision side = CollisionDetector.SideDetector(spriteObject, wall);
             if (side is BottomCollision)
             {
-                //System.Diagnostics.Debug.WriteLine("link y position:" + link.position.Y);
-                enemy.Y = wall.Bottom;
+                
+                //enemy.Y = wall.Bottom;
                 //System.Diagnostics.Debug.WriteLine("link y position:" + link.position.Y);
                 enemy.ChangeDirection();
             }
             else if (side is LeftCollision)
             {
-                enemy.X = wall.Right - wall.Width - 45;
+                //enemy.X = wall.Right - wall.Width - 45;
                 enemy.ChangeDirection();
             }
             else if (side is RightCollision)
             {
-                enemy.X = wall.Right;
+                //System.Diagnostics.Debug.WriteLine("enemy:" + enemy);
+                //enemy.X = wall.Right;
                 enemy.ChangeDirection();
             }
             else
             {
-                enemy.Y = wall.Top - wall.Height + 40;
+                //enemy.Y = wall.Top - wall.Height + 40;
                 enemy.ChangeDirection();
             }
             //System.Diagnostics.Debug.WriteLine("testhandle");

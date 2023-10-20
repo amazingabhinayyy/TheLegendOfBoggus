@@ -28,7 +28,7 @@ namespace Sprint2_Attempt3.Collision
 
                 if (spriteObject.Intersects(wall)) //intersection.isEmpty??
                 {
-                    System.Diagnostics.Debug.WriteLine("testcollide");
+                    //System.Diagnostics.Debug.WriteLine("testcollide");
 
                     HandleCollision.HandleEnemyBlockCollision(spriteObject, wall, enemy);
                     return true;
