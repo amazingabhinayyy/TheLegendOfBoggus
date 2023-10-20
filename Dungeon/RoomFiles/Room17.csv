@@ -1,0 +1,15 @@
+﻿Enemy,SpikeTrap,100,89
+Enemy,SpikeTrap,650,89
+Enemy,SpikeTrap,100,347
+Enemy,SpikeTrap,650,347
+Block,DiamondTile,19,
+Block,DiamondTile,30,
+Block,DiamondTile,32,
+Block,DiamondTile,45,
+Block,DiamondTile,54,
+Block,DiamondTile,56,
+Block,DiamondTile,67,
+Door,North,5,
+Door,South,5,
+Door,East,0,
+Door,West,5,
