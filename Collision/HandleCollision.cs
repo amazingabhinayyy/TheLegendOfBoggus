@@ -106,22 +106,22 @@ namespace Sprint2_Attempt3.Collision
                 //System.Diagnostics.Debug.WriteLine("link y position:" + link.position.Y);
                 enemy.Y = wall.Bottom;
                 //System.Diagnostics.Debug.WriteLine("link y position:" + link.position.Y);
-                enemy.ChangeDirection();
+                //enemy.ChangeDirection();
             }
             else if (side is LeftCollision)
             {
                 enemy.X = wall.Right - wall.Width - 45;
-                enemy.ChangeDirection();
+                //enemy.ChangeDirection();
             }
             else if (side is RightCollision)
             {
                 enemy.X = wall.Right;
-                enemy.ChangeDirection();
+                //enemy.ChangeDirection();
             }
             else
             {
                 enemy.Y = wall.Top - wall.Height + 40;
-                enemy.ChangeDirection();
+                //enemy.ChangeDirection();
             }
             //System.Diagnostics.Debug.WriteLine("testhandle");
             //changeDirection method from Avery

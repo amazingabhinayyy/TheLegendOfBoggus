@@ -53,11 +53,12 @@ namespace Sprint2_Attempt3.Collision
         {
 
             foreach (IGameObject obj in CollisionDetector.GameObjectList)
+            //foreach (IEnemy enemyObject in Globals.enemies)
             {
                 if (obj is IEnemy)
                 {
                     enemyObject = obj.GetHitBox();
-                    //System.Diagnostics.Debug.WriteLine("testEnemy");
+                    //System.Diagnostics.Debug.WriteLine(enemyObject.X);
                     collided = CheckCollision.CheckEnemyWallCollision(enemyObject, enemy);
                 }
             }
