@@ -103,6 +103,8 @@ namespace Sprint2_Attempt3.Collision
             ICollision side = CollisionDetector.SideDetector(spriteObject, wall);
             if (side is BottomCollision)
             {
+                
+                //enemy.Y = wall.Bottom;
                 //System.Diagnostics.Debug.WriteLine("link y position:" + link.position.Y);
                 enemy.Y = wall.Bottom;
                 //System.Diagnostics.Debug.WriteLine("link y position:" + link.position.Y);
