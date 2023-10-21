@@ -28,6 +28,7 @@ namespace Sprint2_Attempt3.Collision
         public Rectangle linkObject;
         public Rectangle enemyObject;
         private Link link;
+        private ILinkItem projectile;
         private EnemySecondary enemy;
         private Game1 game1;
         public BlockCollisionClass(Game1 game1)
@@ -60,6 +61,11 @@ namespace Sprint2_Attempt3.Collision
                     enemyObject = obj.GetHitBox();
                     //System.Diagnostics.Debug.WriteLine(enemyObject.X);
                     collided = CheckCollision.CheckEnemyWallCollision(enemyObject, enemy);
+                }
+                else
+                {
+                    projectileObject = obj.GetHitBox();
+                    collided = CheckCollision.CheckProjectileWallCollision(projectileObject, projectile);
                 }
             }
 

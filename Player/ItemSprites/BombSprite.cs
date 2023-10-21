@@ -38,7 +38,7 @@ namespace Sprint2_Attempt3.Player.Items
             }
             else if (currentFrame >= 54 && currentFrame < 57)
             {
-                srcRec = new Rectangle(155, 185, 15, 15); ;
+                srcRec = new Rectangle(155, 185, 15, 15);
             }
             else
             {
