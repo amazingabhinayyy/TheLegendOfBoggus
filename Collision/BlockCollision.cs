@@ -16,9 +16,8 @@ using Sprint2_Attempt3.Player.Interfaces;
 
 namespace Sprint2_Attempt3.Collision
 {
-    internal class BlockCollisionClass : ICollision
+    public class BlockCollisionClass : ICollision
     {
-        private Vector2 linkPosition;
         public Vector2 LinkPosition { get; private set; }
         public ILink Link { get; }
 
