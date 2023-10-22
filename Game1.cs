@@ -25,6 +25,7 @@ namespace Sprint2_Attempt3
         private CollisionHandler collisionHandler { get; set; }
         public ILink link { get; set; }
         public IRoom room { get; set; }
+        public IEnemy enemy { get; set; }
 
         public CollisionDetector collisionDetector
         { get; private set; }
@@ -60,6 +61,8 @@ namespace Sprint2_Attempt3
             keyController = new KeyboardController(this);
             room = new Room1(this);
             link = new Link(this);
+            enemy = new EnemySecondary();
+            enemy.Spawn();
             collisionDetector = new CollisionDetector(this);
             collisionResponse = new CollisionResponse(this); 
             blockCollision = new BlockCollisionClass(this);
@@ -76,6 +79,7 @@ namespace Sprint2_Attempt3
             keyController.Update(gameTime);
             room.Update();
             item.Update();
+            enemy.Update();
             base.Update(gameTime);
         }
 
@@ -85,6 +89,7 @@ namespace Sprint2_Attempt3
 
             spriteBatch.Begin();
             room.Draw(spriteBatch);
+            enemy.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }
