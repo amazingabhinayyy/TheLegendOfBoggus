@@ -19,6 +19,8 @@ namespace Sprint2_Attempt3.Player
         private Game1 game;
         public Link(Game1 game)
         {
+            position.X = 375;
+            position.Y = 300;
             this.game = game;
             CollisionDetector.GameObjectList.Add(this);
             StartLinkState();
