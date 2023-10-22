@@ -10,7 +10,7 @@ using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3.Player.LinkProjectiles
 {
-    public class UpBlueBoomerang : ILinkProjectile, IBoomerang
+    public class UpBlueBoomerang : Boomerang, ILinkProjectile
     {
         private Link link;
         private int currentFrame;
@@ -37,25 +37,28 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles
 
         public void Update()
         {
-            if (currentFrame == 120)
-            {
-                link.Items.Remove(this);
-                CollisionDetector.GameObjectList.Remove(this);
-            }
-
             int speed;
             if (currentFrame >= 0 && currentFrame < 50)
+            {
                 speed = 5;
+                itemPosition.Y = itemPosition.Y - speed;
+            }
             else if (currentFrame >= 50 && currentFrame < 60)
+            {
                 speed = 2;
+                itemPosition.Y = itemPosition.Y - speed;
+            }
             else if (currentFrame >= 60 && currentFrame < 70)
+            {
                 speed = -2;
+                itemPosition.Y = itemPosition.Y - speed;
+            }
             else
-                speed = -5;
-
+            {
+                itemPosition = BoomerangPositionUpdater(itemPosition, link.position, 5);
+            }
             sprite.Update();
             currentFrame++;
-            itemPosition.Y = itemPosition.Y - speed;
 
         }
         public void Draw(SpriteBatch spriteBatch)

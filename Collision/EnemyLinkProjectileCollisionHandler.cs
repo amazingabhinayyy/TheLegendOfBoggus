@@ -11,11 +11,11 @@ using System.Diagnostics;
 
 namespace Sprint2_Attempt3.Collision
 {
-    internal class EnemyItemCollisionHandler
+    internal class EnemyLinkProjectileCollisionHandler
     {
-        public EnemyItemCollisionHandler() { }
+        public EnemyLinkProjectileCollisionHandler() { }
 
-        public static void HandleItemEnemyCollision(IEnemy enemy, ILinkProjectile item, ICollision side)
+        public static void HandleLinkProjectileEnemyCollision(IEnemy enemy, ILinkProjectile item, ICollision side)
         {
             if(item is IBoomerang)
             {

@@ -5,6 +5,7 @@ using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Hand;
 using Sprint2_Attempt3.Interfaces;
 using Sprint2_Attempt3.Player.Interfaces;
+using Sprint2_Attempt3.Player.LinkProjectiles;
 using System.Collections.Generic;
 
 namespace Sprint2_Attempt3.Collision
@@ -72,6 +73,10 @@ namespace Sprint2_Attempt3.Collision
 
                         //link.CorrectPositioning(rectangle);
                     }
+                    else if(obj is ILinkProjectile)
+                    {
+                        PlayerLinkProjectileHandler.HandlePlayerLinkProjectileCollision(link, (ILinkProjectile)obj, side);
+                    }
                 }
             }
         }
@@ -116,7 +121,7 @@ namespace Sprint2_Attempt3.Collision
                             ICollision side = SideDetector(collisionRectangle, enemyRectangle);
                             if (gameObjectList[c] is ILinkProjectile)
                             {
-                                EnemyItemCollisionHandler.HandleItemEnemyCollision((IEnemy)gameObjectList[i], (ILinkProjectile)gameObjectList[c], side);
+                                EnemyLinkProjectileCollisionHandler.HandleLinkProjectileEnemyCollision((IEnemy)gameObjectList[i], (ILinkProjectile)gameObjectList[c], side);
                             }
                             else if (gameObjectList[c] is IBlock)
                             {
