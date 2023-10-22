@@ -9,13 +9,11 @@ namespace Sprint2_Attempt3.Enemy.SpikeTrap
             this.X = x;
             this.Y = y;
         }
-        public override void Update() { }
-        public override void Generate() {
-            State = new MovingLeftSpikeTrapState(this);
+        public override void Update() {
+            State.Update();
         }
-        public Rectangle GetHitBox()
-        {
-            return new Rectangle(0, 0, 0, 0);
+        public override void Generate() {
+            State = new MovingUpSpikeTrapState(this);
         }
     }
 }

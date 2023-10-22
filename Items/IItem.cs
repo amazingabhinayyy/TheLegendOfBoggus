@@ -10,6 +10,8 @@ namespace Sprint2_Attempt3.Items
 {
     public interface IItem : IGameObject
     {
+        public bool spawned { get; set; }
+        public bool exists { get; set; }
         public void Spawn();
         public void Collect();
         public void Update();

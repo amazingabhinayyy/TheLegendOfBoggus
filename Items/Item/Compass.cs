@@ -12,7 +12,7 @@ namespace Sprint2_Attempt3.Items.ItemClasses
     {
         public Compass(Vector2 position, bool exists)
         {
-            this.sourceRectangle = Globals.bluecandleSrc;
+            this.sourceRectangle = Globals.compassSrc;
             this.Position = new Rectangle((int)position.X, (int)position.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             this.exists = exists;
             this.spawned = false;
