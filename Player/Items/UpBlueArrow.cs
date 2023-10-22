@@ -43,7 +43,7 @@ namespace Sprint2_Attempt3.Player.Items
 
         public void Update()
         {
-            if (currentFrame == 60)
+            if (currentFrame == 55)
             {
                 DestroyArrow();
             }
