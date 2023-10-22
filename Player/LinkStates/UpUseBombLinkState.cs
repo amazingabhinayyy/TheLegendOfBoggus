@@ -18,10 +18,9 @@ namespace Sprint2_Attempt3.Player.LinkStates
         public UpUseBombLinkState(Link link)
         {
             this.link = link;
-            link.Sprite = LinkSpriteFactory.Instance.CreateUpItemLinkSprite(); ;
+            link.Sprite = LinkSpriteFactory.Instance.CreateUpItemLinkSprite();
             UpBomb bomb = new UpBomb(link);
             link.Items.Add(bomb);
-            CollisionDetector.GameObjectList.Add(bomb);
             frameCounter = 0;
         }
         public void BecomeIdle()

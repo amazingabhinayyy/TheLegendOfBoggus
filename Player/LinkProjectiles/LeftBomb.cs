@@ -34,14 +34,20 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles
             sourceRectangle = new Rectangle(129, 185, 8, 15);
             flip = SpriteEffects.None;
         }
+        public void Explode()
+        {
+            link.Items.Remove(this);
+            BombExplosion explosion = new BombExplosion(link, itemPosition);
+            link.Items.Add(explosion);
+            CollisionDetector.GameObjectList.Add(explosion);
+        }
 
         public void Update()
         {
             currentFrame++;
-            if (currentFrame == 60)
+            if (currentFrame == 50)
             {
-                link.Items.Remove(this);
-                CollisionDetector.GameObjectList.Remove(this);
+                Explode();
             }
             sprite.Update();
         }

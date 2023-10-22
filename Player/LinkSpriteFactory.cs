@@ -4,6 +4,7 @@ using Sprint2_Attempt3.Interfaces;
 using Sprint2_Attempt3.Player.LinkProjectiles;
 using Sprint2_Attempt3.Player.LinkSprites;
 using Sprint2_Attempt3.Player.Interfaces;
+using Sprint2_Attempt3.Player.LinkProjectilesSprites;
 
 namespace Sprint2_Attempt3.Player
 {
@@ -142,6 +143,10 @@ namespace Sprint2_Attempt3.Player
         public ILinkProjectileSprite CreateItemHitSprite()
         {
             return new ItemHitSprite(linkTexture);
+        }
+        public ILinkProjectileSprite CreateBombExplosion()
+        {
+            return new BombExplosionSprite(linkTexture);
         }
 
 

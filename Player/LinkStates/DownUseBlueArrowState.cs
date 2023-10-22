@@ -18,7 +18,7 @@ namespace Sprint2_Attempt3.Player.LinkStates
         public DownUseBlueArrowState(Link link)
         {
             this.link = link;
-            link.Sprite = LinkSpriteFactory.Instance.CreateDownItemLinkSprite(); ;
+            link.Sprite = LinkSpriteFactory.Instance.CreateDownItemLinkSprite();
             DownBlueArrow blueArrow = new DownBlueArrow(link);
             link.Items.Add(blueArrow);
             CollisionDetector.GameObjectList.Add(blueArrow);
