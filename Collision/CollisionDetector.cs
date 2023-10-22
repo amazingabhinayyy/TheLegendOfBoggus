@@ -114,9 +114,9 @@ namespace Sprint2_Attempt3.Collision
                         if (collisionRectangle.Intersects(enemyRectangle))
                         {
                             ICollision side = SideDetector(collisionRectangle, enemyRectangle);
-                            if (gameObjectList[c] is ILinkItem)
+                            if (gameObjectList[c] is ILinkProjectile)
                             {
-                                EnemyItemCollisionHandler.HandleItemEnemyCollision((IEnemy)gameObjectList[i], (ILinkItem)gameObjectList[c], side);
+                                EnemyItemCollisionHandler.HandleItemEnemyCollision((IEnemy)gameObjectList[i], (ILinkProjectile)gameObjectList[c], side);
                             }
                             else if (gameObjectList[c] is IBlock)
                             {
