@@ -27,7 +27,12 @@ namespace Sprint2_Attempt3.Player.Items
             sprite = LinkSpriteFactory.Instance.CreateArrowItem();
             SetPosition();
         }
-
+        public void DestroyArrow()
+        {
+            link.Items.Remove(this);
+            link.Items.Add(new ItemHit(link, itemPosition));
+            CollisionDetector.GameObjectList.Remove(this);
+        }
         public void SetPosition()
         {
             itemPosition = new Vector2((int)link.position.X + 15, (int)link.position.Y + 45);
@@ -39,8 +44,7 @@ namespace Sprint2_Attempt3.Player.Items
         {
             if (currentFrame == 60)
             {
-                link.Items.Remove(this);
-                CollisionDetector.GameObjectList.Remove(this);
+                DestroyArrow();
             }
             sprite.Update();
             currentFrame++;

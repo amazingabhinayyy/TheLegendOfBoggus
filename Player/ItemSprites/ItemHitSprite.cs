@@ -10,13 +10,13 @@ using Sprint2_Attempt3.Interfaces;
 
 namespace Sprint2_Attempt3.Player.Items
 {
-    public class ArrowExplodeSprite : ILinkItemSprite
+    public class ItemHitSprite : ILinkItemSprite
     {
         private Rectangle destinationRectangle;
         private int currentFrame;
         private Texture2D texture;
         public Rectangle ArrowCollisionRectangle { get; private set; }
-        public ArrowExplodeSprite(Texture2D texture)
+        public ItemHitSprite(Texture2D texture)
         {
             this.texture = texture;
             currentFrame = 0;

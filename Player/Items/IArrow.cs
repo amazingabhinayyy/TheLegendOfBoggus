@@ -8,5 +8,6 @@ namespace Sprint2_Attempt3.Player.Items
 {
     public interface IArrow
     {
+        public void DestroyArrow() { }
     }
 }

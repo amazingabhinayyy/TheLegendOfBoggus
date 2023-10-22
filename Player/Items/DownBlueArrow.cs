@@ -34,13 +34,18 @@ namespace Sprint2_Attempt3.Player.Items
             flip = SpriteEffects.FlipVertically;
             sourceRectangle = new Rectangle(29, 185, 5, 15);
         }
+        public void DestroyArrow()
+        {
+            link.Items.Remove(this);
+            link.Items.Add(new ItemHit(link, itemPosition));
+            CollisionDetector.GameObjectList.Remove(this);
+        }
 
         public void Update()
         {
             if (currentFrame == 60)
             {
-                link.Items.Remove(this);
-                CollisionDetector.GameObjectList.Remove(this);
+                DestroyArrow();
             }
             sprite.Update();
             currentFrame++;
