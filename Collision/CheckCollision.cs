@@ -26,9 +26,9 @@ namespace Sprint2_Attempt3.Collision
         {
             foreach (Rectangle wall in Globals.WallBlocks)
 
-                if (spriteObject.Intersects(wall)) //intersection.isEmpty??
+                if (spriteObject.Intersects(wall))
                 {
-                    System.Diagnostics.Debug.WriteLine("testcollide");
+                    //System.Diagnostics.Debug.WriteLine("testcollide");
 
                     HandleCollision.HandleEnemyBlockCollision(spriteObject, wall, enemy);
                     return true;

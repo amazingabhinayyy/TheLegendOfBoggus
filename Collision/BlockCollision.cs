@@ -16,9 +16,8 @@ using Sprint2_Attempt3.Player.Interfaces;
 
 namespace Sprint2_Attempt3.Collision
 {
-    internal class BlockCollisionClass : ICollision
+    public class BlockCollisionClass : ICollision
     {
-        private Vector2 linkPosition;
         public Vector2 LinkPosition { get; private set; }
         public ILink Link { get; }
 
@@ -27,9 +26,9 @@ namespace Sprint2_Attempt3.Collision
         public List<Rectangle> wallBlocks;
         public Rectangle linkObject;
         public Rectangle enemyObject;
-        private Link link;
-        private EnemySecondary enemy;
-        private Game1 game1;
+        public Link link;
+        public EnemySecondary enemy;
+        public Game1 game1;
         public BlockCollisionClass(Game1 game1)
         {
             wallBlocks = Globals.WallBlocks;
@@ -52,7 +51,7 @@ namespace Sprint2_Attempt3.Collision
         public void Update()
         {
 
-            foreach (IGameObject obj in CollisionDetector.GameObjectList)
+            /*foreach (IGameObject obj in CollisionDetector.GameObjectList)
             {
                 if (obj is IEnemy)
                 {
@@ -60,7 +59,7 @@ namespace Sprint2_Attempt3.Collision
                     //System.Diagnostics.Debug.WriteLine("testEnemy");
                     collided = CheckCollision.CheckEnemyWallCollision(enemyObject, enemy);
                 }
-            }
+            }*/
 
             
             linkObject = this.game1.link.GetHitBox();
