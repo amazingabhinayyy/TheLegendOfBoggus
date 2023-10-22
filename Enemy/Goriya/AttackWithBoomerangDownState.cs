@@ -26,7 +26,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             currentFrame = 0;
             currentBoomerangFrame = 0;
             sourceRectangle = Globals.GoriyaRedDown;
-            Goriya.Position = new Rectangle(Goriya.X, Goriya.Y, sourceRectangle.Width, sourceRectangle.Height);
+            Goriya.Position = new Rectangle(Goriya.X, Goriya.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             boomerang = Goriya.Boomerang;
         }
         public void ChangeDirection()
