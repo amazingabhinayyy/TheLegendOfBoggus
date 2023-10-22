@@ -13,13 +13,11 @@ namespace Sprint2_Attempt3.Collision
     public class PlayerLinkProjectileHandler
     {
         public PlayerLinkProjectileHandler() { }
-        public static void HandlePlayerLinkProjectileCollision(ILink link, ILinkProjectile linkProjectile, ICollision Side)
+        public static void HandlePlayerLinkProjectileCollision(ILink link, ILinkProjectile linkProjectile, ICollision side)
         {
             if (linkProjectile is IBoomerang)
             {
-                //Need to change so you don't have to cast here
-                Link newLink = (Link)link;
-                newLink.Items.Remove(linkProjectile);
+                link.Items.Remove(linkProjectile);
             }
         }
     }
