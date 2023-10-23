@@ -8,6 +8,7 @@ using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Dungeon;
+using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3
 {
