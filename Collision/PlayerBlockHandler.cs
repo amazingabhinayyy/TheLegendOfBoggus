@@ -10,12 +10,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sprint2_Attempt3.WallBlocks;
 
 namespace Sprint2_Attempt3.Collision
 {
     public class PlayerBlockHandler
     {
-        public static void HandlePlayerBlockCollision(ILink link, IBlock block, ICollision side)
+        public static void HandlePlayerBlockCollision(ILink link, IWall block, ICollision side)
         {
             if (!(block is DotTile))
             {
