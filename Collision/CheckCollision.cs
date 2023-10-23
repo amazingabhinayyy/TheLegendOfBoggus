@@ -23,16 +23,16 @@ namespace Sprint2_Attempt3.Collision
             wallBlocks = Globals.WallBlocks;
             
         }
-        public static bool CheckEnemyWallCollision(Rectangle enemyObject, EnemySecondary enemy)
+        public static bool CheckEnemyWallCollision(Rectangle enemyObject, IEnemy enemy)
         {
             foreach (Rectangle wall in Globals.WallBlocks)
 
                 if (enemyObject.Intersects(wall)) //intersection.isEmpty??
                 {
                     //System.Diagnostics.Debug.WriteLine("testcollide");
-                    /*System.Diagnostics.Debug.WriteLine("sprite: " + enemyObject.X);
-                    System.Diagnostics.Debug.WriteLine("enemy: " + enemy.X);
-                    HandleCollision.HandleEnemyBlockCollision(enemyObject, wall, enemy);*/
+                    //System.Diagnostics.Debug.WriteLine("sprite: " + enemyObject.X);
+                    //System.Diagnostics.Debug.WriteLine("enemy: " + enemy.X);
+                    HandleCollision.HandleEnemyBlockCollision(enemyObject, wall, enemy);
                     return true;
                 }
             return false;

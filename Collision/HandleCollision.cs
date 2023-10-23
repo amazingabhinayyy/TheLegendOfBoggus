@@ -99,7 +99,7 @@ namespace Sprint2_Attempt3.Collision
             }*/
         }
 
-        public static void HandleEnemyBlockCollision(Rectangle spriteObject, Rectangle wall, EnemySecondary enemy)
+        public static void HandleEnemyBlockCollision(Rectangle spriteObject, Rectangle wall, IEnemy enemy)
         {
             Rectangle intersectRect = Rectangle.Intersect(spriteObject, wall);
             int width = intersectRect.Width;

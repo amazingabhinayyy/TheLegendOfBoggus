@@ -59,7 +59,7 @@ namespace Sprint2_Attempt3.Collision
                 {
                     enemyObject = obj.GetHitBox();
                     //System.Diagnostics.Debug.WriteLine(enemyObject.X);
-                    collided = CheckCollision.CheckEnemyWallCollision(enemyObject, enemy);
+                    collided = CheckCollision.CheckEnemyWallCollision(enemyObject, (IEnemy)obj);
                 }
                 else
                 {
