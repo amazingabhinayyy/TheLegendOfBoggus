@@ -17,6 +17,7 @@ using Sprint2_Attempt3.Player;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Player.Items;
 using Sprint2_Attempt3.Player.LinkProjectiles;
+using Sprint2_Attempt3.WallBlocks;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -25,33 +26,30 @@ namespace Sprint2_Attempt3.Collision
         public HandleCollision()
         {
         }
-        public static void HandlePlayerBlockCollision(Rectangle block, ILink link)
+        public static void HandleLinkWallCollision(IWall wall, ILink link)
         {
+            Rectangle wallrectangle = wall.GetHitBox();
             Rectangle linkRectangle = link.GetHitBox();
-            ICollision side = CollisionDetector.SideDetector(linkRectangle, block);
+            ICollision side = CollisionDetector.SideDetector(linkRectangle, wallrectangle);
             if (side is BottomCollision)
             {
                 link.BecomeIdle();
-                link.Position = new Vector2(linkRectangle.X, block.Bottom + 1);
-                //link.Position.Y = wall.Bottom + 1;
+                link.Position = new Vector2(linkRectangle.X, wallrectangle.Bottom + 1);
             }
             else if (side is LeftCollision)
             {
                 link.BecomeIdle();
-                link.Position = new Vector2(block.Left - linkRectangle.Width - 1, linkRectangle.Y);
-                //link.Position.X = wall.Left - linkRectangle.Width - 1;
+                link.Position = new Vector2(wallrectangle.Left - linkRectangle.Width - 1, linkRectangle.Y);
             }
             else if (side is RightCollision)
             {
                 link.BecomeIdle();
-                link.Position = new Vector2(block.Right + 1, linkRectangle.Y);
-                //link.Position.X = wall.Right + 1;
+                link.Position = new Vector2(wallrectangle.Right + 1, linkRectangle.Y);
             }
             else
             {
                 link.BecomeIdle();
-                link.Position = new Vector2(linkRectangle.X, block.Top - linkRectangle.Height - 1);
-                //link.Position.Y = wall.Top - linkRectangle.Height - 1;
+                link.Position = new Vector2(linkRectangle.X, wallrectangle.Top - linkRectangle.Height - 1);
             }
         }
 
@@ -60,28 +58,25 @@ namespace Sprint2_Attempt3.Collision
             ICollision side = CollisionDetector.SideDetector(enemy.GetHitBox(), wall);
             if (side is BottomCollision)
             {
-                enemy.MoveDown();
+                //enemy.MoveDown();
                 enemy.Y = wall.Bottom + 1;
             }
             else if (side is LeftCollision)
             {
-                enemy.MoveLeft();
+                //enemy.MoveLeft();
                 enemy.X = wall.Left - enemy.Position.Width - 1;
             }
             else if (side is RightCollision)
             {
-                enemy.MoveRight();
-                enemy.X = wall.Right + 2;
+                //enemy.MoveRight();
+                enemy.X = wall.Right + 1;
             }
             else
             {
-                enemy.MoveUp();
+                //enemy.MoveUp();
                 enemy.Y = wall.Top - enemy.Position.Height - 1;
             }
-            /*if(enemy is Goriya || enemy is Hand)
-            {
-                enemy.ChangeDirection();
-            }*/
+            enemy.ChangeDirection();
         }
 
         public static void HandleProjectileBlockCollision(ILinkProjectile projectile)

@@ -35,12 +35,6 @@ namespace Sprint2_Attempt3.Enemy.Projectile.GoriyaProjectiles
             get { return goDown; }
             set { goDown = value; }
         }
-        /* private bool finished;
-        public bool Finished
-        {
-            get { return finished; }
-            set { finished = value; }
-        }*/
 
         private int initialX;
         public int InitialX
@@ -56,7 +50,6 @@ namespace Sprint2_Attempt3.Enemy.Projectile.GoriyaProjectiles
             set { initialY = value; }
         }
 
-
         public Vector2 Position2 { get { return position2; } set { position2 = value; } }
         public IEnemyProjectileState State
         {
@@ -68,7 +61,6 @@ namespace Sprint2_Attempt3.Enemy.Projectile.GoriyaProjectiles
             state = new GoriyaBoomerangLeftState(this);
             initialX = (int)position2.X;
             goLeft = true;
-
         }
         public void GenerateRight()
         {
@@ -82,51 +74,28 @@ namespace Sprint2_Attempt3.Enemy.Projectile.GoriyaProjectiles
             state = new GoriyaBoomerangUpState(this);
             initialY = (int)position2.Y;
             goUp = true;
-
         }
         public void GenerateDown()
         {
             state = new GoriyaBoomerangDownState(this);
             initialY = (int)position2.Y;
             goDown = true;
-
         }
         public GoriyaBoomerang(Vector2 boomerangPosition)
         {
             position2 = boomerangPosition;
-
-            //finished = false;
-
         }
 
-        public void Update(/*GameTime gameTime*/)
+        public void Update()
         {
-            /*
-            timeSinceLastUpdate += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (timeSinceLastUpdate<0.5f)
-            {
-                state.Update();
-                timeSinceLastUpdate = 0;
-            }*/
-            /*
-            count++;
-            if (count % 100 == 0)
-            {
-                //state = new GoriyaBoomerangLeftState(this);
-            }
-            //finished = ((GoriyaBoomerangLeftState)state).Finished;*/
             state.Update();
-
-
         }
         public void Draw(SpriteBatch spriteBatch)
         {
             state.Draw(spriteBatch);
         }
-        public Rectangle GetHitBox()
-        {
-            //Temporary
-            return new Rectangle(0, 0, 0, 0);
+        public Rectangle GetHitBox() {
+            return new Rectangle((int)position2.X, (int)position2.Y, Globals.GoriyaBoomerang1.Width * (int)Globals.scale, Globals.GoriyaBoomerang1.Height * (int)Globals.scale);
         }
 
     }

@@ -10,6 +10,7 @@ namespace Sprint2_Attempt3.Blocks
 {
     public interface IBlock : IGameObject
     {
+        public bool isWalkable { get; set; }
         public void Draw(SpriteBatch spriteBatch);
 
     }

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Sprint2_Attempt3.Items.ItemClasses
 {
-    internal class Boomerang : ItemSecondary
+    internal class BoomerangItem : ItemSecondary
     {
-        public Boomerang(Vector2 position, bool exists)
+        public BoomerangItem(Vector2 position, bool exists)
         {
             this.sourceRectangle = Globals.boomerangSrc;
             this.Position = new Rectangle((int)position.X, (int)position.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));

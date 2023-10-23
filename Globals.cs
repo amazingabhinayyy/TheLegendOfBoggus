@@ -114,7 +114,7 @@ namespace Sprint2_Attempt3
             {81, new Rectangle(500, 347, 50, 43) },
             {82, new Rectangle(550, 347, 50, 43) },
             {83, new Rectangle(600, 347, 50, 43) },
-            {84, new Rectangle(650, 349, 50, 43) }
+            {84, new Rectangle(650, 347, 50, 43) }
         };
 
         public static Rectangle plainScr { get { return new Rectangle(0, 0, 16, 16); } }
@@ -128,8 +128,8 @@ namespace Sprint2_Attempt3
         public static Rectangle blackBlockScr { get { return new Rectangle(0, 17, 16, 16); } }
         public static Rectangle dotTileScr { get { return new Rectangle(17, 17, 16, 16); } }
 
-        public static Rectangle NorthEastCollisionBlock { get { return new Rectangle(0, 0, 348, 87); } }
-        public static Rectangle NorthWestCollisionBlock { get { return new Rectangle(453, 0, 347, 87); } }
+        public static Rectangle NorthEastCollisionBlock { get { return new Rectangle(0, 0, 348, 62); } }
+        public static Rectangle NorthWestCollisionBlock { get { return new Rectangle(453, 0, 347, 62); } }
         public static Rectangle SouthEastCollisionBlock { get { return new Rectangle(0, 393, 348, 87); } }
         public static Rectangle SouthWestCollisionBlock { get { return new Rectangle(453, 393, 347, 87); } }
         public static Rectangle EastNorthCollisionBlock { get { return new Rectangle(0, 87, 98, 110); } }

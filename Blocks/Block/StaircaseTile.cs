@@ -15,6 +15,7 @@ namespace Sprint2_Attempt3.Blocks.BlockSprites
         {
             position = Position;
             sourceRectangle = Globals.staircaseScr;
+            isWalkable = true;
         }
     }
 }
