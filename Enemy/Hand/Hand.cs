@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
+using Sprint2_Attempt3.Enemy.Hand;
 using System;
 
 namespace Sprint2_Attempt3.Enemy.Hand
@@ -15,9 +16,21 @@ namespace Sprint2_Attempt3.Enemy.Hand
         public override void Generate() {
             State = new MovingLeftHandState(this);
         }
-        public Rectangle GetHitBox()
+        public override void MoveUp()
         {
-            return new Rectangle(0, 0, 0, 0);
+            State = new MovingUpHandState(this);
+        }
+        public override void MoveDown()
+        {
+            State = new MovingDownHandState(this);
+        }
+        public override void MoveLeft()
+        {
+            State = new MovingLeftHandState(this);
+        }
+        public override void MoveRight()
+        {
+            State = new MovingRightHandState(this);
         }
     }
 }

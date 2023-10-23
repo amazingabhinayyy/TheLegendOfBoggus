@@ -22,7 +22,7 @@ namespace Sprint2_Attempt3.Collision
             wallBlocks = Globals.WallBlocks;
             
         }
-        public static bool CheckEnemyWallCollision(Rectangle spriteObject, EnemySecondary enemy)
+        public static bool CheckEnemyWallCollision(Rectangle spriteObject, IEnemy enemy)
         {
             foreach (Rectangle wall in Globals.WallBlocks)
 

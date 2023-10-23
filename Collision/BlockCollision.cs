@@ -16,7 +16,7 @@ using Sprint2_Attempt3.Player.Interfaces;
 
 namespace Sprint2_Attempt3.Collision
 {
-    internal class BlockCollisionClass : ICollision
+    public class BlockCollisionClass : ICollision
     {
         private Vector2 linkPosition;
         public Vector2 LinkPosition { get; private set; }
@@ -58,7 +58,7 @@ namespace Sprint2_Attempt3.Collision
                 {
                     enemyObject = obj.GetHitBox();
                     //System.Diagnostics.Debug.WriteLine("testEnemy");
-                    collided = CheckCollision.CheckEnemyWallCollision(enemyObject, enemy);
+                    collided = CheckCollision.CheckEnemyWallCollision(enemyObject,(IEnemy)obj);
                 }
             }
 

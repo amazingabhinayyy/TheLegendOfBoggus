@@ -2,6 +2,7 @@
 using Sprint2_Attempt3.Enemy.Zol;
 
 using Microsoft.Xna.Framework;
+using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3.Enemy.Keese
 {
@@ -45,6 +46,7 @@ namespace Sprint2_Attempt3.Enemy.Keese
             else if (currentFrame == 40)
             {
                 enemy.exists = false;
+                CollisionDetector.GameObjectList.Remove(enemy);
             }
         }
         public void Draw(SpriteBatch spriteBatch)

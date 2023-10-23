@@ -13,7 +13,6 @@ namespace Sprint2_Attempt3.Collision
     {
         public Vector2 LinkPosition { get; private set; }
         private static List<IGameObject> gameObjectList = new List<IGameObject>();
-        private List<IGameObject> copyGameObjectList = new List<IGameObject>();
         public static List<IGameObject> GameObjectList
         {
             get { return gameObjectList; }
@@ -24,6 +23,7 @@ namespace Sprint2_Attempt3.Collision
         {
             this.game = game;
         }
+
         public void CheckPlayerCollision(ILink link)
         {
             Rectangle linkRectangle = link.GetHitBox();

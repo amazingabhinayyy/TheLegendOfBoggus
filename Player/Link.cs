@@ -20,7 +20,7 @@ namespace Sprint2_Attempt3.Player
         public Link(Game1 game)
         {
             this.game = game;
-            CollisionDetector.GameObjectList.Add(this);
+            //CollisionDetector.GameObjectList.Add(this);
             StartLinkState();
         }
         public void GetDamaged(ICollision side)

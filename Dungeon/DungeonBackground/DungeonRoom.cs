@@ -22,7 +22,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
     }
 
         public void Draw(SpriteBatch spriteBatch) {
-            sprite.Draw(spriteBatch, Globals.Dungeon1);
+            sprite.Draw(spriteBatch, Globals.DungeonStandard);
         }
     }
 }

@@ -32,7 +32,7 @@ namespace Sprint2_Attempt3.Player.Items
         {
             itemPosition = new Vector2((int)link.position.X + 15, (int)link.position.Y + 45);
             flip = SpriteEffects.FlipVertically;
-            sourceRectangle = new Rectangle(3, 185, 5, 15);                   
+            sourceRectangle = new Rectangle(3, 185, 5, 15);
         }
 
         public void Update()
