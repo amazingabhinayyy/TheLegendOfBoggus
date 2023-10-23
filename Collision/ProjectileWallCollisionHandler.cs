@@ -14,7 +14,7 @@ namespace Sprint2_Attempt3.Collision
         {
             if (projectile is IBoomerang)
             {
-
+                ((IBoomerang)projectile).ReverseDirection();
             }
             else if (projectile is IArrow)
             {

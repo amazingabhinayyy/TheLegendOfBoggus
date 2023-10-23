@@ -121,7 +121,7 @@ namespace Sprint2_Attempt3.Collision
                 if(projectile is IProjectile)
                 {
                     Rectangle projHitBox = projectile.GetHitBox();
-                    for(int i = 0; c < gameObjectList.Count; i++)
+                    for(int i = 0; i < gameObjectList.Count; i++)
                     {
                         IGameObject obj = gameObjectList[i];
                         Rectangle collisionRectangle = obj.GetHitBox();
@@ -151,6 +151,7 @@ namespace Sprint2_Attempt3.Collision
         {
             CheckPlayerCollision(game.link);
             CheckEnemyCollision();
+            CheckProjectileCollision();
         }
     }
 
