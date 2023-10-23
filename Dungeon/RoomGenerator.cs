@@ -205,7 +205,7 @@ namespace Sprint2_Attempt3.Dungeon
             }
             else if (Item.Equals("Boomerang"))
             {
-                item = new Boomerang(position, spawned);
+                item = new BoomerangItem(position, spawned);
             }
             else if (Item.Equals("Bow"))
             {

@@ -5,7 +5,9 @@ using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Dungeon.Doors;
 using Sprint2_Attempt3.Dungeon.Rooms;
 using Sprint2_Attempt3.Enemy;
+using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Items;
+using System;
 using System.Collections.Generic;
 
 namespace Sprint2_Attempt3.Dungeon
@@ -14,6 +16,7 @@ namespace Sprint2_Attempt3.Dungeon
     {
         protected static List<IGameObject>[] gameObjectLists = new List<IGameObject>[18];
         protected static int roomNumber;
+        protected static int enemyKillCount = 0;
         protected DungeonRoom room;
         protected Game1 game1;
         protected CollisionDetector collisionDetector;
@@ -21,8 +24,9 @@ namespace Sprint2_Attempt3.Dungeon
 
         public RoomSecondary()
         {    
+            
         }
-        public void SwitchRooms() {
+        public void SwitchToNextRoom() {
             if (roomNumber < gameObjectLists.Length - 1)
             {
                 roomNumber++;
@@ -33,6 +37,19 @@ namespace Sprint2_Attempt3.Dungeon
             }
             CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
         }
+
+        public void SwitchToPrevRoom()
+        {
+            if (roomNumber <= 0)
+            {
+                roomNumber= gameObjectLists.Length-1;
+            }
+            else
+            {
+                roomNumber--;
+            }
+           CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
+        }
         public void Update() {
             collisionDetector.Update();
             blockCollision.Update();
@@ -41,7 +58,22 @@ namespace Sprint2_Attempt3.Dungeon
             {
                 IGameObject obj = gameObjectLists[roomNumber][i];
                 if (obj is IEnemy)
+                {
                     ((IEnemy)obj).Update();
+                    /*
+                     * Can probably do spawnitem and removal here if we use gameTime instead of in DeathAnimationState
+                    if (((IEnemy)obj).GetEnemyState().Equals(new DeathAnimationState((IEnemy)obj)))
+                    {
+                        CollisionDetector.GameObjectList.Remove(obj);
+                        CollisionDetector.SpawnItem++;
+                        if (CollisionDetector.SpawnItem == CollisionDetector.SpawnItemTrigger)
+                        {
+                            CollisionDetector.SpawnItem = 0;
+                            CollisionDetector.GameObjectList.Add(CollisionDetector.SpawnRandomItem(new Vector2(((IEnemy)obj).X, ((IEnemy)obj).Y)));
+                        }
+                    }
+                    */
+                }
                 else if (obj is IItem)
                     ((IItem)obj).Update();
             }
