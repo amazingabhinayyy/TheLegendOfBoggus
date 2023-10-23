@@ -4,9 +4,12 @@ using Sprint2_Attempt3.Collision.SideCollisionHandlers;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Hand;
 using Sprint2_Attempt3.Interfaces;
+using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Player.LinkProjectiles;
 using System.Collections.Generic;
+using System.Globalization;
+using Sprint2_Attempt3.WallBlocks;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -23,13 +26,15 @@ namespace Sprint2_Attempt3.Collision
         public CollisionDetector(Game1 game)
         {
             this.game = game;
+            AddWallBlocks();
         }
 
         public void CheckPlayerCollision(ILink link)
         {
             Rectangle linkRectangle = link.GetHitBox();
-            foreach (IGameObject obj in gameObjectList)
+            for(int c = 0; c < gameObjectList.Count; c++)
             {
+                IGameObject obj = gameObjectList[c];
                 Rectangle collisionRectangle = obj.GetHitBox();
                 if (collisionRectangle.Intersects(linkRectangle))
                 {
@@ -47,13 +52,17 @@ namespace Sprint2_Attempt3.Collision
                             PlayerEnemyHandler.HandlePlayerEnemyCollision(link, (IEnemy)obj, side);
                         }
                     }
-                    else if (obj is IBlock)
+                    else if (obj is IWall)
                     {
-                        PlayerBlockHandler.HandlePlayerBlockCollision(link, (IBlock)obj, side);
+                        PlayerBlockHandler.HandlePlayerBlockCollision(link, (IWall)obj, side);
                     }
                     else if(obj is ILinkProjectile)
                     {
                         PlayerLinkProjectileHandler.HandlePlayerLinkProjectileCollision(link, (ILinkProjectile)obj, side);
+                    }
+                    else if (obj is IItem)
+                    {
+                        ((IItem)obj).Collect();
                     }
                 }
             }
@@ -110,6 +119,17 @@ namespace Sprint2_Attempt3.Collision
                     }
                 }
             }
+        }
+        public void AddWallBlocks()
+        {
+            gameObjectList.Add(new EastNorthCollisionBlock());
+            gameObjectList.Add(new EastSouthCollisionBlock());
+            gameObjectList.Add(new NorthEastCollisionBlock());
+            gameObjectList.Add(new NorthWestCollisionBlock());
+            gameObjectList.Add(new SouthEastCollisionBlock());
+            gameObjectList.Add(new SouthWestCollisionBlock());
+            gameObjectList.Add(new WestNorthCollisionBlock());
+            gameObjectList.Add(new WestSouthCollisionBlock());
         }
         public void Update()
         {
