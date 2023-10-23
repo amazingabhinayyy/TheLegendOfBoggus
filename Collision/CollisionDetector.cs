@@ -47,7 +47,12 @@ namespace Sprint2_Attempt3.Collision
                     }
                     else if (obj is IWall)
                     {
-                        PlayerBlockHandler.HandlePlayerBlockCollision(link, (IWall)obj, side);
+                        //HandleCollision.HandlePlayerBlockCollision(link, (IWall)obj, side);
+                        HandleCollision.HandleLinkWallCollision(((IWall)obj).GetHitBox(), link);
+                    }
+                    else if (obj is IBlock)
+                    {
+                        PlayerBlockHandler.HandlePlayerBlockCollision(link, (IBlock)obj, side);
                     }
                     else if(obj is ILinkProjectile)
                     {
