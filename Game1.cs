@@ -12,6 +12,7 @@ using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Blocks.BlockSprites;
 using Sprint2_Attempt3.Items.ItemClasses;
 using Sprint2_Attempt3.Dungeon;
+using Sprint2_Attempt3.Enemy.Keese;
 
 namespace Sprint2_Attempt3
 {
@@ -61,7 +62,7 @@ namespace Sprint2_Attempt3
             keyController = new KeyboardController(this);
             room = new Room1(this);
             link = new Link(this);
-            enemy = new EnemySecondary();
+            enemy = new Keese(200,200);
             enemy.Spawn();
             collisionDetector = new CollisionDetector(this);
             collisionResponse = new CollisionResponse(this); 
@@ -78,7 +79,6 @@ namespace Sprint2_Attempt3
             blockCollision.Update();
             keyController.Update(gameTime);
             room.Update();
-            item.Update();
             enemy.Update();
             base.Update(gameTime);
         }
