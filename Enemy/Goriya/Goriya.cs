@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Enemy.Projectile.GoriyaProjectiles;
@@ -27,8 +28,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             this.Y = y;
             BoomerangPosition = new Vector2(X, Y);
             Boomerang = new GoriyaBoomerang(BoomerangPosition);
-            Direction = ProjectileDirection.Left;   
-            
+            Direction = ProjectileDirection.Left;
         }
         public override void Generate() {
             State = new MovingLeftGoriyaState(this);
