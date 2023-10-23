@@ -10,7 +10,7 @@ using Sprint2_Attempt3.Interfaces;
 
 namespace Sprint2_Attempt3.Player.Items
 {
-    public class PoofSprite : ILinkItemSprite
+    public class PoofSprite : ILinkProjectileSprite
     {
         private Rectangle destinationRectangle;
         private int currentFrame;

@@ -115,24 +115,6 @@ namespace Sprint2_Attempt3.Collision
         {
             CheckPlayerCollision(game.link);
             CheckEnemyCollision();
-
-            /*
-             * want to use this for blocks. since we do not have a block thing going on it will not run if this is not commented.
-            foreach(IBlock block in Globals.blocks)
-            {
-                if (block.X > (linkPosition.X - 90) && (block.X + 90) < linkPosition.X)
-                {
-                    //link.stop?
-                }
-                if (block.Y > (linkPosition.Y - 90) && (block.Y + 90) < linkPosition.Y)
-                {
-                    //link.stop?
-                }
-            }
-            */
-
-
-
         }
     }
 

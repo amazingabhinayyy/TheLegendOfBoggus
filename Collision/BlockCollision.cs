@@ -24,9 +24,9 @@ namespace Sprint2_Attempt3.Collision
                 {
                     collided = CheckCollision.CheckEnemyWallCollision((IEnemy)obj);
                 }
-                else if (obj is ILinkItem)
+                else if (obj is ILinkProjectile)
                 {
-                    collided = CheckCollision.CheckProjectileWallCollision((ILinkItem)obj);
+                    collided = CheckCollision.CheckProjectileWallCollision((ILinkProjectile)obj);
                 }
             }
 

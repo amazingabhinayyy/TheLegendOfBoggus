@@ -34,7 +34,6 @@ namespace Sprint2_Attempt3.Dungeon
             CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
         }
         public void Update() {
-            //collision handling goes here
             collisionDetector.Update();
             blockCollision.Update();
 
