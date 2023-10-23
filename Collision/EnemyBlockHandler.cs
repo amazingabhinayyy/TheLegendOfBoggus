@@ -50,6 +50,7 @@ namespace Sprint2_Attempt3.Collision
 
                 if (side is BottomCollision)
                 {
+
                     //enemy.MoveDown();
                     enemy.Y = collisionRectangle.Bottom;
                 }
