@@ -58,8 +58,7 @@ namespace Sprint2_Attempt3.Collision
                     }
                     else if (obj is IDoor)
                     {
-                        //if obj is walkable 
-                        //PlayerBlockHandler.HandlePlayerBlockCollision(link, obj, side);
+                        //PlayerBlockHandler.HandlePlayerBlockCollision(link, (IDoor)obj, side);
                         //if obj is not walkable = transition
 
                     }
