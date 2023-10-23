@@ -12,10 +12,6 @@ internal class AquamentusFireballLeftState : IEnemyProjectileState
     private AquamentusFireball AquamentusFireball;
     private IEnemyProjectileSprite sprite;
 
-    private static EnemyProjectileSpriteFactory enemyProjectileSpriteFactory;
-
-
-    private int timeSinceLastUpdate;
     private int spriteIndex;
     private int currentFrame;
     private int currentFrame2;
@@ -23,15 +19,11 @@ internal class AquamentusFireballLeftState : IEnemyProjectileState
     private int projDistance;
     private int traveledDistance;
 
-
-
     public AquamentusFireballLeftState(AquamentusFireball AquamentusFireball)
     {
         this.AquamentusFireball = AquamentusFireball;
-        enemyProjectileSpriteFactory = new EnemyProjectileSpriteFactory();
         sprite = EnemyProjectileSpriteFactory.Instance.MovingFireball();
 
-        timeSinceLastUpdate = 0;
         spriteIndex = 0;
         currentFrame = 0;
         currentFrame2 = 0;
@@ -41,18 +33,8 @@ internal class AquamentusFireballLeftState : IEnemyProjectileState
         traveledDistance = 0;
 
     }
-
-
-    public void Update(/*gameTime gametime*/)
+    public void Update()
     {
-        /*
-        timeSinceLastUpdate += gametime.ElapsedGameTime;
-        spriteIndex = (int)(timeSinceLastUpdate / (0.5f));
-        if (spriteIndex > 7)
-        {
-            spriteIndex = 0;
-            timeSinceLastUpdate = 0;
-        }*/
         currentFrame++;
         if (currentFrame < Globals.fireballSpriteSwitchSpeed)
         {
@@ -64,14 +46,12 @@ internal class AquamentusFireballLeftState : IEnemyProjectileState
                 currentFrame2 = 0;
             }
 
-
             AquamentusFireball.Position2 = new Vector2(AquamentusFireball.Position2.X - change, AquamentusFireball.Position2.Y);
             traveledDistance += change;
             if (traveledDistance >= projDistance)
             {
                 AquamentusFireball.Fire = false;
             }
-
         }
         else
         {

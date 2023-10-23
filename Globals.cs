@@ -114,7 +114,7 @@ namespace Sprint2_Attempt3
             {81, new Rectangle(500, 347, 50, 43) },
             {82, new Rectangle(550, 347, 50, 43) },
             {83, new Rectangle(600, 347, 50, 43) },
-            {84, new Rectangle(650, 349, 50, 43) }
+            {84, new Rectangle(650, 347, 50, 43) }
         };
 
         public static Rectangle plainScr { get { return new Rectangle(0, 0, 16, 16); } }
