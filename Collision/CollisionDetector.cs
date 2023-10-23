@@ -37,7 +37,7 @@ namespace Sprint2_Attempt3.Collision
                     {
                         if (obj is Hand)
                         {
-                            //PlayerCollisionHandler.GetCaptured();   
+                            //PlayerCollisionHandler.GetCaptured();
                         }
                         else
                         {
