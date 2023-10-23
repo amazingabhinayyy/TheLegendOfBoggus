@@ -22,6 +22,11 @@ namespace Sprint2_Attempt3.CommandClasses
             DamageLinkDecorator damagedLink = new DamageLinkDecorator(game.link, game);
             damagedLink.GetDamaged(new TopCollision());
         }
+        public void Execute(ICollision side)
+        {
+            DamageLinkDecorator damagedLink = new DamageLinkDecorator(game.link, game);
+            damagedLink.GetDamaged(side);
+        }
 
     }
 }
