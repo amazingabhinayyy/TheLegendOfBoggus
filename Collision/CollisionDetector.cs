@@ -10,6 +10,7 @@ using Sprint2_Attempt3.Player.LinkProjectiles;
 using System.Collections.Generic;
 using System.Globalization;
 using Sprint2_Attempt3.WallBlocks;
+using Sprint2_Attempt3.Enemy.Projectile;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -56,6 +57,10 @@ namespace Sprint2_Attempt3.Collision
                     else if (obj is IItem)
                     {
                         ((IItem)obj).Collect();
+                    } 
+                    else if (obj is IEnemyProjectile)
+                    {
+                        PlayerEnemyProjectileHandler.HandleLinkProjectileCollision(link, (IEnemyProjectile)obj, side);
                     }
                 }
             }
