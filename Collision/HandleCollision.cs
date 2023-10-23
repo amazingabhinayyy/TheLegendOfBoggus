@@ -28,7 +28,7 @@ namespace Sprint2_Attempt3.Collision
         public static void HandleLinkWallCollision(Rectangle wall, ILink link)
         {
             Rectangle linkRectangle = link.GetHitBox();
-            ICollision side = CollisionDetector.SideDetector(linkRectangle, block);
+            ICollision side = CollisionDetector.SideDetector(linkRectangle, wall);
             if (side is BottomCollision)
             {
                 link.BecomeIdle();
@@ -52,7 +52,7 @@ namespace Sprint2_Attempt3.Collision
                 link.Position = new Vector2(linkRectangle.X, wall.Top - linkRectangle.Height - 1);
             }
         }
-
+        
         public static void HandleEnemyBlockCollision(Rectangle wall, IEnemy enemy)
         {
             Rectangle hitBox = enemy.GetHitBox();
