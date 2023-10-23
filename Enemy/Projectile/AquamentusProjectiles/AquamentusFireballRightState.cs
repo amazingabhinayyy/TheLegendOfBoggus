@@ -4,6 +4,7 @@ using Sprint2_Attempt3.Enemy.Keese;
 using System;
 using Sprint2_Attempt3.Enemy.Aquamentus;
 using Sprint2_Attempt3.Enemy.Projectile;
+using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles;
 
@@ -72,6 +73,7 @@ internal class AquamentusFireballRightState : IEnemyProjectileState
             if (traveledDistance >= projDistance)
             {
                 AquamentusFireball.Fire = false;
+                CollisionDetector.GameObjectList.Remove(AquamentusFireball);
             }
         }
         else

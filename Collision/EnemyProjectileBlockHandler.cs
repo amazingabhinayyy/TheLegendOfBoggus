@@ -20,7 +20,10 @@ namespace Sprint2_Attempt3.Collision
             {
                 ((IArrow)projectile).DestroyArrow();
             }
-            //else if(projectile is IFire)
+            else if(projectile is IFire)
+            {
+                ((IFire)projectile).Stop();
+            }
         }
     }
 }

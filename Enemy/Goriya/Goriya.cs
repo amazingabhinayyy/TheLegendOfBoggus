@@ -29,10 +29,13 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             BoomerangPosition = new Vector2(X, Y);
             Boomerang = new GoriyaBoomerang(BoomerangPosition);
             Direction = ProjectileDirection.Left;
-            CollisionDetector.GameObjectList.Add(Boomerang);
         }
         public override void Generate() {
             State = new MovingLeftGoriyaState(this);
+        }
+        public override void Stun()
+        {
+            State = new StunnedGoriyaState(this);
         }
         public override void Update()
         {

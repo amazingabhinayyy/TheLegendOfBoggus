@@ -10,6 +10,7 @@ namespace Sprint2_Attempt3.Player.Interfaces
     {
         public List<ILinkProjectile> Items { get; set; }
         public Vector2 Position { get; set; }
+        public void Knockback(ICollision side);
         public void BecomeIdle();
         public void MoveUp();
         public void MoveDown();

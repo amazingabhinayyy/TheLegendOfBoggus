@@ -28,14 +28,20 @@ namespace Sprint2_Attempt3.Player
         }
         public void GetDamaged(ICollision side)
         {
-            //State.GetDamaged();
-            if(side is BottomCollision)
+            SetDamageLinkCommand damage = new SetDamageLinkCommand(game);
+            damage.Execute(side);
+        }
+        public void Knockback(ICollision side)
+        {
+            if (side is BottomCollision)
             {
                 State = new KnockbackDownLinkState(this);
-            } else if(side is LeftCollision)
+            }
+            else if (side is LeftCollision)
             {
                 State = new KnockbackLeftLinkState(this);
-            } else if(side is RightCollision)
+            }
+            else if (side is RightCollision)
             {
                 State = new KnockbackRightLinkState(this);
             }
@@ -43,8 +49,6 @@ namespace Sprint2_Attempt3.Player
             {
                 State = new KnockbackUpLinkState(this);
             }
-            ICommand damage = new SetDamageLinkCommand(game);
-            damage.Execute();
         }
         public void BecomeIdle()
         {

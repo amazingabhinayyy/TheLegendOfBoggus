@@ -19,6 +19,7 @@ namespace Sprint2_Attempt3.Enemy
         public Rectangle Position { get; set; }
 
         public abstract void Generate();
+        public abstract void Stun();
         public EnemySecondary()
         {
             random = new Random();

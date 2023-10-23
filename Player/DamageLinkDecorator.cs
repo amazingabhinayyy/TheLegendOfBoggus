@@ -33,6 +33,10 @@ namespace Sprint2_Attempt3.Player
         {
             timer = 100;
         }
+        public void Knockback(ICollision side) 
+        {
+            decoratedLink.Knockback(side);
+        }
         public void MoveLeft()
         {
             decoratedLink.MoveLeft();

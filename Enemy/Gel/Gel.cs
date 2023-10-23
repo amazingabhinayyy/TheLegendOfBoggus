@@ -16,6 +16,10 @@ namespace Sprint2_Attempt3.Enemy.Gel
         public override void Generate() {
             State = new MovingLeftGelState(this);
         }
+        public override void Stun()
+        {
+            State = new DeathAnimationState(this);
+        }
         public override void MoveUp()
         {
             State = new MovingUpGelState(this);

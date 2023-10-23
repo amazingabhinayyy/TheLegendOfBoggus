@@ -16,6 +16,10 @@ namespace Sprint2_Attempt3.Enemy.Stalfos
         public override void Generate() {
             State = new MovingLeftStalfosState(this);
         }
+        public override void Stun()
+        {
+            State = new StunnedStalfosState(this);
+        }
         public override void MoveUp()
         {
             State = new MovingUpStalfosState(this);

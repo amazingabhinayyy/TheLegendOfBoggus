@@ -16,6 +16,9 @@ using Sprint2_Attempt3.Items.ItemClasses;
 using System;
 using Sprint2_Attempt3.Player;
 using System.Collections.Generic;
+using System.Globalization;
+using Sprint2_Attempt3.WallBlocks;
+using Sprint2_Attempt3.Enemy.Projectile;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -84,6 +87,10 @@ namespace Sprint2_Attempt3.Collision
                     else if (obj is IItem)
                     {
                         ((IItem)obj).Collect();
+                    } 
+                    else if (obj is IEnemyProjectile)
+                    {
+                        PlayerEnemyProjectileHandler.HandleLinkProjectileCollision(link, (IEnemyProjectile)obj, side);
                     }
                 }
             }
@@ -92,7 +99,6 @@ namespace Sprint2_Attempt3.Collision
         {
             Rectangle intersect = Rectangle.Intersect(affectedSprite, nonAffectedSprite);
             if (intersect.Width > intersect.Height)
-            //if (CollisionRect.Width > CollisionRect.Height)
             {
                 if (affectedSprite.Top < nonAffectedSprite.Top && affectedSprite.Bottom < nonAffectedSprite.Bottom)
                 {
