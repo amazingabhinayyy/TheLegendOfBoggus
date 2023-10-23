@@ -47,22 +47,22 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles
             int speed;
             if (!changeDirection && currentFrame >= 0 && currentFrame < 50)
             {
-                speed = 3;
+                speed = 5;
                 itemPosition.Y = itemPosition.Y - speed;
             }
             else if (!changeDirection && currentFrame >= 50 && currentFrame < 60)
             {
-                speed = 1;
+                speed = 2;
                 itemPosition.Y = itemPosition.Y - speed;
             }
             else if (!changeDirection && currentFrame >= 60 && currentFrame < 70)
             {
-                speed = -1;
+                speed = -2;
                 itemPosition.Y = itemPosition.Y - speed;
             }
             else
             {
-                itemPosition = BoomerangPositionUpdater(itemPosition, link.position, 3);
+                itemPosition = BoomerangPositionUpdater(itemPosition, link.position, 5);
             }
             sprite.Update();
             currentFrame++;

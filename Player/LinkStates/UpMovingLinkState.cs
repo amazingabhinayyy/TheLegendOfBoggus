@@ -40,7 +40,7 @@ namespace Sprint2_Attempt3.Player.LinkStates
         }
         public void Update()
         {
-            link.position.Y -= 2;
+            link.position.Y -= 4;
         }
         public void UseBomb()
         {
