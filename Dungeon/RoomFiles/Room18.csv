@@ -1,7 +1,4 @@
-﻿Enemy,Goriya,353,124,
-Enemy,Goriya,142,278,
-Enemy,Goriya,589,309,
-Block,BlueTile,14,,
+﻿Block,BlueTile,14,,
 Block,BlueTile,15,,
 Block,BlueTile,16,,
 Block,BlueTile,21,,
@@ -29,7 +26,10 @@ Item,Key,387,173,FALSE
 Item,Rupee,0,0,FALSE
 Item,Bomb,0,0,FALSE
 Item,Rupee,0,0,FALSE
-Door,North,5,,
+Door,North,4,,
 Door,South,1,,
-Door,East,5,,
+Door,East,4,,
 Door,West,1,,
+Enemy,Goriya,353,124,
+Enemy,Goriya,142,278,
+Enemy,Goriya,589,309,

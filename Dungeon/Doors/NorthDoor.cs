@@ -11,5 +11,9 @@ namespace Sprint2_Attempt3.Dungeon.Doors
             sprite = DungeonSpriteFactory.Instance.CreateNorthDoorSprite();
             actions[state].Invoke();
         }
+        public override Rectangle GetHitBox()
+        {
+            return new Rectangle(Position.X, Position.Y,Position.Width, Position.Height - 25);
+        }
     }
 }

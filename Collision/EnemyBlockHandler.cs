@@ -11,13 +11,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint2_Attempt3.WallBlocks;
-using Sprint2_Attempt3.Dungeon.Doors;
 
 namespace Sprint2_Attempt3.Collision
 {
-    public class PlayerBlockHandler
+    public class EnemyBlockHandler
     {
-        public static void HandlePlayerBlockCollision(ILink link, IGameObject obj, ICollision side)
+        public static void HandleEnemyBlockCollision(IEnemy enemy, IGameObject obj, ICollision side)
         {
             bool blocked = false;
             if (obj is IBlock)
@@ -32,28 +31,26 @@ namespace Sprint2_Attempt3.Collision
             {
                 blocked = true;
             }
-            else if (obj is IDoor) {
-                blocked = !(((IDoor)obj).IsWalkable);
-            }
             if (blocked)
             {
                 Rectangle wall = obj.GetHitBox();
                 if (side is BottomCollision)
                 {
-                    link.Position = new Vector2(link.Position.X, wall.Bottom);
+                    enemy.Y = wall.Bottom;
                 }
                 else if (side is LeftCollision)
                 {
-                    link.Position = new Vector2(wall.Left - link.GetHitBox().Width, link.Position.Y);
+                    enemy.X = wall.Left - enemy.GetHitBox().Width;
                 }
                 else if (side is RightCollision)
                 {
-                    link.Position = new Vector2(wall.Right, link.Position.Y);
+                    enemy.X = wall.Right;
                 }
                 else
                 {
-                    link.Position = new Vector2(link.Position.X, wall.Top - link.GetHitBox().Height);
+                    enemy.Y = wall.Top - enemy.GetHitBox().Height;
                 }
+                enemy.ChangeDirection();
             }
         }
         

@@ -55,7 +55,13 @@ namespace Sprint2_Attempt3.Collision
 
         public static void HandleEnemyBlockCollision(Rectangle wall, IEnemy enemy)
         {
-            ICollision side = CollisionDetector.SideDetector(enemy.GetHitBox(), wall);
+            Rectangle hitBox = enemy.GetHitBox();
+            if (enemy is Goriya || enemy is Hand)
+            {
+                hitBox = new Rectangle(hitBox.X, hitBox.Y, hitBox.Width / 2, hitBox.Height / 2);
+            }
+            ICollision side = CollisionDetector.SideDetector(hitBox, wall);
+            
             if (side is BottomCollision)
             {
                 //enemy.MoveDown();
@@ -91,10 +97,7 @@ namespace Sprint2_Attempt3.Collision
             else
             {
                 //remove the item
-                System.Diagnostics.Debug.WriteLine("test");
-                CollisionDetector.GameObjectList.Remove(projectile);
-
-                //ILinkProjectileSprite poof = LinkSpriteFactory.Instance.CreateItemHitSprite();
+                
                 
             }
         }
