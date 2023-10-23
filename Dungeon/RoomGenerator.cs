@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Blocks;
+using Sprint2_Attempt3.Blocks.Block;
 using Sprint2_Attempt3.Blocks.BlockSprites;
 using Sprint2_Attempt3.Dungeon.Doors;
 using Sprint2_Attempt3.Enemy;
@@ -167,6 +168,18 @@ namespace Sprint2_Attempt3.Dungeon
             else if (Block.Equals("DiamondTile"))
             {
                 block = new DiamondTile(Globals.FloorGrid[position]);
+            }
+            else if (Block.Equals("FireBlock"))
+            {
+                block = new FireBlock(Globals.FloorGrid[position]);
+            }
+            else if (Block.Equals("BlackFloor"))
+            {
+                block = new BlackFloor(Globals.FloorGrid[position]);
+            }
+            else if (Block.Equals("OldMan"))
+            {
+                block = new OldMan(Globals.FloorGrid[position]);
             }
             return block;
         }
