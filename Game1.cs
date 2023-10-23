@@ -32,7 +32,7 @@ namespace Sprint2_Attempt3
         { get; private set; }
         public CollisionResponse collisionResponse { get; private set; }
 
-        private BlockCollisionClass blockCollision;
+        public BlockCollisionClass blockCollision;
 
         public Game1()
         {
@@ -79,6 +79,7 @@ namespace Sprint2_Attempt3
             blockCollision.Update();
             keyController.Update(gameTime);
             room.Update();
+            item.Update();
             enemy.Update();
             base.Update(gameTime);
         }
