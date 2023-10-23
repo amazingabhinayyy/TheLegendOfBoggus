@@ -17,11 +17,24 @@ namespace Sprint2_Attempt3.Collision
 {
     public class PlayerBlockHandler
     {
-        public static void HandlePlayerBlockCollision(ILink link, IBlock block, ICollision side)
+        public static void HandlePlayerBlockCollision(ILink link, IGameObject obj, ICollision side)
         {
-            if (!block.isWalkable)
+            bool blocked = false;
+            if (obj is IBlock)
             {
-                Rectangle wall = block.GetHitBox();
+                var block = (IBlock)obj;
+                if (!block.isWalkable)
+                {
+                    blocked = true;
+                }
+            }
+            else if (obj is IWall)
+            {
+                blocked = true;
+            }
+            if (blocked)
+            {
+                Rectangle wall = obj.GetHitBox();
                 if (side is BottomCollision)
                 {
                     link.Position = new Vector2(link.Position.X, wall.Bottom);
