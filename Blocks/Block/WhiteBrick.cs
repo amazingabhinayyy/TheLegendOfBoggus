@@ -16,6 +16,7 @@ namespace Sprint2_Attempt3.Blocks.BlockSprites
         {
             position = Position;
             sourceRectangle = Globals.whiteBrickScr;
+            isWalkable = false;
         }
     }
 }
