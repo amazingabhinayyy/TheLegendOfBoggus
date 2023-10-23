@@ -20,7 +20,7 @@ namespace Sprint2_Attempt3.Collision
             if(projectile is AquamentusFireball)
             {
 
-                ((AquamentusFireball)projectile)
+                ((AquamentusFireball)projectile).GenerateRight();
             }
         }
     }

@@ -73,7 +73,7 @@ internal class AquamentusFireballRightState : IEnemyProjectileState
             if (traveledDistance >= projDistance)
             {
                 AquamentusFireball.Fire = false;
-                CollisionDetector.GameObjectList.Remove(AquamentusFireball);
+                //CollisionDetector.GameObjectList.Remove(AquamentusFireball);
             }
         }
         else
@@ -84,6 +84,6 @@ internal class AquamentusFireballRightState : IEnemyProjectileState
     }
     public void Draw(SpriteBatch spriteBatch)
     {
-        sprite.Draw(spriteBatch, (int)AquamentusFireball.Position2.X + 12, (int)AquamentusFireball.Position2.Y, Globals.AquamentusFireballLeft[spriteIndex]);
+       // sprite.Draw(spriteBatch, (int)AquamentusFireball.Position2.X + 12, (int)AquamentusFireball.Position2.Y, Globals.AquamentusFireballLeft[spriteIndex]);
     }
 }
