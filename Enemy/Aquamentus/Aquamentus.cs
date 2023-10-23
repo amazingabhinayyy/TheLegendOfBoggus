@@ -5,6 +5,7 @@ using Sprint2_Attempt3.Items;
 using System;
 using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles;
+using Sprint2_Attempt3.Enemy.Aquamentus;
 
 namespace Sprint2_Attempt3.Enemy.Aquamentus
 {
@@ -50,6 +51,17 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
             {
             Fireball.Draw(spriteBatch);
             }
+        }
+
+        public override void MoveUp() { }
+        public override void MoveDown() { }
+        public override void MoveLeft()
+        {
+            State = new MovingLeftAquamentusState(this);
+        }
+        public override void MoveRight()
+        {
+            State = new MovingRightAquamentusState(this);
         }
     }
 }

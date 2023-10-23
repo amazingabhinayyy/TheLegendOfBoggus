@@ -5,6 +5,7 @@ using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Hand;
 using Sprint2_Attempt3.Interfaces;
 using Sprint2_Attempt3.Player.Interfaces;
+using Sprint2_Attempt3.Player.LinkProjectiles;
 using System.Collections.Generic;
 
 namespace Sprint2_Attempt3.Collision
@@ -13,7 +14,6 @@ namespace Sprint2_Attempt3.Collision
     {
         public Vector2 LinkPosition { get; private set; }
         private static List<IGameObject> gameObjectList = new List<IGameObject>();
-        private List<IGameObject> copyGameObjectList = new List<IGameObject>();
         public static List<IGameObject> GameObjectList
         {
             get { return gameObjectList; }
@@ -24,6 +24,7 @@ namespace Sprint2_Attempt3.Collision
         {
             this.game = game;
         }
+
         public void CheckPlayerCollision(ILink link)
         {
             Rectangle linkRectangle = link.GetHitBox();
@@ -48,31 +49,11 @@ namespace Sprint2_Attempt3.Collision
                     }
                     else if (obj is IBlock)
                     {
-                        /*
-                        Rectangle rectangle = Rectangle.Intersect(collisionRectangle, linkRectangle);
-                        if(rectangle.Width >= rectangle.Height)
-                        {
-                            if(link.Position.Y > obj.position.Y)
-                            {
-                                PlayerBlockHandler.CorrectPositioning(High);
-                            } else
-                            {
-                                PlayerBlockHandler.CorrectPositioning(Low);
-                            } 
-                        } else
-                        {
-                            if (link.Position.X > obj.position.X)
-                            {
-                                PlayerBlockHandler.CorrectPositioning(left);
-                            }
-                            else
-                            {
-                                PlayerBlockHandler.CorrectPositioning(Right);
-                            }
-                        }
-                        */
-
-                        //link.CorrectPositioning(rectangle);
+                        PlayerBlockHandler.HandlePlayerBlockCollision(link, (IBlock)obj, side);
+                    }
+                    else if(obj is ILinkProjectile)
+                    {
+                        PlayerLinkProjectileHandler.HandlePlayerLinkProjectileCollision(link, (ILinkProjectile)obj, side);
                     }
                 }
             }
@@ -117,9 +98,9 @@ namespace Sprint2_Attempt3.Collision
                         if (collisionRectangle.Intersects(enemyRectangle))
                         {
                             ICollision side = SideDetector(collisionRectangle, enemyRectangle);
-                            if (gameObjectList[c] is ILinkItem)
+                            if (gameObjectList[c] is ILinkProjectile)
                             {
-                                EnemyItemCollisionHandler.HandleItemEnemyCollision((IEnemy)gameObjectList[i], (ILinkItem)gameObjectList[c], side);
+                                EnemyLinkProjectileCollisionHandler.HandleLinkProjectileEnemyCollision((IEnemy)gameObjectList[i], (ILinkProjectile)gameObjectList[c], side);
                             }
                             else if (gameObjectList[c] is IBlock)
                             {

@@ -12,7 +12,7 @@ using Sprint2_Attempt3.Interfaces;
 
 namespace Sprint2_Attempt3.Player.LinkSprites
 {
-    public class RightAttackLinkSwordSprite : ILinkItemSprite
+    public class RightAttackLinkSwordSprite : ILinkProjectileSprite
     {
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
+using Sprint2_Attempt3.Enemy.Rope;
 
 namespace Sprint2_Attempt3.Enemy.Rope
 {
@@ -14,9 +15,21 @@ namespace Sprint2_Attempt3.Enemy.Rope
         public override void Generate() {
             State = new MovingLeftRopeState(this);
         }
-        public Rectangle GetHitBox()
+        public override void MoveUp()
         {
-            return new Rectangle(0, 0, 0, 0);
+            State = new MovingUpRopeState(this);
+        }
+        public override void MoveDown()
+        {
+            State = new MovingDownRopeState(this);
+        }
+        public override void MoveLeft()
+        {
+            State = new MovingLeftRopeState(this);
+        }
+        public override void MoveRight()
+        {
+            State = new MovingRightRopeState(this);
         }
     }
 }

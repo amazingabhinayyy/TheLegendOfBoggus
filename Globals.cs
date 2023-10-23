@@ -246,7 +246,7 @@ namespace Sprint2_Attempt3
         public static Vector2[] AquamentusOriginsLeft = { temp, temp, temp, temp, temp, temp, temp, temp };
         public static int fireBallMaxDistance = 100;
 
-        public static Rectangle Dungeon1 { get { return new Rectangle(1, 1, 256, 176); } }
+        public static Rectangle DungeonStandard { get { return new Rectangle(1, 1, 256, 176); } }
 
         public static Rectangle NorthDoorPosition { get { return new Rectangle(348,0, 105, 87); } }
         public static Rectangle SouthDoorPosition { get { return new Rectangle(348, 393, 105, 87); } }

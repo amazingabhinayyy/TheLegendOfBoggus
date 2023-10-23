@@ -14,11 +14,17 @@ namespace Sprint2_Attempt3.Enemy.Zol
         public override void Generate() {
             State = new MovingLeftZolState(this);
         }
-        public override Rectangle GetHitBox()
-        {
-            return new Rectangle(0, 0, 0, 0);
-            //return new Rectangle((int)this.X, (int)this.Y, 15 * 3, 15 * 3);
-            //return new Rectangle((int)Position.X, (int)Position.Y, 15 * 3, 15 * 3);
+        public override void MoveUp() {
+            State = new MovingUpZolState(this);
+        }
+        public override void MoveDown() {
+            State = new MovingDownZolState(this);
+        }
+        public override void MoveLeft() {
+            State = new MovingLeftZolState(this);
+        }
+        public override void MoveRight() {
+            State = new MovingRightZolState(this);
         }
     }
 }
