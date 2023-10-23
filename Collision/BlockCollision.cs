@@ -28,7 +28,7 @@ namespace Sprint2_Attempt3.Collision
         public Rectangle enemyObject;
         private Link link;
         private ILinkItem projectile;
-        private EnemySecondary enemy;
+        private IEnemy enemy;
         private Game1 game1;
         public BlockCollisionClass(Game1 game1)
         {
@@ -37,7 +37,6 @@ namespace Sprint2_Attempt3.Collision
             this.game1 = game1;
             this.link = (Link)game1.link;
             linkObject = this.game1.link.GetHitBox();
-            this.enemy = (EnemySecondary)game1.enemy;
             //gethitbox for enemy? enemy
             //linkPosition = this.game1.link.position;
            
@@ -59,7 +58,7 @@ namespace Sprint2_Attempt3.Collision
                 {
                     enemyObject = obj.GetHitBox();
                     //System.Diagnostics.Debug.WriteLine(enemyObject.X);
-                    collided = CheckCollision.CheckEnemyWallCollision(enemyObject, enemy);
+                    collided = CheckCollision.CheckEnemyWallCollision(enemyObject, (IEnemy)obj);
                 }
                 else
                 {

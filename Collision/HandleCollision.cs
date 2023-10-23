@@ -99,7 +99,7 @@ namespace Sprint2_Attempt3.Collision
             }*/
         }
 
-        public static void HandleEnemyBlockCollision(Rectangle spriteObject, Rectangle wall, EnemySecondary enemy)
+        public static void HandleEnemyBlockCollision(Rectangle spriteObject, Rectangle wall, IEnemy enemy)
         {
             Rectangle intersectRect = Rectangle.Intersect(spriteObject, wall);
             int width = intersectRect.Width;
@@ -108,23 +108,26 @@ namespace Sprint2_Attempt3.Collision
             {
 
                 //enemy.Y = wall.Bottom;
-                //System.Diagnostics.Debug.WriteLine("link y position:" + link.position.Y);
+                System.Diagnostics.Debug.WriteLine("B COLL pos:" + enemy.Y);
                 enemy.Y = wall.Bottom;
                 //System.Diagnostics.Debug.WriteLine("link y position:" + link.position.Y);
                 //enemy.ChangeDirection();
             }
             else if (side is LeftCollision)
             {
+                System.Diagnostics.Debug.WriteLine("L COLL pos:" + enemy.Y);
                 enemy.X = wall.Right - wall.Width - 45;
                 //enemy.ChangeDirection();
             }
             else if (side is RightCollision)
             {
+                System.Diagnostics.Debug.WriteLine("R COLL pos:" + enemy.Y);
                 enemy.X = wall.Right;
                 //enemy.ChangeDirection();
             }
             else
             {
+                System.Diagnostics.Debug.WriteLine("T COLL pos:" + enemy.Y);
                 enemy.Y = wall.Top - wall.Height + 40;
                 //enemy.ChangeDirection();
             }

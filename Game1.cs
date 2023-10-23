@@ -79,7 +79,6 @@ namespace Sprint2_Attempt3
             blockCollision.Update();
             keyController.Update(gameTime);
             room.Update();
-            item.Update();
             enemy.Update();
             base.Update(gameTime);
         }
