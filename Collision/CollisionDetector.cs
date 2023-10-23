@@ -33,7 +33,6 @@ namespace Sprint2_Attempt3.Collision
         {
             Rectangle linkRectangle = link.GetHitBox();
             for(int c = 0; c < gameObjectList.Count; c++)
-            //foreach (IGameObject obj in gameObjectList)
             {
                 IGameObject obj = gameObjectList[c];
                 Rectangle collisionRectangle = obj.GetHitBox();
