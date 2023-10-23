@@ -5,6 +5,7 @@ using Sprint2_Attempt3.Player.LinkProjectiles;
 using Sprint2_Attempt3.Player.LinkSprites;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Player.LinkProjectilesSprites;
+using Sprint2_Attempt3.Player.Items;
 
 namespace Sprint2_Attempt3.Player
 {
@@ -148,14 +149,10 @@ namespace Sprint2_Attempt3.Player
         {
             return new BombExplosionSprite(linkTexture);
         }
-        public ILinkItemSprite CreatePoofAnimation()
+        public ILinkProjectileSprite CreatePoofAnimation()
         {
             return new PoofSprite(linkTexture);
         }
-
-
-        // More public ISprite returning methods follow
-        // ...
     }
 }
 

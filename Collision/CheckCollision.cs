@@ -34,7 +34,7 @@ namespace Sprint2_Attempt3.Collision
             return false;
         }
         
-        public static bool CheckProjectileWallCollision(ILinkItem projectile)
+        public static bool CheckProjectileWallCollision(ILinkProjectile projectile)
         {
             foreach (Rectangle wall in Globals.WallBlocks)
                 if (projectile.GetHitBox().Intersects(wall))
