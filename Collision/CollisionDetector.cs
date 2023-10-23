@@ -77,7 +77,7 @@ namespace Sprint2_Attempt3.Collision
                     }
                     else if (obj is IDoor)
                     {
-                        //PlayerBlockHandler.HandlePlayerBlockCollision(link, (IDoor)obj, side);
+                        PlayerBlockHandler.HandlePlayerDoorCollision(link, (IDoor)obj, side, game);
 
                     }
                     else if(obj is ILinkProjectile)
