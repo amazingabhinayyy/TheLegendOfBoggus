@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Sprint2_Attempt3.Collision
 {
-    public class ProjectileWallCollisionHandler
+    public class EnemyProjectileBlockHandler
     {
-        public static void HandleProjectileWallCollision(IProjectile projectile, IWall wall, ICollision side)
+        public static void HandleEnemyProjectileBlockCollision(IProjectile projectile, IGameObject block, ICollision side)
         {
             if (projectile is IBoomerang)
             {

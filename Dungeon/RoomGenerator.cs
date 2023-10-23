@@ -70,9 +70,7 @@ namespace Sprint2_Attempt3.Dungeon
                     }
                     else if (words[0].Equals("Door"))
                     {
-                        int state = int.Parse(words[2]);
-                        if (state != 5)
-                            objectList.Add(GetDoor(words[1], state));
+                        objectList.Add(GetDoor(words[1], int.Parse(words[2])));
                     }
 
                 }

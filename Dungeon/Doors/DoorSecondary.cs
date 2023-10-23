@@ -15,14 +15,17 @@ namespace Sprint2_Attempt3.Dungeon.Doors
         protected Rectangle Position;
         protected Rectangle sourceRectangle;
         protected IDoorSprite sprite;
+        private bool DoorExists;
         public bool IsWalkable { get; private set; }
         protected static Dictionary<int, Action> actions;
         public DoorSecondary() {
+            DoorExists = true;
             actions = new Dictionary<int, Action>() {
                 { 0, () => { Open(); } },
                 { 1, () => { Close(); } },
                 { 2, () => { DiamondLock(); } },
-                { 3, () => { Damage(); } }
+                { 3, () => { Damage(); } },
+                { 4, () => { NoDoor(); } }
             };
         }
         public void Update() { }
@@ -50,12 +53,21 @@ namespace Sprint2_Attempt3.Dungeon.Doors
             IsWalkable = true;
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void NoDoor()
         {
-            sprite.Draw(spriteBatch, sourceRectangle);
+            DoorExists = false;
+            IsWalkable = false;
         }
 
-        public Rectangle GetHitBox() {
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            if (DoorExists)
+            {
+                sprite.Draw(spriteBatch, sourceRectangle);
+            }
+        }
+
+        public virtual Rectangle GetHitBox() {
             return Position;
         }
     }

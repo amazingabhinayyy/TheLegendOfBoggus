@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
 
 namespace Sprint2_Attempt3.WallBlocks
 {
-    public class NorthEastCollisionBlock : IWall
+    public class SouthDoorCollisionBlock : IWall
     {
         Rectangle wall;
-        public NorthEastCollisionBlock()
+        public SouthDoorCollisionBlock()
         {
-            wall = new Rectangle(0, 0, 348, 62);
+            wall = new Rectangle(0, 440, 800, 40);
         }
         public Rectangle GetHitBox()
         {

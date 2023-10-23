@@ -1,6 +1,7 @@
 ﻿using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Items;
+using Sprint2_Attempt3.Player;
 using System;
 
 namespace Sprint2_Attempt3.Dungeon.Rooms
@@ -33,9 +34,8 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                 }
             }
 
-            collisionDetector = new CollisionDetector(game1);
+            collisionDetector = new CollisionDetector(game1, (Link)game1.link);
             CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
-            blockCollision = new BlockCollisionClass(game1);
         }
        
         public override void SwitchToWestRoom()
