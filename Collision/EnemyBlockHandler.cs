@@ -11,13 +11,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint2_Attempt3.WallBlocks;
+using Sprint2_Attempt3.Enemy.Goriya;
+using Sprint2_Attempt3.Enemy.Hand;
 using Sprint2_Attempt3.Dungeon.Doors;
 
 namespace Sprint2_Attempt3.Collision
 {
     public class EnemyBlockHandler
     {
-        public static void HandleEnemyBlockCollision(IEnemy enemy, IGameObject obj, ICollision side)
+        public static void HandleEnemyBlockCollision(IEnemy enemy, IGameObject obj, Rectangle collisionRectangle)
         {
             bool blocked = false;
             if (obj is IBlock)
@@ -28,39 +30,45 @@ namespace Sprint2_Attempt3.Collision
                     blocked = true;
                 }
             }
-            else if (obj is IWall)
+            else if(obj is IWall)
             {
                 blocked = true;
             }
-            else if (obj is IDoor)
+            else if(obj is IDoor)
             {
                 blocked = true;
+                System.Diagnostics.Debug.WriteLine("IDoor Check");
             }
             if (blocked)
             {
-                Rectangle wall = obj.GetHitBox();
+                Rectangle hitBox = enemy.GetHitBox();
+                if (enemy is Goriya || enemy is Hand)
+                {
+                    hitBox = new Rectangle(hitBox.X, hitBox.Y, hitBox.Width / 2, hitBox.Height / 2);
+                }
+                ICollision side = CollisionDetector.SideDetector(hitBox, collisionRectangle);
+
                 if (side is BottomCollision)
                 {
-                    enemy.Y = wall.Top - enemy.GetHitBox().Height - 1;
-                    enemy.MoveRight();
+                    //enemy.MoveDown();
+                    enemy.Y = collisionRectangle.Bottom;
                 }
                 else if (side is LeftCollision)
                 {
-                    enemy.X = wall.Right + 1;
-                    enemy.MoveUp();
+                    //enemy.MoveLeft();
+                    enemy.X = collisionRectangle.Left - enemy.Position.Width - 1;
                 }
                 else if (side is RightCollision)
                 {
-                    enemy.X = wall.Left - enemy.GetHitBox().Width - 1;
-                    enemy.MoveDown();
+                    //enemy.MoveRight();
+                    enemy.X = collisionRectangle.Right + 1;
                 }
                 else
                 {
-                    enemy.Y = wall.Bottom + 1;
-                    enemy.MoveLeft();
+                    //enemy.MoveUp();
+                    enemy.Y = collisionRectangle.Top - enemy.Position.Height - 1;
                 }
             }
         }
-        
     }
 }

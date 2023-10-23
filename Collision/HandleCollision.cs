@@ -9,8 +9,6 @@ using Microsoft.Xna.Framework.Audio;
 using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Collision.SideCollisionHandlers;
 using Sprint2_Attempt3.Enemy;
-using Sprint2_Attempt3.Enemy.Goriya;
-using Sprint2_Attempt3.Enemy.Hand;
 using Sprint2_Attempt3.Interfaces;
 using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Player;
@@ -26,79 +24,96 @@ namespace Sprint2_Attempt3.Collision
         public HandleCollision()
         {
         }
-        public static void HandleLinkWallCollision(IWall wall, ILink link)
+        public static void HandleLinkBlockCollision(Rectangle linkRectangle, Rectangle wall, Link link)
         {
-            Rectangle wallrectangle = wall.GetHitBox();
-            Rectangle linkRectangle = link.GetHitBox();
-            ICollision side = CollisionDetector.SideDetector(linkRectangle, wallrectangle);
+            Rectangle intersectRect = Rectangle.Intersect(linkRectangle, wall);
+            int width = intersectRect.Width;
+            ICollision side = CollisionDetector.SideDetector(linkRectangle, wall);
             if (side is BottomCollision)
             {
                 link.BecomeIdle();
-                link.Position = new Vector2(linkRectangle.X, wallrectangle.Bottom + 1);
+                //System.Diagnostics.Debug.WriteLine("link y position:" + link.position.Y);
+                link.position.Y = wall.Bottom;
+                //System.Diagnostics.Debug.WriteLine("link y position:" + link.position.Y);
             }
             else if (side is LeftCollision)
             {
                 link.BecomeIdle();
-                link.Position = new Vector2(wallrectangle.Left - linkRectangle.Width - 1, linkRectangle.Y);
+                link.position.X = wall.Right - wall.Width - 45;
             }
             else if (side is RightCollision)
             {
                 link.BecomeIdle();
-                link.Position = new Vector2(wallrectangle.Right + 1, linkRectangle.Y);
+                link.position.X = wall.Right;
             }
             else
             {
                 link.BecomeIdle();
-                link.Position = new Vector2(linkRectangle.X, wallrectangle.Top - linkRectangle.Height - 1);
+                link.position.Y = wall.Top - wall.Height + 40;
             }
+            /*Rectangle linkRectangle = link.GetHitBox();
+            ICollision side = CollisionDetector.SideDetector(linkRectangle, wall);
+            if (side is BottomCollision)
+            {
+                link.BecomeIdle();
+                link.Position = new Vector2(linkRectangle.X, wall.Bottom + 1);
+                //link.Position.Y = wall.Bottom + 1;
+            }
+            else if (side is LeftCollision)
+            {
+                link.BecomeIdle();
+                link.Position = new Vector2(wall.Left - linkRectangle.Width - 1, linkRectangle.Y);
+                //link.Position.X = wall.Left - linkRectangle.Width - 1;
+            }
+            else if (side is RightCollision)
+            {
+                link.BecomeIdle();
+                link.Position = new Vector2(wall.Right + 1, linkRectangle.Y);
+                //link.Position.X = wall.Right + 1;
+            }
+            else
+            {
+                link.BecomeIdle();
+                link.Position = new Vector2(linkRectangle.X, wall.Top - linkRectangle.Height - 1);
+                //link.Position.Y = wall.Top - linkRectangle.Height - 1;
+            }*/
         }
 
         public static void HandleEnemyBlockCollision(Rectangle wall, IEnemy enemy)
         {
-            Rectangle hitBox = enemy.GetHitBox();
-            if (enemy is Goriya || enemy is Hand)
-            {
-                hitBox = new Rectangle(hitBox.X, hitBox.Y, hitBox.Width / 2, hitBox.Height / 2);
-            }
-            ICollision side = CollisionDetector.SideDetector(hitBox, wall);
-            
+            ICollision side = CollisionDetector.SideDetector(enemy.GetHitBox(), wall);
             if (side is BottomCollision)
             {
-                //enemy.MoveDown();
+                enemy.MoveDown();
                 enemy.Y = wall.Bottom + 1;
             }
             else if (side is LeftCollision)
             {
-                //enemy.MoveLeft();
+                enemy.MoveLeft();
                 enemy.X = wall.Left - enemy.Position.Width - 1;
             }
             else if (side is RightCollision)
             {
-                //enemy.MoveRight();
+                enemy.MoveRight();
                 enemy.X = wall.Right + 1;
             }
             else
             {
-                //enemy.MoveUp();
+                enemy.MoveUp();
                 enemy.Y = wall.Top - enemy.Position.Height - 1;
             }
-            enemy.ChangeDirection();
         }
 
         public static void HandleProjectileBlockCollision(ILinkProjectile projectile)
         {
-            //System.Diagnostics.Debug.WriteLine("test");
-
             //change sprite to poof animation
             if (projectile is IBoomerang)
             {
-                //Michael is working on it; //bomb
+                System.Diagnostics.Debug.WriteLine("boomerang");
             }
             else
             {
-                //remove the item
-                
-                
+                LinkSpriteFactory.Instance.CreatePoofAnimation();
             }
         }
     }
