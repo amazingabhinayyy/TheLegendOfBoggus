@@ -13,9 +13,9 @@ Block,DiamondTile,57,,
 Item,Key,0,0,FALSE
 Item,Rupee,0,0,FALSE
 Item,Rupee,0,0,FALSE
-Door,North,5,,
-Door,South,5,,
-Door,East,5,,
+Door,North,4,,
+Door,South,4,,
+Door,East,4,,
 Door,West,0,,
 Enemy,Stalfos,130,290,
 Enemy,Stalfos,240,330,

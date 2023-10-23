@@ -4,7 +4,7 @@ Block,DiamondTile,34,,
 Block,DiamondTile,58,,
 Item,Boomerang,0,0,FALSE
 Item,Rupee,0,0,FALSE
-Door,North,5,,
+Door,North,4,,
 Door,South,3,,
 Door,East,1,,
 Door,West,0,,

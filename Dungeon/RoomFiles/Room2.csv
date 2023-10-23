@@ -1,8 +1,8 @@
 ﻿Item,Key,512,347,FALSE
-Door,North,5,,
-Door,South,5,,
+Door,North,4,,
+Door,South,4,,
 Door,East,0,,
-Door,West,5,,
+Door,West,4,,
 Enemy,Keese,200,300,
 Enemy,Keese,500,120,
 Enemy,Keese,360,200,

@@ -1,7 +1,7 @@
 ﻿Door,North,1,
-Door,South,5,
+Door,South,4,
 Door,East,2,
-Door,West,5,
+Door,West,4,
 Enemy,Keese,130,220
 Enemy,Keese,240,350
 Enemy,Keese,370,310

@@ -1,20 +1,16 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Collision.SideCollisionHandlers;
+using Sprint2_Attempt3.Dungeon.Doors;
 using Sprint2_Attempt3.Enemy;
-using Sprint2_Attempt3.Enemy.Hand;
+using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Interfaces;
 using Sprint2_Attempt3.Items;
+using Sprint2_Attempt3.Items.ItemClasses;
 using Sprint2_Attempt3.Player.Interfaces;
-using Sprint2_Attempt3.Player.LinkProjectiles;
-using System.Collections.Generic;
-using System.Globalization;
 using Sprint2_Attempt3.WallBlocks;
 using System;
-using Sprint2_Attempt3.Enemy.Projectile;
-using Sprint2_Attempt3.Dungeon.Doors;
-using Sprint2_Attempt3.Items.ItemClasses;
-using System;
+using System.Collections.Generic;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -133,15 +129,18 @@ namespace Sprint2_Attempt3.Collision
                             }
                             else if (obj is IBlock)
                             {
-                                HandleCollision.HandleEnemyBlockCollision(collisionRectangle, (IEnemy)gameObjectList[i]);
+                                //HandleCollision.HandleEnemyBlockCollision(collisionRectangle, (IEnemy)gameObjectList[i]);
+                                EnemyBlockHandler.HandleEnemyBlockCollision((IEnemy)gameObjectList[i], obj, side);
                             }
                             else if (obj is IWall)
                             {
-                                HandleCollision.HandleEnemyBlockCollision(collisionRectangle, (IEnemy)gameObjectList[i]);
+                                //HandleCollision.HandleEnemyBlockCollision(collisionRectangle, (IEnemy)gameObjectList[i]);
+                                EnemyBlockHandler.HandleEnemyBlockCollision((IEnemy)gameObjectList[i], obj, side);
                             }
                             else if (obj is IDoor)
                             {
-                                HandleCollision.HandleEnemyBlockCollision(collisionRectangle, (IEnemy)gameObjectList[i]);
+                                //HandleCollision.HandleEnemyBlockCollision(collisionRectangle, (IEnemy)gameObjectList[i]);
+                                EnemyBlockHandler.HandleEnemyBlockCollision((IEnemy)gameObjectList[i], obj, side);
                             }
                         }
                     }

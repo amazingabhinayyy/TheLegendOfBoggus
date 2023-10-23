@@ -14,6 +14,7 @@ namespace Sprint2_Attempt3.Dungeon.Doors
         public void Close();
         public void DiamondLock();
         public void Damage();
+        public void NoDoor();
         public void Draw(SpriteBatch spriteBatch);
     }
 }
