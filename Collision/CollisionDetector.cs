@@ -68,7 +68,7 @@ namespace Sprint2_Attempt3.Collision
                     }
                     else if (obj is IBlock)
                     {
-                        HandleCollision.HandlePlayerBlockCollision(collisionRectangle, link);
+                        PlayerBlockHandler.HandlePlayerBlockCollision(link, (IBlock)obj, side);
                     }
                     else if (obj is IDoor)
                     {
@@ -125,25 +125,26 @@ namespace Sprint2_Attempt3.Collision
                     Rectangle enemyRectangle = gameObjectList[i].GetHitBox();
                     for (int c = 0; c < gameObjectList.Count; c++)
                     {
-                        Rectangle collisionRectangle = gameObjectList[c].GetHitBox();
+                        IGameObject obj = gameObjectList[c];
+                        Rectangle collisionRectangle = obj.GetHitBox();
                         if (collisionRectangle.Intersects(enemyRectangle))
                         {
                             ICollision side = SideDetector(collisionRectangle, enemyRectangle);
-                            if (gameObjectList[c] is ILinkProjectile)
+                            if (obj is ILinkProjectile)
                             {
                                 EnemyLinkProjectileCollisionHandler.HandleLinkProjectileEnemyCollision((IEnemy)gameObjectList[i], (ILinkProjectile)gameObjectList[c], side, gameObjectList);
                             }
-                            else if (gameObjectList[c] is IBlock)
+                            else if (obj is IBlock)
                             {
-                                HandleCollision.HandleEnemyBlockCollision(collisionRectangle, (IEnemy)gameObjectList[i]);
+                                //HandleCollision.HandleEnemyBlockCollision(collisionRectangle, (IEnemy)gameObjectList[i]);
                             }
-                            else if (gameObjectList[c] is IWall)
+                            else if (obj is IWall)
                             {
-                                HandleCollision.HandleEnemyBlockCollision(collisionRectangle, (IEnemy)gameObjectList[i]);
+                                HandleCollision.HandleEnemyWallCollision((IWall)obj, (IEnemy)gameObjectList[i]);
                             }
-                            else if (gameObjectList[c] is IDoor)
+                            else if (obj is IDoor)
                             {
-                                HandleCollision.HandleEnemyBlockCollision(collisionRectangle, (IEnemy)gameObjectList[i]);
+                                //HandleCollision.HandleEnemyBlockCollision(collisionRectangle, (IEnemy)gameObjectList[i]);
                             }
                         }
                     }
