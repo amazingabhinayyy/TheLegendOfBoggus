@@ -28,7 +28,7 @@ namespace Sprint2_Attempt3.Collision
         public static void HandlePlayerWallCollision(Rectangle block, ILink link)
         {
             Rectangle linkRectangle = link.GetHitBox();
-            ICollision side = CollisionDetector.SideDetector(linkRectangle, wall);
+            ICollision side = CollisionDetector.SideDetector(linkRectangle, block);
             if (side is BottomCollision)
             {
                 link.BecomeIdle();
