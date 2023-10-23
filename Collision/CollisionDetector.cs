@@ -64,7 +64,9 @@ namespace Sprint2_Attempt3.Collision
                     else if (obj is IWall)
                     {
                         //HandleCollision.HandlePlayerBlockCollision(link, (IWall)obj, side);
-                        HandleCollision.HandleLinkWallCollision((IWall)obj, link);
+                        //HandleCollision.HandlePlayerWallCollision(((IWall)obj).GetHitBox(), link);
+                        PlayerBlockHandler.HandlePlayerBlockCollision(link, (IWall)obj, side);
+
                     }
                     else if (obj is IBlock)
                     {
@@ -72,8 +74,6 @@ namespace Sprint2_Attempt3.Collision
                     }
                     else if (obj is IDoor)
                     {
-                        
-
                         //PlayerBlockHandler.HandlePlayerBlockCollision(link, (IDoor)obj, side);
                         //if obj is not walkable = transition
 
