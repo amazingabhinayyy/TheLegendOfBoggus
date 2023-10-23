@@ -8,22 +8,19 @@ using System.Threading.Tasks;
 
 namespace Sprint2_Attempt3.Collision
 {
-    public class ProjectileBlockCollisionHandler
+    public class EnemyProjectileBlockHandler
     {
-        public static void HandleProjectileBlockCollision(IProjectile projectile, IGameObject block, ICollision side)
+        public static void HandleEnemyProjectileBlockCollision(IProjectile projectile, IGameObject block, ICollision side)
         {
             if (projectile is IBoomerang)
             {
-                //((IBoomerang)projectile).ReverseDirection();
+                ((IBoomerang)projectile).ReverseDirection();
             }
             else if (projectile is IArrow)
             {
                 ((IArrow)projectile).DestroyArrow();
             }
-            /*else if(projectile is IFire)
-            {
-
-            }*/
+            //else if(projectile is IFire)
         }
     }
 }
