@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Blocks;
+using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Dungeon.Doors;
 using Sprint2_Attempt3.Dungeon.Rooms;
 using Sprint2_Attempt3.Enemy;
@@ -15,9 +16,11 @@ namespace Sprint2_Attempt3.Dungeon
         protected static int roomNumber;
         protected DungeonRoom room;
         protected Game1 game1;
+        protected CollisionDetector collisionDetector;
+        protected BlockCollisionClass blockCollision;
 
         public RoomSecondary()
-        {
+        {    
         }
         public void SwitchRooms() {
             if (roomNumber < gameObjectLists.Length - 1)
@@ -28,13 +31,19 @@ namespace Sprint2_Attempt3.Dungeon
             {
                 roomNumber = 0;
             }
+            CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
         }
         public void Update() {
-            //collision handling goes here
+            collisionDetector.Update();
+            blockCollision.Update();
 
-            foreach (IGameObject obj in gameObjectLists[roomNumber])
+            for (int i = 0; i < gameObjectLists[roomNumber].Count; i++)
             {
-                obj.Update();
+                IGameObject obj = gameObjectLists[roomNumber][i];
+                if (obj is IEnemy)
+                    ((IEnemy)obj).Update();
+                else if (obj is IItem)
+                    ((IItem)obj).Update();
             }
 
             game1.link.Update();
@@ -58,10 +67,10 @@ namespace Sprint2_Attempt3.Dungeon
             game1.link.Draw(spriteBatch, Color.White);
         }
 
-        public abstract void SwitchToNorthRoom();
-        public abstract void SwitchToSouthRoom();        
-        public abstract void SwitchToEastRoom();        
-        public abstract void SwitchToWestRoom();
+        public virtual void SwitchToNorthRoom() { }
+        public virtual void SwitchToSouthRoom() { }
+        public virtual void SwitchToEastRoom() { }
+        public virtual void SwitchToWestRoom() { }
         
     }
 }

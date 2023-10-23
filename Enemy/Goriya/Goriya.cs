@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Enemy.Projectile.GoriyaProjectiles;
+using Sprint2_Attempt3.Enemy.Goriya;
 
 namespace Sprint2_Attempt3.Enemy.Goriya
 {
@@ -49,10 +50,21 @@ namespace Sprint2_Attempt3.Enemy.Goriya
                 Boomerang.Draw(spriteBatch);
             }
         }
-        public override Rectangle GetHitBox()
+        public override void MoveUp()
         {
-            //To-Do fill in what hit box should be instead of 0s
-            return new Rectangle(0, 0, 0, 0);
+            State = new MovingUpGoriyaState(this);
+        }
+        public override void MoveDown()
+        {
+            State = new MovingDownGoriyaState(this);
+        }
+        public override void MoveLeft()
+        {
+            State = new MovingLeftGoriyaState(this);
+        }
+        public override void MoveRight()
+        {
+            State = new MovingRightGoriyaState(this);
         }
     }
 }

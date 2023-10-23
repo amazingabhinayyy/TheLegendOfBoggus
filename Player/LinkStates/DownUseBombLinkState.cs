@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Player;
-using Sprint2_Attempt3.Player.Items;
+using Sprint2_Attempt3.Player.LinkProjectiles;
 
 namespace Sprint2_Attempt3.Player.LinkStates
 {
@@ -21,7 +21,6 @@ namespace Sprint2_Attempt3.Player.LinkStates
             link.Sprite = LinkSpriteFactory.Instance.CreateDownItemLinkSprite();;
             DownBomb bomb = new DownBomb(link);
             link.Items.Add(bomb);
-            CollisionDetector.GameObjectList.Add(bomb);
             frameCounter = 0;
         }
         public void Stop()

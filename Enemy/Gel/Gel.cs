@@ -16,13 +16,21 @@ namespace Sprint2_Attempt3.Enemy.Gel
         public override void Generate() {
             State = new MovingLeftGelState(this);
         }
-        public override Rectangle GetHitBox()
+        public override void MoveUp()
         {
-            //System.Diagnostics.Debug.WriteLine("hitbox");
-            //System.Diagnostics.Debug.WriteLine(Position.Y);
-            //return new Rectangle(0, 0, 0, 0);
-            //int x = State.enemy.X;
-            return new Rectangle((int)Position.X, (int)Position.Y, 15 * 3, 15 * 3);
+            State = new MovingUpGelState(this);
+        }
+        public override void MoveDown()
+        {
+            State = new MovingDownGelState(this);
+        }
+        public override void MoveLeft()
+        {
+            State = new MovingLeftGelState(this);
+        }
+        public override void MoveRight()
+        {
+            State = new MovingRightGelState(this);
         }
     }
 }

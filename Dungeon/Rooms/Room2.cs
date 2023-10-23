@@ -1,4 +1,5 @@
-﻿using Sprint2_Attempt3.Enemy;
+﻿using Sprint2_Attempt3.Collision;
+using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Items;
 using System;
 
@@ -14,6 +15,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             if (gameObjectLists[roomNumber] == null)
             {
                 gameObjectLists[roomNumber] = RoomGenerator.Instance.LoadFile(roomNumber);
+                gameObjectLists[roomNumber].Add(this.game1.link);
             }
 
             foreach (IGameObject obj in gameObjectLists[roomNumber])
@@ -30,22 +32,14 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                     }
                 }
             }
-        }
-        public override void SwitchToNorthRoom()
-        {
-            roomNumber = 1;
-        }
-        public override void SwitchToSouthRoom()
-        {
-            roomNumber = 1;
+
+            collisionDetector = new CollisionDetector(game1);
+            CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
+            blockCollision = new BlockCollisionClass(game1);
         }
         public override void SwitchToEastRoom()
         {
-            roomNumber = 1;
-        }
-        public override void SwitchToWestRoom()
-        {
-            roomNumber = 1;
+            game1.room = new Room1(game1);
         }
 
     }
