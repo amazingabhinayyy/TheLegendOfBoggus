@@ -10,6 +10,7 @@ using Sprint2_Attempt3.Player.LinkProjectiles;
 using System.Collections.Generic;
 using System.Globalization;
 using Sprint2_Attempt3.WallBlocks;
+using Sprint2_Attempt3.Player;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -17,16 +18,18 @@ namespace Sprint2_Attempt3.Collision
     {
         public Vector2 LinkPosition { get; private set; }
         private static List<IGameObject> gameObjectList = new List<IGameObject>();
+        public Link linkObj;
         public static List<IGameObject> GameObjectList
         {
             get { return gameObjectList; }
             set { gameObjectList = value; }
         }
         private Game1 game;
-        public CollisionDetector(Game1 game)
+        public CollisionDetector(Game1 game, Link link)
         {
             this.game = game;
             AddWallBlocks();
+            this.linkObj = link;
         }
 
         public void CheckPlayerCollision(ILink link)
@@ -47,7 +50,7 @@ namespace Sprint2_Attempt3.Collision
                     }
                     else if (obj is IWall)
                     {
-                        PlayerBlockHandler.HandlePlayerBlockCollision(link, (IWall)obj, side);
+                        CheckCollision.CheckPlayerWallCollision(linkObj);
                     }
                     else if(obj is ILinkProjectile)
                     {

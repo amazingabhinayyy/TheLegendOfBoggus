@@ -30,7 +30,7 @@ namespace Sprint2_Attempt3.Collision
                 }
             }
 
-            collided = CheckCollision.CheckPlayerWallCollision(this.game1.link);
+            //collided = CheckCollision.CheckPlayerWallCollision(this.game1.link);
             
         }
 

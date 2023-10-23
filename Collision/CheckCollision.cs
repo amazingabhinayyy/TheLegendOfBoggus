@@ -45,12 +45,13 @@ namespace Sprint2_Attempt3.Collision
             return false;
         }
         
-        public static bool CheckPlayerWallCollision(ILink link)
+        public static bool CheckPlayerWallCollision(Link link)
         {
+            Rectangle linkRectangle = link.GetHitBox();
             foreach (Rectangle wall in Globals.WallBlocks)
                 if (link.GetHitBox().Intersects(wall))
                 {
-                    HandleCollision.HandleLinkBlockCollision(wall, link);
+                    HandleCollision.HandleLinkBlockCollision(linkRectangle, wall, link);
                     return true;
                 }
             return false;

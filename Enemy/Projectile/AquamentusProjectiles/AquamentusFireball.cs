@@ -12,8 +12,8 @@ namespace Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles
         private int count;
         private bool fire;
         public bool Fire { get { return fire; } set { fire = value; } }
-        HitBoxWidth = 9;
-        HitBoxHeight = 11;
+        //HitBoxWidth = 9;
+        //HitBoxHeight = 11;
 
 
 
@@ -70,7 +70,7 @@ namespace Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles
 
         public void getHitBox()
         {
-            return new Rectangle((int)itemPosition.X, (int)itemPosition.Y, HitBoxWidth, HitBoxHeight);
+            //return new Rectangle((int)itemPosition.X, (int)itemPosition.Y, HitBoxWidth, HitBoxHeight);
         }
     }
 }
