@@ -53,35 +53,34 @@ namespace Sprint2_Attempt3.Collision
             }
         }
 
-        public static void HandleEnemyWallCollision(IWall wall, IEnemy enemy)
+        public static void HandleEnemyBlockCollision(Rectangle wall, IEnemy enemy)
         {
             Rectangle hitBox = enemy.GetHitBox();
-            Rectangle wallHitBox = wall.GetHitBox();
             if (enemy is Goriya || enemy is Hand)
             {
                 hitBox = new Rectangle(hitBox.X, hitBox.Y, hitBox.Width / 2, hitBox.Height / 2);
             }
-            ICollision side = CollisionDetector.SideDetector(hitBox, wallHitBox);
+            ICollision side = CollisionDetector.SideDetector(hitBox, wall);
             
             if (side is BottomCollision)
             {
                 //enemy.MoveDown();
-                enemy.Y = wallHitBox.Bottom + 1;
+                enemy.Y = wall.Bottom + 1;
             }
             else if (side is LeftCollision)
             {
                 //enemy.MoveLeft();
-                enemy.X = wallHitBox.Left - enemy.Position.Width - 1;
+                enemy.X = wall.Left - enemy.Position.Width - 1;
             }
             else if (side is RightCollision)
             {
                 //enemy.MoveRight();
-                enemy.X = wallHitBox.Right + 1;
+                enemy.X = wall.Right + 1;
             }
             else
             {
                 //enemy.MoveUp();
-                enemy.Y = wallHitBox.Top - enemy.Position.Height - 1;
+                enemy.Y = wall.Top - enemy.Position.Height - 1;
             }
             enemy.ChangeDirection();
         }

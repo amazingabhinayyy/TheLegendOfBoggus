@@ -21,10 +21,7 @@ namespace Sprint2_Attempt3.Dungeon
         protected Game1 game1;
         protected CollisionDetector collisionDetector;
 
-        public RoomSecondary()
-        {    
-            
-        }
+        public RoomSecondary() { }
         public void SwitchToNextRoom() {
             if (roomNumber < gameObjectLists.Length - 1)
             {
