@@ -7,7 +7,7 @@ using Sprint2_Attempt3.Enemy.Projectile;
 
 namespace Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles;
 
-internal class AquamentusFireballRightState : IEnemyProjectileState
+internal class AquamentusFireballBottomRightState : IEnemyProjectileState
 {
     private AquamentusFireball AquamentusFireball;
     private IEnemyProjectileSprite sprite;
@@ -29,7 +29,7 @@ internal class AquamentusFireballRightState : IEnemyProjectileState
     private int traveledDistance;
 
 
-    public AquamentusFireballRightState(AquamentusFireball AquamentusFireball)
+    public AquamentusFireballBottomRightState(AquamentusFireball AquamentusFireball)
     {
         this.AquamentusFireball = AquamentusFireball;
         enemyProjectileSpriteFactory = new EnemyProjectileSpriteFactory();
@@ -67,7 +67,7 @@ internal class AquamentusFireballRightState : IEnemyProjectileState
                 currentFrame2 = 0;
 
             }
-            AquamentusFireball.Position2 = new Vector2(AquamentusFireball.Position2.X + change, AquamentusFireball.Position2.Y);
+            AquamentusFireball.Position2 = new Vector2(AquamentusFireball.Position2.X + change, (float)(AquamentusFireball.Position2.Y +change));
             traveledDistance += change;
             if (traveledDistance >= projDistance)
             {
@@ -82,6 +82,6 @@ internal class AquamentusFireballRightState : IEnemyProjectileState
     }
     public void Draw(SpriteBatch spriteBatch)
     {
-        sprite.Draw(spriteBatch, (int)AquamentusFireball.Position2.X + 12, (int)AquamentusFireball.Position2.Y, Globals.AquamentusFireballLeft[spriteIndex]);
+        sprite.Draw(spriteBatch, (int)AquamentusFireball.Position2.X + 12, (int)(AquamentusFireball.Position2.Y), Globals.AquamentusFireballLeft[spriteIndex]);
     }
 }

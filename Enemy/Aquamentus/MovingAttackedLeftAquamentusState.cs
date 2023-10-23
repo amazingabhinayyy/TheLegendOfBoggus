@@ -29,6 +29,8 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
             Aquamentus.FireballPosition = new Vector2(Aquamentus.X, Aquamentus.Y);
             Aquamentus.Fireball = new AquamentusFireball(Aquamentus.FireballPosition);
             ((AquamentusFireball)Aquamentus.Fireball).GenerateLeft();
+            ((AquamentusFireball)Aquamentus.Fireball2).GenerateTopLeft();
+            ((AquamentusFireball)Aquamentus.Fireball3).GenerateBottomLeft();
             Aquamentus.State = new AttackedAttackWithFireballLeftState(Aquamentus);
         }
         public void ChangeAttackedStatus() {

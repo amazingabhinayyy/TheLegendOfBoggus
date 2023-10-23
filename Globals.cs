@@ -244,7 +244,7 @@ namespace Sprint2_Attempt3
         public static SpriteEffects[] AquamentusFireballLeftEffects = { SpriteEffects.None, SpriteEffects.None, SpriteEffects.None, SpriteEffects.None, SpriteEffects.None, SpriteEffects.None, SpriteEffects.None, SpriteEffects.None };
         public static Vector2 temp = new Vector2(0, 0);
         public static Vector2[] AquamentusOriginsLeft = { temp, temp, temp, temp, temp, temp, temp, temp };
-        public static int fireBallMaxDistance = 100;
+        public static int fireBallMaxDistance = 300;
 
         public static Rectangle DungeonStandard { get { return new Rectangle(1, 1, 256, 176); } }
 

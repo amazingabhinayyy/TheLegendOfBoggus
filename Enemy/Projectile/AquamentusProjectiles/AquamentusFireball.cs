@@ -25,6 +25,22 @@ namespace Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles
         {
             state = new AquamentusFireballRightState(this);
         }
+        public void GenerateTopRight()
+        {
+            state = new AquamentusFireballTopRightState(this);
+        }
+        public void GenerateBottomRight()
+        {
+            state = new AquamentusFireballBottomRightState(this);
+        }
+        public void GenerateTopLeft()
+        {
+            state = new AquamentusFireballTopLeftState(this);
+        }
+        public void GenerateBottomLeft()
+        {
+            state = new AquamentusFireballBottomLeftState(this);
+        }
 
         public AquamentusFireball(Vector2 fireballPosition)
         {

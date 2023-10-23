@@ -15,6 +15,8 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
         private int currentFrame;
         private int currentFireballFrame;
         private IEnemyProjectile fireball;
+        private IEnemyProjectile fireball2;
+        private IEnemyProjectile fireball3;
         private int elapsedFrameCount;
         private int endFrame;
         public AttackedAttackWithFireballRightState(Aquamentus Aquamentus)
@@ -26,6 +28,8 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
             sourceRectangle = Globals.AquamentusGreenLeftMouthOpen;
             Aquamentus.Position = new Rectangle(Aquamentus.X, Aquamentus.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             fireball = Aquamentus.Fireball;
+            fireball2 = Aquamentus.Fireball2;
+            fireball3 = Aquamentus.Fireball3;
             elapsedFrameCount = 0;
             endFrame = 20;
 
@@ -71,7 +75,9 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
             }
             if (elapsedFrameCount >= endFrame)
             {
-                ((AquamentusFireball)fireball).Fire = true;
+            ((AquamentusFireball)fireball).Fire = true;
+            ((AquamentusFireball)fireball2).Fire = true;
+            ((AquamentusFireball)fireball3).Fire = true;
 
             }
 

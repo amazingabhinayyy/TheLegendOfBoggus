@@ -14,24 +14,39 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
         private int currentFrame;
         private int elaspedFrameCount;
         private int endFrame;
+        private Random random;
+        private int direction;
         public MovingAttackedRightAquamentusState(Aquamentus Aquamentus)
         {
             this.Aquamentus = Aquamentus;
-            sprite = EnemySpriteFactory.Instance.CreateMovingRightAquamentusSprite();
+            sprite = EnemySpriteFactory.Instance.CreateMovingLeftAquamentusSprite();
             sourceRectangle = Globals.AquamentusOrangeLeft1;
             currentFrame = 0;
-            this.Aquamentus.Direction = Aquamentus.ProjectileDirection.Right;
             Aquamentus.Position = new Rectangle(Aquamentus.X, Aquamentus.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
-            elaspedFrameCount = 0;
-            endFrame = 100;
+            random = new Random();
+            direction = random.Next(0, 2);
 
         }
         public void ChangeDirection()
         {
-            Aquamentus.FireballPosition = new Vector2(Aquamentus.X, Aquamentus.Y);
-            Aquamentus.Fireball = new AquamentusFireball(Aquamentus.FireballPosition);
-            ((AquamentusFireball)Aquamentus.Fireball).GenerateRight();
-            Aquamentus.State = new AttackedAttackWithFireballRightState(Aquamentus);
+            switch (direction)
+            {
+                case 0:
+                    Aquamentus.State = new MovingLeftAquamentusState(Aquamentus);
+                    break;
+                case 1:
+                    Aquamentus.FireballPosition = new Vector2(Aquamentus.X, Aquamentus.Y);
+                    Aquamentus.Fireball = new AquamentusFireball(Aquamentus.FireballPosition);
+                    Aquamentus.Fireball2 = new AquamentusFireball(Aquamentus.FireballPosition);
+                    Aquamentus.Fireball3 = new AquamentusFireball(Aquamentus.FireballPosition);
+                    ((AquamentusFireball)Aquamentus.Fireball).GenerateLeft();
+                    ((AquamentusFireball)Aquamentus.Fireball2).GenerateTopLeft();
+                    ((AquamentusFireball)Aquamentus.Fireball3).GenerateBottomLeft();
+                    Aquamentus.State = new AttackWithFireballLeftState(Aquamentus);
+                    break;
+
+            }
+     
         }
         public void ChangeAttackedStatus() {
             Aquamentus.State = new MovingRightAquamentusState(Aquamentus);
@@ -60,11 +75,7 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
             {
                 currentFrame = 0;
             }
-            elaspedFrameCount++;
-            if (elaspedFrameCount >= endFrame)
-            {
-                ChangeDirection();
-            }
+          
         }
         public void Draw(SpriteBatch spriteBatch)
         {
