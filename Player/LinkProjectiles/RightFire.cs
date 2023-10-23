@@ -10,7 +10,7 @@ using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3.Player.LinkProjectiles
 {
-    public class RightFire : ILinkProjectile
+    public class RightFire : IFire, ILinkProjectile
     {
         private Link link;
         private int currentFrame;
@@ -20,11 +20,13 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles
         private Rectangle sourceRectangle;
         private const int HitBoxWidth = 45;
         private const int HitBoxHeight = 45;
+        private bool stop;
         public RightFire(Link link)
         {
             this.link = link;
             currentFrame = 0;
             sprite = LinkSpriteFactory.Instance.CreateFireItem();
+            stop = false;
             SetPosition();
         }
 
@@ -33,6 +35,10 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles
             itemPosition = new Vector2((int)link.position.X + 45, (int)link.position.Y);
             flip = SpriteEffects.None;
             sourceRectangle = new Rectangle(191, 185, 15, 15);
+        }
+        public void Stop()
+        {
+            stop = true;
         }
 
         public void Update()
@@ -44,7 +50,7 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles
             }
             sprite.Update();
             currentFrame++;
-            if (currentFrame < 40)
+            if (!stop && currentFrame < 40)
             {
                 itemPosition.X = itemPosition.X + 2;
             }
