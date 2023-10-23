@@ -46,7 +46,7 @@ namespace Sprint2_Attempt3.Enemy.Keese
             else if (currentFrame == 24)
             {
                 enemy.exists = false;
-                /*
+                
                 CollisionDetector.GameObjectList.Remove(enemy);
                 CollisionDetector.SpawnItem++;
                 if (CollisionDetector.SpawnItem == CollisionDetector.SpawnItemTrigger)
@@ -54,7 +54,7 @@ namespace Sprint2_Attempt3.Enemy.Keese
                     CollisionDetector.SpawnItem = 0;
                     CollisionDetector.GameObjectList.Add(CollisionDetector.SpawnRandomItem(new Vector2(enemy.X, enemy.Y)));
                 }
-                */
+                
             }
         }
         public void Draw(SpriteBatch spriteBatch)

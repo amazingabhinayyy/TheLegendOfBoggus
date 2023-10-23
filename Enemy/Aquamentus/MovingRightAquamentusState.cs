@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles;
 using System;
@@ -44,6 +45,9 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
                     ((AquamentusFireball)Aquamentus.Fireball).GenerateLeft();
                     ((AquamentusFireball)Aquamentus.Fireball2).GenerateTopLeft();
                     ((AquamentusFireball)Aquamentus.Fireball3).GenerateBottomLeft();
+                    CollisionDetector.GameObjectList.Add((IGameObject)Aquamentus.Fireball);
+                    CollisionDetector.GameObjectList.Add((IGameObject)Aquamentus.Fireball2);
+                    CollisionDetector.GameObjectList.Add((IGameObject)Aquamentus.Fireball3);
                     Aquamentus.State = new AttackWithFireballLeftState(Aquamentus);
                     break;
 

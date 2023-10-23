@@ -1,4 +1,5 @@
 ﻿using Sprint2_Attempt3.Enemy.Projectile;
+using Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles;
 using Sprint2_Attempt3.Player;
 using Sprint2_Attempt3.Player.Interfaces;
 using System;
@@ -14,6 +15,13 @@ namespace Sprint2_Attempt3.Collision
         public static void HandleLinkProjectileCollision(ILink link, IEnemyProjectile projectile, ICollision side) 
         {
             link.GetDamaged(side);
+            link.Knockback(side);
+            CollisionDetector.GameObjectList.Remove(projectile);
+            if(projectile is AquamentusFireball)
+            {
+
+                ((AquamentusFireball)projectile)
+            }
         }
     }
 }

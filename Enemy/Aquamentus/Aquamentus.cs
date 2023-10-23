@@ -54,7 +54,7 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
                 Fireball3.Update();
             }
             count++;
-            if (count == distance)
+            if (count >= distance&&(!(((AquamentusFireball)Fireball).Fire)&& !(((AquamentusFireball)Fireball2).Fire)&& !(((AquamentusFireball)Fireball3).Fire)))
             {
                 State.ChangeDirection();
                 distance = random.Next(0, 70);
