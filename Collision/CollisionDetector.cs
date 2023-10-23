@@ -4,6 +4,7 @@ using Sprint2_Attempt3.Collision.SideCollisionHandlers;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Hand;
 using Sprint2_Attempt3.Interfaces;
+using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Player.LinkProjectiles;
 using System.Collections.Generic;
@@ -28,8 +29,10 @@ namespace Sprint2_Attempt3.Collision
         public void CheckPlayerCollision(ILink link)
         {
             Rectangle linkRectangle = link.GetHitBox();
-            foreach (IGameObject obj in gameObjectList)
+            for(int c = 0; c < gameObjectList.Count; c++)
+            //foreach (IGameObject obj in gameObjectList)
             {
+                IGameObject obj = gameObjectList[c];
                 Rectangle collisionRectangle = obj.GetHitBox();
                 if (collisionRectangle.Intersects(linkRectangle))
                 {
@@ -54,6 +57,10 @@ namespace Sprint2_Attempt3.Collision
                     else if(obj is ILinkProjectile)
                     {
                         PlayerLinkProjectileHandler.HandlePlayerLinkProjectileCollision(link, (ILinkProjectile)obj, side);
+                    }
+                    else if (obj is IItem)
+                    {
+                        ((IItem)obj).Collect();
                     }
                 }
             }
