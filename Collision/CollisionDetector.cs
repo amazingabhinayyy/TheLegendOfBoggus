@@ -13,6 +13,8 @@ using Sprint2_Attempt3.WallBlocks;
 using System;
 using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Dungeon.Doors;
+using Sprint2_Attempt3.Items.ItemClasses;
+using System;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -25,12 +27,26 @@ namespace Sprint2_Attempt3.Collision
             get { return gameObjectList; }
             set { gameObjectList = value; }
         }
+        private static int spawnItemCount;
+        public static int SpawnItem
+        {
+            get { return spawnItemCount; }
+            set { spawnItemCount = value; }
+        }
+        private static int spawnItemCountTrigger = 1;
+        public static int SpawnItemTrigger { get { return spawnItemCountTrigger; } }
+        
+       
+
         private Game1 game;
         public CollisionDetector(Game1 game)
         {
+            spawnItemCount = 0;
             this.game = game;
             AddWallBlocks();
         }
+
+       
 
         public void CheckPlayerCollision(ILink link)
         {
@@ -42,7 +58,7 @@ namespace Sprint2_Attempt3.Collision
                 if (collisionRectangle.Intersects(linkRectangle))
                 {
                     //Rectangle intersectRect = Rectangle.Intersect(collisionRectangle, linkRectangle);
-
+                    
                     ICollision side = SideDetector(linkRectangle, collisionRectangle);
                     if (obj is IEnemy)
                     {
@@ -50,7 +66,8 @@ namespace Sprint2_Attempt3.Collision
                     }
                     else if (obj is IWall)
                     {
-                        //PlayerBlockHandler.HandlePlayerBlockCollision(link, (IWall)obj, side);
+                        //HandleCollision.HandlePlayerBlockCollision(link, (IWall)obj, side);
+                        HandleCollision.HandleLinkWallCollision(((IWall)obj).GetHitBox(), link);
                     }
                     else if (obj is IBlock)
                     {
@@ -58,6 +75,8 @@ namespace Sprint2_Attempt3.Collision
                     }
                     else if (obj is IDoor)
                     {
+                        
+
                         //PlayerBlockHandler.HandlePlayerBlockCollision(link, (IDoor)obj, side);
                         //if obj is not walkable = transition
 
@@ -115,7 +134,7 @@ namespace Sprint2_Attempt3.Collision
                             ICollision side = SideDetector(collisionRectangle, enemyRectangle);
                             if (gameObjectList[c] is ILinkProjectile)
                             {
-                                EnemyLinkProjectileCollisionHandler.HandleLinkProjectileEnemyCollision((IEnemy)gameObjectList[i], (ILinkProjectile)gameObjectList[c], side);
+                                EnemyLinkProjectileCollisionHandler.HandleLinkProjectileEnemyCollision((IEnemy)gameObjectList[i], (ILinkProjectile)gameObjectList[c], side,gameObjectList);
                             }
                             else if (gameObjectList[c] is IBlock)
                             {
@@ -127,7 +146,6 @@ namespace Sprint2_Attempt3.Collision
                             }
                             else if (gameObjectList[c] is IDoor)
                             {
-                                //System.Diagnostics.Debug.WriteLine("door");
                                 HandleCollision.HandleEnemyBlockCollision(collisionRectangle, (IEnemy)gameObjectList[i]);
                             }
                         }
@@ -153,17 +171,15 @@ namespace Sprint2_Attempt3.Collision
                             ICollision side = SideDetector(collisionRectangle, projectileRectangle);
                             if (gameObjectList[c] is IBlock)
                             {
-                                HandleCollision.HandleProjectileBlockCollision((ILinkProjectile)gameObjectList[i]);
+                                ProjectileBlockCollisionHandler.HandleProjectileBlockCollision((IProjectile)projectile, (IBlock)obj, side);
                             }
                             else if (gameObjectList[c] is IWall)
                             {
-                                ProjectileWallCollisionHandler.HandleProjectileWallCollision((IProjectile)projectile, (IWall)obj, side);
-
-                                //HandleCollision.HandleProjectileBlockCollision((ILinkProjectile)gameObjectList[i]);
+                                ProjectileBlockCollisionHandler.HandleProjectileBlockCollision((IProjectile)projectile, (IWall)obj, side);
                             }
                             else if (gameObjectList[c] is IDoor)
                             {
-                                HandleCollision.HandleProjectileBlockCollision((ILinkProjectile)gameObjectList[i]);
+                                ProjectileBlockCollisionHandler.HandleProjectileBlockCollision((IProjectile)projectile, (IDoor)obj, side);
                             }
                         }
                     }
@@ -184,7 +200,7 @@ namespace Sprint2_Attempt3.Collision
                             }
                             else if (gameObjectList[c] is IWall)
                             {
-                                ProjectileWallCollisionHandler.HandleProjectileWallCollision((IProjectile)projectile, (IWall)obj, side);
+                                ProjectileBlockCollisionHandler.HandleProjectileBlockCollision((IProjectile)projectile, (IWall)obj, side);
                                 System.Diagnostics.Debug.WriteLine("enemy");
                                 //HandleCollision.HandleProjectileBlockCollision((ILinkProjectile)gameObjectList[i]);
                             }
@@ -213,6 +229,34 @@ namespace Sprint2_Attempt3.Collision
             CheckPlayerCollision(game.link);
             CheckEnemyCollision();
             CheckProjectileCollision();
+        }
+
+        public static IItem SpawnRandomItem(Vector2 position)
+        {
+            
+           int choice = new Random().Next(0, 4);
+            IItem item = null;
+            bool spawned = true;
+            switch (choice)
+            {
+                case 0:
+                item = new Bomb(position, spawned);
+                    break;
+                case 1:
+                    item = new Clock(position, spawned);
+                    break;
+                case 2:
+                    item = new Fairy(position, spawned);
+                    break;
+                case 3:
+                    item = new Heart(position, spawned);
+                    break;
+                default:
+                    item = new Rupee(position, spawned);
+                    break;
+            }
+          
+            return item;
         }
     }
 

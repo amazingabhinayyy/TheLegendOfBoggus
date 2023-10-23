@@ -16,6 +16,7 @@ namespace Sprint2_Attempt3
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         private KeyboardController keyController { get; set; }
+        private MouseController mouseController { get; set; }
         public ILink link { get; set; }
         public IRoom room { get; set; }
 
@@ -45,6 +46,7 @@ namespace Sprint2_Attempt3
             RoomGenerator.Instance.LoadAllFiles();
             link = new Link(this);
             keyController = new KeyboardController(this);
+            mouseController = new MouseController(this);
             room = new Room1(this);
         }
 
@@ -55,6 +57,7 @@ namespace Sprint2_Attempt3
         protected override void Update(GameTime gameTime)
         {
             keyController.Update(gameTime);
+            mouseController.Update(gameTime);
             room.Update();
             base.Update(gameTime);
         }

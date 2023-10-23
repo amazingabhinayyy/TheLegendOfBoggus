@@ -57,7 +57,7 @@ namespace Sprint2_Attempt3
             commandMapping.Add(Keys.R, new Reset(game1));
 
             //switching rooms
-            commandMapping.Add(Keys.P, new SwitchToNextRoom(game1));
+            //commandMapping.Add(Keys.P, new SwitchToNextRoom(game1));
 
             moveKeyTime.Add(Keys.W, 0);
             moveKeyTime.Add(Keys.A, 0);

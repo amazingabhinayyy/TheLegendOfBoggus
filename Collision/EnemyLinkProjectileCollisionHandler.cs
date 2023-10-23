@@ -15,7 +15,7 @@ namespace Sprint2_Attempt3.Collision
     {
         public EnemyLinkProjectileCollisionHandler() { }
 
-        public static void HandleLinkProjectileEnemyCollision(IEnemy enemy, ILinkProjectile item, ICollision side)
+        public static void HandleLinkProjectileEnemyCollision(IEnemy enemy, ILinkProjectile item, ICollision side, List<IGameObject> objects )
         {
             if(item is IBoomerang)
             {
@@ -30,6 +30,7 @@ namespace Sprint2_Attempt3.Collision
             else
             {
                 enemy.Kill();
+                
             }
         }
     }

@@ -67,6 +67,8 @@ namespace Sprint2_Attempt3.Enemy
             return Position;
         }
 
+       // public IEnemyState GetEnemyState() { return State; }
+
         public abstract void MoveUp();
         public abstract void MoveDown();
         public abstract void MoveLeft();
