@@ -18,6 +18,10 @@ namespace Sprint2_Attempt3.Enemy.Keese
         {
             State = new MovingLeftKeeseState(this);
         }
+        public override void Stun()
+        {
+            State = new DeathAnimationState(this);
+        }
         public override void MoveUp()
         {
             State = new MovingUpKeeseState(this);

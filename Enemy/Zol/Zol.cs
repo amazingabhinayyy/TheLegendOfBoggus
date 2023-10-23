@@ -14,6 +14,10 @@ namespace Sprint2_Attempt3.Enemy.Zol
         public override void Generate() {
             State = new MovingLeftZolState(this);
         }
+        public override void Stun()
+        {
+            State = new DeathAnimationState(this);
+        }
         public override void MoveUp() {
             State = new MovingUpZolState(this);
         }

@@ -16,6 +16,10 @@ namespace Sprint2_Attempt3.Enemy.Hand
         public override void Generate() {
             State = new MovingLeftHandState(this);
         }
+        public override void Stun()
+        {
+            State = new StunnedHandState(this);
+        }
         public override void MoveUp()
         {
             State = new MovingUpHandState(this);

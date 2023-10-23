@@ -35,6 +35,10 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
         public override void Generate() {
             State = new MovingLeftAquamentusState(this);
         }
+        public override void Stun()
+        {
+            State = new StunnedAquamentusState(this);
+        }
 
         public override void Update()
         {

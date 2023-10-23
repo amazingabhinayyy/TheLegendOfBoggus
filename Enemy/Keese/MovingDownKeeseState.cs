@@ -21,6 +21,7 @@ namespace Sprint2_Attempt3.Enemy.Keese
             keese.Position = new Rectangle(keese.X, keese.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             random = new Random();
             direction = random.Next(0, 2);
+
         }
         public void ChangeDirection()
         {
