@@ -10,6 +10,8 @@ using Sprint2_Attempt3.Player.LinkProjectiles;
 using System.Collections.Generic;
 using System.Globalization;
 using Sprint2_Attempt3.WallBlocks;
+using Sprint2_Attempt3.Items.ItemClasses;
+using System;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -22,12 +24,26 @@ namespace Sprint2_Attempt3.Collision
             get { return gameObjectList; }
             set { gameObjectList = value; }
         }
+        private static int spawnItemCount;
+        public static int SpawnItem
+        {
+            get { return spawnItemCount; }
+            set { spawnItemCount = value; }
+        }
+        private static int spawnItemCountTrigger = 1;
+        public static int SpawnItemTrigger { get { return spawnItemCountTrigger; } }
+        
+       
+
         private Game1 game;
         public CollisionDetector(Game1 game)
         {
+            spawnItemCount = 0;
             this.game = game;
             AddWallBlocks();
         }
+
+       
 
         public void CheckPlayerCollision(ILink link)
         {
@@ -109,7 +125,7 @@ namespace Sprint2_Attempt3.Collision
                             ICollision side = SideDetector(collisionRectangle, enemyRectangle);
                             if (gameObjectList[c] is ILinkProjectile)
                             {
-                                EnemyLinkProjectileCollisionHandler.HandleLinkProjectileEnemyCollision((IEnemy)gameObjectList[i], (ILinkProjectile)gameObjectList[c], side);
+                                EnemyLinkProjectileCollisionHandler.HandleLinkProjectileEnemyCollision((IEnemy)gameObjectList[i], (ILinkProjectile)gameObjectList[c], side,gameObjectList);
                             }
                             else if (gameObjectList[c] is IBlock)
                             {
@@ -135,6 +151,34 @@ namespace Sprint2_Attempt3.Collision
         {
             CheckPlayerCollision(game.link);
             CheckEnemyCollision();
+        }
+
+        public static IItem SpawnRandomItem(Vector2 position)
+        {
+            
+           int choice = new Random().Next(0, 4);
+            IItem item = null;
+            bool spawned = true;
+            switch (choice)
+            {
+                case 0:
+                item = new Bomb(position, spawned);
+                    break;
+                case 1:
+                    item = new Clock(position, spawned);
+                    break;
+                case 2:
+                    item = new Fairy(position, spawned);
+                    break;
+                case 3:
+                    item = new Heart(position, spawned);
+                    break;
+                default:
+                    item = new Rupee(position, spawned);
+                    break;
+            }
+          
+            return item;
         }
     }
 
