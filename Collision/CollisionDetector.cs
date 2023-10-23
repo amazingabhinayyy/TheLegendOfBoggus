@@ -15,6 +15,7 @@ using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Dungeon.Doors;
 using Sprint2_Attempt3.Items.ItemClasses;
 using System;
+using Sprint2_Attempt3.Player;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -22,6 +23,7 @@ namespace Sprint2_Attempt3.Collision
     {
         public Vector2 LinkPosition { get; private set; }
         private static List<IGameObject> gameObjectList = new List<IGameObject>();
+        public Link linkObj;
         public static List<IGameObject> GameObjectList
         {
             get { return gameObjectList; }
@@ -39,11 +41,12 @@ namespace Sprint2_Attempt3.Collision
        
 
         private Game1 game;
-        public CollisionDetector(Game1 game)
+        public CollisionDetector(Game1 game, Link link)
         {
             spawnItemCount = 0;
             this.game = game;
             AddWallBlocks();
+            this.linkObj = link;
         }
 
        
@@ -66,10 +69,7 @@ namespace Sprint2_Attempt3.Collision
                     }
                     else if (obj is IWall)
                     {
-                        //HandleCollision.HandlePlayerBlockCollision(link, (IWall)obj, side);
-                        //HandleCollision.HandlePlayerWallCollision(((IWall)obj).GetHitBox(), link);
-                        PlayerBlockHandler.HandlePlayerBlockCollision(link, (IWall)obj, side);
-
+                        CheckCollision.CheckPlayerWallCollision(linkObj);
                     }
                     else if (obj is IBlock)
                     {

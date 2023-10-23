@@ -20,6 +20,7 @@ namespace Sprint2_Attempt3
         public ILink link { get; set; }
         public IRoom room { get; set; }
 
+        public CollisionDetector collisionDetector;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -45,6 +46,7 @@ namespace Sprint2_Attempt3
             DungeonSpriteFactory.Instance.LoadAllTextures(Content);
             RoomGenerator.Instance.LoadAllFiles();
             link = new Link(this);
+            collisionDetector = new CollisionDetector(this, (Link)link);
             keyController = new KeyboardController(this);
             mouseController = new MouseController(this);
             room = new Room1(this);
@@ -58,6 +60,7 @@ namespace Sprint2_Attempt3
         {
             keyController.Update(gameTime);
             mouseController.Update(gameTime);
+            collisionDetector.Update();
             room.Update();
             base.Update(gameTime);
         }
