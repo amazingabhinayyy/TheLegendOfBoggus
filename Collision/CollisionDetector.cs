@@ -15,6 +15,7 @@ using Sprint2_Attempt3.Dungeon.Doors;
 using Sprint2_Attempt3.Items.ItemClasses;
 using System;
 using Sprint2_Attempt3.Player;
+using System.Collections.Generic;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -137,11 +138,11 @@ namespace Sprint2_Attempt3.Collision
                             }
                             else if (obj is IWall)
                             {
-                                EnemyBlockHandler.HandleEnemyBlockCollision((IEnemy)gameObjectList[i], obj, side);
+                               // EnemyBlockHandler.HandleEnemyBlockCollision((IEnemy)gameObjectList[i], obj, side);
                             }
                             else if (obj is IDoor)
                             {
-                                EnemyBlockHandler.HandleEnemyBlockCollision((IEnemy)gameObjectList[i], obj, side);
+                               // EnemyBlockHandler.HandleEnemyBlockCollision((IEnemy)gameObjectList[i], obj, side);
                             }
                         }
                     }
