@@ -16,9 +16,9 @@ namespace Sprint2_Attempt3.Collision
 {
     public class PlayerBlockHandler
     {
-        public static void HandlePlayerBlockCollision(ILink link, IWall block, ICollision side)
+        public static void HandlePlayerBlockCollision(ILink link, IBlock block, ICollision side)
         {
-            if (!(block is DotTile))
+            if (!block.isWalkable)
             {
                 Rectangle wall = block.GetHitBox();
                 if (side is BottomCollision)
@@ -27,7 +27,7 @@ namespace Sprint2_Attempt3.Collision
                 }
                 else if (side is LeftCollision)
                 {
-                    link.Position = new Vector2(wall.Right - wall.Width - 45, link.Position.Y);
+                    link.Position = new Vector2(wall.Left - link.GetHitBox().Width, link.Position.Y);
                 }
                 else if (side is RightCollision)
                 {
@@ -35,7 +35,7 @@ namespace Sprint2_Attempt3.Collision
                 }
                 else
                 {
-                    link.Position = new Vector2(link.Position.X, wall.Top - wall.Height + 40);
+                    link.Position = new Vector2(link.Position.X, wall.Top - link.GetHitBox().Height);
                 }
             }
         }

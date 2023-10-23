@@ -8,7 +8,8 @@ namespace Sprint2_Attempt3.Dungeon
         private static List<IGameObject> gameObjects;
         public void Update();
         public void Draw(SpriteBatch spriteBatch);
-        public void SwitchRooms();
+        public void SwitchToNextRoom();
+        public void SwitchToPrevRoom();
         public void SwitchToNorthRoom();
         public void SwitchToSouthRoom();
         public void SwitchToEastRoom();

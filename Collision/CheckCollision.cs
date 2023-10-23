@@ -64,7 +64,7 @@ namespace Sprint2_Attempt3.Collision
             foreach (Rectangle wall in Globals.WallBlocks)
                 if (link.GetHitBox().Intersects(wall))
                 {
-                    HandleCollision.HandlePlayerBlockCollision(wall, link);
+                    HandleCollision.HandleLinkWallCollision(wall, link);
                     return true;
                 }
             return false;
