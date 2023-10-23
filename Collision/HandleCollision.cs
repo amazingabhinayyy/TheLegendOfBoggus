@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
@@ -8,150 +9,86 @@ using Microsoft.Xna.Framework.Audio;
 using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Collision.SideCollisionHandlers;
 using Sprint2_Attempt3.Enemy;
+using Sprint2_Attempt3.Interfaces;
+using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Player;
 using Sprint2_Attempt3.Player.Interfaces;
+using Sprint2_Attempt3.Player.Items;
+using Sprint2_Attempt3.Player.LinkProjectiles;
 
 namespace Sprint2_Attempt3.Collision
 {
     internal class HandleCollision
     {
-        private Link link;
-
-        public HandleCollision(Link link)
+        public HandleCollision()
         {
-            //this.link = link;
         }
-        public static void HandleLinkBlockCollision(Rectangle spriteObject, Rectangle wall, Link link)
+        public static void HandleLinkBlockCollision(Rectangle wall, ILink link)
         {
-            Rectangle intersectRect = Rectangle.Intersect(spriteObject, wall);
-            int width = intersectRect.Width;
-            ICollision side = CollisionDetector.SideDetector(spriteObject, wall);
+            Rectangle linkRectangle = link.GetHitBox();
+            ICollision side = CollisionDetector.SideDetector(linkRectangle, wall);
             if (side is BottomCollision)
             {
-                //link.BecomeIdle();
-                //System.Diagnostics.Debug.WriteLine("link y position:" + link.position.Y);
-                link.position.Y = wall.Bottom;
-                //System.Diagnostics.Debug.WriteLine("link y position:" + link.position.Y);
+                link.BecomeIdle();
+                link.Position = new Vector2(linkRectangle.X, wall.Bottom + 1);
+                //link.Position.Y = wall.Bottom + 1;
             }
             else if (side is LeftCollision)
             {
-               // link.BecomeIdle();
-                link.position.X = wall.Right - wall.Width - 45;
+                link.BecomeIdle();
+                link.Position = new Vector2(wall.Left - linkRectangle.Width - 1, linkRectangle.Y);
+                //link.Position.X = wall.Left - linkRectangle.Width - 1;
             }
             else if (side is RightCollision)
             {
-               // link.BecomeIdle();
-                link.position.X = wall.Right;
+                link.BecomeIdle();
+                link.Position = new Vector2(wall.Right + 1, linkRectangle.Y);
+                //link.Position.X = wall.Right + 1;
             }
             else
             {
-                //link.BecomeIdle();
-                link.position.Y = wall.Top - wall.Height + 40;
+                link.BecomeIdle();
+                link.Position = new Vector2(linkRectangle.X, wall.Top - linkRectangle.Height - 1);
+                //link.Position.Y = wall.Top - linkRectangle.Height - 1;
             }
-            /*
-            // Determine the direction of the collision (e.g., from which side the collision occurs)
-            // You can use the intersection rectangle to determine this
-            // Calculate the intersection rectangle between the object and the wall
-            Rectangle intersection = Rectangle.Intersect(spriteObject, wall);
-
-            // Now, you can check whether the collision occurred from the top, bottom, left, or right
-            // Then, you can stop movement in that direction
-
-            // Stop movement in the X direction (horizontal)
-            if (intersection.Width >= intersection.Height)
-            {
-                //System.Diagnostics.Debug.WriteLine("test");
-                // Collision occurred from left (object hits block on its left side)
-                if (spriteObject.Center.X < wall.Center.X)
-                {
-                    // prevent movement to the right
-                    // set the object's X position to the left edge of the wall - object's width
-                    //link.position.X = wall.Left - spriteObject.Width;
-                }
-                // Collision occured from right (object hits block on its right side)
-                else
-                {
-                    // prevent movement to the left
-                    // set the object's left X position to the right edge of the wall
-                    //link.position = new Vector2(wall.Right, link.position.Y);
-                }
-            }
-            // Stop movement in the Y direction (vertical)
-            else
-            {
-                // Collision occurred from the top (object hits block on its top side)
-                if (spriteObject.Center.Y < wall.Center.Y)
-                {
-                    // Collision occurred from the top, so prevent movement downward
-                    // You can set the object's Y position to the top edge of the wall
-                    link.position = new Vector2(link.position.X, wall.Top - link.GetHitBox().Height);
-                }
-                // Collision occurred from the bottom
-                else
-                {
-                    // Collision occurred from the bottom, so prevent movement upward
-                    // You can set the object's Y position to the bottom edge of the wall
-                    link.position = new Vector2(link.position.X, wall.Bottom);
-                }
-            }*/
         }
 
-        public static void HandleEnemyBlockCollision(Rectangle spriteObject, Rectangle wall, EnemySecondary enemy)
+        public static void HandleEnemyBlockCollision(Rectangle wall, IEnemy enemy)
         {
-            Rectangle intersectRect = Rectangle.Intersect(spriteObject, wall);
-            int width = intersectRect.Width;
-            ICollision side = CollisionDetector.SideDetector(spriteObject, wall);
+            ICollision side = CollisionDetector.SideDetector(enemy.GetHitBox(), wall);
             if (side is BottomCollision)
             {
-                
-                //enemy.Y = wall.Bottom;
-                //System.Diagnostics.Debug.WriteLine("link y position:" + link.position.Y);
-                enemy.ChangeDirection();
+                enemy.MoveDown();
+                enemy.Y = wall.Bottom + 1;
             }
             else if (side is LeftCollision)
             {
-                //enemy.X = wall.Right - wall.Width - 45;
-                enemy.ChangeDirection();
+                enemy.MoveLeft();
+                enemy.X = wall.Left - enemy.Position.Width - 1;
             }
             else if (side is RightCollision)
             {
-                //System.Diagnostics.Debug.WriteLine("enemy:" + enemy);
-                //enemy.X = wall.Right;
-                enemy.ChangeDirection();
+                enemy.MoveRight();
+                enemy.X = wall.Right + 1;
             }
             else
             {
-                //enemy.Y = wall.Top - wall.Height + 40;
-                enemy.ChangeDirection();
+                enemy.MoveUp();
+                enemy.Y = wall.Top - enemy.Position.Height - 1;
             }
-            //System.Diagnostics.Debug.WriteLine("testhandle");
-            //changeDirection method from Avery
-            // skeleton/glob/snake = if it hits top or bottom, change direction left or right randomly
-            // bat = change direction randomly - not with blocks (just pass over)
-            // dragon same as first?
-            // hand just passes through?
-            //Rectangle intersectRect = Rectangle.Intersect(spriteObject, wall);
-            //int width = intersectRect.Width;
-            
-            /*ICollision side = CollisionDetector.SideDetector(spriteObject, wall);
-            if (side is BottomCollision || side is TopCollision)
-            {
-                // enemy moves left or right
-                //enemy.ChangeDirection();
-                System.Diagnostics.Debug.WriteLine("testcollision");
-                //link.position.Y = wall.Bottom;
-                //System.Diagnostics.Debug.WriteLine("link y position:" + link.position.Y);
-            }
-            else //left or right collision
-            {
-                //enemy moves up or down
-                enemy.ChangeDirection();
-            }*/
         }
 
-        public static void HandleProjectileBlockCollision(Rectangle spriteObject, Rectangle wall)
+        public static void HandleProjectileBlockCollision(ILinkProjectile projectile)
         {
             //change sprite to poof animation
+            if (projectile is IBoomerang)
+            {
+                System.Diagnostics.Debug.WriteLine("boomerang");
+            }
+            else
+            {
+                LinkSpriteFactory.Instance.CreatePoofAnimation();
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3.Items
 {
@@ -29,6 +30,7 @@ namespace Sprint2_Attempt3.Items
         }
         public void Collect() { 
             exists = false;
+            CollisionDetector.GameObjectList.Remove(this);
         }
         public virtual void Update() {
             if (count == 0)

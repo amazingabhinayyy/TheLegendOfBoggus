@@ -4,6 +4,7 @@ using Sprint2_Attempt3.Collision.SideCollisionHandlers;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Hand;
 using Sprint2_Attempt3.Interfaces;
+using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Player.LinkProjectiles;
 using System.Collections.Generic;
@@ -16,7 +17,6 @@ namespace Sprint2_Attempt3.Collision
     {
         public Vector2 LinkPosition { get; private set; }
         private static List<IGameObject> gameObjectList = new List<IGameObject>();
-        private List<IGameObject> copyGameObjectList = new List<IGameObject>();
         public static List<IGameObject> GameObjectList
         {
             get { return gameObjectList; }
@@ -28,11 +28,14 @@ namespace Sprint2_Attempt3.Collision
             this.game = game;
             AddWallBlocks();
         }
+
         public void CheckPlayerCollision(ILink link)
         {
             Rectangle linkRectangle = link.GetHitBox();
-            foreach (IGameObject obj in gameObjectList)
+            for(int c = 0; c < gameObjectList.Count; c++)
+            //foreach (IGameObject obj in gameObjectList)
             {
+                IGameObject obj = gameObjectList[c];
                 Rectangle collisionRectangle = obj.GetHitBox();
                 if (collisionRectangle.Intersects(linkRectangle))
                 {
@@ -57,6 +60,10 @@ namespace Sprint2_Attempt3.Collision
                     else if(obj is ILinkProjectile)
                     {
                         PlayerLinkProjectileHandler.HandlePlayerLinkProjectileCollision(link, (ILinkProjectile)obj, side);
+                    }
+                    else if (obj is IItem)
+                    {
+                        ((IItem)obj).Collect();
                     }
                 }
             }
@@ -129,24 +136,6 @@ namespace Sprint2_Attempt3.Collision
         {
             CheckPlayerCollision(game.link);
             CheckEnemyCollision();
-
-            /*
-             * want to use this for blocks. since we do not have a block thing going on it will not run if this is not commented.
-            foreach(IBlock block in Globals.blocks)
-            {
-                if (block.X > (linkPosition.X - 90) && (block.X + 90) < linkPosition.X)
-                {
-                    //link.stop?
-                }
-                if (block.Y > (linkPosition.Y - 90) && (block.Y + 90) < linkPosition.Y)
-                {
-                    //link.stop?
-                }
-            }
-            */
-
-
-
         }
     }
 

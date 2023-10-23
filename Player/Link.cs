@@ -23,7 +23,7 @@ namespace Sprint2_Attempt3.Player
             position.X = 375;
             position.Y = 300;
             this.game = game;
-            CollisionDetector.GameObjectList.Add(this);
+            //CollisionDetector.GameObjectList.Add(this);
             StartLinkState();
         }
         public void GetDamaged(ICollision side)

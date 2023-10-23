@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
+using Sprint2_Attempt3.Enemy.Stalfos;
 using System;
 
 namespace Sprint2_Attempt3.Enemy.Stalfos
@@ -14,6 +15,22 @@ namespace Sprint2_Attempt3.Enemy.Stalfos
         }
         public override void Generate() {
             State = new MovingLeftStalfosState(this);
+        }
+        public override void MoveUp()
+        {
+            State = new MovingUpStalfosState(this);
+        }
+        public override void MoveDown()
+        {
+            State = new MovingDownStalfosState(this);
+        }
+        public override void MoveLeft()
+        {
+            State = new MovingLeftStalfosState(this);
+        }
+        public override void MoveRight()
+        {
+            State = new MovingRightStalfosState(this);
         }
     }
 }
