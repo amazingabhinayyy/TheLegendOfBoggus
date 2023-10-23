@@ -29,11 +29,13 @@ namespace Sprint2_Attempt3.Collision
             {
                 var wall = (IWall)obj;
                 HandleCollision.HandleEnemyBlockCollision(collisionRectangle, enemy);
+                enemy.ChangeDirection();
                 return true;
             } else if (obj is IBlock)
             {
                 var block = (IBlock)obj;
                 HandleCollision.HandleEnemyBlockCollision(collisionRectangle, enemy);
+                enemy.ChangeDirection();
                 return true;
             }
             return false;

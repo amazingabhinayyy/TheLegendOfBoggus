@@ -9,6 +9,8 @@ using Microsoft.Xna.Framework.Audio;
 using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Collision.SideCollisionHandlers;
 using Sprint2_Attempt3.Enemy;
+using Sprint2_Attempt3.Enemy.Goriya;
+using Sprint2_Attempt3.Enemy.Hand;
 using Sprint2_Attempt3.Interfaces;
 using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Player;
@@ -69,13 +71,17 @@ namespace Sprint2_Attempt3.Collision
             else if (side is RightCollision)
             {
                 enemy.MoveRight();
-                enemy.X = wall.Right + 1;
+                enemy.X = wall.Right + 2;
             }
             else
             {
                 enemy.MoveUp();
                 enemy.Y = wall.Top - enemy.Position.Height - 1;
             }
+            /*if(enemy is Goriya || enemy is Hand)
+            {
+                enemy.ChangeDirection();
+            }*/
         }
 
         public static void HandleProjectileBlockCollision(ILinkProjectile projectile)
