@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sprint2_Attempt3.Interfaces
 {
-    public interface ILinkProjectile : IGameObject
+    public interface ILinkProjectile : IGameObject, IProjectile
     {
         public void Update();
         public void Draw(SpriteBatch spriteBatch);
