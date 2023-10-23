@@ -42,7 +42,7 @@ namespace Sprint2_Attempt3.Collision
                 if (collisionRectangle.Intersects(linkRectangle))
                 {
                     //Rectangle intersectRect = Rectangle.Intersect(collisionRectangle, linkRectangle);
-
+                    
                     ICollision side = SideDetector(linkRectangle, collisionRectangle);
                     if (obj is IEnemy)
                     {
@@ -58,6 +58,8 @@ namespace Sprint2_Attempt3.Collision
                     }
                     else if (obj is IDoor)
                     {
+                        
+
                         //PlayerBlockHandler.HandlePlayerBlockCollision(link, (IDoor)obj, side);
                         //if obj is not walkable = transition
 
@@ -127,7 +129,6 @@ namespace Sprint2_Attempt3.Collision
                             }
                             else if (gameObjectList[c] is IDoor)
                             {
-                                //System.Diagnostics.Debug.WriteLine("door");
                                 HandleCollision.HandleEnemyBlockCollision(collisionRectangle, (IEnemy)gameObjectList[i]);
                             }
                         }
@@ -153,17 +154,15 @@ namespace Sprint2_Attempt3.Collision
                             ICollision side = SideDetector(collisionRectangle, projectileRectangle);
                             if (gameObjectList[c] is IBlock)
                             {
-                                HandleCollision.HandleProjectileBlockCollision((ILinkProjectile)gameObjectList[i]);
+                                ProjectileBlockCollisionHandler.HandleProjectileBlockCollision((IProjectile)projectile, (IBlock)obj, side);
                             }
                             else if (gameObjectList[c] is IWall)
                             {
-                                ProjectileWallCollisionHandler.HandleProjectileWallCollision((IProjectile)projectile, (IWall)obj, side);
-
-                                //HandleCollision.HandleProjectileBlockCollision((ILinkProjectile)gameObjectList[i]);
+                                ProjectileBlockCollisionHandler.HandleProjectileBlockCollision((IProjectile)projectile, (IWall)obj, side);
                             }
                             else if (gameObjectList[c] is IDoor)
                             {
-                                HandleCollision.HandleProjectileBlockCollision((ILinkProjectile)gameObjectList[i]);
+                                ProjectileBlockCollisionHandler.HandleProjectileBlockCollision((IProjectile)projectile, (IDoor)obj, side);
                             }
                         }
                     }
@@ -184,7 +183,7 @@ namespace Sprint2_Attempt3.Collision
                             }
                             else if (gameObjectList[c] is IWall)
                             {
-                                ProjectileWallCollisionHandler.HandleProjectileWallCollision((IProjectile)projectile, (IWall)obj, side);
+                                ProjectileBlockCollisionHandler.HandleProjectileBlockCollision((IProjectile)projectile, (IWall)obj, side);
                                 System.Diagnostics.Debug.WriteLine("enemy");
                                 //HandleCollision.HandleProjectileBlockCollision((ILinkProjectile)gameObjectList[i]);
                             }
