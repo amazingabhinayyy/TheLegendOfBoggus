@@ -11,6 +11,8 @@ namespace Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles
         private int count;
         private bool fire;
         public bool Fire { get { return fire; } set { fire = value; } }
+        HitBoxWidth = 9;
+        HitBoxHeight = 11;
 
         public IEnemyProjectileState State
         {
@@ -41,6 +43,11 @@ namespace Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles
         }
         public Rectangle GetHitBox() {
             return new Rectangle((int)Position2.X, (int)Position2.Y, Globals.AquamentusFireball1.Width * (int)Globals.scale, Globals.AquamentusFireball1.Height * (int)Globals.scale);
+        }
+
+        public void getHitBox()
+        {
+            return new Rectangle((int)itemPosition.X, (int)itemPosition.Y, HitBoxWidth, HitBoxHeight);
         }
     }
 }
