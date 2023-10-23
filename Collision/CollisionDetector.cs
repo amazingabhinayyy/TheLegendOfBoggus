@@ -12,6 +12,7 @@ using System.Globalization;
 using Sprint2_Attempt3.WallBlocks;
 using System;
 using Sprint2_Attempt3.Enemy.Projectile;
+using Sprint2_Attempt3.Dungeon.Doors;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -57,6 +58,17 @@ namespace Sprint2_Attempt3.Collision
                     else if (obj is IWall)
                     {
                         PlayerBlockHandler.HandlePlayerBlockCollision(link, (IWall)obj, side);
+                    }
+                    else if (obj is IBlock)
+                    {
+                        HandleCollision.HandlePlayerBlockCollision(collisionRectangle, link);
+                    }
+                    else if (obj is IDoor)
+                    {
+                        //if obj is walkable 
+                        //PlayerBlockHandler.HandlePlayerBlockCollision(link, obj, side);
+                        //if obj is not walkable = transition
+
                     }
                     else if(obj is ILinkProjectile)
                     {
@@ -121,6 +133,11 @@ namespace Sprint2_Attempt3.Collision
                             {
                                 HandleCollision.HandleEnemyBlockCollision(collisionRectangle, (IEnemy)gameObjectList[i]);
                             }
+                            else if (gameObjectList[c] is IDoor)
+                            {
+                                System.Diagnostics.Debug.WriteLine("door");
+                                HandleCollision.HandleEnemyBlockCollision(collisionRectangle, (IEnemy)gameObjectList[i]);
+                            }
                         }
                     }
                 }
@@ -148,6 +165,10 @@ namespace Sprint2_Attempt3.Collision
                             {
                                 HandleCollision.HandleProjectileBlockCollision((ILinkProjectile)gameObjectList[i]);
                             }
+                            else if (gameObjectList[c] is IDoor)
+                            {
+                                HandleCollision.HandleProjectileBlockCollision((ILinkProjectile)gameObjectList[i]);
+                            }
                         }
                     }
                 } else if (gameObjectList[i] is IEnemyProjectile)
@@ -163,6 +184,10 @@ namespace Sprint2_Attempt3.Collision
                                 //EnemyBlockCollisionHandler.CorrectPositioning();
                             }
                             else if (gameObjectList[c] is IWall)
+                            {
+                                HandleCollision.HandleProjectileBlockCollision((ILinkProjectile)gameObjectList[i]);
+                            }
+                            else if (gameObjectList[c] is IDoor)
                             {
                                 HandleCollision.HandleProjectileBlockCollision((ILinkProjectile)gameObjectList[i]);
                             }
