@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint2_Attempt3.WallBlocks;
+using Sprint2_Attempt3.Dungeon.Doors;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -52,6 +53,30 @@ namespace Sprint2_Attempt3.Collision
                 }
             }
         }
-        
+
+        public static void HandlePlayerDoorCollision(ILink link, IDoor door, ICollision side)
+        {
+            if (!door.IsWalkable)
+            {
+                Rectangle wall = door.GetHitBox();
+                if (side is BottomCollision)
+                {
+                    link.Position = new Vector2(link.Position.X, wall.Bottom);
+                }
+                else if (side is LeftCollision)
+                {
+                    link.Position = new Vector2(wall.Left - link.GetHitBox().Width, link.Position.Y);
+                }
+                else if (side is RightCollision)
+                {
+                    link.Position = new Vector2(wall.Right, link.Position.Y);
+                }
+                else
+                {
+                    link.Position = new Vector2(link.Position.X, wall.Top - link.GetHitBox().Height);
+                }
+            }
+        }
+
     }
 }
