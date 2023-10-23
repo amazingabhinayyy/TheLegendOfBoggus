@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint2_Attempt3.WallBlocks;
+using Sprint2_Attempt3.Dungeon.Doors;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -31,26 +32,33 @@ namespace Sprint2_Attempt3.Collision
             {
                 blocked = true;
             }
+            else if (obj is IDoor)
+            {
+                blocked = true;
+            }
             if (blocked)
             {
                 Rectangle wall = obj.GetHitBox();
                 if (side is BottomCollision)
                 {
-                    enemy.Y = wall.Bottom;
+                    enemy.Y = wall.Top - enemy.GetHitBox().Height - 1;
+                    enemy.MoveRight();
                 }
                 else if (side is LeftCollision)
                 {
-                    enemy.X = wall.Left - enemy.GetHitBox().Width;
+                    enemy.X = wall.Right + 1;
+                    enemy.MoveUp();
                 }
                 else if (side is RightCollision)
                 {
-                    enemy.X = wall.Right;
+                    enemy.X = wall.Left - enemy.GetHitBox().Width - 1;
+                    enemy.MoveDown();
                 }
                 else
                 {
-                    enemy.Y = wall.Top - enemy.GetHitBox().Height;
+                    enemy.Y = wall.Bottom + 1;
+                    enemy.MoveLeft();
                 }
-                enemy.ChangeDirection();
             }
         }
         

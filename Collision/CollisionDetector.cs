@@ -128,17 +128,14 @@ namespace Sprint2_Attempt3.Collision
                             }
                             else if (obj is IBlock)
                             {
-                                //HandleCollision.HandleEnemyBlockCollision(collisionRectangle, (IEnemy)gameObjectList[i]);
                                 EnemyBlockHandler.HandleEnemyBlockCollision((IEnemy)gameObjectList[i], obj, side);
                             }
                             else if (obj is IWall)
                             {
-                                //HandleCollision.HandleEnemyBlockCollision(collisionRectangle, (IEnemy)gameObjectList[i]);
                                 EnemyBlockHandler.HandleEnemyBlockCollision((IEnemy)gameObjectList[i], obj, side);
                             }
                             else if (obj is IDoor)
                             {
-                                //HandleCollision.HandleEnemyBlockCollision(collisionRectangle, (IEnemy)gameObjectList[i]);
                                 EnemyBlockHandler.HandleEnemyBlockCollision((IEnemy)gameObjectList[i], obj, side);
                             }
                         }
