@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using Sprint2_Attempt3.WallBlocks;
 using System;
+using Sprint2_Attempt3.Enemy.Projectile;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -130,9 +131,27 @@ namespace Sprint2_Attempt3.Collision
         {
             for (int i = 0; i < gameObjectList.Count; i++)
             {
+                Rectangle projectileRectangle = gameObjectList[i].GetHitBox();
                 if (gameObjectList[i] is ILinkProjectile)
                 {
-                    Rectangle projectileRectangle = gameObjectList[i].GetHitBox();
+                    for (int c = 0; c < gameObjectList.Count; c++)
+                    {
+                        Rectangle collisionRectangle = gameObjectList[c].GetHitBox();
+                        if (collisionRectangle.Intersects(projectileRectangle))
+                        {
+                            ICollision side = SideDetector(collisionRectangle, projectileRectangle);
+                            if (gameObjectList[c] is IBlock)
+                            {
+                                HandleCollision.HandleProjectileBlockCollision((ILinkProjectile)gameObjectList[i]);
+                            }
+                            else if (gameObjectList[c] is IWall)
+                            {
+                                HandleCollision.HandleProjectileBlockCollision((ILinkProjectile)gameObjectList[i]);
+                            }
+                        }
+                    }
+                } else if (gameObjectList[i] is IEnemyProjectile)
+                {
                     for (int c = 0; c < gameObjectList.Count; c++)
                     {
                         Rectangle collisionRectangle = gameObjectList[c].GetHitBox();
@@ -143,10 +162,9 @@ namespace Sprint2_Attempt3.Collision
                             {
                                 //EnemyBlockCollisionHandler.CorrectPositioning();
                             }
-                            else if (gameObjectList[c] is IWall || gameObjectList[c] is IBlock)
+                            else if (gameObjectList[c] is IWall)
                             {
-                                //CheckCollision.CheckProjectileWallCollision((ILinkProjectile)gameObjectList[i], (IGameObject)gameObjectList[c];
-                                //EnemyBlockCollisionHandler.CorrectPositioning();
+                                HandleCollision.HandleProjectileBlockCollision((ILinkProjectile)gameObjectList[i]);
                             }
                         }
                     }

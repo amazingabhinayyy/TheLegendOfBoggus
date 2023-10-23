@@ -48,12 +48,12 @@ namespace Sprint2_Attempt3.Collision
         
         public static bool CheckProjectileWallCollision(ILinkProjectile projectile)
         {
-            foreach (Rectangle wall in Globals.WallBlocks)
+            /*foreach (Rectangle wall in Globals.WallBlocks)
                 if (projectile.GetHitBox().Intersects(wall))
                 {
                     HandleCollision.HandleProjectileBlockCollision(projectile);
                     return true;
-                }
+                }*/
             return false;
         }
         
