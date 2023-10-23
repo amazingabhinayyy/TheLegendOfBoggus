@@ -10,6 +10,9 @@ using Sprint2_Attempt3.Player.LinkProjectiles;
 using System.Collections.Generic;
 using System.Globalization;
 using Sprint2_Attempt3.WallBlocks;
+using System;
+using Sprint2_Attempt3.Enemy.Projectile;
+using Sprint2_Attempt3.Dungeon.Doors;
 using Sprint2_Attempt3.Items.ItemClasses;
 using System;
 
@@ -52,7 +55,7 @@ namespace Sprint2_Attempt3.Collision
                 if (collisionRectangle.Intersects(linkRectangle))
                 {
                     //Rectangle intersectRect = Rectangle.Intersect(collisionRectangle, linkRectangle);
-
+                    
                     ICollision side = SideDetector(linkRectangle, collisionRectangle);
                     if (obj is IEnemy)
                     {
@@ -65,7 +68,15 @@ namespace Sprint2_Attempt3.Collision
                     }
                     else if (obj is IBlock)
                     {
-                        PlayerBlockHandler.HandlePlayerBlockCollision(link, (IBlock)obj, side);
+                        HandleCollision.HandlePlayerBlockCollision(collisionRectangle, link);
+                    }
+                    else if (obj is IDoor)
+                    {
+                        
+
+                        //PlayerBlockHandler.HandlePlayerBlockCollision(link, (IDoor)obj, side);
+                        //if obj is not walkable = transition
+
                     }
                     else if(obj is ILinkProjectile)
                     {
@@ -124,7 +135,15 @@ namespace Sprint2_Attempt3.Collision
                             }
                             else if (gameObjectList[c] is IBlock)
                             {
-                                //EnemyBlockCollisionHandler.CorrectPositioning();
+                                HandleCollision.HandleEnemyBlockCollision(collisionRectangle, (IEnemy)gameObjectList[i]);
+                            }
+                            else if (gameObjectList[c] is IWall)
+                            {
+                                HandleCollision.HandleEnemyBlockCollision(collisionRectangle, (IEnemy)gameObjectList[i]);
+                            }
+                            else if (gameObjectList[c] is IDoor)
+                            {
+                                HandleCollision.HandleEnemyBlockCollision(collisionRectangle, (IEnemy)gameObjectList[i]);
                             }
                         }
                     }
@@ -133,21 +152,58 @@ namespace Sprint2_Attempt3.Collision
         }
         public void CheckProjectileCollision()
         {
-            for(int c = 0; c < gameObjectList.Count; c++)
+            for(int i = 0; i < gameObjectList.Count; i++)
             {
-                IGameObject projectile = gameObjectList[c];
-                if(projectile is IProjectile)
+                Rectangle projectileRectangle = gameObjectList[i].GetHitBox();
+                IGameObject projectile = gameObjectList[i];
+                if(projectile is ILinkProjectile)
                 {
                     Rectangle projHitBox = projectile.GetHitBox();
-                    for(int i = 0; i < gameObjectList.Count; i++)
+                    for(int c = 0; c < gameObjectList.Count; c++)
                     {
-                        IGameObject obj = gameObjectList[i];
+                        IGameObject obj = gameObjectList[c];
                         Rectangle collisionRectangle = obj.GetHitBox();
-                        if (collisionRectangle.Intersects(projHitBox)) {
-                            ICollision side = SideDetector(projHitBox, collisionRectangle);
-                            if (obj is IWall)
+                        if (collisionRectangle.Intersects(projectileRectangle))
+                        {
+                            ICollision side = SideDetector(collisionRectangle, projectileRectangle);
+                            if (gameObjectList[c] is IBlock)
                             {
-                                ProjectileWallCollisionHandler.HandleProjectileWallCollision((IProjectile)projectile, (IWall)obj, side);
+                                ProjectileBlockCollisionHandler.HandleProjectileBlockCollision((IProjectile)projectile, (IBlock)obj, side);
+                            }
+                            else if (gameObjectList[c] is IWall)
+                            {
+                                ProjectileBlockCollisionHandler.HandleProjectileBlockCollision((IProjectile)projectile, (IWall)obj, side);
+                            }
+                            else if (gameObjectList[c] is IDoor)
+                            {
+                                ProjectileBlockCollisionHandler.HandleProjectileBlockCollision((IProjectile)projectile, (IDoor)obj, side);
+                            }
+                        }
+                    }
+                }
+                else if (projectile is IEnemyProjectile)
+                {
+                    for (int c = 0; c < gameObjectList.Count; c++)
+                    {
+
+                        IGameObject obj = gameObjectList[c];
+                        Rectangle collisionRectangle = obj.GetHitBox();
+                        if (collisionRectangle.Intersects(projectileRectangle))
+                        {
+                            ICollision side = SideDetector(collisionRectangle, projectileRectangle);
+                            if (gameObjectList[c] is IBlock)
+                            {
+                                //EnemyBlockCollisionHandler.CorrectPositioning();
+                            }
+                            else if (gameObjectList[c] is IWall)
+                            {
+                                ProjectileBlockCollisionHandler.HandleProjectileBlockCollision((IProjectile)projectile, (IWall)obj, side);
+                                System.Diagnostics.Debug.WriteLine("enemy");
+                                //HandleCollision.HandleProjectileBlockCollision((ILinkProjectile)gameObjectList[i]);
+                            }
+                            else if (gameObjectList[c] is IDoor)
+                            {
+                                HandleCollision.HandleProjectileBlockCollision((ILinkProjectile)gameObjectList[i]);
                             }
                         }
                     }

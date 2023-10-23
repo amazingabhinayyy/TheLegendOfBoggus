@@ -9,6 +9,8 @@ using Microsoft.Xna.Framework.Audio;
 using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Collision.SideCollisionHandlers;
 using Sprint2_Attempt3.Enemy;
+using Sprint2_Attempt3.Enemy.Goriya;
+using Sprint2_Attempt3.Enemy.Hand;
 using Sprint2_Attempt3.Interfaces;
 using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Player;
@@ -53,7 +55,13 @@ namespace Sprint2_Attempt3.Collision
 
         public static void HandleEnemyBlockCollision(Rectangle wall, IEnemy enemy)
         {
-            ICollision side = CollisionDetector.SideDetector(enemy.GetHitBox(), wall);
+            Rectangle hitBox = enemy.GetHitBox();
+            if (enemy is Goriya || enemy is Hand)
+            {
+                hitBox = new Rectangle(hitBox.X, hitBox.Y, hitBox.Width / 2, hitBox.Height / 2);
+            }
+            ICollision side = CollisionDetector.SideDetector(hitBox, wall);
+            
             if (side is BottomCollision)
             {
                 //enemy.MoveDown();
@@ -79,14 +87,18 @@ namespace Sprint2_Attempt3.Collision
 
         public static void HandleProjectileBlockCollision(ILinkProjectile projectile)
         {
+            //System.Diagnostics.Debug.WriteLine("test");
+
             //change sprite to poof animation
             if (projectile is IBoomerang)
             {
-                System.Diagnostics.Debug.WriteLine("boomerang");
+                //Michael is working on it; //bomb
             }
             else
             {
-                LinkSpriteFactory.Instance.CreatePoofAnimation();
+                //remove the item
+                
+                
             }
         }
     }

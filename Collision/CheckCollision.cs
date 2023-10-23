@@ -11,6 +11,7 @@ using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Player;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Interfaces;
+using Sprint2_Attempt3.WallBlocks;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -22,26 +23,39 @@ namespace Sprint2_Attempt3.Collision
         {
             wallBlocks = Globals.WallBlocks; 
         }
-        public static bool CheckEnemyWallCollision(IEnemy enemy)
+        public static bool CheckEnemyWallCollision(IEnemy enemy, IGameObject obj, Rectangle collisionRectangle)
         {
-            foreach (Rectangle wall in Globals.WallBlocks)
-
-                if (enemy.GetHitBox().Intersects(wall)) //intersection.isEmpty??
-                {
-                    HandleCollision.HandleEnemyBlockCollision(wall, enemy);
-                    return true;
-                }
+            if (obj is IWall)
+            {
+                var wall = (IWall)obj;
+                HandleCollision.HandleEnemyBlockCollision(collisionRectangle, enemy);
+                enemy.ChangeDirection();
+                return true;
+            } else if (obj is IBlock)
+            {
+                var block = (IBlock)obj;
+                HandleCollision.HandleEnemyBlockCollision(collisionRectangle, enemy);
+                enemy.ChangeDirection();
+                return true;
+            }
             return false;
+            //}
+            //else if (obj is IBlock)
+            //{
+            //  foreach (Rectangle block in )
+            // }
+
+
         }
         
         public static bool CheckProjectileWallCollision(ILinkProjectile projectile)
         {
-            foreach (Rectangle wall in Globals.WallBlocks)
+            /*foreach (Rectangle wall in Globals.WallBlocks)
                 if (projectile.GetHitBox().Intersects(wall))
                 {
                     HandleCollision.HandleProjectileBlockCollision(projectile);
                     return true;
-                }
+                }*/
             return false;
         }
         

@@ -17,20 +17,16 @@ namespace Sprint2_Attempt3.Collision
         public void Update()
         {
 
-            foreach (IGameObject obj in CollisionDetector.GameObjectList)
+            /*foreach (IGameObject obj in CollisionDetector.GameObjectList)
             //foreach (IEnemy enemyObject in Globals.enemies)
             {
-                if (obj is IEnemy)
-                {
-                    collided = CheckCollision.CheckEnemyWallCollision((IEnemy)obj);
-                }
-                else if (obj is ILinkProjectile)
+                if (obj is ILinkProjectile)
                 {
                     collided = CheckCollision.CheckProjectileWallCollision((ILinkProjectile)obj);
                 }
             }
 
-            collided = CheckCollision.CheckPlayerWallCollision(this.game1.link);
+            //collided = CheckCollision.CheckPlayerWallCollision(this.game1.link);*/
             
         }
 
