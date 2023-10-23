@@ -7,6 +7,8 @@ using Sprint2_Attempt3.Interfaces;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Player.LinkProjectiles;
 using System.Collections.Generic;
+using System.Globalization;
+using Sprint2_Attempt3.WallBlocks;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -24,6 +26,7 @@ namespace Sprint2_Attempt3.Collision
         public CollisionDetector(Game1 game)
         {
             this.game = game;
+            AddWallBlocks();
         }
         public void CheckPlayerCollision(ILink link)
         {
@@ -47,9 +50,9 @@ namespace Sprint2_Attempt3.Collision
                             PlayerEnemyHandler.HandlePlayerEnemyCollision(link, (IEnemy)obj, side);
                         }
                     }
-                    else if (obj is IBlock)
+                    else if (obj is IWall)
                     {
-                        PlayerBlockHandler.HandlePlayerBlockCollision(link, (IBlock)obj, side);
+                        PlayerBlockHandler.HandlePlayerBlockCollision(link, (IWall)obj, side); ;
                     }
                     else if(obj is ILinkProjectile)
                     {
@@ -110,6 +113,17 @@ namespace Sprint2_Attempt3.Collision
                     }
                 }
             }
+        }
+        public void AddWallBlocks()
+        {
+            gameObjectList.Add(new EastNorthCollisionBlock());
+            gameObjectList.Add(new EastSouthCollisionBlock());
+            gameObjectList.Add(new NorthEastCollisionBlock());
+            gameObjectList.Add(new NorthWestCollisionBlock());
+            gameObjectList.Add(new SouthEastCollisionBlock());
+            gameObjectList.Add(new SouthWestCollisionBlock());
+            gameObjectList.Add(new WestNorthCollisionBlock());
+            gameObjectList.Add(new WestSouthCollisionBlock());
         }
         public void Update()
         {

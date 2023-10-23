@@ -29,9 +29,9 @@ namespace Sprint2_Attempt3
 
         public CollisionDetector collisionDetector
         { get; private set; }
-        public CollisionResponse collisionResponse { get; private set; }
+        //public CollisionResponse collisionResponse { get; private set; }
 
-        private BlockCollisionClass blockCollision;
+        //private BlockCollisionClass blockCollision;
 
         public Game1()
         {
@@ -63,8 +63,8 @@ namespace Sprint2_Attempt3
             enemy = new Keese(200,200);
             enemy.Spawn();
             collisionDetector = new CollisionDetector(this);
-            collisionResponse = new CollisionResponse(this); 
-            blockCollision = new BlockCollisionClass(this);
+            //collisionResponse = new CollisionResponse(this); 
+            //blockCollision = new BlockCollisionClass(this);
         }
 
         protected override void UnloadContent()
@@ -74,7 +74,7 @@ namespace Sprint2_Attempt3
         protected override void Update(GameTime gameTime)
         {
             collisionDetector.Update();
-            blockCollision.Update();
+            //blockCollision.Update();
             keyController.Update(gameTime);
             room.Update();
             enemy.Update();
