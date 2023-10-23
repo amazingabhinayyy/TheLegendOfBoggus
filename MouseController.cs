@@ -50,7 +50,7 @@ namespace Sprint2_Attempt3
                  
 
                 }
-                else if (mstate.LeftButton.Equals(ButtonState.Pressed))
+                else if (mstate.RightButton.Equals(ButtonState.Pressed))
                 {
 
                     

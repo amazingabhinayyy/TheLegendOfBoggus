@@ -36,7 +36,7 @@ namespace Sprint2_Attempt3.Dungeon
 
         public void SwitchToPrevRoom()
         {
-            if (roomNumber < 0)
+            if (roomNumber <= 0)
             {
                 roomNumber= gameObjectLists.Length-1;
             }
@@ -44,7 +44,7 @@ namespace Sprint2_Attempt3.Dungeon
             {
                 roomNumber--;
             }
-            //CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
+           CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
         }
         public void Update() {
             collisionDetector.Update();
