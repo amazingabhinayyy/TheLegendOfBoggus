@@ -18,7 +18,7 @@ namespace Sprint2_Attempt3.Blocks
 
         public Rectangle GetHitBox()
         {
-            return position;
+            return new Rectangle(position.X, position.Y, position.Width / 2, position.Height / 2);
         }
     }
 }
