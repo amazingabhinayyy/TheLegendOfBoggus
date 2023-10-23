@@ -22,7 +22,7 @@ namespace Sprint2_Attempt3.Dungeon
         public RoomSecondary()
         {    
         }
-        public void SwitchRooms() {
+        public void SwitchToNextRoom() {
             if (roomNumber < gameObjectLists.Length - 1)
             {
                 roomNumber++;
@@ -32,6 +32,19 @@ namespace Sprint2_Attempt3.Dungeon
                 roomNumber = 0;
             }
             CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
+        }
+
+        public void SwitchToPrevRoom()
+        {
+            if (roomNumber < 0)
+            {
+                roomNumber= gameObjectLists.Length-1;
+            }
+            else
+            {
+                roomNumber--;
+            }
+            //CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
         }
         public void Update() {
             collisionDetector.Update();
