@@ -19,7 +19,34 @@ namespace Sprint2_Attempt3.Collision
 {
     public class PlayerBlockHandler
     {
-        public static void HandlePlayerBlockCollision(ILink link, IGameObject obj, ICollision side)
+        public static void HandleLinkBlockCollision(Rectangle linkRectangle, Rectangle wall, Link link)
+        {
+            Rectangle intersectRect = Rectangle.Intersect(linkRectangle, wall);
+            int width = intersectRect.Width;
+            ICollision side = CollisionDetector.SideDetector(linkRectangle, wall);
+            if (side is BottomCollision)
+            {
+                link.BecomeIdle();
+                link.position.Y = wall.Bottom;
+            }
+            else if (side is LeftCollision)
+            {
+                link.BecomeIdle();
+                link.position.X = wall.Right - wall.Width - 45;
+            }
+            else if (side is RightCollision)
+            {
+                link.BecomeIdle();
+                link.position.X = wall.Right;
+            }
+            else
+            {
+                link.BecomeIdle();
+                link.position.Y = wall.Top - wall.Height + 40;
+            }
+        }
+
+            public static void HandlePlayerBlockCollision(ILink link, IGameObject obj, ICollision side)
         {
             bool blocked = false;
             if (obj is IBlock)
@@ -30,10 +57,10 @@ namespace Sprint2_Attempt3.Collision
                     blocked = true;
                 }
             }
-            else if (obj is IWall)
+            /*else if (obj is IWall)
             {
                 blocked = true;
-            }
+            }*/
             if (blocked)
             {
                 Rectangle wall = obj.GetHitBox();
@@ -86,6 +113,7 @@ namespace Sprint2_Attempt3.Collision
                     if (room != game.room)
                     {
                         link.Position = new Vector2(link.Position.X, 300);
+                        //System.Diagnostics.Debug.WriteLine(link.Position.Y);
                     }
                 }  
                 else if (door is EastDoor)
