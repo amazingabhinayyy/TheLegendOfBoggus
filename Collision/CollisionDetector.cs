@@ -49,31 +49,7 @@ namespace Sprint2_Attempt3.Collision
                     }
                     else if (obj is IBlock)
                     {
-                        /*
-                        Rectangle rectangle = Rectangle.Intersect(collisionRectangle, linkRectangle);
-                        if(rectangle.Width >= rectangle.Height)
-                        {
-                            if(link.Position.Y > obj.position.Y)
-                            {
-                                PlayerBlockHandler.CorrectPositioning(High);
-                            } else
-                            {
-                                PlayerBlockHandler.CorrectPositioning(Low);
-                            } 
-                        } else
-                        {
-                            if (link.Position.X > obj.position.X)
-                            {
-                                PlayerBlockHandler.CorrectPositioning(left);
-                            }
-                            else
-                            {
-                                PlayerBlockHandler.CorrectPositioning(Right);
-                            }
-                        }
-                        */
-
-                        //link.CorrectPositioning(rectangle);
+                        PlayerBlockHandler.HandlePlayerBlockCollision(link, (IBlock)obj, side);
                     }
                     else if(obj is ILinkProjectile)
                     {

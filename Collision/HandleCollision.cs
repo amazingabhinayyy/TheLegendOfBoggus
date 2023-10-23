@@ -28,24 +28,24 @@ namespace Sprint2_Attempt3.Collision
             ICollision side = CollisionDetector.SideDetector(spriteObject, wall);
             if (side is BottomCollision)
             {
-                link.BecomeIdle();
+                //link.BecomeIdle();
                 //System.Diagnostics.Debug.WriteLine("link y position:" + link.position.Y);
                 link.position.Y = wall.Bottom;
                 //System.Diagnostics.Debug.WriteLine("link y position:" + link.position.Y);
             }
             else if (side is LeftCollision)
             {
-                link.BecomeIdle();
+               // link.BecomeIdle();
                 link.position.X = wall.Right - wall.Width - 45;
             }
             else if (side is RightCollision)
             {
-                link.BecomeIdle();
+               // link.BecomeIdle();
                 link.position.X = wall.Right;
             }
             else
             {
-                link.BecomeIdle();
+                //link.BecomeIdle();
                 link.position.Y = wall.Top - wall.Height + 40;
             }
             /*

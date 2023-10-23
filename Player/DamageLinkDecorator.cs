@@ -18,12 +18,15 @@ namespace Sprint2_Attempt3.Player
         private ILink decoratedLink;
         private int timer;
         public List<ILinkProjectile> Items { get; set; }
+        private Vector2 position;
+        public Vector2 Position { get { return position; } set { position = value; }}
         public DamageLinkDecorator(ILink decoratedLink, Game1 game)
         {
             this.decoratedLink = decoratedLink;
             this.game = game;
             game.link = this;
             Items = decoratedLink.Items;
+            position = decoratedLink.Position;
         }
 
         public void GetDamaged(ICollision side)

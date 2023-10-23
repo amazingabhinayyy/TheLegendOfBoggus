@@ -23,7 +23,6 @@ namespace Sprint2_Attempt3
         public IItem item;
        
         private KeyboardController keyController { get; set; }
-        private CollisionHandler collisionHandler { get; set; }
         public ILink link { get; set; }
         public IRoom room { get; set; }
         public IEnemy enemy { get; set; }
@@ -51,7 +50,6 @@ namespace Sprint2_Attempt3
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            collisionHandler = new CollisionHandler();
             EnemySpriteFactory.Instance.LoadAllTextures(this.Content);
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
             ItemSpriteFactory.Instance.LoadAllTextures(Content);
