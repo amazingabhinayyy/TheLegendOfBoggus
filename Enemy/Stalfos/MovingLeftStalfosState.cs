@@ -19,7 +19,7 @@ namespace Sprint2_Attempt3.Enemy.Stalfos
             sprite = EnemySpriteFactory.Instance.CreateStalfosSprite();
             currentFrame = 0;
             sourceRectangle = Globals.StalfosRed;
-            Stalfos.Position = new Rectangle(Stalfos.X, Stalfos.Y, sourceRectangle.Width, sourceRectangle.Height);
+            Stalfos.Position = new Rectangle(Stalfos.X, Stalfos.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             random = new Random();
             direction = random.Next(0, 2);
 
@@ -47,7 +47,7 @@ namespace Sprint2_Attempt3.Enemy.Stalfos
         {
 
             Stalfos.X -= 1;
-            Stalfos.Position = new Rectangle(Stalfos.X, Stalfos.Y, sourceRectangle.Width, sourceRectangle.Height);
+            Stalfos.Position = new Rectangle(Stalfos.X, Stalfos.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             sprite.Update();
         }
         public void Draw(SpriteBatch spriteBatch)

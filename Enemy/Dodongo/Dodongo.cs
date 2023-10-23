@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
+using Sprint2_Attempt3.Enemy.Dodongo;
 
 namespace Sprint2_Attempt3.Enemy.Dodongo
 {
@@ -15,10 +16,21 @@ namespace Sprint2_Attempt3.Enemy.Dodongo
         {
             State = new MovingLeftDodongoState(this);
         }
-        public Rectangle GetHitBox()
+        public override void MoveUp()
         {
-            //To-Do fill in what hit box should be instead of 0s
-            return new Rectangle(0, 0, 0, 0);
+            State = new MovingUpDodongoState(this);
+        }
+        public override void MoveDown()
+        {
+            State = new MovingDownDodongoState(this);
+        }
+        public override void MoveLeft()
+        {
+            State = new MovingLeftDodongoState(this);
+        }
+        public override void MoveRight()
+        {
+            State = new MovingRightDodongoState(this);
         }
     }
 }

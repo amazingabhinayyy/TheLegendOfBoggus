@@ -9,6 +9,7 @@ namespace Sprint2_Attempt3
 {
     public interface IGameObject
     {
+        public void Update();
         public Rectangle GetHitBox();
     }
 }

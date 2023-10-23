@@ -12,7 +12,7 @@ namespace Sprint2_Attempt3.Enemy
         protected int currentFrame;
         private int distance;
         private Random random;
-        private bool exists;
+        public bool exists { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
         public IEnemyState State { get; set; }
@@ -30,13 +30,11 @@ namespace Sprint2_Attempt3.Enemy
         public void Spawn()
         {
             State = new SpawnAnimationState(this);
-            CollisionDetector.GameObjectList.Add(this);
+            //CollisionDetector.GameObjectList.Add(this);
         }
         public void Kill()
         {
             State = new DeathAnimationState(this);
-            CollisionDetector.GameObjectList.Remove(this);
-            exists = false;
         }
         public void ChangeDirection()
         {
@@ -52,7 +50,7 @@ namespace Sprint2_Attempt3.Enemy
             if (count == distance)
             {
                 State.ChangeDirection();
-                distance = random.Next(50, 200);
+                distance = random.Next(200, 400);
                 count = 0;
                 
             }
@@ -68,5 +66,10 @@ namespace Sprint2_Attempt3.Enemy
         public Rectangle GetHitBox() {
             return Position;
         }
+
+        public abstract void MoveUp();
+        public abstract void MoveDown();
+        public abstract void MoveLeft();
+        public abstract void MoveRight();
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Collision;
+using Sprint2_Attempt3.Interfaces;
 
 namespace Sprint2_Attempt3.Player
 {
@@ -16,12 +17,16 @@ namespace Sprint2_Attempt3.Player
         private Game1 game;
         private ILink decoratedLink;
         private int timer;
-        public ILinkState State { get; set; }
+        public List<ILinkProjectile> Items { get; set; }
+        private Vector2 position;
+        public Vector2 Position { get { return position; } set { position = value; }}
         public DamageLinkDecorator(ILink decoratedLink, Game1 game)
         {
             this.decoratedLink = decoratedLink;
             this.game = game;
             game.link = this;
+            Items = decoratedLink.Items;
+            position = decoratedLink.Position;
         }
 
         public void GetDamaged(ICollision side)

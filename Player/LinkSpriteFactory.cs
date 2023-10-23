@@ -1,9 +1,11 @@
 ﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Interfaces;
-using Sprint2_Attempt3.Player.Items;
+using Sprint2_Attempt3.Player.LinkProjectiles;
 using Sprint2_Attempt3.Player.LinkSprites;
 using Sprint2_Attempt3.Player.Interfaces;
+using Sprint2_Attempt3.Player.LinkProjectilesSprites;
+using Sprint2_Attempt3.Player.Items;
 
 namespace Sprint2_Attempt3.Player
 {
@@ -83,19 +85,19 @@ namespace Sprint2_Attempt3.Player
         {
             return new UpMovingLinkSprite(linkTexture);
         }
-        public ILinkItemSprite CreateDownAttackLinkSwordSprite()
+        public ILinkProjectileSprite CreateDownAttackLinkSwordSprite()
         {
             return new DownAttackLinkSwordSprite(linkTexture);
         }
-        public ILinkItemSprite CreateUpAttackLinkSwordSprite()
+        public ILinkProjectileSprite CreateUpAttackLinkSwordSprite()
         {
             return new UpAttackLinkSwordSprite(linkTexture);
         }
-        public ILinkItemSprite CreateLeftAttackLinkSwordSprite()
+        public ILinkProjectileSprite CreateLeftAttackLinkSwordSprite()
         {
             return new LeftAttackLinkSwordSprite(linkTexture);
         }
-        public ILinkItemSprite CreateRightAttackLinkSwordSprite()
+        public ILinkProjectileSprite CreateRightAttackLinkSwordSprite()
         {
             return new RightAttackLinkSwordSprite(linkTexture);
         }
@@ -115,38 +117,42 @@ namespace Sprint2_Attempt3.Player
         {
             return new RightUseItemLinkSprite(linkTexture);
         }
-        public ILinkItemSprite CreateBombItem()
+        public ILinkProjectileSprite CreateBombItem()
         {
             return new BombSprite(linkTexture);
         }
-        public ILinkItemSprite CreateArrowItem()
+        public ILinkProjectileSprite CreateArrowItem()
         {
             return new ArrowSprite(linkTexture);
         }
-        public ILinkItemSprite CreateBoomerangItem()
+        public ILinkProjectileSprite CreateBoomerangItem()
         {
             return new BoomerangSprite(linkTexture);
         }
-        public ILinkItemSprite CreateBlueBoomerangItem()
+        public ILinkProjectileSprite CreateBlueBoomerangItem()
         {
             return new BlueBoomerangSprite(linkTexture);
         }
-        public ILinkItemSprite CreateBlueArrowItem()
+        public ILinkProjectileSprite CreateBlueArrowItem()
         {
             return new BlueArrowSprite(linkTexture);
         }
-        public ILinkItemSprite CreateFireItem()
+        public ILinkProjectileSprite CreateFireItem()
         {
             return new FireSprite(linkTexture);
         }
-        public ILinkItemSprite CreateArrowExplosion()
+        public ILinkProjectileSprite CreateItemHitSprite()
         {
-            return new ArrowExplodeSprite(linkTexture);
+            return new ItemHitSprite(linkTexture);
         }
-
-
-        // More public ISprite returning methods follow
-        // ...
+        public ILinkProjectileSprite CreateBombExplosion()
+        {
+            return new BombExplosionSprite(linkTexture);
+        }
+        public ILinkProjectileSprite CreatePoofAnimation()
+        {
+            return new PoofSprite(linkTexture);
+        }
     }
 }
 

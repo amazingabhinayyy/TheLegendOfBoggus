@@ -18,7 +18,7 @@ namespace Sprint2_Attempt3.Enemy.Keese
             this.currentFrame = 0;
             this.sprite = EnemySpriteFactory.Instance.CreateKeeseSprite();
             this.sourceRectangle = Globals.KeeseSprite1;
-            keese.Position = new Rectangle(keese.X, keese.Y, sourceRectangle.Width, sourceRectangle.Height);
+            keese.Position = new Rectangle(keese.X, keese.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             random = new Random();
             direction = random.Next(0, 2);
         }
@@ -55,7 +55,7 @@ namespace Sprint2_Attempt3.Enemy.Keese
 
                 }
                 keese.Y += 1;
-                keese.Position = new Rectangle(keese.X, keese.Y, sourceRectangle.Width, sourceRectangle.Height);
+                keese.Position = new Rectangle(keese.X, keese.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             }
             else
             {

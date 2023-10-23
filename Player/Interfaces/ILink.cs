@@ -1,11 +1,15 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Sprint2_Attempt3.Collision;
+using Sprint2_Attempt3.Interfaces;
+using System.Collections.Generic;
 
 namespace Sprint2_Attempt3.Player.Interfaces
 {
     public interface ILink : IGameObject
     {
+        public List<ILinkProjectile> Items { get; set; }
+        public Vector2 Position { get; set; }
         public void BecomeIdle();
         public void MoveUp();
         public void MoveDown();

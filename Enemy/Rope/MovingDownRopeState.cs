@@ -19,7 +19,7 @@ namespace Sprint2_Attempt3.Enemy.Rope
             this.rope = rope;
             sprite = EnemySpriteFactory.Instance.CreateRopeSprite();
             sourceRectangle = Globals.RopeSprite1;
-            rope.Position = new Rectangle(rope.X, rope.Y, sourceRectangle.Width, sourceRectangle.Height);
+            rope.Position = new Rectangle(rope.X, rope.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             currentFrame = 0;
             random = new Random();
             direction = random.Next(0, 2);
@@ -59,7 +59,7 @@ namespace Sprint2_Attempt3.Enemy.Rope
 
                 }
                 rope.Y += 1;
-                rope.Position = new Rectangle(rope.X, rope.Y, sourceRectangle.Width, sourceRectangle.Height);
+                rope.Position = new Rectangle(rope.X, rope.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             }
             else
             {

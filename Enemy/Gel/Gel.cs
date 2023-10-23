@@ -6,6 +6,8 @@ namespace Sprint2_Attempt3.Enemy.Gel
 {
     internal class Gel : EnemySecondary
     {
+        //public new int X { get; set; }
+        //public new int Y { get; set; }
         public Gel(int x, int y)
         {
             this.X = x;
@@ -14,10 +16,21 @@ namespace Sprint2_Attempt3.Enemy.Gel
         public override void Generate() {
             State = new MovingLeftGelState(this);
         }
-        public Rectangle GetHitBox()
+        public override void MoveUp()
         {
-            //To-Do fill in what hit box should be instead of 0s
-            return new Rectangle(0, 0, 0, 0);
+            State = new MovingUpGelState(this);
+        }
+        public override void MoveDown()
+        {
+            State = new MovingDownGelState(this);
+        }
+        public override void MoveLeft()
+        {
+            State = new MovingLeftGelState(this);
+        }
+        public override void MoveRight()
+        {
+            State = new MovingRightGelState(this);
         }
     }
 }

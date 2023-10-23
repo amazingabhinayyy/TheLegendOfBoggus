@@ -4,7 +4,6 @@ using Sprint2_Attempt3.Interfaces;
 using Sprint2_Attempt3.Player.LinkStates;
 using System.Collections.Generic;
 using Sprint2_Attempt3.Collision;
-using Sprint2_Attempt3.Interfaces;
 using Sprint2_Attempt3.CommandClasses;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Collision.SideCollisionHandlers;
@@ -14,14 +13,17 @@ namespace Sprint2_Attempt3.Player
     public class Link : ILink
     {
         public Vector2 position;
+        public Vector2 Position { get { return position; } set { position = value; } } 
         public ILinkSprite Sprite { get; set; }
         public ILinkState State { get; set; }
-        public List<ILinkItem> Items { get; set; }
+        public List<ILinkProjectile> Items { get; set; }
         private Game1 game;
         public Link(Game1 game)
         {
+            position.X = 375;
+            position.Y = 300;
             this.game = game;
-            CollisionDetector.GameObjectList.Add(this);
+            //CollisionDetector.GameObjectList.Add(this);
             StartLinkState();
         }
         public void GetDamaged(ICollision side)
@@ -99,7 +101,7 @@ namespace Sprint2_Attempt3.Player
         public void StartLinkState()
         {
             State = new DownIdleLinkState(this);
-            Items = new List<ILinkItem>();
+            Items = new List<ILinkProjectile>();
         }
 
         public void Update()
@@ -115,7 +117,7 @@ namespace Sprint2_Attempt3.Player
         public void Draw(SpriteBatch _spriteBatch, Color color)
         {
             Sprite.Draw(_spriteBatch, position, color);
-            foreach (ILinkItem item in Items)
+            foreach (ILinkProjectile item in Items)
             {
                 item.Draw(_spriteBatch);
             }

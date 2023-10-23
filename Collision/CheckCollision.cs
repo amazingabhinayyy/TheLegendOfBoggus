@@ -8,43 +8,49 @@ using Microsoft.Xna.Framework.Audio;
 using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Collision;
+using Sprint2_Attempt3.Player;
+using Sprint2_Attempt3.Player.Interfaces;
+using Sprint2_Attempt3.Interfaces;
 
 namespace Sprint2_Attempt3.Collision
 {
     internal class CheckCollision
     {
-        public CheckCollision()
+        public List<Rectangle> wallBlocks;
+        
+        public CheckCollision(Link link)
         {
-
+            wallBlocks = Globals.WallBlocks; 
         }
-        public static bool CheckEnemyWallCollision(Rectangle spriteObject, List<Rectangle> WallBlocks)
+        public static bool CheckEnemyWallCollision(IEnemy enemy)
         {
-            foreach (Rectangle wall in WallBlocks)
-                if (spriteObject.Intersects(wall))
+            foreach (Rectangle wall in Globals.WallBlocks)
+
+                if (enemy.GetHitBox().Intersects(wall)) //intersection.isEmpty??
                 {
-                    HandleCollision.HandleEnemyBlockCollision(spriteObject, wall);
+                    HandleCollision.HandleEnemyBlockCollision(wall, enemy);
                     return true;
                 }
             return false;
         }
-
-        public static bool CheckProjectileWallCollision(Rectangle spriteObject, List<Rectangle> WallBlocks)
+        
+        public static bool CheckProjectileWallCollision(ILinkProjectile projectile)
         {
-            foreach (Rectangle wall in WallBlocks)
-                if (spriteObject.Intersects(wall))
+            foreach (Rectangle wall in Globals.WallBlocks)
+                if (projectile.GetHitBox().Intersects(wall))
                 {
-                    HandleCollision.HandleProjectileBlockCollision(spriteObject, wall);
+                    HandleCollision.HandleProjectileBlockCollision(projectile);
                     return true;
                 }
             return false;
         }
-
-        public static bool CheckPlayerWallCollision(Rectangle spriteObject, List<Rectangle> WallBlocks)
+        
+        public static bool CheckPlayerWallCollision(ILink link)
         {
-            foreach (Rectangle wall in WallBlocks)
-                if (spriteObject.Intersects(wall))
+            foreach (Rectangle wall in Globals.WallBlocks)
+                if (link.GetHitBox().Intersects(wall))
                 {
-                    HandleCollision.HandleLinkBlockCollision(spriteObject, wall);
+                    HandleCollision.HandleLinkBlockCollision(wall, link);
                     return true;
                 }
             return false;

@@ -21,7 +21,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             this.Goriya = Goriya;
             sprite = EnemySpriteFactory.Instance.CreateMovingRightGoriyaSprite();
             sourceRectangle = Globals.GoriyaBlueRight;
-            Goriya.Position = new Rectangle(Goriya.X, Goriya.Y, sourceRectangle.Width, sourceRectangle.Height);
+            Goriya.Position = new Rectangle(Goriya.X, Goriya.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             currentFrame = 0;
             elaspedFrameCount = 0;
             endFrame = 100;
@@ -61,7 +61,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
                     sourceRectangle = Globals.GoriyaBlueRight;
                 }
                 Goriya.X += 1;
-                Goriya.Position = new Rectangle(Goriya.X, Goriya.Y, sourceRectangle.Width, sourceRectangle.Height);
+                Goriya.Position = new Rectangle(Goriya.X, Goriya.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             }
             else
             {
