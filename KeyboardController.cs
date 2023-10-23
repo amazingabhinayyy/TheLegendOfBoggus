@@ -151,28 +151,6 @@ namespace Sprint2_Attempt3
             {
                 commandMapping[Keys.None].Execute();
             }
-
-            /*
-            Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
-            if (pressedKeys.Length > 0 && pressed)
-            {
-                foreach (Keys key in pressedKeys)
-                {
-                    if (commandMapping.ContainsKey(key))
-                    {
-                        commandMapping[key].Execute();
-                    }
-                }
-                pressed = false;
-            }
-            else
-            {
-                if (pressedKeys.Length == 0)
-                {
-                    pressed = true;
-                }
-            }*/
-
         }
     }
 }

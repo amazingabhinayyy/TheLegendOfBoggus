@@ -9,6 +9,7 @@ namespace Sprint2_Attempt3.Dungeon.Doors
 {
     public interface IDoor : IGameObject
     {
+        public bool IsWalkable { get { return IsWalkable; } private set { IsWalkable = value; } }
         public void Open();
         public void Close();
         public void DiamondLock();

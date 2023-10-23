@@ -10,12 +10,13 @@ using Sprint2_Attempt3.Blocks;
 
 namespace Sprint2_Attempt3.Blocks.BlockSprites
 {
-    public class SideChunk : BlockSecondary
+    public class BlackFloor : BlockSecondary
     {
-        public SideChunk(Rectangle Position)
+        private Rectangle BlackFloorScr = new Rectangle(1, 18, 14, 14);
+        public BlackFloor(Rectangle Position)
         {
-            position = Position;
-            sourceRectangle = Globals.sideChunkScr;
+            position = new Rectangle(Position.X, Position.Y, 599, 302);
+            sourceRectangle = BlackFloorScr;
             isWalkable = false;
         }
     }

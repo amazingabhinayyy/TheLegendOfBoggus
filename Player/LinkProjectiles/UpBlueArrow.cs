@@ -49,7 +49,7 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles
             }
             sprite.Update();
             currentFrame++;
-            itemPosition.Y = itemPosition.Y - 5;
+            itemPosition.Y = itemPosition.Y - 7;
 
         }
         public void Draw(SpriteBatch spriteBatch)
