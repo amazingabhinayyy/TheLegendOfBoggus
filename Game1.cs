@@ -20,11 +20,9 @@ namespace Sprint2_Attempt3
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-       
         private KeyboardController keyController { get; set; }
         public ILink link { get; set; }
         public IRoom room { get; set; }
-        public IEnemy enemy { get; set; }
 
         public Game1()
         {
@@ -53,8 +51,6 @@ namespace Sprint2_Attempt3
             link = new Link(this);
             keyController = new KeyboardController(this);
             room = new Room1(this);
-            enemy = new Keese(200,200);
-            enemy.Spawn();
         }
 
         protected override void UnloadContent()
@@ -65,8 +61,6 @@ namespace Sprint2_Attempt3
         {
             keyController.Update(gameTime);
             room.Update();
-            item.Update();
-            enemy.Update();
             base.Update(gameTime);
         }
 
@@ -76,7 +70,6 @@ namespace Sprint2_Attempt3
 
             spriteBatch.Begin();
             room.Draw(spriteBatch);
-            enemy.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }

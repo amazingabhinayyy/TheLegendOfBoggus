@@ -50,7 +50,7 @@ namespace Sprint2_Attempt3.Enemy
             if (count == distance)
             {
                 State.ChangeDirection();
-                distance = random.Next(50, 200);
+                distance = random.Next(200, 400);
                 count = 0;
                 
             }

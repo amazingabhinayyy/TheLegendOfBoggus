@@ -40,7 +40,11 @@ namespace Sprint2_Attempt3.Dungeon
 
             for (int i = 0; i < gameObjectLists[roomNumber].Count; i++)
             {
-                gameObjectLists[roomNumber][i].Update();
+                IGameObject obj = gameObjectLists[roomNumber][i];
+                if (obj is IEnemy)
+                    ((IEnemy)obj).Update();
+                else if (obj is IItem)
+                    ((IItem)obj).Update();
             }
 
             game1.link.Update();
