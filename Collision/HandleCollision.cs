@@ -96,10 +96,7 @@ namespace Sprint2_Attempt3.Collision
             else
             {
                 //remove the item
-                System.Diagnostics.Debug.WriteLine("test");
-                CollisionDetector.GameObjectList.Remove(projectile);
-
-                //ILinkProjectileSprite poof = LinkSpriteFactory.Instance.CreateItemHitSprite();
+                
                 
             }
         }
