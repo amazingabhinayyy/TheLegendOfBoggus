@@ -16,6 +16,7 @@ namespace Sprint2_Attempt3.Blocks.Block
         {
             position = Position;
             sourceRectangle = FireBlockSrc1;
+            isWalkable = false;
             count = 0;
         }
 

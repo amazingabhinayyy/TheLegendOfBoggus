@@ -10,6 +10,7 @@ namespace Sprint2_Attempt3.Blocks.Block
             Position.X = 375;
             position = Position;
             sourceRectangle = OldManSrc1;
+            isWalkable = false;
         }
     }
 }

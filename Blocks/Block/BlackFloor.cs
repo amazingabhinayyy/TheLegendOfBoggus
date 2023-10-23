@@ -17,6 +17,7 @@ namespace Sprint2_Attempt3.Blocks.BlockSprites
         {
             position = new Rectangle(Position.X, Position.Y, 599, 302);
             sourceRectangle = BlackFloorScr;
+            isWalkable = false;
         }
     }
 }

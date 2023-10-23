@@ -5,6 +5,7 @@ namespace Sprint2_Attempt3.Blocks
 {
     public abstract class BlockSecondary : IBlock
     {
+        public bool isWalkable { get; set; }
         public Rectangle position { get; set; }
         protected Rectangle sourceRectangle { get; set; }
 
