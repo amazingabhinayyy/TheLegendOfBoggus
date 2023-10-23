@@ -67,8 +67,7 @@ namespace Sprint2_Attempt3.Collision
                     }
                     else if (obj is IDoor)
                     {
-                        //PlayerBlockHandler.HandlePlayerBlockCollision(link, (IDoor)obj, side);
-                        //if obj is not walkable = transition
+                        PlayerBlockHandler.HandlePlayerBlockCollision(link, (IDoor)obj, side);
 
                     }
                     else if(obj is ILinkProjectile)
@@ -209,14 +208,8 @@ namespace Sprint2_Attempt3.Collision
         }
         public void AddWallBlocks()
         {
-            gameObjectList.Add(new EastNorthCollisionBlock());
-            gameObjectList.Add(new EastSouthCollisionBlock());
-            gameObjectList.Add(new NorthEastCollisionBlock());
-            gameObjectList.Add(new NorthWestCollisionBlock());
-            gameObjectList.Add(new SouthEastCollisionBlock());
-            gameObjectList.Add(new SouthWestCollisionBlock());
-            gameObjectList.Add(new WestNorthCollisionBlock());
-            gameObjectList.Add(new WestSouthCollisionBlock());
+            foreach(IWall wall in Globals.WallBlocks)
+            gameObjectList.Add(wall);
         }
         public void Update()
         {

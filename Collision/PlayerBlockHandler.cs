@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint2_Attempt3.WallBlocks;
+using Sprint2_Attempt3.Dungeon.Doors;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -30,6 +31,9 @@ namespace Sprint2_Attempt3.Collision
             else if (obj is IWall)
             {
                 blocked = true;
+            }
+            else if (obj is IDoor) {
+                blocked = !(((IDoor)obj).IsWalkable);
             }
             if (blocked)
             {
