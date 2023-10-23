@@ -8,5 +8,7 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles
 {
     public interface IBoomerang
     {
+        public void ReverseDirection();
+
     }
 }
