@@ -123,6 +123,11 @@ namespace Sprint2_Attempt3.Enemy.Projectile.GoriyaProjectiles
         {
             state.Draw(spriteBatch);
         }
+        public Rectangle GetHitBox()
+        {
+            //Temporary
+            return new Rectangle(0, 0, 0, 0);
+        }
 
     }
 }

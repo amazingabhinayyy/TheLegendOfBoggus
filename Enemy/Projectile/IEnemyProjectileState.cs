@@ -10,7 +10,7 @@ namespace Sprint2_Attempt3.Enemy.Projectile
 {
     internal interface IEnemyProjectileState
     {
-        void Update(/*GameTime gametime*/);
+        void Update();
         void Draw(SpriteBatch spriteBatch);
     }
 }

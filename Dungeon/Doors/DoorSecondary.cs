@@ -15,6 +15,7 @@ namespace Sprint2_Attempt3.Dungeon.Doors
         protected Rectangle Position;
         protected Rectangle sourceRectangle;
         protected IDoorSprite sprite;
+        public bool IsWalkable { get; private set; }
         protected static Dictionary<int, Action> actions;
         public DoorSecondary() {
             actions = new Dictionary<int, Action>() {
@@ -28,21 +29,25 @@ namespace Sprint2_Attempt3.Dungeon.Doors
         public void Close()
         {
             sourceRectangle.X = 292;
+            IsWalkable = false;
         }
 
         public void Damage()
         {
             sourceRectangle.X = 358;
+            IsWalkable = true;
         }
 
         public void DiamondLock()
         {
             sourceRectangle.X = 325;
+            IsWalkable = false;
         }
 
         public void Open()
         {
             sourceRectangle.X = 259;
+            IsWalkable = true;
         }
 
         public void Draw(SpriteBatch spriteBatch)

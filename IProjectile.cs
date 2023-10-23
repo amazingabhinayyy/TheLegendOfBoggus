@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint2_Attempt3.Player.LinkProjectiles
+namespace Sprint2_Attempt3
 {
-    public interface IBoomerang
+    public interface IProjectile
     {
-        public void ReverseDirection();
-
     }
 }

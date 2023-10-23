@@ -20,6 +20,7 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles
         private Rectangle sourceRectangle;
         private const int HitBoxWidth = 21;
         private const int HitBoxHeight = 21;
+        private bool changeDirection;
         public RightBoomerang(Link link)
         {
             this.link = link;
@@ -33,29 +34,35 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles
             itemPosition = new Vector2((int)link.position.X + 45, (int)link.position.Y + 12);
             flip = SpriteEffects.None;
             sourceRectangle = new Rectangle(64, 189, 7, 7);
+            changeDirection = false;
+        }
+        public override void ReverseDirection()
+        {
+            link.Items.Add(new ItemHit(link, itemPosition));
+            changeDirection = true;
         }
 
         public void Update()
         {
             int speed;
-            if (currentFrame >= 0 && currentFrame < 50)
+            if (!changeDirection && currentFrame >= 0 && currentFrame < 50)
             {
-                speed = 3;
+                speed = 5;
                 itemPosition.X = itemPosition.X + speed;
             }
-            else if (currentFrame >= 50 && currentFrame < 60)
+            else if (!changeDirection && currentFrame >= 50 && currentFrame < 60)
             {
-                speed = 1;
+                speed = 2;
                 itemPosition.X = itemPosition.X + speed;
             }
-            else if (currentFrame >= 60 && currentFrame < 70)
+            else if (!changeDirection && currentFrame >= 60 && currentFrame < 70)
             {
-                speed = -1;
+                speed = -2;
                 itemPosition.X = itemPosition.X + speed;
             }
             else
             {
-                itemPosition = BoomerangPositionUpdater(itemPosition, link.position, 3);
+                itemPosition = BoomerangPositionUpdater(itemPosition, link.position, 5);
             }
 
             sprite.Update();
