@@ -143,6 +143,10 @@ namespace Sprint2_Attempt3.Player
         {
             return new ArrowExplodeSprite(linkTexture);
         }
+        public ILinkItemSprite CreatePoofAnimation()
+        {
+            return new PoofSprite(linkTexture);
+        }
 
 
         // More public ISprite returning methods follow

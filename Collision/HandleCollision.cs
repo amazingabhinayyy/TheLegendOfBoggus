@@ -8,8 +8,11 @@ using Microsoft.Xna.Framework.Audio;
 using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Collision.SideCollisionHandlers;
 using Sprint2_Attempt3.Enemy;
+using Sprint2_Attempt3.Interfaces;
+using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Player;
 using Sprint2_Attempt3.Player.Interfaces;
+using Sprint2_Attempt3.Player.Items;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -103,27 +106,29 @@ namespace Sprint2_Attempt3.Collision
             ICollision side = CollisionDetector.SideDetector(spriteObject, wall);
             if (side is BottomCollision)
             {
-                
+
                 //enemy.Y = wall.Bottom;
                 //System.Diagnostics.Debug.WriteLine("link y position:" + link.position.Y);
-                enemy.ChangeDirection();
+                enemy.Y = wall.Bottom;
+                //System.Diagnostics.Debug.WriteLine("link y position:" + link.position.Y);
+                //enemy.ChangeDirection();
             }
             else if (side is LeftCollision)
             {
-                //enemy.X = wall.Right - wall.Width - 45;
-                enemy.ChangeDirection();
+                enemy.X = wall.Right - wall.Width - 45;
+                //enemy.ChangeDirection();
             }
             else if (side is RightCollision)
             {
-                //System.Diagnostics.Debug.WriteLine("enemy:" + enemy);
-                //enemy.X = wall.Right;
-                enemy.ChangeDirection();
+                enemy.X = wall.Right;
+                //enemy.ChangeDirection();
             }
             else
             {
-                //enemy.Y = wall.Top - wall.Height + 40;
-                enemy.ChangeDirection();
+                enemy.Y = wall.Top - wall.Height + 40;
+                //enemy.ChangeDirection();
             }
+        }
             //System.Diagnostics.Debug.WriteLine("testhandle");
             //changeDirection method from Avery
             // skeleton/glob/snake = if it hits top or bottom, change direction left or right randomly
@@ -147,11 +152,42 @@ namespace Sprint2_Attempt3.Collision
                 //enemy moves up or down
                 enemy.ChangeDirection();
             }*/
-        }
+        
 
-        public static void HandleProjectileBlockCollision(Rectangle spriteObject, Rectangle wall)
+        public static void HandleProjectileBlockCollision(Rectangle projObject, ILinkItem projectile)
         {
             //change sprite to poof animation
+            if (projectile is IBoomerang)
+            {
+                System.Diagnostics.Debug.WriteLine("boomerang");
+            }
+            else
+            {
+                LinkSpriteFactory.Instance.CreatePoofAnimation();
+                //projectile.poof();
+                //CollisionDetector.GameObjectList.Remove(projectile);
+                //projectile.collided();
+                //System.Diagnostics.Debug.WriteLine("test");
+            }
+
+            //projectile.disappear();
+            /*if (currentFrame >= 0 && currentFrame < 50)
+            {
+                destinationRectangle = new Rectangle((int)location.X, (int)location.Y, srcRec.Width * 3, srcRec.Height * 3);
+            }
+            else if (currentFrame >= 50 && currentFrame < 54)
+            {
+                srcRec = new Rectangle(138, 185, 15, 15);
+                destinationRectangle = new Rectangle((int)location.X, (int)location.Y, srcRec.Width * 3, srcRec.Height * 3);
+            }
+            else if (currentFrame >= 54 && currentFrame < 57)
+            {
+                srcRec = new Rectangle(155, 185, 15, 15);
+            }
+            else
+            {
+                srcRec = new Rectangle(172, 185, 15, 15);
+            }*/
         }
     }
 }

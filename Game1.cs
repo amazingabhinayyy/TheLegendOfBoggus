@@ -65,6 +65,7 @@ namespace Sprint2_Attempt3
         {
             keyController.Update(gameTime);
             room.Update();
+            item.Update();
             enemy.Update();
             base.Update(gameTime);
         }
