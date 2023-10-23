@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Blocks.BlockSprites;
+using Sprint2_Attempt3.Collision.SideCollisionHandlers;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Interfaces;
 using Sprint2_Attempt3.Player.Interfaces;
@@ -12,30 +13,30 @@ using System.Threading.Tasks;
 
 namespace Sprint2_Attempt3.Collision
 {
-    internal class PlayerBlockHandler
-    {/*
-        public void HandlePlayerBlockCollision(ILink link, IBlock block, int direction)
+    public class PlayerBlockHandler
+    {
+        public static void HandlePlayerBlockCollision(ILink link, IBlock block, ICollision side)
         {
-            Vector2 blockPosition = block.Position;
-            int height = block.Height;
-            int width = block.Width;
-            if (block is StaircaseTile)
+            Rectangle wall = block.GetHitBox();
+            if (side is BottomCollision)
             {
-                //transitionSecretRoom
+                link.Position = new Vector2(link.Position.X, wall.Bottom);
             }
-            else if (block is pushableBlock)
+            else if (side is LeftCollision)
             {
-                block.push();
-                link.CorrectPositioning(block);
+                link.Position = new Vector2(wall.Right - wall.Width - 45, link.Position.Y);
+            }
+            else if (side is RightCollision)
+            {
+                link.Position = new Vector2(wall.Right, link.Position.Y);
             }
             else
             {
-                link.SetPosition(link.X, block.Y + link.Height);
+                link.Position = new Vector2(link.Position.X, wall.Top - wall.Height + 40);
             }
 
 
-
         }
-        */
+        
     }
 }
