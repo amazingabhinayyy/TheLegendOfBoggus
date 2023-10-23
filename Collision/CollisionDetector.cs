@@ -42,9 +42,6 @@ namespace Sprint2_Attempt3.Collision
             this.game = game;
             AddWallBlocks();
         }
-
-       
-
         public void CheckPlayerCollision(ILink link)
         {
             Rectangle linkRectangle = link.GetHitBox();
@@ -64,7 +61,7 @@ namespace Sprint2_Attempt3.Collision
                     else if (obj is IWall)
                     {
                         //HandleCollision.HandlePlayerBlockCollision(link, (IWall)obj, side);
-                        HandleCollision.HandleLinkWallCollision(((IWall)obj).GetHitBox(), link);
+                        HandleCollision.HandleLinkWallCollision((IWall)obj, link);
                     }
                     else if (obj is IBlock)
                     {
@@ -123,7 +120,7 @@ namespace Sprint2_Attempt3.Collision
                             ICollision side = SideDetector(collisionRectangle, enemyRectangle);
                             if (gameObjectList[c] is ILinkProjectile)
                             {
-                                EnemyLinkProjectileCollisionHandler.HandleLinkProjectileEnemyCollision((IEnemy)gameObjectList[i], (ILinkProjectile)gameObjectList[c], side,gameObjectList);
+                                EnemyLinkProjectileCollisionHandler.HandleLinkProjectileEnemyCollision((IEnemy)gameObjectList[i], (ILinkProjectile)gameObjectList[c], side, gameObjectList);
                             }
                             else if (gameObjectList[c] is IBlock)
                             {

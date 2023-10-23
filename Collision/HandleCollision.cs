@@ -15,6 +15,7 @@ using Sprint2_Attempt3.Player;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Player.Items;
 using Sprint2_Attempt3.Player.LinkProjectiles;
+using Sprint2_Attempt3.WallBlocks;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -23,29 +24,30 @@ namespace Sprint2_Attempt3.Collision
         public HandleCollision()
         {
         }
-        public static void HandleLinkWallCollision(Rectangle wall, ILink link)
+        public static void HandleLinkWallCollision(IWall wall, ILink link)
         {
+            Rectangle wallrectangle = wall.GetHitBox();
             Rectangle linkRectangle = link.GetHitBox();
-            ICollision side = CollisionDetector.SideDetector(linkRectangle, wall);
+            ICollision side = CollisionDetector.SideDetector(linkRectangle, wallrectangle);
             if (side is BottomCollision)
             {
                 link.BecomeIdle();
-                link.Position = new Vector2(linkRectangle.X, wall.Bottom + 1);
+                link.Position = new Vector2(linkRectangle.X, wallrectangle.Bottom + 1);
             }
             else if (side is LeftCollision)
             {
                 link.BecomeIdle();
-                link.Position = new Vector2(wall.Left - linkRectangle.Width - 1, linkRectangle.Y);
+                link.Position = new Vector2(wallrectangle.Left - linkRectangle.Width - 1, linkRectangle.Y);
             }
             else if (side is RightCollision)
             {
                 link.BecomeIdle();
-                link.Position = new Vector2(wall.Right + 1, linkRectangle.Y);
+                link.Position = new Vector2(wallrectangle.Right + 1, linkRectangle.Y);
             }
             else
             {
                 link.BecomeIdle();
-                link.Position = new Vector2(linkRectangle.X, wall.Top - linkRectangle.Height - 1);
+                link.Position = new Vector2(linkRectangle.X, wallrectangle.Top - linkRectangle.Height - 1);
             }
         }
 
