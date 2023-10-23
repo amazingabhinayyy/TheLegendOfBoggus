@@ -23,32 +23,32 @@ namespace Sprint2_Attempt3.Collision
         public HandleCollision()
         {
         }
-        public static void HandleLinkBlockCollision(Rectangle wall, ILink link)
+        public static void HandlePlayerBlockCollision(Rectangle block, ILink link)
         {
             Rectangle linkRectangle = link.GetHitBox();
-            ICollision side = CollisionDetector.SideDetector(linkRectangle, wall);
+            ICollision side = CollisionDetector.SideDetector(linkRectangle, block);
             if (side is BottomCollision)
             {
                 link.BecomeIdle();
-                link.Position = new Vector2(linkRectangle.X, wall.Bottom + 1);
+                link.Position = new Vector2(linkRectangle.X, block.Bottom + 1);
                 //link.Position.Y = wall.Bottom + 1;
             }
             else if (side is LeftCollision)
             {
                 link.BecomeIdle();
-                link.Position = new Vector2(wall.Left - linkRectangle.Width - 1, linkRectangle.Y);
+                link.Position = new Vector2(block.Left - linkRectangle.Width - 1, linkRectangle.Y);
                 //link.Position.X = wall.Left - linkRectangle.Width - 1;
             }
             else if (side is RightCollision)
             {
                 link.BecomeIdle();
-                link.Position = new Vector2(wall.Right + 1, linkRectangle.Y);
+                link.Position = new Vector2(block.Right + 1, linkRectangle.Y);
                 //link.Position.X = wall.Right + 1;
             }
             else
             {
                 link.BecomeIdle();
-                link.Position = new Vector2(linkRectangle.X, wall.Top - linkRectangle.Height - 1);
+                link.Position = new Vector2(linkRectangle.X, block.Top - linkRectangle.Height - 1);
                 //link.Position.Y = wall.Top - linkRectangle.Height - 1;
             }
         }
@@ -80,14 +80,21 @@ namespace Sprint2_Attempt3.Collision
 
         public static void HandleProjectileBlockCollision(ILinkProjectile projectile)
         {
+            //System.Diagnostics.Debug.WriteLine("test");
+
             //change sprite to poof animation
             if (projectile is IBoomerang)
             {
-                System.Diagnostics.Debug.WriteLine("boomerang");
+                //Michael is working on it; //bomb
             }
             else
             {
-                LinkSpriteFactory.Instance.CreatePoofAnimation();
+                //remove the item
+                System.Diagnostics.Debug.WriteLine("test");
+                CollisionDetector.GameObjectList.Remove(projectile);
+
+                //ILinkProjectileSprite poof = LinkSpriteFactory.Instance.CreateItemHitSprite();
+                
             }
         }
     }
