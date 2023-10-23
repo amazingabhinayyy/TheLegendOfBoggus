@@ -80,14 +80,21 @@ namespace Sprint2_Attempt3.Collision
 
         public static void HandleProjectileBlockCollision(ILinkProjectile projectile)
         {
+            //System.Diagnostics.Debug.WriteLine("test");
+
             //change sprite to poof animation
             if (projectile is IBoomerang)
             {
-                System.Diagnostics.Debug.WriteLine("boomerang");
+                //Michael is working on it; //bomb
             }
             else
             {
-                LinkSpriteFactory.Instance.CreatePoofAnimation();
+                //remove the item
+                System.Diagnostics.Debug.WriteLine("test");
+                CollisionDetector.GameObjectList.Remove(projectile);
+
+                //ILinkProjectileSprite poof = LinkSpriteFactory.Instance.CreateItemHitSprite();
+                
             }
         }
     }

@@ -10,6 +10,7 @@ using Sprint2_Attempt3.Player.LinkProjectiles;
 using System.Collections.Generic;
 using System.Globalization;
 using Sprint2_Attempt3.WallBlocks;
+using System;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -113,6 +114,38 @@ namespace Sprint2_Attempt3.Collision
                             }
                             else if (gameObjectList[c] is IBlock)
                             {
+                                HandleCollision.HandleEnemyBlockCollision(collisionRectangle, (IEnemy)gameObjectList[i]);
+                            }
+                            else if (gameObjectList[c] is IWall)
+                            {
+                                HandleCollision.HandleEnemyBlockCollision(collisionRectangle, (IEnemy)gameObjectList[i]);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        public void CheckProjectileCollision()
+        {
+            for (int i = 0; i < gameObjectList.Count; i++)
+            {
+                if (gameObjectList[i] is ILinkProjectile)
+                {
+                    Rectangle projectileRectangle = gameObjectList[i].GetHitBox();
+                    for (int c = 0; c < gameObjectList.Count; c++)
+                    {
+                        Rectangle collisionRectangle = gameObjectList[c].GetHitBox();
+                        if (collisionRectangle.Intersects(projectileRectangle))
+                        {
+                            ICollision side = SideDetector(collisionRectangle, projectileRectangle);
+                            if (gameObjectList[c] is IBlock)
+                            {
+                                //EnemyBlockCollisionHandler.CorrectPositioning();
+                            }
+                            else if (gameObjectList[c] is IWall || gameObjectList[c] is IBlock)
+                            {
+                                //CheckCollision.CheckProjectileWallCollision((ILinkProjectile)gameObjectList[i], (IGameObject)gameObjectList[c];
                                 //EnemyBlockCollisionHandler.CorrectPositioning();
                             }
                         }
@@ -135,6 +168,7 @@ namespace Sprint2_Attempt3.Collision
         {
             CheckPlayerCollision(game.link);
             CheckEnemyCollision();
+            CheckProjectileCollision();
         }
     }
 
