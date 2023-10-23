@@ -47,6 +47,7 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles
             }
             return newItemPosition;
         }
+        public abstract void ReverseDirection();
     }
 
 }
