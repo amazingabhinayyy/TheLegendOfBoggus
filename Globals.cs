@@ -133,10 +133,10 @@ namespace Sprint2_Attempt3
         public static Rectangle NorthWestCollisionBlock { get { return new Rectangle(453, 0, 347, 62); } }
         public static Rectangle SouthEastCollisionBlock { get { return new Rectangle(0, 393, 348, 87); } }
         public static Rectangle SouthWestCollisionBlock { get { return new Rectangle(453, 393, 347, 87); } }
-        public static Rectangle EastNorthCollisionBlock { get { return new Rectangle(0, 87, 98, 110); } }
-        public static Rectangle EastSouthCollisionBlock { get { return new Rectangle(0, 287, 98, 106); } }
-        public static Rectangle WestNorthCollisionBlock { get { return new Rectangle(700, 87, 99, 110); } }
-        public static Rectangle WestSouthCollisionBlock { get { return new Rectangle(700, 287, 99, 106); } }
+        public static Rectangle WestNorthCollisionBlock { get { return new Rectangle(0, 87, 101, 110); } }
+        public static Rectangle WestSouthCollisionBlock { get { return new Rectangle(0, 287, 101, 106); } }
+        public static Rectangle EastNorthCollisionBlock { get { return new Rectangle(698, 87, 101, 110); } }
+        public static Rectangle EastSouthCollisionBlock { get { return new Rectangle(698, 287, 101, 106); } }
 
         public static Rectangle bombSrc { get { return new Rectangle(135, 0, 9, 15); } }
         public static Rectangle clockSrc { get { return new Rectangle(57, 0, 13, 17); } }

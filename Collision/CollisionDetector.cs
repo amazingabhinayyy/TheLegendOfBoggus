@@ -53,8 +53,6 @@ namespace Sprint2_Attempt3.Collision
                 Rectangle collisionRectangle = obj.GetHitBox();
                 if (collisionRectangle.Intersects(linkRectangle))
                 {
-                    //Rectangle intersectRect = Rectangle.Intersect(collisionRectangle, linkRectangle);
-                    
                     ICollision side = SideDetector(linkRectangle, collisionRectangle);
                     if (obj is IEnemy)
                     {
