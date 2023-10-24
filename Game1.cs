@@ -33,6 +33,8 @@ namespace Sprint2_Attempt3
         protected override void Initialize()
         {
             base.Initialize();
+            graphics.PreferredBackBufferHeight = 730;
+            graphics.ApplyChanges();
             RoomGenerator.Instance.LoadAllFiles();
         }
 
