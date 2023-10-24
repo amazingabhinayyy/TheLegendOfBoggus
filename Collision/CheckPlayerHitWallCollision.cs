@@ -11,25 +11,26 @@ using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Player;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Interfaces;
+using Sprint2_Attempt3.WallBlocks;
 
 namespace Sprint2_Attempt3.Collision
 {
     internal class CheckPlayerHitWallCollision
     {
-        public List<Rectangle> wallBlocks;
+        public List<IWall> wallBlocks;
         
         public CheckPlayerHitWallCollision(Link link)
         {
             wallBlocks = Globals.WallBlocks; 
         }
         
-        public static bool CheckPlayerWallCollision(Link link)
+        public static bool CheckPlayerWallCollision(ILink link)
         {
             Rectangle linkRectangle = link.GetHitBox();
-            foreach (Rectangle wall in Globals.WallBlocks)
-                if (link.GetHitBox().Intersects(wall))
+            foreach (IWall wall in Globals.WallBlocks)
+                if (link.GetHitBox().Intersects(wall.GetHitBox()))
                 {
-                    PlayerBlockHandler.HandleLinkBlockCollision(linkRectangle, wall, link);
+                    PlayerBlockHandler.HandleLinkBlockCollision(linkRectangle, wall.GetHitBox(), link);
                     return true;
                 }
             return false;

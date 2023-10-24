@@ -278,8 +278,8 @@ namespace Sprint2_Attempt3
         {
             new NorthEastCollisionBlock(), new NorthWestCollisionBlock(), new SouthEastCollisionBlock(),
             new SouthWestCollisionBlock(), new EastNorthCollisionBlock(), new EastSouthCollisionBlock(),
-            new NorthDoorCollisionBlock(), new SouthDoorCollisionBlock(), new EastDoorCollisionBlock(),
-            new WestDoorCollisionBlock(), new WestSouthCollisionBlock(), new WestNorthCollisionBlock()
+            new NorthDoorCollisionBlock(), new SouthDoorCollisionBlock()/*, new EastDoorCollisionBlock(),
+            new WestDoorCollisionBlock(), new WestSouthCollisionBlock(), new WestNorthCollisionBlock()*/
         };
     }
 
