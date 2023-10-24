@@ -40,18 +40,18 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
 
         public override void SwitchToNorthRoom() {
             game1.room = new Room4(game1);
-            roomNumber = 3;
-            CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
+            /*roomNumber = 3;
+            CollisionDetector.GameObjectList = gameObjectLists[roomNumber];*/
         }
         public override void SwitchToEastRoom() {
             game1.room = new Room3(game1);
-            roomNumber = 2;
-            CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
+            /*roomNumber = 2;
+            CollisionDetector.GameObjectList = gameObjectLists[roomNumber];*/
         }
         public override void SwitchToWestRoom() {
             game1.room = new Room2(game1);
-            roomNumber = 1;
-            CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
+            /*roomNumber = 1;
+            CollisionDetector.GameObjectList = gameObjectLists[roomNumber];*/
         }
 
     }
