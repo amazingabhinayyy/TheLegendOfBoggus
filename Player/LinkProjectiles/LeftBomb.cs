@@ -11,7 +11,7 @@ using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3.Player.LinkProjectiles
 {
-    public class LeftBomb : ILinkProjectile
+    public class LeftBomb : IBomb, ILinkProjectile
     {
         private Link link;
         private int currentFrame;
@@ -33,6 +33,11 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles
             itemPosition = new Vector2((int)link.position.X - 24, (int)link.position.Y + 11);
             sourceRectangle = new Rectangle(129, 185, 8, 15);
             flip = SpriteEffects.None;
+        }
+        public void RemoveBomb()
+        {
+            link.Items.Remove(this);
+            CollisionDetector.GameObjectList.Remove(this);
         }
         public void Explode()
         {
