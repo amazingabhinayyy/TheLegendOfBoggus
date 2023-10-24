@@ -21,6 +21,7 @@ namespace Sprint2_Attempt3.Player.LinkStates
             link.Sprite = LinkSpriteFactory.Instance.CreateDownItemLinkSprite();;
             DownBomb bomb = new DownBomb(link);
             link.Items.Add(bomb);
+            CollisionDetector.GameObjectList.Add(bomb);
             frameCounter = 0;
         }
         public void Stop()

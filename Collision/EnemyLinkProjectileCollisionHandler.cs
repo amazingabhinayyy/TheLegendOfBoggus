@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using Sprint2_Attempt3.Enemy.Dodongo;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -24,14 +25,20 @@ namespace Sprint2_Attempt3.Collision
             }
             else if(item is IArrow)
             {
-                enemy.Kill();
+                if(!(enemy is Dodongo))
+                    enemy.Kill();
                 IArrow arrow = (IArrow)item;
                 arrow.DestroyArrow();
             }
-            else
+            else if(item is IBomb && enemy is Dodongo)
             {
-                enemy.Kill();
-                
+                ((Dodongo)enemy).ChangeAttackedStatus();
+                ((IBomb)item).RemoveBomb();
+            }
+            else if(!(item is Bomb))
+            {
+                if(!(enemy is Dodongo))
+                    enemy.Kill();
             }
         }
     }

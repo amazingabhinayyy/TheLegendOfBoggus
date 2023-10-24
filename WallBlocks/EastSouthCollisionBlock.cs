@@ -7,12 +7,12 @@ using Microsoft.Xna.Framework;
 
 namespace Sprint2_Attempt3.WallBlocks
 {
-    internal class EastSouthCollisionBlock : IWall
+    public class EastSouthCollisionBlock : IWall    
     {
         Rectangle wall;
         public EastSouthCollisionBlock()
         {
-            wall = new Rectangle(0, 287, 98, 106);
+            wall = new Rectangle(695, 287, 105, 106);
         }
         public Rectangle GetHitBox()
         {

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Enemy.Projectile.GoriyaProjectiles;
 using System;
@@ -34,6 +35,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             Goriya.Boomerang = new GoriyaBoomerang(Goriya.BoomerangPosition);
             ((GoriyaBoomerang)Goriya.Boomerang).GenerateLeft();
             ((GoriyaBoomerang)Goriya.Boomerang).Throwing = true;
+            CollisionDetector.GameObjectList.Add(Goriya.Boomerang);
             Goriya.State = new AttackWithBoomerangLeftState(Goriya);
         }
         public void ChangeAttackedStatus() {
