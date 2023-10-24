@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Sprint2_Attempt3.Enemy.Hand;
 using Sprint2_Attempt3.Player.Interfaces;
+using Sprint2_Attempt3.Player;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -15,7 +16,14 @@ namespace Sprint2_Attempt3.Collision
         {
             if(enemy is Hand)
             {
-               // link.Leave();
+                /*find closest point to the wall*/
+                Link newlink = (Link)link;
+                newlink.State = new Player.LinkStates.Captured(newlink);
+                enemy.X = (int)link.Position.X;
+                enemy.Y = (int)link.Position.Y;
+                CollisionDetector.GameObjectList.Remove(enemy);
+                Hand hand2 = (Hand)enemy;
+                hand2.State = new CapturedState(hand2, link.Position);
             } else {
                 //link.Knockback();
                 link.GetDamaged(side);
