@@ -21,7 +21,6 @@ namespace Sprint2_Attempt3.Collision
                 newlink.State = new Player.LinkStates.Captured(newlink);
                 enemy.X = (int)link.Position.X;
                 enemy.Y = (int)link.Position.Y;
-                CollisionDetector.GameObjectList.Remove(enemy);
                 Hand hand2 = (Hand)enemy;
                 hand2.State = new CapturedState(hand2, link.Position);
             } else {

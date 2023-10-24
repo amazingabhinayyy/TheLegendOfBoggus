@@ -117,6 +117,10 @@ namespace Sprint2_Attempt3.Player
         {
             return new RightUseItemLinkSprite(linkTexture);
         }
+        public ILinkSprite CreateCapturedLinkSprite()
+        {
+            return new CapturedLinkSprite();
+        }
         public ILinkProjectileSprite CreateBombItem()
         {
             return new BombSprite(linkTexture);

@@ -18,22 +18,21 @@ namespace Sprint2_Attempt3.Enemy.Hand
             Hand.X = (int)position.X;
             Hand.Y = (int)position.Y;
             this.Hand = Hand;
-            sprite = EnemySpriteFactory.Instance.CreateHandSprite();
+            sprite = EnemySpriteFactory.Instance.CreateCapturedHandSprite();
             sourceRectangle = Globals.HandRed1;
             Hand.Position = new Rectangle(Hand.X, Hand.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             currentFrame = 0;
-            random = new Random();
-            direction = random.Next(0, 2);
         }
         public void ChangeDirection()
         {
             
         }
-        public void ChangeAttackedStatus() {
+        public void ChangeAttackedStatus() 
+        {
         }
         public void Update()
         {
-            Hand.Y += 1;
+            Hand.Y -= 1;
             Hand.Position = new Rectangle(Hand.X, Hand.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
         }
         public void Draw(SpriteBatch spriteBatch)

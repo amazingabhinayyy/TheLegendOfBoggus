@@ -11,6 +11,7 @@ using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Player;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Interfaces;
+using Sprint2_Attempt3.Enemy.Hand;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -28,8 +29,16 @@ namespace Sprint2_Attempt3.Collision
 
                 if (enemy.GetHitBox().Intersects(wall)) //intersection.isEmpty??
                 {
+                    if(enemy is Hand)
+                    {
+                        Hand newHand = (Hand)enemy;
+                        if((newHand.State is CapturedState))
+                        {
+                            return false;
+                        }
+                    }
                     HandleCollision.HandleEnemyBlockCollision(wall, enemy);
-                    return true;
+                    return true;                
                 }
             return false;
         }
