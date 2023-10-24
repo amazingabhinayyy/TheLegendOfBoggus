@@ -69,8 +69,7 @@ namespace Sprint2_Attempt3.Collision
                     }
                     else if (obj is IWall)
                     {
-                        //PlayerBlockHandler.HandlePlayerBlockCollision(link, (IWall)obj, side);
-                       CheckPlayerHitWallCollision.CheckPlayerWallCollision(linkObj);
+                        CheckPlayerHitWallCollision.CheckPlayerWallCollision(linkObj);
                     }
                     else if (obj is IBlock)
                     {
