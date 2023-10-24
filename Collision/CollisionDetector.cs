@@ -132,19 +132,9 @@ namespace Sprint2_Attempt3.Collision
                             {
                                 EnemyLinkProjectileCollisionHandler.HandleLinkProjectileEnemyCollision((IEnemy)gameObjectList[i], (ILinkProjectile)gameObjectList[c], side, gameObjectList);
                             }
-                            else if (obj is IBlock)
+                            else if (obj is IBlock || obj is IDoor)
                             {
                                 EnemyBlockHandler.HandleEnemyBlockCollision((IEnemy)gameObjectList[i], obj, collisionRectangle);
-                            }
-                            else if (obj is IWall)
-                            {
-                                EnemyBlockHandler.HandleEnemyBlockCollision((IEnemy)gameObjectList[i],obj, collisionRectangle);
-                                //EnemyBlockHandler.HandleEnemyWallCollision((IEnemy)gameObjectList[i], (IWall)gameObjectList[c], collisionRectangle);
-                                
-                            }
-                            else if (obj is IDoor)
-                            {
-                               // EnemyBlockHandler.HandleEnemyBlockCollision((IEnemy)gameObjectList[i], obj, side);
                             }
                         }
                     }
@@ -157,6 +147,7 @@ namespace Sprint2_Attempt3.Collision
             {
                 if (gameObjectList[i] is IEnemy)
                 {
+
                     foreach (IWall wall in Globals.WallBlocks)
                     {
                         if (gameObjectList[i].GetHitBox().Intersects(wall.GetHitBox()))

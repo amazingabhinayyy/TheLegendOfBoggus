@@ -23,30 +23,40 @@ namespace Sprint2_Attempt3.Collision
         public static void HandleEnemyWallCollision(Rectangle wall, IEnemy enemy)
         {
             ICollision side = CollisionDetector.SideDetector(enemy.GetHitBox(), wall);
+            Boolean check = true;
+            if (enemy is Hand)
+            {
+                Hand newHand = (Hand)enemy;
+                if (newHand.State is CapturedState)
+                {
+                    check = false;
+                }
+            }
+            if (check)
+            {
+                if (side is BottomCollision)
+                {
 
-            if (side is BottomCollision)
-            {
-
-                //enemy.MoveDown();
-                enemy.Y = wall.Bottom;
+                    //enemy.MoveDown();
+                    enemy.Y = wall.Bottom;
+                }
+                else if (side is LeftCollision)
+                {
+                    //enemy.MoveLeft();
+                    enemy.X = wall.Left - enemy.Position.Width - 1;
+                }
+                else if (side is RightCollision)
+                {
+                    //enemy.MoveRight();
+                    enemy.X = wall.Right + 1;
+                }
+                else
+                {
+                    //enemy.MoveUp();
+                    enemy.Y = wall.Top - enemy.Position.Height - 1;
+                }
+                //enemy.ChangeDirection();
             }
-            else if (side is LeftCollision)
-            {
-                //enemy.MoveLeft();
-                enemy.X = wall.Left - enemy.Position.Width - 1;
-            }
-            else if (side is RightCollision)
-            {
-                //enemy.MoveRight();
-                enemy.X = wall.Right + 1;
-            }
-            else
-            {
-                //enemy.MoveUp();
-                enemy.Y = wall.Top - enemy.Position.Height - 1;
-            }
-            //enemy.ChangeDirection();
         }
-
     }
 }
