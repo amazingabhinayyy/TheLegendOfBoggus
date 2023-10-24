@@ -25,7 +25,8 @@ namespace Sprint2_Attempt3.Collision
             }
             else if(item is IArrow)
             {
-                enemy.Kill();
+                if(!(enemy is Dodongo))
+                    enemy.Kill();
                 IArrow arrow = (IArrow)item;
                 arrow.DestroyArrow();
             }
@@ -36,7 +37,8 @@ namespace Sprint2_Attempt3.Collision
             }
             else if(!(item is Bomb))
             {
-                enemy.Kill();
+                if(!(enemy is Dodongo))
+                    enemy.Kill();
             }
         }
     }

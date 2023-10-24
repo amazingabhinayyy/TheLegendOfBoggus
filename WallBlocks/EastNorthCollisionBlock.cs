@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework;
 
 namespace Sprint2_Attempt3.WallBlocks
 {
@@ -12,7 +7,7 @@ namespace Sprint2_Attempt3.WallBlocks
         Rectangle wall;
         public EastNorthCollisionBlock()
         {
-            wall = new Rectangle(0, 87, 98, 110);
+            wall = new Rectangle(695, 87, 105, 110);
         }
         public Rectangle GetHitBox()
         {

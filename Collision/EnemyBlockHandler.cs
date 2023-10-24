@@ -31,10 +31,10 @@ namespace Sprint2_Attempt3.Collision
                     blocked = true;
                 }
             }
-            /*else if(obj is IWall)
+            else if(obj is IWall)
             {
                 blocked = true;
-            }*/
+            }
             else if(obj is IDoor)
             {
                 blocked = true;
@@ -42,7 +42,7 @@ namespace Sprint2_Attempt3.Collision
             if (blocked)
             {
                 Rectangle hitBox = enemy.GetHitBox();
-                if (enemy is Goriya || enemy is Hand)
+                if (enemy is Hand)
                 {
                     hitBox = new Rectangle(hitBox.X, hitBox.Y, hitBox.Width / 2, hitBox.Height / 2);
                 }
@@ -56,17 +56,17 @@ namespace Sprint2_Attempt3.Collision
                 }
                 else if (side is LeftCollision)
                 {
-                    //enemy.MoveLeft();
+                    enemy.MoveLeft();
                     enemy.X = collisionRectangle.Left - enemy.Position.Width - 1;
                 }
                 else if (side is RightCollision)
                 {
-                    //enemy.MoveRight();
+                    enemy.MoveRight();
                     enemy.X = collisionRectangle.Right + 1;
                 }
                 else
                 {
-                    //enemy.MoveUp();
+                    enemy.MoveUp();
                     enemy.Y = collisionRectangle.Top - enemy.Position.Height - 1;
                 }
             }
