@@ -141,6 +141,7 @@ namespace Sprint2_Attempt3.Collision
                             }
                             else if (obj is IBlock)
                             {
+
                             }
                             else if (obj is IWall)
                             {
