@@ -33,7 +33,10 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                     }
                 }
             }
-
+            if (game1.link is DamageLinkDecorator)
+            {
+                ((DamageLinkDecorator)game1.link).RemoveDecorator();
+            }
             collisionDetector = new CollisionDetector(game1, (Link)game1.link);
             CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
         }

@@ -69,8 +69,8 @@ namespace Sprint2_Attempt3.Collision
                     }
                     else if (obj is IWall)
                     {
-                        PlayerBlockHandler.HandlePlayerBlockCollision(link, (IWall)obj, side);
-                       // CheckPlayerHitWallCollision.CheckPlayerWallCollision(linkObj);
+                        //PlayerBlockHandler.HandlePlayerBlockCollision(link, (IWall)obj, side);
+                       CheckPlayerHitWallCollision.CheckPlayerWallCollision(linkObj);
                     }
                     else if (obj is IBlock)
                     {
@@ -163,11 +163,11 @@ namespace Sprint2_Attempt3.Collision
             {
                 if (gameObjectList[i] is IEnemy)
                 {
-                    foreach (Rectangle wall in Globals.WallBlocks)
+                    foreach (IWall wall in Globals.WallBlocks)
                     {
-                        if (gameObjectList[i].GetHitBox().Intersects(wall))
+                        if (gameObjectList[i].GetHitBox().Intersects(wall.GetHitBox()))
                         {
-                            EnemyWallHandler.HandleEnemyWallCollision(wall, (IEnemy)gameObjectList[i]);
+                            EnemyWallHandler.HandleEnemyWallCollision(wall.GetHitBox(), (IEnemy)gameObjectList[i]);
                         }
                     }
                 }

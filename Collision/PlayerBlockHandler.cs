@@ -60,8 +60,8 @@ namespace Sprint2_Attempt3.Collision
             /*else if (obj is IWall)
             {
                 blocked = true;
-            }*/
             }
+            }*/
             else if (obj is IDoor) {
                 blocked = !(((IDoor)obj).IsWalkable);
             }
