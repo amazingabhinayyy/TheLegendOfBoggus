@@ -66,6 +66,9 @@ namespace Sprint2_Attempt3.Collision
             {
                 blocked = true;
             }*/
+            else if (obj is IDoor) {
+                blocked = !(((IDoor)obj).IsWalkable);
+            }
             if (blocked)
             {
                 Rectangle wall = obj.GetHitBox();

@@ -2,6 +2,7 @@
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Player;
+using Sprint2_Attempt3.Player.Interfaces;
 using System;
 
 namespace Sprint2_Attempt3.Dungeon.Rooms
@@ -32,6 +33,10 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                         ((IItem)obj).Spawn();
                     }
                 }
+            }
+            if(game1.link is DamageLinkDecorator)
+            {
+                ((DamageLinkDecorator)game1.link).RemoveDecorator();
             }
 
             collisionDetector = new CollisionDetector(game1, game1.link);
