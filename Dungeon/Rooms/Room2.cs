@@ -40,7 +40,8 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         }
         public override void SwitchToEastRoom()
         {
-            game1.room = new Room1(game1);
+            //game1.room = new Room1(game1);
+            roomNumber = 1;
         }
 
     }

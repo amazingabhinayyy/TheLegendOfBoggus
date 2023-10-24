@@ -38,7 +38,6 @@ namespace Sprint2_Attempt3.Collision
             else if(obj is IDoor)
             {
                 blocked = true;
-                System.Diagnostics.Debug.WriteLine("IDoor Check");
             }
             if (blocked)
             {
@@ -52,7 +51,7 @@ namespace Sprint2_Attempt3.Collision
                 if (side is BottomCollision)
                 {
 
-                    //enemy.MoveDown();
+                    enemy.MoveDown();
                     enemy.Y = collisionRectangle.Bottom;
                 }
                 else if (side is LeftCollision)

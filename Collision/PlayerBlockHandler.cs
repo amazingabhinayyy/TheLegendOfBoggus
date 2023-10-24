@@ -109,7 +109,7 @@ namespace Sprint2_Attempt3.Collision
                 IRoom room = game.room;
                 if (door is NorthDoor)
                 {
-                    game.room.SwitchToSouthRoom();
+                    game.room.SwitchToNorthRoom();
                     if (room != game.room)
                     {
                         link.Position = new Vector2(link.Position.X, 300);
@@ -118,15 +118,15 @@ namespace Sprint2_Attempt3.Collision
                 }  
                 else if (door is EastDoor)
                 {
-                    game.room.SwitchToWestRoom();
+                    game.room.SwitchToEastRoom();
                     if (room != game.room)
                     {
-                        link.Position = new Vector2(95, link.Position.Y);
+                        link.Position = new Vector2(100, link.Position.Y);
                     }
                 }
                 else if (door is SouthDoor)
                 {
-                    game.room.SwitchToNorthRoom();
+                    game.room.SwitchToSouthRoom();
                     if (room != game.room)
                     {
                         link.Position = new Vector2(link.Position.X, 90);
@@ -134,10 +134,10 @@ namespace Sprint2_Attempt3.Collision
                 }
                 else if (door is WestDoor)
                 {
-                    game.room.SwitchToEastRoom();
+                    game.room.SwitchToWestRoom();
                     if (room != game.room)
                     {
-                        link.Position = new Vector2(675, link.Position.Y);
+                        link.Position = new Vector2(640, link.Position.Y);
                     }
                 }
             }
