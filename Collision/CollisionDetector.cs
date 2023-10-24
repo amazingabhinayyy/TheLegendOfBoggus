@@ -147,6 +147,7 @@ namespace Sprint2_Attempt3.Collision
             {
                 if (gameObjectList[i] is IEnemy)
                 {
+
                     foreach (IWall wall in Globals.WallBlocks)
                     {
                         if (gameObjectList[i].GetHitBox().Intersects(wall.GetHitBox()))

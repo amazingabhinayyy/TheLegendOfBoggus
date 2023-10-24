@@ -22,52 +22,64 @@ namespace Sprint2_Attempt3.Collision
         //public static void HandleEnemyWallCollision()
         public static void HandleEnemyBlockCollision(IEnemy enemy, IGameObject obj, Rectangle collisionRectangle)
         {
-            bool blocked = false;
-            if (obj is IBlock)
+            Boolean check = true;
+            if (enemy is Hand)
             {
-                var block = (IBlock)obj;
-                if (!block.isWalkable)
+                Hand newHand = (Hand)enemy;
+                if (newHand.State is CapturedState)
+                {
+                    check = false;
+                }
+            }
+            if (check)
+            {
+                bool blocked = false;
+                if (obj is IBlock)
+                {
+                    var block = (IBlock)obj;
+                    if (!block.isWalkable)
+                    {
+                        blocked = true;
+                    }
+                }
+                else if (obj is IWall)
                 {
                     blocked = true;
                 }
-            }
-            else if(obj is IWall)
-            {
-                blocked = true;
-            }
-            else if(obj is IDoor)
-            {
-                blocked = true;
-            }
-            if (blocked)
-            {
-                Rectangle hitBox = enemy.GetHitBox();
-                if (enemy is Hand)
+                else if (obj is IDoor)
                 {
-                    hitBox = new Rectangle(hitBox.X, hitBox.Y, hitBox.Width / 2, hitBox.Height / 2);
+                    blocked = true;
                 }
-                ICollision side = CollisionDetector.SideDetector(hitBox, collisionRectangle);
+                if (blocked)
+                {
+                    Rectangle hitBox = enemy.GetHitBox();
+                    if (enemy is Hand)
+                    {
+                        hitBox = new Rectangle(hitBox.X, hitBox.Y, hitBox.Width / 2, hitBox.Height / 2);
+                    }
+                    ICollision side = CollisionDetector.SideDetector(hitBox, collisionRectangle);
 
-                if (side is BottomCollision)
-                {
+                    if (side is BottomCollision)
+                    {
 
-                    enemy.MoveDown();
-                    enemy.Y = collisionRectangle.Bottom;
-                }
-                else if (side is LeftCollision)
-                {
-                    enemy.MoveLeft();
-                    enemy.X = collisionRectangle.Left - enemy.Position.Width - 1;
-                }
-                else if (side is RightCollision)
-                {
-                    enemy.MoveRight();
-                    enemy.X = collisionRectangle.Right + 1;
-                }
-                else
-                {
-                    enemy.MoveUp();
-                    enemy.Y = collisionRectangle.Top - enemy.Position.Height - 1;
+                        enemy.MoveDown();
+                        enemy.Y = collisionRectangle.Bottom;
+                    }
+                    else if (side is LeftCollision)
+                    {
+                        enemy.MoveLeft();
+                        enemy.X = collisionRectangle.Left - enemy.Position.Width - 1;
+                    }
+                    else if (side is RightCollision)
+                    {
+                        enemy.MoveRight();
+                        enemy.X = collisionRectangle.Right + 1;
+                    }
+                    else
+                    {
+                        enemy.MoveUp();
+                        enemy.Y = collisionRectangle.Top - enemy.Position.Height - 1;
+                    }
                 }
             }
         }
