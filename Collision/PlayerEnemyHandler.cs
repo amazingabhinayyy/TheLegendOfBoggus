@@ -17,8 +17,7 @@ namespace Sprint2_Attempt3.Collision
             if(enemy is Hand)
             {
                 /*find closest point to the wall*/
-                Link newlink = (Link)link;
-                newlink.State = new Player.LinkStates.Captured(newlink);
+                link.GetCaptured();
                 enemy.X = (int)link.Position.X;
                 enemy.Y = (int)link.Position.Y;
                 Hand hand2 = (Hand)enemy;

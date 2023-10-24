@@ -23,6 +23,7 @@ namespace Sprint2_Attempt3.Player.Interfaces
         public void UseFire();
         public void UseThrowingSword();
         public void Update();
+        public void GetCaptured();
 
     }
 }

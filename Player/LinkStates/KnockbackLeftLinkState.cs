@@ -69,5 +69,9 @@ namespace Sprint2_Attempt3.Player.LinkStates
         {
 
         }
+        public void GetCaptured()
+        {
+            link.State = new Captured(link);
+        }
     }
 }

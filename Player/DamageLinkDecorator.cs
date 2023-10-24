@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Interfaces;
+using Sprint2_Attempt3.Player.LinkStates;
 
 namespace Sprint2_Attempt3.Player
 {
@@ -89,6 +90,10 @@ namespace Sprint2_Attempt3.Player
         public void UseThrowingSword()
         {
             decoratedLink.UseThrowingSword();
+        }
+        public void GetCaptured()
+        {
+            decoratedLink.GetCaptured();
         }
 
 

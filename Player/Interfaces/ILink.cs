@@ -14,6 +14,7 @@ namespace Sprint2_Attempt3.Player.Interfaces
         public void BecomeIdle();
         public void MoveUp();
         public void MoveDown();
+        public void GetCaptured();
         public void MoveLeft();
         public void MoveRight();
         public void Attack();

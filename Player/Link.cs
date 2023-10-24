@@ -102,6 +102,10 @@ namespace Sprint2_Attempt3.Player
         {
             State.UseThrowingSword();
         }
+        public void GetCaptured()
+        {
+            State.GetCaptured();
+        }
         public void StartLinkState()
         {
             State = new DownIdleLinkState(this);
