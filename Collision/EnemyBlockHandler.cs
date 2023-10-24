@@ -19,6 +19,7 @@ namespace Sprint2_Attempt3.Collision
 {
     public class EnemyBlockHandler
     {
+        //public static void HandleEnemyWallCollision()
         public static void HandleEnemyBlockCollision(IEnemy enemy, IGameObject obj, Rectangle collisionRectangle)
         {
             bool blocked = false;
@@ -30,14 +31,13 @@ namespace Sprint2_Attempt3.Collision
                     blocked = true;
                 }
             }
-            else if(obj is IWall)
+            /*else if(obj is IWall)
             {
                 blocked = true;
-            }
+            }*/
             else if(obj is IDoor)
             {
                 blocked = true;
-                System.Diagnostics.Debug.WriteLine("IDoor Check");
             }
             if (blocked)
             {
@@ -50,7 +50,8 @@ namespace Sprint2_Attempt3.Collision
 
                 if (side is BottomCollision)
                 {
-                    //enemy.MoveDown();
+
+                    enemy.MoveDown();
                     enemy.Y = collisionRectangle.Bottom;
                 }
                 else if (side is LeftCollision)

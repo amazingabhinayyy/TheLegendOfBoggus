@@ -69,7 +69,7 @@ namespace Sprint2_Attempt3.Collision
                     }
                     else if (obj is IWall)
                     {
-                        PlayerBlockHandler.HandlePlayerBlockCollision(link, (IWall)obj, side);
+                        CheckPlayerHitWallCollision.CheckPlayerWallCollision(linkObj);
                     }
                     else if (obj is IBlock)
                     {
@@ -144,7 +144,8 @@ namespace Sprint2_Attempt3.Collision
                             }
                             else if (obj is IWall)
                             {
-                               // EnemyBlockHandler.HandleEnemyBlockCollision((IEnemy)gameObjectList[i], obj, side);
+                                //EnemyBlockHandler.HandleEnemyWallCollision((IEnemy)gameObjectList[i], (IWall)gameObjectList[c], collisionRectangle);
+                                //EnemyBlockHandler.HandleEnemyBlockCollision((IEnemy)gameObjectList[i], (IWall)gameObjectList[c], collisionRectangle);
                             }
                             else if (obj is IDoor)
                             {
@@ -155,7 +156,23 @@ namespace Sprint2_Attempt3.Collision
                 }
             }
         }
-        public void CheckProjectileCollision()
+        public void CheckEnemyWallCollision()
+        {
+            for (int i = 0; i < gameObjectList.Count; i++)
+            {
+                if (gameObjectList[i] is IEnemy)
+                {
+                    foreach (Rectangle wall in Globals.WallBlocks)
+                    {
+                        if (gameObjectList[i].GetHitBox().Intersects(wall))
+                        {
+                            EnemyWallHandler.HandleEnemyWallCollision(wall, (IEnemy)gameObjectList[i]);
+                        }
+                    }
+                }
+            }
+        }
+            public void CheckProjectileCollision()
         {
             for(int i = 0; i < gameObjectList.Count; i++)
             {
@@ -226,6 +243,7 @@ namespace Sprint2_Attempt3.Collision
             CheckPlayerCollision(game.link);
             CheckEnemyCollision();
             CheckProjectileCollision();
+            CheckEnemyWallCollision();
         }
 
         public static IItem SpawnRandomItem(Vector2 position)
