@@ -47,14 +47,7 @@ internal class GoriyaBoomerangDownState : IEnemyProjectileState
 
     public void Update(/*gameTime gametime*/)
     {
-        /*
-        timeSinceLastUpdate += gametime.ElapsedGameTime;
-        spriteIndex = (int)(timeSinceLastUpdate / (0.5f));
-        if (spriteIndex > 7)
-        {
-            spriteIndex = 0;
-            timeSinceLastUpdate = 0;
-        }*/
+        
         currentFrame++;
         if (currentFrame < Globals.boomerangSpriteSwitchSpeed)
         {
