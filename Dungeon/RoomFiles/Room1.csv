@@ -22,6 +22,9 @@ Block,DotTile,78
 Block,DotTile,79
 Block,DotTile,80
 Block,DotTile,81
+Item,Heart,150,100,TRUE
+Item,Map,250,100,TRUE
+Item,Rupee,350,100,TRUE
 Door,North,1
 Door,South,0
 Door,East,0

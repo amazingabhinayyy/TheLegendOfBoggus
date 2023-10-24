@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using System.Net.Http;
 
 namespace Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles
 {
@@ -11,8 +12,8 @@ namespace Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles
         private int count;
         private bool fire;
         public bool Fire { get { return fire; } set { fire = value; } }
-        //HitBoxWidth = 9;
-        //HitBoxHeight = 11;
+        private int HitBoxWidth = 9;
+        private int HitBoxHeight = 11;
 
         public IEnemyProjectileState State
         {
@@ -27,6 +28,22 @@ namespace Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles
         {
             state = new AquamentusFireballRightState(this);
         }
+        public void GenerateTopRight()
+        {
+            state = new AquamentusFireballTopRightState(this);
+        }
+        public void GenerateBottomRight()
+        {
+            state = new AquamentusFireballBottomRightState(this);
+        }
+        public void GenerateTopLeft()
+        {
+            state = new AquamentusFireballTopLeftState(this);
+        }
+        public void GenerateBottomLeft()
+        {
+            state = new AquamentusFireballBottomLeftState(this);
+        }
 
         public AquamentusFireball(Vector2 fireballPosition)
         {
@@ -39,15 +56,11 @@ namespace Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            state.Draw(spriteBatch);
+                state.Draw(spriteBatch);
         }
         public Rectangle GetHitBox() {
             return new Rectangle((int)Position2.X, (int)Position2.Y, Globals.AquamentusFireball1.Width * (int)Globals.scale, Globals.AquamentusFireball1.Height * (int)Globals.scale);
         }
 
-        public void getHitBox()
-        {
-            //return new Rectangle((int)itemPosition.X, (int)itemPosition.Y, HitBoxWidth, HitBoxHeight);
-        }
     }
 }

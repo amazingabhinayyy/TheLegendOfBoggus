@@ -20,12 +20,8 @@ namespace Sprint2_Attempt3.Dungeon
         protected DungeonRoom room;
         protected Game1 game1;
         protected CollisionDetector collisionDetector;
-        protected BlockCollisionClass blockCollision;
 
-        public RoomSecondary()
-        {    
-            
-        }
+        public RoomSecondary() { }
         public void SwitchToNextRoom() {
             if (roomNumber < gameObjectLists.Length - 1)
             {
@@ -52,7 +48,6 @@ namespace Sprint2_Attempt3.Dungeon
         }
         public void Update() {
             collisionDetector.Update();
-            blockCollision.Update();
 
             for (int i = 0; i < gameObjectLists[roomNumber].Count; i++)
             {
@@ -60,19 +55,6 @@ namespace Sprint2_Attempt3.Dungeon
                 if (obj is IEnemy)
                 {
                     ((IEnemy)obj).Update();
-                    /*
-                     * Can probably do spawnitem and removal here if we use gameTime instead of in DeathAnimationState
-                    if (((IEnemy)obj).GetEnemyState().Equals(new DeathAnimationState((IEnemy)obj)))
-                    {
-                        CollisionDetector.GameObjectList.Remove(obj);
-                        CollisionDetector.SpawnItem++;
-                        if (CollisionDetector.SpawnItem == CollisionDetector.SpawnItemTrigger)
-                        {
-                            CollisionDetector.SpawnItem = 0;
-                            CollisionDetector.GameObjectList.Add(CollisionDetector.SpawnRandomItem(new Vector2(((IEnemy)obj).X, ((IEnemy)obj).Y)));
-                        }
-                    }
-                    */
                 }
                 else if (obj is IItem)
                     ((IItem)obj).Update();

@@ -19,7 +19,8 @@ namespace Sprint2_Attempt3.Collision
         {
             if(item is IBoomerang)
             {
-                
+                enemy.Stun();
+                ((IBoomerang)item).ReverseDirection();
             }
             else if(item is IArrow)
             {

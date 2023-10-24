@@ -16,6 +16,10 @@ namespace Sprint2_Attempt3.Enemy.Dodongo
         {
             State = new MovingLeftDodongoState(this);
         }
+        public override void Stun()
+        {
+            State = new StunnedDodongoState(this);
+        }
         public override void MoveUp()
         {
             State = new MovingUpDodongoState(this);

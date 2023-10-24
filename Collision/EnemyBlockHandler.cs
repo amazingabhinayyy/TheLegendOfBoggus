@@ -69,9 +69,7 @@ namespace Sprint2_Attempt3.Collision
                     //enemy.MoveUp();
                     enemy.Y = collisionRectangle.Top - enemy.Position.Height - 1;
                 }
-                enemy.ChangeDirection();
             }
         }
-
     }
 }

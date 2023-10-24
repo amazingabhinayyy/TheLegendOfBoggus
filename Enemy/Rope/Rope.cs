@@ -15,6 +15,10 @@ namespace Sprint2_Attempt3.Enemy.Rope
         public override void Generate() {
             State = new MovingLeftRopeState(this);
         }
+        public override void Stun()
+        {
+            State = new StunnedRopeState(this);
+        }
         public override void MoveUp()
         {
             State = new MovingUpRopeState(this);

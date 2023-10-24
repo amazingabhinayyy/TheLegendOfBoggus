@@ -36,7 +36,6 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
 
             collisionDetector = new CollisionDetector(game1, (Link)game1.link);
             CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
-            blockCollision = new BlockCollisionClass(game1);
         }
 
         public override void SwitchToNorthRoom()

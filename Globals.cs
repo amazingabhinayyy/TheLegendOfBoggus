@@ -14,6 +14,7 @@ using Sprint2_Attempt3.Enemy.Aquamentus;
 using Sprint2_Attempt3.Dungeon.Rooms;
 using System.Collections.Generic;
 using Sprint2_Attempt3.Dungeon;
+using Sprint2_Attempt3.WallBlocks;
 
 namespace Sprint2_Attempt3
 {
@@ -128,8 +129,8 @@ namespace Sprint2_Attempt3
         public static Rectangle blackBlockScr { get { return new Rectangle(0, 17, 16, 16); } }
         public static Rectangle dotTileScr { get { return new Rectangle(17, 17, 16, 16); } }
 
-        public static Rectangle NorthEastCollisionBlock { get { return new Rectangle(0, 0, 348, 87); } }
-        public static Rectangle NorthWestCollisionBlock { get { return new Rectangle(453, 0, 347, 87); } }
+        public static Rectangle NorthEastCollisionBlock { get { return new Rectangle(0, 0, 348, 62); } }
+        public static Rectangle NorthWestCollisionBlock { get { return new Rectangle(453, 0, 347, 62); } }
         public static Rectangle SouthEastCollisionBlock { get { return new Rectangle(0, 393, 348, 87); } }
         public static Rectangle SouthWestCollisionBlock { get { return new Rectangle(453, 393, 347, 87); } }
         public static Rectangle EastNorthCollisionBlock { get { return new Rectangle(0, 87, 98, 110); } }
@@ -244,7 +245,7 @@ namespace Sprint2_Attempt3
         public static SpriteEffects[] AquamentusFireballLeftEffects = { SpriteEffects.None, SpriteEffects.None, SpriteEffects.None, SpriteEffects.None, SpriteEffects.None, SpriteEffects.None, SpriteEffects.None, SpriteEffects.None };
         public static Vector2 temp = new Vector2(0, 0);
         public static Vector2[] AquamentusOriginsLeft = { temp, temp, temp, temp, temp, temp, temp, temp };
-        public static int fireBallMaxDistance = 100;
+        public static int fireBallMaxDistance = 300;
 
         public static Rectangle DungeonStandard { get { return new Rectangle(1, 1, 256, 176); } }
 
@@ -273,29 +274,12 @@ namespace Sprint2_Attempt3
         public static Rectangle DamagedEastDoor { get { return new Rectangle(324, 34, 31, 32); } }
         public static Rectangle DamagedWestDoor { get { return new Rectangle(324, 67, 31, 32); } }
 
-        public static List<Rectangle> WallBlocks = new List<Rectangle>
+        public static List<IWall> WallBlocks = new List<IWall>
         {
-            NorthEastCollisionBlock, NorthWestCollisionBlock, SouthEastCollisionBlock,
-            SouthWestCollisionBlock, EastNorthCollisionBlock, EastSouthCollisionBlock, 
-            WestNorthCollisionBlock, WestSouthCollisionBlock
-            /*
-            //WallTopLeft
-            new Rectangle(0, 0, 348, 87),
-            //WallTopRight
-            new Rectangle(453, 0, 348, 87),
-            //SideUpperLeft
-            new Rectangle(0, 87, 98, 110),
-            //SideUpperRight
-            new Rectangle(703, 87, 98, 110),
-            //WallBottomLeft
-            new Rectangle(0, 397, 348, 87),
-            //WallBottomRight
-            new Rectangle(453, 397, 348, 87),
-            //SideBottomLeft
-            new Rectangle(0, 287, 98, 110),
-            //SideBottomRight
-            new Rectangle(703, 287, 98, 110)
-            */
+            new NorthEastCollisionBlock(), new NorthWestCollisionBlock(), new SouthEastCollisionBlock(),
+            new SouthWestCollisionBlock(), new EastNorthCollisionBlock(), new EastSouthCollisionBlock(),
+            new NorthDoorCollisionBlock(), new SouthDoorCollisionBlock(), new EastDoorCollisionBlock(),
+            new WestDoorCollisionBlock(), new WestSouthCollisionBlock(), new WestNorthCollisionBlock()
         };
     }
 

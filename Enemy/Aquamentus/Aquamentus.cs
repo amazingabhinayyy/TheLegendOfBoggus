@@ -14,35 +14,54 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
         public static bool end;
         public bool End { get; set; }
         public IEnemyProjectile Fireball { get; set; }
+        public IEnemyProjectile Fireball2 { get; set; }
+        public IEnemyProjectile Fireball3 { get; set; }
         public Vector2 FireballPosition { get; set; }
-        public ProjectileDirection Direction { get; set; }
+        private int distance;
+        private Random random;
 
-        /*can I make this private*/
-        public enum ProjectileDirection
-        {
-            Left, Top, Right, Bottom
-        }
         public Aquamentus(int x, int y)
         {
             end = false;
             this.X = x;
             this.Y = y;
-            FireballPosition = new Vector2(X, Y);
+            FireballPosition = new Vector2(x, y);
             Fireball = new AquamentusFireball(FireballPosition);
-            Direction = ProjectileDirection.Left;      
+            Fireball2 = new AquamentusFireball(FireballPosition);
+            Fireball3 = new AquamentusFireball(FireballPosition);
+            random = new Random();
+            distance = random.Next(0, 70);
+
         }
 
         public override void Generate() {
             State = new MovingLeftAquamentusState(this);
         }
+        public override void Stun()
+        {
+            State = new StunnedAquamentusState(this);
+        }
 
         public override void Update()
         {
-            State.Update();
+          
+           
+
             if (((AquamentusFireball)Fireball).Fire)
             {
                 Fireball.Update();
+                Fireball2.Update();
+                Fireball3.Update();
             }
+            count++;
+            if (count >= distance&&(!(((AquamentusFireball)Fireball).Fire)&& !(((AquamentusFireball)Fireball2).Fire)&& !(((AquamentusFireball)Fireball3).Fire)))
+            {
+                State.ChangeDirection();
+                distance = random.Next(0, 70);
+                count = 0;
+
+            }
+            State.Update();
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
@@ -50,6 +69,8 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
             if (((AquamentusFireball)Fireball).Fire)
             {
             Fireball.Draw(spriteBatch);
+            Fireball2.Draw(spriteBatch);
+            Fireball3.Draw(spriteBatch);
             }
         }
 

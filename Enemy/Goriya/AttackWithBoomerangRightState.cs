@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Enemy.Projectile.GoriyaProjectiles;
@@ -59,6 +60,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
 
             if (!((GoriyaBoomerang)Goriya.Boomerang).Throwing)
             {
+                CollisionDetector.GameObjectList.Remove(Goriya.Boomerang);
                 ChangeDirection();
             }
 

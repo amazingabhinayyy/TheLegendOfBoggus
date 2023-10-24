@@ -4,6 +4,8 @@ using Sprint2_Attempt3.Enemy.Keese;
 using System;
 using Sprint2_Attempt3.Enemy.Aquamentus;
 using Sprint2_Attempt3.Enemy.Projectile;
+using Sprint2_Attempt3.Player;
+using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles;
 
@@ -48,10 +50,16 @@ internal class AquamentusFireballLeftState : IEnemyProjectileState
 
             AquamentusFireball.Position2 = new Vector2(AquamentusFireball.Position2.X - change, AquamentusFireball.Position2.Y);
             traveledDistance += change;
+            
             if (traveledDistance >= projDistance)
             {
                 AquamentusFireball.Fire = false;
-            }
+                CollisionDetector.GameObjectList.Remove(AquamentusFireball);
+            }/*
+            if (AquamentusFireball.Position2.X <= 100 || AquamentusFireball.Position2.Y <= 89 || AquamentusFireball.Position2.Y >= 336)
+            {
+                AquamentusFireball.Fire = false;
+            }*/
         }
         else
         {
@@ -61,8 +69,9 @@ internal class AquamentusFireballLeftState : IEnemyProjectileState
     }
     public void Draw(SpriteBatch spriteBatch)
     {
-        sprite.Draw(spriteBatch, (int)AquamentusFireball.Position2.X + 12, (int)(AquamentusFireball.Position2.Y + 0.35 * traveledDistance), Globals.AquamentusFireballLeft[spriteIndex]);
-        sprite.Draw(spriteBatch, (int)AquamentusFireball.Position2.X + 12, (int)AquamentusFireball.Position2.Y, Globals.AquamentusFireballLeft[spriteIndex]);
-        sprite.Draw(spriteBatch, (int)AquamentusFireball.Position2.X + 12, (int)(AquamentusFireball.Position2.Y - 0.35 * traveledDistance), Globals.AquamentusFireballLeft[spriteIndex]);
+        if (AquamentusFireball.Fire)
+        {
+            sprite.Draw(spriteBatch, (int)AquamentusFireball.Position2.X + 12, (int)AquamentusFireball.Position2.Y, Globals.AquamentusFireballLeft[spriteIndex]);
+        }
     }
 }

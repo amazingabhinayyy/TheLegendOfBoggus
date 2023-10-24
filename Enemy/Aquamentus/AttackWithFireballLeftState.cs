@@ -17,6 +17,8 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
         private int currentFrame;
         private int currentFireballFrame;
         private IEnemyProjectile fireball;
+        private IEnemyProjectile fireball2;
+        private IEnemyProjectile fireball3;
         private int elapsedFrameCount;
         private int endFrame;
         public AttackWithFireballLeftState(Aquamentus Aquamentus)
@@ -28,15 +30,17 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
             sourceRectangle = Globals.AquamentusGreenLeftMouthOpen;
             Aquamentus.Position = new Rectangle(Aquamentus.X, Aquamentus.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             fireball = Aquamentus.Fireball;
+            fireball2 = Aquamentus.Fireball2;
+            fireball3 = Aquamentus.Fireball3;
             
             elapsedFrameCount = 0;
-            endFrame = 10;
+            endFrame = 5;
          
 
         }
         public void ChangeDirection()
         {
-            Aquamentus.State = new MovingRightAquamentusState(Aquamentus);
+            Aquamentus.State = new MovingLeftAquamentusState(Aquamentus);
         }
         public void ChangeAttackedStatus() {
             Aquamentus.State = new MovingAttackedLeftAquamentusState(Aquamentus);
@@ -44,9 +48,9 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
         public void Update()
         {
             currentFrame++;
-            if (currentFrame < 30)
+            if (currentFrame < 15)
             {
-                if (currentFrame < 15)
+                if (currentFrame < 5)
                 {
                     sourceRectangle = sourceRectangles[0];
                 }
@@ -61,13 +65,15 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
                 currentFrame = 0;
             }
             elapsedFrameCount++;
-            if (elapsedFrameCount >= endFrame *1.2)
+            /*if (elapsedFrameCount >= endFrame *1.2)
             {
                 ChangeDirection();
-            }
+            }*/
             if (elapsedFrameCount >= endFrame)
             {
                 ((AquamentusFireball)fireball).Fire = true;
+                ((AquamentusFireball)fireball2).Fire = true;
+                ((AquamentusFireball)fireball3).Fire = true;
                 sourceRectangles[0] = Globals.AquamentusGreenLeft;
                 sourceRectangles[1] = Globals.AquamentusGreenLeft2;
 

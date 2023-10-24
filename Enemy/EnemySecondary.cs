@@ -19,6 +19,7 @@ namespace Sprint2_Attempt3.Enemy
         public Rectangle Position { get; set; }
 
         public abstract void Generate();
+        public abstract void Stun();
         public EnemySecondary()
         {
             random = new Random();
@@ -50,7 +51,7 @@ namespace Sprint2_Attempt3.Enemy
             if (count == distance)
             {
                 State.ChangeDirection();
-                distance = random.Next(200, 400);
+                distance = random.Next(100, 400);
                 count = 0;
                 
             }

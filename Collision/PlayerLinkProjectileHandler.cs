@@ -18,6 +18,7 @@ namespace Sprint2_Attempt3.Collision
             if (linkProjectile is IBoomerang)
             {
                 link.Items.Remove(linkProjectile);
+                CollisionDetector.GameObjectList.Remove(linkProjectile);
             }
         }
     }
