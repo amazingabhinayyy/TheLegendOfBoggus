@@ -129,7 +129,15 @@ namespace Sprint2_Attempt3.Player
         }
         public Rectangle GetHitBox()
         {
-            return new Rectangle((int)position.X, (int)position.Y, 15 * 3, 15 * 3);
+            if(!(State is Captured))
+            {
+                return new Rectangle((int)position.X, (int)position.Y, 15 * 3, 15 * 3);
+            }
+            else
+            {
+                return new Rectangle(0, 0, 0, 0);
+            }
+            
         }
     }
 }
