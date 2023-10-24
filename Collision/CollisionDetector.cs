@@ -132,14 +132,9 @@ namespace Sprint2_Attempt3.Collision
                             {
                                 EnemyLinkProjectileCollisionHandler.HandleLinkProjectileEnemyCollision((IEnemy)gameObjectList[i], (ILinkProjectile)gameObjectList[c], side, gameObjectList);
                             }
-                            else if (obj is IBlock)
+                            else if (obj is IBlock || obj is IDoor)
                             {
                                 EnemyBlockHandler.HandleEnemyBlockCollision((IEnemy)gameObjectList[i], obj, collisionRectangle);
-                            }
-                           
-                            else if (obj is IDoor)
-                            {
-                               // EnemyBlockHandler.HandleEnemyBlockCollision((IEnemy)gameObjectList[i], obj, side);
                             }
                         }
                     }
