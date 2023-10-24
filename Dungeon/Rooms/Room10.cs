@@ -34,25 +34,33 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                 }
             }
 
-            collisionDetector = new CollisionDetector(game1, (Link)game1.link);
+            collisionDetector = new CollisionDetector(game1, game1.link);
             CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
         }
 
         public override void SwitchToNorthRoom()
         {
             game1.room = new Room13(game1);
+            roomNumber = 12;
+            CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
         }
         public override void SwitchToSouthRoom()
         {
             game1.room = new Room6(game1);
+            roomNumber = 5;
+            CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
         }
         public override void SwitchToEastRoom()
         {
             game1.room = new Room11(game1);
+            roomNumber = 10;
+            CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
         }
         public override void SwitchToWestRoom()
         {
             game1.room = new Room9(game1);
+            roomNumber = 8;
+            CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
         }
 
     }
