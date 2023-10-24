@@ -46,15 +46,7 @@ namespace Sprint2_Attempt3.Collision
                 {
                     blocked = true;
                 }
-            }
-            else if(obj is IDoor)
-            {
-                blocked = true;
-            }
-            if (blocked)
-            {
-                Rectangle hitBox = enemy.GetHitBox();
-                if (enemy is Hand)
+                else if (obj is IDoor)
                 {
                     blocked = true;
                 }
