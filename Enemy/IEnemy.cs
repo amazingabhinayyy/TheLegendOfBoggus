@@ -11,6 +11,7 @@ namespace Sprint2_Attempt3.Enemy
         public int Y { get; set; }
 
         public void Generate();
+        public void Stun();
         public void Spawn();
         public void ChangeDirection();
         public void MoveUp();

@@ -25,8 +25,8 @@ namespace Sprint2_Attempt3.Collision
                 Hand hand2 = (Hand)enemy;
                 hand2.State = new CapturedState(hand2, link.Position);
             } else {
-                //link.Knockback();
                 link.GetDamaged(side);
+                link.Knockback(side);
             }
         }
     }

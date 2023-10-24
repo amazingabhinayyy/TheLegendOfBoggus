@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Enemy.SpikeTrap;
 
 namespace Sprint2_Attempt3.Enemy.SpikeTrap
@@ -15,6 +16,10 @@ namespace Sprint2_Attempt3.Enemy.SpikeTrap
         }
         public override void Generate() {
             State = new MovingUpSpikeTrapState(this);
+        }
+        public override void Stun()
+        {
+            //Isn't affected
         }
         public override void MoveUp()
         {

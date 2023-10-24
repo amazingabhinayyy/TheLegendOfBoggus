@@ -33,6 +33,10 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         public override void Generate() {
             State = new MovingLeftGoriyaState(this);
         }
+        public override void Stun()
+        {
+            State = new StunnedGoriyaState(this);
+        }
         public override void Update()
         {
             
