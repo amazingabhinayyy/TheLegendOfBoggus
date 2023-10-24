@@ -18,6 +18,7 @@ namespace Sprint2_Attempt3.Enemy
         private static Texture2D EnemyTexture;
         private static Texture2D BossEnemyTexture;
         private static Texture2D GenerationTexture;
+        private static Texture2D CharacterTexture;
 
         private static EnemySpriteFactory instance = new EnemySpriteFactory();
 
@@ -38,6 +39,7 @@ namespace Sprint2_Attempt3.Enemy
             EnemyTexture = content.Load<Texture2D>("Enemies");
             BossEnemyTexture = content.Load<Texture2D>("Bosses");
             GenerationTexture = content.Load<Texture2D>("characterGenerationSprite");
+            CharacterTexture = content.Load<Texture2D>("LinkPlayerSpriteSheetFinal");
         }
         //Spawn and animation sprites
         public IEnemySprite CreateSpawnAnimationSprite()
@@ -81,6 +83,10 @@ namespace Sprint2_Attempt3.Enemy
         public IEnemySprite CreateHandSprite()
         {
             return new HandSprite(EnemyTexture);
+        }
+        public IEnemySprite CreateCapturedHandSprite()
+        {
+            return new CapturedHandSprite(EnemyTexture, CharacterTexture);
         }
         public IEnemySprite CreateMovingLeftHandSprite()
         {
