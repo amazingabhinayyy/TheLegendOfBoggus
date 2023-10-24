@@ -42,7 +42,7 @@ namespace Sprint2_Attempt3
 
             timeSinceLastUpdate += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (timeSinceLastUpdate > 0.30f)
+            if (timeSinceLastUpdate > 0.1f)
             {
                 if (mstate.LeftButton.Equals(ButtonState.Pressed))
                 {
