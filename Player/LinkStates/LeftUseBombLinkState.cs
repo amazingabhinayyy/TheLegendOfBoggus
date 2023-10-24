@@ -21,6 +21,7 @@ namespace Sprint2_Attempt3.Player.LinkStates
             link.Sprite = LinkSpriteFactory.Instance.CreateLeftItemLinkSprite();
             LeftBomb bomb = new LeftBomb(link);
             link.Items.Add(bomb);
+            CollisionDetector.GameObjectList.Add(bomb);
             frameCounter = 0;
         }
         public void BecomeIdle()

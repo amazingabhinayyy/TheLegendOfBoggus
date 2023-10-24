@@ -11,7 +11,7 @@ using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3.Player.LinkProjectiles
 {
-    public class UpBomb : ILinkProjectile
+    public class UpBomb : IBomb, ILinkProjectile
     {
         private Link link;
         private int currentFrame;
@@ -35,9 +35,14 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles
             sourceRectangle = new Rectangle(129, 185, 8, 15);
             flip = SpriteEffects.None;
         }
-        public void Explode()
+        public void RemoveBomb()
         {
             link.Items.Remove(this);
+            CollisionDetector.GameObjectList.Remove(this);
+        }
+        public void Explode()
+        {
+            RemoveBomb();
             BombExplosion explosion = new BombExplosion(link, itemPosition);
             link.Items.Add(explosion);
             CollisionDetector.GameObjectList.Add(explosion);

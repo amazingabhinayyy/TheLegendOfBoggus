@@ -9,12 +9,14 @@ namespace Sprint2_Attempt3.Enemy.Dodongo
         private Dodongo dodongo;
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
+        private int killCounter;
         public MovingUpAttackedDodongoState(Dodongo dodongo)
         {
             this.dodongo = dodongo;
             sprite = EnemySpriteFactory.Instance.CreateDodongoSprite();
             sourceRectangle = Globals.DodongoUpAttacked;
             dodongo.Position = new Rectangle(dodongo.X, dodongo.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
+            killCounter = 0;
 
         }
         public void ChangeDirection()
@@ -26,6 +28,11 @@ namespace Sprint2_Attempt3.Enemy.Dodongo
         }
         public void Update()
         {
+            killCounter++;
+            if(killCounter == 100)
+            {
+                dodongo.Kill();
+            }
         }
         public void Draw(SpriteBatch spriteBatch)
         {
