@@ -61,7 +61,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             if (!((GoriyaBoomerang)Goriya.Boomerang).Throwing)
             {
                 CollisionDetector.GameObjectList.Remove(Goriya.Boomerang);
-                ChangeDirection();
+                
             }
 
 
