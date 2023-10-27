@@ -103,18 +103,14 @@ namespace Sprint2_Attempt3.Enemy.Goriya
                     sourceRectangle = Globals.GoriyaRedRight2;
 
                 }
-                Goriya.Position = new Rectangle(Goriya.X, Goriya.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
+          
             }
             else
             {
                 currentFrame = 0;
             }
 
-            if (!((GoriyaBoomerang)Goriya.Boomerang).Throwing)
-            {
-                CollisionDetector.GameObjectList.Remove(Goriya.Boomerang);
-          
-            }
+            
 
         }
         public void Draw(SpriteBatch spriteBatch)
