@@ -18,7 +18,7 @@ namespace Sprint2_Attempt3.Collision
             link.Knockback(side);
             if(projectile is AquamentusFireball)
             {
-            CollisionDetector.GameObjectList.Remove(projectile);
+                CollisionDetector.GameObjectList.Remove(projectile);
 
                 ((AquamentusFireball)projectile).GenerateRight();
             }

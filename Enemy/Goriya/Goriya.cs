@@ -86,5 +86,10 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         {
             State = new MovingRightGoriyaState(this);
         }
+        public override void Kill()
+        {
+            base.Kill();
+            CollisionDetector.GameObjectList.Remove(Boomerang);
+        }
     }
 }

@@ -64,11 +64,11 @@ namespace Sprint2_Attempt3.Collision
                     }
                     else if (obj is IBlock)
                     {
-                        PlayerBlockHandler.HandlePlayerBlockCollision(link, (IBlock)obj, side);
+                        PlayerBlockHandler.HandlePlayerBlockCollision(linkObj, (IBlock)obj, side);
                     }
                     else if (obj is IDoor)
                     {
-                        ChangedRooms = PlayerBlockHandler.HandlePlayerDoorCollision(link, (IDoor)obj, side, game);
+                        ChangedRooms = PlayerBlockHandler.HandlePlayerDoorCollision(linkObj, (IDoor)obj, side, game);
                     }
                     else if(obj is ILinkProjectile)
                     {
@@ -212,7 +212,7 @@ namespace Sprint2_Attempt3.Collision
                             else if (gameObjectList[c] is IDoor)
                             {
 
-                                //EnemyProjectileBlockHandler.HandleEnemyProjectileBlockCollision((IProjectile)projectile, (IWall)obj, side);
+                                EnemyProjectileBlockHandler.HandleEnemyProjectileBlockCollision((IProjectile)projectile, (IDoor)obj, side);
                             }
                         }
                     }
