@@ -48,13 +48,7 @@ namespace Sprint2_Attempt3.Enemy.Keese
                 enemy.exists = false;
                 
                 CollisionDetector.GameObjectList.Remove(enemy);
-                CollisionDetector.SpawnItem++;
-                if (CollisionDetector.SpawnItem == CollisionDetector.SpawnItemTrigger)
-                {
-                    CollisionDetector.SpawnItem = 0;
-                    CollisionDetector.GameObjectList.Add(CollisionDetector.SpawnRandomItem(new Vector2(enemy.X, enemy.Y)));
-                }
-                
+                enemy.DropItem();              
             }
         }
         public void Draw(SpriteBatch spriteBatch)

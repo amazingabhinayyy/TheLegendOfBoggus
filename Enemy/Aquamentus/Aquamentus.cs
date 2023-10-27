@@ -9,7 +9,7 @@ using Sprint2_Attempt3.Enemy.Aquamentus;
 
 namespace Sprint2_Attempt3.Enemy.Aquamentus
 {
-    internal class Aquamentus : EnemySecondary
+    internal class Aquamentus : EnemyD
     {
         public static bool end;
         public bool End { get; set; }

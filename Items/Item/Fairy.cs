@@ -5,12 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sprint2_Attempt3.Player.Interfaces;
 
 namespace Sprint2_Attempt3.Items.ItemClasses
 {
     internal class Fairy : ItemSecondary 
     {
-        public Fairy(Vector2 position, bool exists)
+        public Fairy(Vector2 position, bool exists)//ILink link)
         {
             this.sourceRectangle = Globals.fairySrc;
             this.Position = new Rectangle((int)position.X, (int)position.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
@@ -48,7 +49,12 @@ namespace Sprint2_Attempt3.Items.ItemClasses
                 {
                     count = 0;
                 }
+
             }
+        }
+        public void TrackLink()
+        {
+
         }
     }
 }

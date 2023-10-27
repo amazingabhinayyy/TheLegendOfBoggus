@@ -6,7 +6,7 @@ using System;
 
 namespace Sprint2_Attempt3.Enemy.Hand
 {
-    internal class Hand : EnemySecondary
+    internal class Hand : EnemyC
     {
         public Hand(int x, int y)
         {

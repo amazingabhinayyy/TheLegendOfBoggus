@@ -20,6 +20,7 @@ namespace Sprint2_Attempt3.Enemy
 
         public abstract void Generate();
         public abstract void Stun();
+        public abstract void DropItem();
         public EnemySecondary()
         {
             random = new Random();
