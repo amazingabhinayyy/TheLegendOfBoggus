@@ -17,6 +17,7 @@ namespace Sprint2_Attempt3
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Texture2D InventoryTexture;
         private KeyboardController keyController { get; set; }
         private MouseController mouseController { get; set; }
         public ILink link { get; set; }
@@ -33,6 +34,8 @@ namespace Sprint2_Attempt3
         protected override void Initialize()
         {
             base.Initialize();
+            graphics.PreferredBackBufferHeight = 750;
+            graphics.ApplyChanges();
             RoomGenerator.Instance.LoadAllFiles();
         }
 
@@ -47,6 +50,7 @@ namespace Sprint2_Attempt3
             EnemyProjectileSpriteFactory.Instance.LoadAllTextures(Content);
             DungeonSpriteFactory.Instance.LoadAllTextures(Content);
             RoomGenerator.Instance.LoadAllFiles();
+            InventoryTexture = Content.Load<Texture2D>("Inventory");
             link = new Link(this);
             collisionDetector = new CollisionDetector(this, (Link)link);
             keyController = new KeyboardController(this);
@@ -73,6 +77,7 @@ namespace Sprint2_Attempt3
 
             spriteBatch.Begin();
             room.Draw(spriteBatch);
+            spriteBatch.Draw(InventoryTexture, new Rectangle(0, 0, 800, 200), new Rectangle(0, 175, 255,56), Color.White);
             spriteBatch.End();
             base.Draw(gameTime);
         }

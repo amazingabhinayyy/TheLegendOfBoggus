@@ -12,7 +12,7 @@ namespace Sprint2_Attempt3.WallBlocks
         Rectangle wall;
         public SouthEastCollisionBlock()
         {
-            wall = new Rectangle(0, 393, 348, 87);
+            wall = new Rectangle(0, 650, 348, 100);
         }
         public Rectangle GetHitBox()
         {
