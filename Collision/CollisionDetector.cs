@@ -221,8 +221,8 @@ namespace Sprint2_Attempt3.Collision
         }
         public void AddWallBlocks()
         {
-            foreach(IWall wall in Globals.WallBlocks)
-            gameObjectList.Add(wall);
+            foreach(IWall wall in Globals.WallBlocks) 
+                gameObjectList.Add(wall);
         }
         public void Update()
         {
@@ -231,7 +231,7 @@ namespace Sprint2_Attempt3.Collision
             CheckProjectileCollision();
             CheckEnemyWallCollision();
         }
-
+        /*
         public static IItem SpawnRandomItem(Vector2 position)
         {
             
@@ -259,6 +259,7 @@ namespace Sprint2_Attempt3.Collision
           
             return item;
         }
+        */
     }
 
 }

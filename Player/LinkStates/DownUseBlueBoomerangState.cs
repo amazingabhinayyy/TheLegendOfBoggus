@@ -19,7 +19,7 @@ namespace Sprint2_Attempt3.Player.LinkStates
         {
             this.link = link;
             link.Sprite = LinkSpriteFactory.Instance.CreateDownItemLinkSprite(); ;
-            DownBlueBoomerang blueBoomerang = new DownBlueBoomerang(link);
+            Boomerang blueBoomerang = new DownBlueBoomerang(link);
             link.Items.Add(blueBoomerang);
             CollisionDetector.GameObjectList.Add(blueBoomerang);
             frameCounter = 0;

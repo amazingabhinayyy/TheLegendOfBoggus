@@ -11,39 +11,15 @@ using System.Threading;
 
 namespace Sprint2_Attempt3.Player.LinkProjectiles
 {
-    public class RightBlueBoomerang : Boomerang, ILinkProjectile
+    public class RightBlueBoomerang : Boomerang
     {
-        private Link link;
-        private int currentFrame;
-        private ILinkProjectileSprite sprite;
-        private Vector2 itemPosition;
-        private SpriteEffects flip;
-        private Rectangle sourceRectangle;
-        private const int HitBoxWidth = 21;
-        private const int HitBoxHeight = 21;
-        private bool changeDirection;
-        public RightBlueBoomerang(Link link)
+        public RightBlueBoomerang(Link link): base(link)
         {
-            this.link = link;
-            currentFrame = 0;
-            sprite = LinkSpriteFactory.Instance.CreateBlueBoomerangItem();
-            SetPosition();
+            this.ItemPosition = new Vector2((int)link.position.X + 45, (int)link.position.Y + 12);
+            this.SourceRectangle = new Rectangle(91, 189, 7, 7);
+            this.Sprite = LinkSpriteFactory.Instance.CreateBlueBoomerangItem();
         }
-
-        public void SetPosition()
-        {
-            itemPosition = new Vector2((int)link.position.X + 45, (int)link.position.Y + 12);
-            flip = SpriteEffects.None;
-            sourceRectangle = new Rectangle(91, 189, 7, 7);
-            changeDirection = false;
-        }
-        public override void ReverseDirection()
-        {
-            link.Items.Add(new ItemHit(link, itemPosition));
-            changeDirection = true;
-        }
-
-        public void Update()
+        public override void Update()
         {
             int speed;
             if (!changeDirection && currentFrame >= 0 && currentFrame < 50)
@@ -68,15 +44,6 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles
             sprite.Update();
             currentFrame++;
 
-        }
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            sprite.Draw(spriteBatch, itemPosition, sourceRectangle, flip);
-        }
-
-        public Rectangle GetHitBox()
-        {
-            return new Rectangle((int)itemPosition.X, (int)itemPosition.Y, HitBoxWidth, HitBoxHeight);
         }
     }
 }
