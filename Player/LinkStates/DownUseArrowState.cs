@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Player.Interfaces;
-using Sprint2_Attempt3.Player;
 using Sprint2_Attempt3.Player.Interfaces;
-using Sprint2_Attempt3.Player.LinkProjectiles;
+using Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectiles;
 
 namespace Sprint2_Attempt3.Player.LinkStates
 {

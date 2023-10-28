@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using static Sprint2_Attempt3.Player.Link;
 using Sprint2_Attempt3.Interfaces;
 
-namespace Sprint2_Attempt3.Player.LinkProjectiles
+namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectiles
 {
     public class BlueBoomerangSprite : ILinkProjectileSprite
     {

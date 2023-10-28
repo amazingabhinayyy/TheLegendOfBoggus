@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Sprint2_Attempt3.Interfaces;
 
-namespace Sprint2_Attempt3.Player.LinkProjectiles
+namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectiles
 {
     public class BombSprite : ILinkProjectileSprite
     {

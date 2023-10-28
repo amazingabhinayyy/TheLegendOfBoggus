@@ -1,6 +1,6 @@
 ﻿using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Interfaces;
-using Sprint2_Attempt3.Player.LinkProjectiles;
+using Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectiles;
 using Sprint2_Attempt3.Items.ItemClasses;
 using System;
 using System.Collections.Generic;
