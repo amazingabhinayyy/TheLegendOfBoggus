@@ -1,5 +1,5 @@
 ﻿using Sprint2_Attempt3.Enemy;
-using Sprint2_Attempt3.Interfaces;
+using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Items.ItemClasses;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using Sprint2_Attempt3.Enemy.Dodongo;
 using Sprint2_Attempt3.Player.LinkProjectiles.ProjectileInterfaces;
-using Sprint2_Attempt3.Player.LinkProjectiles.ProjectileInterfaces;
+using Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates;
 
 namespace Sprint2_Attempt3.Collision
 {

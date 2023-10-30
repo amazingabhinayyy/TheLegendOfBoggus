@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Collision;
-using Sprint2_Attempt3.Interfaces;
 
 namespace Sprint2_Attempt3.Player
 {

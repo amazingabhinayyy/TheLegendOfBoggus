@@ -4,27 +4,11 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 using System.Text;
 using System.Threading.Tasks;
-using Sprint2_Attempt3.Interfaces;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates;
 using Sprint2_Attempt3.Player.LinkProjectiles.ProjectileInterfaces;
 
-<<<<<<<< HEAD:Player/LinkProjectiles/AbstractProjectiles/Boomerang.cs
 namespace Sprint2_Attempt3.Player.LinkProjectiles.AbstractProjectiles
-{
-    public abstract class Boomerang : ProjectileSecondary, IBoomerang
-    {
-        protected bool changeDirection;
-        //protected ILinkProjectileSprite Sprite { set { sprite = value; } }
-        //protected Vector2 ItemPosition { set { itemPosition = value; } }
-        //protected Rectangle SourceRectangle { set { sourceRectangle = value; } }
-
-
-        public Boomerang(Link link) : base(link)
-        {
-            changeDirection = false;
-            sprite = LinkSpriteFactory.Instance.CreateBlueBoomerangItem();
-========
-namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectiles
 {
     public abstract class Boomerang : LinkProjectilesSecondary, IBoomerang
     {
@@ -33,7 +17,6 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectiles
         public Boomerang(Link link) : base(link)
         { 
             changeDirection = false;
->>>>>>>> master:Player/LinkProjectilesStates/Boomerang.cs
         }
         public Vector2 BoomerangPositionUpdater(Vector2 itemPosition, Vector2 linkPosition, int speed)
         {

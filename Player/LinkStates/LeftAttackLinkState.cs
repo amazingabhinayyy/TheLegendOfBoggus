@@ -1,6 +1,6 @@
 ﻿using Sprint2_Attempt3.Collision;
-using Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectiles;
 using Sprint2_Attempt3.Player.Interfaces;
+using Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates;
 
 namespace Sprint2_Attempt3.Player.LinkStates
 {
