@@ -58,11 +58,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
                 currentFrame = 0;
             }
 
-            if (!((GoriyaBoomerang)Goriya.Boomerang).Throwing)
-            {
-                CollisionDetector.GameObjectList.Remove(Goriya.Boomerang);
-                
-            }
+          
 
 
         }

@@ -9,7 +9,7 @@ using static Sprint2_Attempt3.Player.Link;
 using System.Net.NetworkInformation;
 using Sprint2_Attempt3.Interfaces;
 
-namespace Sprint2_Attempt3.Player.LinkProjectiles
+namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectiles
 {
     public class BoomerangSprite : ILinkProjectileSprite
     {

@@ -50,6 +50,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             if (((GoriyaBoomerang)Boomerang).Throwing)
             {
                 Boomerang.Update();
+                
             }
             count++;
             if (count >= distance && (!((GoriyaBoomerang)Boomerang).Throwing))

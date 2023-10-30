@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectiles
 {
-    internal class ThrowingSwordSprite
+    internal class ThrowingSword
     {
     }
 }
