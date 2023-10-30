@@ -8,21 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.AccessControl;
 using Sprint2_Attempt3.Collision;
+using Sprint2_Attempt3.Player.LinkProjectiles.AbstractProjectiles;
 
 namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates
 {
-    public class BombExplosion : ILinkProjectile
+    public class BombExplosion : LinkProjectileSecondary
     {
-        private int currentFrame;
-        private Link link;
-        private ILinkProjectileSprite sprite;
-        private SpriteEffects flip;
-        private Rectangle sourceRectangle;
-        private Vector2 itemPosition;
-        private const int hitBoxWidth = 45;
-        private const int hitBoxHeight = 45;
+        private const int hitBoxWidth = 40;
+        private const int hitBoxHeight = 40;
         private Vector2 startPosition;
-        public BombExplosion(Link link, Vector2 position)
+        public BombExplosion(Link link, Vector2 position) : base(link)
         {
             this.link = link;
             currentFrame = 0;
@@ -34,7 +29,7 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates
             startPosition.Y = position.Y - 15 * 3;
 
         }
-        public void Update()
+        public override void Update()
         {
             if (currentFrame == 10)
             {
@@ -44,11 +39,7 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates
             currentFrame++;
             sprite.Update();
         }
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            sprite.Draw(spriteBatch, itemPosition, sourceRectangle, flip);
-        }
-        public Rectangle GetHitBox()
+        public override Rectangle GetHitBox()
         {
             return new Rectangle((int)startPosition.X, (int)startPosition.Y, hitBoxWidth * 3, hitBoxHeight * 3);
         }

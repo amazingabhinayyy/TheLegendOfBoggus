@@ -10,7 +10,7 @@ using Sprint2_Attempt3.Player.Interfaces;
 
 namespace Sprint2_Attempt3.Player.LinkProjectiles.AbstractProjectiles
 {
-    public abstract class ProjectileSecondary : ILinkProjectile
+    public abstract class LinkProjectileSecondary : ILinkProjectile
     {
         protected Link link;
         protected int currentFrame;
@@ -20,7 +20,7 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles.AbstractProjectiles
         protected int HitBoxWidth;
         protected int HitBoxHeight;
         protected ILinkProjectileSprite sprite;
-        public ProjectileSecondary(Link link)
+        public LinkProjectileSecondary(Link link)
         {
             this.link = link;
             currentFrame = 0;
@@ -30,7 +30,7 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles.AbstractProjectiles
         {
             sprite.Draw(spriteBatch, itemPosition, sourceRectangle, flip);
         }
-        public Rectangle GetHitBox()
+        public virtual Rectangle GetHitBox()
         {
             return new Rectangle((int)itemPosition.X, (int)itemPosition.Y, HitBoxWidth, HitBoxHeight);
         }

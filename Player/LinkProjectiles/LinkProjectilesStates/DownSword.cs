@@ -6,71 +6,47 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint2_Attempt3.Player.Interfaces;
+using Sprint2_Attempt3.Player.LinkProjectiles.AbstractProjectiles;
 using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates
 {
-    public class DownSword : ILinkProjectile
+    public class DownSword : Sword
     {
-        private Link link;
-        private int currentFrame;
-        private ILinkProjectileSprite sprite;
-        private Vector2 itemPosition;
-        private SpriteEffects flip;
-        private Rectangle sourceRectangle;
-        private int HitBoxWidth = 15;
-        private int HitBoxHeight = 45;
-        public DownSword(Link link)
-        {
-            this.link = link;
-            currentFrame = 0;
-            sprite = LinkSpriteFactory.Instance.CreateDownAttackLinkSwordSprite();
-            SetPosition();
-        }
-
-        public void SetPosition()
+        public DownSword(Link link) : base(link)
         {
             itemPosition = new Vector2((int)link.position.X + 21, (int)link.position.Y + 45);
+            sourceRectangle = new Rectangle(25, 63, 3, 11);
+            flip = SpriteEffects.None;
         }
 
-        public void Update()
+        public override void Update()
         {
-            if (currentFrame == 30)
+            if (currentFrame >= 5 && currentFrame < 10)
+            {
+                sourceRectangle = new Rectangle(25, 63, 3, 11);
+                HitBoxWidth = 9;
+                HitBoxHeight = 33;
+            }
+            else if (currentFrame >= 10 && currentFrame < 15)
+            {
+                sourceRectangle = new Rectangle(42, 63, 3, 7);
+                HitBoxWidth = 9;
+                HitBoxHeight = 21;
+            }
+            else if (currentFrame >= 15 && currentFrame < 20)
+            {
+                sourceRectangle = new Rectangle(59, 63, 3, 3);
+                HitBoxWidth = 9;
+                HitBoxHeight = 9;
+            }
+            else if(currentFrame >= 20)
             {
                 link.Items.Remove(this);
                 CollisionDetector.GameObjectList.Remove(this);
             }
-            if (currentFrame >= 7 && currentFrame < 15)
-            {
-                HitBoxWidth = 9;
-                HitBoxHeight = 33;
-            }
-            else if (currentFrame >= 15 && currentFrame < 22)
-            {
-                HitBoxWidth = 9;
-                HitBoxHeight = 21;
-            }
-            else if (currentFrame >= 22 && currentFrame < 30)
-            {
-                HitBoxWidth = 9;
-                HitBoxHeight = 9;
-            }
-            else if (currentFrame >= 0 && currentFrame < 7)
-            {
-                HitBoxHeight = 0;
-                HitBoxWidth = 0;
-            }
             sprite.Update();
             currentFrame++;
         }
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            sprite.Draw(spriteBatch, link.position, sourceRectangle, flip);
-        }
-        public Rectangle GetHitBox()
-        {
-            return new Rectangle((int)itemPosition.X, (int)itemPosition.Y, HitBoxWidth, HitBoxHeight);
-        }
-
     }
 }

@@ -10,7 +10,7 @@ using Sprint2_Attempt3.Player.LinkProjectiles.ProjectileInterfaces;
 
 namespace Sprint2_Attempt3.Player.LinkProjectiles.AbstractProjectiles
 {
-    public abstract class Boomerang : LinkProjectilesSecondary, IBoomerang
+    public abstract class Boomerang : LinkProjectileSecondary, IBoomerang
     {
         protected bool changeDirection;
 

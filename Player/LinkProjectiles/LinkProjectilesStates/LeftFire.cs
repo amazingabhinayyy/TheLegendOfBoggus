@@ -7,40 +7,17 @@ using System.Text;
 using System.Threading.Tasks;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Collision;
-using Sprint2_Attempt3.Player.LinkProjectiles.ProjectileInterfaces;
+using Sprint2_Attempt3.Player.LinkProjectiles.AbstractProjectiles;
 
 namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates
 {
-    public class LeftFire : IFire
+    public class LeftFire : Fire
     {
-        private Link link;
-        private int currentFrame;
-        private ILinkProjectileSprite sprite;
-        private Vector2 itemPosition;
-        private SpriteEffects flip;
-        private Rectangle sourceRectangle;
-        private const int HitBoxWidth = 45;
-        private const int HitBoxHeight = 45;
-        private bool stop;
-        public LeftFire(Link link)
-        {
-            this.link = link;
-            currentFrame = 0;
-            sprite = LinkSpriteFactory.Instance.CreateFireItem();
-            SetPosition();
-        }
-        public void SetPosition()
+        public LeftFire(Link link) : base(link)
         {
             itemPosition = new Vector2((int)link.position.X - 45, (int)link.position.Y);
-            flip = SpriteEffects.None;
-            sourceRectangle = new Rectangle(191, 185, 15, 15);
         }
-        public void Stop()
-        {
-            stop = true;
-        }
-
-        public void Update()
+        public override void Update()
         {
             if (currentFrame == 60)
             {
@@ -54,14 +31,6 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates
                 itemPosition.X = itemPosition.X - 2;
             }
 
-        }
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            sprite.Draw(spriteBatch, itemPosition, sourceRectangle, flip);
-        }
-        public Rectangle GetHitBox()
-        {
-            return new Rectangle((int)itemPosition.X, (int)itemPosition.Y, HitBoxWidth, HitBoxHeight);
         }
     }
 }

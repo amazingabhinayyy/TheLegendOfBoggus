@@ -11,5 +11,6 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles.ProjectileInterfaces
     public interface IBomb : ILinkProjectile
     {
         public void RemoveBomb();
+        public void Explode();
     }
 }

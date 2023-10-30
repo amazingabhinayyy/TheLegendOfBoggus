@@ -10,7 +10,7 @@ using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Player.Interfaces;
 
 
-namespace Sprint2_Attempt3.Player.LinkSprites
+namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesSprites
 {
     public class UpAttackLinkSwordSprite : ILinkProjectileSprite
     {

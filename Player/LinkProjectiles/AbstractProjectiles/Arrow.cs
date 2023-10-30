@@ -12,12 +12,8 @@ using Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates;
 
 namespace Sprint2_Attempt3.Player.LinkProjectiles.AbstractProjectiles
 {
-    public abstract class Arrow : ProjectileSecondary, IArrow
+    public abstract class Arrow : LinkProjectileSecondary, IArrow
     {
-        //protected ILinkProjectileSprite Sprite { set { sprite = value; } }
-        //protected Vector2 ItemPosition { set { itemPosition = value; } }
-        //protected Rectangle SourceRectangle { set { sourceRectangle = value; } }
-
         public Arrow(Link link) : base(link)
         {
             sprite = LinkSpriteFactory.Instance.CreateArrowItem();

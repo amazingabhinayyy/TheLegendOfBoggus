@@ -82,21 +82,9 @@ namespace Sprint2_Attempt3.Player
         {
             return new UpMovingLinkSprite(linkTexture);
         }
-        public ILinkProjectileSprite CreateDownAttackLinkSwordSprite()
+        public ILinkProjectileSprite CreateAttackLinkSwordSprite()
         {
-            return new DownAttackLinkSwordSprite(linkTexture);
-        }
-        public ILinkProjectileSprite CreateUpAttackLinkSwordSprite()
-        {
-            return new UpAttackLinkSwordSprite(linkTexture);
-        }
-        public ILinkProjectileSprite CreateLeftAttackLinkSwordSprite()
-        {
-            return new LeftAttackLinkSwordSprite(linkTexture);
-        }
-        public ILinkProjectileSprite CreateRightAttackLinkSwordSprite()
-        {
-            return new RightAttackLinkSwordSprite(linkTexture);
+            return new AttackSwordSprite(linkTexture);
         }
         public ILinkSprite CreateDownItemLinkSprite()
         {

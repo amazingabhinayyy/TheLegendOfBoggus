@@ -8,18 +8,13 @@ using System.Security.Cryptography.X509Certificates;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Player.Interfaces;
 using System.ComponentModel;
+using Sprint2_Attempt3.Player.LinkProjectiles.AbstractProjectiles;
 
 namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates
 {
-    public class ItemHit : ILinkProjectile
+    public class ItemHit : LinkProjectileSecondary
     {
-        private Link link;
-        private Vector2 itemPosition;
-        private int currentFrame;
-        private Rectangle sourceRectangle;
-        private SpriteEffects flip;
-        private ILinkProjectileSprite sprite;
-        public ItemHit(Link link, Vector2 itemPosition)
+        public ItemHit(Link link, Vector2 itemPosition) : base(link)
         {
             this.link = link;
             this.itemPosition = itemPosition;
@@ -28,7 +23,7 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates
             flip = SpriteEffects.None;
             sprite = LinkSpriteFactory.Instance.CreateItemHitSprite();
         }
-        public void Update()
+        public override void Update()
         {
             if (currentFrame == 5)
             {
@@ -36,11 +31,7 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates
             }
             currentFrame++;
         }
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            sprite.Draw(spriteBatch, itemPosition, sourceRectangle, flip);
-        }
-        public Rectangle GetHitBox()
+        public override Rectangle GetHitBox()
         {
             //Doesn't have a hit box
             return new Rectangle(0, 0, 0, 0);
