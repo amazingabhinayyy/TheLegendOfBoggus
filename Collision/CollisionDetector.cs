@@ -7,10 +7,10 @@ using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Items.ItemClasses;
-using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.WallBlocks;
 using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -32,7 +32,6 @@ namespace Sprint2_Attempt3.Collision
         }
         private static int spawnItemCountTrigger = 1;
         public static int SpawnItemTrigger { get { return spawnItemCountTrigger; } }
-        
        
 
         private Game1 game;
