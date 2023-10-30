@@ -7,11 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Sprint2_Attempt3.Interfaces;
 using Sprint2_Attempt3.Collision;
-
+using Sprint2_Attempt3.Player.LinkProjectiles.ProjectileInterfaces;
 
 namespace Sprint2_Attempt3.Player.LinkProjectiles
 {
-    public class LeftFire : IFire, ILinkProjectile
+    public class LeftFire : IFire
     {
         private Link link;
         private int currentFrame;

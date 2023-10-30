@@ -1,33 +1,29 @@
-﻿using System;
+﻿using Sprint2_Attempt3.Collision;
+using Sprint2_Attempt3.Interfaces;
+using Sprint2_Attempt3.Player.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Sprint2_Attempt3.Collision;
-using Sprint2_Attempt3.Player;
-using Sprint2_Attempt3.Player.Interfaces;
-using Sprint2_Attempt3.Player.LinkProjectiles;
 
 namespace Sprint2_Attempt3.Player.LinkStates
 {
-    public class DownUseBlueArrowState : ILinkState
+    public class UpUseItemState : ILinkState
     {
         private Link link;
         private int frameCounter;
-        public DownUseBlueArrowState(Link link)
+        public UpUseItemState(Link link, ILinkProjectile item)
         {
             this.link = link;
-            link.Sprite = LinkSpriteFactory.Instance.CreateDownItemLinkSprite();
-            DownBlueArrow blueArrow = new DownBlueArrow(link);
-            link.Items.Add(blueArrow);
-            CollisionDetector.GameObjectList.Add(blueArrow);
+            link.Sprite = LinkSpriteFactory.Instance.CreateUpItemLinkSprite();
+            link.Items.Add(item);
+            CollisionDetector.GameObjectList.Add(item);
             frameCounter = 0;
         }
-
         public void Stop()
         {
-            link.State = new DownIdleLinkState(link);
+            link.State = new UpIdleLinkState(link);
         }
         public void BecomeIdle()
         {

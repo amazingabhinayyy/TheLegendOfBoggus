@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Sprint2_Attempt3.Interfaces;
 using Sprint2_Attempt3.Collision;
 using System.Threading;
+using Sprint2_Attempt3.Player.LinkProjectiles.AbstractProjectiles;
 
 namespace Sprint2_Attempt3.Player.LinkProjectiles
 {
@@ -15,9 +16,9 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles
     {
         public RightBlueBoomerang(Link link): base(link)
         {
-            this.ItemPosition = new Vector2((int)link.position.X + 45, (int)link.position.Y + 12);
-            this.SourceRectangle = new Rectangle(91, 189, 7, 7);
-            this.Sprite = LinkSpriteFactory.Instance.CreateBlueBoomerangItem();
+            itemPosition = new Vector2((int)link.position.X + 45, (int)link.position.Y + 12);
+            sourceRectangle = new Rectangle(91, 189, 7, 7);
+            sprite = LinkSpriteFactory.Instance.CreateBlueBoomerangItem();
         }
         public override void Update()
         {

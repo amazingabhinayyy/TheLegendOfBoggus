@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint2_Attempt3.Player.LinkProjectiles
+namespace Sprint2_Attempt3.Player.LinkProjectiles.ProjectileInterfaces
 {
-    public interface IBoomerang : ILinkProjectile
+    public interface IArrow : ILinkProjectile
     {
-        public void ReverseDirection();
-
+        public void DestroyArrow() { }
     }
 }

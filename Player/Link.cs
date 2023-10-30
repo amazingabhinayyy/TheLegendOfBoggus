@@ -7,6 +7,9 @@ using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.CommandClasses;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Collision.SideCollisionHandlers;
+using System;
+using Sprint2_Attempt3.Items.ItemClasses;
+using Sprint2_Attempt3.Player.LinkProjectiles.ProjectileInterfaces;
 
 namespace Sprint2_Attempt3.Player
 {
@@ -18,6 +21,7 @@ namespace Sprint2_Attempt3.Player
         public ILinkState State { get; set; }
         public List<ILinkProjectile> Items { get; set; }
         private Game1 game;
+        public enum ItemNames {BlueBoomerang, Boomerang, BlueArrow, Arrow, Fire, Bomb}
         public Link(Game1 game)
         {
             position.X = 375;
@@ -102,6 +106,19 @@ namespace Sprint2_Attempt3.Player
         {
             State.UseThrowingSword();
         }
+     /*   public void UseItem(Enum item)
+        {
+            switch(item) 
+            {
+                case ItemNames.Bomb:
+                    State.UseBomb(new IBomb(this));
+                    break;
+                case ItemNames.Arrow:
+                    State.UseItem(new IArrow(this));
+                    break;
+
+            }
+        }*/
         public void StartLinkState()
         {
             State = new DownIdleLinkState(this);

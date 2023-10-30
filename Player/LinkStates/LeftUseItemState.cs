@@ -1,35 +1,33 @@
-﻿using System;
+﻿using Sprint2_Attempt3.Collision;
+using Sprint2_Attempt3.Interfaces;
+using Sprint2_Attempt3.Player.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Sprint2_Attempt3.Collision;
-using Sprint2_Attempt3.Player.Interfaces;
-using Sprint2_Attempt3.Player;
-using Sprint2_Attempt3.Player.LinkProjectiles;
 
 namespace Sprint2_Attempt3.Player.LinkStates
 {
-    public class DownUseBoomerangState : ILinkState
+    public class LeftUseItemState : ILinkState
     {
         private Link link;
         private int frameCounter;
-        public DownUseBoomerangState(Link link)
+        public LeftUseItemState(Link link, ILinkProjectile item)
         {
             this.link = link;
-            link.Sprite = LinkSpriteFactory.Instance.CreateDownItemLinkSprite(); ;
-            DownBoomerang boomerang= new DownBoomerang(link);
-            link.Items.Add(boomerang);
-            CollisionDetector.GameObjectList.Add(boomerang);
+            link.Sprite = LinkSpriteFactory.Instance.CreateLeftItemLinkSprite();
+            link.Items.Add(item);
+            CollisionDetector.GameObjectList.Add(item);
             frameCounter = 0;
         }
         public void Stop()
         {
-            link.State = new DownIdleLinkState(link);
+            link.State = new LeftIdleLinkState(link);
         }
         public void BecomeIdle()
         {
+
         }
         public void MoveUp()
         {

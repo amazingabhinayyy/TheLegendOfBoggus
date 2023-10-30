@@ -8,10 +8,11 @@ using Microsoft.Xna.Framework;
 using static Sprint2_Attempt3.Player.Link;
 using Sprint2_Attempt3.Interfaces;
 using Sprint2_Attempt3.Collision;
+using Sprint2_Attempt3.Player.LinkProjectiles.ProjectileInterfaces;
 
 namespace Sprint2_Attempt3.Player.LinkProjectiles
 {
-    public class LeftBomb : IBomb, ILinkProjectile
+    public class LeftBomb : IBomb
     {
         private Link link;
         private int currentFrame;

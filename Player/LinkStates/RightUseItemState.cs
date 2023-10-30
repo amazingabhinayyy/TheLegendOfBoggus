@@ -1,28 +1,29 @@
-﻿using System;
+﻿using Sprint2_Attempt3.Collision;
+using Sprint2_Attempt3.Interfaces;
+using Sprint2_Attempt3.Player.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Sprint2_Attempt3.Collision;
-using Sprint2_Attempt3.Player.Interfaces;
-using Sprint2_Attempt3.Player;
-using Sprint2_Attempt3.Player.LinkProjectiles;
 
 namespace Sprint2_Attempt3.Player.LinkStates
 {
-    public class LeftUseBoomerangState : ILinkState
+    public class RightUseItemState : ILinkState
     {
         private Link link;
         private int frameCounter;
-        public LeftUseBoomerangState(Link link)
+        public RightUseItemState(Link link, ILinkProjectile item)
         {
             this.link = link;
-            link.Sprite = LinkSpriteFactory.Instance.CreateLeftItemLinkSprite(); ;
-            LeftBoomerang boomerang = new LeftBoomerang(link);
-            link.Items.Add(boomerang);
-            CollisionDetector.GameObjectList.Add(boomerang);
+            link.Sprite = LinkSpriteFactory.Instance.CreateRightItemLinkSprite();
+            link.Items.Add(item);
+            CollisionDetector.GameObjectList.Add(item);
             frameCounter = 0;
+        }
+        public void Stop()
+        {
+            link.State = new RightIdleLinkState(link);
         }
         public void BecomeIdle()
         {
@@ -49,10 +50,6 @@ namespace Sprint2_Attempt3.Player.LinkStates
         public void Attack()
         {
 
-        }
-        public void Stop()
-        {
-            link.State = new LeftIdleLinkState(link);
         }
         public void Update()
         {
@@ -88,4 +85,3 @@ namespace Sprint2_Attempt3.Player.LinkStates
         }
     }
 }
-

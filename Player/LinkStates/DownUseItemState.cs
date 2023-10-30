@@ -8,21 +8,26 @@ using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Player;
 using Sprint2_Attempt3.Player.LinkProjectiles;
+using Sprint2_Attempt3.Items;
+using Sprint2_Attempt3.Interfaces;
 
 namespace Sprint2_Attempt3.Player.LinkStates
 {
-    public class RightUseBlueArrowState : ILinkState
+    public class DownUseItemState : ILinkState
     {
         private Link link;
         private int frameCounter;
-        public RightUseBlueArrowState(Link link)
+        public DownUseItemState(Link link, ILinkProjectile item)
         {
             this.link = link;
-            link.Sprite = LinkSpriteFactory.Instance.CreateRightItemLinkSprite(); ;
-            RightBlueArrow blueArrow = new RightBlueArrow(link);
-            link.Items.Add(blueArrow);
-            CollisionDetector.GameObjectList.Add(blueArrow);
+            link.Sprite = LinkSpriteFactory.Instance.CreateDownItemLinkSprite();
+            link.Items.Add(item);
+            CollisionDetector.GameObjectList.Add(item);
             frameCounter = 0;
+        }
+        public void Stop()
+        {
+            link.State = new DownIdleLinkState(link);
         }
         public void BecomeIdle()
         {
@@ -50,10 +55,6 @@ namespace Sprint2_Attempt3.Player.LinkStates
         {
 
         }
-        public void Stop()
-        {
-            link.State = new RightIdleLinkState(link);
-        }
         public void Update()
         {
             frameCounter++;
@@ -73,9 +74,7 @@ namespace Sprint2_Attempt3.Player.LinkStates
         {
 
         }
-        public void UseBlueBoomerang()
-        {
-        }
+        public void UseBlueBoomerang() { }
         public void UseBlueArrow()
         {
 

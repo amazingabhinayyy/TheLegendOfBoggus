@@ -6,31 +6,22 @@ using System.Text;
 using System.Threading.Tasks;
 using Sprint2_Attempt3.Interfaces;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint2_Attempt3.Player.LinkProjectiles.ProjectileInterfaces;
 
-namespace Sprint2_Attempt3.Player.LinkProjectiles
+namespace Sprint2_Attempt3.Player.LinkProjectiles.AbstractProjectiles
 {
-    public abstract class Boomerang : IBoomerang
+    public abstract class Boomerang : ProjectileSecondary, IBoomerang
     {
         protected bool changeDirection;
-        protected Link link;
-        protected int currentFrame;
-        protected ILinkProjectileSprite sprite;
-        protected ILinkProjectileSprite Sprite { set { sprite = value; } }
-        protected Vector2 itemPosition;
-        protected Vector2 ItemPosition { set { itemPosition = value; } } 
-        protected SpriteEffects flip;
-        protected Rectangle sourceRectangle;
-        protected Rectangle SourceRectangle { set { sourceRectangle = value; } }
-        protected const int HitBoxWidth = 7;
-        protected const int HitBoxHeight = 7;
+        //protected ILinkProjectileSprite Sprite { set { sprite = value; } }
+        //protected Vector2 ItemPosition { set { itemPosition = value; } }
+        //protected Rectangle SourceRectangle { set { sourceRectangle = value; } }
 
-        public Boomerang(Link link) 
-        { 
-            this.link = link;
+
+        public Boomerang(Link link) : base(link)
+        {
             changeDirection = false;
-            currentFrame = 0;
             sprite = LinkSpriteFactory.Instance.CreateBlueBoomerangItem();
-            flip = SpriteEffects.None;
         }
         public Vector2 BoomerangPositionUpdater(Vector2 itemPosition, Vector2 linkPosition, int speed)
         {
@@ -42,7 +33,7 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles
 
             //Find the slope and yInt for vector pointing towards link from the boomerang
             float slope = (itemPosition.Y - actualLinkPosition.Y) / (itemPosition.X - actualLinkPosition.X);
-            float yInt = itemPosition.Y - (slope * itemPosition.X);
+            float yInt = itemPosition.Y - slope * itemPosition.X;
 
             if (Math.Abs(itemPosition.X - actualLinkPosition.X) > Math.Abs(itemPosition.Y - actualLinkPosition.Y))
             {
@@ -66,7 +57,7 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles
                 {
                     newItemPosition.Y += speed;
                 }
-                newItemPosition.X = (newItemPosition.Y - yInt)/ slope;
+                newItemPosition.X = (newItemPosition.Y - yInt) / slope;
             }
             return newItemPosition;
         }
@@ -78,15 +69,6 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles
                 changeDirection = true;
             }
         }
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            sprite.Draw(spriteBatch, itemPosition, sourceRectangle, flip);
-        }
-        public Rectangle GetHitBox()
-        {
-            return new Rectangle((int)itemPosition.X, (int)itemPosition.Y, HitBoxWidth, HitBoxHeight);
-        }
-        public abstract void Update();
     }
 
 }

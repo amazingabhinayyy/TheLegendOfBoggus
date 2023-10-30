@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Interfaces;
 using System.Collections.Generic;
+using System;
 
 namespace Sprint2_Attempt3.Player.Interfaces
 {
@@ -25,6 +26,7 @@ namespace Sprint2_Attempt3.Player.Interfaces
         public void UseBlueArrow();
         public void UseFire();
         public void UseThrowingSword();
+       // public void UseItem(Enum ItemNames);
         public void Update();
         public void Draw(SpriteBatch spriteBatch, Color color);
         

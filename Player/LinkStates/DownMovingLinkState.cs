@@ -1,4 +1,5 @@
 ﻿using Sprint2_Attempt3.Player.Interfaces;
+using Sprint2_Attempt3.Player.LinkProjectiles;
 
 namespace Sprint2_Attempt3.Player.LinkStates
 {
@@ -44,27 +45,27 @@ namespace Sprint2_Attempt3.Player.LinkStates
         }
         public void UseBomb()
         {
-            link.State = new DownUseBombLinkState(link);
+            link.State = new DownUseItemState(link, new DownBomb(link));
         }
         public void UseArrow()
         {
-            link.State = new DownUseArrowState(link);
+            link.State = new DownUseItemState(link, new DownArrow(link));
         }
         public void UseBoomerang()
         {
-            link.State = new DownUseBoomerangState(link);
+            link.State = new DownUseItemState(link, new DownBoomerang(link));
         }
         public void UseBlueBoomerang()
         {
-            link.State = new DownUseBlueBoomerangState(link);
+            link.State = new DownUseItemState(link, new DownBlueBoomerang(link));
         }
         public void UseBlueArrow()
         {
-            link.State = new DownUseBlueArrowState(link);
+            link.State = new DownUseItemState(link, new DownBlueArrow(link));
         }
         public void UseFire()
         {
-            link.State = new DownUseFireState(link);
+            link.State = new DownUseItemState(link, new DownFire(link));
         }
         public void UseThrowingSword()
         {
