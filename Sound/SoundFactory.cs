@@ -26,10 +26,6 @@ namespace Sprint2_Attempt3.Sounds
         public SoundEffect bossDefeat { get; set; }
         public SoundEffect secret { get; set; }
         public SoundEffect triforce { get; set; }
-        public SoundEffect highercoupling { get; set; }
-        public SoundEffect lowcohesion { get; set; }
-        public SoundEffect mariogreeting { get; set; }
-        public SoundEffect rickroll { get; set; }
 
         private SoundEffectInstance backgroundMusicInstance;
         private SoundEffectInstance fanfareInstance;
@@ -70,15 +66,13 @@ namespace Sprint2_Attempt3.Sounds
             doorUnlock = content.Load<SoundEffect>("LOZ_Door_Unlock");
             stairs = content.Load<SoundEffect>("LOZ_Stairs");
             bossScream = content.Load<SoundEffect>("LOZ_Boss_Scream1");
-            bossHurt = content.Load<SoundEffect>("LOZ_Boss_Hurt");
-            bossDefeat = content.Load<SoundEffect>("LOZ_Boss_Defeat");
+            bossHurt = content.Load<SoundEffect>("LOZ_Boss_Hit");
+            //bossDefeat = content.Load<SoundEffect>("LOZ_Boss_Defeat");
             secret = content.Load<SoundEffect>("LOZ_Secret");
-            triforce = content.Load<SoundEffect>("LOZ_Triforce");
-            highercoupling = content.Load<SoundEffect>("highercoupling");
-            lowcohesion = content.Load<SoundEffect>("lowcohesion");
+            triforce = content.Load<SoundEffect>("Triforce");
 
 
-            SoundEffect backgroundMusic = content.Load<SoundEffect>("LOZ_Background_Music");
+            SoundEffect backgroundMusic = content.Load<SoundEffect>("03 Underworld BGM");
             backgroundMusicInstance = backgroundMusic.CreateInstance();
             backgroundMusicInstance.IsLooped = true;
             backgroundMusicInstance.Volume *= 0.1f;

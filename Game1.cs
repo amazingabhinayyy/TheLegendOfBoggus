@@ -10,6 +10,7 @@ using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Dungeon;
 using Sprint2_Attempt3.Blocks.BlockSprites;
 using Sprint2_Attempt3.Collision;
+using Sprint2_Attempt3.Sounds;
 
 namespace Sprint2_Attempt3
 {
@@ -47,6 +48,7 @@ namespace Sprint2_Attempt3
             EnemyProjectileSpriteFactory.Instance.LoadAllTextures(Content);
             DungeonSpriteFactory.Instance.LoadAllTextures(Content);
             RoomGenerator.Instance.LoadAllFiles();
+            SoundFactory.Instance.LoadAllTextures(Content);
             link = new Link(this);
             collisionDetector = new CollisionDetector(this, (Link)link);
             keyController = new KeyboardController(this);
