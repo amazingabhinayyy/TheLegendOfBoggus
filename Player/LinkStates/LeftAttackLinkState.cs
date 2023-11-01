@@ -1,6 +1,6 @@
 ﻿using Sprint2_Attempt3.Collision;
-using Sprint2_Attempt3.Player.LinkProjectiles;
-﻿using Sprint2_Attempt3.Player.Interfaces;
+using Sprint2_Attempt3.Player.Interfaces;
+using Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates;
 
 namespace Sprint2_Attempt3.Player.LinkStates
 {
@@ -46,7 +46,7 @@ namespace Sprint2_Attempt3.Player.LinkStates
         public void Update()
         {
             count++;
-            if (count > 30)
+            if (count > 20)
             {
                 FinishAttack();
             }

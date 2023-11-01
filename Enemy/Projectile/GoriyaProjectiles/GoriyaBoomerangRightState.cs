@@ -4,6 +4,7 @@ using Sprint2_Attempt3.Enemy.Keese;
 using System;
 using Sprint2_Attempt3.Enemy.Goriya;
 using Sprint2_Attempt3.Enemy.Projectile;
+using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3.Enemy.Projectile.GoriyaProjectiles;
 
@@ -70,7 +71,7 @@ internal class GoriyaBoomerangRightState : IEnemyProjectileState
             if (goRight)
             {
                 goriyaBoomerang.Position2 = new Vector2(goriyaBoomerang.Position2.X + change, goriyaBoomerang.Position2.Y);
-                if (goriyaBoomerang.Position2.X >= 490)
+                if (goriyaBoomerang.Position2.X >= 780)
                 {
                     goriyaBoomerang.GoRight = false;
                 }
@@ -81,6 +82,7 @@ internal class GoriyaBoomerangRightState : IEnemyProjectileState
                 if (goriyaBoomerang.Position2.X <= goriyaBoomerang.InitialX + 17)
                 {
                     goriyaBoomerang.Throwing = false;
+                    CollisionDetector.GameObjectList.Remove(goriyaBoomerang);
                     goriyaBoomerang.GoRight = true;
                 }
             }

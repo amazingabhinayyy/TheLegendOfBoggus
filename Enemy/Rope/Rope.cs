@@ -5,7 +5,7 @@ using Sprint2_Attempt3.Enemy.Rope;
 
 namespace Sprint2_Attempt3.Enemy.Rope
 {
-    internal class Rope : EnemySecondary
+    internal class Rope : EnemyC
     {
         public Rope(int x, int y)
         {

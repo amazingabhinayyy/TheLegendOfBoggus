@@ -1,11 +1,8 @@
 ﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint2_Attempt3.Interfaces;
-using Sprint2_Attempt3.Player.LinkProjectiles;
-using Sprint2_Attempt3.Player.LinkSprites;
 using Sprint2_Attempt3.Player.Interfaces;
-using Sprint2_Attempt3.Player.LinkProjectilesSprites;
-using Sprint2_Attempt3.Player.Items;
+using Sprint2_Attempt3.Player.LinkSprites;
+using Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesSprites;
 
 namespace Sprint2_Attempt3.Player
 {
@@ -85,21 +82,9 @@ namespace Sprint2_Attempt3.Player
         {
             return new UpMovingLinkSprite(linkTexture);
         }
-        public ILinkProjectileSprite CreateDownAttackLinkSwordSprite()
+        public ILinkProjectileSprite CreateAttackLinkSwordSprite()
         {
-            return new DownAttackLinkSwordSprite(linkTexture);
-        }
-        public ILinkProjectileSprite CreateUpAttackLinkSwordSprite()
-        {
-            return new UpAttackLinkSwordSprite(linkTexture);
-        }
-        public ILinkProjectileSprite CreateLeftAttackLinkSwordSprite()
-        {
-            return new LeftAttackLinkSwordSprite(linkTexture);
-        }
-        public ILinkProjectileSprite CreateRightAttackLinkSwordSprite()
-        {
-            return new RightAttackLinkSwordSprite(linkTexture);
+            return new AttackSwordSprite(linkTexture);
         }
         public ILinkSprite CreateDownItemLinkSprite()
         {

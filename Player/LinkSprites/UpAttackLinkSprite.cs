@@ -30,19 +30,19 @@ namespace Sprint2_Attempt3.Player.LinkSprites
         {
             destinationRectangle = new Rectangle((int)location.X, (int)location.Y, 45, 45);
 
-            if (currentFrame >= 7 && currentFrame < 15)
+            if (currentFrame >= 5 && currentFrame < 10)
             {
                 sourceRectangle = new Rectangle(18, 109, 15, 15);
             }
-            else if (currentFrame >= 15 && currentFrame < 22)
+            else if (currentFrame >= 10 && currentFrame < 15)
             {
                 sourceRectangle = new Rectangle(35, 109, 15, 15);
             }
-            else if (currentFrame >= 22 && currentFrame < 30)
+            else if (currentFrame >= 15 && currentFrame < 20)
             {
                 sourceRectangle = new Rectangle(52, 109, 15, 15);
             }
-            else if (currentFrame >= 0 && currentFrame < 7)
+            else if (currentFrame >= 0 && currentFrame < 5)
             {
                 sourceRectangle = new Rectangle(1, 109, 15, 15);
             }

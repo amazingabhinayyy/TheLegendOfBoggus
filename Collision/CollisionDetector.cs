@@ -4,7 +4,7 @@ using Sprint2_Attempt3.Collision.SideCollisionHandlers;
 using Sprint2_Attempt3.Dungeon.Doors;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Projectile;
-using Sprint2_Attempt3.Interfaces;
+using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Items.ItemClasses;
 using Sprint2_Attempt3.Player.Interfaces;
@@ -64,11 +64,11 @@ namespace Sprint2_Attempt3.Collision
                     }
                     else if (obj is IBlock)
                     {
-                        PlayerBlockHandler.HandlePlayerBlockCollision(link, (IBlock)obj, side);
+                        PlayerBlockHandler.HandlePlayerBlockCollision(linkObj, (IBlock)obj, side);
                     }
                     else if (obj is IDoor)
                     {
-                        ChangedRooms = PlayerBlockHandler.HandlePlayerDoorCollision(link, (IDoor)obj, side, game);
+                        ChangedRooms = PlayerBlockHandler.HandlePlayerDoorCollision(linkObj, (IDoor)obj, side, game);
                     }
                     else if(obj is ILinkProjectile)
                     {
@@ -212,7 +212,7 @@ namespace Sprint2_Attempt3.Collision
                             else if (gameObjectList[c] is IDoor)
                             {
 
-                                //EnemyProjectileBlockHandler.HandleEnemyProjectileBlockCollision((IProjectile)projectile, (IWall)obj, side);
+                                EnemyProjectileBlockHandler.HandleEnemyProjectileBlockCollision((IProjectile)projectile, (IDoor)obj, side);
                             }
                         }
                     }
@@ -221,8 +221,8 @@ namespace Sprint2_Attempt3.Collision
         }
         public void AddWallBlocks()
         {
-            foreach(IWall wall in Globals.WallBlocks)
-            gameObjectList.Add(wall);
+            foreach(IWall wall in Globals.WallBlocks) 
+                gameObjectList.Add(wall);
         }
         public void Update()
         {
@@ -231,7 +231,7 @@ namespace Sprint2_Attempt3.Collision
             CheckProjectileCollision();
             CheckEnemyWallCollision();
         }
-
+        /*
         public static IItem SpawnRandomItem(Vector2 position)
         {
             
@@ -259,6 +259,7 @@ namespace Sprint2_Attempt3.Collision
           
             return item;
         }
+        */
     }
 
 }

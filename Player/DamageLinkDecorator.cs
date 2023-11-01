@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Collision;
-using Sprint2_Attempt3.Interfaces;
 
 namespace Sprint2_Attempt3.Player
 {
@@ -16,7 +15,7 @@ namespace Sprint2_Attempt3.Player
     {
         private Game1 game;
         private ILink decoratedLink;
-        private int timer;
+        private static int timer;
         public List<ILinkProjectile> Items { get; set; }
         private Vector2 position;
         public Vector2 Position { get { return position; } set { position = value; }}
@@ -31,7 +30,11 @@ namespace Sprint2_Attempt3.Player
 
         public void GetDamaged(ICollision side)
         {
-            timer = 100;
+            if (timer < 10)
+            {
+                Knockback(side);
+                timer = 40;
+            }
         }
         public void Knockback(ICollision side) 
         {
@@ -109,7 +112,14 @@ namespace Sprint2_Attempt3.Player
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            decoratedLink.Draw(spriteBatch, Color.Red);
+            if (timer % 8 < 4)
+            {
+                decoratedLink.Draw(spriteBatch, Color.OrangeRed);
+            }
+            else
+            {
+                decoratedLink.Draw(spriteBatch, Color.SandyBrown);
+            }
         }
         public Rectangle GetHitBox()
         {

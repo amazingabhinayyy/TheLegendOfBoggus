@@ -4,7 +4,7 @@ using Sprint2_Attempt3.Enemy.Keese;
 
 namespace Sprint2_Attempt3.Enemy.Gel
 {
-    internal class Gel : EnemySecondary
+    internal class Gel : EnemyX
     {
         //public new int X { get; set; }
         //public new int Y { get; set; }

@@ -4,7 +4,7 @@ using Sprint2_Attempt3.Enemy.SpikeTrap;
 
 namespace Sprint2_Attempt3.Enemy.SpikeTrap
 {
-    internal class SpikeTrap : EnemySecondary
+    internal class SpikeTrap : EnemyX
     {
         public SpikeTrap(int x, int y)
         {

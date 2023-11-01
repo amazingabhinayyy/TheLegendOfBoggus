@@ -4,7 +4,7 @@ using Sprint2_Attempt3.Enemy.Keese;
 
 namespace Sprint2_Attempt3.Enemy.Zol
 {
-    internal class Zol : EnemySecondary
+    internal class Zol : EnemyC
     {
         public Zol(int x, int y)
         {

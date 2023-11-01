@@ -20,6 +20,7 @@ namespace Sprint2_Attempt3.Enemy
         public void MoveRight();
         public void ChangeAttackedStatus();
         public void Kill();
+        public void DropItem();
         public void Draw(SpriteBatch spriteBatch);
         //public IEnemyState GetEnemyState();
     }

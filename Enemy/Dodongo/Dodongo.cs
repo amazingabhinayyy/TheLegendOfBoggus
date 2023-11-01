@@ -5,7 +5,7 @@ using Sprint2_Attempt3.Enemy.Dodongo;
 
 namespace Sprint2_Attempt3.Enemy.Dodongo
 {
-    internal class Dodongo : EnemySecondary
+    internal class Dodongo : EnemyD
     {
         public Dodongo(int x, int y)
         {

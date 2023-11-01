@@ -20,6 +20,7 @@ namespace Sprint2_Attempt3.Enemy
 
         public abstract void Generate();
         public abstract void Stun();
+        public abstract void DropItem();
         public EnemySecondary()
         {
             random = new Random();
@@ -33,7 +34,7 @@ namespace Sprint2_Attempt3.Enemy
             State = new SpawnAnimationState(this);
             //CollisionDetector.GameObjectList.Add(this);
         }
-        public void Kill()
+        public virtual void Kill()
         {
             State = new DeathAnimationState(this);
         }

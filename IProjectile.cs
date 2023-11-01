@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sprint2_Attempt3
 {
-    public interface IProjectile
+    public interface IProjectile : IGameObject
     {
     }
 }

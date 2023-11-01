@@ -7,7 +7,7 @@ using Sprint2_Attempt3.Enemy.Keese;
 
 namespace Sprint2_Attempt3.Enemy.Keese
 {
-    internal class Keese : EnemySecondary
+    internal class Keese : EnemyX
     {
         public Keese(int x, int y)
         {

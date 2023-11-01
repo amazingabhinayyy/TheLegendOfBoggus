@@ -10,7 +10,7 @@ using System;
 
 namespace Sprint2_Attempt3.Enemy.Goriya
 {
-    internal class Goriya : EnemySecondary
+    internal class Goriya : EnemyB
     {
         public int IdleX { get; set; }
         public Vector2 BoomerangPosition { get; set; }
@@ -50,6 +50,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             if (((GoriyaBoomerang)Boomerang).Throwing)
             {
                 Boomerang.Update();
+                
             }
             count++;
             if (count >= distance && (!((GoriyaBoomerang)Boomerang).Throwing))
@@ -84,6 +85,11 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         public override void MoveRight()
         {
             State = new MovingRightGoriyaState(this);
+        }
+        public override void Kill()
+        {
+            base.Kill();
+            CollisionDetector.GameObjectList.Remove(Boomerang);
         }
     }
 }
