@@ -5,7 +5,6 @@ using Sprint2_Attempt3.Player.LinkStates;
 using System.Collections.Generic;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.CommandClasses;
-using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Collision.SideCollisionHandlers;
 using System;
 using Sprint2_Attempt3.Items.ItemClasses;
@@ -21,18 +20,20 @@ namespace Sprint2_Attempt3.Player
         public ILinkState State { get; set; }
         public List<ILinkProjectile> Items { get; set; }
         private Game1 game;
-        public enum ItemNames {BlueBoomerang, Boomerang, BlueArrow, Arrow, Fire, Bomb}
+        //private static int health = 2;
+
         public Link(Game1 game)
         {
             position.X = 375;
             position.Y = 300;
             this.game = game;
             //CollisionDetector.GameObjectList.Add(this);
-            StartLinkState();
+            State = new DownIdleLinkState(this);
+            Items = new List<ILinkProjectile>();
         }
         public void GetDamaged(ICollision side)
         {
-            SetDamageLinkCommand damage = new SetDamageLinkCommand(game);
+            SetDamageLinkCommand damage = new SetDamageLinkCommand(this);
             damage.Execute(side);
         }
         public void Knockback(ICollision side)
@@ -106,23 +107,17 @@ namespace Sprint2_Attempt3.Player
         {
             State.UseThrowingSword();
         }
-     /*   public void UseItem(Enum item)
+        public void Kill()
         {
-            switch(item) 
-            {
-                case ItemNames.Bomb:
-                    State.UseBomb(new IBomb(this));
-                    break;
-                case ItemNames.Arrow:
-                    State.UseItem(new IArrow(this));
-                    break;
-
-            }
-        }*/
-        public void StartLinkState()
+            game.Exit();
+        }
+        public void SetDecorator(ILink decoLink)
         {
-            State = new DownIdleLinkState(this);
-            Items = new List<ILinkProjectile>();
+            game.link = decoLink;
+        }
+        public void RemoveDecorator()
+        {
+            game.link = this;
         }
 
         public void Update()
@@ -134,7 +129,6 @@ namespace Sprint2_Attempt3.Player
                 Items[c].Update();
             }
         }
-
         public void Draw(SpriteBatch _spriteBatch, Color color)
         {
             Sprite.Draw(_spriteBatch, position, color);
@@ -146,7 +140,7 @@ namespace Sprint2_Attempt3.Player
         }
         public Rectangle GetHitBox()
         {
-            if(!(State is Captured))
+            if(State is not Captured)
             {
                 return new Rectangle((int)position.X, (int)position.Y, 15 * 3, 15 * 3);
             }

@@ -13,19 +13,20 @@ namespace Sprint2_Attempt3.Player
 {
     public class DamageLinkDecorator : ILink
     {
-        private Game1 game;
+        //private Game1 game;
         private ILink decoratedLink;
         private static int timer;
         public List<ILinkProjectile> Items { get; set; }
         private Vector2 position;
         public Vector2 Position { get { return position; } set { position = value; }}
-        public DamageLinkDecorator(ILink decoratedLink, Game1 game)
+        private static double health = 1;
+        public DamageLinkDecorator(ILink decoratedLink)//, Game1 game)
         {
             this.decoratedLink = decoratedLink;
-            this.game = game;
-            game.link = this;
+            //this.game = game;
             Items = decoratedLink.Items;
             position = decoratedLink.Position;
+            SetDecorator(this);
         }
 
         public void GetDamaged(ICollision side)
@@ -34,6 +35,11 @@ namespace Sprint2_Attempt3.Player
             {
                 Knockback(side);
                 timer = 40;
+                health -= 0.5;
+                if (health <= 0)
+                {
+                    Kill();
+                }
             }
         }
         public void Knockback(ICollision side) 
@@ -93,7 +99,14 @@ namespace Sprint2_Attempt3.Player
         {
             decoratedLink.UseThrowingSword();
         }
-
+        public void SetDecorator(ILink link)
+        {
+            decoratedLink.SetDecorator(this);
+        }
+        public void Kill()
+        {
+            decoratedLink.Kill();
+        }
 
         public void Update()
         {
@@ -107,7 +120,7 @@ namespace Sprint2_Attempt3.Player
 
         public void RemoveDecorator()
         {
-            game.link = decoratedLink;
+            decoratedLink.RemoveDecorator();
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)

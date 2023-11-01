@@ -24,7 +24,7 @@ namespace Sprint2_Attempt3.Collision
         {
             Link newLink = (Link)link;
             side.LinkEnemyKnockback(newLink);
-            ICommand damage = new SetDamageLinkCommand(game);
+            ICommand damage = new SetDamageLinkCommand(link);
             damage.Execute();
         }
     }
