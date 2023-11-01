@@ -5,6 +5,8 @@ using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Enemy.Projectile.GoriyaProjectiles;
 using Sprint2_Attempt3.Enemy.Goriya;
+using Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles;
+using System;
 
 namespace Sprint2_Attempt3.Enemy.Goriya
 {
@@ -20,6 +22,8 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         {
             Left, Top, Right, Bottom
         }
+        private int distance;
+        private Random random;
 
         public Goriya(int x, int y)
         {
@@ -29,6 +33,8 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             BoomerangPosition = new Vector2(X, Y);
             Boomerang = new GoriyaBoomerang(BoomerangPosition);
             Direction = ProjectileDirection.Left;
+            random = new Random();
+            distance = random.Next(0, 70);
         }
         public override void Generate() {
             State = new MovingLeftGoriyaState(this);
@@ -40,11 +46,20 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         public override void Update()
         {
             
-            State.Update();
+           
             if (((GoriyaBoomerang)Boomerang).Throwing)
             {
                 Boomerang.Update();
             }
+            count++;
+            if (count >= distance && (!((GoriyaBoomerang)Boomerang).Throwing))
+            {
+                State.ChangeDirection();
+                distance = random.Next(0, 70);
+                count = 0;
+
+            }
+            State.Update();
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
@@ -69,6 +84,11 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         public override void MoveRight()
         {
             State = new MovingRightGoriyaState(this);
+        }
+        public override void Kill()
+        {
+            base.Kill();
+            CollisionDetector.GameObjectList.Remove(Boomerang);
         }
     }
 }

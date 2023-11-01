@@ -40,7 +40,6 @@ namespace Sprint2_Attempt3
             commandMapping.Add(Keys.Left, new MoveLinkLeft(game1));
             commandMapping.Add(Keys.D, new MoveLinkRight(game1));
             commandMapping.Add(Keys.Right, new MoveLinkRight(game1));
-            commandMapping.Add(Keys.E, new SetDamageLinkCommand(game1));
             commandMapping.Add(Keys.Z, new SetAttackLinkCommand(game1));
             commandMapping.Add(Keys.N, new SetAttackLinkCommand(game1));
             commandMapping.Add(Keys.None, new SetIdleLinkCommand(game1));

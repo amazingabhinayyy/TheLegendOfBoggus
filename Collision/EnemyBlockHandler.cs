@@ -19,7 +19,6 @@ namespace Sprint2_Attempt3.Collision
 {
     public class EnemyBlockHandler
     {
-        //public static void HandleEnemyWallCollision()
         public static void HandleEnemyBlockCollision(IEnemy enemy, IGameObject obj, Rectangle collisionRectangle)
         {
             Boolean check = true;
