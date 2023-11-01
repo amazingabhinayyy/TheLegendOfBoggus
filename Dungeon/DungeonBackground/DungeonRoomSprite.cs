@@ -19,7 +19,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         {
             spriteBatch.Draw(
                 texture,
-                new Rectangle(0, 200, Globals.ScreenWidth, 550),
+                new Rectangle(0, 175, Globals.ScreenWidth, 550),
                 sourceRectangle,
                 Color.White,
                 0f,

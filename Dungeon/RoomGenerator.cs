@@ -58,7 +58,7 @@ namespace Sprint2_Attempt3.Dungeon
                 {
                     var words = line.Split(",");
                     if (words[0].Equals("Enemy")) {
-                        objectList.Add(GetEnemy(words[1], int.Parse(words[2]), int.Parse(words[3])));
+                        objectList.Add(GetEnemy(words[1], int.Parse(words[2]), int.Parse(words[3]) + Globals.YOffset));
                     }
                     else if (words[0].Equals("Block"))
                     {
@@ -66,7 +66,7 @@ namespace Sprint2_Attempt3.Dungeon
                     }
                     else if (words[0].Equals("Item"))
                     {
-                        objectList.Add(GetItem(words[1], new Vector2(int.Parse(words[2]), int.Parse(words[3])), bool.Parse(words[4])));
+                        objectList.Add(GetItem(words[1], new Vector2(int.Parse(words[2]), int.Parse(words[3]) + Globals.YOffset), bool.Parse(words[4])));
                     }
                     else if (words[0].Equals("Door"))
                     {
@@ -203,7 +203,7 @@ namespace Sprint2_Attempt3.Dungeon
             }
             else if (Item.Equals("Boomerang"))
             {
-                item = new BoomerangItem(position, spawned);
+                item = new Boomerang(position, spawned);
             }
             else if (Item.Equals("Bow"))
             {

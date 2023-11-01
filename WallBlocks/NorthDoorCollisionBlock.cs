@@ -12,7 +12,7 @@ namespace Sprint2_Attempt3.WallBlocks
         Rectangle wall;
         public NorthDoorCollisionBlock()
         {
-            wall = new Rectangle(0, 200, 800, 40);
+            wall = new Rectangle(0, 0 + Globals.YOffset, 800, 40);
         }
         public Rectangle GetHitBox()
         {

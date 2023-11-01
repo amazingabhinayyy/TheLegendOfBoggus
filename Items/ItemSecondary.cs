@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Collision;
+using Sprint2_Attempt3.Inventory;
 
 namespace Sprint2_Attempt3.Items
 {
@@ -28,9 +29,10 @@ namespace Sprint2_Attempt3.Items
             sprite = ItemSpriteFactory.Instance.CreateSpawnItemSprite();
             exists = true;
         }
-        public void Collect() { 
+        public virtual void Collect() { 
             exists = false;
             CollisionDetector.GameObjectList.Remove(this);
+            InventoryController.IncrementCount(this.GetType().Name);
         }
         public virtual void Update() {
             if (count == 0)
