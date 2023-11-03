@@ -10,6 +10,7 @@ using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Dungeon;
 using Sprint2_Attempt3.Blocks.BlockSprites;
 using Sprint2_Attempt3.Collision;
+using Sprint2_Attempt3.Inventory;
 
 namespace Sprint2_Attempt3
 {
@@ -17,8 +18,10 @@ namespace Sprint2_Attempt3
     {
         GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
+        Texture2D InventoryTexture;
         private KeyboardController keyController { get; set; }
         private MouseController mouseController { get; set; }
+        private InventoryController inventoryController { get; set; }
         public ILink link { get; set; }
         public IRoom room { get; set; }
 
@@ -34,6 +37,8 @@ namespace Sprint2_Attempt3
         protected override void Initialize()
         {
             base.Initialize();
+            graphics.PreferredBackBufferHeight = 725;
+            graphics.ApplyChanges();
             RoomGenerator.Instance.LoadAllFiles();
         }
 
@@ -48,10 +53,12 @@ namespace Sprint2_Attempt3
             EnemyProjectileSpriteFactory.Instance.LoadAllTextures(Content);
             DungeonSpriteFactory.Instance.LoadAllTextures(Content);
             RoomGenerator.Instance.LoadAllFiles();
+            InventoryTexture = Content.Load<Texture2D>("Inventory");
             link = new Link(this);
             collisionDetector = new CollisionDetector(this, (Link)link);
             keyController = new KeyboardController(this);
             mouseController = new MouseController(this);
+            inventoryController = new InventoryController(InventoryTexture);
             room = new Room1(this);
         }
 
@@ -73,7 +80,8 @@ namespace Sprint2_Attempt3
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
-            room.Draw(spriteBatch);
+            //room.Draw(spriteBatch);
+            inventoryController.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }
