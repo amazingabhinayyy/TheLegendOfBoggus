@@ -205,7 +205,7 @@ namespace Sprint2_Attempt3.Collision
                             else if (gameObjectList[c] is IWall)
                             {
                                 EnemyProjectileBlockHandler.HandleEnemyProjectileBlockCollision((IProjectile)projectile, (IWall)obj, side);
-                                System.Diagnostics.Debug.WriteLine("enemy");
+                                //System.Diagnostics.Debug.WriteLine("enemy");
                                 //HandleCollision.HandleProjectileBlockCollision((ILinkProjectile)gameObjectList[i]);
                             }
                             else if (gameObjectList[c] is IDoor)
