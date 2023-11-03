@@ -20,7 +20,6 @@ namespace Sprint2_Attempt3.Player
         public ILinkState State { get; set; }
         public List<ILinkProjectile> Items { get; set; }
         private Game1 game;
-        //private static int health = 2;
 
         public Link(Game1 game)
         {
