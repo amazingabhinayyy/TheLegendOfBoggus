@@ -48,7 +48,7 @@ namespace Sprint2_Attempt3
             EnemyProjectileSpriteFactory.Instance.LoadAllTextures(Content);
             DungeonSpriteFactory.Instance.LoadAllTextures(Content);
             RoomGenerator.Instance.LoadAllFiles();
-            SoundFactory.Instance.LoadAllTextures(Content);
+            //SoundFactory.Instance.LoadAllTextures(Content);
             link = new Link(this);
             collisionDetector = new CollisionDetector(this, (Link)link);
             keyController = new KeyboardController(this);
