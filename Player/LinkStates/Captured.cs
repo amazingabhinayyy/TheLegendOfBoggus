@@ -1,4 +1,5 @@
 ﻿using Sprint2_Attempt3.Player.Interfaces;
+using Microsoft.Xna.Framework;
 
 namespace Sprint2_Attempt3.Player.LinkStates
 {
@@ -36,7 +37,8 @@ namespace Sprint2_Attempt3.Player.LinkStates
         }
         public void Update()
         {
-            link.position.Y -= 1;
+            link.Position = new Vector2(link.Position.X, link.Position.Y - 1);
+            //link.Position -= 1;
         }
         public void UseBomb()
         {

@@ -15,7 +15,7 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates
     {
         public DownArrow(Link link) : base(link)
         {
-            itemPosition = new Vector2((int)link.position.X + 15, (int)link.position.Y + 45);
+            itemPosition = new Vector2((int)link.Position.X + 15, (int)link.Position.Y + 45);
             flip = SpriteEffects.FlipVertically;
             sourceRectangle = new Rectangle(3, 185, 5, 15);
             HitBoxWidth = 15;

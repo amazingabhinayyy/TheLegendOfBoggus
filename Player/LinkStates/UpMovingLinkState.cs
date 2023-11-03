@@ -1,6 +1,6 @@
 ﻿using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates;
-
+using Microsoft.Xna.Framework;
 namespace Sprint2_Attempt3.Player.LinkStates
 {
     public class UpMovingLinkState : ILinkState
@@ -41,7 +41,8 @@ namespace Sprint2_Attempt3.Player.LinkStates
         }
         public void Update()
         {
-            link.position.Y -= 4;
+            link.Position = new Vector2(link.Position.X, link.Position.Y - 4);
+            //link.Position.Y -= 4;
         }
         public void UseBomb()
         {
