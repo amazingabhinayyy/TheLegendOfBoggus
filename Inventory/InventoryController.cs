@@ -99,58 +99,64 @@ namespace Sprint2_Attempt3.Inventory
             { '6', new Rectangle(325, 131, 8, 8) },
             { '7', new Rectangle(334, 131, 8, 8) },
             { '8', new Rectangle(343, 131, 8, 8) },
-            { '9', new Rectangle(352, 131, 8, 8) }
+            { '9', new Rectangle(352, 131, 8, 8) },
+            { ' ', blackSrcRectangle }
         };
+
+        private static Rectangle[] DigitDestRectangles = new Rectangle[]
+        {
+            new Rectangle(destRectangle.X + 326, destRectangle.Y + 581, 26, 26),
+            new Rectangle(destRectangle.X + 352, destRectangle.Y + 581, 26, 26),
+            new Rectangle(destRectangle.X + 326, destRectangle.Y + 629, 26, 26),
+            new Rectangle(destRectangle.X + 352, destRectangle.Y + 629, 26, 26),
+            new Rectangle(destRectangle.X + 326, destRectangle.Y + 655, 26, 26),
+            new Rectangle(destRectangle.X + 352, destRectangle.Y + 655, 26, 26)
+        };
+
         private static Rectangle ItemBDestRectangle = new Rectangle(destRectangle.X + 401, destRectangle.Y + 606, 26, 49);
         private static Rectangle ItemADestRectangle = new Rectangle(destRectangle.X + 477, destRectangle.Y + 606, 26, 49);
         private static Rectangle ItemSelectedDestRectangle = new Rectangle(destRectangle.X + 212, destRectangle.Y + 145, 26, 49);
         private static Rectangle DungeonMapDestRectangle = new Rectangle(destRectangle.X + 50, destRectangle.Y + 582, 201, 97);
-        private static Rectangle RupeeDigit1 = new Rectangle(destRectangle.X + 326, destRectangle.Y + 581, 26, 26);
-        private static Rectangle RupeeDigit2 = new Rectangle(destRectangle.X + 352, destRectangle.Y + 581, 26, 26);
+        private static Rectangle CursorDestRectangle = new Rectangle(destRectangle.X + 402, destRectangle.Y + 145, 49, 49);
 
-        private static Rectangle KeyDigit1 = new Rectangle(destRectangle.X + 326, destRectangle.Y + 629, 26, 26);
-        private static Rectangle KeyDigit2 = new Rectangle(destRectangle.X + 352, destRectangle.Y + 629, 26, 26);
-        private static Rectangle BombDigit1 = new Rectangle(destRectangle.X + 326, destRectangle.Y + 655, 26, 26);
-        private static Rectangle BombDigit2 = new Rectangle(destRectangle.X + 352, destRectangle.Y + 655, 26, 26);
-
-        private static Rectangle DungeonMapSrcRectangle = new Rectangle(257, 34, 63, 31);
-        private static Rectangle DungeonLayoutSrcRectangle = new Rectangle(257, 0, 63, 31);
+        private static Rectangle DungeonMapSrcRectangle = new Rectangle(258, 34, 62, 30);
 
         private static Rectangle blackSrcRectangle = new Rectangle(315,170, 10,10);
         
         private static Rectangle ArrowSrcRectangle = new Rectangle(341, 151, 8, 15);
-        private static Rectangle BlueArrowSrcRectangle = new Rectangle(350, 151, 8, 15);
-        private static Rectangle BlueCandleSrcRectangle = new Rectangle(367, 151, 10, 15);
+        private static Rectangle BlueCandleSrcRectangle = new Rectangle(368, 151, 8, 15);
         private static Rectangle BluePotionSrcRectangle = new Rectangle(386, 151, 8, 15);
         private static Rectangle BombSrcRectangle = new Rectangle(332, 151, 8, 15);
         private static Rectangle BoomerangSrcRectangle = new Rectangle(314, 151, 8, 15);
         private static Rectangle BowSrcRectangle = new Rectangle(359, 151, 8, 16);
-        private static Rectangle ClockSrcRectangle = new Rectangle(341, 151, 8, 15);
+        private static Rectangle ClockSrcRectangle = new Rectangle(413, 151, 11, 16);
         private static Rectangle CompassSrcRectangle = new Rectangle(288, 168, 14, 15);
-        private static Rectangle FairySrcRectangle = new Rectangle(341, 151, 8, 15);
+        private static Rectangle FairySrcRectangle = new Rectangle(404, 151, 8, 15);
         private static Rectangle EmptyHeartSrcRectangle = new Rectangle(370, 131, 8, 8);
         private static Rectangle HalfHeartSrcRectangle = new Rectangle(379, 131, 8, 8);
         private static Rectangle FullHeartSrcRectangle = new Rectangle(388, 131, 8, 8);
         private static Rectangle MapSrcRectangle = new Rectangle(279, 168, 8, 15);
+        private static Rectangle CursorSrcRectangle = new Rectangle(262, 151, 16, 16);
 
-        private static Rectangle ArrowDestRectangle = new Rectangle(destRectangle.X + 551, destRectangle.Y + 145, 26, 49);
-        private static Rectangle BlueArrowDestRectangle = new Rectangle(destRectangle.X + 577, destRectangle.Y + 145, 26, 49);
-        private static Rectangle BlueCandleDestRectangle = new Rectangle(destRectangle.X + 638, destRectangle.Y + 145, 29, 49);
-        private static Rectangle BluePotionDestRectangle = new Rectangle(destRectangle.X + 565, destRectangle.Y + 194, 27, 49);
-        private static Rectangle BombDestRectangle = new Rectangle(destRectangle.X + 489, destRectangle.Y + 145, 26, 49);
+
         private static Rectangle BoomerangDestRectangle = new Rectangle(destRectangle.X + 415, destRectangle.Y + 145, 26, 49);
-        private static Rectangle BowDestRectangle = new Rectangle(destRectangle.X + 415, destRectangle.Y + 194, 26, 49);
-        private static Rectangle ClockDestRectangle = new Rectangle(destRectangle.X + 489, destRectangle.Y + 195, 26, 49);
-        private static Rectangle CompassDestRectangle = new Rectangle(destRectangle.X + 138, destRectangle.Y + 460, 47, 49);
-        private static Rectangle FairyDestRectangle = new Rectangle(destRectangle.X + 639, destRectangle.Y + 194, 26, 49);
+        private static Rectangle BombDestRectangle = new Rectangle(destRectangle.X + 489, destRectangle.Y + 145, 26, 49);
+        private static Rectangle ArrowDestRectangle = new Rectangle(destRectangle.X + 563, destRectangle.Y + 145, 26, 49);
+        private static Rectangle BlueCandleDestRectangle = new Rectangle(destRectangle.X + 638, destRectangle.Y + 145, 29, 49);
+
+        private static Rectangle BowDestRectangle = new Rectangle(destRectangle.X + 415, destRectangle.Y + 196, 26, 49);
+        private static Rectangle ClockDestRectangle = new Rectangle(destRectangle.X + 488, destRectangle.Y + 196, 28, 49);
+        private static Rectangle BluePotionDestRectangle = new Rectangle(destRectangle.X + 563, destRectangle.Y + 196, 27, 49);
+        private static Rectangle FairyDestRectangle = new Rectangle(destRectangle.X + 639, destRectangle.Y + 196, 26, 49);
+        
         private static Rectangle MapDestRectangle = new Rectangle(destRectangle.X + 150, destRectangle.Y + 339, 26, 49);
+        private static Rectangle CompassDestRectangle = new Rectangle(destRectangle.X + 138, destRectangle.Y + 460, 47, 49);
         public InventoryController(Texture2D texture) {
             LinkItems = new Dictionary<string, InventoryItem>() {
                 { "Arrow", new InventoryItem(ArrowDestRectangle, ArrowSrcRectangle) },
-                { "BlueArrow", new InventoryItem(BlueArrowDestRectangle, BlueArrowSrcRectangle) },
                 { "BlueCandle", new InventoryItem(BlueCandleDestRectangle, BlueCandleSrcRectangle) },
                 { "BluePotion", new InventoryItem(BluePotionDestRectangle, BluePotionSrcRectangle) },
-                { "Bomb", new InventoryItem(BombDestRectangle, BombSrcRectangle, 28) },
+                { "Bomb", new InventoryItem(BombDestRectangle, BombSrcRectangle, 1) },
                 { "Boomerang", new InventoryItem(BoomerangDestRectangle, BoomerangSrcRectangle) },
                 { "Bow", new InventoryItem(BowDestRectangle, BowSrcRectangle) },
                 { "Clock", new InventoryItem(ClockDestRectangle, ClockSrcRectangle) },
@@ -158,12 +164,33 @@ namespace Sprint2_Attempt3.Inventory
                 { "Fairy", new InventoryItem(FairyDestRectangle, FairySrcRectangle) },
                 { "Heart", new InventoryItem(3.5f) },
                 { "HeartContainer", new InventoryItem(1) },
-                { "Key", new InventoryItem(16) },
+                { "Key", new InventoryItem(0) },
                 { "Map", new InventoryItem(MapDestRectangle, MapSrcRectangle) },
                 { "Rupee", new InventoryItem(35) },
                 { "TriforcePiece", new InventoryItem() }
             };
             this.texture = texture;
+        }
+
+        private static String UpdateItemCounts() {
+            String ItemsCount = LinkItems["Rupee"].count.ToString();
+            if (ItemsCount.Length % 2 != 0) {
+                ItemsCount += ' ';
+            }
+
+            ItemsCount += LinkItems["Key"].count.ToString();
+            if (ItemsCount.Length % 2 != 0)
+            {
+                ItemsCount += ' ';
+            }
+
+            ItemsCount += LinkItems["Bomb"].count.ToString();
+            if (ItemsCount.Length % 2 != 0)
+            {
+                ItemsCount += ' ';
+            }
+
+            return ItemsCount;
         }
 
         public static void IncrementCount(String item)
@@ -189,6 +216,82 @@ namespace Sprint2_Attempt3.Inventory
         public static float GetCount(String item)
         {
             return LinkItems[item].count;
+        }
+
+        public static void ShiftCursorRight() {
+            if (CursorDestRectangle.X < 627)
+                CursorDestRectangle.X += 75;
+        }
+        public static void ShiftCursorLeft()
+        {
+            if(CursorDestRectangle.X > 402)
+                CursorDestRectangle.X -= 75;
+        }
+        public static void ShiftCursorUp()
+        {
+            if (CursorDestRectangle.Y > 145)
+                CursorDestRectangle.Y -= 50;
+        }
+        public static void ShiftCursorDown()
+        {
+            if (CursorDestRectangle.Y < 195)
+                CursorDestRectangle.Y += 50;
+        }
+
+        public void ShiftUp() {
+            if (destRectangle.Y > -525)
+            {
+                destRectangle.Y--;
+                foreach (KeyValuePair<String, InventoryItem> item in LinkItems)
+                {
+                    item.Value.ShiftUp();
+                }
+
+                for (int i = 0; i < HeartBoxes.Length; i++)
+                {
+                    HeartBoxes[i].Y--;
+                }
+
+                for (int i = 0; i < DigitDestRectangles.Length; i++)
+                {
+                    DigitDestRectangles[i].Y--;
+                }
+
+                ItemBDestRectangle.Y--;
+                ItemADestRectangle.Y--;
+                ItemSelectedDestRectangle.Y--;
+                DungeonMapDestRectangle.Y--;
+                CursorDestRectangle.Y--;
+            }
+
+        }
+
+        public void DownUp()
+        {
+            if (destRectangle.Y < 12)
+            {
+                destRectangle.Y++;
+                foreach (KeyValuePair<String, InventoryItem> item in LinkItems)
+                {
+                    item.Value.ShiftDown();
+                }
+
+                for (int i = 0; i < HeartBoxes.Length; i++)
+                {
+                    HeartBoxes[i].Y++;
+                }
+
+                for (int i = 0; i < DigitDestRectangles.Length; i++)
+                {
+                    DigitDestRectangles[i].Y++;
+                }
+
+                ItemBDestRectangle.Y++;
+                ItemADestRectangle.Y++;
+                ItemSelectedDestRectangle.Y++;
+                DungeonMapDestRectangle.Y++;
+                CursorDestRectangle.Y++;
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch) {
@@ -230,22 +333,19 @@ namespace Sprint2_Attempt3.Inventory
             //Draw Items A&B
             spriteBatch.Draw(texture, ItemBDestRectangle, BowSrcRectangle, Color.White);
             spriteBatch.Draw(texture, ItemADestRectangle, BowSrcRectangle, Color.White);
+            spriteBatch.Draw(texture, ItemSelectedDestRectangle, BoomerangSrcRectangle, Color.White);
 
             //draw layout
-            spriteBatch.Draw(texture, DungeonMapDestRectangle, DungeonLayoutSrcRectangle, Color.White);
+            spriteBatch.Draw(texture, DungeonMapDestRectangle, DungeonMapSrcRectangle, Color.White);
 
             //draw numbers
-            String rupeeCount = ((int)LinkItems["Rupee"].count).ToString();
-            spriteBatch.Draw(texture, RupeeDigit1, numberSrcRectangles[rupeeCount.ElementAt(0)], Color.White);
-            spriteBatch.Draw(texture, RupeeDigit2, numberSrcRectangles[rupeeCount.ElementAt(1)], Color.White);
-            
-            String KeyCount = ((int)LinkItems["Key"].count).ToString();
-            spriteBatch.Draw(texture, KeyDigit1, numberSrcRectangles[KeyCount.ElementAt(0)], Color.White);
-            spriteBatch.Draw(texture, KeyDigit2, numberSrcRectangles[KeyCount.ElementAt(1)], Color.White);
+            String number = UpdateItemCounts();
+            for (int i = 0; i < DigitDestRectangles.Length; i++) {
+                spriteBatch.Draw(texture, DigitDestRectangles[i], numberSrcRectangles[number.ElementAt(i)], Color.White);
+            }
 
-            String BombCount = ((int)LinkItems["Bomb"].count).ToString();
-            spriteBatch.Draw(texture, BombDigit1, numberSrcRectangles[BombCount.ElementAt(0)], Color.White);
-            spriteBatch.Draw(texture, BombDigit2, numberSrcRectangles[BombCount.ElementAt(1)], Color.White);
+            //draw cursor
+            spriteBatch.Draw(texture, CursorDestRectangle, CursorSrcRectangle, Color.White);
         }
     }
 }

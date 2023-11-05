@@ -32,7 +32,6 @@ namespace Sprint2_Attempt3.Enemy
         public void Spawn()
         {
             State = new SpawnAnimationState(this);
-            //CollisionDetector.GameObjectList.Add(this);
         }
         public virtual void Kill()
         {
@@ -68,8 +67,6 @@ namespace Sprint2_Attempt3.Enemy
         public Rectangle GetHitBox() {
             return Position;
         }
-
-       // public IEnemyState GetEnemyState() { return State; }
 
         public abstract void MoveUp();
         public abstract void MoveDown();

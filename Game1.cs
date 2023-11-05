@@ -76,10 +76,10 @@ namespace Sprint2_Attempt3
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             spriteBatch.Begin();
-            //room.Draw(spriteBatch);
+            room.Draw(spriteBatch);
             inventoryController.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
