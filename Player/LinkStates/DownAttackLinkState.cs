@@ -1,4 +1,5 @@
 ﻿using Sprint2_Attempt3.Collision;
+using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates;
 
@@ -51,6 +52,12 @@ namespace Sprint2_Attempt3.Player.LinkStates
             {
                 FinishAttack();
             }
+            else if(count == 10)
+            {
+                DownSwordBeam swordBeam = new DownSwordBeam(link);
+                link.Items.Add(swordBeam);
+                CollisionDetector.GameObjectList.Add(swordBeam);
+            }
         }
 
         public void UseBomb()
@@ -73,10 +80,6 @@ namespace Sprint2_Attempt3.Player.LinkStates
 
         }
         public void UseFire()
-        {
-
-        }
-        public void UseThrowingSword()
         {
 
         }

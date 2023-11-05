@@ -52,6 +52,12 @@ namespace Sprint2_Attempt3.Player.LinkStates
             {
                 FinishAttack();
             }
+            else if (count == 10)
+            {
+                UpSwordBeam swordBeam = new UpSwordBeam(link);
+                link.Items.Add(swordBeam);
+                CollisionDetector.GameObjectList.Add(swordBeam);
+            }
         }
         public void UseBomb()
         {
@@ -71,10 +77,6 @@ namespace Sprint2_Attempt3.Player.LinkStates
 
         }
         public void UseFire()
-        {
-
-        }
-        public void UseThrowingSword()
         {
 
         }

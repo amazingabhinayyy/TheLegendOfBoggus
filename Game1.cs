@@ -81,10 +81,6 @@ namespace Sprint2_Attempt3
                 collisionDetector.Update();
                 room.Update();
             }
-            else
-            {
-                startScreen.Update();
-            }
             base.Update(gameTime);
         }
 

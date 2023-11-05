@@ -102,10 +102,6 @@ namespace Sprint2_Attempt3.Player
         {
             State.UseFire();
         }
-        public void UseThrowingSword()
-        {
-            State.UseThrowingSword();
-        }
         public void Kill()
         {
             game.Exit();

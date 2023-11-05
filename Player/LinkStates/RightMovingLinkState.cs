@@ -67,9 +67,5 @@ namespace Sprint2_Attempt3.Player.LinkStates
         {
             link.State = new RightUseItemState(link, new RightFire(link));
         }
-        public void UseThrowingSword()
-        {
-
-        }
     }
 }
