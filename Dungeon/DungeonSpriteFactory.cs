@@ -20,7 +20,6 @@ namespace Sprint2_Attempt3.Dungeon
         {
 
         }
-
         public void LoadAllTextures(ContentManager content)
         {
             DungeonTexture = content.Load<Texture2D>("Dungeon_Doors");

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System.Net.Http;
+using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles
 {
@@ -50,6 +51,10 @@ namespace Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles
             position2 = fireballPosition;
             fire = false;
         }
+        public void Collided()
+        {
+            CollisionDetector.GameObjectList.Remove(this);
+        }
         public void Update()
         {
             state.Update();
@@ -61,6 +66,5 @@ namespace Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles
         public Rectangle GetHitBox() {
             return new Rectangle((int)Position2.X, (int)Position2.Y, Globals.AquamentusFireball1.Width * (int)Globals.scale, Globals.AquamentusFireball1.Height * (int)Globals.scale);
         }
-
     }
 }
