@@ -1,6 +1,7 @@
 ﻿using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates;
+using Sprint2_Attempt3.Player.LinkProjectiles.ProjectileInterfaces;
 
 namespace Sprint2_Attempt3.Player.LinkStates
 {
@@ -52,9 +53,21 @@ namespace Sprint2_Attempt3.Player.LinkStates
             }
             else if (count == 10)
             {
-                LeftSwordBeam swordBeam = new LeftSwordBeam(link);
-                link.Items.Add(swordBeam);
-                CollisionDetector.GameObjectList.Add(swordBeam);
+                bool noSwordBeam = true;
+                //Checks to see if a sword beam currently exist and if so doesn't spawn another one
+                foreach (ILinkProjectile obj in link.Items)
+                {
+                    if (obj is ISwordBeam)
+                    {
+                        noSwordBeam = false;
+                    }
+                }
+                if (noSwordBeam)
+                {
+                    LeftSwordBeam swordBeam = new LeftSwordBeam(link);
+                    link.Items.Add(swordBeam);
+                    CollisionDetector.GameObjectList.Add(swordBeam);
+                }
             }
         }
         public void UseBomb()

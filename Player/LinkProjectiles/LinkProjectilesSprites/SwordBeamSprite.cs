@@ -27,19 +27,19 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesSprites
         public void Draw(SpriteBatch spritebatch, Vector2 location, Rectangle srcRec, SpriteEffects flip)
         {
             Rectangle sourceRectangle = srcRec;
-            if (currentFrame % 12 < 3)
+            if (currentFrame % 8 < 2)
             {
                 sourceRectangle = new Rectangle(srcRec.X, srcRec.Y, srcRec.Width, srcRec.Height);
             }
-            else if(currentFrame % 12 < 6) 
+            else if(currentFrame % 8 < 4) 
             {
                 sourceRectangle = new Rectangle(srcRec.X + 35, srcRec.Y, srcRec.Width, srcRec.Height);
             }
-            else if(currentFrame % 12 < 9)
+            else if(currentFrame % 8 < 6)
             {
                 sourceRectangle = new Rectangle(srcRec.X + 35*2, srcRec.Y, srcRec.Width, srcRec.Height);
             }
-            else if(currentFrame % 12 < 12)
+            else if(currentFrame % 8 < 8)
             {
                 sourceRectangle = new Rectangle(srcRec.X + 35*3, srcRec.Y, srcRec.Width, srcRec.Height);
             }
