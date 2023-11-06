@@ -46,6 +46,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
 
         public override void SwitchToNorthRoom() {
             game1.room = new Room4(game1);
+            //transitionRooms
             /*roomNumber = 3;
             CollisionDetector.GameObjectList = gameObjectLists[roomNumber];*/
         }

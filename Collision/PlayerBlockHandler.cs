@@ -110,6 +110,7 @@ namespace Sprint2_Attempt3.Collision
                     link.Position = new Vector2(link.Position.X, wall.Top - link.GetHitBox().Height);
                 }
             } else
+                // add door transition stuff
             {
                 IRoom room = game.room;
                 if (door is NorthDoor)
