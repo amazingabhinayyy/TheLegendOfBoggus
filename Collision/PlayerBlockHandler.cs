@@ -68,13 +68,16 @@ namespace Sprint2_Attempt3.Collision
             }
             if (blocked)
             {
+                
                 Rectangle wall = obj.GetHitBox();
                 if (side is BottomCollision)
                 {
+                   
                     link.Position = new Vector2(link.Position.X, wall.Bottom);
                 }
                 else if (side is LeftCollision)
                 {
+                    
                     link.Position = new Vector2(wall.Left - link.GetHitBox().Width, link.Position.Y);
                 }
                 else if (side is RightCollision)
@@ -100,6 +103,7 @@ namespace Sprint2_Attempt3.Collision
                 }
                 else
                 {
+               ;
                     Rectangle wall = door.GetHitBox();
                     if (side is BottomCollision)
                     {
@@ -122,6 +126,10 @@ namespace Sprint2_Attempt3.Collision
 
             if(door.IsWalkable){
                 IRoom room = game.room;
+                //TransitionHandler transition = new TransitionHandler(door);
+                //TransitionHandler transition = new TransitionHandler();
+                //transition.Door = door;
+                TransitionHandler.Instance.Door = door;
                 if (door is NorthDoor)
                 {
                     game.room.SwitchToNorthRoom();

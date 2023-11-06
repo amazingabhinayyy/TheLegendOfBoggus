@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
+using Sprint2_Attempt3.Dungeon.Rooms;
 using System.Collections.Generic;
 
 namespace Sprint2_Attempt3.Dungeon
@@ -14,5 +15,7 @@ namespace Sprint2_Attempt3.Dungeon
         public void SwitchToSouthRoom();
         public void SwitchToEastRoom();
         public void SwitchToWestRoom();
+        public DungeonRoom getDungeonRoom();
+       
     }
 }

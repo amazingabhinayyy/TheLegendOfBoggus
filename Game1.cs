@@ -27,6 +27,9 @@ namespace Sprint2_Attempt3
         public IRoom room { get; set; }
         public bool gameStarted { get; set; }
 
+        private GameTime gameTime;
+        public GameTime Gametime { get { return gameTime; } }
+
         public CollisionDetector collisionDetector;
         private StartScreenState startScreen;
 
@@ -66,6 +69,7 @@ namespace Sprint2_Attempt3
             inventoryController = new InventoryController(InventoryTexture);
             room = new Room1(this);
             startScreen = new StartScreenState(this);
+            TransitionHandler.Instance.setGame1(this);
         }
 
         protected override void UnloadContent()
@@ -87,6 +91,7 @@ namespace Sprint2_Attempt3
 
         protected override void Draw(GameTime gameTime)
         {
+            this.gameTime = gameTime;
             GraphicsDevice.Clear(Color.Black);
 
             spriteBatch.Begin();
