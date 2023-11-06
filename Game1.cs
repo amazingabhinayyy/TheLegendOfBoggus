@@ -69,7 +69,7 @@ namespace Sprint2_Attempt3
         {
             keyController.Update(gameTime);
             mouseController.Update(gameTime);
-            collisionDetector.Update();
+            inventoryController.Update();
             room.Update();
             base.Update(gameTime);
         }

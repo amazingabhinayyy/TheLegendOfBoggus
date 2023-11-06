@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint2_Attempt3.Dungeon;
 using Sprint2_Attempt3.Items.ItemClasses;
 using System;
 using System.Collections;
@@ -12,64 +13,14 @@ namespace Sprint2_Attempt3.Inventory
 {
     public class InventoryController
     {
-        public struct InventoryItem {
-            internal float count = 0;
-            public Rectangle destRectangle { get; private set; }
-            public Rectangle sourceRectangle { get; private set; }
-
-            public InventoryItem(Rectangle destination, Rectangle source)
-            {
-                count = 1;
-                destRectangle = destination;
-                sourceRectangle = source;
-            }
-
-            public InventoryItem(float c)
-            {
-                count = c;
-                destRectangle = new Rectangle();
-                sourceRectangle = new Rectangle();
-            }
-
-            public InventoryItem(Rectangle destination, Rectangle source, float c)
-            {
-                count = c;
-                destRectangle = destination;
-                sourceRectangle = source;
-            }
-
-            public void IncrementCount() {
-                count++;
-            }
-
-            public void DecrementCount()
-            {
-                count--;
-            }
-
-            public void IncrementCount(float i)
-            {
-                count += i;
-            }
-
-            public void DecrementCount(float i)
-            {
-                count -= i;
-            }
-
-            public void ShiftUp() {
-                destRectangle = new Rectangle(destRectangle.X, destRectangle.Y - 1, destRectangle.Width, destRectangle.Height);
-            }
-
-            public void ShiftDown()
-            {
-                destRectangle = new Rectangle(destRectangle.X, destRectangle.Y + 1, destRectangle.Width, destRectangle.Height);
-            }
-        }
-        private static Rectangle destRectangle = new Rectangle(0, 12, 800, 700);
+        private static Rectangle destRectangle = new Rectangle(0, -525, 800, 700);
         private static Rectangle sourceRectangle = new Rectangle(0, 0, 255, 231);
+        private static int ItemAIndex;
+        private static int ItemBIndex;
+        private static int ItemSelectedIndex;
+        private static int count;
         private Texture2D texture;
-        public static Dictionary<String, InventoryItem> LinkItems { get; set; }
+        private static Dictionary<String, InventoryItem> LinkItems { get; set; }
         private static Rectangle[] HeartBoxes = new Rectangle[] {
                 new Rectangle(destRectangle.X + 552, destRectangle.Y + 630, 26, 25),
                 new Rectangle(destRectangle.X + 578, destRectangle.Y + 630, 26, 25),
@@ -113,6 +64,30 @@ namespace Sprint2_Attempt3.Inventory
             new Rectangle(destRectangle.X + 352, destRectangle.Y + 655, 26, 26)
         };
 
+        private static Rectangle[] MarkerDestRectangles = new Rectangle[]
+        {
+            new Rectangle(destRectangle.X + 132, destRectangle.Y + 670, 9, 9),
+            new Rectangle(destRectangle.X + 106, destRectangle.Y + 670, 9, 9),
+            new Rectangle(destRectangle.X + 158, destRectangle.Y + 670, 9, 9),
+            new Rectangle(destRectangle.X + 132, destRectangle.Y + 657, 9, 9),
+            new Rectangle(destRectangle.X + 106, destRectangle.Y + 644, 9, 9),
+            new Rectangle(destRectangle.X + 132, destRectangle.Y + 644, 9, 9),
+            new Rectangle(destRectangle.X + 158, destRectangle.Y + 644, 9, 9),
+            new Rectangle(destRectangle.X + 80, destRectangle.Y + 631, 9, 9),
+            new Rectangle(destRectangle.X + 106, destRectangle.Y + 631, 9, 9),
+            new Rectangle(destRectangle.X + 132, destRectangle.Y + 631, 9, 9),
+            new Rectangle(destRectangle.X + 158, destRectangle.Y + 631, 9, 9),
+            new Rectangle(destRectangle.X + 184, destRectangle.Y + 631, 9, 9),
+            new Rectangle(destRectangle.X + 132, destRectangle.Y + 618, 9, 9),
+            new Rectangle(destRectangle.X + 184, destRectangle.Y + 618, 9, 9),
+            new Rectangle(destRectangle.X + 210, destRectangle.Y + 618, 9, 9),
+            new Rectangle(destRectangle.X + 106, destRectangle.Y + 605, 9, 9),
+            new Rectangle(destRectangle.X + 106, destRectangle.Y + 605, 9, 9),
+            new Rectangle(destRectangle.X + 132, destRectangle.Y + 605, 9, 9)
+        };
+
+        private static String[] ItemMenuStrings = { "Boomerang", "Bomb", "Arrow", "BlueCandle", "Bow", "Clock", "BluePotion", "Fairy" };
+
         private static Rectangle ItemBDestRectangle = new Rectangle(destRectangle.X + 401, destRectangle.Y + 606, 26, 49);
         private static Rectangle ItemADestRectangle = new Rectangle(destRectangle.X + 477, destRectangle.Y + 606, 26, 49);
         private static Rectangle ItemSelectedDestRectangle = new Rectangle(destRectangle.X + 212, destRectangle.Y + 145, 26, 49);
@@ -122,7 +97,11 @@ namespace Sprint2_Attempt3.Inventory
         private static Rectangle DungeonMapSrcRectangle = new Rectangle(258, 34, 62, 30);
 
         private static Rectangle blackSrcRectangle = new Rectangle(315,170, 10,10);
-        
+        private static Rectangle WhiteMarkerSrcRectangle = new Rectangle(266, 140, 3, 3);
+        private static Rectangle GreenMarkerSrcRectangle = new Rectangle(262, 140, 3, 3);
+        private static Rectangle RedMarkerSrcRectangle = new Rectangle(270, 140, 3, 3);
+        private static Rectangle TriforceMarkerSrcRectangle;
+
         private static Rectangle ArrowSrcRectangle = new Rectangle(341, 151, 8, 15);
         private static Rectangle BlueCandleSrcRectangle = new Rectangle(368, 151, 8, 15);
         private static Rectangle BluePotionSrcRectangle = new Rectangle(386, 151, 8, 15);
@@ -160,31 +139,36 @@ namespace Sprint2_Attempt3.Inventory
                 { "Boomerang", new InventoryItem(BoomerangDestRectangle, BoomerangSrcRectangle) },
                 { "Bow", new InventoryItem(BowDestRectangle, BowSrcRectangle) },
                 { "Clock", new InventoryItem(ClockDestRectangle, ClockSrcRectangle) },
-                { "Compass", new InventoryItem(CompassDestRectangle, CompassSrcRectangle) },
+                { "Compass", new InventoryItem(CompassDestRectangle, CompassSrcRectangle, 0) },
                 { "Fairy", new InventoryItem(FairyDestRectangle, FairySrcRectangle) },
                 { "Heart", new InventoryItem(3.5f) },
-                { "HeartContainer", new InventoryItem(1) },
-                { "Key", new InventoryItem(0) },
-                { "Map", new InventoryItem(MapDestRectangle, MapSrcRectangle) },
+                { "HeartContainer", new InventoryItem(5) },
+                { "Key", new InventoryItem(99) },
+                { "Map", new InventoryItem(MapDestRectangle, MapSrcRectangle, 0) },
                 { "Rupee", new InventoryItem(35) },
                 { "TriforcePiece", new InventoryItem() }
             };
+            ItemAIndex = 1;
+            ItemBIndex = 2;
+            ItemSelectedIndex = 0;
+            TriforceMarkerSrcRectangle = GreenMarkerSrcRectangle;
+            count = 0;
             this.texture = texture;
         }
 
         private static String UpdateItemCounts() {
-            String ItemsCount = LinkItems["Rupee"].count.ToString();
+            String ItemsCount = LinkItems["Rupee"].Count().ToString();
             if (ItemsCount.Length % 2 != 0) {
                 ItemsCount += ' ';
             }
 
-            ItemsCount += LinkItems["Key"].count.ToString();
+            ItemsCount += LinkItems["Key"].Count().ToString();
             if (ItemsCount.Length % 2 != 0)
             {
                 ItemsCount += ' ';
             }
 
-            ItemsCount += LinkItems["Bomb"].count.ToString();
+            ItemsCount += LinkItems["Bomb"].Count().ToString();
             if (ItemsCount.Length % 2 != 0)
             {
                 ItemsCount += ' ';
@@ -215,30 +199,52 @@ namespace Sprint2_Attempt3.Inventory
 
         public static float GetCount(String item)
         {
-            return LinkItems[item].count;
+            return LinkItems[item].Count();
         }
 
         public static void ShiftCursorRight() {
             if (CursorDestRectangle.X < 627)
+            {
                 CursorDestRectangle.X += 75;
+                ItemSelectedIndex++;
+            }
         }
         public static void ShiftCursorLeft()
         {
-            if(CursorDestRectangle.X > 402)
+            if (CursorDestRectangle.X > 402)
+            {
                 CursorDestRectangle.X -= 75;
+                ItemSelectedIndex--;
+            }
         }
         public static void ShiftCursorUp()
         {
             if (CursorDestRectangle.Y > 145)
+            {
                 CursorDestRectangle.Y -= 50;
+                ItemSelectedIndex -= 4;
+            }
         }
         public static void ShiftCursorDown()
         {
             if (CursorDestRectangle.Y < 195)
+            {
                 CursorDestRectangle.Y += 50;
+                ItemSelectedIndex += 4;
+            }
         }
 
-        public void ShiftUp() {
+        public static void SetItemA() {
+            if(ItemSelectedIndex != ItemBIndex)
+                ItemAIndex = ItemSelectedIndex;
+        }
+        public static void SetItemB()
+        {
+            if(ItemSelectedIndex != ItemAIndex)
+                ItemBIndex = ItemSelectedIndex;
+        }
+
+        public static void ShiftUp() {
             if (destRectangle.Y > -525)
             {
                 destRectangle.Y--;
@@ -257,6 +263,11 @@ namespace Sprint2_Attempt3.Inventory
                     DigitDestRectangles[i].Y--;
                 }
 
+                for (int i = 0; i < MarkerDestRectangles.Length; i++)
+                {
+                    MarkerDestRectangles[i].Y--;
+                }
+
                 ItemBDestRectangle.Y--;
                 ItemADestRectangle.Y--;
                 ItemSelectedDestRectangle.Y--;
@@ -266,7 +277,7 @@ namespace Sprint2_Attempt3.Inventory
 
         }
 
-        public void DownUp()
+        public static void ShiftDown()
         {
             if (destRectangle.Y < 12)
             {
@@ -294,13 +305,28 @@ namespace Sprint2_Attempt3.Inventory
             }
         }
 
+        public void Update() {
+            if (count <= 10)
+            {
+                TriforceMarkerSrcRectangle = GreenMarkerSrcRectangle;
+            }
+            else if (count <= 20)
+            {
+                TriforceMarkerSrcRectangle = RedMarkerSrcRectangle;
+            }
+            else {
+                count = 0;
+            }
+            count++;
+        }
+
         public void Draw(SpriteBatch spriteBatch) {
             spriteBatch.Draw(texture, destRectangle, sourceRectangle, Color.White);
 
             //draw item Menu
             spriteBatch.Draw(texture, ItemSelectedDestRectangle, BowSrcRectangle, Color.White);
             foreach (KeyValuePair<String, InventoryItem> pair in LinkItems) {
-                if (pair.Value.count > 0) {
+                if (pair.Value.Count() > 0) {
                     spriteBatch.Draw(texture, pair.Value.destRectangle, pair.Value.sourceRectangle, Color.White);
                 }
                 else
@@ -312,16 +338,16 @@ namespace Sprint2_Attempt3.Inventory
             //draw hearts
             for (int i = 0; i < HeartBoxes.Length; i++)
             {
-                if (i < LinkItems["Heart"].count - .5)
+                if (i < LinkItems["Heart"].Count() - .5)
                 {
                     spriteBatch.Draw(texture, HeartBoxes[i], FullHeartSrcRectangle, Color.White);
                 }
-                else if ((LinkItems["Heart"].count - i) % 1 == .5)
+                else if ((LinkItems["Heart"].Count() - i) % 1 == .5)
                 {
                     spriteBatch.Draw(texture, HeartBoxes[i], HalfHeartSrcRectangle, Color.White);
                 }
                 else {
-                    if (i < (LinkItems["HeartContainer"].count + LinkItems["Heart"].count - .5)) {
+                    if (i < LinkItems["HeartContainer"].Count()) {
                         spriteBatch.Draw(texture, HeartBoxes[i], EmptyHeartSrcRectangle, Color.White);
                     } else
                     {
@@ -331,12 +357,15 @@ namespace Sprint2_Attempt3.Inventory
             }
 
             //Draw Items A&B
-            spriteBatch.Draw(texture, ItemBDestRectangle, BowSrcRectangle, Color.White);
-            spriteBatch.Draw(texture, ItemADestRectangle, BowSrcRectangle, Color.White);
-            spriteBatch.Draw(texture, ItemSelectedDestRectangle, BoomerangSrcRectangle, Color.White);
+            spriteBatch.Draw(texture, ItemBDestRectangle, LinkItems[ItemMenuStrings[ItemAIndex]].sourceRectangle, Color.White);
+            spriteBatch.Draw(texture, ItemADestRectangle, LinkItems[ItemMenuStrings[ItemBIndex]].sourceRectangle, Color.White);
+            spriteBatch.Draw(texture, ItemSelectedDestRectangle, LinkItems[ItemMenuStrings[ItemSelectedIndex]].sourceRectangle, Color.White);
 
             //draw layout
-            spriteBatch.Draw(texture, DungeonMapDestRectangle, DungeonMapSrcRectangle, Color.White);
+            if (LinkItems["Map"].Count() > 0)
+            {
+                spriteBatch.Draw(texture, DungeonMapDestRectangle, DungeonMapSrcRectangle, Color.White);
+            }
 
             //draw numbers
             String number = UpdateItemCounts();
@@ -346,6 +375,14 @@ namespace Sprint2_Attempt3.Inventory
 
             //draw cursor
             spriteBatch.Draw(texture, CursorDestRectangle, CursorSrcRectangle, Color.White);
+
+            //draw triforce marker
+            if (LinkItems["Compass"].Count() > 0) {
+                spriteBatch.Draw(texture, MarkerDestRectangles[14], TriforceMarkerSrcRectangle, Color.White);
+            }
+
+            //draw Marker
+            spriteBatch.Draw(texture, MarkerDestRectangles[RoomSecondary.GetCurrentRoomNumber()], WhiteMarkerSrcRectangle, Color.White);
         }
     }
 }

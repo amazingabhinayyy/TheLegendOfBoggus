@@ -81,6 +81,9 @@ namespace Sprint2_Attempt3.Dungeon
             game1.link.Draw(spriteBatch, Color.White);
         }
 
+        public static int GetCurrentRoomNumber() { 
+            return roomNumber;
+        }
         public virtual void SwitchToNorthRoom() { }
         public virtual void SwitchToSouthRoom() { }
         public virtual void SwitchToEastRoom() { }

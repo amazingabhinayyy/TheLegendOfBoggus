@@ -105,18 +105,18 @@ namespace Sprint2_Attempt3
             {71, new Rectangle(600, 350 + Globals.YOffset, 50, 50) },
             {72, new Rectangle(650, 350 + Globals.YOffset, 50, 50) },
 
-            {73, new Rectangle(100, 300 + Globals.YOffset, 50, 50) },
-            {74, new Rectangle(150, 300 + Globals.YOffset, 50, 50) },
-            {75, new Rectangle(200, 300 + Globals.YOffset, 50, 50) },
-            {76, new Rectangle(250, 300 + Globals.YOffset, 50, 50) },
-            {77, new Rectangle(300, 300 + Globals.YOffset, 50, 50) },
-            {78, new Rectangle(350, 300 + Globals.YOffset, 50, 50) },
-            {79, new Rectangle(400, 300 + Globals.YOffset, 50, 50) },
-            {80, new Rectangle(450, 300 + Globals.YOffset, 50, 50) },
-            {81, new Rectangle(500, 300 + Globals.YOffset, 50, 50) },
-            {82, new Rectangle(550, 300 + Globals.YOffset, 50, 50) },
-            {83, new Rectangle(600, 300 + Globals.YOffset, 50, 50) },
-            {84, new Rectangle(650, 300 + Globals.YOffset, 50, 50) }
+            {73, new Rectangle(100, 400 + Globals.YOffset, 50, 50) },
+            {74, new Rectangle(150, 400 + Globals.YOffset, 50, 50) },
+            {75, new Rectangle(200, 400 + Globals.YOffset, 50, 50) },
+            {76, new Rectangle(250, 400 + Globals.YOffset, 50, 50) },
+            {77, new Rectangle(300, 400 + Globals.YOffset, 50, 50) },
+            {78, new Rectangle(350, 400 + Globals.YOffset, 50, 50) },
+            {79, new Rectangle(400, 400 + Globals.YOffset, 50, 50) },
+            {80, new Rectangle(450, 400 + Globals.YOffset, 50, 50) },
+            {81, new Rectangle(500, 400 + Globals.YOffset, 50, 50) },
+            {82, new Rectangle(550, 400 + Globals.YOffset, 50, 50) },
+            {83, new Rectangle(600, 400 + Globals.YOffset, 50, 50) },
+            {84, new Rectangle(650, 400 + Globals.YOffset, 50, 50) }
         };
 
         public static Rectangle plainScr { get { return new Rectangle(0, 0, 16, 16); } }
@@ -250,10 +250,10 @@ namespace Sprint2_Attempt3
 
         public static Rectangle DungeonStandard { get { return new Rectangle(1, 1, 256, 176); } }
 
-        public static Rectangle NorthDoorPosition { get { return new Rectangle(348, 0 + (ScreenHeight - 550), 105, 100); } }
-        public static Rectangle SouthDoorPosition { get { return new Rectangle(348, 450 + (ScreenHeight - 550), 105, 100); } }
-        public static Rectangle EastDoorPosition { get { return new Rectangle(700, 227 + (ScreenHeight - 550), 100, 94); } }
-        public static Rectangle WestDoorPosition { get { return new Rectangle(0, 227 + (ScreenHeight - 550), 100, 94); } }
+        public static Rectangle NorthDoorPosition { get { return new Rectangle(348, 0 + Globals.YOffset, 105, 100); } }
+        public static Rectangle SouthDoorPosition { get { return new Rectangle(348, 450 + Globals.YOffset, 105, 100); } }
+        public static Rectangle EastDoorPosition { get { return new Rectangle(700, 227 + Globals.YOffset, 100, 94); } }
+        public static Rectangle WestDoorPosition { get { return new Rectangle(0, 227 + Globals.YOffset, 100, 94); } }
 
         public static Rectangle OpenNorthDoor { get { return new Rectangle(259, 1, 30, 32); } }
         public static Rectangle OpenSouthDoor { get { return new Rectangle(259, 100, 30, 32); } }

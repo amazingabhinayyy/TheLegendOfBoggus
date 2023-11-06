@@ -33,12 +33,12 @@ namespace Sprint2_Attempt3
         {
             //Link movements
             commandMapping.Add(Keys.W, new MoveLinkUp(game1));
-            commandMapping.Add(Keys.Up, new MoveLinkUp(game1));
             commandMapping.Add(Keys.S, new MoveLinkDown(game1));
-            commandMapping.Add(Keys.Down, new MoveLinkDown(game1));
             commandMapping.Add(Keys.A, new MoveLinkLeft(game1));
-            commandMapping.Add(Keys.Left, new MoveLinkLeft(game1));
             commandMapping.Add(Keys.D, new MoveLinkRight(game1));
+            commandMapping.Add(Keys.Up, new MoveLinkUp(game1));
+            commandMapping.Add(Keys.Down, new MoveLinkDown(game1));
+            commandMapping.Add(Keys.Left, new MoveLinkLeft(game1));
             commandMapping.Add(Keys.Right, new MoveLinkRight(game1));
             commandMapping.Add(Keys.Z, new SetAttackLinkCommand(game1));
             commandMapping.Add(Keys.N, new SetAttackLinkCommand(game1));
@@ -57,6 +57,14 @@ namespace Sprint2_Attempt3
 
             //switching rooms
             //commandMapping.Add(Keys.P, new SwitchToNextRoom(game1));
+
+            //item selector
+            /*commandMapping.Add(Keys.Up, new ShiftItemSelectorUp(game1));
+            commandMapping.Add(Keys.Down, new ShiftItemSelectorDown(game1));
+            commandMapping.Add(Keys.Left, new ShiftItemSelectorLeft(game1));
+            commandMapping.Add(Keys.Right, new ShiftItemSelectorRight(game1));
+            commandMapping.Add(Keys.V, new SetAItem(game1));
+            commandMapping.Add(Keys.B, new SetBItem(game1));*/
 
             moveKeyTime.Add(Keys.W, 0);
             moveKeyTime.Add(Keys.A, 0);

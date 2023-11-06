@@ -10,6 +10,8 @@ namespace Sprint2_Attempt3.Dungeon.Doors
     public interface IDoor : IGameObject
     {
         public bool IsWalkable { get { return IsWalkable; } private set { IsWalkable = value; } }
+        public bool IsLocked { get { return IsLocked; } private set { IsLocked = value; } }
+        public bool IsDiamondLocked { get { return IsDiamondLocked; } private set { IsDiamondLocked = value; } }
         public void Open();
         public void Close();
         public void DiamondLock();

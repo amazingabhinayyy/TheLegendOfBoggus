@@ -15,6 +15,7 @@ using Sprint2_Attempt3.Dungeon.Doors;
 using Sprint2_Attempt3.Dungeon;
 using Sprint2_Attempt3.Player;
 using System.Reflection.Metadata.Ecma335;
+using Sprint2_Attempt3.Inventory;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -92,34 +93,42 @@ namespace Sprint2_Attempt3.Collision
             bool changedRooms = false;
             if (!door.IsWalkable)
             {
-                Rectangle wall = door.GetHitBox();
-                if (side is BottomCollision)
+                if (door.IsLocked && InventoryController.GetCount("Key") > 0)
                 {
-                    link.Position = new Vector2(link.Position.X, wall.Bottom);
-                }
-                else if (side is LeftCollision)
-                {
-                    link.Position = new Vector2(wall.Left - link.GetHitBox().Width, link.Position.Y);
-                }
-                else if (side is RightCollision)
-                {
-                    link.Position = new Vector2(wall.Right, link.Position.Y);
+                    door.Open();
+                    InventoryController.DecrementCount("Key");
                 }
                 else
                 {
-                    link.Position = new Vector2(link.Position.X, wall.Top - link.GetHitBox().Height);
+                    Rectangle wall = door.GetHitBox();
+                    if (side is BottomCollision)
+                    {
+                        link.Position = new Vector2(link.Position.X, wall.Bottom);
+                    }
+                    else if (side is LeftCollision)
+                    {
+                        link.Position = new Vector2(wall.Left - link.GetHitBox().Width, link.Position.Y);
+                    }
+                    else if (side is RightCollision)
+                    {
+                        link.Position = new Vector2(wall.Right, link.Position.Y);
+                    }
+                    else
+                    {
+                        link.Position = new Vector2(link.Position.X, wall.Top - link.GetHitBox().Height);
+                    }
                 }
-            } else
-            {
+            } 
+
+            if(door.IsWalkable){
                 IRoom room = game.room;
                 if (door is NorthDoor)
                 {
                     game.room.SwitchToNorthRoom();
                     if (room != game.room)
                     {
-                        link.Position = new Vector2(link.Position.X, 300);
+                        link.Position = new Vector2(link.Position.X, 450 + Globals.YOffset - link.GetHitBox().Height);
                         changedRooms = true;
-                        //System.Diagnostics.Debug.WriteLine(link.Position.Y);
                     }
                 }  
                 else if (door is EastDoor)
@@ -136,7 +145,7 @@ namespace Sprint2_Attempt3.Collision
                     game.room.SwitchToSouthRoom();
                     if (room != game.room)
                     {
-                        link.Position = new Vector2(link.Position.X, 90);
+                        link.Position = new Vector2(link.Position.X, 100 + Globals.YOffset);
                         changedRooms = true;
                     }
                 }
