@@ -145,3 +145,9 @@
 /processorParam:TextureFormat=Color
 /build:TitleScreen.png
 
+#begin Underworld_BGM.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Underworld_BGM.wav
+
