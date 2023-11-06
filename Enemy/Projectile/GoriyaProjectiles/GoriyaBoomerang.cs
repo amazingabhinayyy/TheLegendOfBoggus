@@ -81,6 +81,13 @@ namespace Sprint2_Attempt3.Enemy.Projectile.GoriyaProjectiles
             initialY = (int)position2.Y;
             goDown = true;
         }
+        public void ReverseBoomerang()
+        {
+            goUp = false;
+            goDown = false;
+            goRight = false;
+            goLeft = false;
+        }
         public GoriyaBoomerang(Vector2 boomerangPosition)
         {
             position2 = boomerangPosition;

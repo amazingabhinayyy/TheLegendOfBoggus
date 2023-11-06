@@ -122,6 +122,7 @@ namespace Sprint2_Attempt3.Collision
 
             if(door.IsWalkable){
                 IRoom room = game.room;
+                link.Items.Clear();
                 if (door is NorthDoor)
                 {
                     game.room.SwitchToNorthRoom();
