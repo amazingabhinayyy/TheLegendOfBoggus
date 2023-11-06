@@ -19,6 +19,7 @@ namespace Sprint2_Attempt3.Dungeon
         protected static List<IGameObject>[] gameObjectLists = new List<IGameObject>[18];
         protected static int roomNumber;
         protected static int enemyKillCount = 0;
+        public static bool ClockUsed { get; set; } = false;
         protected DungeonRoom room;
         protected Game1 game1;
         protected CollisionDetector collisionDetector;
@@ -53,6 +54,7 @@ namespace Sprint2_Attempt3.Dungeon
                 ((DamageLinkDecorator)game1.link).RemoveDecorator();
             }
 
+            ClockUsed = false;
             collisionDetector = new CollisionDetector(game1, game1.link);
             CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
         }
@@ -65,6 +67,7 @@ namespace Sprint2_Attempt3.Dungeon
             {
                 roomNumber = 0;
             }
+            ClockUsed = false;
             InventoryController.VisitRoom(roomNumber);
             CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
         }
@@ -79,7 +82,9 @@ namespace Sprint2_Attempt3.Dungeon
             {
                 roomNumber--;
             }
-           CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
+            ClockUsed = false;
+            InventoryController.VisitRoom(roomNumber);
+            CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
         }
         public void Update() {
             collisionDetector.Update();
@@ -89,6 +94,7 @@ namespace Sprint2_Attempt3.Dungeon
                 IGameObject obj = gameObjectLists[roomNumber][i];
                 if (obj is IEnemy)
                 {
+                    if(!ClockUsed || ((IEnemy)obj).State is DeathAnimationState)
                     ((IEnemy)obj).Update();
                 }
                 else if (obj is IItem)

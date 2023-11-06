@@ -14,14 +14,15 @@ namespace Sprint2_Attempt3.Inventory
 {
     public class InventoryController
     {
-        private static Rectangle destRectangle = new Rectangle(0, -525, 800, 700);
+        private static Rectangle destRectangle = new Rectangle(0, 12, 800, 700);
         private static Rectangle sourceRectangle = new Rectangle(0, 0, 255, 231);
-        private static int ItemAIndex;
-        private static int ItemBIndex;
-        private static int ItemSelectedIndex;
-        private static int count;
+        private static int ItemAIndex = 1;
+        private static int ItemBIndex = 7;
+        private static int ItemSelectedIndex = 0;
+        private static int count = 0;
         private Texture2D texture;
-        public static bool FullView { get; private set; }
+        public static bool FullView { get; private set; } = false;
+        public static bool UsingFairy { get; set; } = false;
         private static Dictionary<String, InventoryItem> LinkItems { get; set; }
         private static Rectangle[] HeartBoxes = new Rectangle[] {
                 new Rectangle(destRectangle.X + 552, destRectangle.Y + 630, 26, 25),
@@ -124,7 +125,7 @@ namespace Sprint2_Attempt3.Inventory
         private static Rectangle WhiteMarkerSrcRectangle = new Rectangle(266, 140, 3, 3);
         private static Rectangle GreenMarkerSrcRectangle = new Rectangle(262, 140, 3, 3);
         private static Rectangle RedMarkerSrcRectangle = new Rectangle(270, 140, 3, 3);
-        private static Rectangle TriforceMarkerSrcRectangle;
+        private static Rectangle TriforceMarkerSrcRectangle = GreenMarkerSrcRectangle;
 
         private static Rectangle ArrowSrcRectangle = new Rectangle(341, 151, 8, 15);
         private static Rectangle BlueCandleSrcRectangle = new Rectangle(368, 151, 8, 15);
@@ -159,14 +160,14 @@ namespace Sprint2_Attempt3.Inventory
         public InventoryController(Texture2D texture, Game1 game1) {
             LinkItems = new Dictionary<string, InventoryItem>() {
                 { "Arrow", new InventoryItem(ArrowDestRectangle, ArrowSrcRectangle, new SetUseArrowCommand(game1)) },
-                { "BlueCandle", new InventoryItem(BlueCandleDestRectangle, BlueCandleSrcRectangle) },
-                { "BluePotion", new InventoryItem(BluePotionDestRectangle, BluePotionSrcRectangle) },
+                { "BlueCandle", new InventoryItem(BlueCandleDestRectangle, BlueCandleSrcRectangle, new SetUseFireCommand(game1)) },
+                { "BluePotion", new InventoryItem(BluePotionDestRectangle, BluePotionSrcRectangle, new UseBluePotion()) },
                 { "Bomb", new InventoryItem(BombDestRectangle, BombSrcRectangle, new SetUseBombCommand(game1), 99) },
                 { "Boomerang", new InventoryItem(BoomerangDestRectangle, BoomerangSrcRectangle, new SetUseBoomerangCommand(game1)) },
                 { "Bow", new InventoryItem(BowDestRectangle, BowSrcRectangle) },
-                { "Clock", new InventoryItem(ClockDestRectangle, ClockSrcRectangle) },
+                { "Clock", new InventoryItem(ClockDestRectangle, ClockSrcRectangle, new UseClock()) },
                 { "Compass", new InventoryItem(CompassDestRectangle, CompassSrcRectangle, 0) },
-                { "Fairy", new InventoryItem(FairyDestRectangle, FairySrcRectangle) },
+                { "Fairy", new InventoryItem(FairyDestRectangle, FairySrcRectangle, new UseFairy()) },
                 { "SwordProjectile", new InventoryItem(SwordDestRectangle, SwordSrcRectangle, new SetAttackLinkCommand(game1)) },
                 { "Heart", new InventoryItem(3.5f) },
                 { "HeartContainer", new InventoryItem(5) },
@@ -175,14 +176,8 @@ namespace Sprint2_Attempt3.Inventory
                 { "Rupee", new InventoryItem(99) },
                 { "TriforcePiece", new InventoryItem() }
             };
-            ItemAIndex = 1;
-            ItemBIndex = 2;
-            ItemSelectedIndex = 0;
-            TriforceMarkerSrcRectangle = GreenMarkerSrcRectangle;
-            count = 0;
             RoomsNotVisited.AddRange(Enumerable.Range(1,17));
-            FullView = false;
-            this.texture = texture;
+            this.texture = Game1.InventoryTexture;
         }
 
         private static String UpdateItemCounts() {
@@ -266,11 +261,13 @@ namespace Sprint2_Attempt3.Inventory
         public static void SetItemA() {
             if(ItemSelectedIndex != ItemBIndex)
                 ItemAIndex = ItemSelectedIndex;
+                UsingFairy = false;
         }
         public static void SetItemB()
         {
             if(ItemSelectedIndex != ItemAIndex)
                 ItemBIndex = ItemSelectedIndex;
+                UsingFairy = false;
         }
 
         public static void UseAItem()
@@ -374,13 +371,7 @@ namespace Sprint2_Attempt3.Inventory
             //draw item Menu
             spriteBatch.Draw(texture, ItemSelectedDestRectangle, BowSrcRectangle, Color.White);
             foreach (KeyValuePair<String, InventoryItem> pair in LinkItems) {
-                if (pair.Value.Count() > 0) {
-                    spriteBatch.Draw(texture, pair.Value.destRectangle, pair.Value.sourceRectangle, Color.White);
-                }
-                else
-                {
-                    spriteBatch.Draw(texture, pair.Value.destRectangle, blackSrcRectangle, Color.White);
-                }
+                spriteBatch.Draw(texture, pair.Value.destRectangle, pair.Value.GetSrcRectangle(), Color.White);    
             }
 
             //draw hearts
@@ -405,9 +396,9 @@ namespace Sprint2_Attempt3.Inventory
             }
 
             //Draw Items A&B
-            spriteBatch.Draw(texture, ItemBDestRectangle, LinkItems[ItemMenuStrings[ItemAIndex]].sourceRectangle, Color.White);
-            spriteBatch.Draw(texture, ItemADestRectangle, LinkItems[ItemMenuStrings[ItemBIndex]].sourceRectangle, Color.White);
-            spriteBatch.Draw(texture, ItemSelectedDestRectangle, LinkItems[ItemMenuStrings[ItemSelectedIndex]].sourceRectangle, Color.White);
+            spriteBatch.Draw(texture, ItemBDestRectangle, LinkItems[ItemMenuStrings[ItemAIndex]].GetSrcRectangle(), Color.White);
+            spriteBatch.Draw(texture, ItemADestRectangle, LinkItems[ItemMenuStrings[ItemBIndex]].GetSrcRectangle(), Color.White);
+            spriteBatch.Draw(texture, ItemSelectedDestRectangle, LinkItems[ItemMenuStrings[ItemSelectedIndex]].GetSrcRectangle(), Color.White);
 
             //draw layout
             if (LinkItems["Map"].Count() > 0)
