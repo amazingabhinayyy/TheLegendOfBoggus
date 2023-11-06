@@ -14,7 +14,7 @@ namespace Sprint2_Attempt3.Inventory
 {
     public class InventoryController
     {
-        private static Rectangle destRectangle = new Rectangle(0, 12, 800, 700);
+        private static Rectangle destRectangle = new Rectangle(0, -525, 800, 700);
         private static Rectangle sourceRectangle = new Rectangle(0, 0, 255, 231);
         private static int ItemAIndex = 1;
         private static int ItemBIndex = 7;
