@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sprint2_Attempt3.Inventory;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,11 @@ namespace Sprint2_Attempt3.CommandClasses
         }
 
         public void Execute() {
-            game.link.UseBomb();
+            if (InventoryController.GetCount("Bomb") > 0)
+            {
+                game.link.UseBomb();
+                InventoryController.DecrementCount("Bomb");
+            }
         }
     }
 }

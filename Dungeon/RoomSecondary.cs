@@ -6,7 +6,9 @@ using Sprint2_Attempt3.Dungeon.Doors;
 using Sprint2_Attempt3.Dungeon.Rooms;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Keese;
+using Sprint2_Attempt3.Inventory;
 using Sprint2_Attempt3.Items;
+using Sprint2_Attempt3.Player;
 using System;
 using System.Collections.Generic;
 
@@ -17,11 +19,45 @@ namespace Sprint2_Attempt3.Dungeon
         protected static List<IGameObject>[] gameObjectLists = new List<IGameObject>[18];
         protected static int roomNumber;
         protected static int enemyKillCount = 0;
+        public static bool ClockUsed { get; set; } = false;
         protected DungeonRoom room;
         protected Game1 game1;
         protected CollisionDetector collisionDetector;
 
-        public RoomSecondary() { }
+        public RoomSecondary(Game1 game, int roomNum) {
+            this.game1 = game;
+            room = new DungeonRoom();
+            roomNumber = roomNum;
+            if (gameObjectLists[roomNumber] == null)
+            {
+                gameObjectLists[roomNumber] = RoomGenerator.Instance.LoadFile(roomNumber);
+                gameObjectLists[roomNumber].Add(this.game1.link);
+                InventoryController.VisitRoom(roomNum);
+            }
+
+            foreach (IGameObject obj in gameObjectLists[roomNumber])
+            {
+                if (obj is IEnemy)
+                {
+                    ((IEnemy)obj).Spawn();
+                }
+                else if (obj is IItem)
+                {
+                    if (((IItem)obj).exists)
+                    {
+                        ((IItem)obj).Spawn();
+                    }
+                }
+            }
+            if (game1.link is DamageLinkDecorator)
+            {
+                ((DamageLinkDecorator)game1.link).RemoveDecorator();
+            }
+
+            ClockUsed = false;
+            collisionDetector = new CollisionDetector(game1, game1.link);
+            CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
+        }
         public void SwitchToNextRoom() {
             if (roomNumber < gameObjectLists.Length - 1)
             {
@@ -31,6 +67,8 @@ namespace Sprint2_Attempt3.Dungeon
             {
                 roomNumber = 0;
             }
+            ClockUsed = false;
+            InventoryController.VisitRoom(roomNumber);
             CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
             game1.link.Items.Clear();
         }
@@ -45,8 +83,10 @@ namespace Sprint2_Attempt3.Dungeon
             {
                 roomNumber--;
             }
-            CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
             game1.link.Items.Clear();
+            ClockUsed = false;
+            InventoryController.VisitRoom(roomNumber);
+            CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
         }
         public void Update() {
             collisionDetector.Update();
@@ -56,6 +96,7 @@ namespace Sprint2_Attempt3.Dungeon
                 IGameObject obj = gameObjectLists[roomNumber][i];
                 if (obj is IEnemy)
                 {
+                    if(!ClockUsed || ((IEnemy)obj).State is DeathAnimationState)
                     ((IEnemy)obj).Update();
                 }
                 else if (obj is IItem)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sprint2_Attempt3.Inventory;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,11 @@ namespace Sprint2_Attempt3.CommandClasses
 
         public void Execute()
         {
-            game.link.UseArrow();
+            if (InventoryController.GetCount("Bow") > 0 && InventoryController.GetCount("Rupee") > 0)
+            {
+                game.link.UseArrow();
+                InventoryController.DecrementCount("Rupee");
+            }
         }
     }
 }

@@ -10,12 +10,7 @@ namespace Sprint2_Attempt3.CommandClasses
 {
     internal class SetBItem : ICommand
     {
-        public Game1 game1;
-
-        public SetBItem(Game1 game)
-        {
-            this.game1 = game;
-        }
+        public SetBItem() { }
 
         public void Execute()
         {
