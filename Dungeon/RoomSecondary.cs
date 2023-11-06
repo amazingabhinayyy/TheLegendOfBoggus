@@ -6,7 +6,9 @@ using Sprint2_Attempt3.Dungeon.Doors;
 using Sprint2_Attempt3.Dungeon.Rooms;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Keese;
+using Sprint2_Attempt3.Inventory;
 using Sprint2_Attempt3.Items;
+using Sprint2_Attempt3.Player;
 using System;
 using System.Collections.Generic;
 
@@ -21,7 +23,39 @@ namespace Sprint2_Attempt3.Dungeon
         protected Game1 game1;
         protected CollisionDetector collisionDetector;
 
-        public RoomSecondary() { }
+        public RoomSecondary(Game1 game, int roomNum) {
+            this.game1 = game;
+            room = new DungeonRoom();
+            roomNumber = roomNum;
+            if (gameObjectLists[roomNumber] == null)
+            {
+                gameObjectLists[roomNumber] = RoomGenerator.Instance.LoadFile(roomNumber);
+                gameObjectLists[roomNumber].Add(this.game1.link);
+                InventoryController.VisitRoom(roomNum);
+            }
+
+            foreach (IGameObject obj in gameObjectLists[roomNumber])
+            {
+                if (obj is IEnemy)
+                {
+                    ((IEnemy)obj).Spawn();
+                }
+                else if (obj is IItem)
+                {
+                    if (((IItem)obj).exists)
+                    {
+                        ((IItem)obj).Spawn();
+                    }
+                }
+            }
+            if (game1.link is DamageLinkDecorator)
+            {
+                ((DamageLinkDecorator)game1.link).RemoveDecorator();
+            }
+
+            collisionDetector = new CollisionDetector(game1, game1.link);
+            CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
+        }
         public void SwitchToNextRoom() {
             if (roomNumber < gameObjectLists.Length - 1)
             {
@@ -31,6 +65,7 @@ namespace Sprint2_Attempt3.Dungeon
             {
                 roomNumber = 0;
             }
+            InventoryController.VisitRoom(roomNumber);
             CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
         }
 

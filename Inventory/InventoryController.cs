@@ -86,7 +86,28 @@ namespace Sprint2_Attempt3.Inventory
             new Rectangle(destRectangle.X + 132, destRectangle.Y + 605, 9, 9)
         };
 
+        private static Dictionary<int, Rectangle> MapRoomDestRectangles = new Dictionary<int, Rectangle>() {
+            { 1, new Rectangle(destRectangle.X + 452, destRectangle.Y + 435, 25, 24) },
+            { 2, new Rectangle(destRectangle.X + 502, destRectangle.Y + 435, 25, 24) },
+            { 3, new Rectangle(destRectangle.X + 477, destRectangle.Y + 412, 25, 24) },
+            { 4, new Rectangle(destRectangle.X + 452, destRectangle.Y + 389, 25, 24) },
+            { 5, new Rectangle(destRectangle.X + 477, destRectangle.Y + 389, 25, 24) },
+            { 6, new Rectangle(destRectangle.X + 502, destRectangle.Y + 389, 25, 24) },
+            { 7, new Rectangle(destRectangle.X + 428, destRectangle.Y + 365, 25, 24) },
+            { 8, new Rectangle(destRectangle.X + 452, destRectangle.Y + 365, 25, 24) },
+            { 9, new Rectangle(destRectangle.X + 477, destRectangle.Y + 365, 25, 24) },
+            { 10, new Rectangle(destRectangle.X + 502, destRectangle.Y + 365, 25, 24) },
+            { 11, new Rectangle(destRectangle.X + 527, destRectangle.Y + 365, 25, 24) },
+            { 12, new Rectangle(destRectangle.X + 477, destRectangle.Y + 341, 25, 24) },
+            { 13, new Rectangle(destRectangle.X + 527, destRectangle.Y + 341, 25, 24) },
+            { 14, new Rectangle(destRectangle.X + 552, destRectangle.Y + 341, 25, 24) },
+            { 15, new Rectangle(destRectangle.X + 452, destRectangle.Y + 317, 25, 24) },
+            { 16, new Rectangle(destRectangle.X + 452, destRectangle.Y + 317, 25, 24) },
+            { 17, new Rectangle(destRectangle.X + 477, destRectangle.Y + 317, 25, 24) }
+        };
+
         private static String[] ItemMenuStrings = { "Boomerang", "Bomb", "Arrow", "BlueCandle", "Bow", "Clock", "BluePotion", "Fairy" };
+        private static List<int> RoomsNotVisited = new List<int>();
 
         private static Rectangle ItemBDestRectangle = new Rectangle(destRectangle.X + 401, destRectangle.Y + 606, 26, 49);
         private static Rectangle ItemADestRectangle = new Rectangle(destRectangle.X + 477, destRectangle.Y + 606, 26, 49);
@@ -97,6 +118,7 @@ namespace Sprint2_Attempt3.Inventory
         private static Rectangle DungeonMapSrcRectangle = new Rectangle(258, 34, 62, 30);
 
         private static Rectangle blackSrcRectangle = new Rectangle(315,170, 10,10);
+        private static Rectangle OrangeSrcRectangle = new Rectangle(100, 100, 10, 10);
         private static Rectangle WhiteMarkerSrcRectangle = new Rectangle(266, 140, 3, 3);
         private static Rectangle GreenMarkerSrcRectangle = new Rectangle(262, 140, 3, 3);
         private static Rectangle RedMarkerSrcRectangle = new Rectangle(270, 140, 3, 3);
@@ -153,6 +175,7 @@ namespace Sprint2_Attempt3.Inventory
             ItemSelectedIndex = 0;
             TriforceMarkerSrcRectangle = GreenMarkerSrcRectangle;
             count = 0;
+            RoomsNotVisited.AddRange(Enumerable.Range(1,17));
             this.texture = texture;
         }
 
@@ -242,6 +265,11 @@ namespace Sprint2_Attempt3.Inventory
         {
             if(ItemSelectedIndex != ItemAIndex)
                 ItemBIndex = ItemSelectedIndex;
+        }
+
+        public static void VisitRoom(int i) {
+            if(MapRoomDestRectangles.ContainsKey(i))
+                MapRoomDestRectangles.Remove(i);
         }
 
         public static void ShiftUp() {
@@ -383,6 +411,12 @@ namespace Sprint2_Attempt3.Inventory
 
             //draw Marker
             spriteBatch.Draw(texture, MarkerDestRectangles[RoomSecondary.GetCurrentRoomNumber()], WhiteMarkerSrcRectangle, Color.White);
+
+            //draw map rooms
+            foreach (KeyValuePair<int, Rectangle> room in MapRoomDestRectangles)
+            {
+                spriteBatch.Draw(texture, room.Value, OrangeSrcRectangle, Color.White);
+            }
         }
     }
 }
