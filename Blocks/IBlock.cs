@@ -12,7 +12,7 @@ namespace Sprint2_Attempt3.Blocks
     {
         public bool isWalkable { get; set; }
         public void Draw(SpriteBatch spriteBatch);
-
+        public void Draw(SpriteBatch spriteBatch, Vector2 change);
     }
 }
 
