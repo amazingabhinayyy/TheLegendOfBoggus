@@ -134,6 +134,5 @@ namespace Sprint2_Attempt3.Player
         {
             return decoratedLink.GetHitBox();
         }
-
     }
 }
