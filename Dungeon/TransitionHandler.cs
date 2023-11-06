@@ -70,11 +70,11 @@ namespace Sprint2_Attempt3.Dungeon
         {
         }
 
-        public void Transition(Room1 room1, Room2 room2)
+        public void Transition(IRoom room1, IRoom room2)
         {
             currentRoom = room1;
             nextRoom = room2;
-          
+            
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -84,7 +84,9 @@ namespace Sprint2_Attempt3.Dungeon
                 switch (door)
                 {
                     case (NorthDoor):
-                        change = new Vector2(0, -1*transitionSpeed * multiplier);
+                        //change = new Vector2(0, -1*transitionSpeed * multiplier);
+                        change = new Vector2(0, transitionSpeed * multiplier);
+
                         end = 88;
                         break;
                     case (SouthDoor):
@@ -96,7 +98,7 @@ namespace Sprint2_Attempt3.Dungeon
                         end = 129;
                         break;
                     case (WestDoor):
-                        change = new Vector2(transitionSpeed * multiplier, 0);
+                        change = new Vector2(-transitionSpeed * multiplier, 0);
                         end = 129;
                         break;
                 }
