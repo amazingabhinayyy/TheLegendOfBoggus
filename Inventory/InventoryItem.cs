@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sprint2_Attempt3.CommandClasses;
 
 namespace Sprint2_Attempt3.Inventory
 {
@@ -12,7 +13,16 @@ namespace Sprint2_Attempt3.Inventory
             private float count = 0;
             public Rectangle destRectangle { get; private set; }
             public Rectangle sourceRectangle { get; private set; }
+            private ICommand command = null; 
             public InventoryItem() { }
+            public InventoryItem(Rectangle destination, Rectangle source, ICommand com)
+            {
+                count = 1;
+                destRectangle = destination;
+                sourceRectangle = source;
+                command = com;   
+            }
+
             public InventoryItem(Rectangle destination, Rectangle source)
             {
                 count = 1;
@@ -34,9 +44,20 @@ namespace Sprint2_Attempt3.Inventory
                 sourceRectangle = source;
             }
 
+            public InventoryItem(Rectangle destination, Rectangle source, ICommand com, float c)
+            {
+                count = c;
+                destRectangle = destination;
+                sourceRectangle = source;
+                command = com;
+            }
+
             public void IncrementCount()
             {
-                count++;
+                if (count < 99)
+                {
+                    count++;
+                }
             }
 
             public void DecrementCount()
@@ -46,7 +67,13 @@ namespace Sprint2_Attempt3.Inventory
 
             public void IncrementCount(float i)
             {
-                count += i;
+                if (count + i < 99)
+                {
+                    count += i;
+                }
+                else {
+                    count = 99;
+                }
             }
 
             public void DecrementCount(float i)
@@ -67,5 +94,9 @@ namespace Sprint2_Attempt3.Inventory
             {
                 destRectangle = new Rectangle(destRectangle.X, destRectangle.Y + 1, destRectangle.Width, destRectangle.Height);
             }
-        }
+
+            public void UseItem() {
+                command.Execute();
+            } 
+    }
 }

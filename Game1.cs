@@ -63,7 +63,7 @@ namespace Sprint2_Attempt3
             gameStarted = false;
             keyController = new KeyboardController(this);
             mouseController = new MouseController(this);
-            inventoryController = new InventoryController(InventoryTexture);
+            inventoryController = new InventoryController(InventoryTexture, this);
             room = new Room1(this);
             startScreen = new StartScreenState(this);
         }

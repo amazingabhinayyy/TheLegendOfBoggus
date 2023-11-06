@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Sprint2_Attempt3.CommandClasses
 {
     public enum ItemNames { BlueBoomerang, Boomerang, BlueArrow, Arrow, Fire, Bomb }
-    internal interface ICommand
+    public interface ICommand
     {
         void Execute();
     }

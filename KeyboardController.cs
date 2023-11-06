@@ -43,6 +43,7 @@ namespace Sprint2_Attempt3
             commandMapping.Add(Keys.Z, new SetAttackLinkCommand(game1));
             commandMapping.Add(Keys.N, new SetAttackLinkCommand(game1));
             commandMapping.Add(Keys.None, new SetIdleLinkCommand(game1));
+            
             //item switching
             commandMapping.Add(Keys.D1, new SetUseBombCommand(game1));
             commandMapping.Add(Keys.D2, new SetUseBoomerangCommand(game1));
@@ -56,7 +57,11 @@ namespace Sprint2_Attempt3
             commandMapping.Add(Keys.R, new Reset(game1));
 
             //switching rooms
-            //commandMapping.Add(Keys.P, new SwitchToNextRoom(game1));
+            commandMapping.Add(Keys.Space, new ToggleItemMenu(game1));
+
+            //Item user
+            commandMapping.Add(Keys.O, new UseAItem(game1));
+            commandMapping.Add(Keys.P, new UseBItem(game1));
 
             //item selector
             /*commandMapping.Add(Keys.Up, new ShiftItemSelectorUp(game1));

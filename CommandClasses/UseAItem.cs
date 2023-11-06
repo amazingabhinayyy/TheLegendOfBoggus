@@ -8,18 +8,17 @@ using Sprint2_Attempt3.Player;
 
 namespace Sprint2_Attempt3.CommandClasses
 {
-    internal class ToggleItemMenu : ICommand
+    internal class UseAItem : ICommand
     {
         public Game1 game1;
 
-        public ToggleItemMenu(Game1 game)
-        {
-            this.game1 = game;
+        public UseAItem(Game1 game) { 
+            this.game1= game;
         }
 
         public void Execute()
         {
-            
+            InventoryController.UseAItem();
         }
     }
 }

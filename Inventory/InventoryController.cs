@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint2_Attempt3.CommandClasses;
 using Sprint2_Attempt3.Dungeon;
 using Sprint2_Attempt3.Items.ItemClasses;
 using System;
@@ -20,6 +21,7 @@ namespace Sprint2_Attempt3.Inventory
         private static int ItemSelectedIndex;
         private static int count;
         private Texture2D texture;
+        public static bool FullView { get; private set; }
         private static Dictionary<String, InventoryItem> LinkItems { get; set; }
         private static Rectangle[] HeartBoxes = new Rectangle[] {
                 new Rectangle(destRectangle.X + 552, destRectangle.Y + 630, 26, 25),
@@ -133,6 +135,7 @@ namespace Sprint2_Attempt3.Inventory
         private static Rectangle ClockSrcRectangle = new Rectangle(413, 151, 11, 16);
         private static Rectangle CompassSrcRectangle = new Rectangle(288, 168, 14, 15);
         private static Rectangle FairySrcRectangle = new Rectangle(404, 151, 8, 15);
+        private static Rectangle SwordSrcRectangle = new Rectangle(296, 151, 8, 15);
         private static Rectangle EmptyHeartSrcRectangle = new Rectangle(370, 131, 8, 8);
         private static Rectangle HalfHeartSrcRectangle = new Rectangle(379, 131, 8, 8);
         private static Rectangle FullHeartSrcRectangle = new Rectangle(388, 131, 8, 8);
@@ -146,28 +149,30 @@ namespace Sprint2_Attempt3.Inventory
         private static Rectangle BlueCandleDestRectangle = new Rectangle(destRectangle.X + 638, destRectangle.Y + 145, 29, 49);
 
         private static Rectangle BowDestRectangle = new Rectangle(destRectangle.X + 415, destRectangle.Y + 196, 26, 49);
+        private static Rectangle SwordDestRectangle = new Rectangle(destRectangle.X + 415, destRectangle.Y + 196, 26, 49);
         private static Rectangle ClockDestRectangle = new Rectangle(destRectangle.X + 488, destRectangle.Y + 196, 28, 49);
         private static Rectangle BluePotionDestRectangle = new Rectangle(destRectangle.X + 563, destRectangle.Y + 196, 27, 49);
         private static Rectangle FairyDestRectangle = new Rectangle(destRectangle.X + 639, destRectangle.Y + 196, 26, 49);
         
         private static Rectangle MapDestRectangle = new Rectangle(destRectangle.X + 150, destRectangle.Y + 339, 26, 49);
         private static Rectangle CompassDestRectangle = new Rectangle(destRectangle.X + 138, destRectangle.Y + 460, 47, 49);
-        public InventoryController(Texture2D texture) {
+        public InventoryController(Texture2D texture, Game1 game1) {
             LinkItems = new Dictionary<string, InventoryItem>() {
-                { "Arrow", new InventoryItem(ArrowDestRectangle, ArrowSrcRectangle) },
+                { "Arrow", new InventoryItem(ArrowDestRectangle, ArrowSrcRectangle, new SetUseArrowCommand(game1)) },
                 { "BlueCandle", new InventoryItem(BlueCandleDestRectangle, BlueCandleSrcRectangle) },
                 { "BluePotion", new InventoryItem(BluePotionDestRectangle, BluePotionSrcRectangle) },
-                { "Bomb", new InventoryItem(BombDestRectangle, BombSrcRectangle, 1) },
-                { "Boomerang", new InventoryItem(BoomerangDestRectangle, BoomerangSrcRectangle) },
+                { "Bomb", new InventoryItem(BombDestRectangle, BombSrcRectangle, new SetUseBombCommand(game1), 99) },
+                { "Boomerang", new InventoryItem(BoomerangDestRectangle, BoomerangSrcRectangle, new SetUseBoomerangCommand(game1)) },
                 { "Bow", new InventoryItem(BowDestRectangle, BowSrcRectangle) },
                 { "Clock", new InventoryItem(ClockDestRectangle, ClockSrcRectangle) },
                 { "Compass", new InventoryItem(CompassDestRectangle, CompassSrcRectangle, 0) },
                 { "Fairy", new InventoryItem(FairyDestRectangle, FairySrcRectangle) },
+                { "SwordProjectile", new InventoryItem(SwordDestRectangle, SwordSrcRectangle, new SetAttackLinkCommand(game1)) },
                 { "Heart", new InventoryItem(3.5f) },
                 { "HeartContainer", new InventoryItem(5) },
                 { "Key", new InventoryItem(99) },
                 { "Map", new InventoryItem(MapDestRectangle, MapSrcRectangle, 0) },
-                { "Rupee", new InventoryItem(35) },
+                { "Rupee", new InventoryItem(99) },
                 { "TriforcePiece", new InventoryItem() }
             };
             ItemAIndex = 1;
@@ -176,6 +181,7 @@ namespace Sprint2_Attempt3.Inventory
             TriforceMarkerSrcRectangle = GreenMarkerSrcRectangle;
             count = 0;
             RoomsNotVisited.AddRange(Enumerable.Range(1,17));
+            FullView = false;
             this.texture = texture;
         }
 
@@ -267,6 +273,15 @@ namespace Sprint2_Attempt3.Inventory
                 ItemBIndex = ItemSelectedIndex;
         }
 
+        public static void UseAItem()
+        {
+            LinkItems[ItemMenuStrings[ItemAIndex]].UseItem();
+        }
+        public static void UseBItem()
+        {
+            LinkItems[ItemMenuStrings[ItemBIndex]].UseItem();
+        }
+
         public static void VisitRoom(int i) {
             if(MapRoomDestRectangles.ContainsKey(i))
                 MapRoomDestRectangles.Remove(i);
@@ -302,7 +317,9 @@ namespace Sprint2_Attempt3.Inventory
                 DungeonMapDestRectangle.Y--;
                 CursorDestRectangle.Y--;
             }
-
+            else {
+                FullView = false;
+            }
         }
 
         public static void ShiftDown()
@@ -330,6 +347,9 @@ namespace Sprint2_Attempt3.Inventory
                 ItemSelectedDestRectangle.Y++;
                 DungeonMapDestRectangle.Y++;
                 CursorDestRectangle.Y++;
+            }
+            else {
+                FullView = true;
             }
         }
 
