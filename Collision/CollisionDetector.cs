@@ -7,10 +7,10 @@ using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Items.ItemClasses;
-using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.WallBlocks;
 using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -32,7 +32,6 @@ namespace Sprint2_Attempt3.Collision
         }
         private static int spawnItemCountTrigger = 1;
         public static int SpawnItemTrigger { get { return spawnItemCountTrigger; } }
-        
        
 
         private Game1 game;
@@ -206,7 +205,7 @@ namespace Sprint2_Attempt3.Collision
                             else if (gameObjectList[c] is IWall)
                             {
                                 EnemyProjectileBlockHandler.HandleEnemyProjectileBlockCollision((IProjectile)projectile, (IWall)obj, side);
-                                System.Diagnostics.Debug.WriteLine("enemy");
+                                //System.Diagnostics.Debug.WriteLine("enemy");
                                 //HandleCollision.HandleProjectileBlockCollision((ILinkProjectile)gameObjectList[i]);
                             }
                             else if (gameObjectList[c] is IDoor)

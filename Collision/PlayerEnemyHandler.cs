@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Sprint2_Attempt3.Enemy.Hand;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Player;
+using Sprint2_Attempt3.CommandClasses;
 
 namespace Sprint2_Attempt3.Collision
 {

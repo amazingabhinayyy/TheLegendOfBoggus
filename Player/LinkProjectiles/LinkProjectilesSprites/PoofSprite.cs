@@ -24,7 +24,7 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesSprites
         public void Update()
         {
 
-            System.Diagnostics.Debug.WriteLine("test");
+            //System.Diagnostics.Debug.WriteLine("test");
             currentFrame++;
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Rectangle srcRec, SpriteEffects flip)

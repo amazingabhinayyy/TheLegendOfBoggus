@@ -17,8 +17,7 @@ namespace Sprint2_Attempt3
     public class Game1 : Game
     {
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
-        Texture2D InventoryTexture;
+        private SpriteBatch spriteBatch;
         private KeyboardController keyController { get; set; }
         private MouseController mouseController { get; set; }
         private InventoryController inventoryController { get; set; }
@@ -26,6 +25,7 @@ namespace Sprint2_Attempt3
         public IRoom room { get; set; }
 
         public CollisionDetector collisionDetector;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
