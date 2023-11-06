@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Collision;
+using Sprint2_Attempt3.Inventory;
 
 namespace Sprint2_Attempt3.Player
 {
@@ -19,7 +20,6 @@ namespace Sprint2_Attempt3.Player
         public List<ILinkProjectile> Items { get; set; }
         private Vector2 position;
         public Vector2 Position { get { return position; } set { position = value; }}
-        private static double health = 1;
         public DamageLinkDecorator(ILink decoratedLink)//, Game1 game)
         {
             this.decoratedLink = decoratedLink;
@@ -35,8 +35,8 @@ namespace Sprint2_Attempt3.Player
             {
                 Knockback(side);
                 timer = 40;
-                health -= 0.5;
-                if (health <= 0)
+                InventoryController.DecrementCount("Heart", .5f);
+                if (InventoryController.GetCount("Heart") <= 0)
                 {
                     Kill();
                 }

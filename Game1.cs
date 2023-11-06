@@ -18,6 +18,7 @@ namespace Sprint2_Attempt3
     {
         GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
+        private Texture2D InventoryTexture;
         private KeyboardController keyController { get; set; }
         private MouseController mouseController { get; set; }
         private InventoryController inventoryController { get; set; }
