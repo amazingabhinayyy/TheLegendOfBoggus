@@ -42,7 +42,7 @@ namespace Sprint2_Attempt3.Sounds
             }
         }
 
-        private SoundFactory()
+        public SoundFactory()
         {
         }
 

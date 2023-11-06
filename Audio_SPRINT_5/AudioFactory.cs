@@ -13,13 +13,16 @@ namespace Sprint2_Attempt3
         MagicalRod, Flute, Refill, TextAppear, TextAppearSlow, KeyAppear, UnlockDoor,
         Stairs, Shore, Secret, Note1, Note2, Note3, Note4, Note5, Note6, Owl
     }
-    public class SoundFactory
+    public class AudioFactory
     {
         private readonly SoundLoader soundLoader;
 
-        public SoundFactory(Game1 game) => soundLoader = new SoundLoader(game);
+        //public SoundFactory(Game1 game) => soundLoader = new SoundLoader(game);
+
+        public static object Instance { get; internal set; }
+
         //public BackgroundMusic MakeBackgroundMusic()
-           // => new BackgroundMusic(soundLoader.GetMusic());
+        // => new BackgroundMusic(soundLoader.GetMusic());
 
 
 
