@@ -15,7 +15,7 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates
     {
         public LeftFire(Link link) : base(link)
         {
-            itemPosition = new Vector2((int)link.position.X - 45, (int)link.position.Y);
+            itemPosition = new Vector2((int)link.Position.X - 45, (int)link.Position.Y);
         }
         public override void Update()
         {

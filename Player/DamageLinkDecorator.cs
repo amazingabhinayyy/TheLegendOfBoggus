@@ -95,10 +95,6 @@ namespace Sprint2_Attempt3.Player
         {
             decoratedLink.UseFire();
         }
-        public void UseThrowingSword()
-        {
-            decoratedLink.UseThrowingSword();
-        }
         public void SetDecorator(ILink link)
         {
             decoratedLink.SetDecorator(this);

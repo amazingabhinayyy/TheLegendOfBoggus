@@ -17,7 +17,7 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates
     {
         public LeftBomb(Link link) : base(link)
         {
-            itemPosition = new Vector2((int)link.position.X - 24, (int)link.position.Y + 11);
+            itemPosition = new Vector2((int)link.Position.X - 24, (int)link.Position.Y + 11);
         }
     }
 }

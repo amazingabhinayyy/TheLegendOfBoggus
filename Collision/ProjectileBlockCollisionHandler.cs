@@ -34,7 +34,10 @@ namespace Sprint2_Attempt3.Collision
                     door.Damage();
                 }
             }
-
+            else if(projectile is ISwordBeam && block is IWall)
+            {
+                ((ISwordBeam)projectile).RemoveSwordBeam();
+            }
         }
     }
 }

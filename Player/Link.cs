@@ -14,7 +14,7 @@ namespace Sprint2_Attempt3.Player
 {
     public class Link : ILink
     {
-        public Vector2 position;
+        private Vector2 position;
         public Vector2 Position { get { return position; } set { position = value; } } 
         public ILinkSprite Sprite { get; set; }
         public ILinkState State { get; set; }
@@ -101,10 +101,6 @@ namespace Sprint2_Attempt3.Player
         public void UseFire()
         {
             State.UseFire();
-        }
-        public void UseThrowingSword()
-        {
-            State.UseThrowingSword();
         }
         public void Kill()
         {

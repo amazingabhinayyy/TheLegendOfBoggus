@@ -15,7 +15,7 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates
     {
         public RightSword(Link link) : base(link)
         {
-            itemPosition = new Vector2((int)link.position.X + 45, (int)link.position.Y + 24);
+            itemPosition = new Vector2((int)link.Position.X + 45, (int)link.Position.Y + 24);
             flip = SpriteEffects.None;
         }
 

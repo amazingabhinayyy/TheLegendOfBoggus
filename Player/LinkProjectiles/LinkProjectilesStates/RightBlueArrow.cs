@@ -16,7 +16,7 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates
     {
         public RightBlueArrow(Link link) : base(link)
         {
-            itemPosition = new Vector2((int)link.position.X + 45, (int)link.position.Y + 15);
+            itemPosition = new Vector2((int)link.Position.X + 45, (int)link.Position.Y + 15);
             flip = SpriteEffects.None;
             sourceRectangle = new Rectangle(36, 190, 15, 5);
             HitBoxWidth = 45;
