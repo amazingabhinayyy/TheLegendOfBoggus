@@ -11,6 +11,7 @@ using Sprint2_Attempt3.Dungeon;
 using Sprint2_Attempt3.Blocks.BlockSprites;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Inventory;
+using Sprint2_Attempt3.StartScreen;
 
 namespace Sprint2_Attempt3
 {
@@ -18,13 +19,16 @@ namespace Sprint2_Attempt3
     {
         GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
+        Texture2D InventoryTexture;
         private KeyboardController keyController { get; set; }
         private MouseController mouseController { get; set; }
         private InventoryController inventoryController { get; set; }
         public ILink link { get; set; }
         public IRoom room { get; set; }
+        public bool gameStarted { get; set; }
 
         public CollisionDetector collisionDetector;
+        private StartScreenState startScreen;
 
         public Game1()
         {
@@ -51,14 +55,17 @@ namespace Sprint2_Attempt3
             BlockSpriteFactory.Instance.LoadAllTextures(Content);
             EnemyProjectileSpriteFactory.Instance.LoadAllTextures(Content);
             DungeonSpriteFactory.Instance.LoadAllTextures(Content);
+            StartScreenSpriteFactory.Instance.LoadAllTextures(Content);
             RoomGenerator.Instance.LoadAllFiles();
             InventoryTexture = Content.Load<Texture2D>("Inventory");
             link = new Link(this);
             collisionDetector = new CollisionDetector(this, (Link)link);
+            gameStarted = false;
             keyController = new KeyboardController(this);
             mouseController = new MouseController(this);
             inventoryController = new InventoryController(InventoryTexture);
             room = new Room1(this);
+            startScreen = new StartScreenState(this);
         }
 
         protected override void UnloadContent()
@@ -70,7 +77,11 @@ namespace Sprint2_Attempt3
             keyController.Update(gameTime);
             mouseController.Update(gameTime);
             inventoryController.Update();
-            room.Update();
+            if (gameStarted)
+            {
+                collisionDetector.Update();
+                room.Update();
+            }
             base.Update(gameTime);
         }
 
@@ -79,8 +90,15 @@ namespace Sprint2_Attempt3
             GraphicsDevice.Clear(Color.Black);
 
             spriteBatch.Begin();
-            room.Draw(spriteBatch);
-            inventoryController.Draw(spriteBatch);
+            if (gameStarted)
+            {
+                room.Draw(spriteBatch);
+                inventoryController.Draw(spriteBatch);
+            }
+            else
+            {
+                startScreen.Draw(spriteBatch);  
+            }
             spriteBatch.End();
             base.Draw(gameTime);
         }

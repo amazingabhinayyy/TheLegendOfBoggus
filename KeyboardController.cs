@@ -82,81 +82,91 @@ namespace Sprint2_Attempt3
         public void Update(GameTime gameTime)
         {
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
-            bool pressed = false;
-            //go through each movement key incrementing their count by one if they are currently pressed
-            foreach (Keys key in moveKeys)
+            if (game1.gameStarted)
             {
-                if (pressedKeys.Contains(key))
+                bool pressed = false;
+                //go through each movement key incrementing their count by one if they are currently pressed
+                foreach (Keys key in moveKeys)
                 {
-                    pressed = true;   
-                    moveKeyTime[key] += 1;
-                    currentMoveKeyValue = moveKeyTime[key];
-                }
-                else
-                {
-                    moveKeyTime[key] = 0;
-                }
-            }
-            if (!pressed)
-            {
-                currentMoveKey = Keys.None;
-            }
-            //now find most recently pressed movement key
-            foreach (Keys key in moveKeys)
-            {
-                if (moveKeyTime[key] > 0 && moveKeyTime[key] <= currentMoveKeyValue)
-                {
-                    currentMoveKeyValue = moveKeyTime[key];
-                    currentMoveKey = key;
-                }
-            }
-
-            List<Keys> pressedKeys2 = new List<Keys>();
-            for(int j = 0; j < pressedKeys.Length; j++)
-            {
-                if (!moveKeys.Contains(pressedKeys[j]))
-                {
-                    pressedKeys2.Add(pressedKeys[j]);
-                }
-            }
-            if (currentMoveKey != Keys.None)
-            {
-                pressedKeys2.Add(currentMoveKey);
-            }
-            pressedKeys = pressedKeys2.ToArray();
-            
-
-
-            for (int c = 0; c < heldKeys.Count; c++)
-            {
-                if (!(pressedKeys.Contains(heldKeys[c])))
-                {
-                    heldKeys.Remove(heldKeys[c]);
-                    c--;
-                }
-            }
-
-            timeSinceLastUpdate += (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-            if (pressedKeys.Length > 0 && timeSinceLastUpdate > 0.1f)
-            {
-                foreach (Keys key in pressedKeys)
-                {
-                    if (commandMapping.ContainsKey(key) && !(heldKeys.Contains(key)))
+                    if (pressedKeys.Contains(key))
                     {
-                        commandMapping[key].Execute();
-                        //The if condition hold keys that can be held
-                        if(!(moveKeys.Contains(key)))
-                        {
-                            heldKeys.Add(key);
-                        }
+                        pressed = true;
+                        moveKeyTime[key] += 1;
+                        currentMoveKeyValue = moveKeyTime[key];
+                    }
+                    else
+                    {
+                        moveKeyTime[key] = 0;
                     }
                 }
-                timeSinceLastUpdate = 0;
+                if (!pressed)
+                {
+                    currentMoveKey = Keys.None;
+                }
+                //now find most recently pressed movement key
+                foreach (Keys key in moveKeys)
+                {
+                    if (moveKeyTime[key] > 0 && moveKeyTime[key] <= currentMoveKeyValue)
+                    {
+                        currentMoveKeyValue = moveKeyTime[key];
+                        currentMoveKey = key;
+                    }
+                }
+
+                List<Keys> pressedKeys2 = new List<Keys>();
+                for (int j = 0; j < pressedKeys.Length; j++)
+                {
+                    if (!moveKeys.Contains(pressedKeys[j]))
+                    {
+                        pressedKeys2.Add(pressedKeys[j]);
+                    }
+                }
+                if (currentMoveKey != Keys.None)
+                {
+                    pressedKeys2.Add(currentMoveKey);
+                }
+                pressedKeys = pressedKeys2.ToArray();
+
+
+
+                for (int c = 0; c < heldKeys.Count; c++)
+                {
+                    if (!(pressedKeys.Contains(heldKeys[c])))
+                    {
+                        heldKeys.Remove(heldKeys[c]);
+                        c--;
+                    }
+                }
+
+                timeSinceLastUpdate += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+                if (pressedKeys.Length > 0 && timeSinceLastUpdate > 0.1f)
+                {
+                    foreach (Keys key in pressedKeys)
+                    {
+                        if (commandMapping.ContainsKey(key) && !(heldKeys.Contains(key)))
+                        {
+                            commandMapping[key].Execute();
+                            //The if condition hold keys that can be held
+                            if (!(moveKeys.Contains(key)))
+                            {
+                                heldKeys.Add(key);
+                            }
+                        }
+                    }
+                    timeSinceLastUpdate = 0;
+                }
+                if (!(pressedKeys.Contains(Keys.W) || pressedKeys.Contains(Keys.S) || pressedKeys.Contains(Keys.A) || pressedKeys.Contains(Keys.D) || pressedKeys.Contains(Keys.Up) || pressedKeys.Contains(Keys.Down) || pressedKeys.Contains(Keys.Left) || pressedKeys.Contains(Keys.Right)))
+                {
+                    commandMapping[Keys.None].Execute();
+                }
             }
-            if (!(pressedKeys.Contains(Keys.W) || pressedKeys.Contains(Keys.S) || pressedKeys.Contains(Keys.A) || pressedKeys.Contains(Keys.D) || pressedKeys.Contains(Keys.Up) || pressedKeys.Contains(Keys.Down) || pressedKeys.Contains(Keys.Left) || pressedKeys.Contains(Keys.Right)))
+            else
             {
-                commandMapping[Keys.None].Execute();
+                if(pressedKeys.Contains(Keys.Enter))
+                {
+                    game1.gameStarted = true;
+                }
             }
         }
     }

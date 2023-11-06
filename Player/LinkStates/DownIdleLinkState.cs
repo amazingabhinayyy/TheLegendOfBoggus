@@ -67,9 +67,5 @@ namespace Sprint2_Attempt3.Player.LinkStates
         {
             link.State = new DownUseItemState(link, new DownFire(link));
         }
-        public void UseThrowingSword()
-        {
-
-        }
     }
 }

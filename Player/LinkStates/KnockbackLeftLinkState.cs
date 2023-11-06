@@ -1,4 +1,5 @@
 ﻿using Sprint2_Attempt3.Player.Interfaces;
+using Microsoft.Xna.Framework;
 namespace Sprint2_Attempt3.Player.LinkStates
 {
     public class KnockbackLeftLinkState : ILinkState
@@ -40,7 +41,8 @@ namespace Sprint2_Attempt3.Player.LinkStates
         {
             if (currentframe < 10)
             {
-                link.position.X -= 10;
+                link.Position = new Vector2(link.Position.X - 10, link.Position.Y);
+                //link.Position.X -= 10;
             } else
             {
                 FinishAnimation();
@@ -65,9 +67,6 @@ namespace Sprint2_Attempt3.Player.LinkStates
         public void UseFire()
         {
         }
-        public void UseThrowingSword()
-        {
-
-        }
+       
     }
 }
