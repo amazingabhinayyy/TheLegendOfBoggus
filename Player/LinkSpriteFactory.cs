@@ -142,6 +142,14 @@ namespace Sprint2_Attempt3.Player
         {
             return new PoofSprite(linkTexture);
         }
+        public ILinkProjectileSprite CreateSwordBeamSprite()
+        {
+            return new SwordBeamSprite(linkTexture);
+        }
+        public ILinkProjectileSprite CreateSwordBeamExplosionSprite()
+        {
+            return new SwordBeamExplosionSprite(linkTexture);
+        }
     }
 }
 

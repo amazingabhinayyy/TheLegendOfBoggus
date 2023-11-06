@@ -230,35 +230,6 @@ namespace Sprint2_Attempt3.Collision
             CheckProjectileCollision();
             CheckEnemyWallCollision();
         }
-        /*
-        public static IItem SpawnRandomItem(Vector2 position)
-        {
-            
-           int choice = new Random().Next(0, 4);
-            IItem item = null;
-            bool spawned = true;
-            switch (choice)
-            {
-                case 0:
-                item = new Bomb(position, spawned);
-                    break;
-                case 1:
-                    item = new Clock(position, spawned);
-                    break;
-                case 2:
-                    item = new Fairy(position, spawned);
-                    break;
-                case 3:
-                    item = new Heart(position, spawned);
-                    break;
-                default:
-                    item = new Rupee(position, spawned);
-                    break;
-            }
-          
-            return item;
-        }
-        */
     }
 
 }

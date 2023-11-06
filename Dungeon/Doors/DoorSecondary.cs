@@ -15,8 +15,10 @@ namespace Sprint2_Attempt3.Dungeon.Doors
         protected Rectangle Position;
         protected Rectangle sourceRectangle;
         protected IDoorSprite sprite;
-        private bool DoorExists;
+        public bool DoorExists { get; private set; }
         public bool IsWalkable { get; private set; }
+        public bool IsLocked { get; private set; }
+        public bool IsDiamondLocked { get; private set; }
         protected static Dictionary<int, Action> actions;
         public DoorSecondary() {
             DoorExists = true;
@@ -33,30 +35,40 @@ namespace Sprint2_Attempt3.Dungeon.Doors
         {
             sourceRectangle.X = 292;
             IsWalkable = false;
+            IsLocked = true;
+            IsDiamondLocked = false;
         }
 
         public void Damage()
         {
             sourceRectangle.X = 358;
             IsWalkable = true;
+            IsLocked = false;
+            IsDiamondLocked = false;
         }
 
         public void DiamondLock()
         {
             sourceRectangle.X = 325;
             IsWalkable = false;
+            IsLocked = false;
+            IsDiamondLocked = true;
         }
 
         public void Open()
         {
             sourceRectangle.X = 259;
             IsWalkable = true;
+            IsLocked = false;
+            IsDiamondLocked = false;
         }
 
         public void NoDoor()
         {
             DoorExists = false;
             IsWalkable = false;
+            IsLocked = false;
+            IsDiamondLocked = false;
         }
 
         public void Draw(SpriteBatch spriteBatch)

@@ -15,7 +15,7 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates
     {
         public UpSword(Link link) : base(link)
         {
-            itemPosition = new Vector2((int)link.position.X + 17, (int)link.position.Y);
+            itemPosition = new Vector2((int)link.Position.X + 17, (int)link.Position.Y);
             flip = SpriteEffects.FlipVertically;
         }
 
@@ -29,21 +29,21 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates
             if (currentFrame >= 5 && currentFrame < 10)
             {
                 sourceRectangle = new Rectangle(25, 63, 3, 11);
-                itemPosition.Y = link.position.Y - 33;
+                itemPosition.Y = link.Position.Y - 33;
                 HitBoxWidth = 9;
                 HitBoxHeight = 33;
             }
             else if (currentFrame >= 10 && currentFrame < 15)
             {
                 sourceRectangle = new Rectangle(42, 63, 3, 7);
-                itemPosition.Y = link.position.Y - 21;
+                itemPosition.Y = link.Position.Y - 21;
                 HitBoxWidth = 9;
                 HitBoxHeight = 21;
             }
             else if (currentFrame >= 15 && currentFrame < 20)
             {
                 sourceRectangle = new Rectangle(59, 63, 3, 3);
-                itemPosition.Y = link.position.Y - 9;
+                itemPosition.Y = link.Position.Y - 9;
                 HitBoxWidth = 9;
                 HitBoxHeight = 9;
             }

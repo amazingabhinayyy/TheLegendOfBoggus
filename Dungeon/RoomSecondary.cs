@@ -9,6 +9,7 @@ using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Items;
 using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Sprint2_Attempt3.Dungeon
 {
@@ -20,6 +21,8 @@ namespace Sprint2_Attempt3.Dungeon
         protected DungeonRoom room;
         protected Game1 game1;
         protected CollisionDetector collisionDetector;
+
+      
 
         public RoomSecondary() { }
         public void SwitchToNextRoom() {
@@ -64,23 +67,37 @@ namespace Sprint2_Attempt3.Dungeon
         }
 
         public void Draw(SpriteBatch spriteBatch) {
-            room.Draw(spriteBatch);
-            
-            foreach (IGameObject obj in gameObjectLists[roomNumber])
+            if (TransitionHandler.Instance.Start)
             {
-                if(obj is IEnemy)
-                    ((IEnemy)obj).Draw(spriteBatch);
-                else if(obj is IItem)
-                    ((IItem)obj).Draw(spriteBatch);
-                else if(obj is IBlock)
-                    ((IBlock)obj).Draw(spriteBatch);
-                else if (obj is IDoor)
-                    ((IDoor)obj).Draw(spriteBatch);
+                TransitionHandler.Instance.Draw(spriteBatch);
             }
-            
-            game1.link.Draw(spriteBatch, Color.White);
+            else
+            {
+                room.Draw(spriteBatch);
+
+                foreach (IGameObject obj in gameObjectLists[roomNumber])
+                {
+                    if (obj is IEnemy)
+                        ((IEnemy)obj).Draw(spriteBatch);
+                    else if (obj is IItem)
+                        ((IItem)obj).Draw(spriteBatch);
+                    else if (obj is IBlock)
+                        ((IBlock)obj).Draw(spriteBatch);
+                    else if (obj is IDoor)
+                        ((IDoor)obj).Draw(spriteBatch);
+                }
+
+                game1.link.Draw(spriteBatch, Color.White);
+            }
         }
 
+        public static int GetCurrentRoomNumber() { 
+            return roomNumber;
+        }
+        public DungeonRoom getDungeonRoom()
+        {
+            return room;
+        }
         public virtual void SwitchToNorthRoom() { }
         public virtual void SwitchToSouthRoom() { }
         public virtual void SwitchToEastRoom() { }

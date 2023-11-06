@@ -15,7 +15,7 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates
     {
         public DownSword(Link link) : base(link)
         {
-            itemPosition = new Vector2((int)link.position.X + 21, (int)link.position.Y + 45);
+            itemPosition = new Vector2((int)link.Position.X + 21, (int)link.Position.Y + 45);
             sourceRectangle = new Rectangle(25, 63, 3, 11);
             flip = SpriteEffects.None;
         }
