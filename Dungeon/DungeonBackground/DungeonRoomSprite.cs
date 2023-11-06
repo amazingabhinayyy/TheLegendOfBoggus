@@ -28,8 +28,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                 0f
             );
         }
-
-        public void DrawCurrentRoom(SpriteBatch spriteBatch, Rectangle sourceRectangle, Vector2 change)
+        public void Draw(SpriteBatch spriteBatch, Rectangle sourceRectangle,Vector2 change)
         {
             //Rectangle newSourceRectangle = new Rectangle(sourceRectangle.X, sourceRectangle.Y, sourceRectangle.Width - (int)change.X, sourceRectangle.Height - (int)change.Y);
             Rectangle newSourceRectangle = new Rectangle(sourceRectangle.X, sourceRectangle.Y, sourceRectangle.Width - (int)change.X, sourceRectangle.Height - (int)change.Y);
@@ -46,7 +45,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                 new Vector2(0, 0),
                 SpriteEffects.None,
                 0f
-            ); 
+            );
         }
 
         public void DrawNextRoom(SpriteBatch spriteBatch, Rectangle sourceRectangle, Vector2 change)
