@@ -25,9 +25,11 @@ namespace Sprint2_Attempt3.Dungeon
 {
     public class TransitionHandler
     {
-        private int transitionSpeed = 16;
+        //private int transitionSpeed = 16;
+        private int transitionSpeed = 2;
         private IDoor door;
         private int multiplier = 1;
+       
         public IDoor Door { get { return door; } set { door = value; } }
 
         private bool start;
@@ -63,19 +65,16 @@ namespace Sprint2_Attempt3.Dungeon
         {
             this.game1 = game;
         }
-        public TransitionHandler(IDoor door)
-        {
-            this.door = door;
-        }
+       
         public TransitionHandler()
         {
         }
 
-        public void Transition(Room1 room1, Room2 room2, int roomNum)
+        public void Transition(Room1 room1, Room2 room2)
         {
             currentRoom = room1;
             nextRoom = room2;
-            roomNumber = roomNum;
+          
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -86,41 +85,47 @@ namespace Sprint2_Attempt3.Dungeon
                 {
                     case (NorthDoor):
                         change = new Vector2(0, -1*transitionSpeed * multiplier);
-                        end = 11;
+                        end = 88;
                         break;
                     case (SouthDoor):
                         change = new Vector2(0, transitionSpeed * multiplier);
-                        end = 11;
+                        end = 88;
                         break;
                     case (EastDoor):
                         change = new Vector2(-transitionSpeed * multiplier, 0);
-                        end = 17;
+                        end = 129;
                         break;
                     case (WestDoor):
                         change = new Vector2(transitionSpeed * multiplier, 0);
-                        end = 17;
+                        end = 129;
                         break;
                 }
                 
-                currentRoom.getDungeonRoom().Draw(spriteBatch,change);
+                currentRoom.getDungeonRoom().DrawCurrentRoom(spriteBatch,change);
               
-                /*
+                
                 foreach (IGameObject obj in CollisionDetector.GameObjectList)
                 {
                     if (obj is IBlock)
                         ((IBlock)obj).Draw(spriteBatch,change);
-                    else if (obj is IDoor)
-                        ((IDoor)obj).Draw(spriteBatch,change);
-                }*/
+                   /* else if (obj is IDoor)
+                        ((IDoor)obj).Draw(spriteBatch,change);*/
+                }
 
-                nextRoom.getDungeonRoom().Draw(spriteBatch, change);
+                nextRoom.getDungeonRoom().DrawNextRoom(spriteBatch, change);
 
 
                 multiplier++;
-                /* if (end <= multiplier)
+                if (end <= multiplier)
                  {
-                     start = false;
-                 }*/
+                    start = false;
+                    CollisionDetector.GameObjectList = transitionGameObjectList;
+                    game1.room = new Room2(game1);
+                    multiplier = 1;
+                    timeSinceLastUpdate = 0;
+                }
+                
+                /*
                 timeSinceLastUpdate += (float)game1.Gametime.ElapsedGameTime.TotalSeconds;
                 if(timeSinceLastUpdate > 5f)
                 {
@@ -129,7 +134,7 @@ namespace Sprint2_Attempt3.Dungeon
                     game1.room = new Room2(game1);
                     multiplier = 1;
                     timeSinceLastUpdate = 0;
-                }
+                }*/
 
             }
             
