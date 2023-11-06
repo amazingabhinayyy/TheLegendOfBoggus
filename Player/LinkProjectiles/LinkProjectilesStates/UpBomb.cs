@@ -17,7 +17,7 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates
     {
         public UpBomb(Link link) : base(link)
         {
-            itemPosition = new Vector2((int)link.position.X + 11, (int)link.position.Y - 45);
+            itemPosition = new Vector2((int)link.Position.X + 11, (int)link.Position.Y - 45);
         }
     }
 }

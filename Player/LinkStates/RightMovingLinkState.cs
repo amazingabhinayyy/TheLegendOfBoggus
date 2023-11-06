@@ -1,6 +1,6 @@
 ﻿using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates;
-
+using Microsoft.Xna.Framework;
 namespace Sprint2_Attempt3.Player.LinkStates
 {
     public class RightMovingLinkState : ILinkState
@@ -40,7 +40,8 @@ namespace Sprint2_Attempt3.Player.LinkStates
         }
         public void Update()
         {
-            link.position.X += 4;
+            link.Position = new Vector2(link.Position.X + 4, link.Position.Y);
+            //link.Position.X += 4;
         }
         public void UseBomb()
         {
@@ -65,10 +66,6 @@ namespace Sprint2_Attempt3.Player.LinkStates
         public void UseFire()
         {
             link.State = new RightUseItemState(link, new RightFire(link));
-        }
-        public void UseThrowingSword()
-        {
-
         }
     }
 }

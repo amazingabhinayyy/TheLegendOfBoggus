@@ -83,9 +83,5 @@ namespace Sprint2_Attempt3.Player.LinkStates
         {
 
         }
-        public void UseThrowingSword()
-        {
-
-        }
     }
 }

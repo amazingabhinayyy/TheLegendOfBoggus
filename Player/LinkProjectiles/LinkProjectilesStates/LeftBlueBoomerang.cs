@@ -16,7 +16,7 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates
     {
         public LeftBlueBoomerang(Link link) : base(link)
         {
-            itemPosition = new Vector2((int)link.position.X - 23, (int)link.position.Y + 12);
+            itemPosition = new Vector2((int)link.Position.X - 23, (int)link.Position.Y + 12);
             sourceRectangle = new Rectangle(91, 189, 7, 7);
             sprite = LinkSpriteFactory.Instance.CreateBlueBoomerangItem();
         }
@@ -40,7 +40,7 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates
             }
             else
             {
-                itemPosition = BoomerangPositionUpdater(itemPosition, link.position, 7);
+                itemPosition = BoomerangPositionUpdater(itemPosition, link.Position, 7);
             }
             sprite.Update();
             currentFrame++;

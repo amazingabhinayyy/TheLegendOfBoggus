@@ -12,11 +12,6 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
     {
         private DungeonRoomSprite sprite;
 
-        public Rectangle GetHitBox()
-        {
-            return new Rectangle(0, 0, 0, 0);
-        }
-
         public DungeonRoom() { 
             sprite = DungeonSpriteFactory.Instance.CreateDungeonRoomSprite();
     }

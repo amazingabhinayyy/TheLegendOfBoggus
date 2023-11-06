@@ -15,7 +15,7 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates
     {
         public UpFire(Link link) : base(link)
         {
-            itemPosition = new Vector2((int)link.position.X, (int)link.position.Y - 45);
+            itemPosition = new Vector2((int)link.Position.X, (int)link.Position.Y - 45);
         }
         public override void Update()
         {

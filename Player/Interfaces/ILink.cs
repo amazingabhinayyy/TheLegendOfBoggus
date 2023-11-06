@@ -10,7 +10,6 @@ namespace Sprint2_Attempt3.Player.Interfaces
     {
         public List<ILinkProjectile> Items { get; set; }
         public Vector2 Position { get; set; }
-        //public static int Health { get; set; }
         public void Knockback(ICollision side);
         public void BecomeIdle();
         public void MoveUp();
@@ -25,11 +24,9 @@ namespace Sprint2_Attempt3.Player.Interfaces
         public void UseBlueBoomerang();
         public void UseBlueArrow();
         public void UseFire();
-        public void UseThrowingSword();
         public void SetDecorator(ILink link);
         public void RemoveDecorator();
         public void Kill();
-        public void Update();
         public void Draw(SpriteBatch spriteBatch, Color color);
         
     }

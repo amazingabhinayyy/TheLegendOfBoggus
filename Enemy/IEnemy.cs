@@ -6,6 +6,7 @@ namespace Sprint2_Attempt3.Enemy
     public interface IEnemy : IGameObject
     {
         public Rectangle Position { get; set; }
+        public IEnemyState State { get; set; }
         public bool exists { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
@@ -22,6 +23,5 @@ namespace Sprint2_Attempt3.Enemy
         public void Kill();
         public void DropItem();
         public void Draw(SpriteBatch spriteBatch);
-        //public IEnemyState GetEnemyState();
     }
 }

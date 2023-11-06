@@ -29,6 +29,8 @@ namespace Sprint2_Attempt3.Dungeon
 
         private static RoomGenerator instance = new RoomGenerator();
         private static String[] fileNames = new String[18];
+        private static Dictionary<String, Func<int, int, IEnemy>> AddEnemyFunctions = new Dictionary<string, Func<int, int, IEnemy>> {
+        };
 
         public static RoomGenerator Instance
         {
@@ -52,13 +54,13 @@ namespace Sprint2_Attempt3.Dungeon
             List<IGameObject> objectList = new List<IGameObject>();
 
             StreamReader sr = new StreamReader(fileNames[fileNumber]);
-            while (!sr.EndOfStream) { 
+            while (!sr.EndOfStream) {
                 var line = sr.ReadLine();
                 if (line != null)
                 {
                     var words = line.Split(",");
                     if (words[0].Equals("Enemy")) {
-                        objectList.Add(GetEnemy(words[1], int.Parse(words[2]), int.Parse(words[3])));
+                        objectList.Add(GetEnemy(words[1], int.Parse(words[2]), int.Parse(words[3]) + Globals.YOffset));
                     }
                     else if (words[0].Equals("Block"))
                     {
@@ -66,7 +68,7 @@ namespace Sprint2_Attempt3.Dungeon
                     }
                     else if (words[0].Equals("Item"))
                     {
-                        objectList.Add(GetItem(words[1], new Vector2(int.Parse(words[2]), int.Parse(words[3])), bool.Parse(words[4])));
+                        objectList.Add(GetItem(words[1], new Vector2(int.Parse(words[2]), int.Parse(words[3]) + Globals.YOffset), bool.Parse(words[4])));
                     }
                     else if (words[0].Equals("Door"))
                     {
@@ -83,7 +85,7 @@ namespace Sprint2_Attempt3.Dungeon
             IEnemy enemy = null;
             if (Enemy.Equals("Aquamentus"))
             {
-                enemy = new Aquamentus(x,y);
+                enemy = new Aquamentus(x, y);
             }
             else if (Enemy.Equals("Dodongo"))
             {
@@ -122,6 +124,10 @@ namespace Sprint2_Attempt3.Dungeon
                 enemy = new Zol(x, y);
             }
             return enemy;
+        }
+
+        public IEnemy AddKeese(int x, int y) {
+            return new Keese(x, y);
         }
 
         private IBlock GetBlock(String Block, int position)
@@ -203,7 +209,7 @@ namespace Sprint2_Attempt3.Dungeon
             }
             else if (Item.Equals("Boomerang"))
             {
-                item = new BoomerangItem(position, spawned);
+                item = new Boomerang(position, spawned);
             }
             else if (Item.Equals("Bow"))
             {
