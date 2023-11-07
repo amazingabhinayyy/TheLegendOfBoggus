@@ -8,13 +8,17 @@ using Sprint2_Attempt3.Player;
 
 namespace Sprint2_Attempt3.CommandClasses
 {
-    internal class ShiftItemSelectorDown : ICommand
+    internal class UseFairy : ICommand
     {
-        public ShiftItemSelectorDown() { }
+        public UseFairy()
+        {
+        }
 
         public void Execute()
         {
-            InventoryController.ShiftCursorDown();
+            if (InventoryController.GetCount("Fairy") > 0) {
+                InventoryController.UsingFairy = true;
+            }
         }
     }
 }

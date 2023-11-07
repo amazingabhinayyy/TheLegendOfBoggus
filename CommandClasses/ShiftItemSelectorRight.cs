@@ -10,12 +10,7 @@ namespace Sprint2_Attempt3.CommandClasses
 {
     internal class ShiftItemSelectorRight : ICommand
     {
-        public Game1 game1;
-
-        public ShiftItemSelectorRight(Game1 game)
-        {
-            this.game1 = game;
-        }
+        public ShiftItemSelectorRight() { }
 
         public void Execute()
         {

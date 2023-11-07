@@ -19,7 +19,7 @@ namespace Sprint2_Attempt3
     {
         GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        Texture2D InventoryTexture;
+        public static Texture2D InventoryTexture { get; set; }
         private KeyboardController keyController { get; set; }
         private MouseController mouseController { get; set; }
         private InventoryController inventoryController { get; set; }
@@ -64,7 +64,7 @@ namespace Sprint2_Attempt3
             gameStarted = false;
             keyController = new KeyboardController(this);
             mouseController = new MouseController(this);
-            inventoryController = new InventoryController(InventoryTexture);
+            inventoryController = new InventoryController(InventoryTexture, this);
             room = new Room1(this);
             startScreen = new StartScreenState(this);
         }

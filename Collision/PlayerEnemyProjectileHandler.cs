@@ -1,5 +1,6 @@
 ﻿using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles;
+using Sprint2_Attempt3.Enemy.Projectile.GoriyaProjectiles;
 using Sprint2_Attempt3.Player;
 using Sprint2_Attempt3.Player.Interfaces;
 using System;
@@ -21,6 +22,10 @@ namespace Sprint2_Attempt3.Collision
                 CollisionDetector.GameObjectList.Remove(projectile);
 
                 ((AquamentusFireball)projectile).GenerateRight();
+            }
+            else if(projectile is GoriyaBoomerang)
+            {
+                ((GoriyaBoomerang)projectile).ReverseBoomerang();
             }
         }
     }

@@ -8,13 +8,18 @@ using Sprint2_Attempt3.Player;
 
 namespace Sprint2_Attempt3.CommandClasses
 {
-    internal class ShiftItemSelectorDown : ICommand
+    internal class UseClock : ICommand
     {
-        public ShiftItemSelectorDown() { }
+        public UseClock()
+        {
+        }
 
         public void Execute()
         {
-            InventoryController.ShiftCursorDown();
+            if (InventoryController.GetCount("Clock") > 0) {
+                RoomSecondary.ClockUsed = true;
+                InventoryController.DecrementCount("Clock");
+            }
         }
     }
 }
