@@ -13,6 +13,7 @@ namespace Sprint2_Attempt3.Enemy.Stalfos
         {
             this.X = x;
             this.Y = y;
+            this.health = 2;
         }
         public override void Generate() {
             State = new MovingLeftStalfosState(this);

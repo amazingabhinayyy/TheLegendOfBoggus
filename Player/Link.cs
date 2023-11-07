@@ -9,6 +9,7 @@ using Sprint2_Attempt3.Collision.SideCollisionHandlers;
 using System;
 using Sprint2_Attempt3.Items.ItemClasses;
 using Sprint2_Attempt3.Player.LinkProjectiles.ProjectileInterfaces;
+using Sprint2_Attempt3.Dungeon.Rooms;
 
 namespace Sprint2_Attempt3.Player
 {
@@ -144,6 +145,12 @@ namespace Sprint2_Attempt3.Player
                 return new Rectangle(0, 0, 0, 0);
             }
             
+        }
+        public void FinishCapture()
+        {
+            game.room = new Room1(game);
+            position = new Vector2(300, 300);
+            State = new DownIdleLinkState(this); 
         }
     }
 }

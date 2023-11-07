@@ -12,6 +12,7 @@ namespace Sprint2_Attempt3.Enemy
         protected int currentFrame;
         private int distance;
         private Random random;
+        protected float health;
         public bool exists { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
@@ -37,6 +38,16 @@ namespace Sprint2_Attempt3.Enemy
         {
             State = new DeathAnimationState(this);
         }
+
+        public virtual void GetDamaged(float damage)
+        {
+            health -= damage;
+            if(health <= 0)
+            {
+                Kill();
+            }
+        }
+        
         public void ChangeDirection()
         {
             State.ChangeDirection();

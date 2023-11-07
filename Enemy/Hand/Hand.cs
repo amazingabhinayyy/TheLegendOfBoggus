@@ -12,6 +12,7 @@ namespace Sprint2_Attempt3.Enemy.Hand
         {
             this.X = x;
             this.Y = y;
+            this.health = 1.5f;
         }
         public override void Generate() {
             State = new MovingLeftHandState(this);

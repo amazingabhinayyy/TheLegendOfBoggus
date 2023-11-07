@@ -10,6 +10,7 @@ namespace Sprint2_Attempt3.Enemy.Zol
         {
             this.X = x;
             this.Y = y;
+            this.health = 1.0f;
         }
         public override void Generate() {
             State = new MovingLeftZolState(this);
@@ -29,6 +30,10 @@ namespace Sprint2_Attempt3.Enemy.Zol
         }
         public override void MoveRight() {
             State = new MovingRightZolState(this);
+        }
+        public override void GetDamaged(float damage)
+        {
+            
         }
     }
 }
