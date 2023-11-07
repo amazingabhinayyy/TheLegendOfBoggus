@@ -8,13 +8,13 @@ using Sprint2_Attempt3.Player;
 
 namespace Sprint2_Attempt3.CommandClasses
 {
-    internal class ShiftItemSelectorDown : ICommand
+    internal class UseAItem : ICommand
     {
-        public ShiftItemSelectorDown() { }
+        public UseAItem() { }
 
         public void Execute()
         {
-            InventoryController.ShiftCursorDown();
+            InventoryController.UseAItem();
         }
     }
 }

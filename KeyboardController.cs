@@ -43,6 +43,7 @@ namespace Sprint2_Attempt3
             commandMapping.Add(Keys.Z, new SetAttackLinkCommand(game1));
             commandMapping.Add(Keys.N, new SetAttackLinkCommand(game1));
             commandMapping.Add(Keys.None, new SetIdleLinkCommand(game1));
+            
             //item switching
             commandMapping.Add(Keys.D1, new SetUseBombCommand(game1));
             commandMapping.Add(Keys.D2, new SetUseBoomerangCommand(game1));
@@ -56,15 +57,17 @@ namespace Sprint2_Attempt3
             commandMapping.Add(Keys.R, new Reset(game1));
 
             //switching rooms
-            //commandMapping.Add(Keys.P, new SwitchToNextRoom(game1));
+            commandMapping.Add(Keys.Space, new ToggleItemMenu(game1));
 
-            //item selector
-            /*commandMapping.Add(Keys.Up, new ShiftItemSelectorUp(game1));
-            commandMapping.Add(Keys.Down, new ShiftItemSelectorDown(game1));
-            commandMapping.Add(Keys.Left, new ShiftItemSelectorLeft(game1));
-            commandMapping.Add(Keys.Right, new ShiftItemSelectorRight(game1));
-            commandMapping.Add(Keys.V, new SetAItem(game1));
-            commandMapping.Add(Keys.B, new SetBItem(game1));*/
+            //Item Menu
+            commandMapping.Add(Keys.O, new UseAItem());
+            commandMapping.Add(Keys.P, new UseBItem());
+            commandMapping.Add(Keys.V, new SetAItem());
+            commandMapping.Add(Keys.B, new SetBItem());
+            commandMapping.Add(Keys.U, new ShiftItemSelectorUp());
+            commandMapping.Add(Keys.J, new ShiftItemSelectorDown());
+            commandMapping.Add(Keys.H, new ShiftItemSelectorLeft());
+            commandMapping.Add(Keys.K, new ShiftItemSelectorRight());
 
             moveKeyTime.Add(Keys.W, 0);
             moveKeyTime.Add(Keys.A, 0);

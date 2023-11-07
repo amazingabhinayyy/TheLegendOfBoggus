@@ -124,7 +124,7 @@ namespace Sprint2_Attempt3.Collision
                 }
             } 
 
-            if(door.IsWalkable){
+            else{
                
                 //TransitionHandler transition = new TransitionHandler(door);
                 //TransitionHandler transition = new TransitionHandler();
