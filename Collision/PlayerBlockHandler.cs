@@ -134,7 +134,7 @@ namespace Sprint2_Attempt3.Collision
                 {
                     
                     game.room.SwitchToNorthRoom();
-                    link.Position = new Vector2(link.Position.X, 400 + Globals.YOffset);
+                   link.Position = new Vector2(link.Position.X, 400 + Globals.YOffset);
                     changedRooms = true;
                     
                 }  
@@ -159,7 +159,7 @@ namespace Sprint2_Attempt3.Collision
                    
                     game.room.SwitchToWestRoom();
                     link.Position = new Vector2(650, link.Position.Y);
-                    //changedRooms = true;
+                    changedRooms = true;
                     
                 }
             }

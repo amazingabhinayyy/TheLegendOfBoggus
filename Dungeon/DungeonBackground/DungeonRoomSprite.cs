@@ -56,8 +56,6 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
            // Rectangle destinationRectangle = new Rectangle(0 + (int)(change.X * 3.125), 175 + (int)(change.Y * 3.125), Globals.ScreenWidth - (int)(3.125 * change.X), 550 - (int)(3.125 * change.Y));
             Rectangle destinationRectangle = new Rectangle(0 + (int)(change.X * 3.125), 175 + (int)(change.Y * 3.125), Globals.ScreenWidth, 550 - (int)(3.125 * change.Y));
 
-            System.Diagnostics.Debug.WriteLine("x:" + (int)change.X);
-            System.Diagnostics.Debug.WriteLine("width:" + (Globals.ScreenWidth - (int)change.X));
             spriteBatch.Draw(
                 texture,
                destinationRectangle,
@@ -74,17 +72,20 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         {
             Rectangle newSourceRectangle = new Rectangle();
             Rectangle newDestinationRectangle = new Rectangle();
-            if (change.Y == 0&&change.X)
+            if (change.Y == 0&&change.X>0)
             {
                 //newSourceRectangle = new Rectangle(sourceRectangle.X + sourceRectangle.Width - (int)change.X, sourceRectangle.Y, (int)change.X, sourceRectangle.Height);
                 newSourceRectangle = sourceRectangle;
                 //newDestinationRectangle = new Rectangle(0, 175, (int)(change.X * 3.125), 550);
                 newDestinationRectangle = new Rectangle(-Globals.ScreenWidth+ (int)(change.X * 3.125), 175, Globals.ScreenWidth, 550);
             }
-            else
+            else if((change.Y == 0 && change.X < 0))
             {
-
+                newSourceRectangle = sourceRectangle;
+                newDestinationRectangle = new Rectangle(Globals.ScreenWidth+ (int)(change.X * 3.125), 175, Globals.ScreenWidth, 550);
             }
+
+
             spriteBatch.Draw(
             texture,
             newDestinationRectangle,

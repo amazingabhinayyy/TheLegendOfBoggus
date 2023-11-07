@@ -59,6 +59,7 @@ namespace Sprint2_Attempt3
             EnemyProjectileSpriteFactory.Instance.LoadAllTextures(Content);
             DungeonSpriteFactory.Instance.LoadAllTextures(Content);
             StartScreenSpriteFactory.Instance.LoadAllTextures(Content);
+            TransitionHandler.Instance.setGame1(this);
             RoomGenerator.Instance.LoadAllFiles();
             InventoryTexture = Content.Load<Texture2D>("Inventory");
             link = new Link(this);
@@ -69,7 +70,7 @@ namespace Sprint2_Attempt3
             inventoryController = new InventoryController(InventoryTexture);
             room = new Room1(this);
             startScreen = new StartScreenState(this);
-            TransitionHandler.Instance.setGame1(this);
+            
         }
 
         protected override void UnloadContent()

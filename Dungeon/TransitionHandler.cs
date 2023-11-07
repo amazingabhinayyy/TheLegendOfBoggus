@@ -25,12 +25,11 @@ namespace Sprint2_Attempt3.Dungeon
 {
     public class TransitionHandler
     {
-        //private int transitionSpeed = 16;
         private int transitionSpeed = 2;
         private IDoor door;
         private int multiplier = 1;
         public IDoor Door { get { return door; } set { door = value; } }
-
+        private bool gameStarted = true;
         private bool start;
         private int roomNumber;
         private Game1 game1;
@@ -58,7 +57,7 @@ namespace Sprint2_Attempt3.Dungeon
         }
 
         private IRoom currentRoom;
-        private IRoom nextRoom;
+        private IRoom nextRoom = null;
 
         public void setGame1(Game1 game)
         {
@@ -73,6 +72,7 @@ namespace Sprint2_Attempt3.Dungeon
         {
             currentRoom = room1;
             nextRoom = room2;
+       
             
         }
         public void Draw(SpriteBatch spriteBatch)
@@ -128,11 +128,10 @@ namespace Sprint2_Attempt3.Dungeon
                 }
 
                 multiplier++;
-                 if (end <= multiplier)
+               if (end <= multiplier)
                  {
-                     start = false;
+                    start = false;
                     CollisionDetector.GameObjectList = transitionGameObjectList;
-                    game1.room = new Room2(game1);
                     multiplier = 1;
                     timeSinceLastUpdate = 0;
                 }
