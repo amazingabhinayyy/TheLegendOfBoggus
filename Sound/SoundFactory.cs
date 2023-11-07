@@ -48,7 +48,7 @@ namespace Sprint2_Attempt3.Sounds
 
         public void LoadAllTextures(ContentManager content)
         {
-            /*getHeart = content.Load<SoundEffect>("LOZ_Get_Heart");
+            getHeart = content.Load<SoundEffect>("LOZ_Get_Heart");
             enemyHit = content.Load<SoundEffect>("LOZ_Enemy_Hit");
             enemyDie = content.Load<SoundEffect>("LOZ_Enemy_Die");
             linkHit = content.Load<SoundEffect>("LOZ_Link_Hurt");
@@ -67,9 +67,9 @@ namespace Sprint2_Attempt3.Sounds
             stairs = content.Load<SoundEffect>("LOZ_Stairs");
             bossScream = content.Load<SoundEffect>("LOZ_Boss_Scream1");
             bossHurt = content.Load<SoundEffect>("LOZ_Boss_Hit");
-            bossDefeat = content.Load<SoundEffect>("LOZ_Boss_Defeat");
+            //bossDefeat = content.Load<SoundEffect>("LOZ_Boss_Defeat");
             secret = content.Load<SoundEffect>("LOZ_Secret");
-            triforce = content.Load<SoundEffect>("Triforce"); */
+            //triforce = content.Load<SoundEffect>("Triforce");
 
 
             SoundEffect backgroundMusic = content.Load<SoundEffect>("Underworld_BGM");
