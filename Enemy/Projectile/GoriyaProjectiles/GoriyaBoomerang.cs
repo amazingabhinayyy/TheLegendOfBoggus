@@ -98,8 +98,5 @@ namespace Sprint2_Attempt3.Enemy.Projectile.GoriyaProjectiles
             return new Rectangle((int)position2.X, (int)position2.Y, Globals.GoriyaBoomerang1.Width * (int)Globals.scale, Globals.GoriyaBoomerang1.Height * (int)Globals.scale);
         }
 
-        public void Collided()
-        {
-        }
     }
 }

@@ -51,10 +51,6 @@ namespace Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles
             position2 = fireballPosition;
             fire = false;
         }
-        public void Collided()
-        {
-            CollisionDetector.GameObjectList.Remove(this);
-        }
         public void Update()
         {
             state.Update();
