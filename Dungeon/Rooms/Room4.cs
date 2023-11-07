@@ -44,10 +44,10 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
         }
         public override void SwitchToSouthRoom()
-        {
+        {/*
             game1.room = new Room1(game1);
             roomNumber = 0;
-            CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
+            CollisionDetector.GameObjectList = gameObjectLists[roomNumber];*/
         }
 
     }

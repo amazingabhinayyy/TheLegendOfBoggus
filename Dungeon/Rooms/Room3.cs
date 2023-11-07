@@ -39,6 +39,8 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         }
         public override void SwitchToWestRoom()
         {
+            TransitionHandler.Instance.Start = true;
+            TransitionHandler.Instance.Transition(this, new Room1(game1));
             game1.room = new Room1(game1);
             /*roomNumber = 0;
             CollisionDetector.GameObjectList = gameObjectLists[roomNumber];*/

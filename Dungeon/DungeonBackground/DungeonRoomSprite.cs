@@ -54,7 +54,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             // Rectangle newSourceRectangle = new Rectangle(sourceRectangle.X, sourceRectangle.Y, sourceRectangle.Width - (int)change.X, sourceRectangle.Height);
             Rectangle newSourceRectangle = sourceRectangle;
            // Rectangle destinationRectangle = new Rectangle(0 + (int)(change.X * 3.125), 175 + (int)(change.Y * 3.125), Globals.ScreenWidth - (int)(3.125 * change.X), 550 - (int)(3.125 * change.Y));
-            Rectangle destinationRectangle = new Rectangle(0 + (int)(change.X * 3.125), 175 + (int)(change.Y * 3.125), Globals.ScreenWidth, 550 - (int)(3.125 * change.Y));
+            Rectangle destinationRectangle = new Rectangle(0 + (int)(change.X * 3.125), 175 + (int)(change.Y * 3.125), Globals.ScreenWidth, 550 );
 
             spriteBatch.Draw(
                 texture,

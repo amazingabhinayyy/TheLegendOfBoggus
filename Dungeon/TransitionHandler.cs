@@ -85,12 +85,12 @@ namespace Sprint2_Attempt3.Dungeon
                 {
                     case (NorthDoor):
                         //change = new Vector2(0, -1*transitionSpeed * multiplier);
-                        change = new Vector2(0, -transitionSpeed * multiplier);
+                        change = new Vector2(0, transitionSpeed * multiplier);
                         end = 88;
                         initialPos = new Vector2(0, -Globals.ScreenHeight + Globals.YOffset);
                         break;
                     case (SouthDoor):
-                        change = new Vector2(0, transitionSpeed * multiplier);
+                        change = new Vector2(0, -transitionSpeed * multiplier);
                         end = 88;
                         initialPos = new Vector2(0, Globals.ScreenHeight+Globals.YOffset);
                         break;
@@ -132,6 +132,7 @@ namespace Sprint2_Attempt3.Dungeon
                  {
                     start = false;
                     CollisionDetector.GameObjectList = transitionGameObjectList;
+                    game1.room = nextRoom;
                     multiplier = 1;
                     timeSinceLastUpdate = 0;
                 }
