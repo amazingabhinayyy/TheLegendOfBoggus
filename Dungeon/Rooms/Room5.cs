@@ -34,8 +34,8 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                 }
             }
 
-            collisionDetector = new CollisionDetector(game1, game1.link);
-            CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
+            TransitionHandler.Instance.Start = true;
+            TransitionHandler.Instance.Transition(this, new Room2(game1));
         }
         public override void SwitchToNorthRoom()
         {

@@ -80,47 +80,63 @@ namespace Sprint2_Attempt3.Dungeon
             if (start)
             {
                 Vector2 change = Vector2.Zero;
+                Vector2 initialPos = Vector2.Zero;
                 switch (door)
                 {
                     case (NorthDoor):
                         //change = new Vector2(0, -1*transitionSpeed * multiplier);
-                        change = new Vector2(0, transitionSpeed * multiplier);
-
+                        change = new Vector2(0, -transitionSpeed * multiplier);
                         end = 88;
+                        initialPos = new Vector2(0, -Globals.ScreenHeight + Globals.YOffset);
                         break;
                     case (SouthDoor):
                         change = new Vector2(0, transitionSpeed * multiplier);
-                        end = 11;
+                        end = 88;
+                        initialPos = new Vector2(0, Globals.ScreenHeight+Globals.YOffset);
                         break;
                     case (EastDoor):
                         change = new Vector2(-transitionSpeed * multiplier, 0);
-                        end = 17;
+                        end = 129;
+                        initialPos = new Vector2(Globals.ScreenWidth, 0);
                         break;
                     case (WestDoor):
-                        change = new Vector2(-transitionSpeed * multiplier, 0);
+                        change = new Vector2(transitionSpeed * multiplier, 0);
                         end = 129;
+                        initialPos = new Vector2(-Globals.ScreenWidth, 0);
                         break;
                 }
-                
-                currentRoom.getDungeonRoom().Draw(spriteBatch,change);
-              
-                /*
+
+                currentRoom.getDungeonRoom().DrawCurrentRoom(spriteBatch, change);
+
+
                 foreach (IGameObject obj in CollisionDetector.GameObjectList)
                 {
                     if (obj is IBlock)
-                        ((IBlock)obj).Draw(spriteBatch,change);
+                        ((IBlock)obj).Draw(spriteBatch, change);
                     else if (obj is IDoor)
-                        ((IDoor)obj).Draw(spriteBatch,change);
-                }*/
+                         ((IDoor)obj).Draw(spriteBatch,change);
+                }
 
-                nextRoom.getDungeonRoom().Draw(spriteBatch, change);
+                nextRoom.getDungeonRoom().DrawNextRoom(spriteBatch, change);
 
+                foreach (IGameObject obj in transitionGameObjectList)
+                {
+                    if (obj is IBlock)
+                        ((IBlock)obj).Draw(spriteBatch, change, initialPos);
+                    else if (obj is IDoor)
+                        ((IDoor)obj).Draw(spriteBatch, change, initialPos);
+                }
 
                 multiplier++;
-                /* if (end <= multiplier)
+                 if (end <= multiplier)
                  {
                      start = false;
-                 }*/
+                    CollisionDetector.GameObjectList = transitionGameObjectList;
+                    game1.room = new Room2(game1);
+                    multiplier = 1;
+                    timeSinceLastUpdate = 0;
+                }
+                /*
                 timeSinceLastUpdate += (float)game1.Gametime.ElapsedGameTime.TotalSeconds;
                 if(timeSinceLastUpdate > 5f)
                 {
@@ -129,7 +145,7 @@ namespace Sprint2_Attempt3.Dungeon
                     game1.room = new Room2(game1);
                     multiplier = 1;
                     timeSinceLastUpdate = 0;
-                }
+                }*/
 
             }
             

@@ -33,12 +33,12 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                     }
                 }
             }
-           
-            collisionDetector = new CollisionDetector(game1, game1.link);
-           /*CollisionDetector.GameObjectList = gameObjectLists[roomNumber]; */
-
             TransitionHandler.Instance.TransitionGameObjectList = gameObjectLists[roomNumber];
-           
+            collisionDetector = new CollisionDetector(game1, game1.link);
+            /*
+            CollisionDetector.GameObjectList = gameObjectLists[roomNumber];*/
+
+            
         }
         public override void SwitchToEastRoom()
         {

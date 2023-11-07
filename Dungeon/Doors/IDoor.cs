@@ -19,6 +19,7 @@ namespace Sprint2_Attempt3.Dungeon.Doors
         public void Damage();
         public void NoDoor();
         public void Draw(SpriteBatch spriteBatch);
-       // void Draw(SpriteBatch spriteBatch, Vector2 change);
+        public void Draw(SpriteBatch spriteBatch, Vector2 change);
+        public void Draw(SpriteBatch spriteBatch, Vector2 change, Vector2 initialPos);
     }
 }

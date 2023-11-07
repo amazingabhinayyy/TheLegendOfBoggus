@@ -125,46 +125,42 @@ namespace Sprint2_Attempt3.Collision
             } 
 
             if(door.IsWalkable){
-                IRoom room = game.room;
+               
                 //TransitionHandler transition = new TransitionHandler(door);
                 //TransitionHandler transition = new TransitionHandler();
                 //transition.Door = door;
                 TransitionHandler.Instance.Door = door;
                 if (door is NorthDoor)
                 {
+                    
                     game.room.SwitchToNorthRoom();
-                    if (room != game.room)
-                    {
-                        link.Position = new Vector2(link.Position.X, 450 + Globals.YOffset - link.GetHitBox().Height);
-                        changedRooms = true;
-                    }
+                    link.Position = new Vector2(link.Position.X, 400 + Globals.YOffset);
+                    changedRooms = true;
+                    
                 }  
                 else if (door is EastDoor)
                 {
+                  
                     game.room.SwitchToEastRoom();
-                    if (room != game.room)
-                    {
-                        link.Position = new Vector2(100, link.Position.Y);
-                        changedRooms = true;
-                    }
+                    link.Position = new Vector2(100, link.Position.Y);
+                    changedRooms = true;
+                    
                 }
                 else if (door is SouthDoor)
                 {
+                    
                     game.room.SwitchToSouthRoom();
-                    if (room != game.room)
-                    {
-                        link.Position = new Vector2(link.Position.X, 100 + Globals.YOffset);
-                        changedRooms = true;
-                    }
+                    link.Position = new Vector2(link.Position.X, 100 + Globals.YOffset);
+                    changedRooms = true;
+                    
                 }
                 else if (door is WestDoor)
                 {
+                   
                     game.room.SwitchToWestRoom();
-                    if (room != game.room)
-                    {
-                        link.Position = new Vector2(630, link.Position.Y);
-                        changedRooms = true;
-                    }
+                    link.Position = new Vector2(650, link.Position.Y);
+                    //changedRooms = true;
+                    
                 }
             }
             return changedRooms;
