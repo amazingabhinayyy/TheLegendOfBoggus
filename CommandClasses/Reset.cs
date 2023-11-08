@@ -4,12 +4,13 @@ using Sprint2_Attempt3.Dungeon.Rooms;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Player;
+using System.Net.Mime;
 
 namespace Sprint2_Attempt3.CommandClasses
 {
     internal class Reset : ICommand
     {
-        public Game1 game1;
+        private Game1 game1;
 
         public Reset(Game1 game) { 
             this.game1= game;
