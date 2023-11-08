@@ -17,6 +17,7 @@ namespace Sprint2_Attempt3.Enemy
         public int Y { get; set; }
         public IEnemyState State { get; set; }
         public Rectangle Position { get; set; }
+        public Vector2 SpawnPosition { get; set; }
 
         public abstract void Generate();
         public abstract void Stun();
@@ -29,7 +30,7 @@ namespace Sprint2_Attempt3.Enemy
             currentFrame = 0;
             exists = true;
         }
-        public void Spawn()
+        public virtual void Spawn()
         {
             State = new SpawnAnimationState(this);
         }

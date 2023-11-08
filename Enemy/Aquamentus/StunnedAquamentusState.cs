@@ -35,23 +35,24 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
         }
         public void ChangeDirection()
         {
-            aquamentus.FireballPosition = new Vector2(aquamentus.X, aquamentus.Y);
-            aquamentus.Fireball = new AquamentusFireball(aquamentus.FireballPosition);
-            ((AquamentusFireball)aquamentus.Fireball).GenerateLeft();
-            aquamentus.State = new AttackWithFireballLeftState(aquamentus);
+            if (stunTimer >= 100)
+            {
+                aquamentus.FireballPosition = new Vector2(aquamentus.X, aquamentus.Y);
+                aquamentus.Fireball = new AquamentusFireball(aquamentus.FireballPosition);
+                ((AquamentusFireball)aquamentus.Fireball).GenerateLeft();
+                aquamentus.State = new AttackWithFireballLeftState(aquamentus);
+            }
         }
 
         public void ChangeAttackedStatus()
         {
-            aquamentus.State = new MovingAttackedLeftAquamentusState(aquamentus);
-        }
+            if(stunTimer >= 100)
+                aquamentus.State = new MovingAttackedLeftAquamentusState(aquamentus);
+        }   
         public void Update()
         {
             stunTimer++;
-            if (stunTimer == 100)
-            {
-                ChangeDirection();
-            }
+            ChangeDirection();
             aquamentus.Position = new Rectangle(aquamentus.X, aquamentus.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             sprite.Update();
         }

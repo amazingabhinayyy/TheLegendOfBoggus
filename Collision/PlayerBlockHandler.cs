@@ -130,6 +130,7 @@ namespace Sprint2_Attempt3.Collision
                 //TransitionHandler transition = new TransitionHandler();
                 //transition.Door = door;
                 TransitionHandler.Instance.Door = door;
+                link.Items.Clear();
                 if (door is NorthDoor)
                 {
                     

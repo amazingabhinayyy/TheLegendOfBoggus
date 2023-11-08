@@ -31,21 +31,23 @@ namespace Sprint2_Attempt3.Enemy.Dodongo
         }
         public void ChangeDirection()
         {
-            direction = random.Next(0, 3);
-            switch (direction)
-            {
-                case 0:
-                    dodongo.State = new MovingDownDodongoState(dodongo);
-                    break;
-                case 1:
-                    dodongo.State = new MovingUpDodongoState(dodongo);
-                    break;
-                case 2:
-                    dodongo.State = new MovingRightDodongoState(dodongo);
-                    break;
-                case 3:
-                    dodongo.State = new MovingLeftDodongoState(dodongo);
-                    break;
+            if (stunCounter == 100) { 
+                direction = random.Next(0, 3);
+                switch (direction)
+                {
+                    case 0:
+                        dodongo.State = new MovingDownDodongoState(dodongo);
+                        break;
+                    case 1:
+                        dodongo.State = new MovingUpDodongoState(dodongo);
+                        break;
+                    case 2:
+                        dodongo.State = new MovingRightDodongoState(dodongo);
+                        break;
+                    case 3:
+                        dodongo.State = new MovingLeftDodongoState(dodongo);
+                        break;
+                }
             }
         }
         public void ChangeAttackedStatus()
@@ -55,10 +57,7 @@ namespace Sprint2_Attempt3.Enemy.Dodongo
         public void Update()
         {
             stunCounter++;
-            if (stunCounter == 100)
-            {
-                ChangeDirection();
-            }
+            ChangeDirection();
             dodongo.Position = new Rectangle(dodongo.X, dodongo.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             sprite.Update();
         }
