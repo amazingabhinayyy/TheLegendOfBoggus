@@ -21,6 +21,7 @@ namespace Sprint2_Attempt3.Player
         public ILinkState State { get; set; }
         public List<ILinkProjectile> Items { get; set; }
         private Game1 game;
+        private bool linkDead;
 
         public Link(Game1 game)
         {
@@ -30,6 +31,7 @@ namespace Sprint2_Attempt3.Player
             //CollisionDetector.GameObjectList.Add(this);
             State = new DownIdleLinkState(this);
             Items = new List<ILinkProjectile>();
+            linkDead = false;
         }
         public void GetDamaged(ICollision side)
         {
@@ -105,7 +107,8 @@ namespace Sprint2_Attempt3.Player
         }
         public void Kill()
         {
-            game.Exit();
+            linkDead = true;
+            SetDecorator(new DeadLink(this, game));
         }
         public void SetDecorator(ILink decoLink)
         {
@@ -120,9 +123,16 @@ namespace Sprint2_Attempt3.Player
         {
             State.Update();
             Sprite.Update();
-            for (int c = 0; c < Items.Count; c++)
+            if (!linkDead)
             {
-                Items[c].Update();
+                for (int c = 0; c < Items.Count; c++)
+                {
+                    Items[c].Update();
+                }
+            }
+            else
+            {
+
             }
         }
         public void Draw(SpriteBatch _spriteBatch, Color color)

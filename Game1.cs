@@ -26,9 +26,12 @@ namespace Sprint2_Attempt3
         public ILink link { get; set; }
         public IRoom room { get; set; }
         public bool gameStarted { get; set; }
+        public bool linkDead { get; set; }
 
         public CollisionDetector collisionDetector;
         private StartScreenState startScreen;
+        private DeathScreenState deathScreen;
+
 
         public Game1()
         {
@@ -62,11 +65,13 @@ namespace Sprint2_Attempt3
             link = new Link(this);
             collisionDetector = new CollisionDetector(this, (Link)link);
             gameStarted = false;
+            linkDead = false;
             keyController = new KeyboardController(this);
             mouseController = new MouseController(this);
             inventoryController = new InventoryController(InventoryTexture, this);
             room = new Room1(this);
             startScreen = new StartScreenState(this);
+            deathScreen = new DeathScreenState(this);
         }
 
         protected override void UnloadContent()
@@ -91,20 +96,21 @@ namespace Sprint2_Attempt3
             GraphicsDevice.Clear(Color.Black);
 
             spriteBatch.Begin();
-            if (gameStarted)
+            if (linkDead)
+            {
+                deathScreen.Draw(spriteBatch);
+            }
+            else if (gameStarted)
             {
                 room.Draw(spriteBatch);
                 inventoryController.Draw(spriteBatch);
             }
             else
             {
-                startScreen.Draw(spriteBatch);  
+                startScreen.Draw(spriteBatch);
             }
             spriteBatch.End();
             base.Draw(gameTime);
         }
     }
 }
-
-
-

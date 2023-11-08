@@ -12,6 +12,7 @@ namespace Sprint2_Attempt3.StartScreen
     public class StartScreenSpriteFactory
     {
         private static Texture2D startScreenTexture;
+        private static Texture2D deathScreenTexture;
         // More private Texture2Ds follow
         // ...
 
@@ -32,12 +33,17 @@ namespace Sprint2_Attempt3.StartScreen
         public void LoadAllTextures(ContentManager content)
         {
             startScreenTexture = content.Load<Texture2D>("TitleScreen");
+            deathScreenTexture = content.Load<Texture2D>("DeathScreen");
             // More Content.Load calls follow
             //...
         }
         public ISprite CreateStartScreen()
         {
             return new StartScreenSprite(startScreenTexture);
+        }
+        public ISprite CreateDeathScreen()
+        {
+            return new DeathScreenSprite(deathScreenTexture); 
         }
     }
 }
