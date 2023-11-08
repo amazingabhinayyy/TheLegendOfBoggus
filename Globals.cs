@@ -25,6 +25,17 @@ namespace Sprint2_Attempt3
         public const int ScreenWidth = 800;
         public const int YOffset = 175;
 
+        public static int FindIndex(int count, int step, int length)
+        {
+            int index = 0;
+            while (step * (index + 1) <= count && (index + 1) < length)
+            {
+                index++;
+            }
+            return index;
+        }
+
+
         public static Dictionary<int, Rectangle> FloorGrid = new Dictionary<int, Rectangle>()
         {
             {1, new Rectangle(100, 100 + Globals.YOffset, 50, 50) },
@@ -148,6 +159,7 @@ namespace Sprint2_Attempt3
         public static Rectangle mapSrc { get { return new Rectangle(88, 0, 8, 16); } }
         public static Rectangle rupeeSrc { get { return new Rectangle(72, 0, 8, 16); } }
         public static Rectangle bluerupeeSrc { get { return new Rectangle(72, 16, 8, 16); } }
+        private static Rectangle[] hearts = new Rectangle[] { };
 
         public static Rectangle heartcontainerSrc { get { return new Rectangle(25, 0, 13, 14); } }
         public static Rectangle triforcepieceSrc { get { return new Rectangle(275, 3, 10, 10); } }
@@ -254,6 +266,7 @@ namespace Sprint2_Attempt3
         public static Rectangle SouthDoorPosition { get { return new Rectangle(348, 450 + Globals.YOffset, 105, 100); } }
         public static Rectangle EastDoorPosition { get { return new Rectangle(700, 227 + Globals.YOffset, 100, 94); } }
         public static Rectangle WestDoorPosition { get { return new Rectangle(0, 227 + Globals.YOffset, 100, 94); } }
+        public static Rectangle StairExitPosition { get { return new Rectangle(150, 0 + Globals.YOffset, 50, 10); } }
 
         public static Rectangle OpenNorthDoor { get { return new Rectangle(259, 1, 30, 32); } }
         public static Rectangle OpenSouthDoor { get { return new Rectangle(259, 100, 30, 32); } }
