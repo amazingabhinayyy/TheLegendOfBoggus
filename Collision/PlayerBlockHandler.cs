@@ -44,7 +44,7 @@ namespace Sprint2_Attempt3.Collision
             }
         }
 
-            public static void HandlePlayerBlockCollision(ILink link, IGameObject obj, ICollision side)
+        public static void HandlePlayerBlockCollision(ILink link, IGameObject obj, ICollision side)
         {
             bool blocked = false;
             if (obj is IBlock)

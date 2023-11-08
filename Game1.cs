@@ -62,9 +62,9 @@ namespace Sprint2_Attempt3
             link = new Link(this);
             collisionDetector = new CollisionDetector(this, (Link)link);
             gameStarted = false;
+            inventoryController = new InventoryController(this);
             keyController = new KeyboardController(this);
             mouseController = new MouseController(this);
-            inventoryController = new InventoryController(InventoryTexture, this);
             room = new Room1(this);
             startScreen = new StartScreenState(this);
         }
