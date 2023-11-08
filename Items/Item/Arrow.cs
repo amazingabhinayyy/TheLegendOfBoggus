@@ -10,9 +10,10 @@ namespace Sprint2_Attempt3.Items.ItemClasses
 {
     internal class Arrow : ItemSecondary
     {
+        private static Rectangle src = new Rectangle(154, 0, 5, 16);
         public Arrow(Vector2 position, bool exists)
         {
-            this.sourceRectangle = Globals.arrowSrc;
+            this.sourceRectangle = src;
             this.Position = new Rectangle((int)position.X, (int)position.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             this.exists = exists;
             this.spawned = false;

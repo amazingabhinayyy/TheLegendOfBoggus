@@ -262,7 +262,7 @@ namespace Sprint2_Attempt3.Inventory
                 ItemAIndex = ItemSelectedIndex;
                 LinkItems["ItemA"].SetSrcRectangle(LinkItems[ItemMenuStrings[ItemAIndex]].GetSrcRectangle());
             }
-                UsingFairy = false;
+            UsingFairy = false;
         }
         public static void SetItemB()
         {
@@ -329,7 +329,6 @@ namespace Sprint2_Attempt3.Inventory
                 FullView = true;
             }
         }
-
         public void Update() {
             LinkItems["TriforceMarker"].SetSrcRectangle(TriforceMarkers[Globals.FindIndex(count % 20, 10, TriforceMarkers.Length)]);
             count++;

@@ -11,9 +11,10 @@ namespace Sprint2_Attempt3.Items.ItemClasses
 {
     internal class Fairy : ItemSecondary 
     {
+        private static Rectangle[] fairies = new Rectangle[] { new Rectangle(40, 0, 8, 16), new Rectangle(48, 0, 8, 16) };
         public Fairy(Vector2 position, bool exists)//ILink link)
         {
-            this.sourceRectangle = Globals.fairySrc;
+            this.sourceRectangle = fairies[0];
             this.Position = new Rectangle((int)position.X, (int)position.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             this.exists = exists;
             this.spawned = false;
@@ -30,25 +31,9 @@ namespace Sprint2_Attempt3.Items.ItemClasses
             if (spawned)
             {
                 count++;
-                if (count <= 10)
-                {
-                    if (count == 5)
-                    {
-                        sourceRectangle = Globals.fairySrc;
-                        Position.Width = (int)(sourceRectangle.Width * Globals.scale);
-                        Position.Height = (int)(sourceRectangle.Height * Globals.scale);
-                    }
-                    else if (count == 10)
-                    {
-                        sourceRectangle = Globals.fairytwoSrc;
-                        Position.Width = (int)(sourceRectangle.Width * Globals.scale);
-                        Position.Height = (int)(sourceRectangle.Height * Globals.scale);
-                    }
-                }
-                else
-                {
-                    count = 0;
-                }
+                sourceRectangle = fairies[Globals.FindIndex(count % (fairies.Length * AnimateRate), AnimateRate, fairies.Length)];
+                Position.Width = (int)(sourceRectangle.Width * Globals.scale);
+                Position.Height = (int)(sourceRectangle.Height * Globals.scale);
 
             }
         }

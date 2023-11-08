@@ -10,9 +10,10 @@ namespace Sprint2_Attempt3.Items.ItemClasses
 {
     internal class Boomerang : ItemSecondary
     {
+        private static Rectangle src = new Rectangle(129, 3, 5, 8);
         public Boomerang(Vector2 position, bool exists)
         {
-            this.sourceRectangle = Globals.boomerangSrc;
+            this.sourceRectangle = src;
             this.Position = new Rectangle((int)position.X, (int)position.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             this.exists = exists;
             this.spawned = false;

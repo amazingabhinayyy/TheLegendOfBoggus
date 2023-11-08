@@ -15,6 +15,8 @@ using Sprint2_Attempt3.Dungeon.Rooms;
 using System.Collections.Generic;
 using Sprint2_Attempt3.Dungeon;
 using Sprint2_Attempt3.WallBlocks;
+using System;
+using System.Linq;
 
 namespace Sprint2_Attempt3
 {
@@ -27,14 +29,22 @@ namespace Sprint2_Attempt3
 
         public static int FindIndex(int count, int step, int length)
         {
-            int index = 0;
-            while (step * (index + 1) <= count && (index + 1) < length)
-            {
-                index++;
-            }
+            int index = Math.Min(count / step, length - 1);
             return index;
         }
 
+        public static void MakeFloorGrid()
+        {
+            int i = 1;
+            for (int y = 100 + Globals.YOffset; y <= 400; y += 50)
+            {
+                for (int x = 100; x <= 650; x += 50)
+                {
+                    //FloorGrid.Add(i, new Rectangle(x, y, 50, 50));
+                    i++;
+                }
+            }
+        }
 
         public static Dictionary<int, Rectangle> FloorGrid = new Dictionary<int, Rectangle>()
         {
@@ -140,37 +150,6 @@ namespace Sprint2_Attempt3
         public static Rectangle whiteBrickScr { get { return new Rectangle(0, 34, 16, 16); } }
         public static Rectangle blackBlockScr { get { return new Rectangle(0, 17, 16, 16); } }
         public static Rectangle dotTileScr { get { return new Rectangle(17, 17, 16, 16); } }
-
-        public static Rectangle NorthEastCollisionBlock { get { return new Rectangle(0, 0, 348, 62); } }
-        public static Rectangle NorthWestCollisionBlock { get { return new Rectangle(453, 0, 347, 62); } }
-        public static Rectangle SouthEastCollisionBlock { get { return new Rectangle(0, 393, 348, 87); } }
-        public static Rectangle SouthWestCollisionBlock { get { return new Rectangle(453, 393, 347, 87); } }
-        public static Rectangle WestNorthCollisionBlock { get { return new Rectangle(0, 87, 101, 110); } }
-        public static Rectangle WestSouthCollisionBlock { get { return new Rectangle(0, 287, 101, 106); } }
-        public static Rectangle EastNorthCollisionBlock { get { return new Rectangle(698, 87, 101, 110); } }
-        public static Rectangle EastSouthCollisionBlock { get { return new Rectangle(698, 287, 101, 106); } }
-
-        public static Rectangle bombSrc { get { return new Rectangle(135, 0, 9, 15); } }
-        public static Rectangle clockSrc { get { return new Rectangle(57, 0, 13, 17); } }
-        public static Rectangle compassSrc { get { return new Rectangle(258, 1, 11, 12); } }
-        public static Rectangle heartSrc { get { return new Rectangle(0, 0, 7, 8); } }
-        public static Rectangle blueheartSrc { get { return new Rectangle(0, 8, 7, 8); } }
-        public static Rectangle keySrc { get { return new Rectangle(240, 0, 8, 16); } }
-        public static Rectangle mapSrc { get { return new Rectangle(88, 0, 8, 16); } }
-        public static Rectangle rupeeSrc { get { return new Rectangle(72, 0, 8, 16); } }
-        public static Rectangle bluerupeeSrc { get { return new Rectangle(72, 16, 8, 16); } }
-        private static Rectangle[] hearts = new Rectangle[] { };
-
-        public static Rectangle heartcontainerSrc { get { return new Rectangle(25, 0, 13, 14); } }
-        public static Rectangle triforcepieceSrc { get { return new Rectangle(275, 3, 10, 10); } }
-        public static Rectangle bluetriforcepieceSrc { get { return new Rectangle(275, 19, 10, 10); } }
-        public static Rectangle boomerangSrc { get { return new Rectangle(129, 3, 5, 8); } }
-        public static Rectangle bowSrc { get { return new Rectangle(144, 0, 8, 16); } }
-        public static Rectangle arrowSrc { get { return new Rectangle(154, 0, 5, 16); } }
-        public static Rectangle fairySrc { get { return new Rectangle(40, 0, 8, 16); } }
-        public static Rectangle fairytwoSrc { get { return new Rectangle(48, 0, 8, 16); } }
-        public static Rectangle bluecandleSrc { get { return new Rectangle(160, 16, 8, 16); } }
-        public static Rectangle bluepotionSrc { get { return new Rectangle(80, 16, 8, 16); } }
 
         //my futile attempt to avoid making a Projectile class, probably will delete
         public static bool changeDirection = false;
