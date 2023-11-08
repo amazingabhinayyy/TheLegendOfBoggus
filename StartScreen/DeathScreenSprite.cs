@@ -17,7 +17,7 @@ namespace Sprint2_Attempt3.StartScreen
         public DeathScreenSprite(Texture2D texture)
         {
             this.texture = texture;
-            sourceRectangle = new Rectangle(328, 300, 200, 187);
+            sourceRectangle = new Rectangle(280, 270, 300, 245);
             destinationRectangle = new Rectangle(0, 0, 800, 750);
         }
         public void Update() { }
