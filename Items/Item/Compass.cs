@@ -19,5 +19,10 @@ namespace Sprint2_Attempt3.Items.ItemClasses
             this.spawned = false;
             sprite = ItemSpriteFactory.Instance.CreateSpawnItemSprite();
         }
+        public override void Collect()
+        {
+            base.Collect();
+            InventoryController.IncrementCount("TriforceMarker");
+        }
     }
 }

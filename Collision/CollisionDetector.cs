@@ -39,7 +39,6 @@ namespace Sprint2_Attempt3.Collision
         {
             spawnItemCount = 0;
             this.game = game;
-            AddWallBlocks();
             this.linkObj = link;
         }
         public void CheckPlayerCollision(ILink link)

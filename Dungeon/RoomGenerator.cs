@@ -272,6 +272,10 @@ namespace Sprint2_Attempt3.Dungeon
             {
                 door = new WestDoor(state);
             }
+            else if (Door.Equals("StairExit"))
+            {
+                door = new StairExit(state);
+            }
             return door;
         }
     }

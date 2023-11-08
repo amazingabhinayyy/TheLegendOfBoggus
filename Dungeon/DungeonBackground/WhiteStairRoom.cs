@@ -8,16 +8,17 @@ using System.Threading.Tasks;
 
 namespace Sprint2_Attempt3.Dungeon.Rooms
 {
-    public class DungeonRoom : IDungeonRoom
+    public class WhiteStairRoom : IDungeonRoom
     {
         private DungeonRoomSprite sprite;
+        private static Rectangle WhiteRoomScrRectangle = new Rectangle(1, 1, 255, 159);
 
-        public DungeonRoom() { 
-            sprite = DungeonSpriteFactory.Instance.CreateDungeonRoomSprite();
+        public WhiteStairRoom() { 
+            sprite = DungeonSpriteFactory.Instance.CreateWhiteStairRoomSprite();
     }
 
         public void Draw(SpriteBatch spriteBatch) {
-            sprite.Draw(spriteBatch, Globals.DungeonStandard);
+            sprite.Draw(spriteBatch, WhiteRoomScrRectangle);
         }
     }
 }
