@@ -37,7 +37,7 @@ namespace Sprint2_Attempt3.Collision
                 if (side is BottomCollision)
                 {
 
-                    //enemy.MoveDown();
+                   
                     enemy.Y = wall.Bottom;
                 }
                 else if (side is LeftCollision)
@@ -55,7 +55,7 @@ namespace Sprint2_Attempt3.Collision
                     //enemy.MoveUp();
                     enemy.Y = wall.Top - enemy.Position.Height - 1;
                 }
-                //enemy.ChangeDirection();
+               enemy.ChangeDirection();
             }
         }
     }
