@@ -30,6 +30,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
 
             this.X = x;
             this.Y = y;
+            this.SpawnPosition = new Vector2(x, y);
             BoomerangPosition = new Vector2(X, Y);
             Boomerang = new GoriyaBoomerang(BoomerangPosition);
             Direction = ProjectileDirection.Left;
@@ -90,6 +91,12 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         {
             base.Kill();
             CollisionDetector.GameObjectList.Remove(Boomerang);
+        }
+        public override void Spawn()
+        {
+            this.X = (int)this.SpawnPosition.X;
+            this.Y = (int)this.SpawnPosition.Y;
+            State = new SpawnAnimationState(this);
         }
     }
 }

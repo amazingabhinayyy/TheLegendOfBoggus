@@ -13,6 +13,7 @@ namespace Sprint2_Attempt3.Enemy.Stalfos
         {
             this.X = x;
             this.Y = y;
+            this.SpawnPosition = new Vector2(x, y);
         }
         public override void Generate() {
             State = new MovingLeftStalfosState(this);
@@ -36,6 +37,12 @@ namespace Sprint2_Attempt3.Enemy.Stalfos
         public override void MoveRight()
         {
             State = new MovingRightStalfosState(this);
+        }
+        public override void Spawn()
+        {
+            this.X = (int)this.SpawnPosition.X;
+            this.Y = (int)this.SpawnPosition.Y;
+            State = new SpawnAnimationState(this);
         }
     }
 }
