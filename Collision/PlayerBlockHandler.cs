@@ -29,22 +29,18 @@ namespace Sprint2_Attempt3.Collision
             if (side is BottomCollision)
             {
                 link.Position = new Vector2(link.Position.X, wall.Bottom);
-                //link.Position.Y = wall.Bottom;
             }
             else if (side is LeftCollision)
             {
                 link.Position = new Vector2(wall.Left - link.GetHitBox().Width - 1, link.Position.Y);
-                //link.Position.X = wall.Right - wall.Width - 45;
             }
             else if (side is RightCollision)
             {
                 link.Position = new Vector2(wall.Right, link.Position.Y);
-                //link.Position.X = wall.Right;
             }
             else
             {
                 link.Position = new Vector2(link.Position.X, wall.Top - link.GetHitBox().Height - 1);
-                //link.Position.Y = wall.Top - wall.Height + 40;
             }
         }
 
@@ -59,10 +55,6 @@ namespace Sprint2_Attempt3.Collision
                     blocked = true;
                 }
             }
-            /*else if (obj is IWall)
-            {
-                blocked = true;
-            }*/
             else if (obj is IDoor) {
                 blocked = !(((IDoor)obj).IsWalkable);
             }
