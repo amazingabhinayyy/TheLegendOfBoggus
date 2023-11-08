@@ -171,7 +171,7 @@ namespace Sprint2_Attempt3.Dungeon
         }
         public DungeonRoom getDungeonRoom()
         {
-            return room;
+            return (DungeonRoom)room;
         }
         public virtual void SwitchToNorthRoom() { }
         public virtual void SwitchToSouthRoom() { }

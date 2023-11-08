@@ -23,5 +23,15 @@ namespace Sprint2_Attempt3.Dungeon.Doors.DoorSprites
                 0f
             );
         }
+
+        public void Draw(SpriteBatch spriteBatch, Rectangle sourceRectangle, Vector2 change)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Rectangle sourceRectangle, Vector2 change, Vector2 initialPos)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
