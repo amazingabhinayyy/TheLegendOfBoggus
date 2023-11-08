@@ -85,6 +85,7 @@ namespace Sprint2_Attempt3.Dungeon
             ClockUsed = false;
             InventoryController.VisitRoom(roomNumber);
             CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
+            game1.link.Items.Clear();
         }
 
         public void SwitchToPrevRoom()
@@ -97,6 +98,7 @@ namespace Sprint2_Attempt3.Dungeon
             {
                 roomNumber--;
             }
+            game1.link.Items.Clear();
             ClockUsed = false;
             InventoryController.VisitRoom(roomNumber);
             CollisionDetector.GameObjectList = gameObjectLists[roomNumber];

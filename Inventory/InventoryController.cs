@@ -109,7 +109,7 @@ namespace Sprint2_Attempt3.Inventory
             { 17, new Rectangle(destRectangle.X + 477, destRectangle.Y + 317, 25, 24) }
         };
 
-        private static String[] ItemMenuStrings = { "Boomerang", "Bomb", "Arrow", "BlueCandle", "Bow", "Clock", "BluePotion", "Fairy" };
+        private static String[] ItemMenuStrings = { "Boomerang", "Bomb", "Arrow", "BlueCandle", "SwordProjectile", "Clock", "BluePotion", "Fairy" };
         private static List<int> RoomsNotVisited = new List<int>();
 
         private static Rectangle ItemBDestRectangle = new Rectangle(destRectangle.X + 401, destRectangle.Y + 606, 26, 49);

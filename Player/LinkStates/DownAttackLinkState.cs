@@ -3,6 +3,7 @@ using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates;
 using Sprint2_Attempt3.Player.LinkProjectiles.ProjectileInterfaces;
+using Sprint2_Attempt3.Inventory;
 
 namespace Sprint2_Attempt3.Player.LinkStates
 {
@@ -64,7 +65,7 @@ namespace Sprint2_Attempt3.Player.LinkStates
                         noSwordBeam = false;
                     }
                 }
-                if (noSwordBeam)
+                if (noSwordBeam && InventoryController.GetCount("Heart") == 5)
                 {
                     DownSwordBeam swordBeam = new DownSwordBeam(link);
                     link.Items.Add(swordBeam);

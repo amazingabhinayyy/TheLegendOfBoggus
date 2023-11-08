@@ -8,10 +8,10 @@ using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Dungeon;
-using Sprint2_Attempt3.Blocks.BlockSprites;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Inventory;
 using Sprint2_Attempt3.StartScreen;
+using Sprint2_Attempt3.Sounds;
 
 namespace Sprint2_Attempt3
 {
@@ -57,6 +57,7 @@ namespace Sprint2_Attempt3
             ItemSpriteFactory.Instance.LoadAllTextures(Content);
             BlockSpriteFactory.Instance.LoadAllTextures(Content);
             EnemyProjectileSpriteFactory.Instance.LoadAllTextures(Content);
+            SoundFactory.Instance.LoadAllTextures(Content);
             DungeonSpriteFactory.Instance.LoadAllTextures(Content);
             StartScreenSpriteFactory.Instance.LoadAllTextures(Content);
             TransitionHandler.Instance.setGame1(this);
