@@ -21,6 +21,7 @@ using Sprint2_Attempt3.Items.ItemClasses;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Sprint2_Attempt3.Dungeon
 {
@@ -50,8 +51,9 @@ namespace Sprint2_Attempt3.Dungeon
 
         }
 
-        public List<IGameObject> LoadFile(int fileNumber) {
+        public /*List<List<IGameObject>>*/ List<IGameObject> LoadFile(int fileNumber) {
             List<IGameObject> objectList = new List<IGameObject>();
+            List<IGameObject> enemyList = new List<IGameObject>();
 
             StreamReader sr = new StreamReader(fileNames[fileNumber]);
             while (!sr.EndOfStream) {
@@ -60,6 +62,7 @@ namespace Sprint2_Attempt3.Dungeon
                 {
                     var words = line.Split(",");
                     if (words[0].Equals("Enemy")) {
+                        //enemyList.Add(GetEnemy(words[1], int.Parse(words[2]), int.Parse(words[3]) + Globals.YOffset));
                         objectList.Add(GetEnemy(words[1], int.Parse(words[2]), int.Parse(words[3]) + Globals.YOffset));
                     }
                     else if (words[0].Equals("Block"))
@@ -77,8 +80,11 @@ namespace Sprint2_Attempt3.Dungeon
 
                 }
             }
-
+            List<List<IGameObject>> lists = new List<List<IGameObject>>();
+            lists.Add(objectList);
+            lists.Add(enemyList);
             return objectList;
+           // return lists;
         }
 
         private IEnemy GetEnemy(String Enemy, int x, int y) {

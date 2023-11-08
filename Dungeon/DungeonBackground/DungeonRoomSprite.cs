@@ -84,6 +84,16 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                 newSourceRectangle = sourceRectangle;
                 newDestinationRectangle = new Rectangle(Globals.ScreenWidth+ (int)(change.X * 3.125), 175, Globals.ScreenWidth, 550);
             }
+            else if (change.Y>0)
+            {
+                newSourceRectangle = sourceRectangle;
+                newDestinationRectangle = new Rectangle(0, 175-Globals.ScreenHeight+Globals.YOffset+(int)(change.Y*3.125), Globals.ScreenWidth, 550);
+            }
+            else
+            {
+                newSourceRectangle = sourceRectangle;
+                newDestinationRectangle = new Rectangle(0, 175 + Globals.ScreenHeight - Globals.YOffset + (int)(change.Y * 3.125), Globals.ScreenWidth, 550);
+            }
 
 
             spriteBatch.Draw(

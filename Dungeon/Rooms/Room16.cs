@@ -11,7 +11,8 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         public Room16(Game1 game1) : base(game1, 15) { }
         public override void SwitchToEastRoom()
         {
-            game1.room = new Room17(game1);
+            TransitionHandler.Instance.Start = true;
+            TransitionHandler.Instance.Transition(this, new Room17(game1));
         }
 
     }

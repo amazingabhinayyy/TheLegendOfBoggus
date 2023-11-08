@@ -40,7 +40,7 @@ namespace Sprint2_Attempt3.Dungeon
   
         public  List<IGameObject> TransitionGameObjectList
         {
-            get { return TransitionGameObjectList; }
+            get { return transitionGameObjectList; }
             set { transitionGameObjectList = value; }
         }
 
@@ -92,7 +92,7 @@ namespace Sprint2_Attempt3.Dungeon
                     case (SouthDoor):
                         change = new Vector2(0, -transitionSpeed * multiplier);
                         end = 88;
-                        initialPos = new Vector2(0, Globals.ScreenHeight+Globals.YOffset);
+                        initialPos = new Vector2(0, Globals.ScreenHeight-Globals.YOffset);
                         break;
                     case (EastDoor):
                         change = new Vector2(-transitionSpeed * multiplier, 0);
@@ -125,11 +125,13 @@ namespace Sprint2_Attempt3.Dungeon
                         ((IBlock)obj).Draw(spriteBatch, change, initialPos);
                     else if (obj is IDoor)
                         ((IDoor)obj).Draw(spriteBatch, change, initialPos);
+                   
+
                 }
 
                 multiplier++;
                if (end <= multiplier)
-                 {
+               {
                     start = false;
                     CollisionDetector.GameObjectList = transitionGameObjectList;
                     game1.room = nextRoom;
