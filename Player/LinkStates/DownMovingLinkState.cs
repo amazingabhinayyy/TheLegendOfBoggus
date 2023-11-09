@@ -9,7 +9,7 @@ namespace Sprint2_Attempt3.Player.LinkStates
         public DownMovingLinkState(Link link)
         {
             this.link = link;
-            //link.Sprite = LinkSpriteFactory.Instance.CreateDownMovingLinkSprite();
+            link.Sprite = LinkSpriteFactory.Instance.CreateDownMovingLinkSprite();
         }
         public void BecomeIdle()
         {
