@@ -9,6 +9,7 @@ using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Inventory;
 using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Player;
+using Sprint2_Attempt3.WallBlocks;
 using System;
 using System.Collections.Generic;
 using System.Reflection.Metadata.Ecma335;
@@ -22,7 +23,7 @@ namespace Sprint2_Attempt3.Dungeon
         protected static int enemyKillCount = 0;
         protected Boolean spawned = false;
         public static bool ClockUsed { get; set; } = false;
-        protected DungeonRoom room;
+        protected IDungeonRoom room;
         protected Game1 game1;
         protected CollisionDetector collisionDetector;
 
@@ -38,6 +39,10 @@ namespace Sprint2_Attempt3.Dungeon
                 //gameObjectLists[roomNumber] = RoomGenerator.Instance.LoadFile(roomNumber);
 
                 gameObjectLists[roomNumber].Add(this.game1.link);
+                if (roomNum != 15)
+                {
+                    foreach (IWall wall in Globals.WallBlocks) { gameObjectLists[roomNumber].Add(wall); }
+                }
                 InventoryController.VisitRoom(roomNum);
             }
 
@@ -166,7 +171,7 @@ namespace Sprint2_Attempt3.Dungeon
         }
         public DungeonRoom getDungeonRoom()
         {
-            return room;
+            return (DungeonRoom)room;
         }
         public virtual void SwitchToNorthRoom() { }
         public virtual void SwitchToSouthRoom() { }

@@ -17,6 +17,7 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
         private int endFrame;
         private Random random;
         private int direction;
+        private int distance;
         public MovingRightAquamentusState(Aquamentus Aquamentus)
         {
             this.Aquamentus = Aquamentus;
@@ -24,13 +25,13 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
             sourceRectangle = Globals.AquamentusGreenLeft;
             Aquamentus.Position = new Rectangle(Aquamentus.X, Aquamentus.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             random = new Random();
-            direction = random.Next(0, 2);
+            distance = random.Next(50, 100);
 
         }
         public void ChangeDirection()
         {
-            
-        
+
+            direction = random.Next(0, 3);
             switch (direction)
             {
                 case 0:

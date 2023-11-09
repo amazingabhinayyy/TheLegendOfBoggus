@@ -20,5 +20,11 @@ namespace Sprint2_Attempt3.Items.ItemClasses
             sprite = ItemSpriteFactory.Instance.CreateSpawnItemSprite();
         }
 
+        public override void Collect()
+        {
+            base.Collect();
+            InventoryController.IncrementCount("MapLayout");
+        }
+
     }
 }

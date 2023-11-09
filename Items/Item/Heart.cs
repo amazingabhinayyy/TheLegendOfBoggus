@@ -12,6 +12,7 @@ namespace Sprint2_Attempt3.Items.ItemClasses
 {
     internal class Heart : ItemSecondary 
     {
+        private static Rectangle[] hearts = new Rectangle[] { new Rectangle(0, 0, 7, 8), new Rectangle(0, 8, 7, 8) };
         public Heart(Vector2 position, bool exists)
         {
             this.sourceRectangle = Globals.heartSrc;
@@ -28,28 +29,13 @@ namespace Sprint2_Attempt3.Items.ItemClasses
                 sprite = ItemSpriteFactory.Instance.CreateItemSprite();
                 spawned = true;
             }
+
             if (spawned)
             {
                 count++;
-                if (count <= 10)
-                {
-                    if (count == 5)
-                    {
-                        sourceRectangle = Globals.heartSrc;
-                        Position.Width = (int)(sourceRectangle.Width * Globals.scale);
-                        Position.Height = (int)(sourceRectangle.Height * Globals.scale);
-                    }
-                    else if (count == 10)
-                    {
-                        sourceRectangle = Globals.blueheartSrc;
-                        Position.Width = (int)(sourceRectangle.Width * Globals.scale);
-                        Position.Height = (int)(sourceRectangle.Height * Globals.scale);
-                    }
-                }
-                else
-                {
-                    count = 0;
-                }
+                sourceRectangle = hearts[Globals.FindIndex(count % 10, 5, hearts.Length)];
+                Position.Width = (int)(sourceRectangle.Width * Globals.scale);
+                Position.Height = (int)(sourceRectangle.Height * Globals.scale);
             }
         }
 
