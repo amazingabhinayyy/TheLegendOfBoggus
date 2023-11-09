@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sprint2_Attempt3.Dungeon.Rooms
 {
-    public class DungeonRoom
+    public class DungeonRoom : IDungeonRoom
     {
         private DungeonRoomSprite sprite;
 

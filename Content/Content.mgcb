@@ -61,7 +61,7 @@
 /processorParam:TextureFormat=Color
 /build:DeathScreen.png
 
-#begin Dungeon_Doors.jpeg
+#begin Dungeon_Doors.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -71,7 +71,19 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Dungeon_Doors.jpeg
+/build:Dungeon_Doors.png
+
+#begin DungeonSprites.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:DungeonSprites.png
 
 #begin Enemies.png
 /importer:TextureImporter

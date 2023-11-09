@@ -11,9 +11,10 @@ namespace Sprint2_Attempt3.Items.ItemClasses
 {
     internal class Rupee : ItemSecondary 
     {
+        private static Rectangle[] rupees = new Rectangle[] { new Rectangle(72, 0, 8, 16), new Rectangle(72, 16, 8, 16) };
         public Rupee(Vector2 position, bool exists)
         {
-            this.sourceRectangle = Globals.rupeeSrc;
+            this.sourceRectangle = rupees[0];
             this.Position = new Rectangle((int)position.X, (int)position.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             this.exists = exists;
             this.spawned = false;
@@ -30,25 +31,9 @@ namespace Sprint2_Attempt3.Items.ItemClasses
             if (spawned)
             {
                 count++;
-                if (count <= 10)
-                {
-                    if (count == 5)
-                    {
-                        sourceRectangle = Globals.rupeeSrc;
-                        Position.Width = (int)(sourceRectangle.Width * Globals.scale);
-                        Position.Height = (int)(sourceRectangle.Height * Globals.scale);
-                    }
-                    else if (count == 10)
-                    {
-                        sourceRectangle = Globals.bluerupeeSrc;
-                        Position.Width = (int)(sourceRectangle.Width * Globals.scale);
-                        Position.Height = (int)(sourceRectangle.Height * Globals.scale);
-                    }
-                }
-                else
-                {
-                    count = 0;
-                }
+                sourceRectangle = rupees[Globals.FindIndex(count % (rupees.Length * AnimateRate), AnimateRate, rupees.Length)];
+                Position.Width = (int)(sourceRectangle.Width * Globals.scale);
+                Position.Height = (int)(sourceRectangle.Height * Globals.scale);
             }
         }
     }

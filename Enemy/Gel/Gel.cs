@@ -6,8 +6,7 @@ namespace Sprint2_Attempt3.Enemy.Gel
 {
     internal class Gel : EnemyX
     {
-        //public new int X { get; set; }
-        //public new int Y { get; set; }
+        public static Rectangle[] Gels { get; } = new Rectangle[] { new Rectangle(0, 1, 9, 9), new Rectangle(10, 1, 8, 9) };
         public Gel(int x, int y)
         {
             this.X = x;

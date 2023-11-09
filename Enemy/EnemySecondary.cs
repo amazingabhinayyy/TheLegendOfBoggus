@@ -10,6 +10,8 @@ namespace Sprint2_Attempt3.Enemy
     {
         protected int count;
         protected int currentFrame;
+        public int AnimateRate { get; } = 15;
+        public int DamageAnimateRate { get; } = 15;
         private int distance;
         private Random random;
         protected float health;

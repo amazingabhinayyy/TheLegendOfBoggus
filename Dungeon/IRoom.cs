@@ -16,5 +16,7 @@ namespace Sprint2_Attempt3.Dungeon
         public void SwitchToEastRoom();
         public void SwitchToWestRoom();
         public void SetDecorator(IRoom room);
+        public void SwitchToLowerRoom();
+        public void SwitchToUpperRoom();
     }
 }

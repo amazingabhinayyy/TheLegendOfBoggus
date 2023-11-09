@@ -39,7 +39,6 @@ namespace Sprint2_Attempt3.Collision
         {
             spawnItemCount = 0;
             this.game = game;
-            AddWallBlocks();
             this.linkObj = link;
         }
         public void CheckPlayerCollision(ILink link)
@@ -59,7 +58,7 @@ namespace Sprint2_Attempt3.Collision
                     }
                     else if (obj is IWall)
                     {
-                        CheckPlayerHitWallCollision.CheckPlayerWallCollision(linkObj);
+                        CheckPlayerHitWallCollision.CheckPlayerWallCollision(linkObj, (IWall)obj);
                     }
                     else if (obj is IBlock)
                     {
@@ -134,6 +133,9 @@ namespace Sprint2_Attempt3.Collision
                             else if (obj is IBlock || obj is IDoor)
                             {
                                 EnemyBlockHandler.HandleEnemyBlockCollision((IEnemy)gameObjectList[i], obj, collisionRectangle);
+                            }
+                            else if (obj is IWall && !((IWall)obj).EnemyWalkable) {
+                                EnemyWallHandler.HandleEnemyWallCollision(obj.GetHitBox(), (IEnemy)gameObjectList[i]);
                             }
                         }
                     }

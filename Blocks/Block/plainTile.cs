@@ -12,10 +12,11 @@ namespace Sprint2_Attempt3.Blocks.BlockSprites
 {
     public class PlainTile : BlockSecondary
     {
+        private static Rectangle src = new Rectangle(0, 0, 16, 16);
         public PlainTile(Rectangle Position)
         {
             position = Position;
-            sourceRectangle = Globals.plainScr;
+            sourceRectangle = src;
             isWalkable = true;
         }
     }
