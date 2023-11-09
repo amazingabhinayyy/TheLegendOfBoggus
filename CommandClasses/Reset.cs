@@ -19,8 +19,10 @@ namespace Sprint2_Attempt3.CommandClasses
         public void Execute()
         {
             game1.link = new Link(game1);
+            game1.linkDead = false;
             RoomSecondary.ResetRooms();
             game1.room = new Room1(game1);
+            //inventoryController = new InventoryController(this);
             game1.collisionDetector = new CollisionDetector(game1, (Link)game1.link);
         }
     }

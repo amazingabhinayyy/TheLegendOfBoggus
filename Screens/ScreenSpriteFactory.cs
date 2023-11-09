@@ -9,16 +9,16 @@ using System.Threading.Tasks;
 
 namespace Sprint2_Attempt3.StartScreen
 {
-    public class StartScreenSpriteFactory
+    public class ScreenSpriteFactory
     {
         private static Texture2D startScreenTexture;
         private static Texture2D deathScreenTexture;
         // More private Texture2Ds follow
         // ...
 
-        private static StartScreenSpriteFactory instance = new StartScreenSpriteFactory();
+        private static ScreenSpriteFactory instance = new ScreenSpriteFactory();
 
-        public static StartScreenSpriteFactory Instance
+        public static ScreenSpriteFactory Instance
         {
             get
             {
@@ -26,7 +26,7 @@ namespace Sprint2_Attempt3.StartScreen
             }
         }
 
-        private StartScreenSpriteFactory()
+        private ScreenSpriteFactory()
         {
         }
 

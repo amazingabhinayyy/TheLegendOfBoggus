@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Sprint2_Attempt3.StartScreen
 {
-    public class DeathScreenState
+    public class StartScreenState
     {
         private ISprite sprite;
         private Game1 game;
-        public DeathScreenState(Game1 game)
+        public StartScreenState(Game1 game)
         {
-            sprite = StartScreenSpriteFactory.Instance.CreateDeathScreen();
+            sprite = ScreenSpriteFactory.Instance.CreateStartScreen();
             this.game = game;
         }
         public void Update()

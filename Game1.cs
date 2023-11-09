@@ -60,7 +60,7 @@ namespace Sprint2_Attempt3
             EnemyProjectileSpriteFactory.Instance.LoadAllTextures(Content);
             SoundFactory.Instance.LoadAllTextures(Content);
             DungeonSpriteFactory.Instance.LoadAllTextures(Content);
-            StartScreenSpriteFactory.Instance.LoadAllTextures(Content);
+            ScreenSpriteFactory.Instance.LoadAllTextures(Content);
             RoomGenerator.Instance.LoadAllFiles();
             InventoryTexture = Content.Load<Texture2D>("Inventory");
             link = new Link(this);
