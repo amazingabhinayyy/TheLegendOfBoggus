@@ -10,13 +10,13 @@ namespace Sprint2_Attempt3.Dungeon.Doors.DoorSprites
         {
             this.texture = texture;
         }
-        public void Draw(SpriteBatch spriteBatch, Rectangle sourceRectangle)
+        public void Draw(SpriteBatch spriteBatch, Rectangle sourceRectangle, Color color)
         {
             spriteBatch.Draw(
                 texture,
                 Globals.SouthDoorPosition,
                 sourceRectangle,
-                Color.White,
+                color,
                 0f,
                 new Vector2(0, 0),
                 SpriteEffects.None,

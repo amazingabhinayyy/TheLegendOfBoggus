@@ -102,7 +102,7 @@ namespace Sprint2_Attempt3
             }
             else if (gameStarted)
             {
-                room.Draw(spriteBatch);
+                room.Draw(spriteBatch, Color.White);
                 inventoryController.Draw(spriteBatch);
             }
             else

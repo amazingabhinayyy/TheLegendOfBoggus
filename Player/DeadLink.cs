@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Inventory;
+using Sprint2_Attempt3.Player.LinkStates;
 
 namespace Sprint2_Attempt3.Player
 {
@@ -20,6 +21,10 @@ namespace Sprint2_Attempt3.Player
         public List<ILinkProjectile> Items { get; set; }
         private Vector2 position;
         public Vector2 Position { get { return position; } set { position = value; } }
+
+        public ILinkSprite Sprite { get; set; }
+        public ILinkState State { get; set; }
+
         private Game1 game;
         public DeadLink(ILink decoratedLink, Game1 game)
         {
@@ -109,9 +114,12 @@ namespace Sprint2_Attempt3.Player
                     decoratedLink.MoveLeft();
                 }
                 decoratedLink.BecomeIdle();
-            }  
-
-            if (timer == 120)
+            }
+            else if (timer == 110)
+            {
+                decoratedLink.State = new KilledLinkState((Link)decoratedLink);
+            }
+            else if (timer == 160)
             {
                 game.linkDead = true;
             }

@@ -106,19 +106,20 @@ namespace Sprint2_Attempt3.Dungeon
             game1.link.Update();
         }
 
-        public void Draw(SpriteBatch spriteBatch) {
-            room.Draw(spriteBatch);
-            
+        public void Draw(SpriteBatch spriteBatch, Color color) {
+            room.Draw(spriteBatch, color);
+
             foreach (IGameObject obj in gameObjectLists[roomNumber])
             {
-                if(obj is IEnemy)
+                if (obj is IEnemy && color.Equals(Color.White))
                     ((IEnemy)obj).Draw(spriteBatch);
-                else if(obj is IItem)
+                else if (obj is IItem && color.Equals(Color.White))
                     ((IItem)obj).Draw(spriteBatch);
-                else if(obj is IBlock)
-                    ((IBlock)obj).Draw(spriteBatch);
+                else if (obj is IBlock)
+                    ((IBlock)obj).Draw(spriteBatch, color);
                 else if (obj is IDoor)
-                    ((IDoor)obj).Draw(spriteBatch);
+                    ((IDoor)obj).Draw(spriteBatch, color);
+
             }
             
             game1.link.Draw(spriteBatch, Color.White);
@@ -126,6 +127,10 @@ namespace Sprint2_Attempt3.Dungeon
 
         public static int GetCurrentRoomNumber() { 
             return roomNumber;
+        }
+        public void SetDecorator(IRoom room)
+        {
+            game1.room = room;
         }
         public virtual void SwitchToNorthRoom() { }
         public virtual void SwitchToSouthRoom() { }

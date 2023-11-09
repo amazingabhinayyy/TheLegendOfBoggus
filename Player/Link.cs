@@ -10,6 +10,8 @@ using System;
 using Sprint2_Attempt3.Items.ItemClasses;
 using Sprint2_Attempt3.Player.LinkProjectiles.ProjectileInterfaces;
 using Sprint2_Attempt3.Dungeon.Rooms;
+using Sprint2_Attempt3.Dungeon;
+using System.Net.Mime;
 
 namespace Sprint2_Attempt3.Player
 {
@@ -109,6 +111,7 @@ namespace Sprint2_Attempt3.Player
         {
             linkDead = true;
             SetDecorator(new DeadLink(this, game));
+            RoomDecorator deadRoom = new RoomDecorator(game.room);
         }
         public void SetDecorator(ILink decoLink)
         {

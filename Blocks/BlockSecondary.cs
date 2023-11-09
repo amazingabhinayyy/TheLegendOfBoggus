@@ -11,9 +11,9 @@ namespace Sprint2_Attempt3.Blocks
 
         public BlockSecondary() { }
         public void Update() { }
-        public virtual void Draw(SpriteBatch spriteBatch)
+        public virtual void Draw(SpriteBatch spriteBatch, Color color)
         {
-            spriteBatch.Draw(BlockSpriteFactory.Instance.blocks, position, sourceRectangle, Color.White);
+            spriteBatch.Draw(BlockSpriteFactory.Instance.blocks, position, sourceRectangle, color);
         }
 
         public Rectangle GetHitBox()

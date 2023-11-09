@@ -5,6 +5,6 @@ namespace Sprint2_Attempt3.Dungeon.Doors.DoorSprites
 {
     public interface IDoorSprite
     {
-        public void Draw(SpriteBatch spriteBatch, Rectangle sourceRectangle);
+        public void Draw(SpriteBatch spriteBatch, Rectangle sourceRectangle, Color color);
     }
 }
