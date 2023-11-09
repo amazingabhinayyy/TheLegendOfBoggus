@@ -35,7 +35,7 @@ namespace Sprint2_Attempt3.Dungeon
                 gameObjectLists[roomNumber].Add(this.game1.link);
                 if (roomNum != 15)
                 {
-                    foreach (IWall wall in Globals.WallBlocks) { gameObjectLists[roomNumber].Add(wall); }
+                    gameObjectLists[roomNumber].AddRange(Globals.WallBlocks);
                 }
                 InventoryController.VisitRoom(roomNum);
             }
@@ -79,7 +79,9 @@ namespace Sprint2_Attempt3.Dungeon
                 gameObjectLists[roomNumber].Add(this.game1.link);
                 if (roomNumber != 15)
                 {
-                    foreach (IWall wall in Globals.WallBlocks) { gameObjectLists[roomNumber].Add(wall); }
+                    gameObjectLists[roomNumber].AddRange(Globals.WallBlocks);
+                }
+                else {
                     room = new WhiteStairRoom();
                 }
                 InventoryController.VisitRoom(roomNumber);
@@ -126,7 +128,10 @@ namespace Sprint2_Attempt3.Dungeon
                 gameObjectLists[roomNumber].Add(this.game1.link);
                 if (roomNumber != 15)
                 {
-                    foreach (IWall wall in Globals.WallBlocks) { gameObjectLists[roomNumber].Add(wall); }
+                    gameObjectLists[roomNumber].AddRange(Globals.WallBlocks);
+                }
+                else
+                {
                     room = new WhiteStairRoom();
                 }
                 InventoryController.VisitRoom(roomNumber);
@@ -189,6 +194,17 @@ namespace Sprint2_Attempt3.Dungeon
             }
             
             game1.link.Draw(spriteBatch, Color.White);
+        }
+
+        public static void ResetRooms() {
+            for (int i = 0; i < 18; i++)
+            {
+                gameObjectLists[i] = RoomGenerator.Instance.LoadFile(i);
+                if (i != 15)
+                    gameObjectLists[roomNumber].AddRange(Globals.WallBlocks);
+                else
+                    gameObjectLists[i].AddRange(Globals.Room16WallBlocks);
+            }
         }
 
         public static int GetCurrentRoomNumber() { 

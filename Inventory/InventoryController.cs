@@ -7,6 +7,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -156,6 +157,7 @@ namespace Sprint2_Attempt3.Inventory
 
             this.texture = Game1.InventoryTexture;
         }
+
         private void MakeNumberSrcRectangles()
         {
             numberSrcRectangles.Add(' ', blackSrcRectangle);
