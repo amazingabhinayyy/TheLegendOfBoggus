@@ -7,6 +7,8 @@ namespace Sprint2_Attempt3.Enemy.Dodongo
 {
     internal class Dodongo : EnemyD
     {
+        public static Rectangle[] Dodongos { get; } = new Rectangle[] { new Rectangle(35, 35, 15, 16), new Rectangle(1, 35, 15, 16), new Rectangle(69, 35, 28, 18), new Rectangle(102, 35, 28, 18) };
+        public static Rectangle[] AttackedDodongos { get; } = new Rectangle[] { new Rectangle(52, 35, 16, 16), new Rectangle(17, 35, 17, 16), new Rectangle(135, 35, 32, 16) };
         public Dodongo(int x, int y)
         {
             this.X = x;

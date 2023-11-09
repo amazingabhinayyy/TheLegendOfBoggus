@@ -24,10 +24,9 @@ namespace Sprint2_Attempt3.Collision
             wallBlocks = Globals.WallBlocks; 
         }
         
-        public static bool CheckPlayerWallCollision(ILink link)
+        public static bool CheckPlayerWallCollision(ILink link, IWall wall)
         {
             Rectangle linkRectangle = link.GetHitBox();
-            foreach (IWall wall in Globals.WallBlocks)
                 if (link.GetHitBox().Intersects(wall.GetHitBox()))
                 {
                     PlayerBlockHandler.HandleLinkBlockCollision(linkRectangle, wall.GetHitBox(), link);

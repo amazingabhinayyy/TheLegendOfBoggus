@@ -6,6 +6,7 @@ namespace Sprint2_Attempt3.Enemy.SpikeTrap
 {
     internal class SpikeTrap : EnemyX
     {
+        public static Rectangle SpikeTrapSprite { get; } = new Rectangle(1, 11, 16, 16); 
         public SpikeTrap(int x, int y)
         {
             this.X = x;

@@ -9,6 +9,7 @@ namespace Sprint2_Attempt3.Dungeon
     {
         private static Texture2D DungeonTexture;
         private static Texture2D DungeonLayoutTexture;
+        private static Texture2D BlockTexture;
         private static DungeonSpriteFactory instance = new DungeonSpriteFactory();
         public static DungeonSpriteFactory Instance
         {
@@ -26,6 +27,7 @@ namespace Sprint2_Attempt3.Dungeon
         {
             DungeonTexture = content.Load<Texture2D>("Dungeon_Doors");
             DungeonLayoutTexture = content.Load<Texture2D>("DungeonSprites");
+            BlockTexture = content.Load<Texture2D>("blocks");
         }
 
         public DungeonRoomSprite CreateDungeonRoomSprite()
@@ -53,10 +55,13 @@ namespace Sprint2_Attempt3.Dungeon
         {
             return new WestDoorSprite(DungeonTexture);
         }
-
         public IDoorSprite CreateStairExitSprite()
         {
             return new StairExitSprite(DungeonTexture);
+        }
+        public IDoorSprite CreateStairEntranceSprite()
+        {
+            return new StairEntranceSprite(BlockTexture);
         }
     }
 }

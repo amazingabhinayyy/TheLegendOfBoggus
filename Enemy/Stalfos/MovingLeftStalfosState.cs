@@ -18,7 +18,7 @@ namespace Sprint2_Attempt3.Enemy.Stalfos
             this.Stalfos = Stalfos;
             sprite = EnemySpriteFactory.Instance.CreateStalfosSprite();
             currentFrame = 0;
-            sourceRectangle = Globals.StalfosRed;
+            sourceRectangle = Stalfos.Stalfoses[0];
             Stalfos.Position = new Rectangle(Stalfos.X, Stalfos.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             random = new Random();
             direction = random.Next(0, 2);

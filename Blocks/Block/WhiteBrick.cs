@@ -12,10 +12,11 @@ namespace Sprint2_Attempt3.Blocks.BlockSprites
 {
     public class WhiteBrick : BlockSecondary
     {
+        private static Rectangle src = new Rectangle(0, 34, 16, 16);
         public WhiteBrick(Rectangle Position)
         {
             position = Position;
-            sourceRectangle = Globals.whiteBrickScr;
+            sourceRectangle = src;
             isWalkable = false;
         }
     }

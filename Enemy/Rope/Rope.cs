@@ -7,6 +7,7 @@ namespace Sprint2_Attempt3.Enemy.Rope
 {
     internal class Rope : EnemyC
     {
+        public static Rectangle[] Ropes { get; } = new Rectangle[] { new Rectangle(18, 18, 14, 15), new Rectangle(33, 18, 15, 15) };
         public Rope(int x, int y)
         {
             this.X = x;

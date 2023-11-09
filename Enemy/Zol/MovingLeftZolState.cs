@@ -17,7 +17,7 @@ namespace Sprint2_Attempt3.Enemy.Zol
         {
             this.zol = zol;
             sprite = EnemySpriteFactory.Instance.CreateZolSprite();
-            sourceRectangle = Globals.ZolSprite1;
+            sourceRectangle = Zol.Zols[0];
             zol.Position = new Rectangle(zol.X, zol.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             currentFrame = 0;
             random = new Random();
@@ -46,25 +46,9 @@ namespace Sprint2_Attempt3.Enemy.Zol
         public void Update()
         {
             currentFrame++;
-            if (currentFrame < 30)
-            {
-                if (currentFrame < 15)
-                {
-                    sourceRectangle = Globals.ZolSprite1;
-
-                }
-                else
-                {
-                    sourceRectangle = Globals.ZolSprite2;
-
-                }
-                zol.X -= 1;
-                zol.Position = new Rectangle(zol.X, zol.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
-            }
-            else
-            {
-                currentFrame = 0;
-            }
+            sourceRectangle = Zol.Zols[Globals.FindIndex(currentFrame % (Zol.Zols.Length * zol.AnimateRate), zol.AnimateRate, Zol.Zols.Length)];
+            zol.X -= 1;
+            zol.Position = new Rectangle(zol.X, zol.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
         }
         public void Draw(SpriteBatch spriteBatch)
         {
