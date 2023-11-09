@@ -2,6 +2,6 @@
 Door,South,1,
 Door,East,0,
 Door,West,2,
-Enemy,Gel,200,250
-Enemy,Gel,400,150
-Enemy,Gel,600,350
+Enemy,Gel,29,,
+Enemy,Gel,32,,
+Enemy,Gel,43,,
