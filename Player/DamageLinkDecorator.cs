@@ -50,7 +50,11 @@ namespace Sprint2_Attempt3.Player
                         InventoryController.UsingFairy = false;
                         InventoryController.DecrementCount("Fairy");
                     }
-                    else { Kill(); }
+                    else 
+                    { 
+                        Kill();
+                        timer = 0;
+                    }
                 }
             }
         }

@@ -20,6 +20,7 @@ namespace Sprint2_Attempt3.Enemy
         public int Y { get; set; }
         public IEnemyState State { get; set; }
         public Rectangle Position { get; set; }
+        private int invinciblityTimer;
 
         public abstract void Generate();
         public abstract void Stun();
@@ -31,6 +32,7 @@ namespace Sprint2_Attempt3.Enemy
             count = 0;
             currentFrame = 0;
             exists = true;
+            invinciblityTimer = 0;
         }
         public void Spawn()
         {
@@ -43,9 +45,10 @@ namespace Sprint2_Attempt3.Enemy
 
         public virtual void GetDamaged(float damage)
         {
-            health -= damage;
             this.ChangeAttackedStatus();
-            if(health <= 0)
+            health -= damage;
+
+            if (health <= 0)
             {
                 Kill();
             }
