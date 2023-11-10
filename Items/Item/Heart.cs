@@ -6,6 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using Sprint2_Attempt3.Inventory;
+using Sprint2_Attempt3.Sounds;
+using Microsoft.Xna.Framework.Audio;
 
 namespace Sprint2_Attempt3.Items.ItemClasses
 {
@@ -48,6 +51,24 @@ namespace Sprint2_Attempt3.Items.ItemClasses
                 else
                 {
                     count = 0;
+                }
+            }
+        }
+
+        public override void Collect()
+        {
+            SoundFactory soundFactory = SoundFactory.Instance;
+            SoundEffect getHeartSound = soundFactory.getHeart;
+            SoundFactory.PlaySound(getHeartSound, volume: 0.9f);
+            base.Collect();
+            if (InventoryController.GetCount("HeartContainer") - InventoryController.GetCount("Heart") < 0) {
+                if (InventoryController.GetCount("HeartContainer") - InventoryController.GetCount("Heart") < -.5)
+                {
+                    InventoryController.DecrementCount("Heart");
+                }
+                else
+                {
+                    InventoryController.DecrementCount("Heart", .5f);
                 }
             }
         }
