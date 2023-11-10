@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Blocks;
+using Sprint2_Attempt3.Blocks.Block;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Dungeon.Doors;
 using Sprint2_Attempt3.Dungeon.Rooms;
@@ -173,6 +174,8 @@ namespace Sprint2_Attempt3.Dungeon
                 }
                 else if (obj is IItem)
                     ((IItem)obj).Update();
+                else if (obj is IBlock)
+                    ((IBlock)obj).Update();
             }
 
             game1.link.Update();

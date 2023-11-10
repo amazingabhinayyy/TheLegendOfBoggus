@@ -10,7 +10,7 @@ namespace Sprint2_Attempt3.Blocks
         protected Rectangle sourceRectangle { get; set; }
 
         public BlockSecondary() { }
-        public void Update() { }
+        public virtual void Update() { }
         public virtual void Draw(SpriteBatch spriteBatch, Color color)
         {
             spriteBatch.Draw(BlockSpriteFactory.Instance.blocks, position, sourceRectangle, color);

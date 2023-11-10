@@ -4,7 +4,7 @@ using Sprint2_Attempt3.Blocks.BlockSprites;
 using Sprint2_Attempt3.Collision.SideCollisionHandlers;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Player.Interfaces;
-using Sprint2_Attempt3.Player.Interfaces;
+using Sprint2_Attempt3.Blocks.Block;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,15 +51,15 @@ namespace Sprint2_Attempt3.Collision
             if (obj is IBlock)
             {
                 var block = (IBlock)obj;
+                if(block is MovingBlock && !((MovingBlock)block).Moved)
+                {
+                    ((MovingBlock)block).MoveBlock(side);
+                }
                 if (!block.isWalkable)
                 {
                     blocked = true;
                 }
             }
-            /*else if (obj is IWall)
-            {
-                blocked = true;
-            }*/
             else if (obj is IDoor) {
                 blocked = !(((IDoor)obj).IsWalkable);
             }
