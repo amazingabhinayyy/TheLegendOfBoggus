@@ -36,6 +36,11 @@ namespace Sprint2_Attempt3.Items
             CollisionDetector.GameObjectList.Remove(this);
             InventoryController.IncrementCount(this.GetType().Name);
         }
+        public void Despawn()
+        {
+            exists = false;
+            CollisionDetector.GameObjectList.Remove(this);
+        }
         public virtual void Update() {
             if (count == 0)
             {

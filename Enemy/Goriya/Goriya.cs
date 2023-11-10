@@ -10,7 +10,7 @@ using System;
 
 namespace Sprint2_Attempt3.Enemy.Goriya
 {
-    internal class Goriya : EnemyB
+    internal class Goriya : EnemyD
     {
         public int IdleX { get; set; }
         public Vector2 BoomerangPosition { get; set; }
