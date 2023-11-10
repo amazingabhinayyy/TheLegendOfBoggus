@@ -44,6 +44,7 @@ namespace Sprint2_Attempt3.Enemy
         public virtual void GetDamaged(float damage)
         {
             health -= damage;
+            this.ChangeAttackedStatus();
             if(health <= 0)
             {
                 Kill();

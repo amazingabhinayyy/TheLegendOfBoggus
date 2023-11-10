@@ -32,9 +32,5 @@ namespace Sprint2_Attempt3.Enemy.Zol
         public override void MoveRight() {
             State = new MovingRightZolState(this);
         }
-        public override void GetDamaged(float damage)
-        {
-            
-        }
     }
 }
