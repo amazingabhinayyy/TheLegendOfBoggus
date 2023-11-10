@@ -13,12 +13,6 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin ../../../../Downloads/Underworld_BGM.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:../../../../Downloads/Underworld_BGM.wav;Underworld_BGM.wav
-
 #begin blocks.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -66,6 +60,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Dungeon_Doors.jpeg
+
+#begin DungeonSprites.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:DungeonSprites.png
 
 #begin Enemies.png
 /importer:TextureImporter
@@ -270,4 +276,10 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:TitleScreen.png
+
+#begin Underworld_BGM.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Underworld_BGM.wav
 
