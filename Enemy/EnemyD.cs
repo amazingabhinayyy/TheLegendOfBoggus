@@ -16,11 +16,11 @@ namespace Sprint2_Attempt3.Enemy
             int choice = new Random().Next(0, 15);
             Vector2 position = new Vector2(this.X, this.Y);
             bool spawned = true;
-            if (choice < 6 && choice >= 0 && false)
+            if (choice < 6 && choice >= 0)
             {
                 CollisionDetector.GameObjectList.Add(new Heart(position, spawned));
             }
-            else if (true || choice < 8)
+            else if (choice < 8)
             {
                 CollisionDetector.GameObjectList.Add(new Fairy(position, spawned));
             }

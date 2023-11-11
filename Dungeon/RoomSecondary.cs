@@ -205,7 +205,7 @@ namespace Sprint2_Attempt3.Dungeon
             {
                 gameObjectLists[i] = RoomGenerator.Instance.LoadFile(i);
                 if (i != 15)
-                    gameObjectLists[roomNumber].AddRange(Globals.WallBlocks);
+                    gameObjectLists[i].AddRange(Globals.WallBlocks);
                 else
                     gameObjectLists[i].AddRange(Globals.Room16WallBlocks);
             }
