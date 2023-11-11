@@ -15,9 +15,9 @@ namespace Sprint2_Attempt3.Items.ItemClasses
     {
         private static Rectangle[] fairies = new Rectangle[] { new Rectangle(40, 0, 8, 16), new Rectangle(48, 0, 8, 16) };
         private int changeMovementTimer;
-        private bool movingUpOrDown;
-        private int vector;
         private int timer;
+        private int randMovementX;
+        private int randMovementY;
         public Fairy(Vector2 position, bool exists)
         {
             this.sourceRectangle = fairies[0];
@@ -26,13 +26,13 @@ namespace Sprint2_Attempt3.Items.ItemClasses
             this.spawned = false;
             sprite = ItemSpriteFactory.Instance.CreateSpawnItemSprite();
             changeMovementTimer = 40;
-            vector = 0;
             timer = 0;
+            randMovementX = 0;
+            randMovementY = 0;
         }
 
         public override void Update()
         {
-            int randMovment = new Random().Next(0, 4);
             if (this.count == 0)
             {
                 sprite = ItemSpriteFactory.Instance.CreateItemSprite();
@@ -48,38 +48,17 @@ namespace Sprint2_Attempt3.Items.ItemClasses
             }
             if (changeMovementTimer <= 0)
             {
-                if (randMovment == 0)
-                {
-                    vector = 3;
-                    movingUpOrDown = false;
-                }
-                else if (randMovment == 1)
-                {
-                    vector = 3;
-                    movingUpOrDown = true;
-                }
-                else if (randMovment == 2)
-                {
-                    vector = -3;
-                    movingUpOrDown = false;
-                }
-                else if (randMovment == 3)
-                {
-                    vector = -3;
-                    movingUpOrDown = true;
-                }
-                changeMovementTimer = 20;
+                randMovementX = new Random().Next(-1, 2) * 2;
+                randMovementY = new Random().Next(-1, 2) * 2;
+                changeMovementTimer = 40;
             }
-            if(movingUpOrDown)
-            {
-                Position.Y += vector;
-            }
-            else
-            {
-                Position.X += vector;
-            }
+
+            Position.X += randMovementX;
+            Position.Y += randMovementY;
+
             changeMovementTimer--;
             timer++;
+
             if(timer >= 2000)
             {
                 Despawn();
