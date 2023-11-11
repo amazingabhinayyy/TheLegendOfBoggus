@@ -185,6 +185,10 @@ namespace Sprint2_Attempt3.Dungeon
             {
                 block = new MovingBlock(Globals.FloorGrid[position]);
             }
+            else if (Block.Equals("Room9MovingBlock"))
+            {
+                block = new Room9MovingBlock(Globals.FloorGrid[position]);
+            }
             return block;
         }
 

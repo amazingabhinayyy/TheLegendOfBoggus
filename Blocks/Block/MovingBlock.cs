@@ -10,10 +10,9 @@ using Sprint2_Attempt3.Collision.SideCollisionHandlers;
 
 namespace Sprint2_Attempt3.Blocks.Block
 {
-    public class MovingBlock : BlockSecondary
+    public class MovingBlock : BlockSecondary, IMovingBlock
     {
         public bool Moved { get; private set; }
-        private bool beginMovement;
         private ICollision pushedSide;
         private int timer;
         private bool movementComplete;
@@ -23,10 +22,9 @@ namespace Sprint2_Attempt3.Blocks.Block
             sourceRectangle = new Rectangle(17, 0, 16, 16);
             isWalkable = false;
             Moved = false;
-            beginMovement = false;
             movementComplete = false;
             //Amount of buffer time for the block to actually move
-            timer = -585;
+            timer = -663;
         }
         public override void Update()
         {
@@ -61,7 +59,7 @@ namespace Sprint2_Attempt3.Blocks.Block
             {
                 if (timer <= 0)
                 {
-                    timer += 15;
+                    timer += 17;
                 }
                 else
                 {

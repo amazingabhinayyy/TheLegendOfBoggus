@@ -5,4 +5,4 @@ Door,West,2,
 Enemy,Gel,200,250
 Enemy,Gel,400,150
 Enemy,Gel,600,350
-Block,MovingBlock,42,
+Block,Room9MovingBlock,42,

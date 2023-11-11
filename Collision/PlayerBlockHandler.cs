@@ -51,9 +51,9 @@ namespace Sprint2_Attempt3.Collision
             if (obj is IBlock)
             {
                 var block = (IBlock)obj;
-                if(block is MovingBlock && !((MovingBlock)block).Moved)
+                if(block is IMovingBlock && !((IMovingBlock)block).Moved)
                 {
-                    ((MovingBlock)block).MoveBlock(side);
+                    ((IMovingBlock)block).MoveBlock(side);
                 }
                 if (!block.isWalkable)
                 {
