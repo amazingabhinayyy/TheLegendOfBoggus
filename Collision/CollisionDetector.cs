@@ -11,6 +11,7 @@ using Sprint2_Attempt3.WallBlocks;
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint2_Attempt3.Enemy.Keese;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -52,13 +53,13 @@ namespace Sprint2_Attempt3.Collision
                 if (collisionRectangle.Intersects(linkRectangle))
                 {
                     ICollision side = SideDetector(linkRectangle, collisionRectangle);
-                    if (obj is IEnemy)
+                    if (obj is IEnemy && ((IEnemy)obj).State is not DeathAnimationState)
                     {
                         PlayerEnemyHandler.HandlePlayerEnemyCollision(link, (IEnemy)obj, side);
                     }
                     else if (obj is IWall)
                     {
-                        CheckPlayerHitWallCollision.CheckPlayerWallCollision(linkObj);
+                        CheckPlayerHitWallCollision.CheckPlayerWallCollision(linkObj, (IWall)obj);
                     }
                     else if (obj is IBlock)
                     {
@@ -117,7 +118,7 @@ namespace Sprint2_Attempt3.Collision
         {
             for (int i = 0; i < gameObjectList.Count; i++)
             {
-                if (gameObjectList[i] is IEnemy) {
+                if (gameObjectList[i] is IEnemy && ((IEnemy)gameObjectList[i]).State is not DeathAnimationState) {
                     Rectangle enemyRectangle = gameObjectList[i].GetHitBox();
                     for (int c = 0; c < gameObjectList.Count; c++)
                     {
@@ -133,6 +134,9 @@ namespace Sprint2_Attempt3.Collision
                             else if (obj is IBlock || obj is IDoor)
                             {
                                 EnemyBlockHandler.HandleEnemyBlockCollision((IEnemy)gameObjectList[i], obj, collisionRectangle);
+                            }
+                            else if (obj is IWall && !((IWall)obj).EnemyWalkable) {
+                                EnemyWallHandler.HandleEnemyWallCollision(obj.GetHitBox(), (IEnemy)gameObjectList[i]);
                             }
                         }
                     }

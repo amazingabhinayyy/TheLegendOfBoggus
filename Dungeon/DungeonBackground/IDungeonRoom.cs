@@ -10,6 +10,6 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
 {
     public interface IDungeonRoom
     {
-        public void Draw(SpriteBatch spriteBatch);
+        public void Draw(SpriteBatch spriteBatch, Color color);
     }
 }

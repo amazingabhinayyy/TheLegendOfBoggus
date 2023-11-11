@@ -15,13 +15,13 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         {
             this.texture = texture;
         }
-        public void Draw(SpriteBatch spriteBatch, Rectangle sourceRectangle)
+        public void Draw(SpriteBatch spriteBatch, Rectangle sourceRectangle, Color color)
         {
             spriteBatch.Draw(
                 texture,
                 new Rectangle(0, 175, Globals.ScreenWidth, 550),
                 sourceRectangle,
-                Color.White,
+                color,
                 0f,
                 new Vector2(0, 0),
                 SpriteEffects.None,

@@ -20,6 +20,10 @@ namespace Sprint2_Attempt3.Player
         public List<ILinkProjectile> Items { get; set; }
         private Vector2 position;
         public Vector2 Position { get { return position; } set { position = value; }}
+
+        public ILinkSprite Sprite { get; set; }
+        public ILinkState State { get; set; }
+
         public DamageLinkDecorator(ILink decoratedLink)//, Game1 game)
         {
             this.decoratedLink = decoratedLink;
@@ -33,7 +37,9 @@ namespace Sprint2_Attempt3.Player
         {
             if (timer < 10)
             {
-                Knockback(side);
+                if(InventoryController.GetCount("Heart") != 0.5f)
+                    Knockback(side);
+
                 timer = 40;
                 InventoryController.DecrementCount("Heart", .5f);
                 if (InventoryController.GetCount("Heart") <= 0)
@@ -44,7 +50,11 @@ namespace Sprint2_Attempt3.Player
                         InventoryController.UsingFairy = false;
                         InventoryController.DecrementCount("Fairy");
                     }
-                    else { Kill(); }
+                    else 
+                    { 
+                        Kill();
+                        timer = 0;
+                    }
                 }
             }
         }

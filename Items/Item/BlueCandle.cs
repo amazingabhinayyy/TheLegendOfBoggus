@@ -10,9 +10,10 @@ namespace Sprint2_Attempt3.Items.ItemClasses
 {
     internal class BlueCandle : ItemSecondary
     {
+        private static Rectangle src = new Rectangle(160, 16, 8, 16);
         public BlueCandle(Vector2 position, bool exists)
         {
-            this.sourceRectangle = Globals.bluecandleSrc;
+            this.sourceRectangle = src;
             this.Position = new Rectangle((int)position.X, (int)position.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             this.exists = exists;
             this.spawned = false;

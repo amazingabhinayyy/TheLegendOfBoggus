@@ -17,15 +17,15 @@ namespace Sprint2_Attempt3.Enemy.Gel
         {
             this.gel = gel;
             sprite = EnemySpriteFactory.Instance.CreateGelSprite();
-            sourceRectangle = Globals.GelSprite1;
+            sourceRectangle = Gel.Gels[0];
             gel.Position = new Rectangle(gel.X, gel.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             currentFrame = 0;
             random = new Random();
-            direction = random.Next(0, 2);
+            direction = random.Next(0, 3);
         }
         public void ChangeDirection()
         {
-            direction = random.Next(0, 2);
+            direction = random.Next(0, 3);
             switch (direction)
             {
                 case 0:
@@ -46,25 +46,9 @@ namespace Sprint2_Attempt3.Enemy.Gel
         public void Update()
         {
             currentFrame++;
-            if (currentFrame < 30)
-            {
-                if (currentFrame < 15)
-                {
-                    sourceRectangle = Globals.GelSprite1;
-
-                }
-                else
-                {
-                    sourceRectangle = Globals.GelSprite2;
-
-                }
-                gel.X += 1;
-                gel.Position = new Rectangle(gel.X, gel.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
-            }
-            else
-            {
-                currentFrame = 0;
-            }
+            sourceRectangle = Gel.Gels[Globals.FindIndex(currentFrame % (Gel.Gels.Length * gel.AnimateRate), gel.AnimateRate, Gel.Gels.Length)];
+            gel.X += 1;
+            gel.Position = new Rectangle(gel.X, gel.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
         }
         public void Draw(SpriteBatch spriteBatch)
         {

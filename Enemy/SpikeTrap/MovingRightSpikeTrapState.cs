@@ -16,7 +16,7 @@ namespace Sprint2_Attempt3.Enemy.SpikeTrap
         {
             this.spikeTrap = spikeTrap;
             sprite = EnemySpriteFactory.Instance.CreateSpkieTrapSprite();
-            sourceRectangle = Globals.SpikeTrapSprite;
+            sourceRectangle = SpikeTrap.SpikeTrapSprite;
             spikeTrap.Position = new Rectangle(spikeTrap.X, spikeTrap.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
         }
         public void ChangeDirection()

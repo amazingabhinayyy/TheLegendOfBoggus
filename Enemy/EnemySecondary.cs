@@ -10,13 +10,17 @@ namespace Sprint2_Attempt3.Enemy
     {
         protected int count;
         protected int currentFrame;
+        public int AnimateRate { get; } = 15;
+        public int DamageAnimateRate { get; } = 15;
         private int distance;
         private Random random;
+        protected float health;
         public bool exists { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
         public IEnemyState State { get; set; }
         public Rectangle Position { get; set; }
+        private int invinciblityTimer;
 
         public abstract void Generate();
         public abstract void Stun();
@@ -28,6 +32,7 @@ namespace Sprint2_Attempt3.Enemy
             count = 0;
             currentFrame = 0;
             exists = true;
+            invinciblityTimer = 0;
         }
         public void Spawn()
         {
@@ -37,6 +42,18 @@ namespace Sprint2_Attempt3.Enemy
         {
             State = new DeathAnimationState(this);
         }
+
+        public virtual void GetDamaged(float damage)
+        {
+            this.ChangeAttackedStatus();
+            health -= damage;
+
+            if (health <= 0)
+            {
+                Kill();
+            }
+        }
+        
         public void ChangeDirection()
         {
             State.ChangeDirection();

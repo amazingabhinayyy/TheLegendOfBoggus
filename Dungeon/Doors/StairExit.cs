@@ -6,7 +6,7 @@ namespace Sprint2_Attempt3.Dungeon.Doors
     {
         public StairExit(int state){
             Position = Globals.StairExitPosition;
-            sourceRectangle = new Rectangle();
+            sourceRectangle = new Rectangle(280, 145, 1, 1);
             sprite = DungeonSpriteFactory.Instance.CreateStairExitSprite();
             actions[state].Invoke();
         }

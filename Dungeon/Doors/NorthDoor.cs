@@ -13,7 +13,14 @@ namespace Sprint2_Attempt3.Dungeon.Doors
         }
         public override Rectangle GetHitBox()
         {
-            return new Rectangle(Position.X, Position.Y,Position.Width, Position.Height - 50);
+            if (IsWalkable)
+            {
+                return new Rectangle(Position.X, Position.Y, Position.Width, Position.Height - 50);
+            }
+            else
+            {
+                return new Rectangle(Position.X, Position.Y, Position.Width, Position.Height - 25);
+            }
         }
     }
 }
