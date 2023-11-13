@@ -77,8 +77,16 @@ namespace Sprint2_Attempt3.Inventory
         public void UseItem() { command.Execute(); }
         public Rectangle GetSrcRectangle() {
             Rectangle src = sourceRectangle;
-            if (count <= 0) { src = new Rectangle(); }
+            if (count <= 0) { src = new Rectangle(382,91,1,1); }
             return src;
+        }
+        public void SetDestRectangle(Rectangle newDestRectangle) { 
+            destRectangle = newDestRectangle;
+        }
+
+        public void SetSrcRectangle(Rectangle newSrcRectangle)
+        {
+            sourceRectangle = newSrcRectangle;
         }
     }
 }

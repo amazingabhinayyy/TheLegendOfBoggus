@@ -12,10 +12,11 @@ namespace Sprint2_Attempt3.Blocks.BlockSprites
 {
     public class UpChunk : BlockSecondary
     {
+        private static Rectangle src = new Rectangle(34, 0, 16, 16);
         public UpChunk(Rectangle Position)
         {
             position = Position;
-            sourceRectangle = Globals.upChunkScr;
+            sourceRectangle = src;
             isWalkable = false;
         }
     }

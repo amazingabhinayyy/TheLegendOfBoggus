@@ -15,5 +15,9 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             game1.room = new Room18(game1);
         }
 
+        public override void SwitchToLowerRoom()
+        {
+            game1.room = new Room16(game1);
+        }
     }
 }

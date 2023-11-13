@@ -26,9 +26,12 @@ namespace Sprint2_Attempt3
         public ILink link { get; set; }
         public IRoom room { get; set; }
         public bool gameStarted { get; set; }
+        public bool linkDead { get; set; }
 
         public CollisionDetector collisionDetector;
         private StartScreenState startScreen;
+        private DeathScreenState deathScreen;
+
 
         public Game1()
         {
@@ -40,7 +43,7 @@ namespace Sprint2_Attempt3
         protected override void Initialize()
         {
             base.Initialize();
-            graphics.PreferredBackBufferHeight = 725;
+            graphics.PreferredBackBufferHeight = Globals.ScreenHeight;
             graphics.ApplyChanges();
             RoomGenerator.Instance.LoadAllFiles();
         }
@@ -49,6 +52,7 @@ namespace Sprint2_Attempt3
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            Globals.MakeFloorGrid();
             EnemySpriteFactory.Instance.LoadAllTextures(this.Content);
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
             ItemSpriteFactory.Instance.LoadAllTextures(Content);
@@ -56,17 +60,19 @@ namespace Sprint2_Attempt3
             EnemyProjectileSpriteFactory.Instance.LoadAllTextures(Content);
             SoundFactory.Instance.LoadAllTextures(Content);
             DungeonSpriteFactory.Instance.LoadAllTextures(Content);
-            StartScreenSpriteFactory.Instance.LoadAllTextures(Content);
+            ScreenSpriteFactory.Instance.LoadAllTextures(Content);
             RoomGenerator.Instance.LoadAllFiles();
             InventoryTexture = Content.Load<Texture2D>("Inventory");
             link = new Link(this);
             collisionDetector = new CollisionDetector(this, (Link)link);
             gameStarted = false;
+            linkDead = false;
+            inventoryController = new InventoryController(this);
             keyController = new KeyboardController(this);
             mouseController = new MouseController(this);
-            inventoryController = new InventoryController(InventoryTexture, this);
             room = new Room1(this);
             startScreen = new StartScreenState(this);
+            deathScreen = new DeathScreenState(this);
         }
 
         protected override void UnloadContent()
@@ -91,20 +97,21 @@ namespace Sprint2_Attempt3
             GraphicsDevice.Clear(Color.Black);
 
             spriteBatch.Begin();
-            if (gameStarted)
+            if (linkDead)
             {
-                room.Draw(spriteBatch);
+                deathScreen.Draw(spriteBatch);
+            }
+            else if (gameStarted)
+            {
+                room.Draw(spriteBatch, Color.White);
                 inventoryController.Draw(spriteBatch);
             }
             else
             {
-                startScreen.Draw(spriteBatch);  
+                startScreen.Draw(spriteBatch);
             }
             spriteBatch.End();
             base.Draw(gameTime);
         }
     }
 }
-
-
-

@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Inventory;
+using System.Runtime.ConstrainedExecution;
 
 namespace Sprint2_Attempt3.Items
 {
@@ -11,6 +12,7 @@ namespace Sprint2_Attempt3.Items
         protected Rectangle Position;
         protected Rectangle sourceRectangle;
         protected int count;
+        protected const int AnimateRate = 5; 
         public bool spawned { get; set; }
         public bool exists { get; set; }
         public Rectangle position { get { return Position; } }
@@ -33,6 +35,11 @@ namespace Sprint2_Attempt3.Items
             exists = false;
             CollisionDetector.GameObjectList.Remove(this);
             InventoryController.IncrementCount(this.GetType().Name);
+        }
+        public void Despawn()
+        {
+            exists = false;
+            CollisionDetector.GameObjectList.Remove(this);
         }
         public virtual void Update() {
             if (count == 0)

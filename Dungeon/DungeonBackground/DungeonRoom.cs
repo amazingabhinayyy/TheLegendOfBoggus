@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sprint2_Attempt3.Dungeon.Rooms
 {
-    public class DungeonRoom
+    public class DungeonRoom : IDungeonRoom
     {
         private DungeonRoomSprite sprite;
 
@@ -16,8 +16,8 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             sprite = DungeonSpriteFactory.Instance.CreateDungeonRoomSprite();
     }
 
-        public void Draw(SpriteBatch spriteBatch) {
-            sprite.Draw(spriteBatch, Globals.DungeonStandard);
+        public void Draw(SpriteBatch spriteBatch, Color color) {
+            sprite.Draw(spriteBatch, Globals.DungeonStandard, color);
         }
     }
 }

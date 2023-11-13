@@ -49,7 +49,7 @@
 /processorParam:TextureFormat=Color
 /build:characterGenerationSprite.png
 
-#begin Dungeon_Doors.jpeg
+#begin DeathScreen.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -59,7 +59,31 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Dungeon_Doors.jpeg
+/build:DeathScreen.png
+
+#begin Dungeon_Doors.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dungeon_Doors.png
+
+#begin DungeonSprites.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:DungeonSprites.png
 
 #begin DungeonSprites.png
 /importer:TextureImporter
@@ -145,11 +169,23 @@
 /processorParam:TextureFormat=Color
 /build:LinkPlayerSpriteSheetFinal.png
 
+#begin LOZ_Arrow_Boomerang - Copy.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LOZ_Arrow_Boomerang - Copy.wav
+
 #begin LOZ_Arrow_Boomerang.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:LOZ_Arrow_Boomerang.wav
+
+#begin LOZ_Bomb_Blow - Copy.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LOZ_Bomb_Blow - Copy.wav
 
 #begin LOZ_Bomb_Blow.wav
 /importer:WavImporter
@@ -157,11 +193,23 @@
 /processorParam:Quality=Best
 /build:LOZ_Bomb_Blow.wav
 
+#begin LOZ_Bomb_Drop - Copy.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LOZ_Bomb_Drop - Copy.wav
+
 #begin LOZ_Bomb_Drop.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:LOZ_Bomb_Drop.wav
+
+#begin LOZ_Boss_Hit - Copy.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LOZ_Boss_Hit - Copy.wav
 
 #begin LOZ_Boss_Hit.wav
 /importer:WavImporter
@@ -169,17 +217,35 @@
 /processorParam:Quality=Best
 /build:LOZ_Boss_Hit.wav
 
+#begin LOZ_Boss_Scream1 - Copy.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LOZ_Boss_Scream1 - Copy.wav
+
 #begin LOZ_Boss_Scream1.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:LOZ_Boss_Scream1.wav
 
+#begin LOZ_Door_Unlock - Copy.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LOZ_Door_Unlock - Copy.wav
+
 #begin LOZ_Door_Unlock.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:LOZ_Door_Unlock.wav
+
+#begin LOZ_Enemy_Die - Copy.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LOZ_Enemy_Die - Copy.wav
 
 #begin LOZ_Enemy_Die.wav
 /importer:WavImporter

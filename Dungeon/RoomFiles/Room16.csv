@@ -1,8 +1,5 @@
-﻿Item,Bow,350,250,TRUE
-Door,North,4,,
-Door,South,4,,
-Door,East,4,,
-Door,West,4,,
+﻿Item,Bow,425,215,TRUE
+Door,StairExit,0,,
 Enemy,Keese,439,158,
 Enemy,Keese,208,257,
 Enemy,Keese,493,335,

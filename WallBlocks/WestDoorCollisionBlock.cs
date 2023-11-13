@@ -9,6 +9,7 @@ namespace Sprint2_Attempt3.WallBlocks
 {
     public class WestDoorCollisionBlock : IWall
     {
+        public bool EnemyWalkable { get; } = false;
         Rectangle wall;
         public WestDoorCollisionBlock()
         {

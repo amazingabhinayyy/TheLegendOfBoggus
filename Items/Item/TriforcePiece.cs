@@ -10,9 +10,10 @@ namespace Sprint2_Attempt3.Items.ItemClasses
 {
     internal class TriforcePiece : ItemSecondary 
     {
+        private static Rectangle[] triforces = new Rectangle[] { new Rectangle(275, 3, 10, 10), new Rectangle(275, 19, 10, 10) };
         public TriforcePiece(Vector2 position, bool exists)
         {
-            this.sourceRectangle = Globals.triforcepieceSrc;
+            this.sourceRectangle = triforces[0];
             this.Position = new Rectangle((int)position.X, (int)position.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             this.exists = exists;
             this.spawned = false;
@@ -29,25 +30,9 @@ namespace Sprint2_Attempt3.Items.ItemClasses
             if (spawned)
             {
                 count++;
-                if (count <= 10)
-                {
-                    if (count == 5)
-                    {
-                        sourceRectangle = Globals.triforcepieceSrc;
-                        Position.Width = (int)(sourceRectangle.Width * Globals.scale);
-                        Position.Height = (int)(sourceRectangle.Height * Globals.scale);
-                    }
-                    else if (count == 10)
-                    {
-                        sourceRectangle = Globals.bluetriforcepieceSrc;
-                        Position.Width = (int)(sourceRectangle.Width * Globals.scale);
-                        Position.Height = (int)(sourceRectangle.Height * Globals.scale);
-                    }
-                }
-                else
-                {
-                    count = 0;
-                }
+                sourceRectangle = triforces[Globals.FindIndex(count % (triforces.Length * AnimateRate), AnimateRate, triforces.Length)];
+                Position.Width = (int)(sourceRectangle.Width * Globals.scale);
+                Position.Height = (int)(sourceRectangle.Height * Globals.scale);
             }
         }
     }

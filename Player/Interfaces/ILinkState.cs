@@ -21,6 +21,7 @@ namespace Sprint2_Attempt3.Player.Interfaces
         public void UseBlueBoomerang();
         public void UseBlueArrow();
         public void UseFire();
+        public void Killed();
         
         //public void UseItem(ILinkProjectile item);
         public void Update();

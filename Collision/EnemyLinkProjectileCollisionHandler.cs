@@ -27,14 +27,14 @@ namespace Sprint2_Attempt3.Collision
             else if(item is IArrow)
             {
                 if(!(enemy is Dodongo))
-                    enemy.Kill();
+                    enemy.GetDamaged(1.0f);
                 IArrow arrow = (IArrow)item;
                 arrow.DestroyArrow();
             }
             else if(item is ISwordBeam)
             {
                 if (!(enemy is Dodongo))
-                    enemy.Kill();
+                    enemy.GetDamaged(0.5f);
                 ((ISwordBeam)item).RemoveSwordBeam();
             }
             else if(item is IBomb && enemy is Dodongo)
@@ -45,7 +45,7 @@ namespace Sprint2_Attempt3.Collision
             else if(item is not IBomb)
             {
                 if(!(enemy is Dodongo))
-                    enemy.Kill();
+                    enemy.GetDamaged(0.5f);
             }
         }
     }

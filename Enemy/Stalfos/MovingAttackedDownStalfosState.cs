@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Enemy.SpikeTrap;
+using Sprint2_Attempt3.Enemy.Zol;
 using System;
 
 namespace Sprint2_Attempt3.Enemy.Stalfos
@@ -18,15 +19,15 @@ namespace Sprint2_Attempt3.Enemy.Stalfos
         {
             this.Stalfos = Stalfos;
             sprite = EnemySpriteFactory.Instance.CreateStalfosSprite();
-            sourceRectangle = Globals.StalfosRed;
+            sourceRectangle = Stalfos.Stalfoses[0];
             Stalfos.Position = new Rectangle(Stalfos.X, Stalfos.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             currentFrame = 0;
             random = new Random();
-            direction = random.Next(0, 2);
+            direction = random.Next(0, 3);
         }
         public void ChangeDirection()
         {
-            direction = random.Next(0, 2);
+            direction = random.Next(0, 3);
             switch (direction)
             {
                 case 0:
@@ -46,29 +47,7 @@ namespace Sprint2_Attempt3.Enemy.Stalfos
         public void Update()
         {
             currentFrame++;
-            if (currentFrame <= 20)
-            {
-                if (currentFrame == 5)
-                {
-                    sourceRectangle = Globals.StalfosGreen;
-                }
-                else if (currentFrame == 10)
-                {
-                    sourceRectangle = Globals.StalfosTeal;
-                }
-                else if (currentFrame == 15)
-                {
-                    sourceRectangle = Globals.StalfosRed;
-                }
-                else if (currentFrame == 20)
-                {
-                    sourceRectangle = Globals.StalfosBlue;
-                }
-            }
-            else
-            {
-                currentFrame = 0;
-            }
+            sourceRectangle = Stalfos.Stalfoses[Globals.FindIndex(currentFrame % (Stalfos.Stalfoses.Length * Stalfos.DamageAnimateRate), Stalfos.DamageAnimateRate, Stalfos.Stalfoses.Length)];
             Stalfos.Y += 1;
             Stalfos.Position = new Rectangle(Stalfos.X, Stalfos.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             sprite.Update();
