@@ -11,10 +11,11 @@ namespace Sprint2_Attempt3.Blocks.BlockSprites
 {
     public class BlueTile : BlockSecondary
     {
+        private static Rectangle src = new Rectangle(34, 17, 16, 16);
         public BlueTile(Rectangle Position)
         {
             position = Position;
-            sourceRectangle = Globals.blueTileScr;
+            sourceRectangle = src;
             isWalkable = false;
         }
     }

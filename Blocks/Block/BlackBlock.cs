@@ -12,10 +12,11 @@ namespace Sprint2_Attempt3.Blocks.BlockSprites
 {
     public class BlackBlock : BlockSecondary
     {
+        private static Rectangle src = new Rectangle(0, 17, 16, 16);
         public BlackBlock(Rectangle Position)
         {
             position = Position;
-            sourceRectangle = Globals.blackBlockScr;
+            sourceRectangle = src;
             isWalkable = false;
         }
     }

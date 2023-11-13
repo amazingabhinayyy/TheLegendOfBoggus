@@ -10,10 +10,10 @@ namespace Sprint2_Attempt3.Items.ItemClasses
 {
     internal class Bow : ItemSecondary 
     {
-        private Texture2D texture;
+        private static Rectangle src = new Rectangle(144, 0, 8, 16);
         public Bow(Vector2 position, bool exists)
         {
-            this.sourceRectangle = Globals.bowSrc;
+            this.sourceRectangle = src;
             this.Position = new Rectangle((int)position.X, (int)position.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             this.exists = exists;
             this.spawned = false;

@@ -17,7 +17,7 @@ namespace Sprint2_Attempt3.Enemy.Stalfos
         {
             this.Stalfos = Stalfos;
             sprite = EnemySpriteFactory.Instance.CreateStalfosSprite();
-            sourceRectangle = Globals.StalfosBlue;
+            sourceRectangle = Stalfos.Stalfoses[0];
             Stalfos.Position = new Rectangle(Stalfos.X, Stalfos.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             currentFrame = 0;
             random = new Random();
@@ -46,29 +46,7 @@ namespace Sprint2_Attempt3.Enemy.Stalfos
         public void Update()
         {
             currentFrame++;
-            if (currentFrame <= 20)
-            {
-                if (currentFrame == 5)
-                {
-                    sourceRectangle = Globals.StalfosGreen;
-                }
-                else if (currentFrame == 10)
-                {
-                    sourceRectangle = Globals.StalfosTeal;
-                }
-                else if (currentFrame == 15)
-                {
-                    sourceRectangle = Globals.StalfosRed;
-                }
-                else if (currentFrame == 20)
-                {
-                    sourceRectangle = Globals.StalfosBlue;
-                }
-            }
-            else
-            {
-                currentFrame = 0;
-            }
+            sourceRectangle = Stalfos.Stalfoses[Globals.FindIndex(currentFrame % (Stalfos.Stalfoses.Length * Stalfos.DamageAnimateRate), Stalfos.DamageAnimateRate, Stalfos.Stalfoses.Length)];
             Stalfos.X += 1;
             Stalfos.Position = new Rectangle(Stalfos.X, Stalfos.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             sprite.Update();

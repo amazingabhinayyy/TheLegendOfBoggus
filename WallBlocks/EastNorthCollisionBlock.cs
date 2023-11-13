@@ -4,6 +4,7 @@ namespace Sprint2_Attempt3.WallBlocks
 {
     public class EastNorthCollisionBlock : IWall
     {
+        public bool EnemyWalkable { get; } = false;
         Rectangle wall;
         public EastNorthCollisionBlock()
         {

@@ -10,9 +10,10 @@ namespace Sprint2_Attempt3.Items.ItemClasses
 {
     internal class Clock : ItemSecondary
     {
+        private static Rectangle src = new Rectangle(57, 0, 13, 17);
         public Clock(Vector2 position, bool exists)
         {
-            this.sourceRectangle = Globals.clockSrc;
+            this.sourceRectangle = src;
             this.Position = new Rectangle((int)position.X, (int)position.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             this.exists = exists;
             this.spawned = false;

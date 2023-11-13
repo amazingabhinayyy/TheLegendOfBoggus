@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using Sprint2_Attempt3.Enemy.Dodongo;
 using Sprint2_Attempt3.Enemy.Hand;
 using Sprint2_Attempt3.Enemy.Keese;
@@ -19,7 +20,7 @@ namespace Sprint2_Attempt3.Enemy.Gel
         {
             this.gel = gel;
             sprite = EnemySpriteFactory.Instance.CreateGelSprite();
-            sourceRectangle = Globals.GelSprite1;
+            sourceRectangle = Gel.Gels[0];
             gel.Position = new Rectangle(gel.X, gel.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             currentFrame = 0;
             random = new Random();
@@ -47,25 +48,9 @@ namespace Sprint2_Attempt3.Enemy.Gel
         public void Update()
         {
             currentFrame++;
-            if (currentFrame < 30)
-            {
-                if (currentFrame < 15)
-                {
-                    sourceRectangle = Globals.GelSprite1;
-
-                }
-                else
-                {
-                    sourceRectangle = Globals.GelSprite2;
-
-                }
-                gel.Y += 1;
-                gel.Position = new Rectangle(gel.X, gel.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
-            }
-            else
-            {
-                currentFrame = 0;
-            }
+            sourceRectangle = Gel.Gels[Globals.FindIndex(currentFrame % (Gel.Gels.Length * gel.AnimateRate), gel.AnimateRate, Gel.Gels.Length)];
+            gel.Y += 1;
+            gel.Position = new Rectangle(gel.X, gel.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
         }
         public void Draw(SpriteBatch spriteBatch)
         {

@@ -12,10 +12,11 @@ namespace Sprint2_Attempt3.Blocks.BlockSprites
 {
     public class SideChunk : BlockSecondary
     {
+        private static Rectangle src = new Rectangle(51, 0, 16, 16);
         public SideChunk(Rectangle Position)
         {
             position = Position;
-            sourceRectangle = Globals.sideChunkScr;
+            sourceRectangle = src;
             isWalkable = false;
         }
     }

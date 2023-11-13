@@ -191,7 +191,7 @@ namespace Sprint2_Attempt3.Dungeon
             return new Keese(x, y);
         }
 
-        private IBlock GetBlock(String Block, int position)
+        private static IBlock GetBlock(String Block, int position)
         {
             IBlock block = null;
             if (Block.Equals("BlackBlock"))
@@ -213,10 +213,6 @@ namespace Sprint2_Attempt3.Dungeon
             else if (Block.Equals("SideChunk"))
             {
                 block = new SideChunk(Globals.FloorGrid[position]);
-            }
-            else if (Block.Equals("StaircaseTile"))
-            {
-                block = new StaircaseTile(Globals.FloorGrid[position]);
             }
             else if (Block.Equals("UpChunk"))
             {
@@ -336,6 +332,10 @@ namespace Sprint2_Attempt3.Dungeon
             else if (Door.Equals("StairExit"))
             {
                 door = new StairExit(state);
+            }
+            else if (Door.Equals("StairEntrance"))
+            {
+                door = new StairEntrance(state);
             }
             return door;
         }

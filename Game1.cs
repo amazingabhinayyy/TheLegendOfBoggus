@@ -43,7 +43,7 @@ namespace Sprint2_Attempt3
         protected override void Initialize()
         {
             base.Initialize();
-            graphics.PreferredBackBufferHeight = 725;
+            graphics.PreferredBackBufferHeight = Globals.ScreenHeight;
             graphics.ApplyChanges();
             RoomGenerator.Instance.LoadAllFiles();
         }
@@ -52,6 +52,7 @@ namespace Sprint2_Attempt3
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            Globals.MakeFloorGrid();
             EnemySpriteFactory.Instance.LoadAllTextures(this.Content);
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
             ItemSpriteFactory.Instance.LoadAllTextures(Content);

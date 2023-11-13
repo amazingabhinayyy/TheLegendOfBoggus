@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Enemy.Stalfos;
+using Sprint2_Attempt3.Enemy.Zol;
 using System;
 
 namespace Sprint2_Attempt3.Enemy.Rope
@@ -18,7 +19,7 @@ namespace Sprint2_Attempt3.Enemy.Rope
         {
             this.rope = rope;
             sprite = EnemySpriteFactory.Instance.CreateRopeSprite();
-            sourceRectangle = Globals.RopeSprite1;
+            sourceRectangle = Rope.Ropes[0];
             rope.Position = new Rectangle(rope.X, rope.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             currentFrame = 0;
             random = new Random();
@@ -46,25 +47,9 @@ namespace Sprint2_Attempt3.Enemy.Rope
         public void Update()
         {
             currentFrame++;
-            if (currentFrame < 30)
-            {
-                if (currentFrame < 15)
-                {
-                    sourceRectangle = Globals.RopeSprite1;
-
-                }
-                else
-                {
-                    sourceRectangle = Globals.RopeSprite2;
-
-                }
-                rope.Y += 1;
-                rope.Position = new Rectangle(rope.X, rope.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
-            }
-            else
-            {
-                currentFrame = 0;
-            }
+            sourceRectangle = Rope.Ropes[Globals.FindIndex(currentFrame % (Rope.Ropes.Length * rope.AnimateRate), rope.AnimateRate, Rope.Ropes.Length)];
+            rope.Y += 1;
+            rope.Position = new Rectangle(rope.X, rope.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
         }
         public void Draw(SpriteBatch spriteBatch)
         {

@@ -9,6 +9,7 @@ namespace Sprint2_Attempt3.Enemy.Stalfos
 {
     internal class Stalfos : EnemyC
     {
+        public static Rectangle[] Stalfoses { get; } = new Rectangle[] { new Rectangle(1, 51, 15, 16), new Rectangle(17, 34, 15, 16), new Rectangle(1, 34, 15, 16), new Rectangle(17, 51, 15, 16) };
         public Stalfos(int x, int y)
         {
             this.X = x;

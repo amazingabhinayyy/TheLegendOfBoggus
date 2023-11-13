@@ -9,6 +9,7 @@ namespace Sprint2_Attempt3.Enemy.Keese
 {
     internal class Keese : EnemyX
     {
+        public static Rectangle[] Keeses { get; } = new Rectangle[] { new Rectangle(33, 34, 16, 8), new Rectangle(34, 43, 16, 11) };
         public Keese(int x, int y)
         {
             X = x;
@@ -38,5 +39,6 @@ namespace Sprint2_Attempt3.Enemy.Keese
         {
             State = new MovingRightKeeseState(this);
         }
+
     }
 }
