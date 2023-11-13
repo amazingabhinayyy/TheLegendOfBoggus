@@ -16,8 +16,8 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             sprite = DungeonSpriteFactory.Instance.CreateDungeonRoomSprite();
     }
 
-        public void Draw(SpriteBatch spriteBatch) {
-            sprite.Draw(spriteBatch, Globals.DungeonStandard);
+        public void Draw(SpriteBatch spriteBatch, Color color) {
+            sprite.Draw(spriteBatch, Globals.DungeonStandard, color);
         }
         public void DrawCurrentRoom(SpriteBatch spriteBatch, Vector2 change)
         {

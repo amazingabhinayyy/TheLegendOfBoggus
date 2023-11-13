@@ -1,9 +1,10 @@
 ﻿using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
+using System.Diagnostics;
 
 namespace Sprint2_Attempt3.Sounds
 {
-    public class SoundFactory : ISoundFactory
+    public class SoundFactory
     {
         public SoundEffect getHeart { get; set; }
         public SoundEffect enemyHit { get; set; }

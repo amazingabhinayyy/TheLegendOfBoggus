@@ -1,10 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint2_Attempt3.Blocks;
-using Sprint2_Attempt3.Blocks.BlockSprites;
 using Sprint2_Attempt3.Collision.SideCollisionHandlers;
 using Sprint2_Attempt3.Enemy;
-using Sprint2_Attempt3.Player.Interfaces;
-using Sprint2_Attempt3.Player.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,23 +55,30 @@ namespace Sprint2_Attempt3.Collision
                     }
                     ICollision side = CollisionDetector.SideDetector(hitBox, collisionRectangle);
 
-                    if (side is BottomCollision)
+                    if (enemy is not Hand)
                     {
-                        enemy.Y = collisionRectangle.Bottom;
+                        if (side is BottomCollision)
+                        {
+
+                            enemy.MoveDown();
+                            enemy.Y = collisionRectangle.Bottom;
+                        }
+                        else if (side is LeftCollision)
+                        {
+                            enemy.MoveLeft();
+                            enemy.X = collisionRectangle.Left - enemy.Position.Width - 1;
+                        }
+                        else if (side is RightCollision)
+                        {
+                            enemy.MoveRight();
+                            enemy.X = collisionRectangle.Right + 1;
+                        }
+                        else
+                        {
+                            enemy.MoveUp();
+                            enemy.Y = collisionRectangle.Top - enemy.Position.Height - 1;
+                        }
                     }
-                    else if (side is LeftCollision)
-                    {
-                        enemy.X = collisionRectangle.Left - enemy.Position.Width - 1;
-                    }
-                    else if (side is RightCollision)
-                    {
-                        enemy.X = collisionRectangle.Right + 1;
-                    }
-                    else
-                    {
-                        enemy.Y = collisionRectangle.Top - enemy.Position.Height - 1;
-                    }
-                    enemy.ChangeDirection();
                 }
             }
         }

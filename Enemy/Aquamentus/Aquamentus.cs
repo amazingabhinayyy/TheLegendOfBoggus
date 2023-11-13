@@ -31,6 +31,7 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
             Fireball3 = new AquamentusFireball(FireballPosition);
             random = new Random();
             distance = random.Next(0, 70);
+            this.health = 3;
 
         }
 

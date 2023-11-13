@@ -20,18 +20,18 @@ namespace Sprint2_Attempt3.Blocks.Block
             count = 0;
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch, Color color)
         {
             count++;
             if (count < 5) {
-                spriteBatch.Draw(BlockSpriteFactory.Instance.blocks, position, sourceRectangle, Color.White);
+                spriteBatch.Draw(BlockSpriteFactory.Instance.blocks, position, sourceRectangle, color);
             }
             else if (count < 10) {
                 spriteBatch.Draw(
                     BlockSpriteFactory.Instance.blocks,
                     position,
                     sourceRectangle,
-                    Color.White,
+                    color,
                     0f,
                     new Vector2(0, 0),
                     SpriteEffects.FlipHorizontally,

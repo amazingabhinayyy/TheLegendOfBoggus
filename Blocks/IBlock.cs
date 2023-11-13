@@ -14,6 +14,8 @@ namespace Sprint2_Attempt3.Blocks
         public void Draw(SpriteBatch spriteBatch);
         public void Draw(SpriteBatch spriteBatch, Vector2 change);
         public void Draw(SpriteBatch spriteBatch, Vector2 change, Vector2 initialPos);
+        public void Draw(SpriteBatch spriteBatch, Color color);
+
     }
 }
 

@@ -13,6 +13,7 @@ namespace Sprint2_Attempt3.Enemy
 
         public void Generate();
         public void Stun();
+        public void GetDamaged(float damage);
         public void Spawn();
         public void ChangeDirection();
         public void MoveUp();

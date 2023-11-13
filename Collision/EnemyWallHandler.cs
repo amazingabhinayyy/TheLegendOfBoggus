@@ -36,26 +36,22 @@ namespace Sprint2_Attempt3.Collision
             {
                 if (side is BottomCollision)
                 {
-
-                    //enemy.MoveDown();
                     enemy.Y = wall.Bottom;
                 }
                 else if (side is LeftCollision)
                 {
-                    //enemy.MoveLeft();
-                    enemy.X = wall.Left - enemy.Position.Width + 1;
+                    enemy.X = wall.Left - enemy.Position.Width - 1;
                 }
                 else if (side is RightCollision)
                 {
-                    //enemy.MoveRight();
                     enemy.X = wall.Right + 1;
                 }
                 else
                 {
-                    //enemy.MoveUp();
                     enemy.Y = wall.Top - enemy.Position.Height - 1;
                 }
-               enemy.ChangeDirection();
+                
+               //enemy.ChangeDirection(); changes enemies to move again, could be fun?
             }
         }
     }

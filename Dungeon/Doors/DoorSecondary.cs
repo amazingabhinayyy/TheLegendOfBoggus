@@ -71,11 +71,11 @@ namespace Sprint2_Attempt3.Dungeon.Doors
             IsDiamondLocked = false;
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
             if (DoorExists)
             {
-                sprite.Draw(spriteBatch, sourceRectangle);
+                sprite.Draw(spriteBatch, sourceRectangle, color);
             }
         }
 

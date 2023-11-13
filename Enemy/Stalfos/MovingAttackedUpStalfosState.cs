@@ -40,7 +40,8 @@ namespace Sprint2_Attempt3.Enemy.Stalfos
             }
         }
         public void ChangeAttackedStatus() {
-            Stalfos.State = new MovingUpStalfosState(Stalfos);
+            if (currentFrame >= 80)
+                Stalfos.State = new MovingUpStalfosState(Stalfos);
         }
         public void Update()
         {
@@ -49,6 +50,7 @@ namespace Sprint2_Attempt3.Enemy.Stalfos
             Stalfos.Y -= 1;
             Stalfos.Position = new Rectangle(Stalfos.X, Stalfos.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             sprite.Update();
+            ChangeAttackedStatus();
         }
         public void Draw(SpriteBatch spriteBatch)
         {

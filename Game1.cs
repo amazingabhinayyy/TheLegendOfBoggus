@@ -10,8 +10,8 @@ using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Dungeon;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Inventory;
-using Sprint2_Attempt3.StartScreen;
 using Sprint2_Attempt3.Sounds;
+using Sprint2_Attempt3.Screens;
 
 namespace Sprint2_Attempt3
 {
@@ -26,12 +26,17 @@ namespace Sprint2_Attempt3
         public ILink link { get; set; }
         public IRoom room { get; set; }
         public bool gameStarted { get; set; }
+        public bool linkDead { get; set; }
+        public bool gamePaused { get; set; }
 
         private GameTime gameTime;
         public GameTime Gametime { get { return gameTime; } }
 
         public CollisionDetector collisionDetector;
         private StartScreenState startScreen;
+        private DeathScreenState deathScreen;
+        private PauseScreenState pauseScreen;
+
 
         public Game1()
         {
@@ -60,6 +65,8 @@ namespace Sprint2_Attempt3
             EnemyProjectileSpriteFactory.Instance.LoadAllTextures(Content);
             SoundFactory.Instance.LoadAllTextures(Content);
             DungeonSpriteFactory.Instance.LoadAllTextures(Content);
+            ScreenSpriteFactory.Instance.LoadAllTextures(Content);
+            //check if we need start screen
             StartScreenSpriteFactory.Instance.LoadAllTextures(Content);
             TransitionHandler.Instance.setGame1(this);
             RoomGenerator.Instance.LoadAllFiles();
@@ -67,12 +74,14 @@ namespace Sprint2_Attempt3
             link = new Link(this);
             collisionDetector = new CollisionDetector(this, (Link)link);
             gameStarted = false;
+            linkDead = false;
             inventoryController = new InventoryController(this);
             keyController = new KeyboardController(this);
             mouseController = new MouseController(this);
             room = new Room1(this);
             startScreen = new StartScreenState(this);
-            
+            deathScreen = new DeathScreenState(this);
+            pauseScreen = new PauseScreenState(this);
         }
 
         protected override void UnloadContent()
@@ -82,10 +91,10 @@ namespace Sprint2_Attempt3
         protected override void Update(GameTime gameTime)
         {
             keyController.Update(gameTime);
-            mouseController.Update(gameTime);
-            inventoryController.Update();
-            if (gameStarted)
+            if (!gamePaused && gameStarted)
             {
+                mouseController.Update(gameTime);
+                inventoryController.Update();
                 collisionDetector.Update();
                 room.Update();
             }
@@ -98,20 +107,25 @@ namespace Sprint2_Attempt3
             GraphicsDevice.Clear(Color.Black);
 
             spriteBatch.Begin();
-            if (gameStarted)
+            if (linkDead)
             {
-                room.Draw(spriteBatch);
+                deathScreen.Draw(spriteBatch);
+            }
+            else if (gamePaused)
+            {
+                pauseScreen.Draw(spriteBatch);
+            }
+            else if (gameStarted)
+            {
+                room.Draw(spriteBatch, Color.White);
                 inventoryController.Draw(spriteBatch);
             }
             else
             {
-                startScreen.Draw(spriteBatch);  
+                startScreen.Draw(spriteBatch);
             }
             spriteBatch.End();
             base.Draw(gameTime);
         }
     }
 }
-
-
-

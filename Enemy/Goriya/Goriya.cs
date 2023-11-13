@@ -30,6 +30,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
 
             this.X = x;
             this.Y = y;
+            this.health = 1.5f;
             this.SpawnPosition = new Vector2(x, y);
             BoomerangPosition = new Vector2(X, Y);
             Boomerang = new GoriyaBoomerang(BoomerangPosition);

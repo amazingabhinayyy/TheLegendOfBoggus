@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 
-namespace Sprint2_Attempt3.StartScreen
+namespace Sprint2_Attempt3.Screens
 {
     public class StartScreenSprite : ISprite
     {

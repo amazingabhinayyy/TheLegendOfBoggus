@@ -17,8 +17,8 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             sprite = DungeonSpriteFactory.Instance.CreateWhiteStairRoomSprite();
     }
 
-        public void Draw(SpriteBatch spriteBatch) {
-            sprite.Draw(spriteBatch, WhiteRoomScrRectangle);
+        public void Draw(SpriteBatch spriteBatch, Color color) {
+            sprite.Draw(spriteBatch, WhiteRoomScrRectangle, color);
         }
     }
 }
