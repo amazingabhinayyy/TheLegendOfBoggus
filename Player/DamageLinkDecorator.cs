@@ -23,6 +23,7 @@ namespace Sprint2_Attempt3.Player
 
         public ILinkSprite Sprite { get; set; }
         public ILinkState State { get; set; }
+        private const int invincabilityTimer = 60;
 
         public DamageLinkDecorator(ILink decoratedLink)//, Game1 game)
         {
@@ -40,7 +41,7 @@ namespace Sprint2_Attempt3.Player
                 if(InventoryController.GetCount("Heart") != 0.5f)
                     Knockback(side);
 
-                timer = 40;
+                timer = invincabilityTimer;
                 InventoryController.DecrementCount("Heart", .5f);
                 if (InventoryController.GetCount("Heart") <= 0)
                 {
