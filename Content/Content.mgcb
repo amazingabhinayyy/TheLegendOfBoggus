@@ -85,18 +85,6 @@
 /processorParam:TextureFormat=Color
 /build:DungeonSprites.png
 
-#begin DungeonSprites.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:DungeonSprites.png
-
 #begin Enemies.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -342,6 +330,12 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:TitleScreen.png
+
+#begin triforce_obtained.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:triforce_obtained.wav
 
 #begin Underworld_BGM.wav
 /importer:WavImporter

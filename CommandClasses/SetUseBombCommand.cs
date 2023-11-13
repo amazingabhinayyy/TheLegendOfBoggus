@@ -22,7 +22,6 @@ namespace Sprint2_Attempt3.CommandClasses
                 SoundFactory.PlaySound(SoundFactory.Instance.bombDrop);
                 game.link.UseBomb();
                 InventoryController.DecrementCount("Bomb");
-                //SoundFactory.PlaySound(SoundFactory.Instance.bombBlow);
             }
         }
     }

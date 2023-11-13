@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint2_Attempt3.Player.Interfaces;
+using Sprint2_Attempt3.Sounds;
 
 namespace Sprint2_Attempt3.Player.LinkStates
 {
@@ -12,6 +13,7 @@ namespace Sprint2_Attempt3.Player.LinkStates
         private Link link;
         public KilledLinkState(Link link) 
         {
+            SoundFactory.PlaySound(SoundFactory.Instance.linkDie);
             this.link = link;
             link.Sprite = LinkSpriteFactory.Instance.CreateDeadLink();
         }

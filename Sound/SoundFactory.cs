@@ -24,7 +24,6 @@ namespace Sprint2_Attempt3.Sounds
         public SoundEffect stairs { get; set; }
         public SoundEffect bossScream { get; set; }
         public SoundEffect bossHurt { get; set; }
-        public SoundEffect bossDefeat { get; set; }
         public SoundEffect secret { get; set; }
         public SoundEffect triforce { get; set; }
 
@@ -68,9 +67,8 @@ namespace Sprint2_Attempt3.Sounds
             stairs = content.Load<SoundEffect>("LOZ_Stairs");
             bossScream = content.Load<SoundEffect>("LOZ_Boss_Scream1");
             bossHurt = content.Load<SoundEffect>("LOZ_Boss_Hit");
-            //bossDefeat = content.Load<SoundEffect>("LOZ_Boss_Defeat");
             secret = content.Load<SoundEffect>("LOZ_Secret");
-            //triforce = content.Load<SoundEffect>("Triforce");
+            triforce = content.Load<SoundEffect>("triforce_obtained");
 
 
             SoundEffect backgroundMusic = content.Load<SoundEffect>("Underworld_BGM");

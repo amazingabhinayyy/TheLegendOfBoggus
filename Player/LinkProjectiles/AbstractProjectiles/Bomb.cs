@@ -8,6 +8,7 @@ using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates;
 using Sprint2_Attempt3.Player.LinkProjectiles.ProjectileInterfaces;
 using Microsoft.Xna.Framework;
+using Sprint2_Attempt3.Sounds;
 
 namespace Sprint2_Attempt3.Player.LinkProjectiles.AbstractProjectiles
 {
@@ -31,6 +32,7 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles.AbstractProjectiles
             RemoveBomb();
             BombExplosion explosion = new BombExplosion(link, itemPosition);
             link.Items.Add(explosion);
+            SoundFactory.PlaySound(SoundFactory.Instance.bombBlow);
             CollisionDetector.GameObjectList.Add(explosion);
         }
         public override void Update()

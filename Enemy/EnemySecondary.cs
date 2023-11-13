@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
 using System;
 using Sprint2_Attempt3.Collision;
+using Sprint2_Attempt3.Sounds;
 
 namespace Sprint2_Attempt3.Enemy
 {
@@ -47,10 +48,15 @@ namespace Sprint2_Attempt3.Enemy
         {
             this.ChangeAttackedStatus();
             health -= damage;
+            
 
             if (health <= 0)
             {
                 Kill();
+            }
+            else
+            {
+                SoundFactory.PlaySound(SoundFactory.Instance.enemyHit);
             }
         }
         

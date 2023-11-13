@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Inventory;
+using Sprint2_Attempt3.Sounds;
 using System.Runtime.ConstrainedExecution;
 
 namespace Sprint2_Attempt3.Items
