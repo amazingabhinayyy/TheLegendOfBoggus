@@ -20,6 +20,7 @@ namespace Sprint2_Attempt3.CommandClasses
         {
             game1.link = new Link(game1);
             game1.linkDead = false;
+            game1.gamePaused = false;
             RoomSecondary.ResetRooms();
             game1.room = new Room1(game1);
             //inventoryController = new InventoryController(this);

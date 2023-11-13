@@ -4,6 +4,7 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Sprint2_Attempt3.CommandClasses;
+using Sprint2_Attempt3.Screens;
 
 namespace Sprint2_Attempt3
 {
@@ -55,6 +56,7 @@ namespace Sprint2_Attempt3
             //other controls
             commandMapping.Add(Keys.Q, new Quit(game1));
             commandMapping.Add(Keys.R, new Reset(game1));
+            commandMapping.Add(Keys.Escape, new Pause(game1));
 
             //switching rooms
             commandMapping.Add(Keys.Space, new ToggleItemMenu(game1));
@@ -85,7 +87,22 @@ namespace Sprint2_Attempt3
         public void Update(GameTime gameTime)
         {
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
-            if (game1.gameStarted)
+            if (game1.gamePaused)
+            {
+                if (pressedKeys.Contains(Keys.Enter))
+                {
+                    game1.gamePaused = false;
+                }
+                else if (pressedKeys.Contains(Keys.R))
+                {
+                    commandMapping[Keys.R].Execute();
+                }
+                else if (pressedKeys.Contains(Keys.Q))
+                {
+                    commandMapping[Keys.Q].Execute();
+                }
+            }
+            else if (game1.gameStarted)
             {
                 bool pressed = false;
                 //go through each movement key incrementing their count by one if they are currently pressed

@@ -10,8 +10,8 @@ using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Dungeon;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Inventory;
-using Sprint2_Attempt3.StartScreen;
 using Sprint2_Attempt3.Sounds;
+using Sprint2_Attempt3.Screens;
 
 namespace Sprint2_Attempt3
 {
@@ -27,10 +27,12 @@ namespace Sprint2_Attempt3
         public IRoom room { get; set; }
         public bool gameStarted { get; set; }
         public bool linkDead { get; set; }
+        public bool gamePaused { get; set; }
 
         public CollisionDetector collisionDetector;
         private StartScreenState startScreen;
         private DeathScreenState deathScreen;
+        private PauseScreenState pauseScreen;
 
 
         public Game1()
@@ -73,6 +75,7 @@ namespace Sprint2_Attempt3
             room = new Room1(this);
             startScreen = new StartScreenState(this);
             deathScreen = new DeathScreenState(this);
+            pauseScreen = new PauseScreenState(this);
         }
 
         protected override void UnloadContent()
@@ -82,10 +85,10 @@ namespace Sprint2_Attempt3
         protected override void Update(GameTime gameTime)
         {
             keyController.Update(gameTime);
-            mouseController.Update(gameTime);
-            inventoryController.Update();
-            if (gameStarted)
+            if (!gamePaused && gameStarted)
             {
+                mouseController.Update(gameTime);
+                inventoryController.Update();
                 collisionDetector.Update();
                 room.Update();
             }
@@ -100,6 +103,10 @@ namespace Sprint2_Attempt3
             if (linkDead)
             {
                 deathScreen.Draw(spriteBatch);
+            }
+            else if (gamePaused)
+            {
+                pauseScreen.Draw(spriteBatch);
             }
             else if (gameStarted)
             {

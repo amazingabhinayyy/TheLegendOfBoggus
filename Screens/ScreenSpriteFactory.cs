@@ -7,12 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint2_Attempt3.StartScreen
+namespace Sprint2_Attempt3.Screens
 {
     public class ScreenSpriteFactory
     {
         private static Texture2D startScreenTexture;
-        private static Texture2D deathScreenTexture;
+        private static Texture2D deathAndPauseScreenTexture;
         // More private Texture2Ds follow
         // ...
 
@@ -33,7 +33,7 @@ namespace Sprint2_Attempt3.StartScreen
         public void LoadAllTextures(ContentManager content)
         {
             startScreenTexture = content.Load<Texture2D>("TitleScreen");
-            deathScreenTexture = content.Load<Texture2D>("DeathScreen");
+            deathAndPauseScreenTexture = content.Load<Texture2D>("DeathAndPauseScreen");
             // More Content.Load calls follow
             //...
         }
@@ -43,7 +43,11 @@ namespace Sprint2_Attempt3.StartScreen
         }
         public ISprite CreateDeathScreen()
         {
-            return new DeathScreenSprite(deathScreenTexture); 
+            return new DeathScreenSprite(deathAndPauseScreenTexture); 
+        }
+        public ISprite CreatePauseScreen()
+        {
+            return new PauseScreenSprite(deathAndPauseScreenTexture);
         }
     }
 }
