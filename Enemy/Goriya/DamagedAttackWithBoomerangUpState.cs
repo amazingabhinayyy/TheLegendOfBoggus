@@ -17,6 +17,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         private IEnemyProjectile boomerang;
         private Random random;
         private int direction;
+        private int colorTimer;
 
         public DamagedAttackWithBoomerangUpState(Goriya Goriya)
         {
@@ -27,15 +28,16 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             sourceRectangle = Globals.GoriyaRedUp;
             Goriya.Position = new Rectangle(Goriya.X, Goriya.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             boomerang = Goriya.Boomerang;
-         
+            colorTimer = 0;
 
         }
         public void ChangeDirection()
         {
-                Goriya.State = new MovingAttackedRightGoriyaState(Goriya);
+            Goriya.State = new MovingAttackedRightGoriyaState(Goriya);
         }
         public void ChangeAttackedStatus() {
-            Goriya.State = new MovingUpGoriyaState(Goriya);
+            if(colorTimer >= 60)
+                Goriya.State = new MovingUpGoriyaState(Goriya);
         }
         public void Update()
         {
@@ -70,6 +72,9 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             {
                 ChangeDirection();
             }
+            colorTimer++;
+            ChangeAttackedStatus();
+
         }
         public void Draw(SpriteBatch spriteBatch)
         {
