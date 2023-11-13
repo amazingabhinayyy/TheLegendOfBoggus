@@ -154,22 +154,20 @@ namespace Sprint2_Attempt3.Collision
                 else if (door is StairExit)
                 {
                     game.room.SwitchToUpperRoom();
-                    if (room != game.room)
-                    {
+                  
                         link.Position = new Vector2(LastLinkPosition.X, LastLinkPosition.Y);
                         changedRooms = true;
-                    }
+                    
                 }
                 else if (door is StairEntrance) 
                 {
                     game.room.SwitchToLowerRoom();
                     LastLinkPosition = new Vector2(link.GetHitBox().X, link.GetHitBox().Y);
                     LastLinkPosition.X -= 50;
-                    if (room != game.room)
-                    {
+                    
                         link.Position = new Vector2(Globals.StairExitPosition.X, Globals.StairExitPosition.Y + 15);
                         changedRooms = true;
-                    }
+                    
                 }
             }
             return changedRooms;

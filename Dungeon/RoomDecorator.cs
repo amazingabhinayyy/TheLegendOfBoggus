@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Sprint2_Attempt3.Player.Interfaces;
 using System.Threading;
+using Sprint2_Attempt3.Dungeon.Rooms;
 
 namespace Sprint2_Attempt3.Dungeon
 {
@@ -71,6 +72,11 @@ namespace Sprint2_Attempt3.Dungeon
                 decoratedRoom.Draw(spriteBatch, new Color(50, 0, 0));
             else
                 decoratedRoom.Draw(spriteBatch, Color.Black);
+        }
+
+        public DungeonRoom getDungeonRoom()
+        {
+            throw new NotImplementedException();
         }
     }
 }

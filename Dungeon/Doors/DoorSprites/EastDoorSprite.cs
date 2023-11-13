@@ -38,5 +38,7 @@ namespace Sprint2_Attempt3.Dungeon.Doors.DoorSprites
             Rectangle destinationRectangle = new Rectangle((int)(Globals.EastDoorPosition.X + change.X * 3.125+initialPos.X), (int)(Globals.EastDoorPosition.Y + change.Y * 3.125+initialPos.Y), 100, 94);
             spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, Color.White);
         }
+
+    
     }
 }

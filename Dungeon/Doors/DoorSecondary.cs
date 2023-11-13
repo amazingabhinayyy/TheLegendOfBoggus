@@ -75,7 +75,7 @@ namespace Sprint2_Attempt3.Dungeon.Doors
         {
             if (DoorExists)
             {
-                sprite.Draw(spriteBatch, sourceRectangle, color);
+                sprite.Draw(spriteBatch, sourceRectangle,color);
             }
         }
 

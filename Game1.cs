@@ -67,7 +67,7 @@ namespace Sprint2_Attempt3
             DungeonSpriteFactory.Instance.LoadAllTextures(Content);
             ScreenSpriteFactory.Instance.LoadAllTextures(Content);
             //check if we need start screen
-            StartScreenSpriteFactory.Instance.LoadAllTextures(Content);
+            //StartScreenSpriteFactory.Instance.LoadAllTextures(Content);
             TransitionHandler.Instance.setGame1(this);
             RoomGenerator.Instance.LoadAllFiles();
             InventoryTexture = Content.Load<Texture2D>("Inventory");

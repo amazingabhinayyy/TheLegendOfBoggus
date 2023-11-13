@@ -20,6 +20,8 @@ namespace Sprint2_Attempt3.Dungeon
     public abstract class RoomSecondary : IRoom
     {
         protected static List<IGameObject>[] gameObjectLists = new List<IGameObject>[18];
+
+        public List<IGameObject>[] GameObjectLists { get { return gameObjectLists; } set { gameObjectLists = value; } }
         protected static int roomNumber;
         protected static int enemyKillCount = 0;
         protected Boolean spawned = false;
@@ -33,6 +35,7 @@ namespace Sprint2_Attempt3.Dungeon
             room = new DungeonRoom();
             roomNumber = roomNum;
             spawned = false;
+            
             if (gameObjectLists[roomNumber] == null)
             {
                 
@@ -89,6 +92,7 @@ namespace Sprint2_Attempt3.Dungeon
                 roomNumber = 0;
             }
             room = new DungeonRoom();
+
             if (gameObjectLists[roomNumber] == null)
             {
                 gameObjectLists[roomNumber] = RoomGenerator.Instance.LoadFile(roomNumber);
@@ -123,6 +127,7 @@ namespace Sprint2_Attempt3.Dungeon
             }
             ClockUsed = false;
             InventoryController.VisitRoom(roomNumber);
+            TransitionHandler.Instance.TransitionGameObjectList = new List<IGameObject>();
             CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
             game1.link.Items.Clear();
         }
@@ -173,6 +178,7 @@ namespace Sprint2_Attempt3.Dungeon
             }
             ClockUsed = false;
             InventoryController.VisitRoom(roomNumber);
+            TransitionHandler.Instance.TransitionGameObjectList = new List<IGameObject>();
             CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
             game1.link.Items.Clear();
         }
@@ -209,14 +215,14 @@ namespace Sprint2_Attempt3.Dungeon
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch) {
+        public void Draw(SpriteBatch spriteBatch, Color color) {
             if (TransitionHandler.Instance.Start)
             {
                 TransitionHandler.Instance.Draw(spriteBatch);
             }
             else
             {
-                room.Draw(spriteBatch);
+                //room.Draw(spriteBatch);
 
                 room.Draw(spriteBatch, color);
 
@@ -247,6 +253,9 @@ namespace Sprint2_Attempt3.Dungeon
                     gameObjectLists[i].AddRange(Globals.Room16WallBlocks);
             }
         }
+
+
+
 
         public static int GetCurrentRoomNumber() { 
             return roomNumber;
