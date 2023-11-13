@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint2_Attempt3.StartScreen
+namespace Sprint2_Attempt3.Screens
 {
     public class DeathScreenState
     {

@@ -7,22 +7,22 @@ using System.Threading.Tasks;
 
 namespace Sprint2_Attempt3.Screens
 {
-    public class StartScreenState
+    public class PauseScreenState
     {
         private ISprite sprite;
-        private Game1 game;
-        public StartScreenState(Game1 game)
+        private Game1 game1;
+        public PauseScreenState(Game1 game) 
         {
-            sprite = ScreenSpriteFactory.Instance.CreateStartScreen();
-            this.game = game;
+            sprite = ScreenSpriteFactory.Instance.CreatePauseScreen();
+            this.game1 = game;
         }
         public void Update()
         {
             sprite.Update();
         }
-        public void Draw(SpriteBatch spirteBatch)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spirteBatch);
+            sprite.Draw(spriteBatch);
         }
     }
 }
