@@ -1,4 +1,5 @@
 ﻿using Sprint2_Attempt3.Inventory;
+using Sprint2_Attempt3.Sounds;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,8 @@ namespace Sprint2_Attempt3.CommandClasses
     {
         private Game1 game;
         public SetUseArrowCommand(Game1 game) 
-        { 
+        {
+            SoundFactory.PlaySound(SoundFactory.Instance.arrowBoomerang);
             this.game = game;
         }
 

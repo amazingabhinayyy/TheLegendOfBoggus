@@ -1,4 +1,5 @@
 ﻿using Sprint2_Attempt3.Inventory;
+using Sprint2_Attempt3.Sounds;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,8 +19,10 @@ namespace Sprint2_Attempt3.CommandClasses
         public void Execute() {
             if (InventoryController.GetCount("Bomb") > 0)
             {
+                SoundFactory.PlaySound(SoundFactory.Instance.bombDrop);
                 game.link.UseBomb();
                 InventoryController.DecrementCount("Bomb");
+                //SoundFactory.PlaySound(SoundFactory.Instance.bombBlow);
             }
         }
     }

@@ -9,6 +9,7 @@ using Sprint2_Attempt3.Collision.SideCollisionHandlers;
 using System;
 using Sprint2_Attempt3.Items.ItemClasses;
 using Sprint2_Attempt3.Player.LinkProjectiles.ProjectileInterfaces;
+using Sprint2_Attempt3.Sounds;
 
 namespace Sprint2_Attempt3.Player
 {
@@ -81,6 +82,7 @@ namespace Sprint2_Attempt3.Player
         public void UseBomb()
         {
             State.UseBomb();
+            SoundFactory.PlaySound(SoundFactory.Instance.bombBlow);
         }
         public void UseArrow()
         {

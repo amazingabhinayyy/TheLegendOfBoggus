@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
+using System.Diagnostics;
 
 namespace Sprint2_Attempt3.Sounds
 {
@@ -81,6 +82,7 @@ namespace Sprint2_Attempt3.Sounds
 
         public static void PlaySound(SoundEffect sound, float volume = 1)
         {
+            Debug.Write("PLaying sound");
             float pitch = 0.0f;
             float pan = 0.0f;
 
