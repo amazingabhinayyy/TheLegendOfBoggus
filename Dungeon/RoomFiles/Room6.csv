@@ -5,7 +5,7 @@ Block,DiamondTile,58,,
 Item,Key,0,0,FALSE
 Item,Heart,0,0,FALSE
 Item,Rupee,0,0,FALSE
-Door,North,2,,
+Door,North,4,,
 Door,South,0,,
 Door,East,0,,
 Door,West,0,,
