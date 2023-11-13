@@ -62,6 +62,10 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
                 count = 0;
 
             }
+            if(invinciblityTimer > 0) 
+            {
+                invinciblityTimer--;
+            }
             State.Update();
         }
         public override void Draw(SpriteBatch spriteBatch)

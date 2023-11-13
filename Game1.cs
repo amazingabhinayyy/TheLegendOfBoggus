@@ -29,7 +29,7 @@ namespace Sprint2_Attempt3
         public bool linkDead { get; set; }
         public bool gamePaused { get; set; }
 
-        public CollisionDetector collisionDetector;
+        public CollisionManager collisionDetector;
         private StartScreenState startScreen;
         private DeathScreenState deathScreen;
         private PauseScreenState pauseScreen;
@@ -66,7 +66,7 @@ namespace Sprint2_Attempt3
             RoomGenerator.Instance.LoadAllFiles();
             InventoryTexture = Content.Load<Texture2D>("Inventory");
             link = new Link(this);
-            collisionDetector = new CollisionDetector(this, (Link)link);
+            collisionDetector = new CollisionManager(this, (Link)link);
             gameStarted = false;
             linkDead = false;
             inventoryController = new InventoryController(this);

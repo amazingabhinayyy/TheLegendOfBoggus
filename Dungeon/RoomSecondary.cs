@@ -24,7 +24,7 @@ namespace Sprint2_Attempt3.Dungeon
         public static bool ClockUsed { get; set; } = false;
         protected IDungeonRoom room;
         protected Game1 game1;
-        protected CollisionDetector collisionDetector;
+        protected CollisionManager collisionDetector;
 
         public RoomSecondary(Game1 game, int roomNum) {
             this.game1 = game;
@@ -61,8 +61,8 @@ namespace Sprint2_Attempt3.Dungeon
             }
 
             ClockUsed = false;
-            collisionDetector = new CollisionDetector(game1, game1.link);
-            CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
+            collisionDetector = new CollisionManager(game1, game1.link);
+            CollisionManager.GameObjectList = gameObjectLists[roomNumber];
         }
         public void SwitchToNextRoom() {
             if (roomNumber < gameObjectLists.Length - 1)
@@ -108,7 +108,7 @@ namespace Sprint2_Attempt3.Dungeon
             }
             ClockUsed = false;
             InventoryController.VisitRoom(roomNumber);
-            CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
+            CollisionManager.GameObjectList = gameObjectLists[roomNumber];
             game1.link.Items.Clear();
         }
 
@@ -158,7 +158,7 @@ namespace Sprint2_Attempt3.Dungeon
             }
             ClockUsed = false;
             InventoryController.VisitRoom(roomNumber);
-            CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
+            CollisionManager.GameObjectList = gameObjectLists[roomNumber];
             game1.link.Items.Clear();
         }
         public void Update() {

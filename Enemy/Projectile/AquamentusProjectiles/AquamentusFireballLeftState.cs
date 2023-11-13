@@ -54,7 +54,7 @@ internal class AquamentusFireballLeftState : IEnemyProjectileState
             if (traveledDistance >= projDistance)
             {
                 AquamentusFireball.Fire = false;
-                CollisionDetector.GameObjectList.Remove(AquamentusFireball);
+                CollisionManager.GameObjectList.Remove(AquamentusFireball);
             }/*
             if (AquamentusFireball.Position2.X <= 100 || AquamentusFireball.Position2.Y <= 89 || AquamentusFireball.Position2.Y >= 336)
             {

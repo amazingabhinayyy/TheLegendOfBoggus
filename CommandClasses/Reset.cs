@@ -24,7 +24,7 @@ namespace Sprint2_Attempt3.CommandClasses
             RoomSecondary.ResetRooms();
             game1.room = new Room1(game1);
             //inventoryController = new InventoryController(this);
-            game1.collisionDetector = new CollisionDetector(game1, (Link)game1.link);
+            game1.collisionDetector = new CollisionManager(game1, (Link)game1.link);
         }
     }
 }

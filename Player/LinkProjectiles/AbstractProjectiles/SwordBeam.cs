@@ -20,7 +20,7 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles.AbstractProjectiles
         public void RemoveSwordBeam()
         {
             link.Items.Remove(this);
-            CollisionDetector.GameObjectList.Remove(this);
+            CollisionManager.GameObjectList.Remove(this);
             link.Items.Add(new SwordBeamExplosion(link, itemPosition));
         }
     }

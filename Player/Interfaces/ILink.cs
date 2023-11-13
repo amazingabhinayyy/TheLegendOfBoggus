@@ -29,6 +29,8 @@ namespace Sprint2_Attempt3.Player.Interfaces
         public void SetDecorator(ILink link);
         public void RemoveDecorator();
         public void Kill();
+        public void CollectTriForce();
+        public void CollectBow();
         public void Draw(SpriteBatch spriteBatch, Color color);
         
     }

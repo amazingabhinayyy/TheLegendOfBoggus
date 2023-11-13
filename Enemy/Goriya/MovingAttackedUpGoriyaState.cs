@@ -35,7 +35,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             Goriya.BoomerangPosition = new Vector2(Goriya.X, Goriya.Y);
             Goriya.Boomerang = new GoriyaBoomerang(Goriya.BoomerangPosition);
             ((GoriyaBoomerang)Goriya.Boomerang).GenerateUp();
-            CollisionDetector.GameObjectList.Add(Goriya.Boomerang);
+            CollisionManager.GameObjectList.Add(Goriya.Boomerang);
             ((GoriyaBoomerang)Goriya.Boomerang).Throwing = true;
             Goriya.State = new DamagedAttackWithBoomerangUpState(Goriya);
         }

@@ -10,6 +10,7 @@ namespace Sprint2_Attempt3.Player
     {
         private static Texture2D linkTexture;
         private static Texture2D deathTexture;
+        private static Texture2D itemTexture;
         private Texture2D items;
         // More private Texture2Ds follow
         // ...
@@ -32,6 +33,7 @@ namespace Sprint2_Attempt3.Player
         {
             linkTexture = content.Load<Texture2D>("LinkPlayerSpriteSheetFinal");
             deathTexture = content.Load<Texture2D>("characterGenerationSprite");
+            itemTexture = content.Load<Texture2D>("Items");
             // More Content.Load calls follow
             //...
         }
@@ -155,6 +157,14 @@ namespace Sprint2_Attempt3.Player
         public ILinkSprite CreateDeadLink()
         {
             return new DeadLinkSprite(deathTexture);
+        }
+        public ILinkSprite CreateTriForceLink()
+        {
+            return new TriForceLinkSprite(linkTexture, itemTexture);
+        }
+        public ILinkSprite CreateBowLink()
+        {
+            return new BowLinkSprite(linkTexture, itemTexture);
         }
     }
 }

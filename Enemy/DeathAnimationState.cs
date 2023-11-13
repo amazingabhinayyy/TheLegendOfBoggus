@@ -47,7 +47,7 @@ namespace Sprint2_Attempt3.Enemy.Keese
             {
                 enemy.exists = false;
 
-                CollisionDetector.GameObjectList.Remove(enemy);
+                CollisionManager.GameObjectList.Remove(enemy);
                 enemy.DropItem();              
             }
         }
