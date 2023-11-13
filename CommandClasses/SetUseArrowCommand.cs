@@ -13,7 +13,6 @@ namespace Sprint2_Attempt3.CommandClasses
         private Game1 game;
         public SetUseArrowCommand(Game1 game) 
         {
-            SoundFactory.PlaySound(SoundFactory.Instance.arrowBoomerang);
             this.game = game;
         }
 
@@ -21,6 +20,7 @@ namespace Sprint2_Attempt3.CommandClasses
         {
             if (InventoryController.GetCount("Bow") > 0 && InventoryController.GetCount("Rupee") > 0)
             {
+                SoundFactory.PlaySound(SoundFactory.Instance.arrowBoomerang);
                 game.link.UseArrow();
                 InventoryController.DecrementCount("Rupee");
             }
