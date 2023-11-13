@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using Sprint2_Attempt3.Inventory;
+using Sprint2_Attempt3.Sounds;
 
 namespace Sprint2_Attempt3.Items.ItemClasses
 {
@@ -56,6 +57,7 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         public override void Collect()
         {
             base.Collect();
+            SoundFactory.PlaySound(SoundFactory.Instance.getHeart);
             if (InventoryController.GetCount("HeartContainer") - InventoryController.GetCount("Heart") < 0) {
                 if (InventoryController.GetCount("HeartContainer") - InventoryController.GetCount("Heart") < -.5)
                 {
