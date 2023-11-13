@@ -5,7 +5,7 @@ This repository has the project designed by Michael Erickson, Christopher Linne,
 Current Controls 
 
 Player controls
-Arrow and "wasd" keys move Link and change his facing direction.
+Arrows and "wasd" keys move Link and change his facing direction.
 The 'z' and 'n' key causes Link to attack using his sword.
 
 D1 : Uses Bomb
@@ -30,6 +30,8 @@ H : Shift Cursor Right
 Other controls
 Use 'q' to quit 
 Use'r' to reset the program back to its initial state.
+Use 'Esc' to pause game.
+USe 'Enter' to start game when on start screen
 
 Documentation
 Documentation for the team's meeting notes, code reviews, and task board can be found on the notion page here : https://woozy-buckaroo-6ec.notion.site/CSE-3902-Documentation-edd64f49e6c24c07b0f65ea4e5d2ca19
