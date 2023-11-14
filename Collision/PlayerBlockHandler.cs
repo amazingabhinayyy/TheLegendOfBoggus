@@ -148,6 +148,7 @@ namespace Sprint2_Attempt3.Collision
                 }
                 else if (door is StairExit)
                 {
+                    SoundFactory.PlaySound(SoundFactory.Instance.stairs);
                     game.room.SwitchToUpperRoom();
                     if (room != game.room)
                     {
@@ -157,6 +158,8 @@ namespace Sprint2_Attempt3.Collision
                 }
                 else if (door is StairEntrance) 
                 {
+                    SoundFactory.PlaySound(SoundFactory.Instance.stairs);
+                    SoundFactory.PlaySound(SoundFactory.Instance.stairs);
                     game.room.SwitchToLowerRoom();
                     LastLinkPosition = new Vector2(link.GetHitBox().X, link.GetHitBox().Y);
                     LastLinkPosition.X -= 50;
