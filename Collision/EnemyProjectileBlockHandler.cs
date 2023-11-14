@@ -1,4 +1,5 @@
-﻿using Sprint2_Attempt3.Enemy.Projectile.GoriyaProjectiles;
+﻿using Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles;
+using Sprint2_Attempt3.Enemy.Projectile.GoriyaProjectiles;
 using Sprint2_Attempt3.WallBlocks;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,12 @@ namespace Sprint2_Attempt3.Collision
             if (projectile is GoriyaBoomerang)
             {
 
+            }
+            if (projectile is AquamentusFireball)
+            {
+                CollisionDetector.GameObjectList.Remove(projectile);
+
+                ((AquamentusFireball)projectile).GenerateRight();
             }
         }
     }
