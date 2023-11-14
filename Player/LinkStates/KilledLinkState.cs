@@ -13,7 +13,6 @@ namespace Sprint2_Attempt3.Player.LinkStates
         private Link link;
         public KilledLinkState(Link link) 
         {
-            SoundFactory.PlaySound(SoundFactory.Instance.linkDie);
             this.link = link;
             link.Sprite = LinkSpriteFactory.Instance.CreateDeadLink();
         }

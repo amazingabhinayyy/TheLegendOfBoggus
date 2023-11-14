@@ -55,6 +55,7 @@ namespace Sprint2_Attempt3.Player
                     else 
                     { 
                         Kill();
+                        SoundFactory.PlaySound(SoundFactory.Instance.linkDie);
                         timer = 0;
                     }
                 }
