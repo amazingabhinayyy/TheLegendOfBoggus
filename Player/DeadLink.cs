@@ -97,6 +97,10 @@ namespace Sprint2_Attempt3.Player
             timer++;
             if (timer <= 80)
             {
+                if(timer == 1)
+                {
+                    game.deathAnimationActive = true;
+                }
                 if (timer % 20 < 5)
                 {
                     decoratedLink.MoveDown();

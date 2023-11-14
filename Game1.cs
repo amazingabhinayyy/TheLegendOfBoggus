@@ -28,6 +28,7 @@ namespace Sprint2_Attempt3
         public bool gameStarted { get; set; }
         public bool linkDead { get; set; }
         public bool gamePaused { get; set; }
+        public bool deathAnimationActive { get; set; }
 
         private GameTime gameTime;
         public GameTime Gametime { get { return gameTime; } }
@@ -83,6 +84,7 @@ namespace Sprint2_Attempt3
             startScreen = new StartScreenState(this);
             deathScreen = new DeathScreenState(this);
             pauseScreen = new PauseScreenState(this);
+            deathAnimationActive = false;
         }
 
         protected override void UnloadContent()
@@ -92,12 +94,15 @@ namespace Sprint2_Attempt3
         protected override void Update(GameTime gameTime)
         {
             keyController.Update(gameTime);
-            if (!gamePaused && gameStarted)
+            if (!gamePaused && !linkDead && gameStarted)
             {
-                mouseController.Update(gameTime);
-                inventoryController.Update();
-                collisionDetector.Update();
                 room.Update();
+                if (!deathAnimationActive)
+                {
+                    inventoryController.Update();
+                    collisionDetector.Update();
+                    mouseController.Update(gameTime);
+                }
             }
             base.Update(gameTime);
         }
