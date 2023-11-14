@@ -6,12 +6,12 @@ using System.Collections.Generic;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.CommandClasses;
 using Sprint2_Attempt3.Collision.SideCollisionHandlers;
+using Sprint2_Attempt3.Dungeon.Rooms;
+using Sprint2_Attempt3.Dungeon;
 using System;
 using Sprint2_Attempt3.Items.ItemClasses;
 using Sprint2_Attempt3.Player.LinkProjectiles.ProjectileInterfaces;
-using Sprint2_Attempt3.Dungeon.Rooms;
-using Sprint2_Attempt3.Dungeon;
-using System.Net.Mime;
+using Sprint2_Attempt3.Sounds;
 
 namespace Sprint2_Attempt3.Player
 {
@@ -24,13 +24,11 @@ namespace Sprint2_Attempt3.Player
         public List<ILinkProjectile> Items { get; set; }
         private Game1 game;
         private bool linkDead;
-
         public Link(Game1 game)
         {
             position.X = 375;
             position.Y = 300;
             this.game = game;
-            //CollisionDetector.GameObjectList.Add(this);
             State = new DownIdleLinkState(this);
             Items = new List<ILinkProjectile>();
             linkDead = false;
@@ -121,7 +119,6 @@ namespace Sprint2_Attempt3.Player
         {
             game.link = this;
         }
-
         public void Update()
         {
             State.Update();
@@ -132,10 +129,6 @@ namespace Sprint2_Attempt3.Player
                 {
                     Items[c].Update();
                 }
-            }
-            else
-            {
-
             }
         }
         public void Draw(SpriteBatch _spriteBatch, Color color)
