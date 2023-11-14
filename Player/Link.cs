@@ -106,6 +106,14 @@ namespace Sprint2_Attempt3.Player
         {
             State.UseFire();
         }
+        public void CollectBow()
+        {
+            State.CollectBow();
+        }
+        public void CollectTriForce()
+        {
+            State.CollectTriForce();
+        }
         public void Kill()
         {
             linkDead = true;

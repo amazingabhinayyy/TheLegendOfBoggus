@@ -8,6 +8,7 @@ using Sprint2_Attempt3.Enemy.Hand;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Player;
 using Sprint2_Attempt3.CommandClasses;
+using Sprint2_Attempt3.Enemy.SpikeTrap;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -24,7 +25,8 @@ namespace Sprint2_Attempt3.Collision
                 enemy.Y = (int)link.Position.Y;
                 Hand hand2 = (Hand)enemy;
                 hand2.State = new CapturedState(hand2, link.Position);
-            } else {
+            }
+            else {
                 link.GetDamaged(side);
                 //link.Knockback(side);
             }

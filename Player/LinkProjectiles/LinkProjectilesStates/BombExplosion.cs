@@ -33,7 +33,7 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates
         {
             if (currentFrame == 10)
             {
-                CollisionDetector.GameObjectList.Remove(this);
+                CollisionManager.GameObjectList.Remove(this);
                 link.Items.Remove(this);
             }
             currentFrame++;

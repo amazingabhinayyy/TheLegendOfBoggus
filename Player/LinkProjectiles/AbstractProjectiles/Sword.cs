@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Sprint2_Attempt3.Player.LinkProjectiles.ProjectileInterfaces;
 
 namespace Sprint2_Attempt3.Player.LinkProjectiles.AbstractProjectiles
 {
-    public abstract class Sword : LinkProjectileSecondary
+    public abstract class Sword : LinkProjectileSecondary, ISword
     {
         public Sword(Link link) : base(link)
         {

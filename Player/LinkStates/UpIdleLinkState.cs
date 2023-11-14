@@ -77,6 +77,14 @@ namespace Sprint2_Attempt3.Player.LinkStates
         {
             link.State = new KilledLinkState(link);
         }
+        public void CollectBow()
+        {
+
+        }
+        public void CollectTriForce()
+        {
+
+        }
     }
 }
 

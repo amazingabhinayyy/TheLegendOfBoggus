@@ -38,6 +38,14 @@ namespace Sprint2_Attempt3.Player.LinkStates
         public void Attack()
         {
         }
+        public void CollectBow()
+        {
+
+        }
+        public void CollectTriForce()
+        {
+
+        }
         public void Update()
         {
             if (currentframe < 10)

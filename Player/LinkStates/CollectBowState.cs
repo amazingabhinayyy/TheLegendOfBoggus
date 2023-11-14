@@ -1,20 +1,22 @@
 ﻿using Sprint2_Attempt3.Player.Interfaces;
-using Microsoft.Xna.Framework;
+using Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates;
+using System.Threading;
 
 namespace Sprint2_Attempt3.Player.LinkStates
 {
-    public class KnockbackRightLinkState : ILinkState
+    public class CollectBowState : ILinkState
     {
-        int currentframe = 0;
+
         private Link link;
-        public KnockbackRightLinkState(Link link)
+        private int timer = 60;
+        public CollectBowState(Link link)
         {
             this.link = link;
-            link.Sprite = LinkSpriteFactory.Instance.CreateLeftIdleLinkSprite();
+            link.Sprite = LinkSpriteFactory.Instance.CreateBowLink();
         }
         public void FinishAnimation()
         {
-            link.State = new LeftIdleLinkState(link);
+            link.State = new DownIdleLinkState(link);
         }
         public void BecomeIdle()
         {
@@ -35,24 +37,6 @@ namespace Sprint2_Attempt3.Player.LinkStates
         {
 
         }
-        public void Attack()
-        {
-        }
-        public void Update()
-        {
-            if (currentframe < 10)
-            {
-                link.Position = new Vector2(link.Position.X + 10, link.Position.Y);
-                //link.Position.X += 10;
-            } else
-            {
-                FinishAnimation();
-            }
-            currentframe++;
-        }
-        public void UseBomb()
-        {
-        }
         public void CollectBow()
         {
 
@@ -60,6 +44,22 @@ namespace Sprint2_Attempt3.Player.LinkStates
         public void CollectTriForce()
         {
 
+        }
+        public void Attack()
+        {
+        }
+        public void Update()
+        {
+            if(timer > 0)
+            {
+                timer--;
+            } else
+            {
+                FinishAnimation();
+            }
+        }
+        public void UseBomb()
+        {
         }
         public void UseArrow()
         {
@@ -78,7 +78,6 @@ namespace Sprint2_Attempt3.Player.LinkStates
         }
         public void Killed()
         {
-            link.State = new KilledLinkState(link);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Sprint2_Attempt3.Player.LinkStates
             this.link = link;
             link.Sprite = LinkSpriteFactory.Instance.CreateRightItemLinkSprite();
             link.Items.Add(item);
-            CollisionDetector.GameObjectList.Add(item);
+            CollisionManager.GameObjectList.Add(item);
             frameCounter = 0;
         }
         public void Stop()
@@ -81,6 +81,14 @@ namespace Sprint2_Attempt3.Player.LinkStates
         public void Killed()
         {
             link.State = new KilledLinkState(link);
+        }
+        public void CollectBow()
+        {
+
+        }
+        public void CollectTriForce()
+        {
+
         }
     }
 }

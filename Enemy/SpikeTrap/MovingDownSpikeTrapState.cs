@@ -20,7 +20,7 @@ namespace Sprint2_Attempt3.Enemy.SpikeTrap
         }
         public void ChangeDirection()
         {
-            spikeTrap.State = new MovingLeftSpikeTrapState(spikeTrap);
+            spikeTrap.State = new MovingUpSpikeTrapState(spikeTrap);
         }
         public void ChangeAttackedStatus() {
 

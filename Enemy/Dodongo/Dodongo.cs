@@ -11,6 +11,7 @@ namespace Sprint2_Attempt3.Enemy.Dodongo
         public static Rectangle[] AttackedDodongos { get; } = new Rectangle[] { new Rectangle(52, 35, 16, 16), new Rectangle(17, 35, 17, 16), new Rectangle(135, 35, 32, 16) };
         public Dodongo(int x, int y)
         {
+            this.health = 4.0f;
             this.X = x;
             this.Y = y;
         }

@@ -130,6 +130,14 @@ namespace Sprint2_Attempt3.Player
         {
             decoratedLink.RemoveDecorator();
         }
+        public void CollectBow()
+        {
+
+        }
+        public void CollectTriForce()
+        {
+
+        }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {

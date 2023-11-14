@@ -24,14 +24,14 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles.AbstractProjectiles
         public void RemoveBomb()
         {
             link.Items.Remove(this);
-            CollisionDetector.GameObjectList.Remove(this);
+            CollisionManager.GameObjectList.Remove(this);
         }
         public void Explode()
         {
             RemoveBomb();
             BombExplosion explosion = new BombExplosion(link, itemPosition);
             link.Items.Add(explosion);
-            CollisionDetector.GameObjectList.Add(explosion);
+            CollisionManager.GameObjectList.Add(explosion);
         }
         public override void Update()
         {

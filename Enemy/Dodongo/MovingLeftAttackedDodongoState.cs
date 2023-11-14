@@ -30,7 +30,7 @@ namespace Sprint2_Attempt3.Enemy.Dodongo
             killCounter++;
             if (killCounter == 100)
             {
-                dodongo.Kill();
+                ChangeAttackedStatus();
             }
         }
         public void Draw(SpriteBatch spriteBatch)

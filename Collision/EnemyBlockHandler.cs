@@ -11,6 +11,7 @@ using Sprint2_Attempt3.WallBlocks;
 using Sprint2_Attempt3.Enemy.Goriya;
 using Sprint2_Attempt3.Enemy.Hand;
 using Sprint2_Attempt3.Dungeon.Doors;
+using Sprint2_Attempt3.Enemy.SpikeTrap;
 
 namespace Sprint2_Attempt3.Collision
 {

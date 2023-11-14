@@ -9,6 +9,7 @@ namespace Sprint2_Attempt3.Enemy
     public abstract class EnemySecondary : IEnemy
     {
         protected int count;
+        protected bool death;
         protected int currentFrame;
         public int AnimateRate { get; } = 15;
         public int DamageAnimateRate { get; } = 15;
@@ -20,8 +21,7 @@ namespace Sprint2_Attempt3.Enemy
         public int Y { get; set; }
         public IEnemyState State { get; set; }
         public Rectangle Position { get; set; }
-        private int invinciblityTimer;
-
+        protected int invinciblityTimer = 0;
         public abstract void Generate();
         public abstract void Stun();
         public abstract void DropItem();
@@ -40,17 +40,22 @@ namespace Sprint2_Attempt3.Enemy
         }
         public virtual void Kill()
         {
+            death = true;
             State = new DeathAnimationState(this);
         }
 
         public virtual void GetDamaged(float damage)
         {
-            this.ChangeAttackedStatus();
-            health -= damage;
-
-            if (health <= 0)
+            if (invinciblityTimer == 0)
             {
-                Kill();
+                invinciblityTimer = 60;
+                this.ChangeAttackedStatus();
+                health -= damage;
+
+                if (health <= 0)
+                {
+                    Kill();
+                }
             }
         }
         
@@ -70,7 +75,10 @@ namespace Sprint2_Attempt3.Enemy
                 State.ChangeDirection();
                 distance = random.Next(100, 400);
                 count = 0;
-                
+            }
+            if(invinciblityTimer > 0)
+            {
+                invinciblityTimer--;
             }
             State.Update();
         }
@@ -81,8 +89,10 @@ namespace Sprint2_Attempt3.Enemy
                 State.Draw(spriteBatch);
             }
         }
-        public Rectangle GetHitBox() {
-            return Position;
+        public virtual Rectangle GetHitBox() {
+            if(!death)
+                return Position;
+            return new Rectangle(0, 0, 0, 0);
         }
 
         public abstract void MoveUp();
