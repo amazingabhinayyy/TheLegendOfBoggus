@@ -109,7 +109,7 @@ namespace Sprint2_Attempt3.Dungeon
                 currentRoom.getDungeonRoom().DrawCurrentRoom(spriteBatch, change);
 
 
-                foreach (IGameObject obj in CollisionDetector.GameObjectList)
+                foreach (IGameObject obj in CollisionManager.GameObjectList)
                 {
                     if (obj is IBlock)
                         ((IBlock)obj).Draw(spriteBatch, change);
@@ -135,7 +135,7 @@ namespace Sprint2_Attempt3.Dungeon
                if (end <= multiplier)
                {
                     start = false;
-                    CollisionDetector.GameObjectList = transitionGameObjectList;
+                    CollisionManager.GameObjectList = transitionGameObjectList;
                     game1.room = nextRoom;
                     multiplier = 1;
                     timeSinceLastUpdate = 0;

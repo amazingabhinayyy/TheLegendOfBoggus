@@ -79,9 +79,8 @@ namespace Sprint2_Attempt3.Dungeon
 
             ClockUsed = false;
             collisionDetector = new CollisionManager(game1, game1.link);
-            CollisionManager.GameObjectList = gameObjectLists[roomNumber];
-        }
-            collisionDetector = new CollisionDetector(game1, game1.link);
+        
+       
             if (TransitionHandler.Instance.TransitionGameObjectList.Count == 0)
             {
                 CollisionManager.GameObjectList = gameObjectLists[roomNumber];
