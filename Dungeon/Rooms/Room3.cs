@@ -12,7 +12,9 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
 
         public override void SwitchToWestRoom()
         {
-            game1.room = new Room1(game1);
+            TransitionHandler.Instance.Start = true;
+            TransitionHandler.Instance.Transition(this, new Room1(game1));
+           
         }
 
     }

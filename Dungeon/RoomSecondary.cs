@@ -13,14 +13,24 @@ using Sprint2_Attempt3.Player;
 using Sprint2_Attempt3.WallBlocks;
 using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Sprint2_Attempt3.Dungeon
 {
     public abstract class RoomSecondary : IRoom
     {
         protected static List<IGameObject>[] gameObjectLists = new List<IGameObject>[18];
+        protected static int[] enemiesKilledList = new int[18];
+        protected static Boolean[] uniqueEventsForRooms = { true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true };
+        public static bool UniqueEventsForRooms { get { return uniqueEventsForRooms[roomNumber]; } set { uniqueEventsForRooms[roomNumber] = value; } }
+        public static int[] EnemiesKilledList { get { return enemiesKilledList; } set { enemiesKilledList = value; } }
+        public List<IGameObject>[] GameObjectLists { get { return gameObjectLists; } set { gameObjectLists = value; } }
         protected static int roomNumber;
-        protected static int enemyKillCount = 0;
+
+        private int enemyKillCount = 0;
+        public  int EnemyKillCount { get { return enemyKillCount; } set { enemyKillCount = value; } }
+        protected static Boolean varHoldingTrue = true;
+        protected Boolean spawned = false;
         public static bool ClockUsed { get; set; } = false;
         protected IDungeonRoom room;
         protected Game1 game1;
@@ -30,9 +40,13 @@ namespace Sprint2_Attempt3.Dungeon
             this.game1 = game;
             room = new DungeonRoom();
             roomNumber = roomNum;
+            spawned = false;
+            
             if (gameObjectLists[roomNumber] == null)
             {
+                
                 gameObjectLists[roomNumber] = RoomGenerator.Instance.LoadFile(roomNumber);
+
                 gameObjectLists[roomNumber].Add(this.game1.link);
                 if (roomNum != 15)
                 {
@@ -55,6 +69,8 @@ namespace Sprint2_Attempt3.Dungeon
                     }
                 }
             }
+               
+            
             if (game1.link is DamageLinkDecorator)
             {
                 ((DamageLinkDecorator)game1.link).RemoveDecorator();
@@ -62,8 +78,17 @@ namespace Sprint2_Attempt3.Dungeon
 
             ClockUsed = false;
             collisionDetector = new CollisionManager(game1, game1.link);
-            CollisionManager.GameObjectList = gameObjectLists[roomNumber];
+        
+       
+            if (TransitionHandler.Instance.TransitionGameObjectList.Count == 0)
+            {
+                CollisionManager.GameObjectList = gameObjectLists[roomNumber];
+            }
+            TransitionHandler.Instance.TransitionGameObjectList = gameObjectLists[roomNumber];
+
+            
         }
+
         public void SwitchToNextRoom() {
             if (roomNumber < gameObjectLists.Length - 1)
             {
@@ -74,6 +99,7 @@ namespace Sprint2_Attempt3.Dungeon
                 roomNumber = 0;
             }
             room = new DungeonRoom();
+
             if (gameObjectLists[roomNumber] == null)
             {
                 gameObjectLists[roomNumber] = RoomGenerator.Instance.LoadFile(roomNumber);
@@ -108,6 +134,7 @@ namespace Sprint2_Attempt3.Dungeon
             }
             ClockUsed = false;
             MapController.VisitRoom(roomNumber);
+            TransitionHandler.Instance.TransitionGameObjectList = new List<IGameObject>();
             CollisionManager.GameObjectList = gameObjectLists[roomNumber];
             game1.link.Items.Clear();
         }
@@ -158,49 +185,73 @@ namespace Sprint2_Attempt3.Dungeon
             }
             ClockUsed = false;
             MapController.VisitRoom(roomNumber);
+            TransitionHandler.Instance.TransitionGameObjectList = new List<IGameObject>();
             CollisionManager.GameObjectList = gameObjectLists[roomNumber];
             game1.link.Items.Clear();
         }
-        public void Update() {
-            collisionDetector.Update();
-
-            for (int i = 0; i < gameObjectLists[roomNumber].Count; i++)
+        public virtual void Update() {
+            if (!TransitionHandler.Instance.Start)
             {
-                IGameObject obj = gameObjectLists[roomNumber][i];
-                if (obj is IEnemy)
-                {
-                    if(!ClockUsed || ((IEnemy)obj).State is DeathAnimationState)
-                    ((IEnemy)obj).Update();
-                }
-                else if (obj is IItem)
-                    ((IItem)obj).Update();
-                else if (obj is IBlock)
-                    ((IBlock)obj).Update();
-            }
+                collisionDetector.Update();
 
-            game1.link.Update();
+                for (int i = 0; i < gameObjectLists[roomNumber].Count; i++)
+                {
+                    IGameObject obj = gameObjectLists[roomNumber][i];
+                    if (obj is IEnemy)
+                    {
+                        if (!spawned)
+                        {
+                            ((IEnemy)obj).Spawn();
+                        }
+                        if (!ClockUsed || ((IEnemy)obj).State is DeathAnimationState)
+                            ((IEnemy)obj).Update();
+                        
+                    }
+                    else if (obj is IItem)
+                    {
+                        ((IItem)obj).Update();
+                        if (((IItem)obj).exists)
+                        {
+                            ((IItem)obj).Spawn();
+                        }
+                    }
+                }
+                spawned = true;
+
+                game1.link.Update();
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color) {
-            room.Draw(spriteBatch, color);
-
-            foreach (IGameObject obj in gameObjectLists[roomNumber])
+            if (TransitionHandler.Instance.Start)
             {
-                if (obj is IEnemy && color.Equals(Color.White))
-                    ((IEnemy)obj).Draw(spriteBatch);
-                else if (obj is IItem && color.Equals(Color.White))
-                    ((IItem)obj).Draw(spriteBatch);
-                else if (obj is IBlock)
-                    ((IBlock)obj).Draw(spriteBatch, color);
-                else if (obj is IDoor)
-                    ((IDoor)obj).Draw(spriteBatch, color);
-
+                TransitionHandler.Instance.Draw(spriteBatch);
             }
-            
-            game1.link.Draw(spriteBatch, Color.White);
+            else
+            {
+                //room.Draw(spriteBatch);
+
+                room.Draw(spriteBatch, color);
+
+                foreach (IGameObject obj in gameObjectLists[roomNumber])
+                {
+                    if (obj is IEnemy && color.Equals(Color.White))
+                        ((IEnemy)obj).Draw(spriteBatch);
+                    else if (obj is IItem && color.Equals(Color.White))
+                        ((IItem)obj).Draw(spriteBatch);
+                    else if (obj is IBlock)
+                        ((IBlock)obj).Draw(spriteBatch, color);
+                    else if (obj is IDoor)
+                        ((IDoor)obj).Draw(spriteBatch, color);
+
+                }
+
+                game1.link.Draw(spriteBatch, Color.White);
+            }
         }
 
         public static void ResetRooms() {
+            enemiesKilledList = new int[18];
             for (int i = 0; i < 18; i++)
             {
                 gameObjectLists[i] = RoomGenerator.Instance.LoadFile(i);
@@ -211,8 +262,15 @@ namespace Sprint2_Attempt3.Dungeon
             }
         }
 
+
+
+
         public static int GetCurrentRoomNumber() { 
             return roomNumber;
+        }
+        public DungeonRoom getDungeonRoom()
+        {
+            return (DungeonRoom)room;
         }
         public void SetDecorator(IRoom room)
         {

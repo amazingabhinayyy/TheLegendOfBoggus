@@ -19,5 +19,14 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         public void Draw(SpriteBatch spriteBatch, Color color) {
             sprite.Draw(spriteBatch, Globals.DungeonStandard, color);
         }
+        public void DrawCurrentRoom(SpriteBatch spriteBatch, Vector2 change)
+        {
+            sprite.DrawCurrentRoom(spriteBatch, Globals.DungeonStandard, change);
+        }
+
+        public void DrawNextRoom(SpriteBatch spriteBatch, Vector2 change)
+        {
+            sprite.DrawNextRoom(spriteBatch, Globals.DungeonStandard, change);
+        }
     }
 }

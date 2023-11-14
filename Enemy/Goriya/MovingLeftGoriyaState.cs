@@ -26,12 +26,12 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             sourceRectangle = Globals.GoriyaRedRight;
             Goriya.Position = new Rectangle(Goriya.X, Goriya.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             random = new Random();
-            direction = random.Next(0, 6);
+            direction = random.Next(0, 7);
 
         }
         public void ChangeDirection()
         {
-            direction = random.Next(0, 6);
+            direction = random.Next(0, 7);
             switch (direction)
             {
                 case 0:

@@ -21,6 +21,7 @@ using Sprint2_Attempt3.Items.ItemClasses;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Sprint2_Attempt3.Dungeon
 {
@@ -52,6 +53,7 @@ namespace Sprint2_Attempt3.Dungeon
 
         public List<IGameObject> LoadFile(int fileNumber) {
             List<IGameObject> objectList = new List<IGameObject>();
+            List<IGameObject> enemyList = new List<IGameObject>();
 
             StreamReader sr = new StreamReader(fileNames[fileNumber]);
             while (!sr.EndOfStream) {
@@ -60,7 +62,17 @@ namespace Sprint2_Attempt3.Dungeon
                 {
                     var words = line.Split(",");
                     if (words[0].Equals("Enemy")) {
+                        //enemyList.Add(GetEnemy(words[1], int.Parse(words[2]), int.Parse(words[3]) + Globals.YOffset));
+                        if (words[3].Length > 0)
+                        {
+
                         objectList.Add(GetEnemy(words[1], int.Parse(words[2]), int.Parse(words[3]) + Globals.YOffset));
+                        }
+                        else
+                        {
+                        objectList.Add(GetEnemy(words[1], int.Parse(words[2])));
+
+                        }
                     }
                     else if (words[0].Equals("Block"))
                     {
@@ -77,10 +89,59 @@ namespace Sprint2_Attempt3.Dungeon
 
                 }
             }
-
+            List<List<IGameObject>> lists = new List<List<IGameObject>>();
+            lists.Add(objectList);
+            lists.Add(enemyList);
             return objectList;
+           // return lists;
         }
-
+        private IEnemy GetEnemy(String Enemy, int position)
+        {
+            int x = Globals.FloorGrid[position].X;
+            int y = Globals.FloorGrid[position].Y;
+            IEnemy enemy = null;
+            if (Enemy.Equals("Aquamentus"))
+            {
+                enemy = new Aquamentus(x, y);
+            }
+            else if (Enemy.Equals("Dodongo"))
+            {
+                enemy = new Dodongo(x, y);
+            }
+            else if (Enemy.Equals("Gel"))
+            {
+                enemy = new Gel(x, y);
+            }
+            else if (Enemy.Equals("Goriya"))
+            {
+                enemy = new Goriya(x, y);
+            }
+            else if (Enemy.Equals("Hand"))
+            {
+                enemy = new Hand(x, y);
+            }
+            else if (Enemy.Equals("Keese"))
+            {
+                enemy = new Keese(x, y);
+            }
+            else if (Enemy.Equals("Rope"))
+            {
+                enemy = new Rope(x, y);
+            }
+            else if (Enemy.Equals("SpikeTrap"))
+            {
+                enemy = new SpikeTrap(x, y);
+            }
+            else if (Enemy.Equals("Stalfos"))
+            {
+                enemy = new Stalfos(x, y);
+            }
+            else if (Enemy.Equals("Zol"))
+            {
+                enemy = new Zol(x, y);
+            }
+            return enemy;
+        }
         private IEnemy GetEnemy(String Enemy, int x, int y) {
             IEnemy enemy = null;
             if (Enemy.Equals("Aquamentus"))

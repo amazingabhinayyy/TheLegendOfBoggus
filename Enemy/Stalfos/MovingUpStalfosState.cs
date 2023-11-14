@@ -33,7 +33,7 @@ namespace Sprint2_Attempt3.Enemy.Stalfos
                     Stalfos.State = new MovingLeftStalfosState(Stalfos);
                     break;
                 case 1:
-                    Stalfos.State = new MovingUpStalfosState(Stalfos);
+                    Stalfos.State = new MovingDownStalfosState(Stalfos);
                     break;
                 case 2:
                     Stalfos.State = new MovingRightStalfosState(Stalfos);

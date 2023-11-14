@@ -59,6 +59,8 @@ namespace Sprint2_Attempt3.Collision
                     if (enemy is SpikeTrap)
                         enemy.MoveUp();
                 }
+                
+               //enemy.ChangeDirection(); changes enemies to move again, could be fun?
             }
         }
     }

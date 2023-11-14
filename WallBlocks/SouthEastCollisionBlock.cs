@@ -14,6 +14,7 @@ namespace Sprint2_Attempt3.WallBlocks
         public SouthEastCollisionBlock()
         {
             wall = new Rectangle(0, 450 + Globals.YOffset, 348, 100);
+           
         }
         public Rectangle GetHitBox()
         {

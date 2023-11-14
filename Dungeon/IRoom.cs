@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Sprint2_Attempt3.Dungeon.Rooms;
 using System.Collections.Generic;
 
 namespace Sprint2_Attempt3.Dungeon
@@ -18,5 +19,8 @@ namespace Sprint2_Attempt3.Dungeon
         public void SetDecorator(IRoom room);
         public void SwitchToLowerRoom();
         public void SwitchToUpperRoom();
+        
+        public DungeonRoom getDungeonRoom();
+       
     }
 }

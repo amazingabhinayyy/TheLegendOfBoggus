@@ -4,6 +4,8 @@ using Sprint2_Attempt3.Enemy.Keese;
 using System;
 using Sprint2_Attempt3.Collision;
 using System.Collections.Generic;
+using Sprint2_Attempt3.Dungeon.Rooms;
+using Sprint2_Attempt3.Dungeon;
 using Sprint2_Attempt3.Sounds;
 
 namespace Sprint2_Attempt3.Enemy
@@ -24,6 +26,8 @@ namespace Sprint2_Attempt3.Enemy
         public IEnemyState State { get; set; }
         public Rectangle Position { get; set; }
         protected int invinciblityTimer = 0;
+        public Vector2 SpawnPosition { get; set; }
+
         public abstract void Generate();
         public abstract void Stun();
         public abstract void DropItem();
@@ -36,12 +40,15 @@ namespace Sprint2_Attempt3.Enemy
             exists = true;
             invinciblityTimer = 0;
         }
-        public void Spawn()
+        public virtual void Spawn()
         {
             State = new SpawnAnimationState(this);
         }
         public virtual void Kill()
         {
+            int[] list = RoomSecondary.EnemiesKilledList;
+            list[RoomSecondary.GetCurrentRoomNumber()]++;
+            RoomSecondary.EnemiesKilledList = list;
             death = true;
             State = new DeathAnimationState(this);
         }

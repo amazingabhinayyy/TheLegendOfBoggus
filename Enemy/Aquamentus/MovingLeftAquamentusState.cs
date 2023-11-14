@@ -33,7 +33,7 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
         }
         public void ChangeDirection()
         {
-            direction = random.Next(0, 1);
+            direction = random.Next(0, 3);
 
             switch(direction)
             {

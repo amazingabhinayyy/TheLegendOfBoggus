@@ -29,6 +29,10 @@ namespace Sprint2_Attempt3
         public bool linkDead { get; set; }
         public bool gamePaused { get; set; }
 
+        private GameTime gameTime;
+        public GameTime Gametime { get { return gameTime; } }
+
+        //public CollisionDetector collisionDetector;
         public CollisionManager collisionDetector;
         private StartScreenState startScreen;
         private DeathScreenState deathScreen;
@@ -63,6 +67,9 @@ namespace Sprint2_Attempt3
             SoundFactory.Instance.LoadAllTextures(Content);
             DungeonSpriteFactory.Instance.LoadAllTextures(Content);
             ScreenSpriteFactory.Instance.LoadAllTextures(Content);
+            //check if we need start screen
+            //StartScreenSpriteFactory.Instance.LoadAllTextures(Content);
+            TransitionHandler.Instance.setGame1(this);
             RoomGenerator.Instance.LoadAllFiles();
             InventoryTexture = Content.Load<Texture2D>("Inventory");
             link = new Link(this);
@@ -97,6 +104,7 @@ namespace Sprint2_Attempt3
 
         protected override void Draw(GameTime gameTime)
         {
+            this.gameTime = gameTime;
             GraphicsDevice.Clear(Color.Black);
 
             spriteBatch.Begin();

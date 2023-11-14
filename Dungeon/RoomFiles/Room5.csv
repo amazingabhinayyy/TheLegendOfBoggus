@@ -2,9 +2,9 @@
 Door,South,4,
 Door,East,2,
 Door,West,4,
-Enemy,Keese,130,220
-Enemy,Keese,240,350
-Enemy,Keese,370,310
-Enemy,Keese,450,120
-Enemy,Keese,540,170
-Enemy,Keese,680,260
+Enemy,Keese,9,,
+Enemy,Keese,14,,
+Enemy,Keese,28,,
+Enemy,Keese,52,,
+Enemy,Keese,62,,
+Enemy,Keese,81,,

@@ -56,13 +56,16 @@ namespace Sprint2_Attempt3.Collision
             }
             if (blocked)
             {
+                
                 Rectangle wall = obj.GetHitBox();
                 if (side is BottomCollision)
                 {
+                   
                     link.Position = new Vector2(link.Position.X, wall.Bottom);
                 }
                 else if (side is LeftCollision)
                 {
+                    
                     link.Position = new Vector2(wall.Left - link.GetHitBox().Width, link.Position.Y);
                 }
                 else if (side is RightCollision)
@@ -89,6 +92,7 @@ namespace Sprint2_Attempt3.Collision
                 }
                 else
                 {
+               ;
                     Rectangle wall = door.GetHitBox();
                     if (side is BottomCollision)
                     {
@@ -107,54 +111,56 @@ namespace Sprint2_Attempt3.Collision
                         link.Position = new Vector2(link.Position.X, wall.Top - link.GetHitBox().Height);
                     }
                 }
-            } else {
-                IRoom room = game.room;
+            } 
+
+            else{
+               
+                //TransitionHandler transition = new TransitionHandler(door);
+                //TransitionHandler transition = new TransitionHandler();
+                //transition.Door = door;
+                TransitionHandler.Instance.Door = door;
                 link.Items.Clear();
                 if (door is NorthDoor)
                 {
+                    
                     game.room.SwitchToNorthRoom();
-                    if (room != game.room)
-                    {
-                        link.Position = new Vector2(link.Position.X, 450 + Globals.YOffset - link.GetHitBox().Height);
-                        changedRooms = true;
-                    }
-                }
+                    // link.Position = new Vector2(link.Position.X, 400 + Globals.YOffset);
+                    link.Position = new Vector2(link.Position.X, 450 + Globals.YOffset - link.GetHitBox().Height);
+                    changedRooms = true;
+                    
+                }  
                 else if (door is EastDoor)
                 {
+                  
                     game.room.SwitchToEastRoom();
-                    if (room != game.room)
-                    {
-                        link.Position = new Vector2(100, link.Position.Y);
-                        changedRooms = true;
-                    }
+                    link.Position = new Vector2(100, link.Position.Y);
+                    changedRooms = true;
+                    
                 }
                 else if (door is SouthDoor)
                 {
+                    
                     game.room.SwitchToSouthRoom();
-                    if (room != game.room)
-                    {
-                        link.Position = new Vector2(link.Position.X, 100 + Globals.YOffset);
-                        changedRooms = true;
-                    }
+                    link.Position = new Vector2(link.Position.X, 100 + Globals.YOffset);
+                    changedRooms = true;
+                    
                 }
                 else if (door is WestDoor)
                 {
+                   
                     game.room.SwitchToWestRoom();
-                    if (room != game.room)
-                    {
-                        link.Position = new Vector2(630, link.Position.Y);
-                        changedRooms = true;
-                    }
+                    link.Position = new Vector2(650, link.Position.Y);
+                    changedRooms = true;
+                    
                 }
                 else if (door is StairExit)
                 {
                     SoundFactory.PlaySound(SoundFactory.Instance.stairs);
                     game.room.SwitchToUpperRoom();
-                    if (room != game.room)
-                    {
+                  
                         link.Position = new Vector2(LastLinkPosition.X, LastLinkPosition.Y);
                         changedRooms = true;
-                    }
+                    
                 }
                 else if (door is StairEntrance) 
                 {
@@ -163,11 +169,10 @@ namespace Sprint2_Attempt3.Collision
                     game.room.SwitchToLowerRoom();
                     LastLinkPosition = new Vector2(link.GetHitBox().X, link.GetHitBox().Y);
                     LastLinkPosition.X -= 50;
-                    if (room != game.room)
-                    {
+                    
                         link.Position = new Vector2(Globals.StairExitPosition.X, Globals.StairExitPosition.Y + 15);
                         changedRooms = true;
-                    }
+                    
                 }
             }
             return changedRooms;

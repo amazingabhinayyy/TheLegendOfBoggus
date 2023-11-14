@@ -75,12 +75,28 @@ namespace Sprint2_Attempt3.Dungeon.Doors
         {
             if (DoorExists)
             {
-                sprite.Draw(spriteBatch, sourceRectangle, color);
+                sprite.Draw(spriteBatch, sourceRectangle,color);
             }
         }
 
         public virtual Rectangle GetHitBox() {
             return Position;
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Vector2 change)
+        {
+            if (DoorExists)
+            {
+                sprite.Draw(spriteBatch, sourceRectangle, change);
+            }
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Vector2 change, Vector2 initialPos)
+        {
+            if (DoorExists)
+            {
+                sprite.Draw(spriteBatch, sourceRectangle, change, initialPos);
+            }
         }
     }
 }

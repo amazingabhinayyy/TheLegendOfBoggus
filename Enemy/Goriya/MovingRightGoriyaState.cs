@@ -31,7 +31,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         }
         public void ChangeDirection()
         {
-            direction = random.Next(0, 6);
+            direction = random.Next(0, 7);
             switch (direction)
             {
                 case 0:

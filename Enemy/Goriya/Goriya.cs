@@ -17,7 +17,6 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         public ProjectileDirection Direction { get; set; }
         public IEnemyProjectile Boomerang { get; set; }
 
-        /*can I make this private*/
         public enum ProjectileDirection
         {
             Left, Top, Right, Bottom
@@ -31,6 +30,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             this.X = x;
             this.Y = y;
             this.health = 1.5f;
+            this.SpawnPosition = new Vector2(x, y);
             BoomerangPosition = new Vector2(X, Y);
             Boomerang = new GoriyaBoomerang(BoomerangPosition);
             Direction = ProjectileDirection.Left;
@@ -95,6 +95,12 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         {
             base.Kill();
             CollisionManager.GameObjectList.Remove(Boomerang);
+        }
+        public override void Spawn()
+        {
+            this.X = (int)this.SpawnPosition.X;
+            this.Y = (int)this.SpawnPosition.Y;
+            State = new SpawnAnimationState(this);
         }
     }
 }

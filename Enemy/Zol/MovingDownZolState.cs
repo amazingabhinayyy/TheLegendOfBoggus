@@ -42,7 +42,7 @@ namespace Sprint2_Attempt3.Enemy.Zol
             }
         }
         public void ChangeAttackedStatus() {
-            zol.State = new DeathAnimationState(zol);
+            
         }
         public void Update()
         {

@@ -11,11 +11,13 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         public Room13(Game1 game1) : base(game1, 12) { }
         public override void SwitchToNorthRoom()
         {
-            game1.room = new Room18(game1);
+            TransitionHandler.Instance.Start = true;
+            TransitionHandler.Instance.Transition(this, new Room18(game1));
         }
         public override void SwitchToSouthRoom()
         {
-            game1.room = new Room10(game1);
+            TransitionHandler.Instance.Start = true;
+            TransitionHandler.Instance.Transition(this, new Room10(game1));
         }
 
     }
