@@ -6,6 +6,7 @@ using System;
 using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles;
 using Sprint2_Attempt3.Enemy.Aquamentus;
+using Sprint2_Attempt3.Sounds;
 
 namespace Sprint2_Attempt3.Enemy.Aquamentus
 {
@@ -36,10 +37,12 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
         }
 
         public override void Generate() {
+            SoundFactory.PlaySound(SoundFactory.Instance.bossScream);
             State = new MovingLeftAquamentusState(this);
         }
         public override void Stun()
         {
+            SoundFactory.PlaySound(SoundFactory.Instance.bossHurt);
             State = new StunnedAquamentusState(this);
         }
 

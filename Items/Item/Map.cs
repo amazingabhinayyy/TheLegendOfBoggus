@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint2_Attempt3.Inventory;
+using Sprint2_Attempt3.Sounds;
 
 namespace Sprint2_Attempt3.Items.ItemClasses
 {
@@ -24,6 +25,7 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         public override void Collect()
         {
             base.Collect();
+            SoundFactory.PlaySound(SoundFactory.Instance.getItem);
             InventoryController.IncrementCount("MapLayout");
         }
 

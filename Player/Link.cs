@@ -84,7 +84,6 @@ namespace Sprint2_Attempt3.Player
         public void UseBomb()
         {
             State.UseBomb();
-            SoundFactory.PlaySound(SoundFactory.Instance.bombBlow);
         }
         public void UseArrow()
         {
