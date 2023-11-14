@@ -39,13 +39,18 @@ namespace Sprint2_Attempt3.Collision
             }
             else if(item is IBomb && enemy is Dodongo)
             {
-                ((Dodongo)enemy).ChangeAttackedStatus();
+                ((Dodongo)enemy).GetDamaged(2.0f);
                 ((IBomb)item).RemoveBomb();
+            }
+            else if(item is ISword) 
+            {
+                if (!(enemy is Dodongo))
+                    enemy.GetDamaged(0.5f);
             }
             else if(item is not IBomb)
             {
                 if(!(enemy is Dodongo))
-                    enemy.GetDamaged(0.5f);
+                    enemy.GetDamaged(2.0f);
             }
         }
     }

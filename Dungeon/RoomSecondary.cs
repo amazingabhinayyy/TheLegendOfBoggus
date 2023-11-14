@@ -34,7 +34,7 @@ namespace Sprint2_Attempt3.Dungeon
         public static bool ClockUsed { get; set; } = false;
         protected IDungeonRoom room;
         protected Game1 game1;
-        protected CollisionDetector collisionDetector;
+        protected CollisionManager collisionDetector;
 
         public RoomSecondary(Game1 game, int roomNum) {
             this.game1 = game;
@@ -78,10 +78,13 @@ namespace Sprint2_Attempt3.Dungeon
             }
 
             ClockUsed = false;
+            collisionDetector = new CollisionManager(game1, game1.link);
+            CollisionManager.GameObjectList = gameObjectLists[roomNumber];
+        }
             collisionDetector = new CollisionDetector(game1, game1.link);
             if (TransitionHandler.Instance.TransitionGameObjectList.Count == 0)
             {
-                CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
+                CollisionManager.GameObjectList = gameObjectLists[roomNumber];
             }
             TransitionHandler.Instance.TransitionGameObjectList = gameObjectLists[roomNumber];
 
@@ -134,8 +137,8 @@ namespace Sprint2_Attempt3.Dungeon
             ClockUsed = false;
             InventoryController.VisitRoom(roomNumber);
             TransitionHandler.Instance.TransitionGameObjectList = new List<IGameObject>();
-            CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
-            game1.link.Items.Clear();
+    CollisionManager.GameObjectList = gameObjectLists[roomNumber];
+    game1.link.Items.Clear();
         }
 
         public void SwitchToPrevRoom()
@@ -185,8 +188,8 @@ namespace Sprint2_Attempt3.Dungeon
             ClockUsed = false;
             InventoryController.VisitRoom(roomNumber);
             TransitionHandler.Instance.TransitionGameObjectList = new List<IGameObject>();
-            CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
-            game1.link.Items.Clear();
+    CollisionManager.GameObjectList = gameObjectLists[roomNumber];
+    game1.link.Items.Clear();
         }
         public virtual void Update() {
             if (!TransitionHandler.Instance.Start)

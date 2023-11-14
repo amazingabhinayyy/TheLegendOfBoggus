@@ -1,5 +1,6 @@
 ﻿using Sprint2_Attempt3.Player.Interfaces;
 using Microsoft.Xna.Framework;
+using Sprint2_Attempt3.Sounds;
 
 namespace Sprint2_Attempt3.Player.LinkStates
 {
@@ -9,6 +10,7 @@ namespace Sprint2_Attempt3.Player.LinkStates
         private Link link;
         public KnockbackDownLinkState(Link link)
         {
+            SoundFactory.PlaySound(SoundFactory.Instance.linkHit);
             this.link = link;
             link.Sprite = LinkSpriteFactory.Instance.CreateDownIdleLinkSprite();
         }
@@ -37,6 +39,14 @@ namespace Sprint2_Attempt3.Player.LinkStates
         }
         public void Attack()
         {
+        }
+        public void CollectBow()
+        {
+
+        }
+        public void CollectTriForce()
+        {
+
         }
         public void Update()
         {

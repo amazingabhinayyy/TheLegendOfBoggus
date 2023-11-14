@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint2_Attempt3.Player.Interfaces;
+using Sprint2_Attempt3.Sounds;
 
 namespace Sprint2_Attempt3.Player.LinkStates
 {
@@ -74,6 +75,14 @@ namespace Sprint2_Attempt3.Player.LinkStates
 
         public void UseFire()
         {
+        }
+        public void CollectBow()
+        {
+
+        }
+        public void CollectTriForce()
+        {
+
         }
     }
 }

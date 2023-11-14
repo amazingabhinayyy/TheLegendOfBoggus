@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Collision.SideCollisionHandlers;
+using Sprint2_Attempt3.Sounds;
 
 namespace Sprint2_Attempt3.Blocks.Block
 {
@@ -63,6 +64,7 @@ namespace Sprint2_Attempt3.Blocks.Block
                 }
                 else
                 {
+                    SoundFactory.PlaySound(SoundFactory.Instance.doorUnlock);
                     Moved = true;
                     pushedSide = side;
                 }

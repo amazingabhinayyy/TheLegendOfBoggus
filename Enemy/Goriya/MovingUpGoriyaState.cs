@@ -47,7 +47,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
                     Goriya.Boomerang = new GoriyaBoomerang(Goriya.BoomerangPosition);
                     ((GoriyaBoomerang)Goriya.Boomerang).GenerateLeft();
                     ((GoriyaBoomerang)Goriya.Boomerang).Throwing = true;
-                    CollisionDetector.GameObjectList.Add(Goriya.Boomerang);
+                    CollisionManager.GameObjectList.Add(Goriya.Boomerang);
                     Goriya.State = new AttackWithBoomerangLeftState(Goriya);
                     break;
                 case 4:
@@ -55,7 +55,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
                     Goriya.Boomerang = new GoriyaBoomerang(Goriya.BoomerangPosition);
                     ((GoriyaBoomerang)Goriya.Boomerang).GenerateUp();
                     ((GoriyaBoomerang)Goriya.Boomerang).Throwing = true;
-                    CollisionDetector.GameObjectList.Add(Goriya.Boomerang);
+                    CollisionManager.GameObjectList.Add(Goriya.Boomerang);
                     Goriya.State = new AttackWithBoomerangUpState(Goriya);
                     break;
                 case 5:
@@ -63,7 +63,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
                     Goriya.Boomerang = new GoriyaBoomerang(Goriya.BoomerangPosition);
                     ((GoriyaBoomerang)Goriya.Boomerang).GenerateRight();
                     ((GoriyaBoomerang)Goriya.Boomerang).Throwing = true;
-                    CollisionDetector.GameObjectList.Add(Goriya.Boomerang);
+                    CollisionManager.GameObjectList.Add(Goriya.Boomerang);
                     Goriya.State = new AttackWithBoomerangRightState(Goriya);
                     break;
                 case 6:
@@ -71,7 +71,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
                     Goriya.Boomerang = new GoriyaBoomerang(Goriya.BoomerangPosition);
                     ((GoriyaBoomerang)Goriya.Boomerang).GenerateDown();
                     ((GoriyaBoomerang)Goriya.Boomerang).Throwing = true;
-                    CollisionDetector.GameObjectList.Add(Goriya.Boomerang);
+                    CollisionManager.GameObjectList.Add(Goriya.Boomerang);
                     Goriya.State = new AttackWithBoomerangDownState(Goriya);
                     break;
             }

@@ -48,9 +48,9 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
                     ((AquamentusFireball)Aquamentus.Fireball).GenerateLeft();
                     ((AquamentusFireball)Aquamentus.Fireball2).GenerateTopLeft();
                     ((AquamentusFireball)Aquamentus.Fireball3).GenerateBottomLeft();
-                    CollisionDetector.GameObjectList.Add((IGameObject)Aquamentus.Fireball);
-                    CollisionDetector.GameObjectList.Add((IGameObject)Aquamentus.Fireball2);
-                    CollisionDetector.GameObjectList.Add((IGameObject)Aquamentus.Fireball3);
+                    CollisionManager.GameObjectList.Add((IGameObject)Aquamentus.Fireball);
+                    CollisionManager.GameObjectList.Add((IGameObject)Aquamentus.Fireball2);
+                    CollisionManager.GameObjectList.Add((IGameObject)Aquamentus.Fireball3);
                     Aquamentus.State = new AttackWithFireballLeftState(Aquamentus);
                     break;
 

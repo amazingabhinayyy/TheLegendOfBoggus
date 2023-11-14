@@ -82,7 +82,7 @@ internal class GoriyaBoomerangRightState : IEnemyProjectileState
                 if (goriyaBoomerang.Position2.X <= goriyaBoomerang.InitialX + 17)
                 {
                     goriyaBoomerang.Throwing = false;
-                    CollisionDetector.GameObjectList.Remove(goriyaBoomerang);
+                    CollisionManager.GameObjectList.Remove(goriyaBoomerang);
                     goriyaBoomerang.GoRight = true;
                 }
             }

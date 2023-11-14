@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint2_Attempt3.Inventory;
+using Sprint2_Attempt3.Sounds;
 
 namespace Sprint2_Attempt3.Items.ItemClasses
 {
@@ -35,6 +36,11 @@ namespace Sprint2_Attempt3.Items.ItemClasses
                 Position.Width = (int)(sourceRectangle.Width * Globals.scale);
                 Position.Height = (int)(sourceRectangle.Height * Globals.scale);
             }
+        }
+        public override void Collect()
+        {
+            base.Collect();
+            SoundFactory.PlaySound(SoundFactory.Instance.getRupee);
         }
     }
 }

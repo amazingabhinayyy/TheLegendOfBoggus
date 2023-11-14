@@ -61,6 +61,10 @@ namespace Sprint2_Attempt3.Enemy.Goriya
                 count = 0;
 
             }
+            if(invinciblityTimer > 0)
+            {
+                invinciblityTimer--;
+            }
             State.Update();
         }
         public override void Draw(SpriteBatch spriteBatch)
@@ -90,7 +94,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         public override void Kill()
         {
             base.Kill();
-            CollisionDetector.GameObjectList.Remove(Boomerang);
+            CollisionManager.GameObjectList.Remove(Boomerang);
         }
         public override void Spawn()
         {

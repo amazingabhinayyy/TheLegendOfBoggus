@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Sprint2_Attempt3.Player.Interfaces;
 using System.Runtime.CompilerServices;
 using System.Threading;
+using Sprint2_Attempt3.Sounds;
 
 namespace Sprint2_Attempt3.Items.ItemClasses
 {
@@ -30,7 +31,11 @@ namespace Sprint2_Attempt3.Items.ItemClasses
             randMovementX = 0;
             randMovementY = 0;
         }
-
+        public override void Collect()
+        {
+            base.Collect();
+            SoundFactory.PlaySound(SoundFactory.Instance.getItem);
+        }
         public override void Update()
         {
             if (this.count == 0)

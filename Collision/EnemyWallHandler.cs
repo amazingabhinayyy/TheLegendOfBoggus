@@ -14,6 +14,7 @@ using Sprint2_Attempt3.WallBlocks;
 using Sprint2_Attempt3.Enemy.Goriya;
 using Sprint2_Attempt3.Enemy.Hand;
 using Sprint2_Attempt3.Dungeon.Doors;
+using Sprint2_Attempt3.Enemy.SpikeTrap;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -37,18 +38,26 @@ namespace Sprint2_Attempt3.Collision
                 if (side is BottomCollision)
                 {
                     enemy.Y = wall.Bottom;
+                    if (enemy is SpikeTrap)
+                        enemy.MoveDown();
                 }
                 else if (side is LeftCollision)
                 {
                     enemy.X = wall.Left - enemy.Position.Width - 1;
+                    if (enemy is SpikeTrap)
+                        enemy.MoveLeft();
                 }
                 else if (side is RightCollision)
                 {
                     enemy.X = wall.Right + 1;
+                    if (enemy is SpikeTrap)
+                        enemy.MoveRight();
                 }
                 else
                 {
                     enemy.Y = wall.Top - enemy.Position.Height - 1;
+                    if (enemy is SpikeTrap)
+                        enemy.MoveUp();
                 }
                 
                //enemy.ChangeDirection(); changes enemies to move again, could be fun?

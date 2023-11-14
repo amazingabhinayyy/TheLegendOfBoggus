@@ -28,6 +28,7 @@ namespace Sprint2_Attempt3.CommandClasses
             TransitionHandler.Instance.TransitionGameObjectList = new List<IGameObject>();
             game1.room = new Room1(game1);
             //inventoryController = new InventoryController(this);
+            //game1.collisionDetector = new CollisionManager(game1, (Link)game1.link);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Sprint2_Attempt3.Player.LinkStates
             link.Sprite = LinkSpriteFactory.Instance.CreateLeftAttackLinkSprite();
             LeftSword sword = new LeftSword(link);
             link.Items.Add(sword);
-            CollisionDetector.GameObjectList.Add(sword);
+            CollisionManager.GameObjectList.Add(sword);
         }
         public void FinishAttack()
         {
@@ -67,7 +67,7 @@ namespace Sprint2_Attempt3.Player.LinkStates
                 {
                     LeftSwordBeam swordBeam = new LeftSwordBeam(link);
                     link.Items.Add(swordBeam);
-                    CollisionDetector.GameObjectList.Add(swordBeam);
+                    CollisionManager.GameObjectList.Add(swordBeam);
                 }
             }
         }
@@ -95,6 +95,14 @@ namespace Sprint2_Attempt3.Player.LinkStates
         public void Killed()
         {
             link.State = new KilledLinkState(link);
+        }
+        public void CollectBow()
+        {
+
+        }
+        public void CollectTriForce()
+        {
+
         }
     }
 }
