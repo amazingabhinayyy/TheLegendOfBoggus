@@ -15,6 +15,7 @@ namespace Sprint2_Attempt3.Enemy.Keese
         {
             X = x;
             Y = y;
+            this.health = 0.5f;
         }
         public override void Generate()
         {

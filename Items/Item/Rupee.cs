@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Sprint2_Attempt3.Inventory;
 using Sprint2_Attempt3.Collision;
+using Sprint2_Attempt3.Sounds;
 
 namespace Sprint2_Attempt3.Items.ItemClasses
 {
@@ -54,6 +55,8 @@ namespace Sprint2_Attempt3.Items.ItemClasses
             CollisionDetector.GameObjectList.Remove(this);
             if (InventoryController.RupeeCount < 99)
                 InventoryController.RupeeCount++;
+            
+            SoundFactory.PlaySound(SoundFactory.Instance.getRupee);
         }
     }
 }

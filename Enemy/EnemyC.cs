@@ -18,15 +18,15 @@ namespace Sprint2_Attempt3.Enemy
             bool spawned = true;
             if (choice < 2)
             {
-                CollisionDetector.GameObjectList.Add(new Heart(position, spawned));
+                CollisionManager.GameObjectList.Add(new Heart(position, spawned));
             }
             else if(choice < 3)
             {
-                CollisionDetector.GameObjectList.Add(new Clock(position, spawned));
+                CollisionManager.GameObjectList.Add(new Clock(position, spawned));
             }
             else if(choice < 9)
             {
-                CollisionDetector.GameObjectList.Add(new Rupee(position, spawned));
+                CollisionManager.GameObjectList.Add(new Rupee(position, spawned));
             }
         }
     }

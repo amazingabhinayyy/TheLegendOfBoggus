@@ -75,7 +75,7 @@ internal class GoriyaBoomerangDownState : IEnemyProjectileState
                 if (goriyaBoomerang.Position2.Y <= goriyaBoomerang.InitialY + 17)
                 {
                     goriyaBoomerang.Throwing = false;
-                    CollisionDetector.GameObjectList.Remove(goriyaBoomerang);
+                    CollisionManager.GameObjectList.Remove(goriyaBoomerang);
                     goriyaBoomerang.GoDown = true;
 
                 }

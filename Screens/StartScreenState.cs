@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint2_Attempt3.StartScreen
+namespace Sprint2_Attempt3.Screens
 {
     public class StartScreenState
     {
@@ -13,7 +13,7 @@ namespace Sprint2_Attempt3.StartScreen
         private Game1 game;
         public StartScreenState(Game1 game)
         {
-            sprite = StartScreenSpriteFactory.Instance.CreateStartScreen();
+            sprite = ScreenSpriteFactory.Instance.CreateStartScreen();
             this.game = game;
         }
         public void Update()

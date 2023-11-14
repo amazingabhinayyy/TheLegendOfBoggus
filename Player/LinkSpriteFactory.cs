@@ -9,6 +9,8 @@ namespace Sprint2_Attempt3.Player
     public class LinkSpriteFactory
     {
         private static Texture2D linkTexture;
+        private static Texture2D deathTexture;
+        private static Texture2D itemTexture;
         private Texture2D items;
         // More private Texture2Ds follow
         // ...
@@ -30,6 +32,8 @@ namespace Sprint2_Attempt3.Player
         public void LoadAllTextures(ContentManager content)
         {
             linkTexture = content.Load<Texture2D>("LinkPlayerSpriteSheetFinal");
+            deathTexture = content.Load<Texture2D>("characterGenerationSprite");
+            itemTexture = content.Load<Texture2D>("Items");
             // More Content.Load calls follow
             //...
         }
@@ -149,6 +153,18 @@ namespace Sprint2_Attempt3.Player
         public ILinkProjectileSprite CreateSwordBeamExplosionSprite()
         {
             return new SwordBeamExplosionSprite(linkTexture);
+        }
+        public ILinkSprite CreateDeadLink()
+        {
+            return new DeadLinkSprite(deathTexture);
+        }
+        public ILinkSprite CreateTriForceLink()
+        {
+            return new TriForceLinkSprite(linkTexture, itemTexture);
+        }
+        public ILinkSprite CreateBowLink()
+        {
+            return new BowLinkSprite(linkTexture, itemTexture);
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint2_Attempt3.Inventory;
+using Sprint2_Attempt3.Sounds;
 
 namespace Sprint2_Attempt3.Items.ItemClasses
 {
@@ -27,6 +28,11 @@ namespace Sprint2_Attempt3.Items.ItemClasses
                 sprite = ItemSpriteFactory.Instance.CreateBombSprite();
                 spawned = true;
             }
+        }
+        public override void Collect()
+        {
+            base.Collect();
+            SoundFactory.PlaySound(SoundFactory.Instance.getItem);
         }
     }
 }

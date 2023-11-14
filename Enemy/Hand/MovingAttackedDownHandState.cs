@@ -13,6 +13,7 @@ namespace Sprint2_Attempt3.Enemy.Hand
         private int currentFrame;
         private Random random;
         private int direction;
+        private int colorTimer;
         public MovingAttackedDownHandState(Hand Hand)
         {
             this.Hand = Hand;
@@ -21,11 +22,12 @@ namespace Sprint2_Attempt3.Enemy.Hand
             Hand.Position = new Rectangle(Hand.X, Hand.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             currentFrame = 0;
             random = new Random();
-            direction = random.Next(0, 2);
+            direction = random.Next(0, 3);
+            colorTimer = 0;
         }
         public void ChangeDirection()
         {
-            direction = random.Next(0, 2);
+            direction = random.Next(0, 3);
             switch (direction)
             {
                 case 0:
@@ -40,10 +42,12 @@ namespace Sprint2_Attempt3.Enemy.Hand
             }
         }
         public void ChangeAttackedStatus() {
-            Hand.State = new MovingDownHandState(Hand);
+            if(colorTimer >= 60)
+                Hand.State = new MovingDownHandState(Hand);
         }
         public void Update()
         {
+            colorTimer++;
             currentFrame++;
             if (currentFrame <= 20)
             {
@@ -71,6 +75,7 @@ namespace Sprint2_Attempt3.Enemy.Hand
             Hand.Y += 1;
             Hand.Position = new Rectangle(Hand.X, Hand.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             sprite.Update();
+            ChangeAttackedStatus();
         }
         public void Draw(SpriteBatch spriteBatch)
         {

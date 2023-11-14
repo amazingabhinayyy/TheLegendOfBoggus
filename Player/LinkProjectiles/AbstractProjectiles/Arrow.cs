@@ -22,7 +22,7 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles.AbstractProjectiles
         {
             link.Items.Remove(this);
             link.Items.Add(new ItemHit(link, itemPosition));
-            CollisionDetector.GameObjectList.Remove(this);
+            CollisionManager.GameObjectList.Remove(this);
         }
     }
 }

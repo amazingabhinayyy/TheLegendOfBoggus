@@ -37,21 +37,24 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         }
         public void ChangeDirection()
         {
-            direction = random.Next(0, 3);
-            switch (direction)
+            if (stunCounter == 200)
             {
-                case 0:
-                    Goriya.State = new MovingDownGoriyaState(Goriya);
-                    break;
-                case 1:
-                    Goriya.State = new MovingUpGoriyaState(Goriya);
-                    break;
-                case 2:
-                    Goriya.State = new MovingLeftGoriyaState(Goriya);
-                    break;
-                case 3:
-                    Goriya.State = new MovingRightGoriyaState(Goriya);
-                    break;
+                direction = random.Next(0, 3);
+                switch (direction)
+                {
+                    case 0:
+                        Goriya.State = new MovingDownGoriyaState(Goriya);
+                        break;
+                    case 1:
+                        Goriya.State = new MovingUpGoriyaState(Goriya);
+                        break;
+                    case 2:
+                        Goriya.State = new MovingLeftGoriyaState(Goriya);
+                        break;
+                    case 3:
+                        Goriya.State = new MovingRightGoriyaState(Goriya);
+                        break;
+                }
             }
         }
         public void ChangeAttackedStatus()
@@ -80,10 +83,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
                 currentFrame = 0;
             }
             stunCounter++;
-            if (stunCounter == 200)
-            {
-                ChangeDirection();
-            }
+            ChangeDirection();
             sprite.Update();
         }
         public void Draw(SpriteBatch spriteBatch)

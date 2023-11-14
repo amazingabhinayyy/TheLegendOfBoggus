@@ -6,10 +6,13 @@ using System.Collections.Generic;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.CommandClasses;
 using Sprint2_Attempt3.Collision.SideCollisionHandlers;
+using Sprint2_Attempt3.Dungeon.Rooms;
+using Sprint2_Attempt3.Dungeon;
 using System;
 using Sprint2_Attempt3.Items.ItemClasses;
 using Sprint2_Attempt3.Player.LinkProjectiles.ProjectileInterfaces;
 using Sprint2_Attempt3.Inventory;
+using Sprint2_Attempt3.Sounds;
 
 namespace Sprint2_Attempt3.Player
 {
@@ -21,7 +24,7 @@ namespace Sprint2_Attempt3.Player
         public ILinkState State { get; set; }
         public List<ILinkProjectile> Items { get; set; }
         private Game1 game;
-
+        private bool linkDead;
         public Link(Game1 game)
         {
             position.X = 375;
@@ -29,6 +32,7 @@ namespace Sprint2_Attempt3.Player
             this.game = game;
             State = new DownIdleLinkState(this);
             Items = new List<ILinkProjectile>();
+            linkDead = false;
         }
         public void GetDamaged(ICollision side)
         {
@@ -103,9 +107,19 @@ namespace Sprint2_Attempt3.Player
         {
             State.UseFire();
         }
+        public void CollectBow()
+        {
+            State.CollectBow();
+        }
+        public void CollectTriForce()
+        {
+            State.CollectTriForce();
+        }
         public void Kill()
         {
-            game.Exit();
+            linkDead = true;
+            SetDecorator(new DeadLink(this, game));
+            RoomDecorator deadRoom = new RoomDecorator(game.room);
         }
         public void SetDecorator(ILink decoLink)
         {
@@ -115,14 +129,16 @@ namespace Sprint2_Attempt3.Player
         {
             game.link = this;
         }
-
         public void Update()
         {
             State.Update();
             Sprite.Update();
-            for (int c = 0; c < Items.Count; c++)
+            if (!linkDead)
             {
-                Items[c].Update();
+                for (int c = 0; c < Items.Count; c++)
+                {
+                    Items[c].Update();
+                }
             }
         }
         public void Draw(SpriteBatch _spriteBatch, Color color)
@@ -145,6 +161,12 @@ namespace Sprint2_Attempt3.Player
                 return new Rectangle(0, 0, 0, 0);
             }
             
+        }
+        public void FinishCapture()
+        {
+            game.room = new Room1(game);
+            position = new Vector2(300, 300);
+            State = new DownIdleLinkState(this); 
         }
     }
 }

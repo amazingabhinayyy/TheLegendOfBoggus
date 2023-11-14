@@ -30,6 +30,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
 
             this.X = x;
             this.Y = y;
+            this.health = 1.5f;
             BoomerangPosition = new Vector2(X, Y);
             Boomerang = new GoriyaBoomerang(BoomerangPosition);
             Direction = ProjectileDirection.Left;
@@ -60,6 +61,10 @@ namespace Sprint2_Attempt3.Enemy.Goriya
                 count = 0;
 
             }
+            if(invinciblityTimer > 0)
+            {
+                invinciblityTimer--;
+            }
             State.Update();
         }
         public override void Draw(SpriteBatch spriteBatch)
@@ -89,7 +94,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         public override void Kill()
         {
             base.Kill();
-            CollisionDetector.GameObjectList.Remove(Boomerang);
+            CollisionManager.GameObjectList.Remove(Boomerang);
         }
     }
 }

@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Inventory;
 using Sprint2_Attempt3.Items.ItemSprites;
+using Sprint2_Attempt3.Sounds;
 using System.Runtime.ConstrainedExecution;
 
 namespace Sprint2_Attempt3.Items
@@ -34,11 +35,29 @@ namespace Sprint2_Attempt3.Items
         }
         public virtual void Collect() { 
             exists = false;
-            CollisionDetector.GameObjectList.Remove(this);
+            CollisionManager.GameObjectList.Remove(this);
             InventoryController.IncrementCount(this.GetType().Name);
+        }
+        public void Despawn()
+        {
+            exists = false;
+            CollisionManager.GameObjectList.Remove(this);
         }
         public abstract void Update();
         public virtual void Draw(SpriteBatch spriteBatch) {
+            if (exists)
+            {
+                if (!spawned)
+                {
+                    ((IAnimatedItemSprite)sprite).Draw(spriteBatch, Position, sourceRectangle);
+                    count--;
+                }
+                else {
+                    sprite.Draw(spriteBatch, Position);
+                }
+            }
+        }
+        public void Draw(SpriteBatch spriteBatch) {
             if (exists)
             {
                 if (!spawned)

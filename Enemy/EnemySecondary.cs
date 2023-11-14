@@ -4,23 +4,26 @@ using Sprint2_Attempt3.Enemy.Keese;
 using System;
 using Sprint2_Attempt3.Collision;
 using System.Collections.Generic;
+using Sprint2_Attempt3.Sounds;
 
 namespace Sprint2_Attempt3.Enemy
 {
     public abstract class EnemySecondary : IEnemy
     {
         protected int count;
+        protected bool death;
         protected int currentFrame;
         public int AnimateRate { get; } = 15;
         public int DamageAnimateRate { get; } = 15;
         private int distance;
         private Random random;
+        protected float health;
         public bool exists { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
         public IEnemyState State { get; set; }
         public Rectangle Position { get; set; }
-
+        protected int invinciblityTimer = 0;
         public abstract void Generate();
         public abstract void Stun();
         public abstract void DropItem();
@@ -31,6 +34,7 @@ namespace Sprint2_Attempt3.Enemy
             count = 0;
             currentFrame = 0;
             exists = true;
+            invinciblityTimer = 0;
         }
         public void Spawn()
         {
@@ -38,8 +42,29 @@ namespace Sprint2_Attempt3.Enemy
         }
         public virtual void Kill()
         {
+            death = true;
             State = new DeathAnimationState(this);
         }
+
+        public virtual void GetDamaged(float damage)
+        {
+            if (invinciblityTimer == 0)
+            {
+                invinciblityTimer = 60;
+                this.ChangeAttackedStatus();
+                health -= damage;
+
+                if (health <= 0)
+                {
+                    Kill();
+                }
+            }
+            else
+            {
+                SoundFactory.PlaySound(SoundFactory.Instance.enemyHit);
+            }
+        }
+        
         public void ChangeDirection()
         {
             State.ChangeDirection();
@@ -56,7 +81,10 @@ namespace Sprint2_Attempt3.Enemy
                 State.ChangeDirection();
                 distance = random.Next(100, 400);
                 count = 0;
-                
+            }
+            if(invinciblityTimer > 0)
+            {
+                invinciblityTimer--;
             }
             State.Update();
         }
@@ -67,8 +95,10 @@ namespace Sprint2_Attempt3.Enemy
                 State.Draw(spriteBatch);
             }
         }
-        public Rectangle GetHitBox() {
-            return Position;
+        public virtual Rectangle GetHitBox() {
+            if(!death)
+                return Position;
+            return new Rectangle(0, 0, 0, 0);
         }
 
         public abstract void MoveUp();

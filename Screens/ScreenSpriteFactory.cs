@@ -7,17 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint2_Attempt3.StartScreen
+namespace Sprint2_Attempt3.Screens
 {
-    public class StartScreenSpriteFactory
+    public class ScreenSpriteFactory
     {
         private static Texture2D startScreenTexture;
+        private static Texture2D deathAndPauseScreenTexture;
         // More private Texture2Ds follow
         // ...
 
-        private static StartScreenSpriteFactory instance = new StartScreenSpriteFactory();
+        private static ScreenSpriteFactory instance = new ScreenSpriteFactory();
 
-        public static StartScreenSpriteFactory Instance
+        public static ScreenSpriteFactory Instance
         {
             get
             {
@@ -25,19 +26,28 @@ namespace Sprint2_Attempt3.StartScreen
             }
         }
 
-        private StartScreenSpriteFactory()
+        private ScreenSpriteFactory()
         {
         }
 
         public void LoadAllTextures(ContentManager content)
         {
             startScreenTexture = content.Load<Texture2D>("TitleScreen");
+            deathAndPauseScreenTexture = content.Load<Texture2D>("DeathAndPauseScreen");
             // More Content.Load calls follow
             //...
         }
         public ISprite CreateStartScreen()
         {
             return new StartScreenSprite(startScreenTexture);
+        }
+        public ISprite CreateDeathScreen()
+        {
+            return new DeathScreenSprite(deathAndPauseScreenTexture); 
+        }
+        public ISprite CreatePauseScreen()
+        {
+            return new PauseScreenSprite(deathAndPauseScreenTexture);
         }
     }
 }

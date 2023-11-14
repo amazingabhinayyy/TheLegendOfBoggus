@@ -6,6 +6,7 @@ using System;
 using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles;
 using Sprint2_Attempt3.Enemy.Aquamentus;
+using Sprint2_Attempt3.Sounds;
 
 namespace Sprint2_Attempt3.Enemy.Aquamentus
 {
@@ -31,14 +32,17 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
             Fireball3 = new AquamentusFireball(FireballPosition);
             random = new Random();
             distance = random.Next(0, 70);
+            this.health = 3;
 
         }
 
         public override void Generate() {
+            SoundFactory.PlaySound(SoundFactory.Instance.bossScream);
             State = new MovingLeftAquamentusState(this);
         }
         public override void Stun()
         {
+            SoundFactory.PlaySound(SoundFactory.Instance.bossHurt);
             State = new StunnedAquamentusState(this);
         }
 
@@ -60,6 +64,10 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
                 distance = random.Next(0, 70);
                 count = 0;
 
+            }
+            if(invinciblityTimer > 0) 
+            {
+                invinciblityTimer--;
             }
             State.Update();
         }

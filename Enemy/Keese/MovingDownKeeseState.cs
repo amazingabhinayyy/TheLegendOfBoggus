@@ -20,12 +20,12 @@ namespace Sprint2_Attempt3.Enemy.Keese
             this.sourceRectangle = Keese.Keeses[0];
             keese.Position = new Rectangle(keese.X, keese.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             random = new Random();
-            direction = random.Next(0, 2);
+            direction = random.Next(0, 3);
 
         }
         public void ChangeDirection()
         {
-            direction = random.Next(0, 2);
+            direction = random.Next(0, 3);
             switch (direction) { 
                 case 0:
                     keese.State = new MovingLeftKeeseState(keese);

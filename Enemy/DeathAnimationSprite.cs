@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint2_Attempt3.Sounds;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace Sprint2_Attempt3.Enemy
 
         public DeathAnimationSprite(Texture2D texture)
         {
+            SoundFactory.PlaySound(SoundFactory.Instance.enemyDie);
             this.texture = texture;
         }
         public void Update()

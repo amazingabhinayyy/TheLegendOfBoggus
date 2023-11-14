@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Inventory;
+using Sprint2_Attempt3.Sounds;
 
 namespace Sprint2_Attempt3.Player
 {
@@ -20,6 +21,11 @@ namespace Sprint2_Attempt3.Player
         public List<ILinkProjectile> Items { get; set; }
         private Vector2 position;
         public Vector2 Position { get { return position; } set { position = value; }}
+
+        public ILinkSprite Sprite { get; set; }
+        public ILinkState State { get; set; }
+        private const int invincabilityTimer = 60;
+
         public DamageLinkDecorator(ILink decoratedLink)//, Game1 game)
         {
             this.decoratedLink = decoratedLink;
@@ -33,8 +39,10 @@ namespace Sprint2_Attempt3.Player
         {
             if (timer < 10)
             {
-                Knockback(side);
-                timer = 40;
+                if(InventoryController.hearts != 0.5f)
+                    Knockback(side);
+
+                timer = invincabilityTimer;
                 InventoryController.hearts -= .5f;
                 if (InventoryController.hearts <= 0)
                 {
@@ -43,7 +51,16 @@ namespace Sprint2_Attempt3.Player
                         InventoryController.hearts++;
                         InventoryController.UsingFairy = false;
                     }
-                    else { Kill(); }
+                    else 
+                    { 
+                        Kill();
+                        SoundFactory.PlaySound(SoundFactory.Instance.linkDie);
+                        timer = 0;
+                    }
+                }
+                else if (InventoryController.GetCount("Heart") <= 1)
+                {
+                    SoundFactory.PlaySound(SoundFactory.Instance.lowHealth);
                 }
             }
         }
@@ -138,6 +155,14 @@ namespace Sprint2_Attempt3.Player
         public Rectangle GetHitBox()
         {
             return decoratedLink.GetHitBox();
+        }
+        public void CollectBow()
+        {
+            decoratedLink.CollectBow();
+        }
+        public void CollectTriForce()
+        {
+            decoratedLink.CollectTriForce();
         }
     }
 }

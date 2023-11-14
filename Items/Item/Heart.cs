@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using Sprint2_Attempt3.Inventory;
 using Sprint2_Attempt3.Collision;
+using Sprint2_Attempt3.Sounds;
 
 namespace Sprint2_Attempt3.Items.ItemClasses
 {
@@ -55,6 +56,7 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         {
             exists = false;
             CollisionDetector.GameObjectList.Remove(this);
+            SoundFactory.PlaySound(SoundFactory.Instance.getHeart);
             if (InventoryController.heartContainers - InventoryController.hearts < 0) {
                 if (InventoryController.heartContainers - InventoryController.hearts < -.5)
                 {

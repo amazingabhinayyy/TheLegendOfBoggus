@@ -31,21 +31,24 @@ namespace Sprint2_Attempt3.Enemy.Rope
         }
         public void ChangeDirection()
         {
-            direction = random.Next(0, 3);
-            switch (direction)
+            if (stunCounter == 200)
             {
-                case 0:
-                    rope.State = new MovingDownRopeState(rope);
-                    break;
-                case 1:
-                    rope.State = new MovingUpRopeState(rope);
-                    break;
-                case 2:
-                    rope.State = new MovingRightRopeState(rope);
-                    break;
-                case 3:
-                    rope.State = new MovingLeftRopeState(rope);
-                    break;
+                direction = random.Next(0, 3);
+                switch (direction)
+                {
+                    case 0:
+                        rope.State = new MovingDownRopeState(rope);
+                        break;
+                    case 1:
+                        rope.State = new MovingUpRopeState(rope);
+                        break;
+                    case 2:
+                        rope.State = new MovingRightRopeState(rope);
+                        break;
+                    case 3:
+                        rope.State = new MovingLeftRopeState(rope);
+                        break;
+                }
             }
         }
         public void ChangeAttackedStatus()
@@ -58,10 +61,7 @@ namespace Sprint2_Attempt3.Enemy.Rope
             sourceRectangle = Rope.Ropes[Globals.FindIndex(currentFrame % (Rope.Ropes.Length * rope.AnimateRate), rope.AnimateRate, Rope.Ropes.Length)];
             rope.Position = new Rectangle(rope.X, rope.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             stunCounter++;
-            if (stunCounter == 200)
-            {
-                ChangeDirection();
-            }
+            ChangeDirection();
             sprite.Update();
         }
         public void Draw(SpriteBatch spriteBatch)

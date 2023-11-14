@@ -46,8 +46,8 @@ namespace Sprint2_Attempt3.Enemy.Keese
             else if (currentFrame == 24)
             {
                 enemy.exists = false;
-                
-                CollisionDetector.GameObjectList.Remove(enemy);
+
+                CollisionManager.GameObjectList.Remove(enemy);
                 enemy.DropItem();              
             }
         }

@@ -2,20 +2,11 @@
 using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Blocks.BlockSprites;
 using Sprint2_Attempt3.Collision.SideCollisionHandlers;
-using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Player.Interfaces;
-using Sprint2_Attempt3.Player.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Sprint2_Attempt3.WallBlocks;
 using Sprint2_Attempt3.Dungeon.Doors;
 using Sprint2_Attempt3.Dungeon;
-using Sprint2_Attempt3.Player;
-using System.Reflection.Metadata.Ecma335;
 using Sprint2_Attempt3.Inventory;
+using Sprint2_Attempt3.Sounds;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -51,15 +42,15 @@ namespace Sprint2_Attempt3.Collision
             if (obj is IBlock)
             {
                 var block = (IBlock)obj;
+                if(block is IMovingBlock && !((IMovingBlock)block).Moved)
+                {
+                    ((IMovingBlock)block).MoveBlock(side);
+                }
                 if (!block.isWalkable)
                 {
                     blocked = true;
                 }
             }
-            /*else if (obj is IWall)
-            {
-                blocked = true;
-            }*/
             else if (obj is IDoor) {
                 blocked = !(((IDoor)obj).IsWalkable);
             }
@@ -92,6 +83,7 @@ namespace Sprint2_Attempt3.Collision
             {
                 if (door.IsLocked && InventoryController.KeyCount > 0)
                 {
+                    SoundFactory.PlaySound(SoundFactory.Instance.doorUnlock);
                     door.Open();
                     InventoryController.KeyCount--;
                 }
@@ -156,6 +148,7 @@ namespace Sprint2_Attempt3.Collision
                 }
                 else if (door is StairExit)
                 {
+                    SoundFactory.PlaySound(SoundFactory.Instance.stairs);
                     game.room.SwitchToUpperRoom();
                     if (room != game.room)
                     {
@@ -165,6 +158,8 @@ namespace Sprint2_Attempt3.Collision
                 }
                 else if (door is StairEntrance) 
                 {
+                    SoundFactory.PlaySound(SoundFactory.Instance.stairs);
+                    SoundFactory.PlaySound(SoundFactory.Instance.stairs);
                     game.room.SwitchToLowerRoom();
                     LastLinkPosition = new Vector2(link.GetHitBox().X, link.GetHitBox().Y);
                     LastLinkPosition.X -= 50;

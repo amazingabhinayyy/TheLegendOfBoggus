@@ -21,12 +21,12 @@ namespace Sprint2_Attempt3.Enemy.Stalfos
             Stalfos.Position = new Rectangle(Stalfos.X, Stalfos.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             currentFrame = 0;
             random = new Random();
-            direction = random.Next(0, 2);
+            direction = random.Next(0, 3);
 
         }
         public void ChangeDirection()
         {
-            direction = random.Next(0, 2);
+            direction = random.Next(0, 3);
             switch (direction)
             {
                 case 0:
@@ -41,7 +41,8 @@ namespace Sprint2_Attempt3.Enemy.Stalfos
             }
         }
         public void ChangeAttackedStatus() {
-            Stalfos.State = new MovingRightStalfosState(Stalfos);
+            if (currentFrame >= 80)
+                Stalfos.State = new MovingRightStalfosState(Stalfos);
         }
         public void Update()
         {
@@ -50,6 +51,7 @@ namespace Sprint2_Attempt3.Enemy.Stalfos
             Stalfos.X += 1;
             Stalfos.Position = new Rectangle(Stalfos.X, Stalfos.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             sprite.Update();
+            ChangeAttackedStatus();
         }
         public void Draw(SpriteBatch spriteBatch)
         {

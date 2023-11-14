@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Blocks;
+using Sprint2_Attempt3.Blocks.Block;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Dungeon.Doors;
 using Sprint2_Attempt3.Dungeon.Rooms;
@@ -23,7 +24,7 @@ namespace Sprint2_Attempt3.Dungeon
         public static bool ClockUsed { get; set; } = false;
         protected IDungeonRoom room;
         protected Game1 game1;
-        protected CollisionDetector collisionDetector;
+        protected CollisionManager collisionDetector;
 
         public RoomSecondary(Game1 game, int roomNum) {
             this.game1 = game;
@@ -60,8 +61,8 @@ namespace Sprint2_Attempt3.Dungeon
             }
 
             ClockUsed = false;
-            collisionDetector = new CollisionDetector(game1, game1.link);
-            CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
+            collisionDetector = new CollisionManager(game1, game1.link);
+            CollisionManager.GameObjectList = gameObjectLists[roomNumber];
         }
         public void SwitchToNextRoom() {
             if (roomNumber < gameObjectLists.Length - 1)
@@ -106,7 +107,8 @@ namespace Sprint2_Attempt3.Dungeon
                 ((DamageLinkDecorator)game1.link).RemoveDecorator();
             }
             ClockUsed = false;
-            CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
+            MapController.VisitRoom(roomNumber);
+            CollisionManager.GameObjectList = gameObjectLists[roomNumber];
             game1.link.Items.Clear();
         }
 
@@ -155,7 +157,8 @@ namespace Sprint2_Attempt3.Dungeon
                 ((DamageLinkDecorator)game1.link).RemoveDecorator();
             }
             ClockUsed = false;
-            CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
+            MapController.VisitRoom(roomNumber);
+            CollisionManager.GameObjectList = gameObjectLists[roomNumber];
             game1.link.Items.Clear();
         }
         public void Update() {
@@ -171,24 +174,27 @@ namespace Sprint2_Attempt3.Dungeon
                 }
                 else if (obj is IItem)
                     ((IItem)obj).Update();
+                else if (obj is IBlock)
+                    ((IBlock)obj).Update();
             }
 
             game1.link.Update();
         }
 
-        public void Draw(SpriteBatch spriteBatch) {
-            room.Draw(spriteBatch);
-            
+        public void Draw(SpriteBatch spriteBatch, Color color) {
+            room.Draw(spriteBatch, color);
+
             foreach (IGameObject obj in gameObjectLists[roomNumber])
             {
-                if(obj is IEnemy)
+                if (obj is IEnemy && color.Equals(Color.White))
                     ((IEnemy)obj).Draw(spriteBatch);
-                else if(obj is IItem)
+                else if (obj is IItem && color.Equals(Color.White))
                     ((IItem)obj).Draw(spriteBatch);
-                else if(obj is IBlock)
-                    ((IBlock)obj).Draw(spriteBatch);
+                else if (obj is IBlock)
+                    ((IBlock)obj).Draw(spriteBatch, color);
                 else if (obj is IDoor)
-                    ((IDoor)obj).Draw(spriteBatch);
+                    ((IDoor)obj).Draw(spriteBatch, color);
+
             }
             
             game1.link.Draw(spriteBatch, Color.White);
@@ -199,7 +205,7 @@ namespace Sprint2_Attempt3.Dungeon
             {
                 gameObjectLists[i] = RoomGenerator.Instance.LoadFile(i);
                 if (i != 15)
-                    gameObjectLists[roomNumber].AddRange(Globals.WallBlocks);
+                    gameObjectLists[i].AddRange(Globals.WallBlocks);
                 else
                     gameObjectLists[i].AddRange(Globals.Room16WallBlocks);
             }
@@ -207,6 +213,10 @@ namespace Sprint2_Attempt3.Dungeon
 
         public static int GetCurrentRoomNumber() { 
             return roomNumber;
+        }
+        public void SetDecorator(IRoom room)
+        {
+            game1.room = room;
         }
         public virtual void SwitchToNorthRoom() { }
         public virtual void SwitchToSouthRoom() { }

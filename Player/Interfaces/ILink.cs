@@ -10,6 +10,8 @@ namespace Sprint2_Attempt3.Player.Interfaces
     {
         public List<ILinkProjectile> Items { get; set; }
         public Vector2 Position { get; set; }
+        public ILinkSprite Sprite { get; set; }
+        public ILinkState State { get; set; }
         public void Knockback(ICollision side);
         public void BecomeIdle();
         public void MoveUp();
@@ -27,6 +29,8 @@ namespace Sprint2_Attempt3.Player.Interfaces
         public void SetDecorator(ILink link);
         public void RemoveDecorator();
         public void Kill();
+        public void CollectTriForce();
+        public void CollectBow();
         public void Draw(SpriteBatch spriteBatch, Color color);
         
     }

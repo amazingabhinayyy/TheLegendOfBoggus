@@ -11,6 +11,7 @@ namespace Sprint2_Attempt3.Enemy.Zol
         {
             this.X = x;
             this.Y = y;
+            this.health = 1.0f;
         }
         public override void Generate() {
             State = new MovingLeftZolState(this);
