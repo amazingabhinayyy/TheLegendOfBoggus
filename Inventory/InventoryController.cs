@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.CommandClasses;
 using Sprint2_Attempt3.Dungeon;
 using Sprint2_Attempt3.Items;
-using Sprint2_Attempt3.Items.ItemClasses;
 using Sprint2_Attempt3.Items.ItemSprites;
 using System;
 using System.Collections;
