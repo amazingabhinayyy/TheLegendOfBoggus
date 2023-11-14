@@ -51,7 +51,7 @@ namespace Sprint2_Attempt3.Dungeon
 
         }
 
-        public /*List<List<IGameObject>>*/ List<IGameObject> LoadFile(int fileNumber) {
+        public List<IGameObject> LoadFile(int fileNumber) {
             List<IGameObject> objectList = new List<IGameObject>();
             List<IGameObject> enemyList = new List<IGameObject>();
 

@@ -20,10 +20,14 @@ namespace Sprint2_Attempt3.Dungeon
     public abstract class RoomSecondary : IRoom
     {
         protected static List<IGameObject>[] gameObjectLists = new List<IGameObject>[18];
-
+        protected static int[] enemiesKilledList = new int[18];
+        public static int[] EnemiesKilledList { get { return enemiesKilledList; } set { enemiesKilledList = value; } }
         public List<IGameObject>[] GameObjectLists { get { return gameObjectLists; } set { gameObjectLists = value; } }
         protected static int roomNumber;
-        protected static int enemyKillCount = 0;
+
+        private int enemyKillCount = 0;
+        public  int EnemyKillCount { get { return enemyKillCount; } set { enemyKillCount = value; } }
+        protected static Boolean varHoldingTrue = true;
         protected Boolean spawned = false;
         public static bool ClockUsed { get; set; } = false;
         protected IDungeonRoom room;
@@ -182,7 +186,7 @@ namespace Sprint2_Attempt3.Dungeon
             CollisionDetector.GameObjectList = gameObjectLists[roomNumber];
             game1.link.Items.Clear();
         }
-        public void Update() {
+        public virtual void Update() {
             if (!TransitionHandler.Instance.Start)
             {
                 collisionDetector.Update();
@@ -244,6 +248,7 @@ namespace Sprint2_Attempt3.Dungeon
         }
 
         public static void ResetRooms() {
+            enemiesKilledList = new int[18];
             for (int i = 0; i < 18; i++)
             {
                 gameObjectLists[i] = RoomGenerator.Instance.LoadFile(i);

@@ -17,7 +17,6 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         public ProjectileDirection Direction { get; set; }
         public IEnemyProjectile Boomerang { get; set; }
 
-        /*can I make this private*/
         public enum ProjectileDirection
         {
             Left, Top, Right, Bottom

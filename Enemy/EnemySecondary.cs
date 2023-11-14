@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
 using System;
 using Sprint2_Attempt3.Collision;
+using Sprint2_Attempt3.Dungeon.Rooms;
+using Sprint2_Attempt3.Dungeon;
 
 namespace Sprint2_Attempt3.Enemy
 {
@@ -41,6 +43,9 @@ namespace Sprint2_Attempt3.Enemy
         }
         public virtual void Kill()
         {
+            int[] list = RoomSecondary.EnemiesKilledList;
+            list[RoomSecondary.GetCurrentRoomNumber()]++;
+            RoomSecondary.EnemiesKilledList = list;
             State = new DeathAnimationState(this);
         }
 
@@ -52,6 +57,8 @@ namespace Sprint2_Attempt3.Enemy
             if (health <= 0)
             {
                 Kill();
+                
+               
             }
         }
         
