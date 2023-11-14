@@ -12,6 +12,7 @@ using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Inventory;
 using Sprint2_Attempt3.StartScreen;
 using Sprint2_Attempt3.Sounds;
+using Sprint2_Attempt3.Items.ItemClasses;
 
 namespace Sprint2_Attempt3
 {
@@ -26,6 +27,7 @@ namespace Sprint2_Attempt3
         public ILink link { get; set; }
         public IRoom room { get; set; }
         public bool gameStarted { get; set; }
+        private IItem item;
 
         public CollisionDetector collisionDetector;
         private StartScreenState startScreen;

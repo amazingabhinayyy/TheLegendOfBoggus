@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint2_Attempt3.Inventory;
+using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3.Items.ItemClasses
 {
@@ -19,6 +20,22 @@ namespace Sprint2_Attempt3.Items.ItemClasses
             this.exists = exists;
             this.spawned = false;
             sprite = ItemSpriteFactory.Instance.CreateSpawnItemSprite();
+        }
+        public override void Update()
+        {
+            if (count == 0)
+            {
+                sprite = ItemSpriteFactory.Instance.CreateKeySprite();
+                spawned = true;
+            }
+        }
+
+        public override void Collect()
+        {
+            exists = false;
+            CollisionDetector.GameObjectList.Remove(this);
+            if(InventoryController.KeyCount < 99)
+                InventoryController.KeyCount++;
         }
     }
 }

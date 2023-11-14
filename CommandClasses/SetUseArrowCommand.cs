@@ -17,10 +17,10 @@ namespace Sprint2_Attempt3.CommandClasses
 
         public void Execute()
         {
-            if (InventoryController.GetCount("Bow") > 0 && InventoryController.GetCount("Rupee") > 0)
+            if (InventoryController.HasBow && InventoryController.RupeeCount > 0)
             {
                 game.link.UseArrow();
-                InventoryController.DecrementCount("Rupee");
+                InventoryController.RupeeCount--;
             }
         }
     }

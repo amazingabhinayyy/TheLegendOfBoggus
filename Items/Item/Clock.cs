@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sprint2_Attempt3.Inventory;
 
 namespace Sprint2_Attempt3.Items.ItemClasses
 {
@@ -18,6 +19,19 @@ namespace Sprint2_Attempt3.Items.ItemClasses
             this.exists = exists;
             this.spawned = false;
             sprite = ItemSpriteFactory.Instance.CreateSpawnItemSprite();
+        }
+        public override void Update()
+        {
+            if (count == 0)
+            {
+                sprite = ItemSpriteFactory.Instance.CreateClockSprite();
+                spawned = true;
+            }
+        }
+        public override void Collect()
+        {
+            base.Collect();
+            InventoryController.UseItem("Clock");
         }
     }
 }

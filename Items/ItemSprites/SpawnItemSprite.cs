@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint2_Attempt3.Item
+namespace Sprint2_Attempt3.Items.ItemSprites
 {
-    public class SpawnItemSprite : IItemSprite
+    public class SpawnItemSprite : IAnimatedItemSprite
     {
         private Texture2D texture;
         private static int count;
@@ -18,8 +18,6 @@ namespace Sprint2_Attempt3.Item
             this.texture = texture;
             count = 25;
         }
-
-        public void Update() { }
 
         public void Draw(SpriteBatch spriteBatch, Rectangle position, Rectangle sourceRectangle)
         {
@@ -38,5 +36,7 @@ namespace Sprint2_Attempt3.Item
             }
             count--;
         }
+
+        public void Draw(SpriteBatch spriteBatch, Rectangle position) { }
     }
 }

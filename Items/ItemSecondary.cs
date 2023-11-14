@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Inventory;
+using Sprint2_Attempt3.Items.ItemSprites;
 using System.Runtime.ConstrainedExecution;
 
 namespace Sprint2_Attempt3.Items
@@ -36,19 +37,17 @@ namespace Sprint2_Attempt3.Items
             CollisionDetector.GameObjectList.Remove(this);
             InventoryController.IncrementCount(this.GetType().Name);
         }
-        public virtual void Update() {
-            if (count == 0)
-            {
-                sprite = ItemSpriteFactory.Instance.CreateSpawnItemSprite();
-                spawned = true;
-            }
-        }
-        public void Draw(SpriteBatch spriteBatch) {
+        public abstract void Update();
+        public virtual void Draw(SpriteBatch spriteBatch) {
             if (exists)
             {
-                sprite.Draw(spriteBatch, Position, sourceRectangle);
-                if(!spawned){
+                if (!spawned)
+                {
+                    ((IAnimatedItemSprite)sprite).Draw(spriteBatch, Position, sourceRectangle);
                     count--;
+                }
+                else {
+                    sprite.Draw(spriteBatch, Position);
                 }
             }
         }

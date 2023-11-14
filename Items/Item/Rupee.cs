@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint2_Attempt3.Inventory;
+using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3.Items.ItemClasses
 {
@@ -25,7 +26,7 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         {
             if (this.count == 0)
             {
-                sprite = ItemSpriteFactory.Instance.CreateItemSprite();
+                sprite = ItemSpriteFactory.Instance.CreateRupeeSprite();
                 spawned = true;
             }
             if (spawned)
@@ -35,6 +36,24 @@ namespace Sprint2_Attempt3.Items.ItemClasses
                 Position.Width = (int)(sourceRectangle.Width * Globals.scale);
                 Position.Height = (int)(sourceRectangle.Height * Globals.scale);
             }
+        }
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            if (exists)
+            {
+                ((IAnimatedItemSprite)sprite).Draw(spriteBatch, Position, sourceRectangle);
+                if (!spawned)
+                {
+                    count--;
+                }
+            }
+        }
+        public override void Collect()
+        {
+            exists = false;
+            CollisionDetector.GameObjectList.Remove(this);
+            if (InventoryController.RupeeCount < 99)
+                InventoryController.RupeeCount++;
         }
     }
 }

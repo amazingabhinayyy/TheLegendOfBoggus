@@ -35,14 +35,13 @@ namespace Sprint2_Attempt3.Player
             {
                 Knockback(side);
                 timer = 40;
-                InventoryController.DecrementCount("Heart", .5f);
-                if (InventoryController.GetCount("Heart") <= 0)
+                InventoryController.hearts -= .5f;
+                if (InventoryController.hearts <= 0)
                 {
                     if (InventoryController.UsingFairy)
                     {
-                        InventoryController.IncrementCount("Heart");
+                        InventoryController.hearts++;
                         InventoryController.UsingFairy = false;
-                        InventoryController.DecrementCount("Fairy");
                     }
                     else { Kill(); }
                 }

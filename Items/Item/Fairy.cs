@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint2_Attempt3.Player.Interfaces;
+using Sprint2_Attempt3.Inventory;
 
 namespace Sprint2_Attempt3.Items.ItemClasses
 {
@@ -25,7 +26,7 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         {
             if (this.count == 0)
             {
-                sprite = ItemSpriteFactory.Instance.CreateItemSprite();
+                sprite = ItemSpriteFactory.Instance.CreateFairySprite();
                 spawned = true;
             }
             if (spawned)
@@ -37,9 +38,21 @@ namespace Sprint2_Attempt3.Items.ItemClasses
 
             }
         }
-        public void TrackLink()
+        public override void Draw(SpriteBatch spriteBatch)
         {
-
+            if (exists)
+            {
+                ((IAnimatedItemSprite)sprite).Draw(spriteBatch, Position, sourceRectangle);
+                if (!spawned)
+                {
+                    count--;
+                }
+            }
+        }
+        public override void Collect()
+        {
+            base.Collect();
+            InventoryController.UseItem("Fairy");
         }
     }
 }

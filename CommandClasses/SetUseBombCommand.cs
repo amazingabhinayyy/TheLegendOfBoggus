@@ -16,11 +16,7 @@ namespace Sprint2_Attempt3.CommandClasses
         }
 
         public void Execute() {
-            if (InventoryController.GetCount("Bomb") > 0)
-            {
-                game.link.UseBomb();
-                InventoryController.DecrementCount("Bomb");
-            }
+            game.link.UseBomb();
         }
     }
 }

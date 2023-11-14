@@ -20,6 +20,14 @@ namespace Sprint2_Attempt3.Items.ItemClasses
             this.spawned = false;
             sprite = ItemSpriteFactory.Instance.CreateSpawnItemSprite();
         }
+        public override void Update()
+        {
+            if (count == 0)
+            {
+                sprite = ItemSpriteFactory.Instance.CreateMapSprite();
+                spawned = true;
+            }
+        }
 
         public override void Collect()
         {

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using Sprint2_Attempt3.Inventory;
+using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3.Items.ItemClasses
 {
@@ -26,7 +27,7 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         {
             if (this.count == 0)
             {
-                sprite = ItemSpriteFactory.Instance.CreateItemSprite();
+                sprite = ItemSpriteFactory.Instance.CreateHeartSprite();
                 spawned = true;
             }
 
@@ -38,18 +39,30 @@ namespace Sprint2_Attempt3.Items.ItemClasses
                 Position.Height = (int)(sourceRectangle.Height * Globals.scale);
             }
         }
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            if (exists)
+            {
+                ((IAnimatedItemSprite)sprite).Draw(spriteBatch, Position, sourceRectangle);
+                if (!spawned)
+                {
+                    count--;
+                }
+            }
+        }
 
         public override void Collect()
         {
-            base.Collect();
-            if (InventoryController.GetCount("HeartContainer") - InventoryController.GetCount("Heart") < 0) {
-                if (InventoryController.GetCount("HeartContainer") - InventoryController.GetCount("Heart") < -.5)
+            exists = false;
+            CollisionDetector.GameObjectList.Remove(this);
+            if (InventoryController.heartContainers - InventoryController.hearts < 0) {
+                if (InventoryController.heartContainers - InventoryController.hearts < -.5)
                 {
-                    InventoryController.DecrementCount("Heart");
+                    InventoryController.hearts++;
                 }
                 else
                 {
-                    InventoryController.DecrementCount("Heart", .5f);
+                    InventoryController.hearts += .5f;
                 }
             }
         }

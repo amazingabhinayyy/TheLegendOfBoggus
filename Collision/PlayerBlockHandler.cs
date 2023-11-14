@@ -90,10 +90,10 @@ namespace Sprint2_Attempt3.Collision
             bool changedRooms = false;
             if (!door.IsWalkable)
             {
-                if (door.IsLocked && InventoryController.GetCount("Key") > 0)
+                if (door.IsLocked && InventoryController.KeyCount > 0)
                 {
                     door.Open();
-                    InventoryController.DecrementCount("Key");
+                    InventoryController.KeyCount--;
                 }
                 else
                 {

@@ -9,6 +9,7 @@ using Sprint2_Attempt3.Collision.SideCollisionHandlers;
 using System;
 using Sprint2_Attempt3.Items.ItemClasses;
 using Sprint2_Attempt3.Player.LinkProjectiles.ProjectileInterfaces;
+using Sprint2_Attempt3.Inventory;
 
 namespace Sprint2_Attempt3.Player
 {
@@ -26,7 +27,6 @@ namespace Sprint2_Attempt3.Player
             position.X = 375;
             position.Y = 300;
             this.game = game;
-            //CollisionDetector.GameObjectList.Add(this);
             State = new DownIdleLinkState(this);
             Items = new List<ILinkProjectile>();
         }
@@ -80,7 +80,8 @@ namespace Sprint2_Attempt3.Player
         }
         public void UseBomb()
         {
-            State.UseBomb();
+            if(InventoryController.GetCount("Bomb") > 0)
+                State.UseBomb();
         }
         public void UseArrow()
         {
