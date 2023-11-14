@@ -32,11 +32,11 @@ namespace Sprint2_Attempt3.Blocks.Block
             {
                 if(pushedSide is LeftCollision)
                 {
-                    position = new Rectangle(position.X + 3, position.Y, position.Width, position.Height);
+                    position = new Rectangle(position.X + 20, position.Y, position.Width, position.Height);
                 }
                 else if (pushedSide is RightCollision)
                 {
-                    position = new Rectangle(position.X - 3, position.Y, position.Width, position.Height);
+                    position = new Rectangle(position.X - 20, position.Y, position.Width, position.Height);
                 }
                 else if (pushedSide is TopCollision)
                 {

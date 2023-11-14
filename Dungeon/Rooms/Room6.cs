@@ -11,8 +11,10 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
 {
     public class Room6 : RoomSecondary
     {
-        private Boolean spawn = true;
-        public Room6(Game1 game1) : base(game1, 5) { }
+        private Boolean spawn;
+        public Room6(Game1 game1) : base(game1, 5) { 
+            spawn = UniqueEventsForRooms;
+        }
         public override void SwitchToNorthRoom()
         {
             TransitionHandler.Instance.Start = true;
@@ -39,6 +41,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             {
                 gameObjectLists[roomNumber].Add(new Key(new Vector2(Globals.FloorGrid[19].X + Globals.FloorGrid[19].Width / 4, Globals.FloorGrid[19].Y), true));
                 spawn = false;
+                UniqueEventsForRooms = spawn;
 
             }
             if (!TransitionHandler.Instance.Start)
