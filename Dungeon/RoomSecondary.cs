@@ -216,6 +216,8 @@ namespace Sprint2_Attempt3.Dungeon
                             ((IItem)obj).Spawn();
                         }
                     }
+                    else if (obj is IBlock)
+                        ((IBlock)obj).Update();
                 }
                 spawned = true;
 
