@@ -12,6 +12,3 @@ Door,South,4,
 Door,East,0,
 Door,West,4,
 Enemy,SpikeTrap,100,89
-Enemy,SpikeTrap,650,89
-Enemy,SpikeTrap,100,347
-Enemy,SpikeTrap,650,347

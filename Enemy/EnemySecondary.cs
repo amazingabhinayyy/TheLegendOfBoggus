@@ -75,7 +75,6 @@ namespace Sprint2_Attempt3.Enemy
                 State.ChangeDirection();
                 distance = random.Next(100, 400);
                 count = 0;
-                
             }
             if(invinciblityTimer > 0)
             {
@@ -90,7 +89,7 @@ namespace Sprint2_Attempt3.Enemy
                 State.Draw(spriteBatch);
             }
         }
-        public Rectangle GetHitBox() {
+        public virtual Rectangle GetHitBox() {
             if(!death)
                 return Position;
             return new Rectangle(0, 0, 0, 0);

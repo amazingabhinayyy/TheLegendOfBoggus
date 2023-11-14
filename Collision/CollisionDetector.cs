@@ -11,6 +11,7 @@ using Sprint2_Attempt3.WallBlocks;
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint2_Attempt3.Enemy.SpikeTrap;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -21,7 +22,10 @@ namespace Sprint2_Attempt3.Collision
             Rectangle linkRectangle = link.GetHitBox();
             bool ChangedRooms = false;
             Rectangle collisionRectangle = obj.GetHitBox();
-
+            if(obj is SpikeTrap)
+            {
+                SpikeTrapHandler.HandleSpikeTrap((SpikeTrap)obj, link);
+            }
             if (collisionRectangle.Intersects(linkRectangle))
             {
                 ICollision side = SideDetector(linkRectangle, collisionRectangle);
@@ -102,6 +106,7 @@ namespace Sprint2_Attempt3.Collision
         }
         public static void CheckEnemyWallCollision(IWall wall, IEnemy enemy)
         {
+            
             if (enemy.GetHitBox().Intersects(wall.GetHitBox()))
             {
                 EnemyWallHandler.HandleEnemyWallCollision(wall.GetHitBox(), enemy);

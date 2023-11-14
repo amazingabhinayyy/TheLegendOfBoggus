@@ -31,7 +31,7 @@ namespace Sprint2_Attempt3.Player.LinkSprites
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
         {
             destinationRectangle = new Rectangle((int)location.X, (int)location.Y, 45, 45);
-            itemDestinationRectangle = new Rectangle((int)location.X + 18, (int)location.Y - 20, 12, 24);
+            itemDestinationRectangle = new Rectangle((int)location.X + 10, (int)location.Y - 30, 12, 24);
             spriteBatch.Draw(linkTexture, destinationRectangle, linkSourceRectangle, color);
             spriteBatch.Draw(itemTexture, itemDestinationRectangle, itemSourceRectangle, color);
         }
