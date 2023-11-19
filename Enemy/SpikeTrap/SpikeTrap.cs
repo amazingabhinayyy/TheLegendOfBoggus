@@ -28,8 +28,9 @@ namespace Sprint2_Attempt3.Enemy.SpikeTrap
         public override void Update() {
             state.Update();
             
-            if(this.X == spawnPoint.X && this.Y == spawnPoint.Y)
+            if(Y < 275)
             {
+                Y = (int)spawnPoint.Y;
                 BecomeIdle();
                 start = true;
                 

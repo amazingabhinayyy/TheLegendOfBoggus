@@ -124,10 +124,8 @@ namespace Sprint2_Attempt3.Dungeon
                 }
                 else if (obj is IItem)
                 {
-                    if (((IItem)obj).exists)
-                    {
+                    //if(((IItem)obj).exists)
                         ((IItem)obj).Spawn();
-                    }
                 }
             }
             if (game1.link is DamageLinkDecorator)
@@ -175,10 +173,9 @@ namespace Sprint2_Attempt3.Dungeon
                 }
                 else if (obj is IItem)
                 {
-                    if (((IItem)obj).exists)
-                    {
+                   // if (((IItem)obj).exists)
                         ((IItem)obj).Spawn();
-                    }
+                   
                 }
             }
             if (game1.link is DamageLinkDecorator)
@@ -194,7 +191,8 @@ namespace Sprint2_Attempt3.Dungeon
         public virtual void Update() {
             if (!TransitionHandler.Instance.Start)
             {
-                collisionManager.Update();
+                if(!game1.deathAnimationActive)
+                    collisionManager.Update();
 
                 for (int i = 0; i < gameObjectLists[roomNumber].Count; i++)
                 {
@@ -207,7 +205,7 @@ namespace Sprint2_Attempt3.Dungeon
                         }
                         if (!ClockUsed || ((IEnemy)obj).State is DeathAnimationState)
                             ((IEnemy)obj).Update();
-                        
+
                     }
                     else if (obj is IItem)
                     {

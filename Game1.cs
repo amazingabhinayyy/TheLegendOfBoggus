@@ -33,8 +33,7 @@ namespace Sprint2_Attempt3
         private GameTime gameTime;
         public GameTime Gametime { get { return gameTime; } }
 
-        //public CollisionDetector collisionDetector;
-        public CollisionManager collisionDetector;
+        public CollisionManager collisionManager;
         private StartScreenState startScreen;
         private DeathScreenState deathScreen;
         private PauseScreenState pauseScreen;
@@ -74,7 +73,7 @@ namespace Sprint2_Attempt3
             RoomGenerator.Instance.LoadAllFiles();
             InventoryTexture = Content.Load<Texture2D>("Inventory");
             link = new Link(this);
-            collisionDetector = new CollisionManager(this, (Link)link);
+            collisionManager = new CollisionManager(this, (Link)link);
             gameStarted = false;
             linkDead = false;
             inventoryController = new InventoryController(this);
@@ -90,6 +89,15 @@ namespace Sprint2_Attempt3
         protected override void UnloadContent()
         {
         }
+        public void Reset()
+        {
+            link = new Link(this);
+            linkDead = false;
+            deathAnimationActive = false;
+            gamePaused = false;
+            collisionManager = new CollisionManager(this, (Link)link);
+            room = new Room1(this);
+        }
 
         protected override void Update(GameTime gameTime)
         {
@@ -100,7 +108,7 @@ namespace Sprint2_Attempt3
                 if (!deathAnimationActive)
                 {
                     inventoryController.Update();
-                    collisionDetector.Update();
+                    collisionManager.Update();
                     mouseController.Update(gameTime);
                 }
             }
