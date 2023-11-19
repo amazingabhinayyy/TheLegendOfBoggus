@@ -109,7 +109,7 @@ namespace Sprint2_Attempt3
                 {
                     inventoryController.Update();
                     collisionManager.Update();
-                    mouseController.Update(gameTime);
+                    //mouseController.Update(gameTime);
                 }
             }
             base.Update(gameTime);

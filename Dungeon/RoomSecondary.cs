@@ -56,7 +56,7 @@ namespace Sprint2_Attempt3.Dungeon
                 }
                 InventoryController.VisitRoom(roomNum);
             }
-
+            /*
             foreach (IGameObject obj in gameObjectLists[roomNumber])
             {
                 if (obj is IEnemy)
@@ -71,6 +71,7 @@ namespace Sprint2_Attempt3.Dungeon
                     }
                 }
             }
+            */
                
             
             if (game1.link is DamageLinkDecorator)
@@ -115,7 +116,7 @@ namespace Sprint2_Attempt3.Dungeon
                 }
                 InventoryController.VisitRoom(roomNumber);
             }
-
+/*
             foreach (IGameObject obj in gameObjectLists[roomNumber])
             {
                 if (obj is IEnemy)
@@ -124,10 +125,11 @@ namespace Sprint2_Attempt3.Dungeon
                 }
                 else if (obj is IItem)
                 {
-                    //if(((IItem)obj).exists)
+                    if(((IItem)obj).exists)
                         ((IItem)obj).Spawn();
                 }
             }
+*/
             if (game1.link is DamageLinkDecorator)
             {
                 ((DamageLinkDecorator)game1.link).RemoveDecorator();
@@ -164,7 +166,7 @@ namespace Sprint2_Attempt3.Dungeon
                 }
                 InventoryController.VisitRoom(roomNumber);
             }
-
+            /*
             foreach (IGameObject obj in gameObjectLists[roomNumber])
             {
                 if (obj is IEnemy)
@@ -173,11 +175,12 @@ namespace Sprint2_Attempt3.Dungeon
                 }
                 else if (obj is IItem)
                 {
-                   // if (((IItem)obj).exists)
+                    if (((IItem)obj).exists)
                         ((IItem)obj).Spawn();
                    
                 }
             }
+            */
             if (game1.link is DamageLinkDecorator)
             {
                 ((DamageLinkDecorator)game1.link).RemoveDecorator();
