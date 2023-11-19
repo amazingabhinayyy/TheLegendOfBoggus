@@ -18,7 +18,7 @@ Block,DiamondTile,83,,
 Block,DiamondTile,82,,
 Block,DiamondTile,81,,
 Block,DiamondTile,80,,
-Item,HeartContainer,602,220,FALSE
+Item,HeartContainer,602,250,FALSE
 Door,North,4,,
 Door,South,1,,
 Door,East,2,,

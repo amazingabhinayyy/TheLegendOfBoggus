@@ -56,7 +56,7 @@ namespace Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-                state.Draw(spriteBatch);
+            state.Draw(spriteBatch);
         }
         public Rectangle GetHitBox() {
             return new Rectangle((int)Position2.X, (int)Position2.Y, Globals.AquamentusFireball1.Width * (int)Globals.scale, Globals.AquamentusFireball1.Height * (int)Globals.scale);

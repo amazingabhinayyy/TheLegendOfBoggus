@@ -31,6 +31,7 @@ Block,BlueTile,56,,
 Block,BlueTile,58,,
 Block,BlueTile,60,,
 Block,BlueTile,61,,
+Item,Key,265,200,FALSE
 Block,BlueTile,63,,
 Block,BlueTile,68,,
 Block,BlueTile,72,,
@@ -44,8 +45,6 @@ Block,BlueTile,81,,
 Block,BlueTile,82,,
 Block,BlueTile,83,,
 Block,BlueTile,84,,
-Item,Key,0,0,FALSE
-Item,Heart,0,0,FALSE
 Door,North,1,,
 Door,South,0,,
 Door,East,4,,

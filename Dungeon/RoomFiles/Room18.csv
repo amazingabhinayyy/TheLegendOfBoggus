@@ -19,13 +19,11 @@ Block,BlueTile,59,,
 Block,BlueTile,62,,
 Block,BlueTile,63,,
 Block,BlueTile,64,,
+Item,Key,415,150,FALSE
 Block,BlueTile,69,,
 Block,BlueTile,70,,
 Block,BlueTile,71,,
 Item,Key,387,173,FALSE
-Item,Rupee,0,0,FALSE
-Item,Bomb,0,0,FALSE
-Item,Rupee,0,0,FALSE
 Door,North,4,,
 Door,South,1,,
 Door,East,4,,

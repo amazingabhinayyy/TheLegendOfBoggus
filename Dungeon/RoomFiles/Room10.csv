@@ -10,7 +10,7 @@ Block,DiamondTile,70,,
 Block,DiamondTile,71,,
 Item,Map,612,220,TRUE
 Door,North,0,,
-Door,South,3,,
+Door,South,5,,
 Door,East,1,,
 Door,West,0,,
 Enemy,Gel,4,,

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Keese;
@@ -6,14 +7,30 @@ using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Items.ItemClasses;
 using Sprint2_Attempt3.Player;
 using System;
+using System.Collections.Generic;
 
 namespace Sprint2_Attempt3.Dungeon.Rooms
 {
     public class Room6 : RoomSecondary
     {
-        private Boolean spawn;
-        public Room6(Game1 game1) : base(game1, 5) { 
-            spawn = UniqueEventsForRooms;
+        private static bool keySpawned;
+        private static List<IEnemy> enemies;
+        private static Key key;
+        public Room6(Game1 game1) : base(game1, 5) 
+        {
+            keySpawned = false;
+            enemies = new List<IEnemy>();
+            foreach (IGameObject obj in gameObjectLists[roomNumber])
+            {
+                if (obj is IEnemy)
+                {
+                    enemies.Add((IEnemy)obj);
+                }
+                else if (obj is Key)
+                {
+                    key = (Key)obj;
+                }
+            }
         }
         public override void SwitchToNorthRoom()
         {
@@ -35,46 +52,13 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             TransitionHandler.Instance.Start = true;
             TransitionHandler.Instance.Transition(this, new Room5(game1));
         }
-        public override void Update()
+        public override void RoomConditionCheck()
         {
-            if (EnemiesKilledList[roomNumber] >= 5 && spawn)
+            if (!keySpawned && allEnemiesKilledInRoom(enemies))
             {
-                gameObjectLists[roomNumber].Add(new Key(new Vector2(Globals.FloorGrid[19].X + Globals.FloorGrid[19].Width / 4, Globals.FloorGrid[19].Y), true));
-                spawn = false;
-                UniqueEventsForRooms = spawn;
-
-            }
-            if (!TransitionHandler.Instance.Start)
-            {
-                collisionDetector.Update();
-
-                for (int i = 0; i < gameObjectLists[roomNumber].Count; i++)
-                {
-                    IGameObject obj = gameObjectLists[roomNumber][i];
-                    if (obj is IEnemy)
-                    {
-                        if (!spawned)
-                        {
-                            ((IEnemy)obj).Spawn();
-                        }
-                        if (!ClockUsed || ((IEnemy)obj).State is DeathAnimationState)
-                            ((IEnemy)obj).Update();
-
-                    }
-                    else if (obj is IItem)
-                    {
-                        ((IItem)obj).Update();
-                        if (((IItem)obj).exists)
-                        {
-                            ((IItem)obj).Spawn();
-                        }
-                    }
-                }
-                spawned = true;
-
-                game1.link.Update();
+                key.Spawn();
+                keySpawned = true;
             }
         }
-
     }
 }

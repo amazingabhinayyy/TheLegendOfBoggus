@@ -19,6 +19,7 @@ namespace Sprint2_Attempt3.Dungeon.Doors
         public bool IsWalkable { get; private set; }
         public bool IsLocked { get; private set; }
         public bool IsDiamondLocked { get; private set; }
+        public bool IsBombWall { get; private set; }
         protected static Dictionary<int, Action> actions;
         public DoorSecondary() {
             DoorExists = true;
@@ -27,7 +28,9 @@ namespace Sprint2_Attempt3.Dungeon.Doors
                 { 1, () => { Close(); } },
                 { 2, () => { DiamondLock(); } },
                 { 3, () => { Damage(); } },
-                { 4, () => { NoDoor(); } }
+                { 4, () => { NoDoor(); } },
+                { 5, () => { BombWall(); } }
+
             };
         }
         public void Update() { }
@@ -37,14 +40,17 @@ namespace Sprint2_Attempt3.Dungeon.Doors
             IsWalkable = false;
             IsLocked = true;
             IsDiamondLocked = false;
+            IsBombWall = false;
         }
 
         public void Damage()
         {
+            DoorExists = true;
             sourceRectangle.X = 358;
             IsWalkable = true;
             IsLocked = false;
             IsDiamondLocked = false;
+            IsBombWall = false;
         }
 
         public void DiamondLock()
@@ -53,6 +59,7 @@ namespace Sprint2_Attempt3.Dungeon.Doors
             IsWalkable = false;
             IsLocked = false;
             IsDiamondLocked = true;
+            IsBombWall = false;
         }
 
         public void Open()
@@ -61,6 +68,7 @@ namespace Sprint2_Attempt3.Dungeon.Doors
             IsWalkable = true;
             IsLocked = false;
             IsDiamondLocked = false;
+            IsBombWall = false;
         }
 
         public void NoDoor()
@@ -69,6 +77,16 @@ namespace Sprint2_Attempt3.Dungeon.Doors
             IsWalkable = false;
             IsLocked = false;
             IsDiamondLocked = false;
+            IsBombWall = false;
+        }
+        public void BombWall()
+        {
+            sourceRectangle.X = 358;
+            DoorExists = false;
+            IsWalkable = false;
+            IsLocked = false;
+            IsDiamondLocked = false;
+            IsBombWall = true;
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)

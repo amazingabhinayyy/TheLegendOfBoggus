@@ -12,13 +12,25 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
 {
     public class Room9 : RoomSecondary
     {
-        //private Boolean spawn = varHoldingTrue;
-        //private Boolean notMovedYet = varHoldingTrue;
-        private Boolean spawn;
-        private Boolean notMovedYet = true;
-        public Room9(Game1 game1) : base(game1, 8) {
-            spawn = UniqueEventsForRooms;
+        private static bool doorOpen;
+        private static IMovingBlock movingBlock;
+        private static WestDoor diamondDoor;
+        public Room9(Game1 game1) : base(game1, 8)
+        {
+            doorOpen = false;
+            foreach (IGameObject obj in GameObjectLists[roomNumber])
+            {
+                if (obj is IMovingBlock)
+                {
+                    movingBlock = (IMovingBlock)obj;
+                }
+                else if (obj is WestDoor)
+                {
+                    diamondDoor = (WestDoor)obj;
+                }
+            }
         }
+
 
         public override void SwitchToSouthRoom()
         {
@@ -35,70 +47,13 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             TransitionHandler.Instance.Start = true;
             TransitionHandler.Instance.Transition(this, new Room8(game1)); 
         }
-
-        public override void Update()
+        public override void RoomConditionCheck()
         {
-            
-
-                for(int index = 0; index < GameObjectLists[roomNumber].Count; index++)
-                {
-                    if (GameObjectLists[roomNumber][index] is IMovingBlock)
-                    {
-                        if (((IMovingBlock)GameObjectLists[roomNumber][index]).Moved)
-                        {
-                            int index2 = 0;
-                            while (spawn)
-                            {
-                                if (GameObjectLists[roomNumber][index2] is IDoor)
-                                {
-                                    IDoor door = (IDoor)GameObjectLists[roomNumber][index2];
-                                    if (door.GetHitBox().Equals(Globals.WestDoorPosition))
-                                    {
-
-                                        ((IDoor)GameObjectLists[roomNumber][index2]).Open();
-                                        spawn = false;
-                                        UniqueEventsForRooms = spawn;
-                                    }
-                                }
-                                index2++;
-                            }
-                        }
-                        
-                    }
-                }
-
-            
-            if (!TransitionHandler.Instance.Start)
+            if (!doorOpen && movingBlock.Moved)
             {
-                collisionDetector.Update();
-
-                for (int i = 0; i < gameObjectLists[roomNumber].Count; i++)
-                {
-                    IGameObject obj = gameObjectLists[roomNumber][i];
-                    if (obj is IEnemy)
-                    {
-                        if (!spawned)
-                        {
-                            ((IEnemy)obj).Spawn();
-                        }
-                        if (!ClockUsed || ((IEnemy)obj).State is DeathAnimationState)
-                            ((IEnemy)obj).Update();
-
-                    }
-                    else if (obj is IItem)
-                    {
-                        ((IItem)obj).Update();
-                        if (((IItem)obj).exists)
-                        {
-                            ((IItem)obj).Spawn();
-                        }
-                    }
-                }
-                spawned = true;
-
-                game1.link.Update();
+                diamondDoor.Open();
+                doorOpen = true;
             }
         }
-
     }
 }
