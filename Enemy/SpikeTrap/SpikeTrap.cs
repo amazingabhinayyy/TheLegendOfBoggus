@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Enemy.SpikeTrap;
 using Sprint2_Attempt3.Player.LinkStates;
@@ -16,24 +17,27 @@ namespace Sprint2_Attempt3.Enemy.SpikeTrap
         protected bool changeUp;
         protected bool changeDown;
         protected bool start;
+        public ISpikeTrapState state { get; set; }
         public SpikeTrap(int x, int y)
         {
             this.X = x;
             this.Y = y;
             spawnPoint = new Vector2(x, y);
-            State = new IdleState(this);
+            state = new IdleState(this);
         }
         public override void Update() {
-            State.Update();
+            state.Update();
+            
             if(this.X == spawnPoint.X && this.Y == spawnPoint.Y)
             {
                 BecomeIdle();
                 start = true;
                 
             }
+            
         }
         public override void Generate() {
-            State = new MovingUpSpikeTrapState(this);
+            state = new IdleState(this);
         }
         public override void Stun()
         {
@@ -41,10 +45,12 @@ namespace Sprint2_Attempt3.Enemy.SpikeTrap
         }
         public void BecomeIdle()
         {
-            State = new IdleState(this);
+            state.BecomeIdle();
         }
         public override void MoveUp()
         {
+            state.MoveUp();
+            /*
             if (start)
             {
                 State = new MovingUpSpikeTrapState(this);
@@ -58,9 +64,12 @@ namespace Sprint2_Attempt3.Enemy.SpikeTrap
                 changeVertical = false;
                 changeUp= false;
             }
+            */
         }
         public override void MoveDown()
         {
+            state.MoveDown();
+            /*
             if (start)
             {
                 State = new MovingDownSpikeTrapState(this);
@@ -75,9 +84,12 @@ namespace Sprint2_Attempt3.Enemy.SpikeTrap
                 changeVertical = false;
                 changeUp = false;
             }
+            */
         }
         public override void MoveLeft()
         {
+            state.MoveLeft();
+            /*
             if (start)
             {
                 State = new MovingLeftSpikeTrapState(this);
@@ -92,10 +104,12 @@ namespace Sprint2_Attempt3.Enemy.SpikeTrap
                 changeVertical = false;
                 changeLeft= false;
             }
-
+            */
         }
         public override void MoveRight()
         {
+            state.MoveRight();
+            /*
             if (start)
             {
                 State = new MovingRightSpikeTrapState(this);
@@ -110,6 +124,11 @@ namespace Sprint2_Attempt3.Enemy.SpikeTrap
                 changeVertical = true;
                 changeRight = false;
             }
+            */
+        }
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            state.Draw(spriteBatch);
         }
     }
 }

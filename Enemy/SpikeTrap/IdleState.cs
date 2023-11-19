@@ -6,7 +6,7 @@ using System;
 
 namespace Sprint2_Attempt3.Enemy.SpikeTrap
 {
-    internal class IdleState : IEnemyState
+    internal class IdleState : ISpikeTrapState
     {
         private SpikeTrap spikeTrap;
         private IEnemySprite sprite;
@@ -21,21 +21,22 @@ namespace Sprint2_Attempt3.Enemy.SpikeTrap
         public void ChangeDirection()
         {
         }
+        public void BecomeIdle() { }
         public void MoveLeft()
         {
-            spikeTrap.State = new MovingLeftSpikeTrapState(spikeTrap);
+            spikeTrap.state = new MovingLeftSpikeTrapState(spikeTrap);
         }
         public void MoveRight()
         {
-            spikeTrap.State = new MovingRightSpikeTrapState(spikeTrap);
+            spikeTrap.state = new MovingRightSpikeTrapState(spikeTrap);
         }
         public void MoveUp()
         {
-            spikeTrap.State = new MovingUpSpikeTrapState(spikeTrap);
+            spikeTrap.state = new MovingUpSpikeTrapState(spikeTrap);
         }
         public void MoveDown()
         {
-            spikeTrap.State = new MovingDownSpikeTrapState(spikeTrap);
+            spikeTrap.state = new MovingDownSpikeTrapState(spikeTrap);
         }
         public void ChangeAttackedStatus() {
 

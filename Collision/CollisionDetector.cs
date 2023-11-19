@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.SpikeTrap;
+using Sprint2_Attempt3.Enemy.Hand;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -22,9 +23,9 @@ namespace Sprint2_Attempt3.Collision
             Rectangle linkRectangle = link.GetHitBox();
             bool ChangedRooms = false;
             Rectangle collisionRectangle = obj.GetHitBox();
-            if(obj is SpikeTrap)
+            if(obj is SpikeTrap || obj is Hand)
             {
-                SpikeTrapHandler.HandleSpikeTrap((SpikeTrap)obj, link);
+                TripwireHandler.HandleTripwire((IEnemy)obj, link);
             }
             if (collisionRectangle.Intersects(linkRectangle))
             {
