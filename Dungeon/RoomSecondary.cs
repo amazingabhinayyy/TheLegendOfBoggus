@@ -212,10 +212,12 @@ namespace Sprint2_Attempt3.Dungeon
                     else if (obj is IItem)
                     {
                         ((IItem)obj).Update();
+                        /*
                         if (((IItem)obj).exists)
                         {
                             ((IItem)obj).Spawn();
                         }
+                        */
                     }
                     else if (obj is IBlock)
                         ((IBlock)obj).Update();
