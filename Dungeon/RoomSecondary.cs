@@ -284,6 +284,7 @@ namespace Sprint2_Attempt3.Dungeon
             }
             return enemiesKilled;
         }
+
         public virtual void SwitchToNorthRoom() { }
         public virtual void SwitchToSouthRoom() { }
         public virtual void SwitchToEastRoom() { }

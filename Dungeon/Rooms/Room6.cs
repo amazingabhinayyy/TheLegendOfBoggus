@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Sprint2_Attempt3.Collision;
+using Sprint2_Attempt3.Dungeon.Doors;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Items;
@@ -36,6 +37,18 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         {
             TransitionHandler.Instance.Start = true;
             TransitionHandler.Instance.Transition(this, new Room10(game1));
+            for(int i = 0; i < gameObjectLists[9].Count; i++)
+            {
+                IGameObject obj = gameObjectLists[9][i];
+                if(obj is SouthDoor)
+                {
+                    if (((SouthDoor)obj).IsBombWall)
+                    {
+                        ((SouthDoor)obj).Damage();
+                    }
+                    break;
+                }
+            }
         }
         public override void SwitchToSouthRoom()
         {

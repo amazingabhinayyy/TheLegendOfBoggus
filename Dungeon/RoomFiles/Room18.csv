@@ -25,7 +25,7 @@ Block,BlueTile,70,,
 Block,BlueTile,71,,
 Item,Key,387,173,FALSE
 Door,North,4,,
-Door,South,1,,
+Door,South,0,,
 Door,East,4,,
 Door,West,1,,
 Enemy,Goriya,9,,

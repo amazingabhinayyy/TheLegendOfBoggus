@@ -1,4 +1,5 @@
 ﻿using Sprint2_Attempt3.Collision;
+using Sprint2_Attempt3.Dungeon.Doors;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Player;
@@ -19,6 +20,18 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         {
             TransitionHandler.Instance.Start = true;
             TransitionHandler.Instance.Transition(this, new Room6(game1));
+            for (int i = 0; i < gameObjectLists[5].Count; i++)
+            {
+                IGameObject obj = gameObjectLists[5][i];
+                if (obj is NorthDoor)
+                {
+                    if (((NorthDoor)obj).IsBombWall)
+                    {
+                        ((NorthDoor)obj).Damage();
+                    }
+                    break;
+                }
+            }
         }
         public override void SwitchToEastRoom()
         {

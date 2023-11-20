@@ -37,6 +37,18 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         {
             TransitionHandler.Instance.Start = true;
             TransitionHandler.Instance.Transition(this, new Room9(game1));
+            for (int i = 0; i < gameObjectLists[8].Count; i++)
+            {
+                IGameObject obj = gameObjectLists[8][i];
+                if (obj is SouthDoor)
+                {
+                    if (((SouthDoor)obj).IsLocked)
+                    {
+                        ((SouthDoor)obj).Open();
+                    }
+                    break;
+                }
+            }
         }
         public override void SwitchToEastRoom()
         {

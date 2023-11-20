@@ -20,7 +20,7 @@ Block,DiamondTile,81,,
 Block,DiamondTile,80,,
 Item,HeartContainer,602,250,FALSE
 Door,North,4,,
-Door,South,1,,
+Door,South,0,,
 Door,East,2,,
 Door,West,4,,
 Enemy,Aquamentus,34,,
