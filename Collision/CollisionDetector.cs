@@ -158,9 +158,5 @@ namespace Sprint2_Attempt3.Collision
                 }
             }
         }
-
-        public void Update()
-        {
-        }
     }
 }

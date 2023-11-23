@@ -72,8 +72,6 @@ namespace Sprint2_Attempt3.Dungeon
         {
             currentRoom = room1;
             nextRoom = room2;
-       
-            
         }
         public void Draw(SpriteBatch spriteBatch)
         {
