@@ -57,19 +57,6 @@ namespace Sprint2_Attempt3.Items
                 }
             }
         }
-        public void Draw(SpriteBatch spriteBatch) {
-            if (exists)
-            {
-                if (!spawned)
-                {
-                    ((IAnimatedItemSprite)sprite).Draw(spriteBatch, Position, sourceRectangle);
-                    count--;
-                }
-                else {
-                    sprite.Draw(spriteBatch, Position);
-                }
-            }
-        }
         public Rectangle GetHitBox()
         {
             return Position;

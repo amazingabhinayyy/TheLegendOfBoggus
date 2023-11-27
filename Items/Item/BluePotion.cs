@@ -27,6 +27,7 @@ namespace Sprint2_Attempt3.Items.ItemClasses
                 sprite = ItemSpriteFactory.Instance.CreateBluePotionSprite();
                 spawned = true;
             }
+        }
         public override void Collect()
         {
             base.Collect();

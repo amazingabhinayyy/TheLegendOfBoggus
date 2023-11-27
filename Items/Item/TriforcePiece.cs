@@ -46,6 +46,7 @@ namespace Sprint2_Attempt3.Items.ItemClasses
                     count--;
                 }
             }
+        }
         public override void Collect()
         {
             base.Collect();

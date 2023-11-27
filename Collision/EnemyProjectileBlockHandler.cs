@@ -19,7 +19,7 @@ namespace Sprint2_Attempt3.Collision
             }
             if (projectile is AquamentusFireball)
             {
-                CollisionDetector.GameObjectList.Remove(projectile);
+                CollisionManager.GameObjectList.Remove(projectile);
 
                 ((AquamentusFireball)projectile).GenerateRight();
             }

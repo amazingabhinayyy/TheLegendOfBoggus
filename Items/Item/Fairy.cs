@@ -32,11 +32,7 @@ namespace Sprint2_Attempt3.Items.ItemClasses
             randMovementX = 0;
             randMovementY = 0;
         }
-        public override void Collect()
-        {
-            base.Collect();
-            SoundFactory.PlaySound(SoundFactory.Instance.getItem);
-        }
+
         public override void Update()
         {
             if (this.count == 0)
@@ -68,6 +64,7 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         {
             base.Collect();
             InventoryController.UseItem("Fairy");
+            SoundFactory.PlaySound(SoundFactory.Instance.getItem);
             if (changeMovementTimer <= 0)
             {
                 randMovementX = new Random().Next(-1, 2) * 2;

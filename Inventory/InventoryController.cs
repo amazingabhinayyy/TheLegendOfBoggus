@@ -45,7 +45,7 @@ namespace Sprint2_Attempt3.Inventory
         private static Rectangle CursorDestRectangle = new Rectangle(destRectangle.X + 402, destRectangle.Y + 145, 49, 49);
         private static Rectangle TriforceDestRectangle = new Rectangle(destRectangle.X + 210, destRectangle.Y + 618, 9, 9);
 
-        private static Rectangle blackSrcRectangle = new Rectangle(315,170, 10,10);
+        private static Rectangle blackSrcRectangle = new Rectangle(315, 170, 10,10);
 
         private static Rectangle BoomerangDestRectangle = new Rectangle(destRectangle.X + 415, destRectangle.Y + 145, 26, 49);
         private static Rectangle BombDestRectangle = new Rectangle(destRectangle.X + 489, destRectangle.Y + 145, 26, 49);

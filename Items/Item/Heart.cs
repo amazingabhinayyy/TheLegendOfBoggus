@@ -55,7 +55,7 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         public override void Collect()
         {
             exists = false;
-            CollisionDetector.GameObjectList.Remove(this);
+            CollisionManager.GameObjectList.Remove(this);
             SoundFactory.PlaySound(SoundFactory.Instance.getHeart);
             if (InventoryController.heartContainers - InventoryController.hearts < 0) {
                 if (InventoryController.heartContainers - InventoryController.hearts < -.5)

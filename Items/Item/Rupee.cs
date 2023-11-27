@@ -52,7 +52,7 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         public override void Collect()
         {
             exists = false;
-            CollisionDetector.GameObjectList.Remove(this);
+            CollisionManager.GameObjectList.Remove(this);
             if (InventoryController.RupeeCount < 99)
                 InventoryController.RupeeCount++;
             
