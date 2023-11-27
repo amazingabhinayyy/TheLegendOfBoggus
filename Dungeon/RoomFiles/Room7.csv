@@ -3,7 +3,7 @@ Block,DiamondTile,22,,
 Block,DiamondTile,63,,
 Block,DiamondTile,70,,
 Item,Compass,608,222,TRUE
-Door,North,4,,
+Door,North,5,,
 Door,South,4,,
 Door,East,4,,
 Door,West,0,,

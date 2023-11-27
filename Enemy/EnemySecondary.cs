@@ -57,18 +57,15 @@ namespace Sprint2_Attempt3.Enemy
         {
             if (invinciblityTimer == 0)
             {
-                invinciblityTimer = 60;
+                invinciblityTimer = 40;
                 this.ChangeAttackedStatus();
                 health -= damage;
+                SoundFactory.PlaySound(SoundFactory.Instance.enemyHit);
 
                 if (health <= 0)
                 {
                     Kill();
                 }
-            }
-            else
-            {
-                SoundFactory.PlaySound(SoundFactory.Instance.enemyHit);
             }
         }
         

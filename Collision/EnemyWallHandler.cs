@@ -35,32 +35,30 @@ namespace Sprint2_Attempt3.Collision
             }
             if (check)
             {
+                if (enemy is SpikeTrap)
+                    ((SpikeTrap)enemy).BecomeIdle();
                 if (side is BottomCollision)
                 {
                     enemy.Y = wall.Bottom;
                     if (enemy is SpikeTrap)
-                        enemy.MoveDown();
+                    {
+                        //enemy.Y += 15;
+                    }
                 }
                 else if (side is LeftCollision)
                 {
                     enemy.X = wall.Left - enemy.Position.Width - 1;
-                    if (enemy is SpikeTrap)
-                        enemy.MoveLeft();
                 }
                 else if (side is RightCollision)
                 {
                     enemy.X = wall.Right + 1;
-                    if (enemy is SpikeTrap)
-                        enemy.MoveRight();
                 }
                 else
                 {
                     enemy.Y = wall.Top - enemy.Position.Height - 1;
-                    if (enemy is SpikeTrap)
-                        enemy.MoveUp();
                 }
-                
-               //enemy.ChangeDirection(); changes enemies to move again, could be fun?
+
+                //enemy.ChangeDirection(); changes enemies to move again, could be fun?
             }
         }
     }

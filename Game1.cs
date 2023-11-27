@@ -28,12 +28,12 @@ namespace Sprint2_Attempt3
         public bool gameStarted { get; set; }
         public bool linkDead { get; set; }
         public bool gamePaused { get; set; }
+        public bool deathAnimationActive { get; set; }
 
         private GameTime gameTime;
         public GameTime Gametime { get { return gameTime; } }
 
-        //public CollisionDetector collisionDetector;
-        public CollisionManager collisionDetector;
+        public CollisionManager collisionManager;
         private StartScreenState startScreen;
         private DeathScreenState deathScreen;
         private PauseScreenState pauseScreen;
@@ -73,7 +73,7 @@ namespace Sprint2_Attempt3
             RoomGenerator.Instance.LoadAllFiles();
             InventoryTexture = Content.Load<Texture2D>("Inventory");
             link = new Link(this);
-            collisionDetector = new CollisionManager(this, (Link)link);
+            collisionManager = new CollisionManager(this, (Link)link);
             gameStarted = false;
             linkDead = false;
             inventoryController = new InventoryController(this);
@@ -83,21 +83,34 @@ namespace Sprint2_Attempt3
             startScreen = new StartScreenState(this);
             deathScreen = new DeathScreenState(this);
             pauseScreen = new PauseScreenState(this);
+            deathAnimationActive = false;
         }
 
         protected override void UnloadContent()
         {
         }
+        public void Reset()
+        {
+            link = new Link(this);
+            linkDead = false;
+            deathAnimationActive = false;
+            gamePaused = false;
+            collisionManager = new CollisionManager(this, (Link)link);
+            room = new Room1(this);
+        }
 
         protected override void Update(GameTime gameTime)
         {
             keyController.Update(gameTime);
-            if (!gamePaused && gameStarted)
+            if (!gamePaused && !linkDead && gameStarted)
             {
-                mouseController.Update(gameTime);
-                inventoryController.Update();
-                collisionDetector.Update();
                 room.Update();
+                if (!deathAnimationActive)
+                {
+                    inventoryController.Update();
+                    collisionManager.Update();
+                    //mouseController.Update(gameTime);
+                }
             }
             base.Update(gameTime);
         }

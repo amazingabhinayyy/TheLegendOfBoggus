@@ -42,21 +42,13 @@ namespace Sprint2_Attempt3.Player
         public void Knockback(ICollision side)
         {
             if (side is BottomCollision)
-            {
                 State = new KnockbackDownLinkState(this);
-            }
             else if (side is LeftCollision)
-            {
                 State = new KnockbackLeftLinkState(this);
-            }
             else if (side is RightCollision)
-            {
                 State = new KnockbackRightLinkState(this);
-            }
             else
-            {
                 State = new KnockbackUpLinkState(this);
-            }
         }
         public void BecomeIdle()
         {
@@ -135,9 +127,7 @@ namespace Sprint2_Attempt3.Player
             if (!linkDead)
             {
                 for (int c = 0; c < Items.Count; c++)
-                {
                     Items[c].Update();
-                }
             }
         }
         public void Draw(SpriteBatch _spriteBatch, Color color)
@@ -147,19 +137,13 @@ namespace Sprint2_Attempt3.Player
             {
                 item.Draw(_spriteBatch);
             }
-
         }
         public Rectangle GetHitBox()
         {
             if(State is not Captured)
-            {
                 return new Rectangle((int)position.X, (int)position.Y, 15 * 3, 15 * 3);
-            }
             else
-            {
-                return new Rectangle(0, 0, 0, 0);
-            }
-            
+                return new Rectangle(0, 0, 0, 0);          
         }
         public void FinishCapture()
         {

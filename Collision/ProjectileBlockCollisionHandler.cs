@@ -30,7 +30,7 @@ namespace Sprint2_Attempt3.Collision
             }
             else if (projectile is BombExplosion && block is IDoor) {
                 IDoor door = (IDoor)block;
-                if (door.IsDiamondLocked) {
+                if (door.IsBombWall) {
                     door.Damage();
                 }
             }

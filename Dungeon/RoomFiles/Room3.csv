@@ -1,4 +1,5 @@
-﻿Block,DiamondTile,27,,
+﻿Item,Key,512,360,FALSE
+Block,DiamondTile,27,,
 Block,DiamondTile,28,,
 Block,DiamondTile,33,,
 Block,DiamondTile,34,,
@@ -10,9 +11,6 @@ Block,DiamondTile,51,,
 Block,DiamondTile,52,,
 Block,DiamondTile,58,,
 Block,DiamondTile,57,,
-Item,Key,0,0,FALSE
-Item,Rupee,0,0,FALSE
-Item,Rupee,0,0,FALSE
 Door,North,4,,
 Door,South,4,,
 Door,East,4,,

@@ -7,7 +7,7 @@ namespace Sprint2_Attempt3.Player.LinkStates
     {
 
         private Link link;
-        private int timer = 60;
+        private int timer = 440;
         public CollectTriForceState(Link link)
         {
             this.link = link;

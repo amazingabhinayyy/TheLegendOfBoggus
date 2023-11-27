@@ -18,6 +18,7 @@ namespace Sprint2_Attempt3.Items
         public bool spawned { get; set; }
         public bool exists { get; set; }
         public Rectangle position { get { return Position; } }
+        private Rectangle noHitBox = new Rectangle(0, 0, 0, 0);
 
         public ItemSecondary() {
             count = 25;
@@ -59,7 +60,14 @@ namespace Sprint2_Attempt3.Items
         }
         public Rectangle GetHitBox()
         {
-            return Position;
+            if (spawned)
+            {
+                return Position;
+            }
+            else
+            {
+                return noHitBox;
+            }
         }
 
     }

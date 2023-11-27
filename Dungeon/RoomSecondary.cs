@@ -13,6 +13,7 @@ using Sprint2_Attempt3.Player;
 using Sprint2_Attempt3.WallBlocks;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 
 namespace Sprint2_Attempt3.Dungeon
@@ -34,7 +35,7 @@ namespace Sprint2_Attempt3.Dungeon
         public static bool ClockUsed { get; set; } = false;
         protected IDungeonRoom room;
         protected Game1 game1;
-        protected CollisionManager collisionDetector;
+        protected CollisionManager collisionManager;
 
         public RoomSecondary(Game1 game, int roomNum) {
             this.game1 = game;
@@ -52,24 +53,8 @@ namespace Sprint2_Attempt3.Dungeon
                 {
                     gameObjectLists[roomNumber].AddRange(Globals.WallBlocks);
                 }
-                MapController.VisitRoom(roomNum);
-            }
-
-            foreach (IGameObject obj in gameObjectLists[roomNumber])
-            {
-                if (obj is IEnemy)
-                {
-                    ((IEnemy)obj).Spawn();
-                }
-                else if (obj is IItem)
-                {
-                    if (((IItem)obj).exists)
-                    {
-                        ((IItem)obj).Spawn();
-                    }
-                }
-            }
-               
+                InventoryController.VisitRoom(roomNum);
+            }              
             
             if (game1.link is DamageLinkDecorator)
             {
@@ -77,7 +62,7 @@ namespace Sprint2_Attempt3.Dungeon
             }
 
             ClockUsed = false;
-            collisionDetector = new CollisionManager(game1, game1.link);
+            collisionManager = new CollisionManager(game1, game1.link);
         
        
             if (TransitionHandler.Instance.TransitionGameObjectList.Count == 0)
@@ -114,20 +99,6 @@ namespace Sprint2_Attempt3.Dungeon
                 MapController.VisitRoom(roomNumber);
             }
 
-            foreach (IGameObject obj in gameObjectLists[roomNumber])
-            {
-                if (obj is IEnemy)
-                {
-                    ((IEnemy)obj).Spawn();
-                }
-                else if (obj is IItem)
-                {
-                    if (((IItem)obj).exists)
-                    {
-                        ((IItem)obj).Spawn();
-                    }
-                }
-            }
             if (game1.link is DamageLinkDecorator)
             {
                 ((DamageLinkDecorator)game1.link).RemoveDecorator();
@@ -164,21 +135,7 @@ namespace Sprint2_Attempt3.Dungeon
                 }
                 MapController.VisitRoom(roomNumber);
             }
-
-            foreach (IGameObject obj in gameObjectLists[roomNumber])
-            {
-                if (obj is IEnemy)
-                {
-                    ((IEnemy)obj).Spawn();
-                }
-                else if (obj is IItem)
-                {
-                    if (((IItem)obj).exists)
-                    {
-                        ((IItem)obj).Spawn();
-                    }
-                }
-            }
+            
             if (game1.link is DamageLinkDecorator)
             {
                 ((DamageLinkDecorator)game1.link).RemoveDecorator();
@@ -192,7 +149,8 @@ namespace Sprint2_Attempt3.Dungeon
         public virtual void Update() {
             if (!TransitionHandler.Instance.Start)
             {
-                collisionDetector.Update();
+                if(!game1.deathAnimationActive)
+                    collisionManager.Update();
 
                 for (int i = 0; i < gameObjectLists[roomNumber].Count; i++)
                 {
@@ -205,23 +163,21 @@ namespace Sprint2_Attempt3.Dungeon
                         }
                         if (!ClockUsed || ((IEnemy)obj).State is DeathAnimationState)
                             ((IEnemy)obj).Update();
-                        
+
                     }
                     else if (obj is IItem)
                     {
                         ((IItem)obj).Update();
-                        if (((IItem)obj).exists)
-                        {
-                            ((IItem)obj).Spawn();
-                        }
                     }
+                    else if (obj is IBlock)
+                        ((IBlock)obj).Update();
                 }
                 spawned = true;
 
                 game1.link.Update();
+                RoomConditionCheck();
             }
         }
-
         public void Draw(SpriteBatch spriteBatch, Color color) {
             if (TransitionHandler.Instance.Start)
             {
@@ -229,8 +185,6 @@ namespace Sprint2_Attempt3.Dungeon
             }
             else
             {
-                //room.Draw(spriteBatch);
-
                 room.Draw(spriteBatch, color);
 
                 foreach (IGameObject obj in gameObjectLists[roomNumber])
@@ -249,7 +203,6 @@ namespace Sprint2_Attempt3.Dungeon
                 game1.link.Draw(spriteBatch, Color.White);
             }
         }
-
         public static void ResetRooms() {
             enemiesKilledList = new int[18];
             for (int i = 0; i < 18; i++)
@@ -261,10 +214,6 @@ namespace Sprint2_Attempt3.Dungeon
                     gameObjectLists[i].AddRange(Globals.Room16WallBlocks);
             }
         }
-
-
-
-
         public static int GetCurrentRoomNumber() { 
             return roomNumber;
         }
@@ -276,12 +225,27 @@ namespace Sprint2_Attempt3.Dungeon
         {
             game1.room = room;
         }
+        protected static bool allEnemiesKilledInRoom(List<IEnemy> enemies)
+        {
+            bool enemiesKilled = true;
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                if (enemies[i].exists)
+                {
+                    enemiesKilled = false;
+                    break;
+                }
+            }
+            return enemiesKilled;
+        }
+
         public virtual void SwitchToNorthRoom() { }
         public virtual void SwitchToSouthRoom() { }
         public virtual void SwitchToEastRoom() { }
         public virtual void SwitchToWestRoom() { }
         public virtual void SwitchToLowerRoom() { }
         public virtual void SwitchToUpperRoom() { }
+        public virtual void RoomConditionCheck() { }
 
     }
 }
