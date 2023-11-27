@@ -14,7 +14,7 @@ namespace Sprint2_Attempt3.CommandClasses
 
         public void Execute()
         {
-            InventoryController.UseBItem();
+            Menu.UseBItem();
         }
     }
 }

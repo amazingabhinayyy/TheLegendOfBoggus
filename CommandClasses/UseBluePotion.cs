@@ -16,8 +16,8 @@ namespace Sprint2_Attempt3.CommandClasses
 
         public void Execute()
         {
-            float difference = InventoryController.GetCount("HeartContainer") - InventoryController.GetCount("Heart");
-            InventoryController.IncrementCount("Heart", difference);
+            float difference = InventoryController.heartContainers - InventoryController.hearts;
+            InventoryController.hearts += difference;
         }
     }
 }

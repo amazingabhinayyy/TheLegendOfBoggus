@@ -83,9 +83,8 @@ namespace Sprint2_Attempt3.Player
             State.Attack();
         }
         public void UseBomb()
-        {
-            if(InventoryController.GetCount("Bomb") > 0)
-                State.UseBomb();
+        { 
+            State.UseBomb();
         }
         public void UseArrow()
         {

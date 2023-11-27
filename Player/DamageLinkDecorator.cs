@@ -58,7 +58,7 @@ namespace Sprint2_Attempt3.Player
                         timer = 0;
                     }
                 }
-                else if (InventoryController.GetCount("Heart") <= 1)
+                else if (InventoryController.hearts <= 1)
                 {
                     SoundFactory.PlaySound(SoundFactory.Instance.lowHealth);
                 }

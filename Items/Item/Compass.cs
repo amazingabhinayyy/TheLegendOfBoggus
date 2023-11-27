@@ -33,7 +33,6 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         {
             base.Collect();
             SoundFactory.PlaySound(SoundFactory.Instance.getItem);
-            InventoryController.IncrementCount("TriforceMarker");
         }
     }
 }
