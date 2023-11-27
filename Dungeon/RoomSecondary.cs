@@ -53,7 +53,7 @@ namespace Sprint2_Attempt3.Dungeon
                 {
                     gameObjectLists[roomNumber].AddRange(Globals.WallBlocks);
                 }
-                InventoryController.VisitRoom(roomNum);
+                MapController.VisitRoom(roomNum);
             }              
             
             if (game1.link is DamageLinkDecorator)

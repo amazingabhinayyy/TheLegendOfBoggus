@@ -64,7 +64,6 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         {
             base.Collect();
             InventoryController.UseItem("Fairy");
-            SoundFactory.PlaySound(SoundFactory.Instance.getItem);
             if (changeMovementTimer <= 0)
             {
                 randMovementX = new Random().Next(-1, 2) * 2;

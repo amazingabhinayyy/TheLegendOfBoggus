@@ -33,7 +33,6 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         {
             base.Collect();
             InventoryController.UseItem("Clock");
-            SoundFactory.PlaySound(SoundFactory.Instance.getItem);
         }
     }
 }

@@ -28,10 +28,5 @@ namespace Sprint2_Attempt3.Items.ItemClasses
                 spawned = true;
             }
         }
-        public override void Collect()
-        {
-            base.Collect();
-            SoundFactory.PlaySound(SoundFactory.Instance.getItem);
-        }
     }
 }

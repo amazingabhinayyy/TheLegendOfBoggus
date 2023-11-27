@@ -119,8 +119,8 @@ namespace Sprint2_Attempt3.Inventory
 
         public void Draw(SpriteBatch spriteBatch) {
             menuSprite.Draw(spriteBatch, destRectangle);
-            if (LinkItems["Compass"].Count() > 0) { triforceSprite.Draw(spriteBatch, TriforceDestRectangle); }
             if (LinkItems["Map"].Count() > 0) { mapLayoutSprite.Draw(spriteBatch, DungeonMapDestRectangle); }
+            if (LinkItems["Compass"].Count() > 0) { triforceSprite.Draw(spriteBatch, TriforceDestRectangle); }
 
             Menu.Draw(spriteBatch);
             HealthController.DrawHearts(spriteBatch);

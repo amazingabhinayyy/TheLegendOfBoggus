@@ -49,7 +49,6 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         }
         public override void Collect()
         {
-            base.Collect();
             SoundFactory.PlaySound(SoundFactory.Instance.triforce);
         }
     }

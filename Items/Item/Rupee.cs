@@ -55,8 +55,6 @@ namespace Sprint2_Attempt3.Items.ItemClasses
             CollisionManager.GameObjectList.Remove(this);
             if (InventoryController.RupeeCount < 99)
                 InventoryController.RupeeCount++;
-            
-            SoundFactory.PlaySound(SoundFactory.Instance.getRupee);
         }
     }
 }
