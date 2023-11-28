@@ -51,7 +51,7 @@ namespace Sprint2_Attempt3
             base.Initialize();
             graphics.PreferredBackBufferHeight = Globals.ScreenHeight;
             graphics.ApplyChanges();
-            RoomGenerator.Instance.LoadAllFiles();
+            //RoomGenerator.Instance.LoadAllFiles();
         }
 
         protected override void LoadContent()
