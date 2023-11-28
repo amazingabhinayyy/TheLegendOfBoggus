@@ -10,24 +10,27 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
 {
     public class Room1 : RoomSecondary
     {
-        public Room1(Game1 game1): base(game1, 0) { }
+        public Room1(Game1 game1): base(game1, 0) 
+        {
+            roomLayout[11, 5] = this;
+        }
 
         public override void SwitchToNorthRoom() {
             
             TransitionHandler.Instance.Start = true;
             TransitionHandler.Instance.Transition(this, new Room4(game1));
-
+            mapY -= 1;
         }
         public override void SwitchToEastRoom() {
             TransitionHandler.Instance.Start = true;
             TransitionHandler.Instance.Transition(this, new Room3(game1));
-            
+            mapX += 1;
 
         }
         public override void SwitchToWestRoom() {
             TransitionHandler.Instance.Start = true;
             TransitionHandler.Instance.Transition(this, new Room2(game1));
-            
+            mapY -= 1;
         }
 
     }

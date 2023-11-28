@@ -17,6 +17,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         private static WestDoor diamondDoor;
         public Room9(Game1 game1) : base(game1, 8)
         {
+            roomLayout[8, 4] = this;
             doorOpen = false;
             foreach (IGameObject obj in GameObjectLists[roomNumber])
             {
@@ -48,16 +49,19 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                     break;
                 }
             }
+            mapY -= 1;
         }
         public override void SwitchToEastRoom()
         {
             TransitionHandler.Instance.Start = true;
             TransitionHandler.Instance.Transition(this, new Room10(game1));
+            mapX += 1;
         }
         public override void SwitchToWestRoom()
         {
             TransitionHandler.Instance.Start = true;
-            TransitionHandler.Instance.Transition(this, new Room8(game1)); 
+            TransitionHandler.Instance.Transition(this, new Room8(game1));
+            mapX -= 1;
         }
         public override void RoomConditionCheck()
         {

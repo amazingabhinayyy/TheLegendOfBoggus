@@ -19,6 +19,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         private static bool doorOpen;
         public Room5(Game1 game1) : base(game1, 4) 
         {
+            roomLayout[9, 4] = this;
             doorOpen = false;
             enemies = new List<IEnemy>();
             foreach(IGameObject obj in gameObjectLists[roomNumber])
@@ -49,11 +50,13 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                     break;
                 }
             }
+            mapY -= 1;
         }
         public override void SwitchToEastRoom()
         {
             TransitionHandler.Instance.Start = true;
             TransitionHandler.Instance.Transition(this, new Room6(game1));
+            mapX += 1;
         }
         public override void RoomConditionCheck()
         {

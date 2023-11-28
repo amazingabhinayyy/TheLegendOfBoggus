@@ -19,6 +19,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         private static Key key;
         public Room6(Game1 game1) : base(game1, 5) 
         {
+            roomLayout[9, 5] = this;
             keySpawned = false;
             enemies = new List<IEnemy>();
             foreach (IGameObject obj in gameObjectLists[roomNumber])
@@ -49,21 +50,25 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                     break;
                 }
             }
+            mapY -= 1;
         }
         public override void SwitchToSouthRoom()
         {
             TransitionHandler.Instance.Start = true;
             TransitionHandler.Instance.Transition(this, new Room4(game1));
+            mapY += 1;
         }
         public override void SwitchToEastRoom()
         {
             TransitionHandler.Instance.Start = true;
             TransitionHandler.Instance.Transition(this, new Room7(game1));
+            mapX += 1;
         }
         public override void SwitchToWestRoom()
         {
             TransitionHandler.Instance.Start = true;
             TransitionHandler.Instance.Transition(this, new Room5(game1));
+            mapX -= 1;
         }
         public override void RoomConditionCheck()
         {

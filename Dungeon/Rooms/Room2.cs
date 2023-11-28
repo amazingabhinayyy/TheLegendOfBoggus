@@ -18,6 +18,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         private static Key key;
         public Room2(Game1 game1) : base(game1, 1) 
         {
+            roomLayout[11, 4] = this;
             keySpawned = false;
             enemies = new List<IEnemy>();
             foreach (IGameObject obj in gameObjectLists[roomNumber])
@@ -37,7 +38,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         {
             TransitionHandler.Instance.Start = true;
             TransitionHandler.Instance.Transition(this, new Room1(game1));
-           
+            mapX += 1;
         }
         public override void RoomConditionCheck()
         {

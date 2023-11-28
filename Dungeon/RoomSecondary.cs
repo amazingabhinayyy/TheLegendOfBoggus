@@ -13,23 +13,25 @@ using Sprint2_Attempt3.Player;
 using Sprint2_Attempt3.WallBlocks;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
 
 namespace Sprint2_Attempt3.Dungeon
 {
     public abstract class RoomSecondary : IRoom
     {
-        protected static List<IGameObject>[] gameObjectLists = new List<IGameObject>[18];
+        protected static List<List<IGameObject>> gameObjectLists = new List<List<IGameObject>>(18);
         protected static int[] enemiesKilledList = new int[18];
-        protected static Boolean[] uniqueEventsForRooms = { true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true };
-        public static bool UniqueEventsForRooms { get { return uniqueEventsForRooms[roomNumber]; } set { uniqueEventsForRooms[roomNumber] = value; } }
+        protected static IRoom[,] roomLayout = new IRoom[12, 12];
+        protected static int mapY = 5;
+        protected static int mapX = 11;
+
+        //protected static Boolean[] uniqueEventsForRooms = { true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true };
+        //public static bool UniqueEventsForRooms { get { return uniqueEventsForRooms[roomNumber]; } set { uniqueEventsForRooms[roomNumber] = value; } }
         public static int[] EnemiesKilledList { get { return enemiesKilledList; } set { enemiesKilledList = value; } }
-        public List<IGameObject>[] GameObjectLists { get { return gameObjectLists; } set { gameObjectLists = value; } }
+        public List<List<IGameObject>> GameObjectLists { get { return gameObjectLists; } set { gameObjectLists = value; } }
         protected static int roomNumber;
 
-        private int enemyKillCount = 0;
-        public  int EnemyKillCount { get { return enemyKillCount; } set { enemyKillCount = value; } }
+        //private int enemyKillCount = 0;
+        //public  int EnemyKillCount { get { return enemyKillCount; } set { enemyKillCount = value; } }
         protected static Boolean varHoldingTrue = true;
         protected Boolean spawned = false;
         public static bool ClockUsed { get; set; } = false;
@@ -42,7 +44,14 @@ namespace Sprint2_Attempt3.Dungeon
             room = new DungeonRoom();
             roomNumber = roomNum;
             spawned = false;
-            
+           // mapX = 5;
+           // mapY = 11;
+
+            for(int i = 0; i < 18; i++)
+            {
+                gameObjectLists.Add(null);
+            }
+
             if (gameObjectLists[roomNumber] == null)
             {
                 
@@ -76,7 +85,7 @@ namespace Sprint2_Attempt3.Dungeon
         }
 
         public void SwitchToNextRoom() {
-            if (roomNumber < gameObjectLists.Length - 1)
+            if (roomNumber < gameObjectLists.Count - 1)
             {
                 roomNumber++;
             }
@@ -115,7 +124,7 @@ namespace Sprint2_Attempt3.Dungeon
         {
             if (roomNumber <= 0)
             {
-                roomNumber= gameObjectLists.Length-1;
+                roomNumber= gameObjectLists.Count-1;
             }
             else
             {

@@ -286,7 +286,8 @@ namespace Sprint2_Attempt3.Inventory
         }
 
         public static void VisitRoom(int i) {
-            LinkItems["UnvisitedRoom" + (i + 1).ToString()].DecrementCount();
+            if(i < 18)
+                LinkItems["UnvisitedRoom" + (i + 1).ToString()].DecrementCount();
         }
 
         public static void ShiftUp() {
@@ -393,7 +394,8 @@ namespace Sprint2_Attempt3.Inventory
         public void Draw(SpriteBatch spriteBatch) {
             spriteBatch.Draw(texture, destRectangle, sourceRectangle, Color.White);
 
-            LinkItems["PlayerMarker"].SetDestRectangle(MarkerDestRectangles[RoomSecondary.GetCurrentRoomNumber()]);
+            if(RoomSecondary.GetCurrentRoomNumber() < 18)
+                LinkItems["PlayerMarker"].SetDestRectangle(MarkerDestRectangles[RoomSecondary.GetCurrentRoomNumber()]);
             UpdateItemCounts();
             UpdateHearts();
             foreach (KeyValuePair<String, InventoryItem> pair in LinkItems)
