@@ -21,14 +21,14 @@ namespace Sprint2_Attempt3.Dungeon
         protected static List<List<IGameObject>> gameObjectLists = new List<List<IGameObject>>(18);
         protected static int[] enemiesKilledList = new int[18];
         protected static IRoom[,] roomLayout = new IRoom[12, 12];
-        protected static int mapY = 5;
-        protected static int mapX = 11;
+        protected static int mapY = 11;
+        protected static int mapX = 5;
 
         //protected static Boolean[] uniqueEventsForRooms = { true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true };
         //public static bool UniqueEventsForRooms { get { return uniqueEventsForRooms[roomNumber]; } set { uniqueEventsForRooms[roomNumber] = value; } }
         public static int[] EnemiesKilledList { get { return enemiesKilledList; } set { enemiesKilledList = value; } }
         public List<List<IGameObject>> GameObjectLists { get { return gameObjectLists; } set { gameObjectLists = value; } }
-        protected static int roomNumber;
+        protected int roomNumber;
 
         //private int enemyKillCount = 0;
         //public  int EnemyKillCount { get { return enemyKillCount; } set { enemyKillCount = value; } }
@@ -44,8 +44,6 @@ namespace Sprint2_Attempt3.Dungeon
             room = new DungeonRoom();
             roomNumber = roomNum;
             spawned = false;
-           // mapX = 5;
-           // mapY = 11;
 
             for(int i = 0; i < 18; i++)
             {
@@ -223,6 +221,8 @@ namespace Sprint2_Attempt3.Dungeon
                 else
                     gameObjectLists[i].AddRange(Globals.Room16WallBlocks);
             }
+            mapX = 5;
+            mapY = 11;
         }
         public static int GetCurrentRoomNumber() { 
             return roomNumber;

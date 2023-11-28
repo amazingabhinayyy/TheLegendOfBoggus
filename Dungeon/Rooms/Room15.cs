@@ -10,7 +10,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
     {
         public Room15(Game1 game1) : base(game1, 14) 
         {
-            roomLayout[7, 8] = this;
+            roomLayout[8, 7] = this;
         }
 
         public override void SwitchToWestRoom()
@@ -22,8 +22,6 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         public override void SwitchToSouthRoom()
         {
             mapY += 1;
-            mapX = 7;
-            mapY = 9;
             int roomNum = RandomRoomCreator.Instance.CreateRandomRoom();
             gameObjectLists[roomNum] = RoomGenerator.Instance.LoadFile(roomNum);
             roomLayout[mapX, mapY] = new RandomRooms(game1, roomNum);

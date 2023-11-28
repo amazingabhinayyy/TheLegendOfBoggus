@@ -37,9 +37,6 @@
     <None Remove="Icon.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Dungeon\RoomFiles\RandomRoom.csv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Dungeon\RoomFiles\Room1.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

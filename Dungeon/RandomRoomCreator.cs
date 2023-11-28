@@ -21,16 +21,25 @@ namespace Sprint2_Attempt3.Dungeon
         }
         public RandomRoomCreator() 
         {
-            currentRoomNumber = 1;
+            currentRoomNumber = 0;
         }
 
         public int CreateRandomRoom()//IGameObject obj)
         {
-            String fileName = "Dungeon/RoomFiles/RandomRoom.csv";
+            currentRoomNumber++;
+            String fileName = "Dungeon/RoomFiles/RandomRoom" + currentRoomNumber + ".csv";
+            /*
             using (StreamWriter streamWriter = new StreamWriter(fileName))
             {
                 streamWriter.WriteLine("Block,DiamondTile,43,,");
+                streamWriter.WriteLine("Door,East,0");
             }
+            */
+            File.WriteAllText(fileName, "");
+            File.AppendAllText(fileName, "Block,DiamondTile,43,,\n");
+            File.AppendAllText(fileName, "Door,East,0\n");
+            File.AppendAllText(fileName, "Door,North,0\n");
+            File.AppendAllText(fileName, "Door,West,0\n");
 
             RoomGenerator.Instance.LoadNewFile(fileName);
             //RoomGenerator.Instance.LoadFile(currentRoomNumber + 18 - 1);
