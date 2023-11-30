@@ -15,6 +15,7 @@ namespace Sprint2_Attempt3.Dungeon
     {
         private IRoom decoratedRoom;
         private int timer;
+        public int RoomNumber { get; }
         public RoomDecorator(IRoom decoratedRoom)
         {
             this.decoratedRoom = decoratedRoom;

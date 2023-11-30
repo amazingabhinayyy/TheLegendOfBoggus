@@ -22,8 +22,11 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                 gameObjectLists[roomNum] = RoomGenerator.Instance.LoadFile(roomNum);
                 roomLayout[mapX, mapY] = new RandomRooms(game1, roomNum);
             }
+
             TransitionHandler.Instance.Start = true;
             TransitionHandler.Instance.Transition(this, roomLayout[mapX, mapY]);
+            currentRoomNumber = roomLayout[mapX, mapY].RoomNumber;
+            TransitionHandler.Instance.TransitionGameObjectList = gameObjectLists[currentRoomNumber];
         }
         public override void SwitchToSouthRoom()
         {
@@ -34,7 +37,9 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                 gameObjectLists[roomNum] = RoomGenerator.Instance.LoadFile(roomNum);
                 roomLayout[mapX, mapY] = new RandomRooms(game1, roomNum);
             }
+            currentRoomNumber = roomLayout[mapX, mapY].RoomNumber;
             TransitionHandler.Instance.Start = true;
+            TransitionHandler.Instance.TransitionGameObjectList = gameObjectLists[currentRoomNumber];
             TransitionHandler.Instance.Transition(this, roomLayout[mapX, mapY]);
         }
         public override void SwitchToEastRoom()
@@ -46,7 +51,9 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                 gameObjectLists[roomNum] = RoomGenerator.Instance.LoadFile(roomNum);
                 roomLayout[mapX, mapY] = new RandomRooms(game1, roomNum);
             }
+            currentRoomNumber = roomLayout[mapX, mapY].RoomNumber;
             TransitionHandler.Instance.Start = true;
+            TransitionHandler.Instance.TransitionGameObjectList = gameObjectLists[currentRoomNumber];
             TransitionHandler.Instance.Transition(this, roomLayout[mapX, mapY]);
         }
         public override void SwitchToWestRoom()
@@ -58,7 +65,9 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                 gameObjectLists[roomNum] = RoomGenerator.Instance.LoadFile(roomNum);
                 roomLayout[mapX, mapY] = new RandomRooms(game1, roomNum);
             }
+            currentRoomNumber = roomLayout[mapX, mapY].RoomNumber;
             TransitionHandler.Instance.Start = true;
+            TransitionHandler.Instance.TransitionGameObjectList = gameObjectLists[currentRoomNumber];
             TransitionHandler.Instance.Transition(this, roomLayout[mapX, mapY]);
         }
     }

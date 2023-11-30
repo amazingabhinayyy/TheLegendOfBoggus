@@ -11,7 +11,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
     {
         public Room10(Game1 game1) : base(game1, 9) 
         {
-            roomLayout[8, 5] = this;
+            roomLayout[5, 8] = this;
         }
 
         public override void SwitchToNorthRoom()

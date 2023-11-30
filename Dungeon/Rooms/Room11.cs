@@ -17,10 +17,10 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         private static Boomerang boomerang;
         public Room11(Game1 game1) : base(game1, 10) 
         {
-            roomLayout[8, 6] = this;
+            roomLayout[6, 8] = this;
             boomerangSpawned = false;
             enemies = new List<IEnemy>();
-            foreach (IGameObject obj in gameObjectLists[roomNumber])
+            foreach (IGameObject obj in gameObjectLists[currentRoomNumber])
             {
                 if (obj is IEnemy)
                 {

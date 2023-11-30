@@ -27,7 +27,7 @@ namespace Sprint2_Attempt3.Enemy.Hand
                 new Vector2(0, 0),
                 Globals.scale,
                 SpriteEffects.FlipHorizontally,
-                0f
+                0.1f
             );
         }
     }

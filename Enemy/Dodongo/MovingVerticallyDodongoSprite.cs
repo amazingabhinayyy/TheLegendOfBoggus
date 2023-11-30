@@ -50,7 +50,7 @@ namespace Sprint2_Attempt3.Enemy.Dodongo
                 new Vector2(0, 0),
                 Globals.scale,
                 spriteEffect,
-                0f
+                0.1f
             );
         }
     }

@@ -20,7 +20,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         {
             roomLayout[7, 7] = this;
             doorOpen = false;
-            foreach (IGameObject obj in GameObjectLists[roomNumber])
+            foreach (IGameObject obj in GameObjectLists[currentRoomNumber])
             {
                 if (obj is Aquamentus)
                 {

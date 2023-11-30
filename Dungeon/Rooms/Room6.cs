@@ -19,10 +19,10 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         private static Key key;
         public Room6(Game1 game1) : base(game1, 5) 
         {
-            roomLayout[9, 5] = this;
+            roomLayout[5, 9] = this;
             keySpawned = false;
             enemies = new List<IEnemy>();
-            foreach (IGameObject obj in gameObjectLists[roomNumber])
+            foreach (IGameObject obj in gameObjectLists[currentRoomNumber])
             {
                 if (obj is IEnemy)
                 {

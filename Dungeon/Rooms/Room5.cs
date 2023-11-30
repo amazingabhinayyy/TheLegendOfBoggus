@@ -19,10 +19,10 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         private static bool doorOpen;
         public Room5(Game1 game1) : base(game1, 4) 
         {
-            roomLayout[9, 4] = this;
+            roomLayout[4, 9] = this;
             doorOpen = false;
             enemies = new List<IEnemy>();
-            foreach(IGameObject obj in gameObjectLists[roomNumber])
+            foreach(IGameObject obj in gameObjectLists[currentRoomNumber])
             {
                 if (obj is IEnemy)
                 {

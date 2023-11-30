@@ -12,10 +12,10 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
     {
         public Room16(Game1 game1) : base(game1, 15) 
         {
-            roomLayout[7, 4] = this;
+            roomLayout[4, 7] = this;
             room = new WhiteStairRoom();
             foreach (IWall wall in Globals.Room16WallBlocks) {
-                gameObjectLists[roomNumber].Add(wall);
+                gameObjectLists[currentRoomNumber].Add(wall);
             }
         }
         public override void SwitchToEastRoom()

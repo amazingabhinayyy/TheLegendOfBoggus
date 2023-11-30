@@ -19,19 +19,16 @@ namespace Sprint2_Attempt3.Dungeon
     public abstract class RoomSecondary : IRoom
     {
         protected static List<List<IGameObject>> gameObjectLists = new List<List<IGameObject>>(18);
-        protected static int[] enemiesKilledList = new int[18];
+        //protected static int[] enemiesKilledList = new int[18];
         protected static IRoom[,] roomLayout = new IRoom[12, 12];
         protected static int mapY = 11;
         protected static int mapX = 5;
 
-        //protected static Boolean[] uniqueEventsForRooms = { true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true };
-        //public static bool UniqueEventsForRooms { get { return uniqueEventsForRooms[roomNumber]; } set { uniqueEventsForRooms[roomNumber] = value; } }
-        public static int[] EnemiesKilledList { get { return enemiesKilledList; } set { enemiesKilledList = value; } }
+        //public static int[] EnemiesKilledList { get { return enemiesKilledList; } set { enemiesKilledList = value; } }
         public List<List<IGameObject>> GameObjectLists { get { return gameObjectLists; } set { gameObjectLists = value; } }
-        protected int roomNumber;
+        protected static int currentRoomNumber;
+        public int RoomNumber { get; }
 
-        //private int enemyKillCount = 0;
-        //public  int EnemyKillCount { get { return enemyKillCount; } set { enemyKillCount = value; } }
         protected static Boolean varHoldingTrue = true;
         protected Boolean spawned = false;
         public static bool ClockUsed { get; set; } = false;
@@ -42,7 +39,8 @@ namespace Sprint2_Attempt3.Dungeon
         public RoomSecondary(Game1 game, int roomNum) {
             this.game1 = game;
             room = new DungeonRoom();
-            roomNumber = roomNum;
+            currentRoomNumber = roomNum;
+            RoomNumber = roomNum;
             spawned = false;
 
             for(int i = 0; i < 18; i++)
@@ -50,16 +48,16 @@ namespace Sprint2_Attempt3.Dungeon
                 gameObjectLists.Add(null);
             }
 
-            if (gameObjectLists[roomNumber] == null)
+            if (gameObjectLists[currentRoomNumber] == null)
             {
                 
-                gameObjectLists[roomNumber] = RoomGenerator.Instance.LoadFile(roomNumber);
+                gameObjectLists[currentRoomNumber] = RoomGenerator.Instance.LoadFile(currentRoomNumber);
                 //gameObjectLists[roomNumber] = RoomGenerator.Instance.LoadFile(roomNumber);
 
-                gameObjectLists[roomNumber].Add(this.game1.link);
+                gameObjectLists[currentRoomNumber].Add(this.game1.link);
                 if (roomNum != 15)
                 {
-                    gameObjectLists[roomNumber].AddRange(Globals.WallBlocks);
+                    gameObjectLists[currentRoomNumber].AddRange(Globals.WallBlocks);
                 }
                 InventoryController.VisitRoom(roomNum);
             }              
@@ -75,36 +73,36 @@ namespace Sprint2_Attempt3.Dungeon
        
             if (TransitionHandler.Instance.TransitionGameObjectList.Count == 0)
             {
-                CollisionManager.GameObjectList = gameObjectLists[roomNumber];
+                CollisionManager.GameObjectList = gameObjectLists[currentRoomNumber];
             }
-            TransitionHandler.Instance.TransitionGameObjectList = gameObjectLists[roomNumber];
+            TransitionHandler.Instance.TransitionGameObjectList = gameObjectLists[currentRoomNumber];
 
             
         }
 
         public void SwitchToNextRoom() {
-            if (roomNumber < gameObjectLists.Count - 1)
+            if (currentRoomNumber < gameObjectLists.Count - 1)
             {
-                roomNumber++;
+                currentRoomNumber++;
             }
             else
             {
-                roomNumber = 0;
+                currentRoomNumber = 0;
             }
             room = new DungeonRoom();
 
-            if (gameObjectLists[roomNumber] == null)
+            if (gameObjectLists[currentRoomNumber] == null)
             {
-                gameObjectLists[roomNumber] = RoomGenerator.Instance.LoadFile(roomNumber);
-                gameObjectLists[roomNumber].Add(this.game1.link);
-                if (roomNumber != 15)
+                gameObjectLists[currentRoomNumber] = RoomGenerator.Instance.LoadFile(currentRoomNumber);
+                gameObjectLists[currentRoomNumber].Add(this.game1.link);
+                if (currentRoomNumber != 15)
                 {
-                    gameObjectLists[roomNumber].AddRange(Globals.WallBlocks);
+                    gameObjectLists[currentRoomNumber].AddRange(Globals.WallBlocks);
                 }
                 else {
                     room = new WhiteStairRoom();
                 }
-                InventoryController.VisitRoom(roomNumber);
+                InventoryController.VisitRoom(currentRoomNumber);
             }
 
             if (game1.link is DamageLinkDecorator)
@@ -112,36 +110,36 @@ namespace Sprint2_Attempt3.Dungeon
                 ((DamageLinkDecorator)game1.link).RemoveDecorator();
             }
             ClockUsed = false;
-            InventoryController.VisitRoom(roomNumber);
+            InventoryController.VisitRoom(currentRoomNumber);
             TransitionHandler.Instance.TransitionGameObjectList = new List<IGameObject>();
-            CollisionManager.GameObjectList = gameObjectLists[roomNumber];
+            CollisionManager.GameObjectList = gameObjectLists[currentRoomNumber];
             game1.link.Items.Clear();
         }
 
         public void SwitchToPrevRoom()
         {
-            if (roomNumber <= 0)
+            if (currentRoomNumber <= 0)
             {
-                roomNumber= gameObjectLists.Count-1;
+                currentRoomNumber= gameObjectLists.Count-1;
             }
             else
             {
-                roomNumber--;
+                currentRoomNumber--;
             }
             room = new DungeonRoom();
-            if (gameObjectLists[roomNumber] == null)
+            if (gameObjectLists[currentRoomNumber] == null)
             {
-                gameObjectLists[roomNumber] = RoomGenerator.Instance.LoadFile(roomNumber);
-                gameObjectLists[roomNumber].Add(this.game1.link);
-                if (roomNumber != 15)
+                gameObjectLists[currentRoomNumber] = RoomGenerator.Instance.LoadFile(currentRoomNumber);
+                gameObjectLists[currentRoomNumber].Add(this.game1.link);
+                if (currentRoomNumber != 15)
                 {
-                    gameObjectLists[roomNumber].AddRange(Globals.WallBlocks);
+                    gameObjectLists[currentRoomNumber].AddRange(Globals.WallBlocks);
                 }
                 else
                 {
                     room = new WhiteStairRoom();
                 }
-                InventoryController.VisitRoom(roomNumber);
+                InventoryController.VisitRoom(currentRoomNumber);
             }
             
             if (game1.link is DamageLinkDecorator)
@@ -149,9 +147,9 @@ namespace Sprint2_Attempt3.Dungeon
                 ((DamageLinkDecorator)game1.link).RemoveDecorator();
             }
             ClockUsed = false;
-            InventoryController.VisitRoom(roomNumber);
+            InventoryController.VisitRoom(currentRoomNumber);
             TransitionHandler.Instance.TransitionGameObjectList = new List<IGameObject>();
-            CollisionManager.GameObjectList = gameObjectLists[roomNumber];
+            CollisionManager.GameObjectList = gameObjectLists[currentRoomNumber];
             game1.link.Items.Clear();
         }
         public virtual void Update() {
@@ -160,9 +158,9 @@ namespace Sprint2_Attempt3.Dungeon
                 if(!game1.deathAnimationActive)
                     collisionManager.Update();
 
-                for (int i = 0; i < gameObjectLists[roomNumber].Count; i++)
+                for (int i = 0; i < gameObjectLists[currentRoomNumber].Count; i++)
                 {
-                    IGameObject obj = gameObjectLists[roomNumber][i];
+                    IGameObject obj = gameObjectLists[currentRoomNumber][i];
                     if (obj is IEnemy)
                     {
                         if (!spawned)
@@ -194,25 +192,28 @@ namespace Sprint2_Attempt3.Dungeon
             else
             {
                 room.Draw(spriteBatch, color);
+                List<IEnemy> enemyList = new List<IEnemy>();
 
-                foreach (IGameObject obj in gameObjectLists[roomNumber])
+                foreach (IGameObject obj in gameObjectLists[currentRoomNumber])
                 {
-                    if (obj is IEnemy && color.Equals(Color.White))
-                        ((IEnemy)obj).Draw(spriteBatch);
-                    else if (obj is IItem && color.Equals(Color.White))
+                    if (obj is IItem && color.Equals(Color.White))
                         ((IItem)obj).Draw(spriteBatch);
                     else if (obj is IBlock)
                         ((IBlock)obj).Draw(spriteBatch, color);
                     else if (obj is IDoor)
                         ((IDoor)obj).Draw(spriteBatch, color);
+                    else if (obj is IEnemy && color.Equals(Color.White))
+                        enemyList.Add((IEnemy)obj);
 
                 }
+                foreach (IEnemy enemy in enemyList)
+                    enemy.Draw(spriteBatch);
 
                 game1.link.Draw(spriteBatch, Color.White);
             }
         }
         public static void ResetRooms() {
-            enemiesKilledList = new int[18];
+            //enemiesKilledList = new int[18];
             for (int i = 0; i < 18; i++)
             {
                 gameObjectLists[i] = RoomGenerator.Instance.LoadFile(i);
@@ -225,7 +226,7 @@ namespace Sprint2_Attempt3.Dungeon
             mapY = 11;
         }
         public static int GetCurrentRoomNumber() { 
-            return roomNumber;
+            return currentRoomNumber;
         }
         public DungeonRoom getDungeonRoom()
         {

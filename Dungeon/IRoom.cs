@@ -7,6 +7,7 @@ namespace Sprint2_Attempt3.Dungeon
 {
     public interface IRoom
     {
+        public int RoomNumber { get; }
         private static List<IGameObject> gameObjects;
         public void Update();
         public void Draw(SpriteBatch spriteBatch, Color color);

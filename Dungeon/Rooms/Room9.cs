@@ -17,9 +17,9 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         private static WestDoor diamondDoor;
         public Room9(Game1 game1) : base(game1, 8)
         {
-            roomLayout[8, 4] = this;
+            roomLayout[4, 8] = this;
             doorOpen = false;
-            foreach (IGameObject obj in GameObjectLists[roomNumber])
+            foreach (IGameObject obj in GameObjectLists[currentRoomNumber])
             {
                 if (obj is IMovingBlock)
                 {

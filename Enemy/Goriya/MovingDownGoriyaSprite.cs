@@ -47,7 +47,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
                 new Vector2(0, 0),
                 Globals.scale,
                 spriteEffects,
-                0f
+                0.1f
             );
         }
     }
