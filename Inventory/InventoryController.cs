@@ -48,7 +48,8 @@ namespace Sprint2_Attempt3.Inventory
             new Rectangle(destRectangle.X + 210, destRectangle.Y + 618, 9, 9),
             new Rectangle(destRectangle.X + 106, destRectangle.Y + 605, 9, 9),
             new Rectangle(destRectangle.X + 106, destRectangle.Y + 605, 9, 9),
-            new Rectangle(destRectangle.X + 132, destRectangle.Y + 605, 9, 9)
+            new Rectangle(destRectangle.X + 132, destRectangle.Y + 605, 9, 9),
+            new Rectangle(destRectangle.X + 106, destRectangle.Y + 657, 9, 9)
         };
 
         private static Dictionary<int, Rectangle> MapRoomDestRectangles = new Dictionary<int, Rectangle>() {
@@ -69,7 +70,8 @@ namespace Sprint2_Attempt3.Inventory
             { 14, new Rectangle(destRectangle.X + 552, destRectangle.Y + 341, 25, 24) },
             { 15, new Rectangle(destRectangle.X + 452, destRectangle.Y + 317, 25, 24) },
             { 16, new Rectangle(destRectangle.X + 452, destRectangle.Y + 317, 25, 24) },
-            { 17, new Rectangle(destRectangle.X + 477, destRectangle.Y + 317, 25, 24) }
+            { 17, new Rectangle(destRectangle.X + 477, destRectangle.Y + 317, 25, 24) },
+            {18, new Rectangle(destRectangle.X + 452, destRectangle.Y + 412, 25, 24) }
         };
 
         private static Rectangle[] TriforceMarkers = new Rectangle[] { new Rectangle(262, 140, 3, 3), new Rectangle(270, 140, 3, 3) };

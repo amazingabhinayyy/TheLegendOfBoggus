@@ -20,8 +20,8 @@ namespace Sprint2_Attempt3.Dungeon
 {
     public abstract class RoomSecondary : IRoom
     {
-        protected static List<IGameObject>[] gameObjectLists = new List<IGameObject>[18];
-        protected static int[] enemiesKilledList = new int[18];
+        protected static List<IGameObject>[] gameObjectLists = new List<IGameObject>[19];
+        protected static int[] enemiesKilledList = new int[19];
         protected static Boolean[] uniqueEventsForRooms = { true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true };
         public static bool UniqueEventsForRooms { get { return uniqueEventsForRooms[roomNumber]; } set { uniqueEventsForRooms[roomNumber] = value; } }
         public static int[] EnemiesKilledList { get { return enemiesKilledList; } set { enemiesKilledList = value; } }

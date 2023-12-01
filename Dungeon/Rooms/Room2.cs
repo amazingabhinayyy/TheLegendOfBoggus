@@ -39,6 +39,12 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             TransitionHandler.Instance.Transition(this, new Room1(game1));
            
         }
+
+        public override void SwitchToNorthRoom()
+        {
+            TransitionHandler.Instance.Start = true;
+            TransitionHandler.Instance.Transition(this, new MinigameRoom(game1));
+        }
         public override void RoomConditionCheck()
         {
             if (!keySpawned && allEnemiesKilledInRoom(enemies))

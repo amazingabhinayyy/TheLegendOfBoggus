@@ -10,6 +10,7 @@ using Sprint2_Attempt3.Enemy.Goriya;
 using Sprint2_Attempt3.Enemy.Hand;
 using Sprint2_Attempt3.Enemy.Stalfos;
 using Sprint2_Attempt3.Enemy.Aquamentus;
+using Sprint2_Attempt3.Enemy.Target;
 
 namespace Sprint2_Attempt3.Enemy
 {
@@ -19,6 +20,7 @@ namespace Sprint2_Attempt3.Enemy
         private static Texture2D BossEnemyTexture;
         private static Texture2D GenerationTexture;
         private static Texture2D CharacterTexture;
+        private static Texture2D TargetTexture;
 
         private static EnemySpriteFactory instance = new EnemySpriteFactory();
 
@@ -40,6 +42,8 @@ namespace Sprint2_Attempt3.Enemy
             BossEnemyTexture = content.Load<Texture2D>("Bosses");
             GenerationTexture = content.Load<Texture2D>("characterGenerationSprite");
             CharacterTexture = content.Load<Texture2D>("LinkPlayerSpriteSheetFinal");
+            TargetTexture = content.Load<Texture2D>("targetSprite");
+
         }
         //Spawn and animation sprites
         public IEnemySprite CreateSpawnAnimationSprite()
@@ -139,6 +143,10 @@ namespace Sprint2_Attempt3.Enemy
         public IEnemySprite CreateMovingRightAquamentusSprite()
         {
             return new MovingRightAquamentusSprite(BossEnemyTexture);
+        }
+        public IEnemySprite CreateTargetSprite()
+        {
+            return new TargetSprite(TargetTexture);
         }
     }
 }
