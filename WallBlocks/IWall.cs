@@ -9,5 +9,6 @@ namespace Sprint2_Attempt3.WallBlocks
     public interface IWall : IGameObject
     {
         public bool EnemyWalkable { get; }
+        public bool projectilesThrowable { get; }
     }
 }

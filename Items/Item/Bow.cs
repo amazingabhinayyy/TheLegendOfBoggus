@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Sprint2_Attempt3.Inventory;
 using Sprint2_Attempt3.Sounds;
+using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3.Items.ItemClasses
 {
@@ -34,6 +35,7 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         {
             InventoryController.HasBow = true;
             SoundFactory.PlaySound(SoundFactory.Instance.getItem);
+            CollisionManager.GameObjectList.Remove(this);
         }
     }
 }

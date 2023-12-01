@@ -115,7 +115,12 @@ namespace Sprint2_Attempt3.Dungeon
                     CollisionManager.GameObjectList = transitionGameObjectList;
                     game1.room = nextRoom;
                     elapsedTime = 0;
-               }
+                    colorValue = 254;
+                   if(nextRoom is Room16)
+                   {
+                       game1.link.Position = new Vector2(150, Globals.YOffset + 10);
+                   }
+            }
                
 
             }
