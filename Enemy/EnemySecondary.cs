@@ -27,7 +27,8 @@ namespace Sprint2_Attempt3.Enemy
         public Rectangle Position { get; set; }
         protected int invinciblityTimer = 0;
         public Vector2 SpawnPosition { get; set; }
-
+        public int numWallCollisions { get; set; } = 0;
+        
         public abstract void Generate();
         public abstract void Stun();
         public abstract void DropItem();

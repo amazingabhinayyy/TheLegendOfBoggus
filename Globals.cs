@@ -27,6 +27,7 @@ namespace Sprint2_Attempt3
         public const int ScreenWidth = 800;
         public const int YOffset = 175;
         public static Dictionary<int, Rectangle> FloorGrid = new Dictionary<int, Rectangle>();
+       
         
         public static int FindIndex(int count, int step, int length)
         {
@@ -110,14 +111,14 @@ namespace Sprint2_Attempt3
         public static Rectangle AquamentusFireball2 { get { return new Rectangle(109, 3, 9, 11); } }
         public static Rectangle AquamentusFireball3 { get { return new Rectangle(118, 3, 9, 11); } }
         public static Rectangle AquamentusFireball4 { get { return new Rectangle(127, 3, 9, 11); } }
-        public static int fireballSpeed = 2;
+        public static int fireballSpeed = 5;
         public static int fireballSpriteSwitchSpeed = 40;
 
         public static Rectangle[] AquamentusFireballLeft = {AquamentusFireball1, AquamentusFireball2, AquamentusFireball3, AquamentusFireball4, AquamentusFireball1, AquamentusFireball2, AquamentusFireball3, AquamentusFireball4 };
         public static SpriteEffects[] AquamentusFireballLeftEffects = { SpriteEffects.None, SpriteEffects.None, SpriteEffects.None, SpriteEffects.None, SpriteEffects.None, SpriteEffects.None, SpriteEffects.None, SpriteEffects.None };
         public static Vector2 temp = new Vector2(0, 0);
         public static Vector2[] AquamentusOriginsLeft = { temp, temp, temp, temp, temp, temp, temp, temp };
-        public static int fireBallMaxDistance = 300;
+        public static int fireBallMaxDistance = 500;
 
         public static Rectangle DungeonStandard { get { return new Rectangle(1, 1, 256, 176); } }
         public static Rectangle NorthDoorPosition { get { return new Rectangle(348, 0 + Globals.YOffset, 105, 100); } }

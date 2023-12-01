@@ -114,7 +114,8 @@ namespace Sprint2_Attempt3.Dungeon
                     start = false;
                     CollisionManager.GameObjectList = transitionGameObjectList;
                     game1.room = nextRoom;
-                    elapsedTime = 0;
+                ((RoomSecondary)nextRoom).getIDungeonRoom().Draw(spriteBatch, Color.White);
+                elapsedTime = 0;
                     colorValue = 254;
                    if(nextRoom is Room16)
                    {
