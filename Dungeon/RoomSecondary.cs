@@ -20,6 +20,7 @@ namespace Sprint2_Attempt3.Dungeon
     {
         protected static List<List<IGameObject>> gameObjectLists = new List<List<IGameObject>>(18);
         //protected static int[] enemiesKilledList = new int[18];
+        public List<IGameObject> gameObjectList { get; }
         protected static IRoom[,] roomLayout = new IRoom[12, 12];
         protected static int mapY = 11;
         protected static int mapX = 5;
@@ -42,8 +43,9 @@ namespace Sprint2_Attempt3.Dungeon
             currentRoomNumber = roomNum;
             RoomNumber = roomNum;
             spawned = false;
+            gameObjectList = new List<IGameObject>();
 
-            for(int i = 0; i < 18; i++)
+            for (int i = 0; i < 18; i++)
             {
                 gameObjectLists.Add(null);
             }
@@ -77,7 +79,7 @@ namespace Sprint2_Attempt3.Dungeon
             }
             TransitionHandler.Instance.TransitionGameObjectList = gameObjectLists[currentRoomNumber];
 
-            
+            gameObjectList.AddRange(gameObjectLists[currentRoomNumber]);
         }
 
         public void SwitchToNextRoom() {

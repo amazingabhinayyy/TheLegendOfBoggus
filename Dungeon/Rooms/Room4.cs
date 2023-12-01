@@ -27,7 +27,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         public override void SwitchToEastRoom()
         {
             mapX += 1;
-            int roomNum = RandomRoomCreator.Instance.CreateRandomRoom();
+            int roomNum = RandomRoomCreator.Instance.CreateRandomRoom(roomLayout, mapX, mapY);
             gameObjectLists[roomNum] = RoomGenerator.Instance.LoadFile(roomNum);
             roomLayout[mapX, mapY] = new RandomRooms(game1, roomNum);
             TransitionHandler.Instance.Start = true;

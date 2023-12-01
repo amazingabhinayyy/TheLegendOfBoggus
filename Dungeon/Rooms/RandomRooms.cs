@@ -18,7 +18,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             mapY -= 1;
             if (roomLayout[mapX,mapY] == null)
             {
-                int roomNum = RandomRoomCreator.Instance.CreateRandomRoom();
+                int roomNum = RandomRoomCreator.Instance.CreateRandomRoom(roomLayout, mapX, mapY);
                 gameObjectLists[roomNum] = RoomGenerator.Instance.LoadFile(roomNum);
                 roomLayout[mapX, mapY] = new RandomRooms(game1, roomNum);
             }
@@ -33,7 +33,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             mapY += 1;
             if (roomLayout[mapX, mapY] == null)
             {
-                int roomNum = RandomRoomCreator.Instance.CreateRandomRoom();
+                int roomNum = RandomRoomCreator.Instance.CreateRandomRoom(roomLayout, mapX, mapY);
                 gameObjectLists[roomNum] = RoomGenerator.Instance.LoadFile(roomNum);
                 roomLayout[mapX, mapY] = new RandomRooms(game1, roomNum);
             }
@@ -47,7 +47,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             mapX += 1;
             if (roomLayout[mapX, mapY] == null)
             {
-                int roomNum = RandomRoomCreator.Instance.CreateRandomRoom();
+                int roomNum = RandomRoomCreator.Instance.CreateRandomRoom(roomLayout, mapX, mapY);
                 gameObjectLists[roomNum] = RoomGenerator.Instance.LoadFile(roomNum);
                 roomLayout[mapX, mapY] = new RandomRooms(game1, roomNum);
             }
@@ -61,7 +61,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             mapX -= 1;
             if (roomLayout[mapX, mapY] == null)
             {
-                int roomNum = RandomRoomCreator.Instance.CreateRandomRoom();
+                int roomNum = RandomRoomCreator.Instance.CreateRandomRoom(roomLayout, mapX, mapY);
                 gameObjectLists[roomNum] = RoomGenerator.Instance.LoadFile(roomNum);
                 roomLayout[mapX, mapY] = new RandomRooms(game1, roomNum);
             }

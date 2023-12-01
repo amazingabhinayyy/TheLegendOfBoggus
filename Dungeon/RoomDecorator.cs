@@ -14,6 +14,7 @@ namespace Sprint2_Attempt3.Dungeon
     public class RoomDecorator : IRoom
     {
         private IRoom decoratedRoom;
+        public List<IGameObject> gameObjectList { get; }
         private int timer;
         public int RoomNumber { get; }
         public RoomDecorator(IRoom decoratedRoom)
