@@ -115,16 +115,13 @@ namespace Sprint2_Attempt3.Collision
 
             else{
                
-                //TransitionHandler transition = new TransitionHandler(door);
-                //TransitionHandler transition = new TransitionHandler();
-                //transition.Door = door;
+              
                 TransitionHandler.Instance.Door = door;
                 link.Items.Clear();
                 if (door is NorthDoor)
                 {
                     
                     game.room.SwitchToNorthRoom();
-                    // link.Position = new Vector2(link.Position.X, 400 + Globals.YOffset);
                     link.Position = new Vector2(link.Position.X, 450 + Globals.YOffset - link.GetHitBox().Height);
                     changedRooms = true;
                     
@@ -170,7 +167,7 @@ namespace Sprint2_Attempt3.Collision
                     LastLinkPosition = new Vector2(link.GetHitBox().X, link.GetHitBox().Y);
                     LastLinkPosition.X -= 50;
                     
-                        link.Position = new Vector2(Globals.StairExitPosition.X, Globals.StairExitPosition.Y + 15);
+                        link.Position = new Vector2(475, Globals.YOffset+215);
                         changedRooms = true;
                     
                 }

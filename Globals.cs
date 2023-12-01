@@ -27,7 +27,7 @@ namespace Sprint2_Attempt3
         public const int ScreenWidth = 800;
         public const int YOffset = 175;
         public static Dictionary<int, Rectangle> FloorGrid = new Dictionary<int, Rectangle>();
-
+        
         public static int FindIndex(int count, int step, int length)
         {
             int index = Math.Min(count / step, length - 1);
@@ -42,6 +42,7 @@ namespace Sprint2_Attempt3
                 for (int x = 100; x <= 650; x += 50)
                 {
                     FloorGrid.Add(i, new Rectangle(x, y, 50, 50));
+                    
                     i++;
                 }
             }

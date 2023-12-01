@@ -71,7 +71,12 @@ namespace Sprint2_Attempt3.Dungeon
             }
             TransitionHandler.Instance.TransitionGameObjectList = gameObjectLists[roomNumber];
 
-            
+            if (Room16TransitionHandler.Instance.TransitionGameObjectList.Count == 0)
+            {
+                CollisionManager.GameObjectList = gameObjectLists[roomNumber];
+            }
+            Room16TransitionHandler.Instance.TransitionGameObjectList = gameObjectLists[roomNumber];
+
         }
 
         public void SwitchToNextRoom() {
@@ -106,6 +111,8 @@ namespace Sprint2_Attempt3.Dungeon
             ClockUsed = false;
             MapController.VisitRoom(roomNumber);
             TransitionHandler.Instance.TransitionGameObjectList = new List<IGameObject>();
+            //could be unnecessary now
+            Room16TransitionHandler.Instance.TransitionGameObjectList = new List<IGameObject>();
             CollisionManager.GameObjectList = gameObjectLists[roomNumber];
             game1.link.Items.Clear();
         }
@@ -143,11 +150,16 @@ namespace Sprint2_Attempt3.Dungeon
             ClockUsed = false;
             MapController.VisitRoom(roomNumber);
             TransitionHandler.Instance.TransitionGameObjectList = new List<IGameObject>();
+            Room16TransitionHandler.Instance.TransitionGameObjectList = new List<IGameObject>();
             CollisionManager.GameObjectList = gameObjectLists[roomNumber];
             game1.link.Items.Clear();
         }
         public virtual void Update() {
-            if (!TransitionHandler.Instance.Start)
+            if (Room16TransitionHandler.Instance.Start)
+            {
+                Room16TransitionHandler.Instance.Update();
+            }
+            else if (!TransitionHandler.Instance.Start)
             {
                 if(!game1.deathAnimationActive)
                     collisionManager.Update();
@@ -182,6 +194,11 @@ namespace Sprint2_Attempt3.Dungeon
             if (TransitionHandler.Instance.Start)
             {
                 TransitionHandler.Instance.Draw(spriteBatch);
+            }
+            else if (Room16TransitionHandler.Instance.Start)
+            {
+                Room16TransitionHandler.Instance.Draw(spriteBatch);
+
             }
             else
             {
@@ -220,6 +237,11 @@ namespace Sprint2_Attempt3.Dungeon
         public DungeonRoom getDungeonRoom()
         {
             return (DungeonRoom)room;
+        }
+
+        public IDungeonRoom getIDungeonRoom()
+        {
+            return (IDungeonRoom)room;
         }
         public void SetDecorator(IRoom room)
         {
