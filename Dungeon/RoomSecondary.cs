@@ -109,7 +109,7 @@ namespace Sprint2_Attempt3.Dungeon
                 else {
                     room = new WhiteStairRoom();
                 }
-                MapController.VisitRoom(roomNumber);
+                MapController.VisitRoom(currentRoomNumber);
             }
 
             if (game1.link is DamageLinkDecorator)
@@ -148,7 +148,7 @@ namespace Sprint2_Attempt3.Dungeon
                 {
                     room = new WhiteStairRoom();
                 }
-                MapController.VisitRoom(roomNumber);
+                MapController.VisitRoom(currentRoomNumber);
             }
             
             if (game1.link is DamageLinkDecorator)

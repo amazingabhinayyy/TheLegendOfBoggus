@@ -132,7 +132,8 @@ namespace Sprint2_Attempt3.Inventory
                 pair.Value.Draw(spriteBatch);
             }
 
-            PlayerTrackerController.DrawPlayerTracker(spriteBatch);
+            if(RoomSecondary.GetCurrentRoomNumber() < 18)
+                PlayerTrackerController.DrawPlayerTracker(spriteBatch);
         }
     }
 }

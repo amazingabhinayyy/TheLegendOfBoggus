@@ -28,6 +28,7 @@ Item,Clock,250,100,TRUE
 Item,Rupee,350,100,TRUE
 Item,Map,600,100,TRUE
 Item,Compass,450,200,TRUE
+Item,Key,67,,TRUE
 Door,North,1
 Door,South,0
 Door,East,0
