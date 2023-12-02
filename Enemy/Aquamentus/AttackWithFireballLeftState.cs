@@ -15,6 +15,7 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
         private Rectangle sourceRectangle;
         private Rectangle[] sourceRectangles = { Globals.AquamentusGreenLeftMouthOpen, Globals.AquamentusGreenLeftMouthOpen2 };
         private int currentFrame;
+        private int direction;
         private int currentFireballFrame;
         private IEnemyProjectile fireball;
         private IEnemyProjectile fireball2;
@@ -40,7 +41,28 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
         }
         public void ChangeDirection()
         {
-            Aquamentus.State = new MovingLeftAquamentusState(Aquamentus);
+            Random random = new Random();
+            direction = random.Next(0, 3);
+            switch (direction)
+            {
+                case 0:
+                    Aquamentus.State = new MovingLeftAquamentusState(Aquamentus);
+                    break;
+                case 1:
+                    Aquamentus.FireballPosition = new Vector2(Aquamentus.X, Aquamentus.Y);
+                    Aquamentus.Fireball = new AquamentusFireball(Aquamentus.FireballPosition);
+                    Aquamentus.Fireball2 = new AquamentusFireball(Aquamentus.FireballPosition);
+                    Aquamentus.Fireball3 = new AquamentusFireball(Aquamentus.FireballPosition);
+                    ((AquamentusFireball)Aquamentus.Fireball).GenerateLeft();
+                    ((AquamentusFireball)Aquamentus.Fireball2).GenerateTopLeft();
+                    ((AquamentusFireball)Aquamentus.Fireball3).GenerateBottomLeft();
+                    Aquamentus.State = new AttackWithFireballLeftState(Aquamentus);
+                    break;
+                case 2:
+                    Aquamentus.State = new MovingRightAquamentusState(Aquamentus);
+                    break;
+
+            }
         }
         public void ChangeAttackedStatus() {
             Aquamentus.State = new MovingAttackedLeftAquamentusState(Aquamentus);

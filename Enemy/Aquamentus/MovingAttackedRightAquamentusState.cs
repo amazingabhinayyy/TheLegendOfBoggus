@@ -45,6 +45,9 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
                     ((AquamentusFireball)Aquamentus.Fireball3).GenerateBottomLeft();
                     Aquamentus.State = new AttackWithFireballLeftState(Aquamentus);
                     break;
+                case 2:
+                    Aquamentus.State = new MovingRightAquamentusState(Aquamentus);
+                    break;
 
             }
      

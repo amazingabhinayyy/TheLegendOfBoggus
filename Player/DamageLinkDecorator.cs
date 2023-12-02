@@ -39,18 +39,17 @@ namespace Sprint2_Attempt3.Player
         {
             if (timer < 10)
             {
-                if(InventoryController.GetCount("Heart") != 0.5f)
+                if(InventoryController.hearts != 0.5f)
                     Knockback(side);
 
                 timer = invincabilityTimer;
-                InventoryController.DecrementCount("Heart", .5f);
-                if (InventoryController.GetCount("Heart") <= 0)
+                InventoryController.hearts -= .5f;
+                if (InventoryController.hearts <= 0)
                 {
                     if (InventoryController.UsingFairy)
                     {
-                        InventoryController.IncrementCount("Heart");
+                        InventoryController.hearts++;
                         InventoryController.UsingFairy = false;
-                        InventoryController.DecrementCount("Fairy");
                     }
                     else 
                     { 
@@ -59,7 +58,7 @@ namespace Sprint2_Attempt3.Player
                         timer = 0;
                     }
                 }
-                else if (InventoryController.GetCount("Heart") <= 1)
+                else if (InventoryController.hearts <= 1)
                 {
                     SoundFactory.PlaySound(SoundFactory.Instance.lowHealth);
                 }

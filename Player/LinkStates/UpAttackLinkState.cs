@@ -65,7 +65,8 @@ namespace Sprint2_Attempt3.Player.LinkStates
                         noSwordBeam = false;
                     }
                 }
-                if (noSwordBeam && InventoryController.GetCount("Heart") == 5)
+                //if (noSwordBeam && InventoryController.GetCount("Heart") == 5)
+                if (noSwordBeam && InventoryController.hearts == 5)
                 {
                     UpSwordBeam swordBeam = new UpSwordBeam(link);
                     link.Items.Add(swordBeam);

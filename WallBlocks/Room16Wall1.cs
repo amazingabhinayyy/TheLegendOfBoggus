@@ -10,10 +10,14 @@ namespace Sprint2_Attempt3.WallBlocks
     public class Room16Wall1 : IWall
     {
         public bool EnemyWalkable { get; } = true;
+
+        public bool projectilesThrowable { get; } = true;
+
         Rectangle wall;
         public Room16Wall1()
         {
-            wall = new Rectangle(602, 277 + Globals.YOffset, 398, 53);
+            //wall = new Rectangle(602, 277 + Globals.YOffset, 398, 53);
+            wall = new Rectangle(605, 254 + Globals.YOffset+15, 97, 125);
         }
         public Rectangle GetHitBox()
         {

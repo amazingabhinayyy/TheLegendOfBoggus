@@ -12,8 +12,9 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
 {
     internal class Aquamentus : EnemyD
     {
-        public static bool end;
-        public bool End { get; set; }
+        private int maxLeft = 100;
+
+        public int MaxLeft { get { return maxLeft; } set { maxLeft = value; } }
         public IEnemyProjectile Fireball { get; set; }
         public IEnemyProjectile Fireball2 { get; set; }
         public IEnemyProjectile Fireball3 { get; set; }
@@ -23,7 +24,7 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
 
         public Aquamentus(int x, int y)
         {
-            end = false;
+         
             this.X = x;
             this.Y = y;
             FireballPosition = new Vector2(x, y);
@@ -48,9 +49,7 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
 
         public override void Update()
         {
-          
-           
-
+    
             if (((AquamentusFireball)Fireball).Fire)
             {
                 Fireball.Update();

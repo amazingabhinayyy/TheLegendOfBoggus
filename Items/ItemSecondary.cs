@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Inventory;
+using Sprint2_Attempt3.Items.ItemSprites;
 using Sprint2_Attempt3.Sounds;
 using System.Runtime.ConstrainedExecution;
 
@@ -37,25 +38,24 @@ namespace Sprint2_Attempt3.Items
             exists = false;
             CollisionManager.GameObjectList.Remove(this);
             InventoryController.IncrementCount(this.GetType().Name);
+            SoundFactory.PlaySound(SoundFactory.Instance.getItem);
         }
         public void Despawn()
         {
             exists = false;
             CollisionManager.GameObjectList.Remove(this);
         }
-        public virtual void Update() {
-            if (count == 0)
-            {
-                sprite = ItemSpriteFactory.Instance.CreateSpawnItemSprite();
-                spawned = true;
-            }
-        }
-        public void Draw(SpriteBatch spriteBatch) {
+        public abstract void Update();
+        public virtual void Draw(SpriteBatch spriteBatch) {
             if (exists)
             {
-                sprite.Draw(spriteBatch, Position, sourceRectangle);
-                if(!spawned){
+                if (!spawned)
+                {
+                    ((IAnimatedItemSprite)sprite).Draw(spriteBatch, Position, sourceRectangle);
                     count--;
+                }
+                else {
+                    sprite.Draw(spriteBatch, Position);
                 }
             }
         }

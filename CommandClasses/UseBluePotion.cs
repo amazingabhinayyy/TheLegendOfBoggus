@@ -16,11 +16,8 @@ namespace Sprint2_Attempt3.CommandClasses
 
         public void Execute()
         {
-            if (InventoryController.GetCount("BluePotion") > 0) {
-                float difference = InventoryController.GetCount("HeartContainer") - InventoryController.GetCount("Heart");
-                InventoryController.IncrementCount("Heart", difference);
-                InventoryController.DecrementCount("BluePotion", difference);
-            }
+            float difference = InventoryController.heartContainers - InventoryController.hearts;
+            InventoryController.hearts += difference;
         }
     }
 }

@@ -82,6 +82,11 @@ namespace Sprint2_Attempt3
 
             moveKeys = moveKeyTime.Keys.ToList();
 
+            //Commands For Testing
+            commandMapping.Add(Keys.E, new IncreaseHealthCommand(game1));
+            commandMapping.Add(Keys.T, new IncreaseKeyCommand(game1));
+
+
         }
 
         public void Update(GameTime gameTime)

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles;
@@ -13,6 +14,7 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
         private int currentFrame;
+        private int direction;
         private int currentFireballFrame;
         private IEnemyProjectile fireball;
         private IEnemyProjectile fireball2;
@@ -36,9 +38,31 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
         }
         public void ChangeDirection()
         {
-            
-                Aquamentus.State = new MovingAttackedLeftAquamentusState(Aquamentus);
-                
+
+
+            Random random = new Random();
+            direction = random.Next(0, 3);
+            switch (direction)
+            {
+                case 0:
+                    Aquamentus.State = new MovingLeftAquamentusState(Aquamentus);
+                    break;
+                case 1:
+                    Aquamentus.FireballPosition = new Vector2(Aquamentus.X, Aquamentus.Y);
+                    Aquamentus.Fireball = new AquamentusFireball(Aquamentus.FireballPosition);
+                    Aquamentus.Fireball2 = new AquamentusFireball(Aquamentus.FireballPosition);
+                    Aquamentus.Fireball3 = new AquamentusFireball(Aquamentus.FireballPosition);
+                    ((AquamentusFireball)Aquamentus.Fireball).GenerateLeft();
+                    ((AquamentusFireball)Aquamentus.Fireball2).GenerateTopLeft();
+                    ((AquamentusFireball)Aquamentus.Fireball3).GenerateBottomLeft();
+                    Aquamentus.State = new AttackWithFireballLeftState(Aquamentus);
+                    break;
+                case 2:
+                    Aquamentus.State = new MovingRightAquamentusState(Aquamentus);
+                    break;
+
+            }
+
         }
         public void ChangeAttackedStatus() {
             Aquamentus.State = new MovingAttackedRightAquamentusState(Aquamentus);

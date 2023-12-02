@@ -11,6 +11,7 @@ using Sprint2_Attempt3.Dungeon;
 using System;
 using Sprint2_Attempt3.Items.ItemClasses;
 using Sprint2_Attempt3.Player.LinkProjectiles.ProjectileInterfaces;
+using Sprint2_Attempt3.Inventory;
 using Sprint2_Attempt3.Sounds;
 
 namespace Sprint2_Attempt3.Player
@@ -74,7 +75,7 @@ namespace Sprint2_Attempt3.Player
             State.Attack();
         }
         public void UseBomb()
-        {
+        { 
             State.UseBomb();
         }
         public void UseArrow()

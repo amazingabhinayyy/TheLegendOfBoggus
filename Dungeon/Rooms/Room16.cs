@@ -18,16 +18,12 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                 gameObjectLists[currentRoomNumber].Add(wall);
             }
         }
-        public override void SwitchToEastRoom()
-        {
-            TransitionHandler.Instance.Start = true;
-            TransitionHandler.Instance.Transition(this, new Room17(game1));
-            mapX += 1;
-        }
 
         public override void SwitchToUpperRoom()
         {
-            game1.room = new Room17(game1);
+            Room16TransitionHandler.Instance.Start = true;
+            Room16TransitionHandler.Instance.Transition(this, new Room17(game1));
+            mapX += 1;
         }
 
     }

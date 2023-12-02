@@ -21,13 +21,13 @@ namespace Sprint2_Attempt3.Items.ItemClasses
             this.spawned = false;
             sprite = ItemSpriteFactory.Instance.CreateSpawnItemSprite();
         }
-
-        public override void Collect()
+        public override void Update()
         {
-            base.Collect();
-            SoundFactory.PlaySound(SoundFactory.Instance.getItem);
-            InventoryController.IncrementCount("MapLayout");
+            if (count == 0)
+            {
+                sprite = ItemSpriteFactory.Instance.CreateMapSprite();
+                spawned = true;
+            }
         }
-
     }
 }
