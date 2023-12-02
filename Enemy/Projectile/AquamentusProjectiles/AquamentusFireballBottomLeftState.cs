@@ -47,7 +47,7 @@ internal class AquamentusFireballBottomLeftState : IEnemyProjectileState
                 currentFrame2 = 0;
             }
 
-            AquamentusFireball.Position2 = new Vector2(AquamentusFireball.Position2.X - change, (float)(AquamentusFireball.Position2.Y +0.50));
+            AquamentusFireball.Position2 = new Vector2(AquamentusFireball.Position2.X - change, (float)(AquamentusFireball.Position2.Y +change/2));
             traveledDistance += change;
             if (traveledDistance >= projDistance)
             {
