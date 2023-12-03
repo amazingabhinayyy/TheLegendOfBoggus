@@ -13,15 +13,12 @@ namespace Sprint2_Attempt3.Inventory
     public class InventoryItem : IInventoryItem
     {
         private float count = 0;
-        private float OriginalCount;
         public Rectangle destRectangle { get; private set; }
         private IItemSprite sprite;
         private ICommand command = null; 
         public InventoryItem() { }
-        public InventoryItem(Rectangle destination, IItemSprite source, ICommand com, float c)
+        public InventoryItem(Rectangle destination, IItemSprite source, ICommand com)
         {
-            count = c;
-            OriginalCount = c;
             destRectangle = destination;
             sprite = source;
             command = com;   

@@ -21,6 +21,7 @@ namespace Sprint2_Attempt3.Inventory
         private static IItemSprite menuSprite = ItemSpriteFactory.Instance.CreateInventoryMenuSprite();
         private static IItemSprite mapLayoutSprite = ItemSpriteFactory.Instance.CreateMapLayoutSprite();
         private static int count = 0;
+        private Game1 game1;
         public static float hearts { get; set; }
         public static int heartContainers { get; set; }
         public static int RupeeCount { get; set; }
@@ -44,24 +45,33 @@ namespace Sprint2_Attempt3.Inventory
         private static Rectangle MapDestRectangle = new Rectangle(destRectangle.X + 150, destRectangle.Y + 339, 26, 49);
         private static Rectangle CompassDestRectangle = new Rectangle(destRectangle.X + 138, destRectangle.Y + 460, 47, 49);
         public InventoryController(Game1 game1) {
-            float[] counts = SaveFileLoader.Instance.LoadFile(0);
+            LinkItems = new Dictionary<string, InventoryItem>() {
+                { "Arrow", new InventoryItem(ArrowDestRectangle, ItemSpriteFactory.Instance.CreateArrowSprite(), new SetUseArrowCommand(game1)) },
+                { "BlueCandle", new InventoryItem(BlueCandleDestRectangle, ItemSpriteFactory.Instance.CreateBlueCandleSprite(), new SetUseFireCommand(game1)) },
+                { "BluePotion", new InventoryItem(BluePotionDestRectangle, ItemSpriteFactory.Instance.CreateBluePotionSprite(), new UseBluePotion()) },
+                { "Bomb", new InventoryItem(BombDestRectangle, ItemSpriteFactory.Instance.CreateBombSprite(), new SetUseBombCommand(game1)) },
+                { "Boomerang", new InventoryItem(BoomerangDestRectangle, ItemSpriteFactory.Instance.CreateBoomerangSprite(), new SetUseBoomerangCommand(game1)) },
+                { "Clock", new InventoryItem(ClockDestRectangle, ItemSpriteFactory.Instance.CreateClockSprite(), new UseClock()) },
+                { "Fairy", new InventoryItem(FairyDestRectangle, ItemSpriteFactory.Instance.CreateFairySprite(), new UseFairy()) },
+                { "Compass", new InventoryItem(CompassDestRectangle, ItemSpriteFactory.Instance.CreateCompassSprite(), null) },
+                { "Map", new InventoryItem(MapDestRectangle, ItemSpriteFactory.Instance.CreateMapSprite(), null) }
+            };
+        }
+
+        public static void LoadFile(int i) {
+            float[] counts = SaveFileLoader.Instance.LoadFile(i);
             hearts = counts[0];
             heartContainers = (int)counts[1];
             RupeeCount = (int)counts[2];
             KeyCount = (int)counts[3];
             HasBow = Convert.ToBoolean(counts[4]);
 
-            LinkItems = new Dictionary<string, InventoryItem>() {
-                { "Arrow", new InventoryItem(ArrowDestRectangle, ItemSpriteFactory.Instance.CreateArrowSprite(), new SetUseArrowCommand(game1), counts[5]) },
-                { "BlueCandle", new InventoryItem(BlueCandleDestRectangle, ItemSpriteFactory.Instance.CreateBlueCandleSprite(), new SetUseFireCommand(game1), counts[6]) },
-                { "BluePotion", new InventoryItem(BluePotionDestRectangle, ItemSpriteFactory.Instance.CreateBluePotionSprite(), new UseBluePotion(), counts[7]) },
-                { "Bomb", new InventoryItem(BombDestRectangle, ItemSpriteFactory.Instance.CreateBombSprite(), new SetUseBombCommand(game1), counts[8]) },
-                { "Boomerang", new InventoryItem(BoomerangDestRectangle, ItemSpriteFactory.Instance.CreateBoomerangSprite(), new SetUseBoomerangCommand(game1), counts[9]) },
-                { "Clock", new InventoryItem(ClockDestRectangle, ItemSpriteFactory.Instance.CreateClockSprite(), new UseClock(), counts[10]) },
-                { "Fairy", new InventoryItem(FairyDestRectangle, ItemSpriteFactory.Instance.CreateFairySprite(), new UseFairy(), counts[11]) },
-                { "Compass", new InventoryItem(CompassDestRectangle, ItemSpriteFactory.Instance.CreateCompassSprite(), null, counts[12]) },
-                { "Map", new InventoryItem(MapDestRectangle, ItemSpriteFactory.Instance.CreateMapSprite(), null, counts[13]) }
-            };
+            int x = 5;
+            foreach (KeyValuePair<String, InventoryItem> item in LinkItems)
+            {
+                item.Value.SetCount(counts[x]);
+                x++;
+            }
         }
 
         public static void Reset() {
@@ -76,6 +86,22 @@ namespace Sprint2_Attempt3.Inventory
                 item.Value.SetCount(counts[i]);
                 i++;
             }
+        }
+
+        public static void SaveToFile() {
+            float[] counts = new float[SaveFileLoader.numCounts];
+            counts[0] = hearts;
+            counts[1] = heartContainers;
+            counts[2] = RupeeCount;
+            counts[3] = KeyCount;
+            HasBow = Convert.ToBoolean(counts[4]);
+            int i = 5;
+            foreach (KeyValuePair<String, InventoryItem> item in LinkItems)
+            {
+                counts[i] = item.Value.Count();
+                i++;
+            }
+            SaveFileLoader.Instance.SaveFile(counts);
         }
 
         public static void IncrementCount(String item) {  LinkItems[item].IncrementCount(); }
