@@ -1,5 +1,9 @@
-﻿using Sprint2_Attempt3.Blocks.BlockSprites;
+﻿using Microsoft.Xna.Framework;
+using Sprint2_Attempt3.Blocks.BlockSprites;
+using Sprint2_Attempt3.Dungeon.Doors;
+using Sprint2_Attempt3.Dungeon.Rooms;
 using Sprint2_Attempt3.Enemy.Gel;
+using Sprint2_Attempt3.Items.ItemClasses;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -32,7 +36,6 @@ namespace Sprint2_Attempt3.Dungeon
         {
             currentRoomNumber++;
             String fileName = "Dungeon/RoomFiles/RandomRoom" + currentRoomNumber + ".csv";
-
             File.WriteAllText(fileName, "");
             //File.AppendAllText(fileName, "Block,BlueTile,43,,\n");
             /*
@@ -43,7 +46,7 @@ namespace Sprint2_Attempt3.Dungeon
             */
 
             String[] objectPlacements = CreateObjectsInRoom();
-            String[] doors = randRoomSpriteCreator.ConnectAndMakeDoors(map, currentX, currentY);
+            //String[] doors = randRoomSpriteCreator.ConnectAndMakeDoors(map, currentX, currentY);
 
             for(int i = 0; i < objectPlacements.Length; i++)
             {
@@ -52,15 +55,26 @@ namespace Sprint2_Attempt3.Dungeon
                     File.AppendAllText(fileName, objectPlacements[i] + "\n");
                 }
             }
-            for(int i = 0; i < doors.Length; i++)
-            {
-                if (doors[i] != null)
-                {
-                    File.AppendAllText(fileName, doors[i] + "\n");
-                }
-            }
+
+            if (currentX != map.GetLength(1) - 1)
+                File.AppendAllText(fileName, randRoomSpriteCreator.CheckIfDoorExist(typeof(WestDoor), map[currentX + 1, currentY]));
+            else
+                File.AppendAllText(fileName, "Door,East,4\n");
+            if(currentX != 0)
+                File.AppendAllText(fileName, randRoomSpriteCreator.CheckIfDoorExist(typeof(EastDoor), map[currentX - 1, currentY]));
+            else
+                File.AppendAllText(fileName, "Door,West,4\n");
+            if(currentY != 0)
+                File.AppendAllText(fileName, randRoomSpriteCreator.CheckIfDoorExist(typeof(SouthDoor), map[currentX, currentY - 1]));
+            else
+                File.AppendAllText(fileName, "Door,North,4\n");
+            if (currentY != map.GetLength(0) - 1)
+                File.AppendAllText(fileName, randRoomSpriteCreator.CheckIfDoorExist(typeof(NorthDoor), map[currentX, currentY + 1]));
+            else
+                File.AppendAllText(fileName, "Door,South,4\n");
 
             RoomGenerator.Instance.LoadNewFile(fileName);
+            //map[currentX, currentY].gameObjectList = RoomGenerator.Instance.LoadFile(18);
 
             return currentRoomNumber + 18 - 1;
         }

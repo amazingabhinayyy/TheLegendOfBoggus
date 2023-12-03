@@ -25,6 +25,7 @@ namespace Sprint2_Attempt3.Dungeon
         private readonly string[] normalPreset7 = { "Block,DiamondTile,27", "Block,DiamondTile,38", "Block,DiamondTile,51", "Block,DiamondTile,34", "Block,DiamondTile,47", "Block,DiamondTile,58" };
         private readonly string[][] normalRoomPresetList;
         private readonly string[][] specialRoomPresetList;
+        private readonly string[] enemies = { "Enemy,Zol,", "Enemy,Keese,", "Enemy,Gel,", "Enemy,Rope,", "Enemy,Goriya,", "Enemy,Stalfos,", "Enemy,Dodongo," };
         private readonly int[] noSpawnAreas = { 6, 7, 25, 36, 37, 38, 47, 48, 49, 60, 78, 79 };
         public RandomRoomSpriteCreator() 
         {
@@ -79,24 +80,11 @@ namespace Sprint2_Attempt3.Dungeon
             {
                 int randEnemies = new Random().Next(0, 7);
                 int randAmountEnemies = new Random().Next(1, 4);
-
-                if (randEnemies == 0)
-                    enemyCSV = "Enemy,Zol,";
-                else if (randEnemies == 1)
-                    enemyCSV = "Enemy,Keese,";
-                else if (randEnemies == 2)
-                    enemyCSV = "Enemy,Gel,";
-                else if (randEnemies == 3)
-                    enemyCSV = "Enemy,Rope,";
-                else if (randEnemies == 4)
-                    enemyCSV = "Enemy,Goriya,";
-                else if (randEnemies == 5)
-                    enemyCSV = "Enemy,Stalfos,";
-                else if (randEnemies == 6)
-                {
-                    enemyCSV = "Enemy,Dodongo,";
+                enemyCSV = enemies[randEnemies];
+                //Spawns one dodongo
+                 if (randEnemies == 6)
                     randAmountEnemies = 1;
-                }
+
                 for (int c = 0; c < randAmountEnemies; c++)
                 {
                     int randPositionEnemy;
@@ -113,88 +101,37 @@ namespace Sprint2_Attempt3.Dungeon
 
             return objectPlacement;
         }
-        
-        public string[] ConnectAndMakeDoors(IRoom[,] map, int currentX, int currentY)
-        {
-            string[] doors = new string[4];
 
-            if (currentX != map.GetLength(1) - 1)
+        public string CheckIfDoorExist(Type typeDoor, IRoom room)
+        {
+            string doorCSV = "";
+            if (typeDoor.IsAssignableFrom(typeof(WestDoor)))
+                doorCSV = "Door,East,4";
+            else if (typeDoor.IsAssignableFrom(typeof(EastDoor)))
+                doorCSV = "Door,West,4";
+            else if (typeDoor.IsAssignableFrom(typeof(SouthDoor)))
+                doorCSV = "Door,North,4";
+            else
+                doorCSV = "Door,South,4";
+
+            if (room != null)
             {
-                if (map[currentX + 1, currentY] != null)
+                foreach (IGameObject obj in room.gameObjectList)
                 {
-                    foreach (IGameObject obj in map[currentX + 1, currentY].gameObjectList)
+                    if (obj.GetType().Equals(typeDoor) && ((IDoor)obj).DoorExists)
                     {
-                        if (obj is WestDoor && ((WestDoor)obj).DoorExists)
-                        {
-                            doors[0] = "Door,East,0";
-                        }
+                        doorCSV = doorCSV.Substring(0, doorCSV.Length - 1) + "0";
                     }
                 }
-                else
-                {
-                    int randNum = new Random().Next(0, 2);
-                    if (randNum == 0)
-                        doors[0] = "Door,East,0";
-                }
             }
-            if (currentX != 0)
+            else
             {
-                if (map[currentX - 1, currentY] != null)
-                {
-                    foreach (IGameObject obj in map[currentX - 1, currentY].gameObjectList)
-                    {
-                        if (obj is EastDoor && ((EastDoor)obj).DoorExists)
-                        {
-                            doors[1] = "Door,West,0";
-                        }
-                    }
-                }
-                else
-                {
-                    int randNum = new Random().Next(0, 2);
-                    if (randNum == 0)
-                        doors[1] = "Door,West,0";
-                }
+                int randNum = new Random().Next(0, 1);
+                if (randNum == 0)
+                    doorCSV = doorCSV.Substring(0, doorCSV.Length - 1) + "0";
             }
-            if (currentY != map.GetLength(0) - 1)
-            {
-                if (map[currentX, currentY + 1] != null)
-                {
-                    foreach (IGameObject obj in map[currentX, currentY + 1].gameObjectList)
-                    {
-                        if (obj is NorthDoor && ((NorthDoor)obj).DoorExists)
-                        {
-                            doors[2] = "Door,South,0";
-                        }
-                    }
-                }
-                else
-                {
-                    int randNum = new Random().Next(0, 2);
-                    if (randNum == 0)
-                        doors[2] = "Door,South,0";
-                }
-            }
-            if (currentY != 0)
-            {
-                if (map[currentX, currentY - 1] != null)
-                {
-                    foreach (IGameObject obj in map[currentX, currentY - 1].gameObjectList)
-                    {
-                        if (obj is SouthDoor && ((SouthDoor)obj).DoorExists)
-                        {
-                            doors[3] = "Door,North,0";
-                        }
-                    }
-                }
-                else
-                {
-                    int randNum = new Random().Next(0, 2);
-                    if (randNum == 0)
-                        doors[3] = "Door,North,0";
-                }
-            }
-            return doors; 
-        }      
+            return doorCSV + "\n";
+
+        }
     }
 }

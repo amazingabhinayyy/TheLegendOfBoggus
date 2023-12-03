@@ -15,6 +15,7 @@ namespace Sprint2_Attempt3.Dungeon.Doors
         public bool IsLocked { get { return IsLocked; } private set { IsLocked = value; } }
         public bool IsDiamondLocked { get { return IsDiamondLocked; } private set { IsDiamondLocked = value; } }
         public bool IsBombWall { get; }
+        public bool DoorExists { get; }
         public void Open();
         public void Close();
         public void DiamondLock();

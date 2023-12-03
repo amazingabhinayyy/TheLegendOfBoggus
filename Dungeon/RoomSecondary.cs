@@ -21,10 +21,11 @@ namespace Sprint2_Attempt3.Dungeon
         //protected static List<List<IGameObject>> gameObjectLists = new List<List<IGameObject>>(18);
         private IRoom[] rooms = new IRoom[18];
         //protected static int[] enemiesKilledList = new int[18];
-        public List<IGameObject> gameObjectList { get; protected set; }
+        public List<IGameObject> gameObjectList { get; set; }
         protected static IRoom[,] roomLayout = new IRoom[12, 12];
         protected static int mapY = 11;
         protected static int mapX = 5;
+        protected static int numRoomsLoaded = 0;
 
         //public static int[] EnemiesKilledList { get { return enemiesKilledList; } set { enemiesKilledList = value; } }
         //public List<List<IGameObject>> GameObjectLists { get { return gameObjectLists; } set { gameObjectLists = value; } }
@@ -46,8 +47,9 @@ namespace Sprint2_Attempt3.Dungeon
             RoomNumber = roomNum;
             spawned = false;
             gameObjectList = new List<IGameObject>();
+            numRoomsLoaded++;
 
-            gameObjectList = RoomGenerator.Instance.LoadFile(currentRoomNumber);
+            gameObjectList = RoomGenerator.Instance.LoadFile(RoomNumber);
             //gameObjectLists[roomNumber] = RoomGenerator.Instance.LoadFile(roomNumber);
             gameObjectList.Add(this.game1.link);
             if (roomNum != 15)
@@ -276,6 +278,7 @@ namespace Sprint2_Attempt3.Dungeon
         }
         public void ResetRooms() {
             //enemiesKilledList = new int[18];
+            numRoomsLoaded = 0;
             roomLayout = new IRoom[12, 12];
             rooms = new IRoom[18] { new Room1(game1), new Room2(game1), new Room3(game1), new Room4(game1), new Room5(game1), new Room6(game1), new Room7(game1), new Room8(game1), new Room9(game1), new Room10(game1), new Room11(game1), new Room12(game1), new Room13(game1), new Room14(game1), new Room15(game1), new Room16(game1), new Room17(game1), new Room18(game1)};
             /*
