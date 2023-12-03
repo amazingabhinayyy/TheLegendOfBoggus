@@ -29,7 +29,6 @@ namespace Sprint2_Attempt3.Inventory
             else if (hearts > 0) { index = 1; }
             return index; 
         }
-
         public static void DrawHearts(SpriteBatch spriteBatch) {
             float hearts = InventoryController.hearts;
             float containers = InventoryController.heartContainers;

@@ -43,5 +43,16 @@ namespace Sprint2_Attempt3.Inventory
         public static void DrawPlayerTracker(SpriteBatch spriteBatch) {
             sprite.Draw(spriteBatch, MarkerDestRectangles[RoomSecondary.GetCurrentRoomNumber()]);
         }
+        public static void ShiftUp() {
+            for (int i = 0; i < MarkerDestRectangles.Length; i++) {
+                MarkerDestRectangles[i].Y -= InventoryController.AnimateRate;
+            }
+        }
+        public static void ShiftDown() {
+            for (int i = 0; i < MarkerDestRectangles.Length; i++)
+            {
+                MarkerDestRectangles[i].Y += InventoryController.AnimateRate;
+            }
+        }
     }
 }

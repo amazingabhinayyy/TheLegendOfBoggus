@@ -119,6 +119,9 @@ namespace Sprint2_Attempt3
                 case GameState.chooseFile:
                     mouseController.Update(gameTime);
                     break;
+                case GameState.itemMenu:
+                    inventoryController.Update();
+                    break;
 
             } 
             base.Update(gameTime);
@@ -133,6 +136,11 @@ namespace Sprint2_Attempt3
             switch (gameState) { 
                 case GameState.start:
                     room.Draw(spriteBatch, Color.White);
+                    inventoryController.Draw(spriteBatch);
+                    break;
+                case GameState.itemMenu:
+                    if (InventoryController.itemMenuState != InventoryController.ItemMenuState.fullView)
+                        room.Draw(spriteBatch, Color.White);
                     inventoryController.Draw(spriteBatch);
                     break;
                 default:

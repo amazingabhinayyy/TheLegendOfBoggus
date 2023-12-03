@@ -104,7 +104,7 @@ namespace Sprint2_Attempt3
                 else if (pressedKeys.Contains(Keys.S)) { (new SaveFileCommand()).Execute(); }
 
             }
-            else if (game1.gameState == Game1.GameState.start)
+            else if (game1.gameState == Game1.GameState.start || game1.gameState == Game1.GameState.itemMenu)
             {
                 bool pressed = false;
                 //go through each movement key incrementing their count by one if they are currently pressed
