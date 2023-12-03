@@ -10,6 +10,7 @@ using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Inventory;
 using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Player;
+using Sprint2_Attempt3.Portal;
 using Sprint2_Attempt3.WallBlocks;
 using System;
 using System.Collections.Generic;
@@ -198,6 +199,8 @@ namespace Sprint2_Attempt3.Dungeon
                         ((IBlock)obj).Draw(spriteBatch, color);
                     else if (obj is IDoor)
                         ((IDoor)obj).Draw(spriteBatch, color);
+                    else if (obj is IPortal)
+                        ((IPortal)obj).Draw(spriteBatch, color);
 
                 }
 

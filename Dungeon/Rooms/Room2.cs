@@ -6,6 +6,7 @@ using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Items.ItemClasses;
 using Sprint2_Attempt3.Player;
+using Sprint2_Attempt3.Portal;
 using System;
 using System.Collections.Generic;
 
