@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Blocks.BlockSprites;
+using Sprint2_Attempt3.Portal;
 using Sprint2_Attempt3.Collision.SideCollisionHandlers;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Dungeon.Doors;
@@ -177,6 +178,20 @@ namespace Sprint2_Attempt3.Collision
             }
             return changedRooms;
         }
-        
+        public static void HandlePlayerPortalCollision(ILink link, IGameObject portal, ICollision side)
+        {
+            //Rectangle intersectRect = Rectangle.Intersect(linkRectangle, wall);
+            //int width = intersectRect.Width;
+            //ICollision side = CollisionDetector.SideDetector(linkRectangle, wall);
+            if (portal is FirstPortal)
+            {
+                link.Position = new Vector2(200, 550);
+            }
+            else if (portal is SecondPortal)
+            {
+                link.Position = new Vector2(600, 350);
+            }
+        }
+
     }
 }
