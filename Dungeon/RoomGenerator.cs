@@ -360,10 +360,10 @@ namespace Sprint2_Attempt3.Dungeon
             {
                 portal = new FirstPortal(Globals.FloorGrid[position]);
             }
-           /* else if (Portal.Equals("Second"))
+           else if (Portal.Equals("Second"))
             {
                 portal = new SecondPortal(Globals.FloorGrid[position]);
-            }*/
+            }
             return portal;
         }
     }
