@@ -57,6 +57,10 @@ namespace Sprint2_Attempt3.Dungeon
         {
             decoratedRoom.SetDecorator(room);
         }
+        public void ResetRooms()
+        {
+
+        }
         public void Update()
         {
             decoratedRoom.Update();
@@ -78,7 +82,7 @@ namespace Sprint2_Attempt3.Dungeon
 
         public DungeonRoom getDungeonRoom()
         {
-            throw new NotImplementedException();
+            return new DungeonRoom();
         }
     }
 }

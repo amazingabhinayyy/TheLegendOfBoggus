@@ -4,6 +4,7 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Sprint2_Attempt3.CommandClasses;
+using Sprint2_Attempt3.Dungeon;
 using Sprint2_Attempt3.Screens;
 
 namespace Sprint2_Attempt3
@@ -55,7 +56,7 @@ namespace Sprint2_Attempt3
             
             //other controls
             commandMapping.Add(Keys.Q, new Quit(game1));
-            commandMapping.Add(Keys.R, new Reset(game1));
+            commandMapping.Add(Keys.R, new Reset(game1, game1.room));
             commandMapping.Add(Keys.Escape, new Pause(game1));
 
             //switching rooms
@@ -191,6 +192,7 @@ namespace Sprint2_Attempt3
                 if(pressedKeys.Contains(Keys.Enter))
                 {
                     game1.gameStarted = true;
+                    game1.room.ResetRooms();
                 }
             }
         }

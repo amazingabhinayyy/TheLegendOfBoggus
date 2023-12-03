@@ -15,7 +15,8 @@ namespace Sprint2_Attempt3.CommandClasses
         private static int roomCount = 0;
         public SwitchToPrevRoom(Game1 game1) {
             this.game1 = game1;
-            /*rooms = new IRoom[] {
+            /*
+            rooms = new IRoom[] {
                 new Room1(game1),
                 new Room2(game1),
                 new Room3(game1),
@@ -34,8 +35,8 @@ namespace Sprint2_Attempt3.CommandClasses
                 new Room16(game1),
                 new Room17(game1),
                 new Room18(game1)
-
-            };*/
+            };
+            */
         }
         public void Execute()
         {

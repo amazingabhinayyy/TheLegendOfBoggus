@@ -79,9 +79,9 @@ namespace Sprint2_Attempt3
             gameStarted = false;
             linkDead = false;
             inventoryController = new InventoryController(this);
+            room = new Room1(this);
             keyController = new KeyboardController(this);
             mouseController = new MouseController(this);
-            room = new Room1(this);
             startScreen = new StartScreenState(this);
             deathScreen = new DeathScreenState(this);
             pauseScreen = new PauseScreenState(this);

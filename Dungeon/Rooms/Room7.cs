@@ -15,11 +15,9 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         }
         public override void SwitchToNorthRoom()
         {
-            TransitionHandler.Instance.Start = true;
-            TransitionHandler.Instance.Transition(this, new Room11(game1));
-            for (int i = 0; i < gameObjectLists[10].Count; i++)
+            for (int i = 0; i < roomLayout[mapX, mapY - 1].gameObjectList.Count; i++)
             {
-                IGameObject obj = gameObjectLists[10][i];
+                IGameObject obj = roomLayout[mapX, mapY - 1].gameObjectList[i];
                 if (obj is SouthDoor)
                 {
                     if (((SouthDoor)obj).IsBombWall)
@@ -30,12 +28,12 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                 }
             }
             mapY -= 1;
+            SwitchRoom();
         }
         public override void SwitchToWestRoom()
         {
-            TransitionHandler.Instance.Start = true;
-            TransitionHandler.Instance.Transition(this, new Room6(game1));
             mapX -= 1;
+            SwitchRoom();
         }
 
     }

@@ -15,15 +15,14 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             roomLayout[4, 7] = this;
             room = new WhiteStairRoom();
             foreach (IWall wall in Globals.Room16WallBlocks) {
-                gameObjectLists[currentRoomNumber].Add(wall);
+                gameObjectList.Add(wall);
             }
         }
 
         public override void SwitchToUpperRoom()
         {
-            Room16TransitionHandler.Instance.Start = true;
-            Room16TransitionHandler.Instance.Transition(this, new Room17(game1));
-            mapX += 1;
+            mapY -= 1;
+            SwitchRoom();
         }
 
     }

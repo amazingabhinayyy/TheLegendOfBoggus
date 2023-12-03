@@ -18,7 +18,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             roomLayout[5, 6] = this;
             keySpawned = false;
             enemies = new List<IEnemy>();
-            foreach (IGameObject obj in gameObjectLists[currentRoomNumber])
+            foreach (IGameObject obj in gameObjectList)
             {
                 if (obj is IEnemy)
                 {
@@ -33,15 +33,13 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
 
         public override void SwitchToSouthRoom()
         {
-            TransitionHandler.Instance.Start = true;
-            TransitionHandler.Instance.Transition(this, new Room13(game1));
             mapY += 1;
+            SwitchRoom();
         }
         public override void SwitchToWestRoom()
         {
-            TransitionHandler.Instance.Start = true;
-            TransitionHandler.Instance.Transition(this, new Room17(game1));
             mapX -= 1;
+            SwitchRoom();
         }
         public override void RoomConditionCheck()
         {

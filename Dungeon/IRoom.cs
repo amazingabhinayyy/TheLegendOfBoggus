@@ -23,6 +23,7 @@ namespace Sprint2_Attempt3.Dungeon
         public void SwitchToUpperRoom();
         
         public DungeonRoom getDungeonRoom();
-       
+
+        public void ResetRooms();
     }
 }

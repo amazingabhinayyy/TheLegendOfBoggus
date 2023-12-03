@@ -15,15 +15,14 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
 
         public override void SwitchToWestRoom()
         {
-            TransitionHandler.Instance.Start = true;
-            TransitionHandler.Instance.Transition(this, new Room14(game1));
             mapX -= 1;
+            SwitchRoom();
         }
         public override void SwitchToSouthRoom()
         {
             mapY += 1;
             int roomNum = RandomRoomCreator.Instance.CreateRandomRoom(roomLayout, mapX, mapY);
-            gameObjectLists[roomNum] = RoomGenerator.Instance.LoadFile(roomNum);
+            gameObjectList = RoomGenerator.Instance.LoadFile(roomNum);
             roomLayout[mapX, mapY] = new RandomRooms(game1, roomNum);
             TransitionHandler.Instance.Start = true;
             TransitionHandler.Instance.Transition(this, roomLayout[mapX, mapY]);

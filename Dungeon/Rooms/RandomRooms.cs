@@ -11,7 +11,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
 
         public RandomRooms(Game1 game, int roomNum) : base(game, roomNum)
         {
-            gameObjectLists.Add(null);
+            //gameObjectLists.Add(null);
         }
         public override void SwitchToNorthRoom()
         {
@@ -19,14 +19,14 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             if (roomLayout[mapX,mapY] == null)
             {
                 int roomNum = RandomRoomCreator.Instance.CreateRandomRoom(roomLayout, mapX, mapY);
-                gameObjectLists[roomNum] = RoomGenerator.Instance.LoadFile(roomNum);
+                gameObjectList = RoomGenerator.Instance.LoadFile(roomNum);
                 roomLayout[mapX, mapY] = new RandomRooms(game1, roomNum);
             }
 
             TransitionHandler.Instance.Start = true;
             TransitionHandler.Instance.Transition(this, roomLayout[mapX, mapY]);
             currentRoomNumber = roomLayout[mapX, mapY].RoomNumber;
-            TransitionHandler.Instance.TransitionGameObjectList = gameObjectLists[currentRoomNumber];
+            TransitionHandler.Instance.TransitionGameObjectList = gameObjectList;
         }
         public override void SwitchToSouthRoom()
         {
@@ -34,12 +34,12 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             if (roomLayout[mapX, mapY] == null)
             {
                 int roomNum = RandomRoomCreator.Instance.CreateRandomRoom(roomLayout, mapX, mapY);
-                gameObjectLists[roomNum] = RoomGenerator.Instance.LoadFile(roomNum);
+                gameObjectList = RoomGenerator.Instance.LoadFile(roomNum);
                 roomLayout[mapX, mapY] = new RandomRooms(game1, roomNum);
             }
             currentRoomNumber = roomLayout[mapX, mapY].RoomNumber;
             TransitionHandler.Instance.Start = true;
-            TransitionHandler.Instance.TransitionGameObjectList = gameObjectLists[currentRoomNumber];
+            TransitionHandler.Instance.TransitionGameObjectList = gameObjectList;
             TransitionHandler.Instance.Transition(this, roomLayout[mapX, mapY]);
         }
         public override void SwitchToEastRoom()
@@ -48,12 +48,12 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             if (roomLayout[mapX, mapY] == null)
             {
                 int roomNum = RandomRoomCreator.Instance.CreateRandomRoom(roomLayout, mapX, mapY);
-                gameObjectLists[roomNum] = RoomGenerator.Instance.LoadFile(roomNum);
+                gameObjectList = RoomGenerator.Instance.LoadFile(roomNum);
                 roomLayout[mapX, mapY] = new RandomRooms(game1, roomNum);
             }
             currentRoomNumber = roomLayout[mapX, mapY].RoomNumber;
             TransitionHandler.Instance.Start = true;
-            TransitionHandler.Instance.TransitionGameObjectList = gameObjectLists[currentRoomNumber];
+            TransitionHandler.Instance.TransitionGameObjectList = gameObjectList;
             TransitionHandler.Instance.Transition(this, roomLayout[mapX, mapY]);
         }
         public override void SwitchToWestRoom()
@@ -62,12 +62,12 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             if (roomLayout[mapX, mapY] == null)
             {
                 int roomNum = RandomRoomCreator.Instance.CreateRandomRoom(roomLayout, mapX, mapY);
-                gameObjectLists[roomNum] = RoomGenerator.Instance.LoadFile(roomNum);
+                gameObjectList = RoomGenerator.Instance.LoadFile(roomNum);
                 roomLayout[mapX, mapY] = new RandomRooms(game1, roomNum);
             }
             currentRoomNumber = roomLayout[mapX, mapY].RoomNumber;
             TransitionHandler.Instance.Start = true;
-            TransitionHandler.Instance.TransitionGameObjectList = gameObjectLists[currentRoomNumber];
+            TransitionHandler.Instance.TransitionGameObjectList = gameObjectList;
             TransitionHandler.Instance.Transition(this, roomLayout[mapX, mapY]);
         }
     }

@@ -13,16 +13,18 @@ namespace Sprint2_Attempt3.CommandClasses
     internal class Reset : ICommand
     {
         private Game1 game1;
+        private IRoom room;
 
-        public Reset(Game1 game) { 
+        public Reset(Game1 game, IRoom room) { 
             this.game1= game;
+            this.room = room;
         }
 
         public void Execute()
         {
-            RoomSecondary.ResetRooms();
+            room.ResetRooms();
             TransitionHandler.Instance.TransitionGameObjectList = new List<IGameObject>();
-            game1.room = new Room1(game1);
+            ///game1.room = new Room1(game1);
             InventoryController.Reset();
             game1.Reset();
         }

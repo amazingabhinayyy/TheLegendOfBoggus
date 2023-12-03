@@ -15,15 +15,15 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
 
         public override void SwitchToEastRoom()
         {
-            TransitionHandler.Instance.Start = true;
-            TransitionHandler.Instance.Transition(this, new Room18(game1));
             mapX += 1;
+            SwitchRoom();
         }
 
         public override void SwitchToLowerRoom()
         {
             Room16TransitionHandler.Instance.Start = true;
             Room16TransitionHandler.Instance.Transition(this, new Room16(game1));
+            mapY += 1;
         }
     }
 }

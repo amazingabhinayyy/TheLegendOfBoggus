@@ -22,7 +22,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             roomLayout[4, 9] = this;
             doorOpen = false;
             enemies = new List<IEnemy>();
-            foreach(IGameObject obj in gameObjectLists[currentRoomNumber])
+            foreach(IGameObject obj in gameObjectList)
             {
                 if (obj is IEnemy)
                 {
@@ -36,11 +36,9 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         }
         public override void SwitchToNorthRoom()
         {
-            TransitionHandler.Instance.Start = true;
-            TransitionHandler.Instance.Transition(this, new Room9(game1));
-            for (int i = 0; i < gameObjectLists[8].Count; i++)
+            for (int i = 0; i < roomLayout[mapX, mapY + 1].gameObjectList.Count; i++)
             {
-                IGameObject obj = gameObjectLists[8][i];
+                IGameObject obj = roomLayout[mapX, mapY + 1].gameObjectList[i];
                 if (obj is SouthDoor)
                 {
                     if (((SouthDoor)obj).IsLocked)
@@ -51,12 +49,12 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                 }
             }
             mapY -= 1;
+            SwitchRoom();
         }
         public override void SwitchToEastRoom()
         {
-            TransitionHandler.Instance.Start = true;
-            TransitionHandler.Instance.Transition(this, new Room6(game1));
             mapX += 1;
+            SwitchRoom();
         }
         public override void RoomConditionCheck()
         {
