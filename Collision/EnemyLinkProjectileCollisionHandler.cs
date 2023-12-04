@@ -28,7 +28,7 @@ namespace Sprint2_Attempt3.Collision
             }
             else if(item is IArrow)
             {
-                if(!(enemy is Dodongo || enemy is Target))
+                if(!(enemy is Dodongo))
                     enemy.GetDamaged(1.0f);
                 if(enemy is Target)
                     SoundFactory.PlaySound(SoundFactory.Instance.ping);

@@ -10,27 +10,40 @@ namespace Sprint2_Attempt3.Enemy.Target
     {
         public static Rectangle TargetSprite { get; } = new Rectangle(93, 76, 173, 159);
         protected Vector2 spawnPoint;
-        public ITargetState state { get; set; }
+        protected bool direction;
         public Target(int x, int y, bool direction)
         {
             this.X = x;
             this.Y = y;
             this.health = 0.5f;
+            this.SpawnPosition = new Vector2(x, y);
+            this.direction = direction;
             spawnPoint = new Vector2(x, y);
             if (direction)
             {
-                state = new MovingRightTargetState(this);
+                State = new MovingRightTargetState(this);
             }
             else
             {
-                state = new MovingLeftTargetState(this);
+                State = new MovingLeftTargetState(this);
             }
         }
         public override void Update() {
-            state.Update();            
+            if (invinciblityTimer > 0)
+            {
+                invinciblityTimer--;
+            }
+            State.Update();
         }
         public override void Generate() {
-            state = new IdleState(this);
+            if (direction)
+            {
+                State = new MovingRightTargetState(this);
+            }
+            else
+            {
+                State = new MovingLeftTargetState(this);
+            }
         }
         public override void MoveUp()
         {
@@ -46,15 +59,15 @@ namespace Sprint2_Attempt3.Enemy.Target
         }
         public override void MoveLeft()
         {
-            state.MoveLeft();
+            //State.MoveLeft();
         }
         public override void MoveRight()
         {
-            state.MoveRight();
+            //State.MoveRight();
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
-            state.Draw(spriteBatch);
+            State.Draw(spriteBatch);
         }
     }
 }

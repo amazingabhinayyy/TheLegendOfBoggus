@@ -5,7 +5,7 @@ using System;
 
 namespace Sprint2_Attempt3.Enemy.Target
 {
-    internal class MovingLeftTargetState : ITargetState
+    internal class MovingLeftTargetState : IEnemyState
     {
         private Target target;
         private IEnemySprite sprite;
@@ -30,13 +30,13 @@ namespace Sprint2_Attempt3.Enemy.Target
         }
         public void BecomeIdle()
         {
-            target.state = new IdleState(target);
+            target.State = new IdleState(target);
         }
         public void MoveRight()
         {
             if (target.X > 371 && target.X < 379)
             {
-                target.state = new MovingRightTargetState(target);
+                target.State = new MovingRightTargetState(target);
                 target.X = 379;
             }
         }
@@ -52,7 +52,7 @@ namespace Sprint2_Attempt3.Enemy.Target
         }
         public void Update()
         {
-            target.X -= 4;
+            target.X -= 2;
             target.Position = new Rectangle(target.X, target.Y, 45, 45);
             if(target.X < 110)
             {
