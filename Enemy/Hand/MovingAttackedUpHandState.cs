@@ -17,7 +17,7 @@ namespace Sprint2_Attempt3.Enemy.Hand
         {
             this.Hand = Hand;
             sprite = EnemySpriteFactory.Instance.CreateHandSprite();
-            sourceRectangle = Globals.HandRed1;
+            sourceRectangle = Hand.Hands[1];
             Hand.Position = new Rectangle(Hand.X, Hand.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             currentFrame = 0;
             random = new Random();
@@ -46,29 +46,7 @@ namespace Sprint2_Attempt3.Enemy.Hand
         public void Update()
         {
             currentFrame++;
-            if (currentFrame <= 20)
-            {
-                if (currentFrame == 5)
-                {
-                    sourceRectangle = Globals.HandGreen2;
-                }
-                else if (currentFrame == 10)
-                {
-                    sourceRectangle = Globals.HandTeal1;
-                }
-                else if (currentFrame == 15)
-                {
-                    sourceRectangle = Globals.HandRed2;
-                }
-                else if (currentFrame == 20)
-                {
-                    sourceRectangle = Globals.HandBlue1;
-                }
-            }
-            else
-            {
-                currentFrame = 0;
-            }
+            sourceRectangle = Hand.Hands[Globals.FindIndex(currentFrame % (4 * Hand.AttackedAnimateRate), Hand.AttackedAnimateRate, 4) + 1];
             Hand.Y -= 1;
             Hand.Position = new Rectangle(Hand.X, Hand.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             sprite.Update();

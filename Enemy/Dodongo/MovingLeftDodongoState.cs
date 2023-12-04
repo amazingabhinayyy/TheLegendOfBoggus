@@ -2,6 +2,7 @@
 using Sprint2_Attempt3.Enemy.Keese;
 using Microsoft.Xna.Framework;
 using System;
+using Sprint2_Attempt3.Enemy.Gel;
 
 namespace Sprint2_Attempt3.Enemy.Dodongo
 {
@@ -18,7 +19,7 @@ namespace Sprint2_Attempt3.Enemy.Dodongo
         {
             this.dodongo = dodongo;
             sprite = EnemySpriteFactory.Instance.CreateMovingLeftDodongoSprite();
-            sourceRectangle = Globals.DodongoRight1;
+            sourceRectangle = Dodongo.Dodongos[2];
             dodongo.Position = new Rectangle(dodongo.X, dodongo.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             currentFrame = 0;
             random = new Random();
@@ -47,25 +48,9 @@ namespace Sprint2_Attempt3.Enemy.Dodongo
         public void Update()
         {
             currentFrame++;
-            if (currentFrame < 30)
-            {
-                if (currentFrame < 15)
-                {
-                    sourceRectangle = Globals.DodongoRight1;
-
-                }
-                else
-                {
-                    sourceRectangle = Globals.DodongoRight2;
-
-                }
-                dodongo.X -= 1;
-                dodongo.Position = new Rectangle(dodongo.X, dodongo.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
-            }
-            else
-            {
-                currentFrame = 0;
-            }
+            sourceRectangle = Dodongo.Dodongos[Globals.FindIndex(currentFrame % (2 * dodongo.AnimateRate), dodongo.AnimateRate, 2) + 2];
+            dodongo.X -= 1;
+            dodongo.Position = new Rectangle(dodongo.X, dodongo.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
         }
         public void Draw(SpriteBatch spriteBatch)
         {

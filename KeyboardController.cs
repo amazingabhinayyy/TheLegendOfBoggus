@@ -87,7 +87,7 @@ namespace Sprint2_Attempt3
         public void Update(GameTime gameTime)
         {
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
-            if (game1.gameState == Game1.GameState.pause)
+            if (game1.gameState == Game1.GameState.pause || game1.gameState == Game1.GameState.linkDead)
             {
                 if (pressedKeys.Contains(Keys.Enter))
                 {

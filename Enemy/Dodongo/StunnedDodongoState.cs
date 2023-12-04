@@ -22,7 +22,7 @@ namespace Sprint2_Attempt3.Enemy.Dodongo
         {
             this.dodongo = dodongo;
             sprite = EnemySpriteFactory.Instance.CreateMovingLeftDodongoSprite();
-            sourceRectangle = Globals.DodongoRight1;
+            sourceRectangle = Dodongo.Dodongos[2];
             dodongo.Position = new Rectangle(dodongo.X, dodongo.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             currentFrame = 0;
             random = new Random();

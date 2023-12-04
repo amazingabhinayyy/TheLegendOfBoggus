@@ -10,18 +10,14 @@ namespace Sprint2_Attempt3.Enemy.Hand
         private Hand Hand;
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
-        private int currentFrame;
-        private Random random;
-        private int direction;
         public CapturedState(Hand Hand, Vector2 position)
         {
             Hand.X = (int)position.X;
             Hand.Y = (int)position.Y;
             this.Hand = Hand;
             sprite = EnemySpriteFactory.Instance.CreateCapturedHandSprite();
-            sourceRectangle = Globals.HandRed1;
+            sourceRectangle = Hand.Hands[0];
             Hand.Position = new Rectangle(Hand.X, Hand.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
-            currentFrame = 0;
         }
         public void ChangeDirection()
         {
