@@ -133,6 +133,12 @@
 /processorParam:TextureFormat=Color
 /build:Items.png
 
+#begin Its_Showtime.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Its_Showtime.wav
+
 #begin LinkPlayerSpriteSheet.png
 /importer:TextureImporter
 /processor:TextureProcessor

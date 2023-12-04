@@ -7,6 +7,7 @@ using Sprint2_Attempt3.Enemy.Target;
 using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Items.ItemClasses;
 using Sprint2_Attempt3.Player;
+using Sprint2_Attempt3.Sounds;
 using System;
 using System.Collections.Generic;
 
@@ -37,7 +38,6 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             Target targetLowerRight4 = new Target(405, 255, true);
             Target targetLowerRight5 = new Target(505, 255, true);
             Target targetLowerRight6 = new Target(605, 255, true);
-
 
 
             enemies = new List<IEnemy>();
