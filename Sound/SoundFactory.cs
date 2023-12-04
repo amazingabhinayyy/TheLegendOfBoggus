@@ -27,6 +27,10 @@ namespace Sprint2_Attempt3.Sounds
         public SoundEffect secret { get; set; }
         public SoundEffect triforce { get; set; }
 
+        public SoundEffect rickRoll { get; set; }
+        public SoundEffect ping { get; set; }
+        public SoundEffect swoosh { get; set; }
+
         private SoundEffectInstance backgroundMusicInstance;
         private SoundEffectInstance fanfareInstance;
         public SoundEffectInstance backgroundMusic { get => backgroundMusicInstance; }
@@ -69,6 +73,9 @@ namespace Sprint2_Attempt3.Sounds
             bossHurt = content.Load<SoundEffect>("LOZ_Boss_Hit");
             secret = content.Load<SoundEffect>("LOZ_Secret");
             triforce = content.Load<SoundEffect>("triforce_obtained");
+            rickRoll = content.Load<SoundEffect>("rickRoll");
+            ping = content.Load<SoundEffect>("ping");
+            swoosh = content.Load<SoundEffect>("swoosh");
 
 
             SoundEffect backgroundMusic = content.Load<SoundEffect>("Underworld_BGM");
