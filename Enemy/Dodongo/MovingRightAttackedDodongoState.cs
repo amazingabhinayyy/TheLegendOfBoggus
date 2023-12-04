@@ -14,7 +14,7 @@ namespace Sprint2_Attempt3.Enemy.Dodongo
         {
             this.dodongo = dodongo;
             sprite = EnemySpriteFactory.Instance.CreateDodongoSprite();
-            sourceRectangle = Globals.DodongoRightAttacked;
+            sourceRectangle = Dodongo.AttackedDodongos[2];
             dodongo.Position = new Rectangle(dodongo.X, dodongo.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             killCounter = 0;
         }

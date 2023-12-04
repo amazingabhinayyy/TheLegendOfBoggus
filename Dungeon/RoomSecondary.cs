@@ -102,7 +102,7 @@ namespace Sprint2_Attempt3.Dungeon
                 gameObjectLists[currentRoomNumber].Add(this.game1.link);
                 if (roomNum != 15)
                 {
-                    gameObjectLists[currentRoomNumber].AddRange(Globals.WallBlocks);
+                    gameObjectLists[roomNumber].AddRange(IWall.WallBlocks);
                 }
                 MapController.VisitRoom(roomNum);
             }          
@@ -130,83 +130,6 @@ namespace Sprint2_Attempt3.Dungeon
 
         }
         */
-        
-        public void SwitchToNextRoom() {
-            if (currentRoomNumber < rooms.Length - 1)
-            {
-                currentRoomNumber++;
-            }
-            else
-            {
-                currentRoomNumber = 0;
-            }
-            room = new DungeonRoom();
-            /*
-            if (gameObjectLists[currentRoomNumber] == null)
-            {
-                gameObjectLists[currentRoomNumber] = RoomGenerator.Instance.LoadFile(currentRoomNumber);
-                gameObjectLists[currentRoomNumber].Add(this.game1.link);
-                if (currentRoomNumber != 15)
-                {
-                    gameObjectLists[currentRoomNumber].AddRange(Globals.WallBlocks);
-                }
-                else {
-                    room = new WhiteStairRoom();
-                }
-                MapController.VisitRoom(currentRoomNumber);
-            }
-            */
-            if (game1.link is DamageLinkDecorator)
-            {
-                ((DamageLinkDecorator)game1.link).RemoveDecorator();
-            }
-            ClockUsed = false;
-            MapController.VisitRoom(currentRoomNumber);
-            TransitionHandler.Instance.TransitionGameObjectList = new List<IGameObject>();
-            //could be unnecessary now
-            Room16TransitionHandler.Instance.TransitionGameObjectList = new List<IGameObject>();
-            CollisionManager.GameObjectList = rooms[currentRoomNumber].gameObjectList;
-            game1.link.Items.Clear();
-        }
-
-        public void SwitchToPrevRoom()
-        {
-            if (currentRoomNumber <= 0)
-            {
-                currentRoomNumber= rooms.Length-1;
-            }
-            else
-            {
-                currentRoomNumber--;
-            }
-            /*
-            if (gameObjectLists[currentRoomNumber] == null)
-            {
-                gameObjectLists[currentRoomNumber] = RoomGenerator.Instance.LoadFile(currentRoomNumber);
-                gameObjectLists[currentRoomNumber].Add(this.game1.link);
-                if (currentRoomNumber != 15)
-                {
-                    gameObjectLists[currentRoomNumber].AddRange(Globals.WallBlocks);
-                }
-                else {
-                    room = new WhiteStairRoom();
-                }
-                MapController.VisitRoom(currentRoomNumber);
-            }
-            */
-            if (game1.link is DamageLinkDecorator)
-            {
-                ((DamageLinkDecorator)game1.link).RemoveDecorator();
-            }
-            ClockUsed = false;
-            MapController.VisitRoom(currentRoomNumber);
-            TransitionHandler.Instance.TransitionGameObjectList = new List<IGameObject>();
-            //could be unnecessary now
-            Room16TransitionHandler.Instance.TransitionGameObjectList = new List<IGameObject>();
-            CollisionManager.GameObjectList = rooms[currentRoomNumber].gameObjectList;
-            game1.link.Items.Clear();
-        }
-        
         public virtual void Update() {
             if (Room16TransitionHandler.Instance.Start)
             {
@@ -286,11 +209,11 @@ namespace Sprint2_Attempt3.Dungeon
             {
                 gameObjectLists[i] = RoomGenerator.Instance.LoadFile(i);
                 if (i != 15)
-                    gameObjectLists[i].AddRange(Globals.WallBlocks);
+                    gameObjectLists[i].AddRange(IWall.WallBlocks);
                 else
-                    gameObjectLists[i].AddRange(Globals.Room16WallBlocks);
+                    gameObjectLists[i].AddRange(IWall.Room16WallBlocks);
             }
-            */
+            
             game1.room = rooms[0];
             mapX = 5;
             mapY = 11;

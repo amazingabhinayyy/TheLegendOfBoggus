@@ -25,9 +25,12 @@ namespace Sprint2_Attempt3.Inventory
         public Menu() { }
 
         public static void Draw(SpriteBatch spriteBatch) {
-            ItemA.Draw(spriteBatch, ItemADestRectangle);
-            ItemB.Draw(spriteBatch, ItemBDestRectangle);
-            ItemSelected.Draw(spriteBatch, ItemSelectedDestRectangle);
+            if (InventoryController.GetCount(ItemMenuStrings[ItemAIndex]) > 0)
+                ItemA.Draw(spriteBatch, ItemADestRectangle);
+            if (InventoryController.GetCount(ItemMenuStrings[ItemBIndex]) > 0)
+                ItemB.Draw(spriteBatch, ItemBDestRectangle);
+            if (InventoryController.GetCount(ItemMenuStrings[ItemSelectedIndex]) > 0)
+                ItemSelected.Draw(spriteBatch, ItemSelectedDestRectangle);
             cursor.Draw(spriteBatch, CursorDestRectangle);
         }
 
@@ -87,5 +90,17 @@ namespace Sprint2_Attempt3.Inventory
 
         public static void UseAItem() { InventoryController.UseItem(ItemMenuStrings[ItemAIndex]); }
         public static void UseBItem() { InventoryController.UseItem(ItemMenuStrings[ItemBIndex]); }
+        public static void ShiftUp() {
+            ItemBDestRectangle.Y -= InventoryController.AnimateRate;
+            ItemADestRectangle.Y -= InventoryController.AnimateRate;
+            ItemSelectedDestRectangle.Y -= InventoryController.AnimateRate;
+            CursorDestRectangle.Y -= InventoryController.AnimateRate;
+        }
+        public static void ShiftDown() {
+            ItemBDestRectangle.Y += InventoryController.AnimateRate;
+            ItemADestRectangle.Y += InventoryController.AnimateRate;
+            ItemSelectedDestRectangle.Y += InventoryController.AnimateRate;
+            CursorDestRectangle.Y += InventoryController.AnimateRate;
+        }
     }
 }

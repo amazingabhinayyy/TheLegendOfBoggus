@@ -20,15 +20,12 @@ namespace Sprint2_Attempt3
         private Keys currentMoveKey;
         private List<Keys> heldKeys = new List<Keys>();
 
-        public int RoomIndex { get; set; }
-
         public KeyboardController(Game1 game)
         {
             this.game1 = game;
             commandMapping = new Dictionary<Keys, ICommand>();
             RegisterCommands();
             timeSinceLastUpdate = 0;
-            RoomIndex = 0;
         }
 
         public void RegisterCommands()
@@ -86,18 +83,16 @@ namespace Sprint2_Attempt3
             //Commands For Testing
             commandMapping.Add(Keys.E, new IncreaseHealthCommand(game1));
             commandMapping.Add(Keys.T, new IncreaseKeyCommand(game1));
-
-
         }
 
         public void Update(GameTime gameTime)
         {
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
-            if (game1.gamePaused)
+            if (game1.gameState == Game1.GameState.pause || game1.gameState == Game1.GameState.linkDead)
             {
                 if (pressedKeys.Contains(Keys.Enter))
                 {
-                    game1.gamePaused = false;
+                    game1.gameState = Game1.GameState.start;
                 }
                 else if (pressedKeys.Contains(Keys.R))
                 {
@@ -107,8 +102,10 @@ namespace Sprint2_Attempt3
                 {
                     commandMapping[Keys.Q].Execute();
                 }
+                else if (pressedKeys.Contains(Keys.S)) { (new SaveFileCommand()).Execute(); }
+
             }
-            else if (game1.gameStarted)
+            else if (game1.gameState == Game1.GameState.start || game1.gameState == Game1.GameState.itemMenu)
             {
                 bool pressed = false;
                 //go through each movement key incrementing their count by one if they are currently pressed
@@ -193,6 +190,8 @@ namespace Sprint2_Attempt3
                 {
                     game1.gameStarted = true;
                     game1.room.ResetRooms();
+                    game1.gameState = Game1.GameState.chooseFile;
+                    game1.screenSprite = ScreenSpriteFactory.Instance.CreateChooseFileScreen();
                 }
             }
         }

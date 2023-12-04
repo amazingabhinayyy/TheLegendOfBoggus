@@ -28,7 +28,6 @@ namespace Sprint2_Attempt3.Collision
             }
             else {
                 link.GetDamaged(side);
-                //link.Knockback(side);
             }
         }
     }

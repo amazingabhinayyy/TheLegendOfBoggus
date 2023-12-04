@@ -17,17 +17,25 @@ namespace Sprint2_Attempt3.Inventory
 {
     public class InventoryController
     {
-        public static Rectangle destRectangle { get; private set; } = new Rectangle(0, -525, 800, 700);
+        private static Rectangle DestRectangle = new Rectangle(0, -525, 800, 700);
+        public static Rectangle destRectangle { get { return DestRectangle; } }
+        public static int AnimateRate { get; } = 5;
         private static IItemSprite menuSprite = ItemSpriteFactory.Instance.CreateInventoryMenuSprite();
         private static IItemSprite mapLayoutSprite = ItemSpriteFactory.Instance.CreateMapLayoutSprite();
         private static int count = 0;
+        private static Game1 game;
+        public enum ItemMenuState { 
+            movingUp,
+            movingDown,
+            fullView,
+            collapsed
+        }
+        public static ItemMenuState itemMenuState { get; set; } = ItemMenuState.collapsed;
         public static float hearts { get; set; }
         public static int heartContainers { get; set; }
         public static int RupeeCount { get; set; }
         public static int KeyCount { get; set; }
-        public static int BombCount { get; set; }
         public static bool HasBow { get; set; }
-        public static bool FullView { get; private set; } = false;
         public static bool UsingFairy { get; set; } = false;
         private static Dictionary<String, InventoryItem> LinkItems { get; set; }
         private static IItemSprite[] TriforceMarkers = new IItemSprite[] { ItemSpriteFactory.Instance.CreateGreenTriforceMarkerSprite(), ItemSpriteFactory.Instance.CreateRedTriforceMarkerSprite() };
@@ -44,24 +52,34 @@ namespace Sprint2_Attempt3.Inventory
         private static Rectangle MapDestRectangle = new Rectangle(destRectangle.X + 150, destRectangle.Y + 339, 26, 49);
         private static Rectangle CompassDestRectangle = new Rectangle(destRectangle.X + 138, destRectangle.Y + 460, 47, 49);
         public InventoryController(Game1 game1) {
-            float[] counts = SaveFileLoader.Instance.LoadFile(0);
+            game = game1;
+            LinkItems = new Dictionary<string, InventoryItem>() {
+                { "Arrow", new InventoryItem(ArrowDestRectangle, ItemSpriteFactory.Instance.CreateArrowSprite(), new SetUseArrowCommand(game1)) },
+                { "BlueCandle", new InventoryItem(BlueCandleDestRectangle, ItemSpriteFactory.Instance.CreateBlueCandleSprite(), new SetUseFireCommand(game1)) },
+                { "BluePotion", new InventoryItem(BluePotionDestRectangle, ItemSpriteFactory.Instance.CreateBluePotionSprite(), new UseBluePotion()) },
+                { "Bomb", new InventoryItem(BombDestRectangle, ItemSpriteFactory.Instance.CreateBombSprite(), new SetUseBombCommand(game1)) },
+                { "Boomerang", new InventoryItem(BoomerangDestRectangle, ItemSpriteFactory.Instance.CreateBoomerangSprite(), new SetUseBoomerangCommand(game1)) },
+                { "Clock", new InventoryItem(ClockDestRectangle, ItemSpriteFactory.Instance.CreateClockSprite(), new UseClock()) },
+                { "Fairy", new InventoryItem(FairyDestRectangle, ItemSpriteFactory.Instance.CreateFairySprite(), new UseFairy()) },
+                { "Compass", new InventoryItem(CompassDestRectangle, ItemSpriteFactory.Instance.CreateCompassSprite(), null) },
+                { "Map", new InventoryItem(MapDestRectangle, ItemSpriteFactory.Instance.CreateMapSprite(), null) }
+            };
+        }
+
+        public static void LoadFile(int i) {
+            float[] counts = SaveFileLoader.Instance.LoadFile(i);
             hearts = counts[0];
             heartContainers = (int)counts[1];
             RupeeCount = (int)counts[2];
             KeyCount = (int)counts[3];
             HasBow = Convert.ToBoolean(counts[4]);
 
-            LinkItems = new Dictionary<string, InventoryItem>() {
-                { "Arrow", new InventoryItem(ArrowDestRectangle, ItemSpriteFactory.Instance.CreateArrowSprite(), new SetUseArrowCommand(game1), counts[5]) },
-                { "BlueCandle", new InventoryItem(BlueCandleDestRectangle, ItemSpriteFactory.Instance.CreateBlueCandleSprite(), new SetUseFireCommand(game1), counts[6]) },
-                { "BluePotion", new InventoryItem(BluePotionDestRectangle, ItemSpriteFactory.Instance.CreateBluePotionSprite(), new UseBluePotion(), counts[7]) },
-                { "Bomb", new InventoryItem(BombDestRectangle, ItemSpriteFactory.Instance.CreateBombSprite(), new SetUseBombCommand(game1), counts[8]) },
-                { "Boomerang", new InventoryItem(BoomerangDestRectangle, ItemSpriteFactory.Instance.CreateBoomerangSprite(), new SetUseBoomerangCommand(game1), counts[9]) },
-                { "Clock", new InventoryItem(ClockDestRectangle, ItemSpriteFactory.Instance.CreateClockSprite(), new UseClock(), counts[10]) },
-                { "Fairy", new InventoryItem(FairyDestRectangle, ItemSpriteFactory.Instance.CreateFairySprite(), new UseFairy(), counts[11]) },
-                { "Compass", new InventoryItem(CompassDestRectangle, ItemSpriteFactory.Instance.CreateCompassSprite(), null, counts[12]) },
-                { "Map", new InventoryItem(MapDestRectangle, ItemSpriteFactory.Instance.CreateMapSprite(), null, counts[13]) }
-            };
+            int x = 5;
+            foreach (KeyValuePair<String, InventoryItem> item in LinkItems)
+            {
+                item.Value.SetCount(counts[x]);
+                x++;
+            }
         }
 
         public static void Reset() {
@@ -78,6 +96,22 @@ namespace Sprint2_Attempt3.Inventory
             }
         }
 
+        public static void SaveToFile() {
+            float[] counts = new float[SaveFileLoader.numCounts];
+            counts[0] = hearts;
+            counts[1] = heartContainers;
+            counts[2] = RupeeCount;
+            counts[3] = KeyCount;
+            HasBow = Convert.ToBoolean(counts[4]);
+            int i = 5;
+            foreach (KeyValuePair<String, InventoryItem> item in LinkItems)
+            {
+                counts[i] = item.Value.Count();
+                i++;
+            }
+            SaveFileLoader.Instance.SaveFile(counts);
+        }
+
         public static void IncrementCount(String item) {  LinkItems[item].IncrementCount(); }
         public static void DecrementCount(String item) { LinkItems[item].DecrementCount(); }
         public static float GetCount(String item) {  return LinkItems[item].Count(); }
@@ -85,36 +119,42 @@ namespace Sprint2_Attempt3.Inventory
         public static void UseItem(String item) { LinkItems[item].UseItem(); }
 
         public static void ShiftUp() {
-            if (destRectangle.Y > -525)
+            if (DestRectangle.Y > -525)
             {
-                //destRectangle.Y--;
-                foreach (KeyValuePair<String, InventoryItem> item in LinkItems)
-                {
-                    item.Value.ShiftUp();
-                }
+                DestRectangle.Y -= AnimateRate;
+                foreach (KeyValuePair<String, InventoryItem> item in LinkItems) { item.Value.ShiftUp(); }
+                DungeonMapDestRectangle.Y -= AnimateRate;
+                TriforceDestRectangle.Y -= AnimateRate;
+                Menu.ShiftUp();
+                MapController.ShiftUp();
+                PlayerTrackerController.ShiftUp();
             }
             else {
-                FullView = false;
+                itemMenuState = ItemMenuState.collapsed;
+                game.gameState = Game1.GameState.start;
             }
         }
 
         public static void ShiftDown()
         {
-            if (destRectangle.Y < 12)
+            if (DestRectangle.Y < -10)
             {
-                //destRectangle.Y++;
-                foreach (KeyValuePair<String, InventoryItem> item in LinkItems)
-                {
-                    item.Value.ShiftDown();
-                }
-            }
-            else {
-                FullView = true;
+                DestRectangle.Y += AnimateRate;
+                foreach (KeyValuePair<String, InventoryItem> item in LinkItems) { item.Value.ShiftDown(); }
+                DungeonMapDestRectangle.Y += AnimateRate;
+                TriforceDestRectangle.Y += AnimateRate;
+                Menu.ShiftDown();
+                MapController.ShiftDown();
+                PlayerTrackerController.ShiftDown();
+            } else { 
+                itemMenuState = ItemMenuState.fullView; 
             }
         }
         public void Update() {
             count++;
-            triforceSprite = TriforceMarkers[Globals.FindIndex(count % (TriforceMarkers.Length * 5), 5, TriforceMarkers.Length)];            
+            triforceSprite = TriforceMarkers[Globals.FindIndex(count % (TriforceMarkers.Length * 5), 5, TriforceMarkers.Length)];
+            if (itemMenuState == ItemMenuState.movingUp) { ShiftUp(); } 
+            else if (itemMenuState == ItemMenuState.movingDown) { ShiftDown(); }
         }
 
         public void Draw(SpriteBatch spriteBatch) {
@@ -127,10 +167,7 @@ namespace Sprint2_Attempt3.Inventory
             MapController.DrawMap(spriteBatch);
             ItemCountController.DrawCounts(spriteBatch);
 
-            foreach (KeyValuePair<String, InventoryItem> pair in LinkItems)
-            {
-                pair.Value.Draw(spriteBatch);
-            }
+            foreach (KeyValuePair<String, InventoryItem> pair in LinkItems) { pair.Value.Draw(spriteBatch); }
 
             if(RoomSecondary.GetCurrentRoomNumber() < 18)
                 PlayerTrackerController.DrawPlayerTracker(spriteBatch);

@@ -5,6 +5,7 @@ using System.Resources;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Sprint2_Attempt3.CommandClasses;
+using Sprint2_Attempt3.CommandClasses.Buttons;
 using Sprint2_Attempt3.Items.ItemClasses;
 
 namespace Sprint2_Attempt3
@@ -12,60 +13,43 @@ namespace Sprint2_Attempt3
     public class MouseController : IController
     {
         private Game1 game1;
-        private MouseState mstate;
         private float timeSinceLastUpdate;
-        List<ICommand> commands;
+        List<IButton> commands;
         public MouseController(Game1 game)
         {
             this.game1 = game;
             timeSinceLastUpdate = 0;
-            RoomIndex = 0;
-            commands = new List<ICommand>();
+            commands = new List<IButton>();
             RegisterCommands();
 
         }
         public void RegisterCommands()
         {
-            commands.Add(new SwitchToNextRoom(game1));
-            commands.Add(new SwitchToPrevRoom(game1));
+            commands.Add(new ChooseFile1Button(game1));
+            commands.Add(new ChooseFile2Button(game1));
+            commands.Add(new ChooseFile3Button(game1));
         }
-
-        public int RoomIndex { get; set; }
 
         public void Update(GameTime gameTime)
         {
-            mstate = Mouse.GetState();
-
-            bool pressed = false;
-            //go through each movement key incrementing their count by one if they are currently pressed
-
-
-            timeSinceLastUpdate += (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-            if (timeSinceLastUpdate > 0.1f)
+            MouseState mstate = Mouse.GetState();
+            if (mstate.LeftButton.Equals(ButtonState.Pressed))
             {
-                if (mstate.LeftButton.Equals(ButtonState.Pressed))
+                Vector2 mposition = new Vector2(mstate.X, mstate.Y);
+
+                timeSinceLastUpdate += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+                if (timeSinceLastUpdate > 0.1f)
                 {
-                    commands[0].Execute();
-                 
-
+                    foreach (IButton button in commands) {
+                        if (button.Pressed(mposition)) { 
+                            button.Invoke();
+                            break;
+                        }
+                    }
+                    timeSinceLastUpdate = 0;
                 }
-                else if (mstate.RightButton.Equals(ButtonState.Pressed))
-                {
-
-                    
-                    commands[1].Execute();
-              
-
-                }
-
-
-                timeSinceLastUpdate = 0;
             }
-
-
-
-
         }
     }
 }
