@@ -331,6 +331,24 @@
 /processorParam:Quality=Best
 /build:LOZ_Text.wav
 
+#begin ping.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:ping.wav
+
+#begin rickRoll.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:rickRoll.wav
+
+#begin swoosh.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:swoosh.wav
+
 #begin targetSprite.png
 /importer:TextureImporter
 /processor:TextureProcessor
