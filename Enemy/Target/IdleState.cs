@@ -6,7 +6,7 @@ using System;
 
 namespace Sprint2_Attempt3.Enemy.Target
 {
-    internal class IdleState : ITargetState
+    internal class IdleState : IEnemyState
     {
         private Target target;
         private IEnemySprite sprite;
@@ -24,19 +24,19 @@ namespace Sprint2_Attempt3.Enemy.Target
         public void BecomeIdle() { }
         public void MoveLeft()
         {
-            target.state = new MovingLeftTargetState(target);
+            target.State = new MovingLeftTargetState(target);
         }
         public void MoveRight()
         {
-            target.state = new MovingRightTargetState(target);
+            target.State = new MovingRightTargetState(target);
         }
         public void MoveUp()
         {
-            target.state = new MovingUpTargetState(target);
+            target.State = new MovingUpTargetState(target);
         }
         public void MoveDown()
         {
-            target.state = new MovingDownTargetState(target);
+            target.State = new MovingDownTargetState(target);
         }
         public void ChangeAttackedStatus() {
 

@@ -27,7 +27,7 @@ namespace Sprint2_Attempt3.Collision
             }
             else if(item is IArrow)
             {
-                if(!(enemy is Dodongo || enemy is Target))
+                if(!(enemy is Dodongo))
                     enemy.GetDamaged(1.0f);
                 IArrow arrow = (IArrow)item;
                 arrow.DestroyArrow();
