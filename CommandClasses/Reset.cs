@@ -22,11 +22,12 @@ namespace Sprint2_Attempt3.CommandClasses
 
         public void Execute()
         {
-            room.ResetRooms();
+            //room.ResetRooms();
             TransitionHandler.Instance.TransitionGameObjectList = new List<IGameObject>();
             ///game1.room = new Room1(game1);
             InventoryController.Reset();
             game1.Reset();
+            room.ResetRooms();
         }
     }
 }

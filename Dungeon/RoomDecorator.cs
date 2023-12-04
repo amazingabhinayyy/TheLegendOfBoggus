@@ -53,6 +53,10 @@ namespace Sprint2_Attempt3.Dungeon
         public void SwitchToUpperRoom()
         {
         }
+        public void LoadRooms()
+        {
+
+        }
         public void SetDecorator(IRoom room)
         {
             decoratedRoom.SetDecorator(room);

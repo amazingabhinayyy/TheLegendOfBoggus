@@ -33,7 +33,7 @@ namespace Sprint2_Attempt3.Dungeon
         public static bool ClockUsed { get; set; } = false;
         protected IDungeonRoom room;
         protected Game1 game1;
-        protected CollisionManager collisionManager;
+        protected static CollisionManager collisionManager;
 
         public RoomSecondary(Game1 game, int roomNum)
         {
@@ -58,7 +58,7 @@ namespace Sprint2_Attempt3.Dungeon
                 ((DamageLinkDecorator)game1.link).RemoveDecorator();
             }
 
-            ClockUsed = false;
+            //ClockUsed = false;
             collisionManager = new CollisionManager(game1, game1.link);
 
 
@@ -146,14 +146,21 @@ namespace Sprint2_Attempt3.Dungeon
             }
         }
         public void ResetRooms() {
-            //enemiesKilledList = new int[18];
             numRoomsLoaded = 0;
-            roomLayout = new IRoom[12, 12];
-            rooms = new IRoom[18] { new Room1(game1), new Room2(game1), new Room3(game1), new Room4(game1), new Room5(game1), new Room6(game1), new Room7(game1), new Room8(game1), new Room9(game1), new Room10(game1), new Room11(game1), new Room12(game1), new Room13(game1), new Room14(game1), new Room15(game1), new Room16(game1), new Room17(game1), new Room18(game1)};
-            
-            game1.room = rooms[0];
+            //roomLayout = new IRoom[12, 12];
+            //game1.room = new Room1(game1);
+            //rooms = new IRoom[18] { game1.room, new Room2(game1), new Room3(game1), new Room4(game1), new Room5(game1), new Room6(game1), new Room7(game1), new Room8(game1), new Room9(game1), new Room10(game1), new Room11(game1), new Room12(game1), new Room13(game1), new Room14(game1), new Room15(game1), new Room16(game1), new Room17(game1), new Room18(game1)};
+            game1.room = new Room1(game1);
+            game1.room.LoadRooms();
+           // game1.room = rooms[0];
             mapX = 5;
             mapY = 11;
+        }
+        public void LoadRooms()
+        {
+            roomLayout = new IRoom[12, 12];
+            //game1.room = new Room1(game1);
+            rooms = new IRoom[18] { this, new Room2(game1), new Room3(game1), new Room4(game1), new Room5(game1), new Room6(game1), new Room7(game1), new Room8(game1), new Room9(game1), new Room10(game1), new Room11(game1), new Room12(game1), new Room13(game1), new Room14(game1), new Room15(game1), new Room16(game1), new Room17(game1), new Room18(game1) };
         }
         public void SwitchRoom()
         {
@@ -162,6 +169,7 @@ namespace Sprint2_Attempt3.Dungeon
             currentRoomNumber = roomLayout[mapX, mapY].RoomNumber;
             MapController.VisitRoom(currentRoomNumber);
             game1.room = roomLayout[mapX, mapY];
+            ClockUsed = false;
 
             TransitionHandler.Instance.TransitionGameObjectList = roomLayout[mapX, mapY].gameObjectList;
             Room16TransitionHandler.Instance.TransitionGameObjectList = roomLayout[mapX, mapY].gameObjectList;

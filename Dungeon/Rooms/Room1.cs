@@ -18,10 +18,6 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         public override void SwitchToNorthRoom() {
             mapY -= 1;
             SwitchRoom();
-            /*
-            TransitionHandler.Instance.Start = true;
-            TransitionHandler.Instance.Transition(this, roomLayout[mapX, mapY]);
-            */
         }
         public override void SwitchToEastRoom() {
             mapX += 1;
@@ -29,7 +25,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
 
         }
         public override void SwitchToWestRoom() {
-            mapY -= 1;
+            mapX -= 1;
             SwitchRoom();
         }
 

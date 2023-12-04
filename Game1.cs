@@ -83,6 +83,7 @@ namespace Sprint2_Attempt3
             screenSprite = ScreenSpriteFactory.Instance.CreateStartScreen();
             inventoryController = new InventoryController(this);
             room = new Room1(this);
+            room.LoadRooms();
             keyController = new KeyboardController(this);
             mouseController = new MouseController(this);
             deathAnimationActive = false;
@@ -97,7 +98,7 @@ namespace Sprint2_Attempt3
             gameState = GameState.start;
             deathAnimationActive = false;
             collisionManager = new CollisionManager(this, (Link)link);
-            room = new Room1(this);
+            //room = new Room1(this);
         }
 
         protected override void Update(GameTime gameTime)
