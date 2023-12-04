@@ -24,23 +24,23 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             counter = 0;
             finish = false;
             Target targetTopRight1 = new Target(105, 275, true);
-            Target targetTopRight2 = new Target(200, 275, true);
-            Target targetTopRight3 = new Target(300, 275, true);
-            Target targetTopRight4 = new Target(400, 275, true);
-            Target targetTopRight5 = new Target(500, 275, true);
-            Target targetTopRight6 = new Target(600, 275, true);
+            Target targetTopRight2 = new Target(190, 275, true);
+            Target targetTopRight3 = new Target(280, 275, true);
+            Target targetTopRight4 = new Target(370, 275, true);
+            Target targetTopRight5 = new Target(460, 275, true);
+            Target targetTopRight6 = new Target(550, 275, true);
             Target targetMiddleLeft1 = new Target(155, 340, false);
-            Target targetMiddleLeft2 = new Target(255, 340, false);
-            Target targetMiddleLeft3 = new Target(355, 340, false);
-            Target targetMiddleLeft4 = new Target(455, 340, false);
-            Target targetMiddleLeft5 = new Target(555, 340, false);
-            Target targetMiddleLeft6 = new Target(655, 340, false);
+            Target targetMiddleLeft2 = new Target(245, 340, false);
+            Target targetMiddleLeft3 = new Target(335, 340, false);
+            Target targetMiddleLeft4 = new Target(425, 340, false);
+            Target targetMiddleLeft5 = new Target(515, 340, false);
+            Target targetMiddleLeft6 = new Target(605, 340, false);
             Target targetLowerRight1 = new Target(105, 405, true);
-            Target targetLowerRight2 = new Target(205, 405, true);
-            Target targetLowerRight3 = new Target(305, 405, true);
-            Target targetLowerRight4 = new Target(405, 405, true);
-            Target targetLowerRight5 = new Target(505, 405, true);
-            Target targetLowerRight6 = new Target(605, 405, true);
+            Target targetLowerRight2 = new Target(190, 405, true);
+            Target targetLowerRight3 = new Target(280, 405, true);
+            Target targetLowerRight4 = new Target(370, 405, true);
+            Target targetLowerRight5 = new Target(460, 405, true);
+            Target targetLowerRight6 = new Target(550, 405, true);
 
             enemies = new List<IEnemy>();
             gameObjectLists[roomNumber].Add(targetTopRight1);
@@ -73,8 +73,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         public override void SwitchToSouthRoom()
         {
             TransitionHandler.Instance.Start = true;
-            TransitionHandler.Instance.Transition(this, new Room2(game1));
-           
+            TransitionHandler.Instance.Transition(this, new Room2(game1)); 
         }
         public override void Update()
         {
@@ -96,7 +95,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                             }
                             else
                             {
-                                if (counter > 100)
+                                if (counter > 800)
                                 {
                                     ((IEnemy)obj).Kill();
                                     finish = true;
