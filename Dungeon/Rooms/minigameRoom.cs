@@ -22,6 +22,8 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         bool finish;
         public MinigameRoom(Game1 game1) : base(game1, 18) 
         {
+            SoundFactory.Instance.backgroundMusic.Pause();
+            SoundFactory.Instance.undertaleMusic.Play();
             counter = 0;
             finish = false;
             Target targetTopRight1 = new Target(105, 275, true);
@@ -75,7 +77,8 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         {
             TransitionHandler.Instance.Start = true;
             TransitionHandler.Instance.Transition(this, new Room2(game1));
-           
+            SoundFactory.Instance.undertaleMusic.Pause();
+            SoundFactory.Instance.backgroundMusic.Resume();
         }
         public override void Update()
         {
@@ -97,10 +100,11 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                             }
                             else
                             {
-                                if (counter > 100)
+                                if (counter > 1000)
                                 {
                                     ((IEnemy)obj).Kill();
                                     finish = true;
+                                    SoundFactory.PlaySound(SoundFactory.Instance.rickRoll);
                                 }
                             }
                             if (!ClockUsed || ((IEnemy)obj).State is DeathAnimationState)
