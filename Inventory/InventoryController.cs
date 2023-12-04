@@ -1,17 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.CommandClasses;
-using Sprint2_Attempt3.Dungeon;
 using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Items.ItemSprites;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sprint2_Attempt3.Inventory
 {
@@ -65,7 +58,6 @@ namespace Sprint2_Attempt3.Inventory
                 { "Map", new InventoryItem(MapDestRectangle, ItemSpriteFactory.Instance.CreateMapSprite(), null) }
             };
         }
-
         public static void LoadFile(int i) {
             float[] counts = SaveFileLoader.Instance.LoadFile(i);
             hearts = counts[0];
@@ -73,7 +65,6 @@ namespace Sprint2_Attempt3.Inventory
             RupeeCount = (int)counts[2];
             KeyCount = (int)counts[3];
             HasBow = Convert.ToBoolean(counts[4]);
-
             int x = 5;
             foreach (KeyValuePair<String, InventoryItem> item in LinkItems)
             {
@@ -81,7 +72,6 @@ namespace Sprint2_Attempt3.Inventory
                 x++;
             }
         }
-
         public static void Reset() {
             float[] counts = SaveFileLoader.Instance.LoadFile(0);
             hearts = counts[0];
@@ -95,7 +85,6 @@ namespace Sprint2_Attempt3.Inventory
                 i++;
             }
         }
-
         public static void SaveToFile() {
             float[] counts = new float[SaveFileLoader.numCounts];
             counts[0] = hearts;
@@ -111,13 +100,11 @@ namespace Sprint2_Attempt3.Inventory
             }
             SaveFileLoader.Instance.SaveFile(counts);
         }
-
         public static void IncrementCount(String item) {  LinkItems[item].IncrementCount(); }
         public static void DecrementCount(String item) { LinkItems[item].DecrementCount(); }
         public static float GetCount(String item) {  return LinkItems[item].Count(); }
         public static IItemSprite GetSprite(String item) { return LinkItems[item].GetSprite(); }
         public static void UseItem(String item) { LinkItems[item].UseItem(); }
-
         public static void ShiftUp() {
             if (DestRectangle.Y > -525)
             {
@@ -134,7 +121,6 @@ namespace Sprint2_Attempt3.Inventory
                 game.gameState = Game1.GameState.start;
             }
         }
-
         public static void ShiftDown()
         {
             if (DestRectangle.Y < -10)
@@ -146,9 +132,7 @@ namespace Sprint2_Attempt3.Inventory
                 Menu.ShiftDown();
                 MapController.ShiftDown();
                 PlayerTrackerController.ShiftDown();
-            } else { 
-                itemMenuState = ItemMenuState.fullView; 
-            }
+            } else {  itemMenuState = ItemMenuState.fullView; }
         }
         public void Update() {
             count++;
@@ -156,19 +140,15 @@ namespace Sprint2_Attempt3.Inventory
             if (itemMenuState == ItemMenuState.movingUp) { ShiftUp(); } 
             else if (itemMenuState == ItemMenuState.movingDown) { ShiftDown(); }
         }
-
         public void Draw(SpriteBatch spriteBatch) {
             menuSprite.Draw(spriteBatch, destRectangle);
             if (LinkItems["Map"].Count() > 0) { mapLayoutSprite.Draw(spriteBatch, DungeonMapDestRectangle); }
             if (LinkItems["Compass"].Count() > 0) { triforceSprite.Draw(spriteBatch, TriforceDestRectangle); }
-
             Menu.Draw(spriteBatch);
             HealthController.DrawHearts(spriteBatch);
             MapController.DrawMap(spriteBatch);
             ItemCountController.DrawCounts(spriteBatch);
-
             foreach (KeyValuePair<String, InventoryItem> pair in LinkItems) { pair.Value.Draw(spriteBatch); }
-
             PlayerTrackerController.DrawPlayerTracker(spriteBatch);
         }
     }

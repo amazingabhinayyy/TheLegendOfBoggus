@@ -41,9 +41,8 @@ namespace Sprint2_Attempt3.Inventory
 
         public float[] LoadFile(int i)
         {
-            fileNum = i;
             float[] counts = new float[numCounts];
-            StreamReader sr = new StreamReader(files[fileNum]);
+            StreamReader sr = new StreamReader(files[i]);
             while (!sr.EndOfStream)
             {
                 for (int x = 0; x < numCounts; x++)
@@ -75,5 +74,7 @@ namespace Sprint2_Attempt3.Inventory
                 fileNum = i;
             }
         }
+
+        public static int GetFileNum() { return fileNum; }
     }
 }

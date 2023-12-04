@@ -63,7 +63,6 @@ namespace Sprint2_Attempt3.Dungeon
 
             ClockUsed = false;
             collisionManager = new CollisionManager(game1, game1.link);
-        
        
             if (TransitionHandler.Instance.TransitionGameObjectList.Count == 0)
             {

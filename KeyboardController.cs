@@ -101,7 +101,10 @@ namespace Sprint2_Attempt3
                 {
                     commandMapping[Keys.Q].Execute();
                 }
-                else if (pressedKeys.Contains(Keys.S)) { (new SaveFileCommand()).Execute(); }
+                else if (pressedKeys.Contains(Keys.S)) {
+                    ICommand save = new SaveFileCommand();
+                    save.Execute(); 
+                }
 
             }
             else if (game1.gameState == Game1.GameState.start || game1.gameState == Game1.GameState.itemMenu)
