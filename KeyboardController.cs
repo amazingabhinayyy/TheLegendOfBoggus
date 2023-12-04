@@ -188,7 +188,6 @@ namespace Sprint2_Attempt3
             {
                 if(pressedKeys.Contains(Keys.Enter))
                 {
-                    game1.gameStarted = true;
                     game1.room.ResetRooms();
                     game1.gameState = Game1.GameState.chooseFile;
                     game1.screenSprite = ScreenSpriteFactory.Instance.CreateChooseFileScreen();

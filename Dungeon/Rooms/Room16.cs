@@ -14,7 +14,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         {
             roomLayout[4, 7] = this;
             room = new WhiteStairRoom();
-            foreach (IWall wall in Globals.Room16WallBlocks) {
+            foreach (IWall wall in IWall.Room16WallBlocks) {
                 gameObjectList.Add(wall);
             }
         }
