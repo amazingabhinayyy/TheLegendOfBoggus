@@ -46,7 +46,7 @@ namespace Sprint2_Attempt3.Enemy.Hand
         public void Update()
         {
             currentFrame++;
-            sourceRectangle = Hand.Hands[Globals.FindIndex(currentFrame % (4 * Hand.AttackedAnimateRate), Hand.AttackedAnimateRate, 4) + 1];
+            sourceRectangle = Hand.Hands[Globals.FindIndex(currentFrame % (4 * Hand.DamageAnimateRate), Hand.DamageAnimateRate, 4) + 1];
             Hand.Y += 1;
             Hand.Position = new Rectangle(Hand.X, Hand.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             sprite.Update();

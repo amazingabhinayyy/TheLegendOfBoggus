@@ -27,8 +27,7 @@ namespace Sprint2_Attempt3
         public const int ScreenWidth = 800;
         public const int YOffset = 175;
         public static Dictionary<int, Rectangle> FloorGrid = new Dictionary<int, Rectangle>();
-       
-        
+     
         public static int FindIndex(int count, int step, int length)
         {
             int index = Math.Min(count / step, length - 1);
@@ -48,25 +47,6 @@ namespace Sprint2_Attempt3
                 }
             }
         }
-
-        public static Rectangle GoriyaGreenDown { get { return new Rectangle(84, 1, 14, 16); } }
-        public static Rectangle GoriyaGreenUp { get { return new Rectangle(101, 1, 14, 16); } }
-        public static Rectangle GoriyaGreenRight2 { get { return new Rectangle(135, 1, 15, 16); } }
-        public static Rectangle GoriyaTealDown { get { return new Rectangle(84, 18, 14, 16); } }
-        public static Rectangle GoriyaTealUp { get { return new Rectangle(101, 18, 14, 16); } }
-        public static Rectangle GoriyaTealRight { get { return new Rectangle(117, 18, 14, 16); } }
-        public static Rectangle GoriyaRedDown { get { return new Rectangle(84, 35, 14, 16); } }
-        public static Rectangle GoriyaRedUp { get { return new Rectangle(101, 35, 14, 16); } }
-        public static Rectangle GoriyaRedRight { get { return new Rectangle(117, 35, 14, 16); } }
-        public static Rectangle GoriyaRedRight2 { get { return new Rectangle(135, 35, 15, 16); } }
-        public static Rectangle GoriyaBlueDown { get { return new Rectangle(84, 52, 14, 16); } }
-        public static Rectangle GoriyaBlueUp { get { return new Rectangle(101, 52, 14, 16); } }
-        public static Rectangle GoriyaBlueRight { get { return new Rectangle(117, 52, 14, 16); } }
-        public static Rectangle GoriyaBlueRight2 { get { return new Rectangle(135, 52, 15, 16); } }
-        public static Rectangle[] DownGoryia { get; } = new Rectangle[] { new Rectangle(84, 1, 14, 16), new Rectangle(84, 18, 14, 16), new Rectangle(84, 35, 14, 16), new Rectangle(84, 52, 14, 16) };
-        public static Rectangle[] UpGoryia { get; } = new Rectangle[] { new Rectangle(101, 1, 14, 16), new Rectangle(101, 18, 14, 16), new Rectangle(101, 35, 14, 16), new Rectangle(101, 52, 14, 16) };
-        public static Rectangle[] RightGoryia { get; } = new Rectangle[] { new Rectangle(135, 35, 15, 16), new Rectangle(117, 35, 14, 16), new Rectangle(135, 1, 15, 16), new Rectangle(117, 18, 14, 16), new Rectangle(135, 52, 15, 16) };
-
         public static Rectangle GoriyaBoomerang1 { get { return new Rectangle(0, 74, 7, 9); } }
         public static Rectangle GoriyaBoomerang2 { get { return new Rectangle(10, 74, 9, 9); } }
         public static Rectangle GoriyaBoomerang3 { get { return new Rectangle(20, 76, 9, 6); } }

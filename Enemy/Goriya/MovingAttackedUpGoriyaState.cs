@@ -13,22 +13,16 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
         private int currentFrame;
-        private int elaspedFrameCount;
         private int endFrame;
-        private Random random;
-        private int direction;
-        private int colorTimer;
 
         public MovingAttackedUpGoriyaState(Goriya Goriya)
         {
             this.Goriya = Goriya;
             sprite = EnemySpriteFactory.Instance.CreateMovingUpGoriyaSprite();
-            sourceRectangle = Globals.GoriyaRedUp;
+            sourceRectangle = Goriya.UpGoryia[0];
             Goriya.Position = new Rectangle(Goriya.X, Goriya.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             currentFrame = 0;
-            elaspedFrameCount = 0;
             endFrame = 100;
-            colorTimer = 0;
         }
         public void ChangeDirection()
         {
@@ -40,46 +34,18 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             Goriya.State = new DamagedAttackWithBoomerangUpState(Goriya);
         }
         public void ChangeAttackedStatus() {
-            if(colorTimer >= 60)
+            if(currentFrame >= 60)
                 Goriya.State = new MovingUpGoriyaState(Goriya);
         }
         public void Update()
         {
             currentFrame++;
-            if (currentFrame <= 20)
-            {
-                if (currentFrame == 5)
-                {
-                    sourceRectangle = Globals.GoriyaGreenUp;
-                }
-                else if (currentFrame == 10)
-                {
-                    sourceRectangle = Globals.GoriyaTealUp;
-                }
-                else if (currentFrame == 15)
-                {
-                    sourceRectangle = Globals.GoriyaRedUp;
-                }
-                else if (currentFrame == 20)
-                {
-                    sourceRectangle = Globals.GoriyaBlueUp;
-                }
-            }
-            else
-            {
-                currentFrame = 0;
-            }
+            sourceRectangle = Goriya.UpGoryia[Globals.FindIndex(currentFrame % (4 * Goriya.DamageAnimateRate), Goriya.DamageAnimateRate, 4)];
             Goriya.Y -= 1;
             Goriya.Position = new Rectangle(Goriya.X, Goriya.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             sprite.Update();
-            elaspedFrameCount++;
-            if (elaspedFrameCount >= endFrame)
-            {
-                ChangeDirection();
-            }
-            colorTimer++;
+            if (currentFrame >= endFrame) { ChangeDirection(); }
             ChangeAttackedStatus();
-
         }
         public void Draw(SpriteBatch spriteBatch)
         {
