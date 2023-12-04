@@ -11,6 +11,7 @@ using Sprint2_Attempt3.Enemy.Dodongo;
 using Sprint2_Attempt3.Player.LinkProjectiles.ProjectileInterfaces;
 using Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates;
 using Sprint2_Attempt3.Enemy.Target;
+using Sprint2_Attempt3.Sounds;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -29,6 +30,8 @@ namespace Sprint2_Attempt3.Collision
             {
                 if(!(enemy is Dodongo || enemy is Target))
                     enemy.GetDamaged(1.0f);
+                if(enemy is Target)
+                    SoundFactory.PlaySound(SoundFactory.Instance.ping);
                 IArrow arrow = (IArrow)item;
                 arrow.DestroyArrow();
             }

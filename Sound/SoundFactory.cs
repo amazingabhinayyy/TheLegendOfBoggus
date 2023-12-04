@@ -29,7 +29,7 @@ namespace Sprint2_Attempt3.Sounds
 
         public SoundEffect rickRoll { get; set; }
         public SoundEffect ping { get; set; }
-        public SoundEffect swoosh { get; set; }
+        //public SoundEffect swoosh { get; set; }
 
         private SoundEffectInstance backgroundMusicInstance;
         private SoundEffectInstance fanfareInstance;
@@ -75,7 +75,7 @@ namespace Sprint2_Attempt3.Sounds
             triforce = content.Load<SoundEffect>("triforce_obtained");
             rickRoll = content.Load<SoundEffect>("rickRoll");
             ping = content.Load<SoundEffect>("ping");
-            swoosh = content.Load<SoundEffect>("swoosh");
+            //swoosh = content.Load<SoundEffect>("swoosh");
 
 
             SoundEffect backgroundMusic = content.Load<SoundEffect>("Underworld_BGM");
