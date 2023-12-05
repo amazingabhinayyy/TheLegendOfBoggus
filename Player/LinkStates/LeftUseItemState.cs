@@ -24,7 +24,7 @@ namespace Sprint2_Attempt3.Player.LinkStates
         {
             link.State = new LeftIdleLinkState(link);
         }
-        public void Update()
+        public override void Update()
         {
             frameCounter++;
             if (frameCounter >= 10)

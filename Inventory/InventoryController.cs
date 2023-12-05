@@ -169,7 +169,7 @@ namespace Sprint2_Attempt3.Inventory
 
             foreach (KeyValuePair<String, InventoryItem> pair in LinkItems) { pair.Value.Draw(spriteBatch); }
 
-            if(RoomSecondary.GetCurrentRoomNumber() < 18)
+            if(RoomSecondary.currentRoomNumber < 18)
                 PlayerTrackerController.DrawPlayerTracker(spriteBatch);
         }
     }
