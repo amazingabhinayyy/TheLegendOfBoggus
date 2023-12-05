@@ -22,8 +22,6 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         bool finish;
         public MinigameRoom(Game1 game1) : base(game1, 18) 
         {
-            SoundFactory.Instance.backgroundMusic.Pause();
-            SoundFactory.Instance.undertaleMusic.Play();
             counter = 0;
             finish = false;
             Target targetTopRight1 = new Target(105, 275, true);
@@ -79,7 +77,8 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             for (int i = 0; i < gameObjectList.Count; i++)
             {
                 IGameObject obj = gameObjectList[i];
-                ((IEnemy)obj).Kill();
+                if(obj is IEnemy) { }
+                    //((IEnemy)obj).Kill();
             }
             mapY++;
             SwitchRoom();

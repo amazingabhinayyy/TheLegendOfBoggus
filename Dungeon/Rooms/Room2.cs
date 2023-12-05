@@ -6,6 +6,7 @@ using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Items.ItemClasses;
 using Sprint2_Attempt3.Player;
+using Sprint2_Attempt3.Sounds;
 using System;
 using System.Collections.Generic;
 
@@ -42,8 +43,10 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
 
         public override void SwitchToNorthRoom()
         {
-            TransitionHandler.Instance.Start = true;
-            TransitionHandler.Instance.Transition(this, new MinigameRoom(game1));
+            mapY--;
+            SwitchRoom();
+            SoundFactory.Instance.backgroundMusic.Pause();
+            SoundFactory.Instance.undertaleMusic.Play();
         }
         public override void RoomConditionCheck()
         {
