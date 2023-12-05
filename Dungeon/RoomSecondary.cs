@@ -144,9 +144,7 @@ namespace Sprint2_Attempt3.Dungeon
             MapController.VisitRoom(currentRoomNumber);
             game1.room = roomLayout[mapX, mapY];
             ClockUsed = false;
-
             TransitionHandler.Instance.TransitionGameObjectList = roomLayout[mapX, mapY].gameObjectList;
-            Room16TransitionHandler.Instance.TransitionGameObjectList = roomLayout[mapX, mapY].gameObjectList;
         }
         public DungeonRoom getDungeonRoom()
         {

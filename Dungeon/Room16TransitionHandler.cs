@@ -46,7 +46,6 @@ namespace Sprint2_Attempt3.Dungeon
             set { transitionGameObjectList = value; }
         }
 
-
         public bool Start { get { return start; } set { start = value; } }
         
        private static Room16TransitionHandler instance = new Room16TransitionHandler();
@@ -57,7 +56,6 @@ namespace Sprint2_Attempt3.Dungeon
                 return instance;
             }
         }
-
         private IRoom currentRoom;
         private IRoom nextRoom = null;
 
@@ -65,10 +63,7 @@ namespace Sprint2_Attempt3.Dungeon
         {
             this.game1 = game;
         }
-       
-        public Room16TransitionHandler()
-        {
-        }
+        public Room16TransitionHandler() { }
 
         public void Transition(IRoom room1, IRoom room2)
         {
@@ -77,7 +72,7 @@ namespace Sprint2_Attempt3.Dungeon
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-               int color = MathHelper.Clamp(colorValue, 0, 255);
+            int color = MathHelper.Clamp(colorValue, 0, 255);
 
             if (fadeIncrement > 0)
             {
@@ -109,22 +104,22 @@ namespace Sprint2_Attempt3.Dungeon
 
 
 
-            if (colorValue>=255)
-               {
-                    start = false;
-                    CollisionManager.GameObjectList = transitionGameObjectList;
-                    game1.room = nextRoom;
+            if (colorValue >= 255)
+            {
+                start = false;
+                CollisionManager.GameObjectList = transitionGameObjectList;
+                game1.room = nextRoom;
                 ((RoomSecondary)nextRoom).room.Draw(spriteBatch, Color.White);
                 elapsedTime = 0;
-                    colorValue = 254;
-                   if(nextRoom is Room16)
-                   {
-                       game1.link.Position = new Vector2(150, Globals.YOffset + 10);
-                   }
+                colorValue = 254;
+                if (nextRoom is Room16)
+                {
+                    game1.link.Position = new Vector2(150, Globals.YOffset + 10);
+                }
             }
-               
 
-            }
+
+        }
 
         public void Update()
         {

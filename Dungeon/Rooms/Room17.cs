@@ -1,5 +1,6 @@
 ﻿using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Enemy;
+using Sprint2_Attempt3.Inventory;
 using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Player;
 using System;
@@ -21,9 +22,14 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
 
         public override void SwitchToLowerRoom()
         {
-            Room16TransitionHandler.Instance.Start = true;
-            Room16TransitionHandler.Instance.Transition(this, new Room16(game1));
             mapY += 1;
+            Room16TransitionHandler.Instance.Start = true;
+            Room16TransitionHandler.Instance.Transition(this, roomLayout[mapX, mapY]);
+            currentRoomNumber = roomLayout[mapX, mapY].RoomNumber;
+            MapController.VisitRoom(currentRoomNumber);
+            game1.room = roomLayout[mapX, mapY];
+            ClockUsed = false;
+            Room16TransitionHandler.Instance.TransitionGameObjectList = roomLayout[mapX, mapY].gameObjectList;
         }
     }
 }
