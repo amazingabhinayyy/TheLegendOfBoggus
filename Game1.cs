@@ -82,8 +82,7 @@ namespace Sprint2_Attempt3
             gameState = GameState.startScreen;
             screenSprite = ScreenSpriteFactory.Instance.CreateStartScreen();
             inventoryController = new InventoryController(this);
-            room = new Room1(this);
-            room.LoadRooms();
+            room = RoomSecondary.LoadRooms(this);
             keyController = new KeyboardController(this);
             mouseController = new MouseController(this);
             deathAnimationActive = false;

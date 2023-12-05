@@ -1,6 +1,5 @@
 ﻿using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Player.Interfaces;
-using Sprint2_Attempt3.Player.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sprint2_Attempt3.Player.LinkStates
 {
-    public class UpUseItemState : ILinkState
+    public class UpUseItemState : LinkStateAbstract
     {
         private Link link;
         private int frameCounter;
@@ -25,33 +24,7 @@ namespace Sprint2_Attempt3.Player.LinkStates
         {
             link.State = new UpIdleLinkState(link);
         }
-        public void BecomeIdle()
-        {
-
-        }
-        public void MoveUp()
-        {
-
-        }
-        public void MoveDown()
-        {
-
-        }
-        public void MoveLeft()
-        {
-        }
-        public void MoveRight()
-        {
-        }
-        public void GetDamaged()
-        {
-
-        }
-        public void Attack()
-        {
-
-        }
-        public void Update()
+        public override void Update()
         {
             frameCounter++;
             if (frameCounter >= 10)
@@ -59,37 +32,9 @@ namespace Sprint2_Attempt3.Player.LinkStates
                 Stop();
             }
         }
-        public void UseBomb()
-        {
-        }
-        public void UseArrow()
-        {
-
-        }
-        public void UseBoomerang()
-        {
-
-        }
-        public void UseBlueBoomerang() { }
-        public void UseBlueArrow()
-        {
-
-        }
-        public void UseFire()
-        {
-
-        }
-        public void Killed()
+        public override void Killed()
         {
             link.State = new KilledLinkState(link);
-        }
-        public void CollectBow()
-        {
-
-        }
-        public void CollectTriForce()
-        {
-
         }
     }
 }

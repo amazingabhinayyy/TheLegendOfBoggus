@@ -18,9 +18,9 @@ namespace Sprint2_Attempt3.Dungeon
 {
     public abstract class RoomSecondary : IRoom
     {
-        private IRoom[] rooms = new IRoom[18];
+        private static IRoom[] rooms = new IRoom[18];
         public List<IGameObject> gameObjectList { get; set; }
-        protected static IRoom[,] roomLayout = new IRoom[12, 12];
+        protected static IRoom[,] roomLayout;
         protected static int mapY = 11;
         protected static int mapX = 5;
         protected static int numRoomsLoaded = 0;
@@ -147,20 +147,16 @@ namespace Sprint2_Attempt3.Dungeon
         }
         public void ResetRooms() {
             numRoomsLoaded = 0;
-            //roomLayout = new IRoom[12, 12];
-            //game1.room = new Room1(game1);
-            //rooms = new IRoom[18] { game1.room, new Room2(game1), new Room3(game1), new Room4(game1), new Room5(game1), new Room6(game1), new Room7(game1), new Room8(game1), new Room9(game1), new Room10(game1), new Room11(game1), new Room12(game1), new Room13(game1), new Room14(game1), new Room15(game1), new Room16(game1), new Room17(game1), new Room18(game1)};
-            game1.room = new Room1(game1);
-            game1.room.LoadRooms();
-           // game1.room = rooms[0];
+            game1.room = LoadRooms(game1);
+
             mapX = 5;
             mapY = 11;
         }
-        public void LoadRooms()
+        public static IRoom LoadRooms(Game1 game1)
         {
             roomLayout = new IRoom[12, 12];
-            //game1.room = new Room1(game1);
-            rooms = new IRoom[18] { this, new Room2(game1), new Room3(game1), new Room4(game1), new Room5(game1), new Room6(game1), new Room7(game1), new Room8(game1), new Room9(game1), new Room10(game1), new Room11(game1), new Room12(game1), new Room13(game1), new Room14(game1), new Room15(game1), new Room16(game1), new Room17(game1), new Room18(game1) };
+            rooms = new IRoom[18] { new Room1(game1), new Room2(game1), new Room3(game1), new Room4(game1), new Room5(game1), new Room6(game1), new Room7(game1), new Room8(game1), new Room9(game1), new Room10(game1), new Room11(game1), new Room12(game1), new Room13(game1), new Room14(game1), new Room15(game1), new Room16(game1), new Room17(game1), new Room18(game1) };
+            return rooms[0];
         }
         public void SwitchRoom()
         {
