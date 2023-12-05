@@ -46,42 +46,43 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             Target targetLowerRight6 = new Target(550, 405, true);
 
             enemies = new List<IEnemy>();
-            gameObjectLists[roomNumber].Add(targetTopRight1);
-            gameObjectLists[roomNumber].Add(targetTopRight2);
-            gameObjectLists[roomNumber].Add(targetTopRight3);
-            gameObjectLists[roomNumber].Add(targetTopRight4);
-            gameObjectLists[roomNumber].Add(targetTopRight5);
-            gameObjectLists[roomNumber].Add(targetTopRight6);
-            gameObjectLists[roomNumber].Add(targetMiddleLeft1);
-            gameObjectLists[roomNumber].Add(targetMiddleLeft2);
-            gameObjectLists[roomNumber].Add(targetMiddleLeft3);
-            gameObjectLists[roomNumber].Add(targetMiddleLeft4);
-            gameObjectLists[roomNumber].Add(targetMiddleLeft5);
-            gameObjectLists[roomNumber].Add(targetMiddleLeft6);
-            gameObjectLists[roomNumber].Add(targetLowerRight1);
-            gameObjectLists[roomNumber].Add(targetLowerRight2);
-            gameObjectLists[roomNumber].Add(targetLowerRight3);
-            gameObjectLists[roomNumber].Add(targetLowerRight4);
-            gameObjectLists[roomNumber].Add(targetLowerRight5);
-            gameObjectLists[roomNumber].Add(targetLowerRight6);
+            gameObjectList.Add(targetTopRight1);
+            gameObjectList.Add(targetTopRight2);
+            gameObjectList.Add(targetTopRight3);
+            gameObjectList.Add(targetTopRight4);
+            gameObjectList.Add(targetTopRight5);
+            gameObjectList.Add(targetTopRight6);
+            gameObjectList.Add(targetMiddleLeft1);
+            gameObjectList.Add(targetMiddleLeft2);
+            gameObjectList.Add(targetMiddleLeft3);
+            gameObjectList.Add(targetMiddleLeft4);
+            gameObjectList.Add(targetMiddleLeft5);
+            gameObjectList.Add(targetMiddleLeft6);
+            gameObjectList.Add(targetLowerRight1);
+            gameObjectList.Add(targetLowerRight2);
+            gameObjectList.Add(targetLowerRight3);
+            gameObjectList.Add(targetLowerRight4);
+            gameObjectList.Add(targetLowerRight5);
+            gameObjectList.Add(targetLowerRight6);
 
-            foreach (IGameObject obj in gameObjectLists[roomNumber])
+            foreach (IGameObject obj in gameObjectList)
             {
                 if (obj is IEnemy)
                 {
                     enemies.Add((IEnemy)obj);
                 }
             }
+            roomLayout[4, 10] = this;
         }
         public override void SwitchToSouthRoom()
         {
-            for (int i = 0; i < gameObjectLists[roomNumber].Count; i++)
+            for (int i = 0; i < gameObjectList.Count; i++)
             {
-                IGameObject obj = gameObjectLists[roomNumber][i];
+                IGameObject obj = gameObjectList[i];
                 ((IEnemy)obj).Kill();
             }
-            TransitionHandler.Instance.Start = true;
-            TransitionHandler.Instance.Transition(this, new Room2(game1));
+            mapY++;
+            SwitchRoom();
             SoundFactory.Instance.undertaleMusic.Pause();
             SoundFactory.Instance.backgroundMusic.Resume();
         }
@@ -93,10 +94,10 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                 {
                     if (!game1.deathAnimationActive)
                         collisionManager.Update();
-                    int check = gameObjectLists[roomNumber].Count;
-                    for (int i = 0; i < gameObjectLists[roomNumber].Count; i++)
+                    int check = gameObjectList.Count;
+                    for (int i = 0; i < gameObjectList.Count; i++)
                     {
-                        IGameObject obj = gameObjectLists[roomNumber][i];
+                        IGameObject obj = gameObjectList[i];
                         if (obj is IEnemy)
                         {
                             if (!spawned)

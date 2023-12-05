@@ -18,7 +18,7 @@ namespace Sprint2_Attempt3.Dungeon
 {
     public abstract class RoomSecondary : IRoom
     {
-        private static IRoom[] rooms = new IRoom[18];
+        private static IRoom[] rooms = new IRoom[19];
         public List<IGameObject> gameObjectList { get; set; }
         protected static IRoom[,] roomLayout;
         protected static int mapY = 11;
