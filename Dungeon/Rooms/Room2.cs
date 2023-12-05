@@ -38,13 +38,13 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         public override void SwitchToEastRoom()
         {
             mapX += 1;
-            SwitchRoom(mapX, mapY);
+            SwitchRoom(mapX, mapY, PanningTransitionHandler.Instance);
         }
 
         public override void SwitchToNorthRoom()
         {
             mapY--;
-            SwitchRoom(mapX, mapY);
+            SwitchRoom(mapX, mapY, PanningTransitionHandler.Instance);
             SoundFactory.Instance.backgroundMusic.Pause();
             SoundFactory.Instance.undertaleMusic.Play();
         }

@@ -23,7 +23,7 @@ using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3.Dungeon
 {
-    public class PanningTransitionHandler
+    public class PanningTransitionHandler : ITransitionHandler
     {
         private int transitionSpeed = 2;
         private IDoor door;
@@ -38,7 +38,7 @@ namespace Sprint2_Attempt3.Dungeon
 
         private List<IGameObject> transitionGameObjectList = new List<IGameObject>();
   
-        public  List<IGameObject> TransitionGameObjectList
+        public List<IGameObject> TransitionGameObjectList
         {
             get { return transitionGameObjectList; }
             set { transitionGameObjectList = value; }
@@ -63,7 +63,11 @@ namespace Sprint2_Attempt3.Dungeon
         {
             this.game1 = game;
         }
-       
+        public ITransitionHandler getInstance()
+        {
+            return instance;
+        }
+
         public PanningTransitionHandler()
         {
         }

@@ -144,7 +144,7 @@ namespace Sprint2_Attempt3.Player
         {
             position = new Vector2(375, 300);
             State = new DownIdleLinkState(this);
-            game.room.TeleportToRoom(5, 11);
+            game.room.SwitchRoom(5, 11, FadingTransitionHandler.Instance);
         }
     }
 }

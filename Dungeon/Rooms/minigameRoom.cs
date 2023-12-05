@@ -81,7 +81,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                     //((IEnemy)obj).Kill();
             }
             mapY++;
-            SwitchRoom(mapX, mapY);
+            SwitchRoom(mapX, mapY, PanningTransitionHandler.Instance);
             SoundFactory.Instance.undertaleMusic.Pause();
             SoundFactory.Instance.rickRollMusic.Stop();
             SoundFactory.Instance.backgroundMusic.Resume();

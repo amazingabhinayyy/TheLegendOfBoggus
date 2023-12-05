@@ -24,7 +24,7 @@ using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3.Dungeon
 {
-    public class FadingTransitionHandler
+    public class FadingTransitionHandler : ITransitionHandler
     {
         private int colorValue = 254;
         private int fadeIncrement = 3;
@@ -62,6 +62,10 @@ namespace Sprint2_Attempt3.Dungeon
         public void setGame1(Game1 game)
         {
             this.game1 = game;
+        }
+        public ITransitionHandler getInstance()
+        {
+            return instance;
         }
         public FadingTransitionHandler() { }
 

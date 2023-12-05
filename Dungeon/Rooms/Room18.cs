@@ -34,12 +34,12 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         public override void SwitchToSouthRoom()
         {
             mapY += 1;
-            SwitchRoom(mapX, mapY);
+            SwitchRoom(mapX, mapY, PanningTransitionHandler.Instance);
         }
         public override void SwitchToWestRoom()
         {
             mapX -= 1;
-            SwitchRoom(mapX, mapY);
+            SwitchRoom(mapX, mapY, PanningTransitionHandler.Instance);
         }
         public override void RoomConditionCheck()
         {

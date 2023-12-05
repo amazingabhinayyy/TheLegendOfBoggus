@@ -49,12 +49,12 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                     break;
                 }
             }
-            SwitchRoom(mapX, mapY);
+            SwitchRoom(mapX, mapY, PanningTransitionHandler.Instance);
         }
         public override void SwitchToEastRoom()
         {
             mapX += 1;
-            SwitchRoom(mapX, mapY);
+            SwitchRoom(mapX, mapY, PanningTransitionHandler.Instance);
         }
         public override void RoomConditionCheck()
         {

@@ -163,8 +163,6 @@ namespace Sprint2_Attempt3.Collision
                 }
                 else if (door is StairEntrance) 
                 {
-                    SoundFactory.PlaySound(SoundFactory.Instance.stairs);
-                    SoundFactory.PlaySound(SoundFactory.Instance.stairs);
                     game.room.SwitchToLowerRoom();
                     link.State = new DownIdleLinkState((Link)link);
                     

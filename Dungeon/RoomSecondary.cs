@@ -8,9 +8,11 @@ using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Inventory;
 using Sprint2_Attempt3.Items;
+using Sprint2_Attempt3.Items.ItemClasses;
 using Sprint2_Attempt3.WallBlocks;
 using System;
 using System.Collections.Generic;
+using System.Transactions;
 
 namespace Sprint2_Attempt3.Dungeon
 {
@@ -110,29 +112,17 @@ namespace Sprint2_Attempt3.Dungeon
             CollisionManager.GameObjectList = rooms[0].gameObjectList;
             return rooms[0];
         }
-        public void SwitchRoom(int x, int y)
+        public void SwitchRoom(int x ,int y, ITransitionHandler transition)
         {
-            PanningTransitionHandler.Instance.Start = true;
-            PanningTransitionHandler.Instance.Transition(this, roomLayout[x, y]);
+            transition.Start = true;
+            transition.Transition(this, roomLayout[x, y]);
             currentRoomNumber = roomLayout[x, y].RoomNumber;
-            MapController.VisitRoom(currentRoomNumber);
             game1.room = roomLayout[x, y];
             ClockUsed = false;
-            PanningTransitionHandler.Instance.TransitionGameObjectList = roomLayout[x, y].gameObjectList;
-            mapX = x;
-            mapY = y;
-        }
-        public void TeleportToRoom(int x, int y)
-        {
-            FadingTransitionHandler.Instance.Start = true;
-            FadingTransitionHandler.Instance.Transition(this, roomLayout[x, y]);
-            currentRoomNumber = roomLayout[x, y].RoomNumber;
             MapController.VisitRoom(currentRoomNumber);
-            game1.room = roomLayout[x, y];
-            ClockUsed = false;
-            FadingTransitionHandler.Instance.TransitionGameObjectList = roomLayout[x, y].gameObjectList;
             mapX = x;
             mapY = y;
+            transition.TransitionGameObjectList = roomLayout[x, y].gameObjectList;
         }
         public void SetDecorator(IRoom room)
         {
@@ -140,16 +130,12 @@ namespace Sprint2_Attempt3.Dungeon
         }
         protected static bool allEnemiesKilledInRoom(List<IEnemy> enemies)
         {
-            bool enemiesKilled = true;
             for (int i = 0; i < enemies.Count; i++)
             {
                 if (enemies[i].exists)
-                {
-                    enemiesKilled = false;
-                    break;
-                }
+                    return false;
             }
-            return enemiesKilled;
+            return true;
         }
         public virtual void SwitchToNorthRoom() { }
         public virtual void SwitchToSouthRoom() { }
