@@ -10,16 +10,13 @@ namespace Sprint2_Attempt3.Enemy.Target
         private Target target;
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
-        private Random random;
-        private int direction;
-        private int timer;
+
         public MovingRightTargetState(Target target)
         {
             this.target = target;
             sprite = EnemySpriteFactory.Instance.CreateTargetSprite();
             sourceRectangle = Target.TargetSprite;
             target.Position = new Rectangle(target.X, target.Y, 45, 45);
-            timer = 0;
         }
         public void ChangeDirection()
         {

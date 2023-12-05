@@ -214,6 +214,8 @@ namespace Sprint2_Attempt3.Dungeon
                         ((IBlock)obj).Draw(spriteBatch, color);
                     else if (obj is IDoor)
                         ((IDoor)obj).Draw(spriteBatch, color);
+                    else if(obj is TriggerSquare)
+                        ((TriggerSquare)obj).Draw(spriteBatch);
 
                 }
 

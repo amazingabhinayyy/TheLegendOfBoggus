@@ -63,5 +63,9 @@ namespace Sprint2_Attempt3.Dungeon
         {
             return new StairEntranceSprite(BlockTexture);
         }
+        public TriggerSquareSprite CreateTriggerSquareSprite()
+        {
+            return new TriggerSquareSprite(BlockTexture);
+        }
     }
 }

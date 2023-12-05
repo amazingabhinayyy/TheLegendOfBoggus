@@ -78,8 +78,6 @@ namespace Sprint2_Attempt3.Inventory
             {18, new Rectangle(destRectangle.X + 452, destRectangle.Y + 412, 25, 24) }
         };
 
-        private static Rectangle[] TriforceMarkers = new Rectangle[] { new Rectangle(262, 140, 3, 3), new Rectangle(270, 140, 3, 3) };
-
         private static String[] ItemMenuStrings = { "Boomerang", "Bomb", "Arrow", "BlueCandle", "SwordProjectile", "Clock", "BluePotion", "Fairy" };
 
         private static Rectangle ItemBDestRectangle = new Rectangle(destRectangle.X + 401, destRectangle.Y + 606, 26, 49);

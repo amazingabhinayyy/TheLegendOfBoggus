@@ -1,17 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint2_Attempt3.Blocks;
-using Sprint2_Attempt3.Collision;
-using Sprint2_Attempt3.Dungeon.Doors;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Enemy.Target;
 using Sprint2_Attempt3.Items;
-using Sprint2_Attempt3.Items.ItemClasses;
-using Sprint2_Attempt3.Player;
 using Sprint2_Attempt3.Sounds;
-using System;
 using System.Collections.Generic;
-using System.Diagnostics.Metrics;
 
 namespace Sprint2_Attempt3.Dungeon.Rooms
 {
@@ -19,6 +13,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
     {
         private static List<IEnemy> enemies;
         private int counter;
+        private int score;
         bool finish;
         public MinigameRoom(Game1 game1) : base(game1, 18) 
         {
@@ -44,6 +39,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             Target targetLowerRight4 = new Target(370, 405, true);
             Target targetLowerRight5 = new Target(460, 405, true);
             Target targetLowerRight6 = new Target(550, 405, true);
+            TriggerSquare trigger = new TriggerSquare(378, 520);
 
             enemies = new List<IEnemy>();
             gameObjectLists[roomNumber].Add(targetTopRight1);
@@ -64,6 +60,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             gameObjectLists[roomNumber].Add(targetLowerRight4);
             gameObjectLists[roomNumber].Add(targetLowerRight5);
             gameObjectLists[roomNumber].Add(targetLowerRight6);
+            gameObjectLists[roomNumber].Add(trigger);
 
             foreach (IGameObject obj in gameObjectLists[roomNumber])
             {
@@ -73,12 +70,25 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                 }
             }
         }
+        private static Rectangle GetCount(char i)
+        {
+            Rectangle rectangle = new Rectangle(271 + ((i - 48) * 9), 131, 8, 8);
+            if (i == ' ') { rectangle = new Rectangle(); }
+            return rectangle;
+        }
+        public void drawNumber()
+        {
+            Rectangle sourceRectangle = GetCount('1');
+        }
         public override void SwitchToSouthRoom()
         {
             for (int i = 0; i < gameObjectLists[roomNumber].Count; i++)
             {
                 IGameObject obj = gameObjectLists[roomNumber][i];
-                ((IEnemy)obj).Kill();
+                if (obj is IEnemy)
+                {
+                    ((IEnemy)obj).Kill();
+                }
             }
             TransitionHandler.Instance.Start = true;
             TransitionHandler.Instance.Transition(this, new Room2(game1));
@@ -94,6 +104,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                     if (!game1.deathAnimationActive)
                         collisionManager.Update();
                     int check = gameObjectLists[roomNumber].Count;
+                    score = 0;
                     for (int i = 0; i < gameObjectLists[roomNumber].Count; i++)
                     {
                         IGameObject obj = gameObjectLists[roomNumber][i];
@@ -113,8 +124,10 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                                 }
                             }
                             if (!ClockUsed || ((IEnemy)obj).State is DeathAnimationState)
+                            {
                                 ((IEnemy)obj).Update();
-
+                                score++;
+                            }
                         }
                         else if (obj is IItem)
                         {
@@ -124,7 +137,6 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                             ((IBlock)obj).Update();
                     }
                     spawned = true;
-
                     game1.link.Update();
                     RoomConditionCheck();
                 }

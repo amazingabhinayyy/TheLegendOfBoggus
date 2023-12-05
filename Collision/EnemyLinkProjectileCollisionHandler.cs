@@ -1,15 +1,8 @@
 ﻿using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Player.Interfaces;
-using Sprint2_Attempt3.Items.ItemClasses;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Diagnostics;
 using Sprint2_Attempt3.Enemy.Dodongo;
 using Sprint2_Attempt3.Player.LinkProjectiles.ProjectileInterfaces;
-using Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates;
 using Sprint2_Attempt3.Enemy.Target;
 using Sprint2_Attempt3.Sounds;
 
