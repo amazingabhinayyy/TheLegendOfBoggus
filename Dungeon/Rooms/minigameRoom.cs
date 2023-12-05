@@ -75,6 +75,11 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         }
         public override void SwitchToSouthRoom()
         {
+            for (int i = 0; i < gameObjectLists[roomNumber].Count; i++)
+            {
+                IGameObject obj = gameObjectLists[roomNumber][i];
+                ((IEnemy)obj).Kill();
+            }
             TransitionHandler.Instance.Start = true;
             TransitionHandler.Instance.Transition(this, new Room2(game1));
             SoundFactory.Instance.undertaleMusic.Pause();
