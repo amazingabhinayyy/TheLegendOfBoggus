@@ -18,17 +18,14 @@ namespace Sprint2_Attempt3.Dungeon
 {
     public abstract class RoomSecondary : IRoom
     {
-        private static IRoom[] rooms = new IRoom[19];
+        private static IRoom[] rooms = new IRoom[Globals.NumberOfRooms];
         public List<IGameObject> gameObjectList { get; set; }
         protected static IRoom[,] roomLayout;
         protected static int mapY = 11;
         protected static int mapX = 5;
         protected static int numRoomsLoaded = 0;
-
         public static int currentRoomNumber { get; protected set; }
         public int RoomNumber { get; }
-
-        //protected static Boolean varHoldingTrue = true;
         protected Boolean spawned = false;
         public static bool ClockUsed { get; set; } = false;
         public IDungeonRoom room { get; protected set; }
@@ -39,7 +36,6 @@ namespace Sprint2_Attempt3.Dungeon
         {
             this.game1 = game;
             room = new DungeonRoom();
-            //currentRoomNumber = roomNum;
             RoomNumber = roomNum;
             spawned = false;
             gameObjectList = new List<IGameObject>();
@@ -52,26 +48,8 @@ namespace Sprint2_Attempt3.Dungeon
                 gameObjectList.AddRange(IWall.WallBlocks);
             }
 
-            if (game1.link is DamageLinkDecorator)
-            {
-                ((DamageLinkDecorator)game1.link).RemoveDecorator();
-            }
-
             collisionManager = new CollisionManager(game1, game1.link);
-
-
-            if (TransitionHandler.Instance.TransitionGameObjectList.Count == 0)
-            {
-                CollisionManager.GameObjectList = gameObjectList;
-            }
-            TransitionHandler.Instance.TransitionGameObjectList = gameObjectList;
-
-            if (Room16TransitionHandler.Instance.TransitionGameObjectList.Count == 0)
-            {
-                CollisionManager.GameObjectList = gameObjectList;
-            }
-            Room16TransitionHandler.Instance.TransitionGameObjectList = gameObjectList;
-
+            
         }
 
         public virtual void Update() {
@@ -123,6 +101,7 @@ namespace Sprint2_Attempt3.Dungeon
             else
             {
                 room.Draw(spriteBatch, color);
+                //Make a list to draw enemies later so spawn above blocks
                 List<IEnemy> enemyList = new List<IEnemy>();
 
                 foreach (IGameObject obj in gameObjectList)
@@ -146,15 +125,15 @@ namespace Sprint2_Attempt3.Dungeon
         public void ResetRooms() {
             numRoomsLoaded = 0;
             game1.room = LoadRooms(game1);
-
             mapX = 5;
             mapY = 11;
         }
         public static IRoom LoadRooms(Game1 game1)
         {
             roomLayout = new IRoom[12, 12];
-            rooms = new IRoom[19] {new Room1(game1), new Room2(game1), new Room3(game1), new Room4(game1), new Room5(game1), new Room6(game1), new Room7(game1), new Room8(game1), new Room9(game1), new Room10(game1), new Room11(game1), new Room12(game1), new Room13(game1), new Room14(game1), new Room15(game1), new Room16(game1), new Room17(game1), new Room18(game1), new MinigameRoom(game1)};
+            rooms = new IRoom[Globals.NumberOfRooms] {new Room1(game1), new Room2(game1), new Room3(game1), new Room4(game1), new Room5(game1), new Room6(game1), new Room7(game1), new Room8(game1), new Room9(game1), new Room10(game1), new Room11(game1), new Room12(game1), new Room13(game1), new Room14(game1), new Room15(game1), new Room16(game1), new Room17(game1), new Room18(game1), new MinigameRoom(game1)};
             currentRoomNumber = rooms[0].RoomNumber;
+            CollisionManager.GameObjectList = rooms[0].gameObjectList;
             return rooms[0];
         }
         public void SwitchRoom()
@@ -172,11 +151,6 @@ namespace Sprint2_Attempt3.Dungeon
         public DungeonRoom getDungeonRoom()
         {
             return (DungeonRoom)room;
-        }
-
-        public IDungeonRoom getIDungeonRoom()
-        {
-            return (IDungeonRoom)room;
         }
         public void SetDecorator(IRoom room)
         {

@@ -74,9 +74,8 @@ namespace Sprint2_Attempt3.Dungeon
                 File.AppendAllText(fileName, "Door,South,4\n");
 
             RoomGenerator.Instance.LoadNewFile(fileName);
-            //map[currentX, currentY].gameObjectList = RoomGenerator.Instance.LoadFile(18);
 
-            return currentRoomNumber + 18 - 1;
+            return currentRoomNumber + Globals.NumberOfRooms - 1;
         }
 
         public String[] CreateObjectsInRoom()

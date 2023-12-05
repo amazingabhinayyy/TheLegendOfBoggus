@@ -29,7 +29,7 @@ namespace Sprint2_Attempt3.Dungeon
     {
 
         private static RoomGenerator instance = new RoomGenerator();
-        private static List<String> fileNames = new List<String>(19);
+        private static List<String> fileNames = new List<String>(Globals.NumberOfRooms);
         private static Dictionary<String, Func<int, int, IEnemy>> AddEnemyFunctions = new Dictionary<string, Func<int, int, IEnemy>> {
         };
 
@@ -44,7 +44,7 @@ namespace Sprint2_Attempt3.Dungeon
         {
         }
         public void LoadAllFiles() {
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < Globals.NumberOfRooms; i++)
             {
                 fileNames.Add("Dungeon/RoomFiles/Room" + (i + 1) + ".csv");
             }

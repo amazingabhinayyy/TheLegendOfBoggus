@@ -81,7 +81,7 @@ namespace Sprint2_Attempt3.Dungeon
 
             if (fadeIncrement > 0)
             {
-                ((RoomSecondary)currentRoom).getIDungeonRoom().Draw(spriteBatch, new Color(color, color, color));
+                ((RoomSecondary)currentRoom).room.Draw(spriteBatch, new Color(color, color, color));
 
 
                 foreach (IGameObject obj in CollisionManager.GameObjectList)
@@ -95,7 +95,7 @@ namespace Sprint2_Attempt3.Dungeon
             else
             {
 
-                ((RoomSecondary)nextRoom).getIDungeonRoom().Draw(spriteBatch, new Color(color, color, color));
+                ((RoomSecondary)nextRoom).room.Draw(spriteBatch, new Color(color, color, color));
 
                 foreach (IGameObject obj in transitionGameObjectList)
                 {
@@ -114,7 +114,7 @@ namespace Sprint2_Attempt3.Dungeon
                     start = false;
                     CollisionManager.GameObjectList = transitionGameObjectList;
                     game1.room = nextRoom;
-                ((RoomSecondary)nextRoom).getIDungeonRoom().Draw(spriteBatch, Color.White);
+                ((RoomSecondary)nextRoom).room.Draw(spriteBatch, Color.White);
                 elapsedTime = 0;
                     colorValue = 254;
                    if(nextRoom is Room16)

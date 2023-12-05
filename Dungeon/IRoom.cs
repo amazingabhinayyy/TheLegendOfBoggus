@@ -8,8 +8,8 @@ namespace Sprint2_Attempt3.Dungeon
     public interface IRoom
     {
         public int RoomNumber { get; }
+        public IDungeonRoom room { get;}
         public List<IGameObject> gameObjectList { get; set; }
-        //private static List<IGameObject> gameObjects;
         public void Update();
         public void Draw(SpriteBatch spriteBatch, Color color);
         public void SwitchToNorthRoom();

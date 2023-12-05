@@ -36,9 +36,10 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         }
         public override void SwitchToNorthRoom()
         {
-            for (int i = 0; i < roomLayout[mapX, mapY + 1].gameObjectList.Count; i++)
+            mapY -= 1;
+            for (int i = 0; i < roomLayout[mapX, mapY].gameObjectList.Count; i++)
             {
-                IGameObject obj = roomLayout[mapX, mapY + 1].gameObjectList[i];
+                IGameObject obj = roomLayout[mapX, mapY].gameObjectList[i];
                 if (obj is SouthDoor)
                 {
                     if (((SouthDoor)obj).IsLocked)
@@ -48,7 +49,6 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                     break;
                 }
             }
-            mapY -= 1;
             SwitchRoom();
         }
         public override void SwitchToEastRoom()
