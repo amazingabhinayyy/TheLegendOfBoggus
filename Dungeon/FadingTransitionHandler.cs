@@ -24,7 +24,7 @@ using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3.Dungeon
 {
-    public class Room16TransitionHandler
+    public class FadingTransitionHandler
     {
         private int colorValue = 254;
         private int fadeIncrement = 3;
@@ -48,8 +48,8 @@ namespace Sprint2_Attempt3.Dungeon
 
         public bool Start { get { return start; } set { start = value; } }
         
-       private static Room16TransitionHandler instance = new Room16TransitionHandler();
-        public static Room16TransitionHandler Instance
+       private static FadingTransitionHandler instance = new FadingTransitionHandler();
+        public static FadingTransitionHandler Instance
         {
             get
             {
@@ -63,7 +63,7 @@ namespace Sprint2_Attempt3.Dungeon
         {
             this.game1 = game;
         }
-        public Room16TransitionHandler() { }
+        public FadingTransitionHandler() { }
 
         public void Transition(IRoom room1, IRoom room2)
         {

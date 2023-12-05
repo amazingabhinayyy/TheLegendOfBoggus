@@ -35,6 +35,9 @@ namespace Sprint2_Attempt3.Sounds
         private SoundEffectInstance undertaleMusicInstance;
 
         private SoundEffectInstance fanfareInstance;
+        private SoundEffectInstance rickRollInstance;
+
+        public SoundEffectInstance rickRollMusic { get => rickRollInstance; }
         public SoundEffectInstance backgroundMusic { get => backgroundMusicInstance; }
         public SoundEffectInstance undertaleMusic { get => undertaleMusicInstance; }
         public SoundEffectInstance fanfare { get => fanfareInstance; }
@@ -91,6 +94,11 @@ namespace Sprint2_Attempt3.Sounds
             undertaleMusicInstance.IsLooped = true;
             undertaleMusicInstance.Volume *= 0.1f;
             undertaleMusicInstance.Pause();
+
+            rickRollInstance = rickRoll.CreateInstance();
+            rickRollInstance.IsLooped = false;
+            rickRollInstance.Volume *= 0.1f;
+            rickRollInstance.Pause();
         }
 
         public static void PlaySound(SoundEffect sound, float volume = 1)
@@ -99,6 +107,14 @@ namespace Sprint2_Attempt3.Sounds
             float pan = 0.0f;
 
             sound.Play(volume, pitch, pan);
+        }
+
+        public static void ResetSounds()
+        {
+            Instance.undertaleMusic.Pause();
+            Instance.fanfare.Pause();
+            Instance.rickRoll.Dispose();
+            Instance.backgroundMusic.Resume();
         }
 
     }

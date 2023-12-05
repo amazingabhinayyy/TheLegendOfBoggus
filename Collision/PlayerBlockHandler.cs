@@ -118,7 +118,7 @@ namespace Sprint2_Attempt3.Collision
             else{
                
               
-                TransitionHandler.Instance.Door = door;
+                PanningTransitionHandler.Instance.Door = door;
                 link.Items.Clear();
                 if (door is NorthDoor)
                 {

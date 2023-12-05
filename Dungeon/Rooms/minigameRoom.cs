@@ -83,13 +83,14 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             mapY++;
             SwitchRoom(mapX, mapY);
             SoundFactory.Instance.undertaleMusic.Pause();
+            SoundFactory.Instance.rickRollMusic.Stop();
             SoundFactory.Instance.backgroundMusic.Resume();
         }
         public override void Update()
         {
             if (!finish)
             {
-                if (!TransitionHandler.Instance.Start)
+                if (!PanningTransitionHandler.Instance.Start)
                 {
                     if (!game1.deathAnimationActive)
                         collisionManager.Update();
@@ -109,7 +110,9 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                                 {
                                     ((IEnemy)obj).Kill();
                                     finish = true;
-                                    SoundFactory.PlaySound(SoundFactory.Instance.rickRoll);
+                                    //SoundFactory.PlaySound(SoundFactory.Instance.rickRoll);
+                                    SoundFactory.Instance.undertaleMusic.Pause();
+                                    SoundFactory.Instance.rickRollMusic.Resume();
                                 }
                             }
                             if (!ClockUsed || ((IEnemy)obj).State is DeathAnimationState)

@@ -62,6 +62,7 @@ namespace Sprint2_Attempt3.Dungeon
         {
         }
         public void SwitchRoom(int x, int y) { }
+        public void TeleportToRoom(int x, int y) { }    
         public void Update()
         {
             decoratedRoom.Update();

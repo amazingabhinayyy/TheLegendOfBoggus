@@ -21,5 +21,6 @@ namespace Sprint2_Attempt3.Dungeon
         public void SwitchToUpperRoom();
         public void ResetRooms();
         public void SwitchRoom(int x, int y);
+        public void TeleportToRoom(int x, int y);
     }
 }

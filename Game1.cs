@@ -72,9 +72,9 @@ namespace Sprint2_Attempt3
             DungeonSpriteFactory.Instance.LoadAllTextures(Content);
             ScreenSpriteFactory.Instance.LoadAllTextures(Content);
             //check if we need start screen
-            TransitionHandler.Instance.setGame1(this);
+            PanningTransitionHandler.Instance.setGame1(this);
             //update into states later
-            Room16TransitionHandler.Instance.setGame1(this);
+            FadingTransitionHandler.Instance.setGame1(this);
             RoomGenerator.Instance.LoadAllFiles();
             InventoryTexture = Content.Load<Texture2D>("Inventory");
             link = new Link(this);

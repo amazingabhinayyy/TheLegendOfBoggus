@@ -23,7 +23,7 @@ using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3.Dungeon
 {
-    public class TransitionHandler
+    public class PanningTransitionHandler
     {
         private int transitionSpeed = 2;
         private IDoor door;
@@ -47,8 +47,8 @@ namespace Sprint2_Attempt3.Dungeon
 
         public bool Start { get { return start; } set { start = value; } }
         
-       private static TransitionHandler instance = new TransitionHandler();
-        public static TransitionHandler Instance
+       private static PanningTransitionHandler instance = new PanningTransitionHandler();
+        public static PanningTransitionHandler Instance
         {
             get
             {
@@ -64,7 +64,7 @@ namespace Sprint2_Attempt3.Dungeon
             this.game1 = game;
         }
        
-        public TransitionHandler()
+        public PanningTransitionHandler()
         {
         }
 

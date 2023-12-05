@@ -22,13 +22,13 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         public override void SwitchToUpperRoom()
         {
             mapY -= 1;
-            Room16TransitionHandler.Instance.Start = true;
-            Room16TransitionHandler.Instance.Transition(this, roomLayout[mapX, mapY]);
+            FadingTransitionHandler.Instance.Start = true;
+            FadingTransitionHandler.Instance.Transition(this, roomLayout[mapX, mapY]);
             currentRoomNumber = roomLayout[mapX, mapY].RoomNumber;
             MapController.VisitRoom(currentRoomNumber);
             game1.room = roomLayout[mapX, mapY];
             ClockUsed = false;
-            Room16TransitionHandler.Instance.TransitionGameObjectList = roomLayout[mapX, mapY].gameObjectList;
+            FadingTransitionHandler.Instance.TransitionGameObjectList = roomLayout[mapX, mapY].gameObjectList;
         }
 
     }

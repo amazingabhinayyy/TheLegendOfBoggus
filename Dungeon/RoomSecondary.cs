@@ -44,9 +44,9 @@ namespace Sprint2_Attempt3.Dungeon
             collisionManager = new CollisionManager(game1, game1.link); 
         }
         public virtual void Update() {
-            if (Room16TransitionHandler.Instance.Start)
-                Room16TransitionHandler.Instance.Update();
-            else if (!TransitionHandler.Instance.Start)
+            if (FadingTransitionHandler.Instance.Start)
+                FadingTransitionHandler.Instance.Update();
+            else if (!PanningTransitionHandler.Instance.Start)
             {
                 if(!game1.deathAnimationActive)
                     collisionManager.Update();
@@ -71,10 +71,10 @@ namespace Sprint2_Attempt3.Dungeon
             }
         }
         public void Draw(SpriteBatch spriteBatch, Color color) {
-            if (TransitionHandler.Instance.Start)
-                TransitionHandler.Instance.Draw(spriteBatch);
-            else if (Room16TransitionHandler.Instance.Start)
-                Room16TransitionHandler.Instance.Draw(spriteBatch);
+            if (PanningTransitionHandler.Instance.Start)
+                PanningTransitionHandler.Instance.Draw(spriteBatch);
+            else if (FadingTransitionHandler.Instance.Start)
+                FadingTransitionHandler.Instance.Draw(spriteBatch);
             else
             {
                 room.Draw(spriteBatch, color);
@@ -112,13 +112,25 @@ namespace Sprint2_Attempt3.Dungeon
         }
         public void SwitchRoom(int x, int y)
         {
-            TransitionHandler.Instance.Start = true;
-            TransitionHandler.Instance.Transition(this, roomLayout[x, y]);
+            PanningTransitionHandler.Instance.Start = true;
+            PanningTransitionHandler.Instance.Transition(this, roomLayout[x, y]);
             currentRoomNumber = roomLayout[x, y].RoomNumber;
             MapController.VisitRoom(currentRoomNumber);
             game1.room = roomLayout[x, y];
             ClockUsed = false;
-            TransitionHandler.Instance.TransitionGameObjectList = roomLayout[x, y].gameObjectList;
+            PanningTransitionHandler.Instance.TransitionGameObjectList = roomLayout[x, y].gameObjectList;
+            mapX = x;
+            mapY = y;
+        }
+        public void TeleportToRoom(int x, int y)
+        {
+            FadingTransitionHandler.Instance.Start = true;
+            FadingTransitionHandler.Instance.Transition(this, roomLayout[x, y]);
+            currentRoomNumber = roomLayout[x, y].RoomNumber;
+            MapController.VisitRoom(currentRoomNumber);
+            game1.room = roomLayout[x, y];
+            ClockUsed = false;
+            FadingTransitionHandler.Instance.TransitionGameObjectList = roomLayout[x, y].gameObjectList;
             mapX = x;
             mapY = y;
         }
