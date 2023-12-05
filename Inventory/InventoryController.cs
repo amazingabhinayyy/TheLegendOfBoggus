@@ -38,6 +38,61 @@ namespace Sprint2_Attempt3.Inventory
         public static bool HasBow { get; set; }
         public static bool UsingFairy { get; set; } = false;
         private static Dictionary<String, InventoryItem> LinkItems { get; set; }
+
+        private static Dictionary<char, Rectangle> numberSrcRectangles = new Dictionary<char, Rectangle>(); 
+
+        private static Rectangle[] MarkerDestRectangles = new Rectangle[]
+        {
+            new Rectangle(destRectangle.X + 132, destRectangle.Y + 670, 9, 9),
+            new Rectangle(destRectangle.X + 106, destRectangle.Y + 670, 9, 9),
+            new Rectangle(destRectangle.X + 158, destRectangle.Y + 670, 9, 9),
+            new Rectangle(destRectangle.X + 132, destRectangle.Y + 657, 9, 9),
+            new Rectangle(destRectangle.X + 106, destRectangle.Y + 644, 9, 9),
+            new Rectangle(destRectangle.X + 132, destRectangle.Y + 644, 9, 9),
+            new Rectangle(destRectangle.X + 158, destRectangle.Y + 644, 9, 9),
+            new Rectangle(destRectangle.X + 80, destRectangle.Y + 631, 9, 9),
+            new Rectangle(destRectangle.X + 106, destRectangle.Y + 631, 9, 9),
+            new Rectangle(destRectangle.X + 132, destRectangle.Y + 631, 9, 9),
+            new Rectangle(destRectangle.X + 158, destRectangle.Y + 631, 9, 9),
+            new Rectangle(destRectangle.X + 184, destRectangle.Y + 631, 9, 9),
+            new Rectangle(destRectangle.X + 132, destRectangle.Y + 618, 9, 9),
+            new Rectangle(destRectangle.X + 184, destRectangle.Y + 618, 9, 9),
+            new Rectangle(destRectangle.X + 210, destRectangle.Y + 618, 9, 9),
+            new Rectangle(destRectangle.X + 106, destRectangle.Y + 605, 9, 9),
+            new Rectangle(destRectangle.X + 106, destRectangle.Y + 605, 9, 9),
+            new Rectangle(destRectangle.X + 132, destRectangle.Y + 605, 9, 9),
+            new Rectangle(destRectangle.X + 106, destRectangle.Y + 657, 9, 9)
+        };
+
+        private static Dictionary<int, Rectangle> MapRoomDestRectangles = new Dictionary<int, Rectangle>() {
+            { 0, new Rectangle(destRectangle.X + 477, destRectangle.Y + 435, 25, 24) },
+            { 1, new Rectangle(destRectangle.X + 452, destRectangle.Y + 435, 25, 24) },
+            { 2, new Rectangle(destRectangle.X + 502, destRectangle.Y + 435, 25, 24) },
+            { 3, new Rectangle(destRectangle.X + 477, destRectangle.Y + 412, 25, 24) },
+            { 4, new Rectangle(destRectangle.X + 452, destRectangle.Y + 389, 25, 24) },
+            { 5, new Rectangle(destRectangle.X + 477, destRectangle.Y + 389, 25, 24) },
+            { 6, new Rectangle(destRectangle.X + 502, destRectangle.Y + 389, 25, 24) },
+            { 7, new Rectangle(destRectangle.X + 428, destRectangle.Y + 365, 25, 24) },
+            { 8, new Rectangle(destRectangle.X + 452, destRectangle.Y + 365, 25, 24) },
+            { 9, new Rectangle(destRectangle.X + 477, destRectangle.Y + 365, 25, 24) },
+            { 10, new Rectangle(destRectangle.X + 502, destRectangle.Y + 365, 25, 24) },
+            { 11, new Rectangle(destRectangle.X + 527, destRectangle.Y + 365, 25, 24) },
+            { 12, new Rectangle(destRectangle.X + 477, destRectangle.Y + 341, 25, 24) },
+            { 13, new Rectangle(destRectangle.X + 527, destRectangle.Y + 341, 25, 24) },
+            { 14, new Rectangle(destRectangle.X + 552, destRectangle.Y + 341, 25, 24) },
+            { 15, new Rectangle(destRectangle.X + 452, destRectangle.Y + 317, 25, 24) },
+            { 16, new Rectangle(destRectangle.X + 452, destRectangle.Y + 317, 25, 24) },
+            { 17, new Rectangle(destRectangle.X + 477, destRectangle.Y + 317, 25, 24) },
+            {18, new Rectangle(destRectangle.X + 452, destRectangle.Y + 412, 25, 24) }
+        };
+
+        private static Rectangle[] TriforceMarkers = new Rectangle[] { new Rectangle(262, 140, 3, 3), new Rectangle(270, 140, 3, 3) };
+
+        private static String[] ItemMenuStrings = { "Boomerang", "Bomb", "Arrow", "BlueCandle", "SwordProjectile", "Clock", "BluePotion", "Fairy" };
+
+        private static Rectangle ItemBDestRectangle = new Rectangle(destRectangle.X + 401, destRectangle.Y + 606, 26, 49);
+        private static Rectangle ItemADestRectangle = new Rectangle(destRectangle.X + 477, destRectangle.Y + 606, 26, 49);
+        private static Rectangle ItemSelectedDestRectangle = new Rectangle(destRectangle.X + 212, destRectangle.Y + 145, 26, 49);
         private static IItemSprite[] TriforceMarkers = new IItemSprite[] { ItemSpriteFactory.Instance.CreateGreenTriforceMarkerSprite(), ItemSpriteFactory.Instance.CreateRedTriforceMarkerSprite() };
         private static IItemSprite triforceSprite = TriforceMarkers[0];
         private static Rectangle DungeonMapDestRectangle = new Rectangle(destRectangle.X + 50, destRectangle.Y + 582, 201, 97);

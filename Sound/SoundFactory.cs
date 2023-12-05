@@ -27,9 +27,16 @@ namespace Sprint2_Attempt3.Sounds
         public SoundEffect secret { get; set; }
         public SoundEffect triforce { get; set; }
 
+        public SoundEffect rickRoll { get; set; }
+        public SoundEffect ping { get; set; }
+        public SoundEffect undertale { get; set; }
+
         private SoundEffectInstance backgroundMusicInstance;
+        private SoundEffectInstance undertaleMusicInstance;
+
         private SoundEffectInstance fanfareInstance;
         public SoundEffectInstance backgroundMusic { get => backgroundMusicInstance; }
+        public SoundEffectInstance undertaleMusic { get => undertaleMusicInstance; }
         public SoundEffectInstance fanfare { get => fanfareInstance; }
 
         private static SoundFactory instance = new SoundFactory();
@@ -44,6 +51,7 @@ namespace Sprint2_Attempt3.Sounds
 
         public SoundFactory()
         {
+
         }
 
         public void LoadAllTextures(ContentManager content)
@@ -69,13 +77,20 @@ namespace Sprint2_Attempt3.Sounds
             bossHurt = content.Load<SoundEffect>("LOZ_Boss_Hit");
             secret = content.Load<SoundEffect>("LOZ_Secret");
             triforce = content.Load<SoundEffect>("triforce_obtained");
-
+            rickRoll = content.Load<SoundEffect>("rickRoll");
+            ping = content.Load<SoundEffect>("ping");
+            undertale = content.Load<SoundEffect>("Its_Showtime");
 
             SoundEffect backgroundMusic = content.Load<SoundEffect>("Underworld_BGM");
             backgroundMusicInstance = backgroundMusic.CreateInstance();
             backgroundMusicInstance.IsLooped = true;
             backgroundMusicInstance.Volume *= 0.1f;
             backgroundMusicInstance.Play();
+
+            undertaleMusicInstance  = undertale.CreateInstance();
+            undertaleMusicInstance.IsLooped = true;
+            undertaleMusicInstance.Volume *= 0.1f;
+            undertaleMusicInstance.Pause();
         }
 
         public static void PlaySound(SoundEffect sound, float volume = 1)
@@ -85,5 +100,6 @@ namespace Sprint2_Attempt3.Sounds
 
             sound.Play(volume, pitch, pan);
         }
+
     }
 }

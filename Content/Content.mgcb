@@ -133,6 +133,12 @@
 /processorParam:TextureFormat=Color
 /build:Items.png
 
+#begin Its_Showtime.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Its_Showtime.wav
+
 #begin LinkPlayerSpriteSheet.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -330,6 +336,36 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:LOZ_Text.wav
+
+#begin ping.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:ping.wav
+
+#begin rickRoll.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:rickRoll.wav
+
+#begin swoosh.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:swoosh.wav
+
+#begin targetSprite.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:targetSprite.png
 
 #begin TitleScreen.png
 /importer:TextureImporter

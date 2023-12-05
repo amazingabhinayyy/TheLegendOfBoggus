@@ -29,7 +29,7 @@ namespace Sprint2_Attempt3.Dungeon
     {
 
         private static RoomGenerator instance = new RoomGenerator();
-        private static List<String> fileNames = new List<String>(18);
+        private static List<String> fileNames = new List<String>(19);
         private static Dictionary<String, Func<int, int, IEnemy>> AddEnemyFunctions = new Dictionary<string, Func<int, int, IEnemy>> {
         };
 
