@@ -60,8 +60,8 @@ namespace Sprint2_Attempt3.Dungeon
         }
         public void ResetRooms()
         {
-
         }
+        public void SwitchRoom(int x, int y) { }
         public void Update()
         {
             decoratedRoom.Update();
@@ -79,11 +79,6 @@ namespace Sprint2_Attempt3.Dungeon
                 decoratedRoom.Draw(spriteBatch, new Color(50, 0, 0));
             else
                 decoratedRoom.Draw(spriteBatch, Color.Black);
-        }
-
-        public DungeonRoom getDungeonRoom()
-        {
-            return new DungeonRoom();
         }
     }
 }

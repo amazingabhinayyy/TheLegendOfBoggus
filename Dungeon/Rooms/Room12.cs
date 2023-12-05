@@ -16,12 +16,12 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         public override void SwitchToNorthRoom()
         {
             mapY -= 1;
-            SwitchRoom();
+            SwitchRoom(mapX, mapY);
         }
         public override void SwitchToWestRoom()
         {
             mapY -= 1;
-            SwitchRoom();
+            SwitchRoom(mapX, mapY);
         }
 
     }

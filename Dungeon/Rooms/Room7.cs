@@ -28,12 +28,12 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                     break;
                 }
             }
-            SwitchRoom();
+            SwitchRoom(mapX, mapY);
         }
         public override void SwitchToWestRoom()
         {
             mapX -= 1;
-            SwitchRoom();
+            SwitchRoom(mapX, mapY);
         }
 
     }

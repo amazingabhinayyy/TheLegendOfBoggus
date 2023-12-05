@@ -21,7 +21,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                 roomLayout[mapX, mapY] = new RandomRooms(game1, roomNum);
                 //roomLayout[mapX, mapY].gameObjectList = RoomGenerator.Instance.LoadFile(roomNum);
             }
-            SwitchRoom();
+            SwitchRoom(mapX, mapY);
         }
         public override void SwitchToSouthRoom()
         {
@@ -32,7 +32,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                 roomLayout[mapX, mapY] = new RandomRooms(game1, roomNum);
                 //roomLayout[mapX, mapY].gameObjectList = RoomGenerator.Instance.LoadFile(roomNum);
             }
-            SwitchRoom();
+            SwitchRoom(mapX, mapY);
         }
         public override void SwitchToEastRoom()
         {
@@ -43,7 +43,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                 roomLayout[mapX, mapY] = new RandomRooms(game1, roomNum);
                 //roomLayout[mapX, mapY].gameObjectList = RoomGenerator.Instance.LoadFile(roomNum);
             }
-            SwitchRoom();
+            SwitchRoom(mapX, mapY);
         }
         public override void SwitchToWestRoom()
         {
@@ -54,7 +54,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                 roomLayout[mapX, mapY] = new RandomRooms(game1, roomNum);
                 //roomLayout[mapX, mapY].gameObjectList = RoomGenerator.Instance.LoadFile(roomNum);
             }
-            SwitchRoom();
+            SwitchRoom(mapX, mapY);
         }
     }
 }

@@ -34,7 +34,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         public override void SwitchToWestRoom()
         {
             mapX -= 1;
-            SwitchRoom();
+            SwitchRoom(mapX, mapY);
         }
         public override void RoomConditionCheck()
         {

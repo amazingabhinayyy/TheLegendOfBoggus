@@ -90,7 +90,7 @@ namespace Sprint2_Attempt3.Dungeon
                     case (SouthDoor):
                         change = new Vector2(0, -transitionSpeed * multiplier);
                         end = 88;
-                        initialPos = new Vector2(0, Globals.ScreenHeight-Globals.YOffset);
+                        initialPos = new Vector2(0, Globals.ScreenHeight - Globals.YOffset);
                         break;
                     case (EastDoor):
                         change = new Vector2(-transitionSpeed * multiplier, 0);
@@ -104,18 +104,19 @@ namespace Sprint2_Attempt3.Dungeon
                         break;
                 }
 
-                currentRoom.getDungeonRoom().DrawCurrentRoom(spriteBatch, change);
-
+                DungeonRoom dRoom = (DungeonRoom)currentRoom.room;
+                dRoom.DrawCurrentRoom(spriteBatch, change);
 
                 foreach (IGameObject obj in CollisionManager.GameObjectList)
                 {
                     if (obj is IBlock)
                         ((IBlock)obj).Draw(spriteBatch, change);
                     else if (obj is IDoor)
-                         ((IDoor)obj).Draw(spriteBatch,change);
+                        ((IDoor)obj).Draw(spriteBatch, change);
                 }
 
-                nextRoom.getDungeonRoom().DrawNextRoom(spriteBatch, change);
+                dRoom = (DungeonRoom)nextRoom.room;
+                dRoom.DrawNextRoom(spriteBatch, change);
 
                 foreach (IGameObject obj in transitionGameObjectList)
                 {
@@ -123,36 +124,22 @@ namespace Sprint2_Attempt3.Dungeon
                         ((IBlock)obj).Draw(spriteBatch, change, initialPos);
                     else if (obj is IDoor)
                         ((IDoor)obj).Draw(spriteBatch, change, initialPos);
-                  /*  else if(obj is IEnemy)
-                        ((IEnemy)obj).Draw(spriteBatch);*/
+                    /*  else if(obj is IEnemy)
+                          ((IEnemy)obj).Draw(spriteBatch);*/
 
 
                 }
 
                 multiplier++;
-               if (end <= multiplier)
-               {
+                if (end <= multiplier)
+                {
                     start = false;
                     CollisionManager.GameObjectList = transitionGameObjectList;
                     game1.room = nextRoom;
                     multiplier = 1;
                     timeSinceLastUpdate = 0;
                 }
-                /*
-                timeSinceLastUpdate += (float)game1.Gametime.ElapsedGameTime.TotalSeconds;
-                if(timeSinceLastUpdate > 5f)
-                {
-                    start = false;
-                    CollisionDetector.GameObjectList = transitionGameObjectList;
-                    game1.room = new Room2(game1);
-                    multiplier = 1;
-                    timeSinceLastUpdate = 0;
-                }*/
-
-            }
-            
-               
-            
+            }          
         }
     }
 }

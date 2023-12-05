@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Blocks;
-using Sprint2_Attempt3.Blocks.Block;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Dungeon.Doors;
 using Sprint2_Attempt3.Dungeon.Rooms;
@@ -9,7 +8,6 @@ using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Inventory;
 using Sprint2_Attempt3.Items;
-using Sprint2_Attempt3.Player;
 using Sprint2_Attempt3.WallBlocks;
 using System;
 using System.Collections.Generic;
@@ -19,7 +17,7 @@ namespace Sprint2_Attempt3.Dungeon
     public abstract class RoomSecondary : IRoom
     {
         private static IRoom[] rooms = new IRoom[Globals.NumberOfRooms];
-        public List<IGameObject> gameObjectList { get; set; }
+        public List<IGameObject> gameObjectList { get; protected set; }
         protected static IRoom[,] roomLayout;
         protected static int mapY = 11;
         protected static int mapX = 5;
@@ -31,7 +29,6 @@ namespace Sprint2_Attempt3.Dungeon
         public IDungeonRoom room { get; protected set; }
         protected Game1 game1;
         protected static CollisionManager collisionManager;
-
         public RoomSecondary(Game1 game, int roomNum)
         {
             this.game1 = game;
@@ -40,70 +37,49 @@ namespace Sprint2_Attempt3.Dungeon
             spawned = false;
             gameObjectList = new List<IGameObject>();
             numRoomsLoaded++;
-
             gameObjectList = RoomGenerator.Instance.LoadFile(RoomNumber);
             gameObjectList.Add(this.game1.link);
             if (roomNum != 15)
-            {
                 gameObjectList.AddRange(IWall.WallBlocks);
-            }
-
-            collisionManager = new CollisionManager(game1, game1.link);
-            
+            collisionManager = new CollisionManager(game1, game1.link); 
         }
-
         public virtual void Update() {
             if (Room16TransitionHandler.Instance.Start)
-            {
                 Room16TransitionHandler.Instance.Update();
-            }
             else if (!TransitionHandler.Instance.Start)
             {
                 if(!game1.deathAnimationActive)
                     collisionManager.Update();
-
                 for (int i = 0; i < gameObjectList.Count; i++)
                 {
                     IGameObject obj = gameObjectList[i];
                     if (obj is IEnemy)
                     {
                         if (!spawned)
-                        {
                             ((IEnemy)obj).Spawn();
-                        }
                         if (!ClockUsed || ((IEnemy)obj).State is DeathAnimationState)
                             ((IEnemy)obj).Update();
-
                     }
                     else if (obj is IItem)
-                    {
                         ((IItem)obj).Update();
-                    }
                     else if (obj is IBlock)
                         ((IBlock)obj).Update();
                 }
                 spawned = true;
-
                 game1.link.Update();
                 RoomConditionCheck();
             }
         }
         public void Draw(SpriteBatch spriteBatch, Color color) {
             if (TransitionHandler.Instance.Start)
-            {
                 TransitionHandler.Instance.Draw(spriteBatch);
-            }
             else if (Room16TransitionHandler.Instance.Start)
-            {
                 Room16TransitionHandler.Instance.Draw(spriteBatch);
-
-            }
             else
             {
                 room.Draw(spriteBatch, color);
                 //Make a list to draw enemies later so spawn above blocks
                 List<IEnemy> enemyList = new List<IEnemy>();
-
                 foreach (IGameObject obj in gameObjectList)
                 {
                     if (obj is IItem && color.Equals(Color.White))
@@ -114,11 +90,9 @@ namespace Sprint2_Attempt3.Dungeon
                         ((IDoor)obj).Draw(spriteBatch, color);
                     else if (obj is IEnemy && color.Equals(Color.White))
                         enemyList.Add((IEnemy)obj);
-
                 }
                 foreach (IEnemy enemy in enemyList)
                     enemy.Draw(spriteBatch);
-
                 game1.link.Draw(spriteBatch, Color.White);
             }
         }
@@ -136,19 +110,17 @@ namespace Sprint2_Attempt3.Dungeon
             CollisionManager.GameObjectList = rooms[0].gameObjectList;
             return rooms[0];
         }
-        public void SwitchRoom()
+        public void SwitchRoom(int x, int y)
         {
             TransitionHandler.Instance.Start = true;
-            TransitionHandler.Instance.Transition(this, roomLayout[mapX, mapY]);
-            currentRoomNumber = roomLayout[mapX, mapY].RoomNumber;
+            TransitionHandler.Instance.Transition(this, roomLayout[x, y]);
+            currentRoomNumber = roomLayout[x, y].RoomNumber;
             MapController.VisitRoom(currentRoomNumber);
-            game1.room = roomLayout[mapX, mapY];
+            game1.room = roomLayout[x, y];
             ClockUsed = false;
-            TransitionHandler.Instance.TransitionGameObjectList = roomLayout[mapX, mapY].gameObjectList;
-        }
-        public DungeonRoom getDungeonRoom()
-        {
-            return (DungeonRoom)room;
+            TransitionHandler.Instance.TransitionGameObjectList = roomLayout[x, y].gameObjectList;
+            mapX = x;
+            mapY = y;
         }
         public void SetDecorator(IRoom room)
         {
@@ -174,6 +146,5 @@ namespace Sprint2_Attempt3.Dungeon
         public virtual void SwitchToLowerRoom() { }
         public virtual void SwitchToUpperRoom() { }
         public virtual void RoomConditionCheck() { }
-
     }
 }

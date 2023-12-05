@@ -9,7 +9,7 @@ namespace Sprint2_Attempt3.Dungeon
     {
         public int RoomNumber { get; }
         public IDungeonRoom room { get;}
-        public List<IGameObject> gameObjectList { get; set; }
+        public List<IGameObject> gameObjectList { get;}
         public void Update();
         public void Draw(SpriteBatch spriteBatch, Color color);
         public void SwitchToNorthRoom();
@@ -19,7 +19,7 @@ namespace Sprint2_Attempt3.Dungeon
         public void SetDecorator(IRoom room);
         public void SwitchToLowerRoom();
         public void SwitchToUpperRoom();
-        public DungeonRoom getDungeonRoom();
         public void ResetRooms();
+        public void SwitchRoom(int x, int y);
     }
 }

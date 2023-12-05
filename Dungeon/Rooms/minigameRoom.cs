@@ -81,7 +81,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                     //((IEnemy)obj).Kill();
             }
             mapY++;
-            SwitchRoom();
+            SwitchRoom(mapX, mapY);
             SoundFactory.Instance.undertaleMusic.Pause();
             SoundFactory.Instance.backgroundMusic.Resume();
         }

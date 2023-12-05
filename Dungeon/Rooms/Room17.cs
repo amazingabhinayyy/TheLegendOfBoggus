@@ -17,7 +17,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         public override void SwitchToEastRoom()
         {
             mapX += 1;
-            SwitchRoom();
+            SwitchRoom(mapX, mapY);
         }
 
         public override void SwitchToLowerRoom()
