@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
 using System;
 using Sprint2_Attempt3.Collision;
+using System.Collections.Generic;
 using Sprint2_Attempt3.Dungeon.Rooms;
 using Sprint2_Attempt3.Dungeon;
 using Sprint2_Attempt3.Sounds;
@@ -26,7 +27,8 @@ namespace Sprint2_Attempt3.Enemy
         public Rectangle Position { get; set; }
         protected int invinciblityTimer = 0;
         public Vector2 SpawnPosition { get; set; }
-
+        public int numWallCollisions { get; set; } = 0;
+        
         public abstract void Generate();
         public abstract void Stun();
         public abstract void DropItem();

@@ -2,6 +2,7 @@
 using Sprint2_Attempt3.Dungeon;
 using Sprint2_Attempt3.Dungeon.Rooms;
 using Sprint2_Attempt3.Enemy.Keese;
+using Sprint2_Attempt3.Inventory;
 using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Player;
 using System.Collections.Generic;
@@ -21,8 +22,9 @@ namespace Sprint2_Attempt3.CommandClasses
         {
             RoomSecondary.ResetRooms();
             TransitionHandler.Instance.TransitionGameObjectList = new List<IGameObject>();
+            game1.room = new Room1(game1);
+            InventoryController.Reset();
             game1.Reset();
-            //inventoryController = new InventoryController(this);
         }
     }
 }

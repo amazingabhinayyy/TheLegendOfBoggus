@@ -47,14 +47,13 @@ namespace Sprint2_Attempt3.Dungeon
             {
                 
                 gameObjectLists[roomNumber] = RoomGenerator.Instance.LoadFile(roomNumber);
-                //gameObjectLists[roomNumber] = RoomGenerator.Instance.LoadFile(roomNumber);
 
                 gameObjectLists[roomNumber].Add(this.game1.link);
                 if (roomNum != 15)
                 {
                     gameObjectLists[roomNumber].AddRange(Globals.WallBlocks);
                 }
-                InventoryController.VisitRoom(roomNum);
+                MapController.VisitRoom(roomNum);
             }              
             
             if (game1.link is DamageLinkDecorator)
@@ -72,7 +71,12 @@ namespace Sprint2_Attempt3.Dungeon
             }
             TransitionHandler.Instance.TransitionGameObjectList = gameObjectLists[roomNumber];
 
-            
+            if (Room16TransitionHandler.Instance.TransitionGameObjectList.Count == 0)
+            {
+                CollisionManager.GameObjectList = gameObjectLists[roomNumber];
+            }
+            Room16TransitionHandler.Instance.TransitionGameObjectList = gameObjectLists[roomNumber];
+
         }
 
         public void SwitchToNextRoom() {
@@ -97,7 +101,7 @@ namespace Sprint2_Attempt3.Dungeon
                 else {
                     room = new WhiteStairRoom();
                 }
-                InventoryController.VisitRoom(roomNumber);
+                MapController.VisitRoom(roomNumber);
             }
 
             if (game1.link is DamageLinkDecorator)
@@ -105,8 +109,10 @@ namespace Sprint2_Attempt3.Dungeon
                 ((DamageLinkDecorator)game1.link).RemoveDecorator();
             }
             ClockUsed = false;
-            InventoryController.VisitRoom(roomNumber);
+            MapController.VisitRoom(roomNumber);
             TransitionHandler.Instance.TransitionGameObjectList = new List<IGameObject>();
+            //could be unnecessary now
+            Room16TransitionHandler.Instance.TransitionGameObjectList = new List<IGameObject>();
             CollisionManager.GameObjectList = gameObjectLists[roomNumber];
             game1.link.Items.Clear();
         }
@@ -134,7 +140,7 @@ namespace Sprint2_Attempt3.Dungeon
                 {
                     room = new WhiteStairRoom();
                 }
-                InventoryController.VisitRoom(roomNumber);
+                MapController.VisitRoom(roomNumber);
             }
             
             if (game1.link is DamageLinkDecorator)
@@ -142,13 +148,18 @@ namespace Sprint2_Attempt3.Dungeon
                 ((DamageLinkDecorator)game1.link).RemoveDecorator();
             }
             ClockUsed = false;
-            InventoryController.VisitRoom(roomNumber);
+            MapController.VisitRoom(roomNumber);
             TransitionHandler.Instance.TransitionGameObjectList = new List<IGameObject>();
+            Room16TransitionHandler.Instance.TransitionGameObjectList = new List<IGameObject>();
             CollisionManager.GameObjectList = gameObjectLists[roomNumber];
             game1.link.Items.Clear();
         }
         public virtual void Update() {
-            if (!TransitionHandler.Instance.Start)
+            if (Room16TransitionHandler.Instance.Start)
+            {
+                Room16TransitionHandler.Instance.Update();
+            }
+            else if (!TransitionHandler.Instance.Start)
             {
                 if(!game1.deathAnimationActive)
                     collisionManager.Update();
@@ -183,6 +194,11 @@ namespace Sprint2_Attempt3.Dungeon
             if (TransitionHandler.Instance.Start)
             {
                 TransitionHandler.Instance.Draw(spriteBatch);
+            }
+            else if (Room16TransitionHandler.Instance.Start)
+            {
+                Room16TransitionHandler.Instance.Draw(spriteBatch);
+
             }
             else
             {
@@ -221,6 +237,11 @@ namespace Sprint2_Attempt3.Dungeon
         public DungeonRoom getDungeonRoom()
         {
             return (DungeonRoom)room;
+        }
+
+        public IDungeonRoom getIDungeonRoom()
+        {
+            return (IDungeonRoom)room;
         }
         public void SetDecorator(IRoom room)
         {

@@ -80,6 +80,12 @@ namespace Sprint2_Attempt3.Collision
                             enemy.Y = collisionRectangle.Top - enemy.Position.Height - 1;
                         }
                     }
+                    enemy.numWallCollisions++;
+                }
+                if (enemy.numWallCollisions > 2)
+                {
+                    enemy.numWallCollisions = 0;
+                    enemy.ChangeDirection();
                 }
             }
         }

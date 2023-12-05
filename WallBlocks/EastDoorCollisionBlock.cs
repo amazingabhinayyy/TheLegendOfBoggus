@@ -10,6 +10,7 @@ namespace Sprint2_Attempt3.WallBlocks
     public class EastDoorCollisionBlock : IWall
     {
         public bool EnemyWalkable { get; } = false;
+        public bool projectilesThrowable { get; } = false;
         Rectangle wall;
         public EastDoorCollisionBlock()
         {

@@ -12,6 +12,7 @@ namespace Sprint2_Attempt3.Enemy.Keese
         private Rectangle sourceRectangle;
         private Random random;
         private int direction;
+        private int distance;
         public MovingRightKeeseState(Keese keese)
         {
             this.keese = keese;
@@ -24,7 +25,7 @@ namespace Sprint2_Attempt3.Enemy.Keese
         }
         public void ChangeDirection()
         {
-            direction = random.Next(0, 3);
+            direction = random.Next(0, 4);
             switch (direction)
             {
                 case 0:
@@ -36,6 +37,9 @@ namespace Sprint2_Attempt3.Enemy.Keese
                 case 2:
                     keese.State = new MovingDownKeeseState(keese);
                     break;
+                case 3:
+                    keese.State = new MovingRightKeeseState(keese);
+                    break;
             }
         }
         public void ChangeAttackedStatus()
@@ -44,9 +48,11 @@ namespace Sprint2_Attempt3.Enemy.Keese
         }
         public void Update()
         {
+            distance = random.Next(0, 5);
             currentFrame++;
             sourceRectangle = Keese.Keeses[Globals.FindIndex(currentFrame % (Keese.Keeses.Length * keese.AnimateRate), keese.AnimateRate, Keese.Keeses.Length)];
-            keese.X += 1;
+            keese.X += distance;
+            keese.Y += random.Next(0, 4) - 2;
             keese.Position = new Rectangle(keese.X, keese.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
         }
         public void Draw(SpriteBatch spriteBatch)

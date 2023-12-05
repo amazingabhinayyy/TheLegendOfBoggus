@@ -19,9 +19,9 @@ namespace Sprint2_Attempt3.CommandClasses
         public void Execute() {
             if (InventoryController.GetCount("Bomb") > 0)
             {
-                SoundFactory.PlaySound(SoundFactory.Instance.bombDrop);
                 game.link.UseBomb();
                 InventoryController.DecrementCount("Bomb");
+                SoundFactory.PlaySound(SoundFactory.Instance.bombDrop);
             }
         }
     }

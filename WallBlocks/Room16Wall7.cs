@@ -11,6 +11,7 @@ namespace Sprint2_Attempt3.WallBlocks
     {
         Rectangle wall;
         public bool EnemyWalkable { get; } = true;
+        public bool projectilesThrowable { get; } = true;
         public Room16Wall7()
         {
             wall = new Rectangle(0, 0 + Globals.YOffset, 100, 550);

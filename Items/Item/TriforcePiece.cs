@@ -25,7 +25,7 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         {
             if (this.count == 0)
             {
-                sprite = ItemSpriteFactory.Instance.CreateItemSprite();
+                sprite = ItemSpriteFactory.Instance.CreateTriforceSprite();
                 spawned = true;
             }
             if (spawned)
@@ -36,9 +36,19 @@ namespace Sprint2_Attempt3.Items.ItemClasses
                 Position.Height = (int)(sourceRectangle.Height * Globals.scale);
             }
         }
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            if (exists)
+            {
+                ((IAnimatedItemSprite)sprite).Draw(spriteBatch, Position, sourceRectangle);
+                if (!spawned)
+                {
+                    count--;
+                }
+            }
+        }
         public override void Collect()
         {
-            base.Collect();
             SoundFactory.PlaySound(SoundFactory.Instance.triforce);
         }
     }

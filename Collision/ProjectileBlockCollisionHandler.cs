@@ -36,6 +36,7 @@ namespace Sprint2_Attempt3.Collision
             }
             else if(projectile is ISwordBeam && block is IWall)
             {
+                if (!((IWall)block).projectilesThrowable)
                 ((ISwordBeam)projectile).RemoveSwordBeam();
             }
         }

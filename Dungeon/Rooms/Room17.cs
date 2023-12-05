@@ -18,7 +18,8 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
 
         public override void SwitchToLowerRoom()
         {
-            game1.room = new Room16(game1);
+            Room16TransitionHandler.Instance.Start = true;
+            Room16TransitionHandler.Instance.Transition(this, new Room16(game1));
         }
     }
 }

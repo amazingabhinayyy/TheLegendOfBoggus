@@ -7,6 +7,8 @@ using Sprint2_Attempt3.Dungeon.Doors;
 using Sprint2_Attempt3.Dungeon;
 using Sprint2_Attempt3.Inventory;
 using Sprint2_Attempt3.Sounds;
+using Sprint2_Attempt3.Player.LinkStates;
+using Sprint2_Attempt3.Player;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -84,11 +86,11 @@ namespace Sprint2_Attempt3.Collision
             bool changedRooms = false;
             if (!door.IsWalkable)
             {
-                if (door.IsLocked && InventoryController.GetCount("Key") > 0)
+                if (door.IsLocked && InventoryController.KeyCount > 0)
                 {
                     SoundFactory.PlaySound(SoundFactory.Instance.doorUnlock);
                     door.Open();
-                    InventoryController.DecrementCount("Key");
+                    InventoryController.KeyCount--;
                 }
                 else
                 {
@@ -115,16 +117,13 @@ namespace Sprint2_Attempt3.Collision
 
             else{
                
-                //TransitionHandler transition = new TransitionHandler(door);
-                //TransitionHandler transition = new TransitionHandler();
-                //transition.Door = door;
+              
                 TransitionHandler.Instance.Door = door;
                 link.Items.Clear();
                 if (door is NorthDoor)
                 {
                     
                     game.room.SwitchToNorthRoom();
-                    // link.Position = new Vector2(link.Position.X, 400 + Globals.YOffset);
                     link.Position = new Vector2(link.Position.X, 450 + Globals.YOffset - link.GetHitBox().Height);
                     changedRooms = true;
                     
@@ -158,7 +157,7 @@ namespace Sprint2_Attempt3.Collision
                     SoundFactory.PlaySound(SoundFactory.Instance.stairs);
                     game.room.SwitchToUpperRoom();
                   
-                        link.Position = new Vector2(LastLinkPosition.X, LastLinkPosition.Y);
+                        link.Position = new Vector2(Globals.FloorGrid[65].X, Globals.FloorGrid[65].Y);
                         changedRooms = true;
                     
                 }
@@ -167,11 +166,11 @@ namespace Sprint2_Attempt3.Collision
                     SoundFactory.PlaySound(SoundFactory.Instance.stairs);
                     SoundFactory.PlaySound(SoundFactory.Instance.stairs);
                     game.room.SwitchToLowerRoom();
-                    LastLinkPosition = new Vector2(link.GetHitBox().X, link.GetHitBox().Y);
-                    LastLinkPosition.X -= 50;
+                    link.State = new DownIdleLinkState((Link)link);
                     
-                        link.Position = new Vector2(Globals.StairExitPosition.X, Globals.StairExitPosition.Y + 15);
-                        changedRooms = true;
+                    //I moved the below link position to room16transitionhandler and it works there, I think it's because link is colliding with the walls of room17 with the new pos
+                    //link.Position = new Vector2(150, Globals.YOffset + 30);
+                    changedRooms = true;
                     
                 }
             }

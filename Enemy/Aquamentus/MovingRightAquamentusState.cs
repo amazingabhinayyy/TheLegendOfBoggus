@@ -52,6 +52,9 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
                     CollisionManager.GameObjectList.Add((IGameObject)Aquamentus.Fireball3);
                     Aquamentus.State = new AttackWithFireballLeftState(Aquamentus);
                     break;
+                case 2:
+                    Aquamentus.State = new MovingRightAquamentusState(Aquamentus);
+                    break;
 
             }
         }
@@ -74,6 +77,7 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
 
                 }
                 Aquamentus.X += 1;
+                Aquamentus.MaxLeft++;
                 Aquamentus.Position = new Rectangle(Aquamentus.X, Aquamentus.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             }
             else

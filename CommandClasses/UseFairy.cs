@@ -16,9 +16,7 @@ namespace Sprint2_Attempt3.CommandClasses
 
         public void Execute()
         {
-            if (InventoryController.GetCount("Fairy") > 0) {
-                InventoryController.UsingFairy = true;
-            }
+            InventoryController.UsingFairy = true;
         }
     }
 }
