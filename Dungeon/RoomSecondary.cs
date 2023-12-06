@@ -8,11 +8,9 @@ using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Inventory;
 using Sprint2_Attempt3.Items;
-using Sprint2_Attempt3.Items.ItemClasses;
 using Sprint2_Attempt3.WallBlocks;
 using System;
 using System.Collections.Generic;
-using System.Transactions;
 
 namespace Sprint2_Attempt3.Dungeon
 {
@@ -50,8 +48,6 @@ namespace Sprint2_Attempt3.Dungeon
                 FadingTransitionHandler.Instance.Update();
             else if (!PanningTransitionHandler.Instance.Start)
             {
-                if(!game1.deathAnimationActive)
-                    collisionManager.Update();
                 for (int i = 0; i < gameObjectList.Count; i++)
                 {
                     IGameObject obj = gameObjectList[i];

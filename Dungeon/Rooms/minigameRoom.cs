@@ -110,7 +110,6 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                                 {
                                     ((IEnemy)obj).Kill();
                                     finish = true;
-                                    //SoundFactory.PlaySound(SoundFactory.Instance.rickRoll);
                                     SoundFactory.Instance.undertaleMusic.Pause();
                                     SoundFactory.Instance.rickRollMusic.Resume();
                                 }

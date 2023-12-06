@@ -49,15 +49,12 @@ namespace Sprint2_Attempt3
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }
-
         protected override void Initialize()
         {
             base.Initialize();
             graphics.PreferredBackBufferHeight = Globals.ScreenHeight;
             graphics.ApplyChanges();
-            //RoomGenerator.Instance.LoadAllFiles();
         }
-
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
@@ -87,17 +84,13 @@ namespace Sprint2_Attempt3
             mouseController = new MouseController(this);
             deathAnimationActive = false;
         }
-
-        protected override void UnloadContent()
-        {
-        }
+        protected override void UnloadContent() { }
         public void Reset()
         {
             link = new Link(this);
             gameState = GameState.start;
             deathAnimationActive = false;
             collisionManager = new CollisionManager(this, (Link)link);
-            //room = new Room1(this);
         }
 
         protected override void Update(GameTime gameTime)
@@ -107,7 +100,7 @@ namespace Sprint2_Attempt3
             {
                 case GameState.start:
                     room.Update();
-                    if (!deathAnimationActive)
+                    if (!(deathAnimationActive || PanningTransitionHandler.Instance.Start || FadingTransitionHandler.Instance.Start))
                     {
                         inventoryController.Update();
                         collisionManager.Update();

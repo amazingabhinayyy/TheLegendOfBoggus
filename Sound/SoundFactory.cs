@@ -113,7 +113,7 @@ namespace Sprint2_Attempt3.Sounds
         {
             Instance.undertaleMusic.Pause();
             Instance.fanfare.Pause();
-            Instance.rickRoll.Dispose();
+            Instance.rickRollMusic.Stop();
             Instance.backgroundMusic.Resume();
         }
 
