@@ -33,8 +33,8 @@ namespace Sprint2_Attempt3.Enemy.Projectile.GoriyaProjectiles
                 0f,
                 new Vector2(0, 0),
                 Globals.scale,
-                Globals.GoriyaBoomerangLeftEffects[Globals.currentIndex],
-                0.1f
+               GoriyaBoomerang.GoriyaBoomerangLeftEffects[GoriyaBoomerang.currentIndex],
+                0f
             );
         }
 

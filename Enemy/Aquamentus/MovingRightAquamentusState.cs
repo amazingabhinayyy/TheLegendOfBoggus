@@ -12,9 +12,12 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
         private Aquamentus Aquamentus;
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
+        public static Rectangle[] rectangles  = new Rectangle[] { new Rectangle(51, 0, 24, 33), new Rectangle(76, 0, 24, 33) };
+        
         private int currentFrame;
         private int elaspedFrameCount;
         private int endFrame;
+        
         private Random random;
         private int direction;
         private int distance;
@@ -22,7 +25,7 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
         {
             this.Aquamentus = Aquamentus;
             sprite = EnemySpriteFactory.Instance.CreateMovingLeftAquamentusSprite();
-            sourceRectangle = Globals.AquamentusGreenLeft;
+            sourceRectangle = rectangles[0];
             Aquamentus.Position = new Rectangle(Aquamentus.X, Aquamentus.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             random = new Random();
             direction = random.Next(0, 3);
@@ -68,16 +71,20 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
             {
                 if (currentFrame < 15)
                 {
-                    sourceRectangle = Globals.AquamentusGreenLeft;
+                    sourceRectangle = rectangles[0];
 
                 }
                 else
                 {
-                    sourceRectangle = Globals.AquamentusGreenLeft2;
+                    sourceRectangle = rectangles[1];
 
                 }
-                Aquamentus.X += 1;
-                Aquamentus.MaxLeft++;
+                if (Aquamentus.MaxLeft < 200)
+                {
+                    Aquamentus.X += 1;
+                    Aquamentus.MaxLeft++;
+                }
+             
                 Aquamentus.Position = new Rectangle(Aquamentus.X, Aquamentus.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             }
             else

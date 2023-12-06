@@ -84,7 +84,7 @@ namespace Sprint2_Attempt3.Sounds
             ping = content.Load<SoundEffect>("ping");
             undertale = content.Load<SoundEffect>("Its_Showtime");
 
-            SoundEffect backgroundMusic = content.Load<SoundEffect>("Underworld_BGM");
+            SoundEffect backgroundMusic = content.Load<SoundEffect>("Underworld");
             backgroundMusicInstance = backgroundMusic.CreateInstance();
             backgroundMusicInstance.IsLooped = true;
             backgroundMusicInstance.Volume *= 0.1f;
