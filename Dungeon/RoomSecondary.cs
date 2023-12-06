@@ -16,9 +16,6 @@ namespace Sprint2_Attempt3.Dungeon
 {
     public abstract class RoomSecondary : IRoom
     {
-        public static Rectangle locationMapTrackerRec = new Rectangle(132, 670, 9, 9);
-        protected const int positionMapXUpdaterValue = 26;
-        protected const int positionMapYUpdaterValue = 26;
         private static IRoom[] rooms = new IRoom[Globals.NumberOfRooms];
         public List<IGameObject> gameObjectList { get; protected set; }
         protected static IRoom[,] roomLayout;
