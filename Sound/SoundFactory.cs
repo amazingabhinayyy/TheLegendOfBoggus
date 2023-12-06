@@ -86,16 +86,16 @@ namespace Sprint2_Attempt3.Sounds
             undertale = content.Load<SoundEffect>("Its_Showtime");
             teleport = content.Load<SoundEffect>("TeleportNoise");
 
+            undertaleMusicInstance = undertale.CreateInstance();
+            undertaleMusicInstance.IsLooped = true;
+            undertaleMusicInstance.Volume *= 0.1f;
+            undertaleMusicInstance.Pause();
+
             SoundEffect backgroundMusic = content.Load<SoundEffect>("Underworld");
             backgroundMusicInstance = backgroundMusic.CreateInstance();
             backgroundMusicInstance.IsLooped = true;
             backgroundMusicInstance.Volume *= 0.1f;
             backgroundMusicInstance.Play();
-
-            undertaleMusicInstance  = undertale.CreateInstance();
-            undertaleMusicInstance.IsLooped = true;
-            undertaleMusicInstance.Volume *= 0.1f;
-            undertaleMusicInstance.Pause();
 
             rickRollInstance = rickRoll.CreateInstance();
             rickRollInstance.IsLooped = false;
