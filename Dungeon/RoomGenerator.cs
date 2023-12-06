@@ -266,7 +266,6 @@ namespace Sprint2_Attempt3.Dungeon
             else if (Item.Equals("Key"))
             {
                 item = new Key(position, spawned);
-                SoundFactory.PlaySound(SoundFactory.Instance.keyAppear);
             }
             else if (Item.Equals("Map"))
             {
