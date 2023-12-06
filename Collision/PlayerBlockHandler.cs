@@ -8,12 +8,19 @@ using Sprint2_Attempt3.Dungeon.Doors;
 using Sprint2_Attempt3.Dungeon;
 using Sprint2_Attempt3.Inventory;
 using Sprint2_Attempt3.Sounds;
+using System.Diagnostics;
+using System;
+using Sprint2_Attempt3.Dungeon.Rooms;
 
 namespace Sprint2_Attempt3.Collision
 {
     public class PlayerBlockHandler
     {
         private static Vector2 LastLinkPosition = new Vector2(350, 400);
+
+        private static IGameObject switchPortal;
+        private static TimeSpan timeBuffer;
+        private static DateTime lastTeleportTime { get; set; }
         public static void HandleLinkBlockCollision(Rectangle linkRectangle, Rectangle wall, ILink link)
         {
             Rectangle intersectRect = Rectangle.Intersect(linkRectangle, wall);
@@ -178,19 +185,46 @@ namespace Sprint2_Attempt3.Collision
             }
             return changedRooms;
         }
-        public static void HandlePlayerPortalCollision(ILink link, IGameObject portal, ICollision side)
+        public static void HandlePlayerPortalCollision(ILink link, IGameObject portal, ICollision side, Game1 game)
         {
             //Rectangle intersectRect = Rectangle.Intersect(linkRectangle, wall);
             //int width = intersectRect.Width;
             //ICollision side = CollisionDetector.SideDetector(linkRectangle, wall);
-            if (portal is FirstPortal)
+            //bool switched = false;
+            timeBuffer = DateTime.Now - lastTeleportTime;
+            TimeSpan coolDown = TimeSpan.FromSeconds(1);
+            if (timeBuffer >= coolDown)
             {
-                link.Position = new Vector2(200, 550);
+                if (portal is FirstPortal)
+                {
+                    if (game.room is Room2)
+                    {
+                        link.Position = new Vector2(200, 535);
+                    }
+                    else if (game.room is Room10)
+                    {
+                        link.Position = new Vector2(550, 575);
+                    }
+
+                    //switched = true;
+                }
+                else if (portal is SecondPortal)
+                {
+                    if (game.room is Room2)
+                    {
+                        link.Position = new Vector2(600, 390);
+                    }
+                    else if (game.room is Room10)
+                    {
+                        link.Position = new Vector2(210, 270);
+                    }
+                    
+                    //switched = true;
+                }
             }
-            else if (portal is SecondPortal)
-            {
-                link.Position = new Vector2(600, 350);
-            }
+            //switchPortal = portal;
+            lastTeleportTime = DateTime.Now;
+            
         }
 
     }

@@ -49,7 +49,7 @@ namespace Sprint2_Attempt3.Collision
                 }
                 else if (obj is IPortal)
                 {
-                    PlayerBlockHandler.HandlePlayerPortalCollision(link, (IPortal)obj, side);
+                    PlayerBlockHandler.HandlePlayerPortalCollision(link, (IPortal)obj, side, game);
                 }
                 else if (obj is ILinkProjectile)
                 {
