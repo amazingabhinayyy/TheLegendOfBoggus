@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Sprint2_Attempt3.Inventory;
 using Sprint2_Attempt3.Sounds;
+using Sprint2_Attempt3.Dungeon;
+using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3.Items.ItemClasses
 {
@@ -31,8 +33,10 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         }
         public override void Collect()
         {
-            base.Collect();
-            InventoryController.UseItem("Clock");
+            exists = false;
+            CollisionManager.GameObjectList.Remove(this);
+            SoundFactory.PlaySound(SoundFactory.Instance.getItem);
+            RoomSecondary.ClockUsed = true;
         }
     }
 }
