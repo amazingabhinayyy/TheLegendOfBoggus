@@ -22,7 +22,7 @@ namespace Sprint2_Attempt3.Collision
             {
                 CollisionManager.GameObjectList.Remove(projectile);
 
-                ((AquamentusFireball)projectile).GenerateRight();
+                ((AquamentusFireball)projectile).Disappear();
             }
         }
     }
