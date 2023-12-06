@@ -30,7 +30,7 @@ namespace Sprint2_Attempt3.Enemy.Hand
         }
         public void ChangeDirection()
         {
-            direction = random.Next(0, 3);
+            /*direction = random.Next(0, 3);
             switch (direction)
             {
                 case 0:
@@ -45,11 +45,11 @@ namespace Sprint2_Attempt3.Enemy.Hand
                 case 3:
                     Hand.State = new MovingDownHandState(Hand);
                     break;
-            }       
+            }       */
         }
         public void ChangeAttackedStatus()
         {
-            Hand.State = new MovingAttackedDownHandState(Hand);
+            //Hand.State = new MovingAttackedDownHandState(Hand);
         }
         public void Update()
         {

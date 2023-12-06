@@ -29,7 +29,6 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             SoundFactory.Instance.backgroundMusic.Pause();
             SoundFactory.Instance.undertaleMusic.Play();
             counter = 900;
-            score = 0;
             scoreKeeper = new ScoreKeeper(score, counter);
             finish = false;
             minigameRoomHelper = new MinigameRoomHelper(gameObjectList);
@@ -39,13 +38,16 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
 
         public override void SwitchToSouthRoom()
         {
-            for (int i = 0; i < gameObjectList.Count; i++)
+            for (int i = (gameObjectList.Count - 1); i >= 0; i--)
             {
                 IGameObject obj = gameObjectList[i];
-                if (obj is IEnemy)
-                    ((IEnemy)obj).Kill();
+                if (obj is Target)
+                    gameObjectList.RemoveAt(i);
             }
             trigger.End();
+            firstTime = true;
+            finish = false;
+            counter = 900;
             mapY++;
             SwitchRoom(mapX, mapY, PanningTransitionHandler.Instance);
             SoundFactory.Instance.undertaleMusic.Pause();

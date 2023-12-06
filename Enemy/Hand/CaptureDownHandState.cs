@@ -1,58 +1,58 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint2_Attempt3.Enemy.Gel;
 using Sprint2_Attempt3.Enemy.Keese;
+using Sprint2_Attempt3.Enemy.Rope;
 using System;
 
 namespace Sprint2_Attempt3.Enemy.Hand
 {
-    internal class MovingDownHandState : IEnemyState
+    internal class CaptureDownHandState : IEnemyState
     {
         private Hand Hand;
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
         private int currentFrame;
         private Random random;
-        private int direction;
-        public MovingDownHandState(Hand Hand)
+        public CaptureDownHandState(Hand Hand)
         {
             this.Hand = Hand;
             sprite = EnemySpriteFactory.Instance.CreateHandSprite();
             sourceRectangle = Hand.Hands[0];
-            Hand.Position = new Rectangle(Hand.X, Hand.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
-            currentFrame = 0;
-            random = new Random();
-            direction = random.Next(0, 3);
+            Hand.Position = new Rectangle(Hand.X,Hand.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
         }
         public void ChangeDirection()
         {
-            direction = random.Next(0, 3);
-            switch (direction)
-            {
-                case 0:
-                    Hand.State = new MovingLeftHandState(Hand);
-                    break;
-                case 1:
-                    Hand.State = new MovingUpHandState(Hand);
-                    break;
-                case 2:
-                    Hand.State = new MovingRightHandState(Hand);
-                    break;
-            }
+
         }
         public void ChangeAttackedStatus() {
             Hand.State = new MovingAttackedDownHandState(Hand);
         }
         public void Update()
         {
-            currentFrame++;
+            if (Hand.counter >= 0 && Hand.counter < 60)
+            {
+                Hand.Y--;
+            } 
+            else if(Hand.counter >= 60 && Hand.counter < 240) 
+            {
+                Hand.X++;
+            }
+            else if(Hand.counter >= 240 && Hand.counter < 300)
+            {
+                Hand.Y++;
+            }
+            else
+            {
+                Hand.End();
+            }
+
+            Hand.counter++;
             sourceRectangle = Hand.Hands[Globals.FindIndex(currentFrame % (2 * Hand.AnimateRate), Hand.AnimateRate, 2)];
-            Hand.Y += 1;
             Hand.Position = new Rectangle(Hand.X, Hand.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, Hand.X, Hand.Y, sourceRectangle) ;
+            sprite.Draw(spriteBatch, Hand.X, Hand.Y, sourceRectangle);
         }
     }
 }

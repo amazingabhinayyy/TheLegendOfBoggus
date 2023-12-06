@@ -27,11 +27,7 @@ namespace Sprint2_Attempt3.Collision
             Boolean check = true;
             if (enemy is Hand)
             {
-                Hand newHand = (Hand)enemy;
-                if (newHand.State is CapturedState)
-                {
-                    check = false;
-                }
+                check = false;
             }
             if (check)
             {
