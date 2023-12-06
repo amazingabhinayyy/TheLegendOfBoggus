@@ -17,15 +17,17 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
 
         public override void SwitchToNorthRoom() {
             mapY -= 1;
+            locationMapTrackerRec.Y -= positionMapYUpdaterValue;
             SwitchRoom(mapX, mapY, PanningTransitionHandler.Instance);
         }
         public override void SwitchToEastRoom() {
             mapX += 1;
+            locationMapTrackerRec.X += positionMapXUpdaterValue;
             SwitchRoom(mapX, mapY, PanningTransitionHandler.Instance);
-
         }
         public override void SwitchToWestRoom() {
             mapX -= 1;
+            locationMapTrackerRec.X -= positionMapXUpdaterValue;
             SwitchRoom(mapX, mapY, PanningTransitionHandler.Instance);
         }
 

@@ -41,8 +41,8 @@ namespace Sprint2_Attempt3.Inventory
         public PlayerTrackerController() { }
 
         public static void DrawPlayerTracker(SpriteBatch spriteBatch) {
-            if(RoomSecondary.currentRoomNumber < 18)
-                sprite.Draw(spriteBatch, MarkerDestRectangles[RoomSecondary.currentRoomNumber]);
+            //if (RoomSecondary.currentRoomNumber < 18)
+            sprite.Draw(spriteBatch, new Rectangle(2 + RoomSecondary.mapX * 26 + x, 527 + RoomSecondary.mapY * 13 + y, 9, 9));//MarkerDestRectangles[RoomSecondary.currentRoomNumber]);
         }
         public static void ShiftUp() {
             for (int i = 0; i < MarkerDestRectangles.Length; i++) {

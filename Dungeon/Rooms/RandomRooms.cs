@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
 {
     public class RandomRooms : RoomSecondary
     {
-
+        //public static Rectangle locationMapTrackerRec;
         public RandomRooms(Game1 game, int roomNum) : base(game, roomNum)
         {
         }
@@ -19,7 +20,6 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             {
                 int roomNum = RandomRoomCreator.Instance.CreateRandomRoom(roomLayout, mapX, mapY);
                 roomLayout[mapX, mapY] = new RandomRooms(game1, roomNum);
-                //roomLayout[mapX, mapY].gameObjectList = RoomGenerator.Instance.LoadFile(roomNum);
             }
             SwitchRoom(mapX, mapY, PanningTransitionHandler.Instance);
         }
@@ -30,7 +30,6 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             {
                 int roomNum = RandomRoomCreator.Instance.CreateRandomRoom(roomLayout, mapX, mapY);
                 roomLayout[mapX, mapY] = new RandomRooms(game1, roomNum);
-                //roomLayout[mapX, mapY].gameObjectList = RoomGenerator.Instance.LoadFile(roomNum);
             }
             SwitchRoom(mapX, mapY, PanningTransitionHandler.Instance);
         }
@@ -41,7 +40,6 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             {
                 int roomNum = RandomRoomCreator.Instance.CreateRandomRoom(roomLayout, mapX, mapY);
                 roomLayout[mapX, mapY] = new RandomRooms(game1, roomNum);
-                //roomLayout[mapX, mapY].gameObjectList = RoomGenerator.Instance.LoadFile(roomNum);
             }
             SwitchRoom(mapX, mapY, PanningTransitionHandler.Instance);
         }
@@ -52,7 +50,6 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
             {
                 int roomNum = RandomRoomCreator.Instance.CreateRandomRoom(roomLayout, mapX, mapY);
                 roomLayout[mapX, mapY] = new RandomRooms(game1, roomNum);
-                //roomLayout[mapX, mapY].gameObjectList = RoomGenerator.Instance.LoadFile(roomNum);
             }
             SwitchRoom(mapX, mapY, PanningTransitionHandler.Instance);
         }
