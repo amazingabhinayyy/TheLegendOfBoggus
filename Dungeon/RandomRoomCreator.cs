@@ -1,16 +1,6 @@
-﻿using Microsoft.Xna.Framework;
-using Sprint2_Attempt3.Blocks.BlockSprites;
-using Sprint2_Attempt3.Dungeon.Doors;
-using Sprint2_Attempt3.Dungeon.Rooms;
-using Sprint2_Attempt3.Enemy.Gel;
-using Sprint2_Attempt3.Items.ItemClasses;
+﻿using Sprint2_Attempt3.Dungeon.Doors;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.IO.Enumeration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sprint2_Attempt3.Dungeon
 {
@@ -37,16 +27,7 @@ namespace Sprint2_Attempt3.Dungeon
             currentRoomNumber++;
             String fileName = "Dungeon/RoomFiles/RandomRoom" + currentRoomNumber + ".csv";
             File.WriteAllText(fileName, "");
-            //File.AppendAllText(fileName, "Block,BlueTile,43,,\n");
-            /*
-            File.AppendAllText(fileName, "Door,East,0\n");
-            File.AppendAllText(fileName, "Door,North,0\n");
-            File.AppendAllText(fileName, "Door,West,0\n");
-            File.AppendAllText(fileName, "Door,South,0\n");
-            */
-
             String[] objectPlacements = CreateObjectsInRoom();
-            //String[] doors = randRoomSpriteCreator.ConnectAndMakeDoors(map, currentX, currentY);
 
             for(int i = 0; i < objectPlacements.Length; i++)
             {

@@ -41,6 +41,7 @@ namespace Sprint2_Attempt3.Dungeon
             gameObjectList.Add(this.game1.link);
             if (roomNum != 15)
                 gameObjectList.AddRange(IWall.WallBlocks);
+
             collisionManager = new CollisionManager(game1, game1.link); 
         }
         public virtual void Update() {
@@ -91,6 +92,7 @@ namespace Sprint2_Attempt3.Dungeon
                 }
                 foreach (IEnemy enemy in enemyList)
                     enemy.Draw(spriteBatch);
+
                 game1.link.Draw(spriteBatch, Color.White);
             }
         }

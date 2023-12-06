@@ -4,7 +4,6 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Sprint2_Attempt3.CommandClasses;
-using Sprint2_Attempt3.Dungeon;
 using Sprint2_Attempt3.Screens;
 
 namespace Sprint2_Attempt3
