@@ -6,6 +6,8 @@ using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Items;
+using Sprint2_Attempt3.Items.ItemClasses;
+using Sprint2_Attempt3.Portal;
 using Sprint2_Attempt3.WallBlocks;
 using System.Collections.Generic;
 using Sprint2_Attempt3.Enemy.SpikeTrap;
@@ -48,6 +50,10 @@ namespace Sprint2_Attempt3.Collision
                 else if (obj is IDoor)
                 {
                     ChangedRooms = PlayerBlockHandler.HandlePlayerDoorCollision(link, (IDoor)obj, side, game);
+                }
+                else if (obj is IPortal)
+                {
+                    PlayerPortalHandler.HandlePlayerPortalCollision(link, (IPortal)obj, game);
                 }
                 else if (obj is ILinkProjectile)
                 {

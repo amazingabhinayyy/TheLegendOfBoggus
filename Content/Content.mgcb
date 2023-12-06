@@ -362,6 +362,7 @@
 /build:swoosh.wav
 
 #begin targetSprite.png
+#begin portal.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -384,6 +385,7 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:TargetSpriteNoBackground.png
+/build:portal.png
 
 #begin TitleScreen.png
 /importer:TextureImporter
