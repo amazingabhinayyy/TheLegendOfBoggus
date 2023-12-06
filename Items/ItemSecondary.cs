@@ -39,7 +39,6 @@ namespace Sprint2_Attempt3.Items
             exists = false;
             CollisionManager.GameObjectList.Remove(this);
             InventoryController.IncrementCount(this.GetType().Name);
-            SoundFactory.PlaySound(SoundFactory.Instance.getItem);
         }
         public void Despawn()
         {

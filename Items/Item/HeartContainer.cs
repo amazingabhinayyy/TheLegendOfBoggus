@@ -22,6 +22,11 @@ namespace Sprint2_Attempt3.Items.ItemClasses
             this.spawned = false;
             sprite = ItemSpriteFactory.Instance.CreateSpawnItemSprite();
         }
+        public override void Collect()
+        {
+            base.Collect();
+            SoundFactory.PlaySound(SoundFactory.Instance.getItem);
+        }
         public override void Update()
         {
             if (count == 0)
