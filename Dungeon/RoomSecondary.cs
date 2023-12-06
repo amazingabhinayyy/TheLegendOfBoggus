@@ -8,7 +8,6 @@ using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Inventory;
 using Sprint2_Attempt3.Items;
-using Sprint2_Attempt3.Player;
 using Sprint2_Attempt3.Portal;
 using Sprint2_Attempt3.WallBlocks;
 using System;
@@ -43,7 +42,6 @@ namespace Sprint2_Attempt3.Dungeon
             gameObjectList.Add(this.game1.link);
             if (roomNum != 15)
                 gameObjectList.AddRange(IWall.WallBlocks);
-
             collisionManager = new CollisionManager(game1, game1.link); 
         }
         public virtual void Update() {
@@ -64,14 +62,9 @@ namespace Sprint2_Attempt3.Dungeon
                     else if (obj is IItem)
                         ((IItem)obj).Update();
                     else if (obj is IBlock)
-                    {
                         ((IBlock)obj).Update();
-                    }
                     else if (obj is IPortal)
-                    {
                         ((IPortal)obj).Update();
-                    }
-
                 }
                 spawned = true;
                 game1.link.Update();
