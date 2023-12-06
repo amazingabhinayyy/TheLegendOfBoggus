@@ -24,6 +24,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Sprint2_Attempt3.WallBlocks;
 
 namespace Sprint2_Attempt3.Dungeon
 {
@@ -97,7 +98,9 @@ namespace Sprint2_Attempt3.Dungeon
                     }
                     else if (words[0].Equals("Portal"))
                     {
-                        objectList.Add(GetPortal(words[1], int.Parse(words[2])));
+                        IGameObject[] portals = GetPortal(int.Parse(words[1]), int.Parse(words[2]));
+                        objectList.Add(portals[0]);
+                        objectList.Add(portals[1]);
                     }
 
                 }
@@ -321,18 +324,12 @@ namespace Sprint2_Attempt3.Dungeon
             return door;
         }
 
-        private static IPortal GetPortal(String Portal, int position)
+        private static PortalSecondary[] GetPortal(int positionPortal1, int positionPortal2)
         {
-            IPortal portal = null;
-            if (Portal.Equals("First"))
-            {
-                portal = new FirstPortal(Globals.FloorGrid[position]);
-            }
-           else if (Portal.Equals("Second"))
-            {
-                portal = new SecondPortal(Globals.FloorGrid[position]);
-            }
-            return portal;
+            PortalSecondary portal1 = new PortalSecondary(Globals.FloorGrid[positionPortal1], null);
+            PortalSecondary portal2 = new PortalSecondary(Globals.FloorGrid[positionPortal2], portal1);
+            portal1.LinkedPortal = portal2;
+            return new PortalSecondary[] { portal1, portal2 };
         }
     }
 }

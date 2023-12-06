@@ -12,10 +12,16 @@ namespace Sprint2_Attempt3.Portal
 {
     public class PortalSecondary : IPortal
     {
-        public Rectangle position { get; set; }
-        protected Rectangle sourceRectangle { get; set; }
 
-        public PortalSecondary() { }
+        public Rectangle position { get; set; }
+        public PortalSecondary LinkedPortal { get; set; }
+        private readonly Rectangle sourceRectangle = new Rectangle(263, 20, 227, 466);
+
+        public PortalSecondary(Rectangle position, PortalSecondary linkedPortal) 
+        {
+            this.position = position;
+            LinkedPortal = linkedPortal;
+        }
         public virtual void Update() { }
         public virtual void Draw(SpriteBatch spriteBatch, Color color)
         {
@@ -38,10 +44,10 @@ namespace Sprint2_Attempt3.Portal
         {
             return new Rectangle(position.X+24, position.Y+24,  1, 1);
         }
-        public Vector2 Teleport(PortalSecondary portal)
+        public Vector2 Teleport()
         {
             SoundFactory.PlaySound(SoundFactory.Instance.teleport);
-            return new Vector2(portal.position.X, portal.position.Y);
+            return new Vector2(LinkedPortal.position.X, LinkedPortal.position.Y);
         }
     }
 }
