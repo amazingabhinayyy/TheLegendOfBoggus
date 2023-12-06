@@ -134,7 +134,7 @@ namespace Sprint2_Attempt3.Collision
                 }
             }
         }
-        public void CheckEnemyProjectileCollision(IGameObject projectile, IGameObject obj)
+        public static void CheckEnemyProjectileCollision(IGameObject projectile, IGameObject obj)
         {
             Rectangle projectileRectangle = projectile.GetHitBox();
             Rectangle collisionRectangle = obj.GetHitBox();

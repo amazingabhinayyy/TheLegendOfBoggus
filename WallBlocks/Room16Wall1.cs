@@ -16,7 +16,6 @@ namespace Sprint2_Attempt3.WallBlocks
         Rectangle wall;
         public Room16Wall1()
         {
-            //wall = new Rectangle(602, 277 + Globals.YOffset, 398, 53);
             wall = new Rectangle(605, 254 + Globals.YOffset+15, 97, 125);
         }
         public Rectangle GetHitBox()

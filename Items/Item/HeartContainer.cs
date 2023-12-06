@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sprint2_Attempt3.Inventory;
+using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Sounds;
 
 namespace Sprint2_Attempt3.Items.ItemClasses
@@ -20,11 +22,7 @@ namespace Sprint2_Attempt3.Items.ItemClasses
             this.spawned = false;
             sprite = ItemSpriteFactory.Instance.CreateSpawnItemSprite();
         }
-        public override void Collect()
-        {
-            base.Collect();
-            SoundFactory.PlaySound(SoundFactory.Instance.getItem);
-        }
+       
         public override void Update()
         {
             if (count == 0)
@@ -32,6 +30,14 @@ namespace Sprint2_Attempt3.Items.ItemClasses
                 sprite = ItemSpriteFactory.Instance.CreateHeartContainerSprite();
                 spawned = true;
             }
+        }
+
+        public override void Collect()
+        {
+            InventoryController.heartContainers++;
+            exists = false;
+            CollisionManager.GameObjectList.Remove(this);
+            SoundFactory.PlaySound(SoundFactory.Instance.getItem);
         }
     }
 }

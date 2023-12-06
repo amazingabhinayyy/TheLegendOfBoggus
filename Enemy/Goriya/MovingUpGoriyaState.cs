@@ -14,19 +14,15 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         private Goriya Goriya;
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
-        private int elaspedFrameCount;
-        private int endFrame;
         private Random random;
         private int direction;
-        private int distance;
         public MovingUpGoriyaState(Goriya Goriya)
         {
             this.Goriya = Goriya;
             sprite = EnemySpriteFactory.Instance.CreateMovingUpGoriyaSprite();
-            sourceRectangle = Globals.GoriyaRedUp;
+            sourceRectangle = Goriya.UpGoryia[2];
             Goriya.Position = new Rectangle(Goriya.X, Goriya.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             random = new Random();
-            distance = random.Next(50, 100);
         }
         public void ChangeDirection()
         {

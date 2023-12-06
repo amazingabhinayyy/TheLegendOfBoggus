@@ -12,52 +12,35 @@ internal class GoriyaBoomerangRightState : IEnemyProjectileState
 {
     private GoriyaBoomerang goriyaBoomerang;
     private IEnemyProjectileSprite sprite;
-
     private static EnemyProjectileSpriteFactory enemyProjectileSpriteFactory;
     private bool goRight;
-    /*private bool finished;
-    public bool Finished
-    {
-        get { return finished; }
-        set { finished = value; }
-    }*/
     private int timeSinceLastUpdate;
     private int spriteIndex;
     private int currentFrame;
     private int currentFrame2;
     private int change;
-
-
+    private int currDist;
 
     public GoriyaBoomerangRightState(GoriyaBoomerang goriyaBoomerang)
     {
         this.goriyaBoomerang = goriyaBoomerang;
         enemyProjectileSpriteFactory = new EnemyProjectileSpriteFactory();
         sprite = EnemyProjectileSpriteFactory.Instance.MovingBoomerang();
-
         timeSinceLastUpdate = 0;
         spriteIndex = 0;
         currentFrame = 0;
         currentFrame2 = 0;
-        //finished = false;
         goRight = goriyaBoomerang.GoRight;
-        change = Globals.boomerangSpeed;
+        change = GoriyaBoomerang.boomerangSpeed;
+        currDist = 0;
 
     }
 
-
-    public void Update(/*gameTime gametime*/)
+    public void Update()
     {
-        /*
-        timeSinceLastUpdate += gametime.ElapsedGameTime;
-        spriteIndex = (int)(timeSinceLastUpdate / (0.5f));
-        if (spriteIndex > 7)
-        {
-            spriteIndex = 0;
-            timeSinceLastUpdate = 0;
-        }*/
+ 
         currentFrame++;
-        if (currentFrame < Globals.boomerangSpriteSwitchSpeed)
+        if (currentFrame < GoriyaBoomerang.boomerangSpriteSwitchSpeed)
         {
             currentFrame2++;
             spriteIndex = currentFrame2 / 10;
@@ -71,7 +54,8 @@ internal class GoriyaBoomerangRightState : IEnemyProjectileState
             if (goRight)
             {
                 goriyaBoomerang.Position2 = new Vector2(goriyaBoomerang.Position2.X + change, goriyaBoomerang.Position2.Y);
-                if (goriyaBoomerang.Position2.X >= 780)
+                currDist += change;
+                if (currDist >= goriyaBoomerang.MaxDist)
                 {
                     goriyaBoomerang.GoRight = false;
                 }
@@ -96,7 +80,7 @@ internal class GoriyaBoomerangRightState : IEnemyProjectileState
     public void Draw(SpriteBatch spriteBatch)
     {
 
-        Globals.currentIndex = spriteIndex;
-        sprite.Draw(spriteBatch, (int)goriyaBoomerang.Position2.X + 9, (int)goriyaBoomerang.Position2.Y + 8, Globals.GoriyaBoomerangLeft[spriteIndex]);
+        GoriyaBoomerang.currentIndex = spriteIndex;
+        sprite.Draw(spriteBatch, (int)goriyaBoomerang.Position2.X + 9, (int)goriyaBoomerang.Position2.Y + 8, GoriyaBoomerang.GoriyaBoomerangLeft[spriteIndex]);
     }
 }

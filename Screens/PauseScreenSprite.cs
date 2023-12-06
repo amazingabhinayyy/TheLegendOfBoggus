@@ -16,8 +16,8 @@ namespace Sprint2_Attempt3.Screens
         public PauseScreenSprite(Texture2D texture)
         {
             this.texture = texture;
-            sourceRectangle = new Rectangle(0, 270, 300, 245);
-            destinationRectangle = new Rectangle(0, 0, 800, 750);
+            sourceRectangle = new Rectangle(638, 12, 300, 196);
+            destinationRectangle = new Rectangle(0, 0, 1060, Globals.ScreenHeight);
         }
         public void Update()
         {

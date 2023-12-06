@@ -45,5 +45,16 @@ namespace Sprint2_Attempt3.Inventory
                 sprite.Draw(spriteBatch, MapRoomDestRectangles[room]);
             }
         }
+        public static void ShiftUp() {
+            for(int i = 0; i < MapRoomDestRectangles.Count; i++) {
+                MapRoomDestRectangles[i] = new Rectangle(MapRoomDestRectangles[i].X, MapRoomDestRectangles[i].Y - InventoryController.AnimateRate, MapRoomDestRectangles[i].Width, MapRoomDestRectangles[i].Height);
+            }
+        }
+        public static void ShiftDown() {
+            for (int i = 0; i < MapRoomDestRectangles.Count; i++)
+            {
+                MapRoomDestRectangles[i] = new Rectangle(MapRoomDestRectangles[i].X, MapRoomDestRectangles[i].Y + InventoryController.AnimateRate, MapRoomDestRectangles[i].Width, MapRoomDestRectangles[i].Height);
+            }
+        }
     }
 }

@@ -19,14 +19,22 @@ namespace Sprint2_Attempt3
     {
         GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
+        public enum GameState { 
+            startScreen,
+            pause,
+            start,
+            itemMenu,
+            linkDead,
+            chooseFile
+        }
+        public GameState gameState { get; set; }
         public static Texture2D InventoryTexture { get; set; }
         private KeyboardController keyController { get; set; }
         private MouseController mouseController { get; set; }
         private InventoryController inventoryController { get; set; }
         public ILink link { get; set; }
         public IRoom room { get; set; }
-        public bool gameStarted { get; set; }
-        public bool linkDead { get; set; }
+        public ISprite screenSprite { get; set; }
         public bool gamePaused { get; set; }
         public bool deathAnimationActive { get; set; }
 
@@ -34,10 +42,6 @@ namespace Sprint2_Attempt3
         public GameTime Gametime { get { return gameTime; } }
 
         public CollisionManager collisionManager;
-        private StartScreenState startScreen;
-        private DeathScreenState deathScreen;
-        private PauseScreenState pauseScreen;
-
 
         public Game1()
         {
@@ -68,7 +72,6 @@ namespace Sprint2_Attempt3
             DungeonSpriteFactory.Instance.LoadAllTextures(Content);
             ScreenSpriteFactory.Instance.LoadAllTextures(Content);
             //check if we need start screen
-            //StartScreenSpriteFactory.Instance.LoadAllTextures(Content);
             TransitionHandler.Instance.setGame1(this);
             //update into states later
             Room16TransitionHandler.Instance.setGame1(this);
@@ -76,15 +79,12 @@ namespace Sprint2_Attempt3
             InventoryTexture = Content.Load<Texture2D>("Inventory");
             link = new Link(this);
             collisionManager = new CollisionManager(this, (Link)link);
-            gameStarted = false;
-            linkDead = false;
+            gameState = GameState.startScreen;
+            screenSprite = ScreenSpriteFactory.Instance.CreateStartScreen();
             inventoryController = new InventoryController(this);
             keyController = new KeyboardController(this);
             mouseController = new MouseController(this);
             room = new Room1(this);
-            startScreen = new StartScreenState(this);
-            deathScreen = new DeathScreenState(this);
-            pauseScreen = new PauseScreenState(this);
             deathAnimationActive = false;
         }
 
@@ -94,9 +94,8 @@ namespace Sprint2_Attempt3
         public void Reset()
         {
             link = new Link(this);
-            linkDead = false;
+            gameState = GameState.start;
             deathAnimationActive = false;
-            gamePaused = false;
             collisionManager = new CollisionManager(this, (Link)link);
             room = new Room1(this);
         }
@@ -104,16 +103,27 @@ namespace Sprint2_Attempt3
         protected override void Update(GameTime gameTime)
         {
             keyController.Update(gameTime);
-            if (!gamePaused && !linkDead && gameStarted)
+            switch (gameState)
             {
-                room.Update();
-                if (!deathAnimationActive)
-                {
+                case GameState.start:
+                    room.Update();
+                    if (!deathAnimationActive)
+                    {
+                        inventoryController.Update();
+                        collisionManager.Update();
+                    }
+                    break;
+                case GameState.pause:
                     inventoryController.Update();
-                    collisionManager.Update();
-                    //mouseController.Update(gameTime);
-                }
-            }
+                    break;
+                case GameState.chooseFile:
+                    mouseController.Update(gameTime);
+                    break;
+                case GameState.itemMenu:
+                    inventoryController.Update();
+                    break;
+
+            } 
             base.Update(gameTime);
         }
 
@@ -123,22 +133,20 @@ namespace Sprint2_Attempt3
             GraphicsDevice.Clear(Color.Black);
 
             spriteBatch.Begin();
-            if (linkDead)
-            {
-                deathScreen.Draw(spriteBatch);
-            }
-            else if (gamePaused)
-            {
-                pauseScreen.Draw(spriteBatch);
-            }
-            else if (gameStarted)
-            {
-                room.Draw(spriteBatch, Color.White);
-                inventoryController.Draw(spriteBatch);
-            }
-            else
-            {
-                startScreen.Draw(spriteBatch);
+            switch (gameState) { 
+                case GameState.start:
+                    room.Draw(spriteBatch, Color.White);
+                    inventoryController.Draw(spriteBatch);
+                    break;
+                case GameState.itemMenu:
+                    if (InventoryController.itemMenuState != InventoryController.ItemMenuState.fullView)
+                        room.Draw(spriteBatch, Color.White);
+                    inventoryController.Draw(spriteBatch);
+                    break;
+                default:
+                    screenSprite.Draw(spriteBatch);
+                    break;
+
             }
             spriteBatch.End();
             base.Draw(gameTime);

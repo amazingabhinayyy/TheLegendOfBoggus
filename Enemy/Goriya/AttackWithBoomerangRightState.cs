@@ -25,7 +25,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             sprite = EnemySpriteFactory.Instance.CreateMovingRightGoriyaSprite();
             currentFrame = 0;
             currentBoomerangFrame = 0;
-            sourceRectangle = Globals.GoriyaRedRight;
+            sourceRectangle = Goriya.RightGoryia[1];
             Goriya.Position = new Rectangle(Goriya.X, Goriya.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             boomerang = Goriya.Boomerang;
         }
@@ -39,28 +39,8 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         public void Update()
         {
             currentFrame++;
-            if (currentFrame < 30)
-            {
-                if (currentFrame < 15)
-                {
-                    sourceRectangle = Globals.GoriyaRedRight;
-
-                }
-                else
-                {
-                    sourceRectangle = Globals.GoriyaRedRight2;
-
-                }
-                Goriya.Position = new Rectangle(Goriya.X, Goriya.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
-            }
-            else
-            {
-                currentFrame = 0;
-            }
-
-          
-
-
+            sourceRectangle = Goriya.RightGoryia[Globals.FindIndex(currentFrame % (2 * Goriya.DamageAnimateRate), Goriya.DamageAnimateRate, 2)];
+            Goriya.Position = new Rectangle(Goriya.X, Goriya.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
         }
         public void Draw(SpriteBatch spriteBatch)
         {
