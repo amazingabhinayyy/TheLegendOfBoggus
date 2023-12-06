@@ -24,7 +24,10 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         public override void Update()
         {
             if (FadingTransitionHandler.Instance.Start)
+            {
+                firstTime = true;
                 FadingTransitionHandler.Instance.Update();
+            }
             else if (!PanningTransitionHandler.Instance.Start)
             {
                 if (firstTime)
@@ -41,7 +44,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                             ((HandCreator)obj).Clear();
                         }
                     }
-                    firstTime= false;
+                    firstTime = false;
                 }
                 List<Hand> handList = handCreator.AddHands();
                 for (int j = 0; j < handList.Count; j++)
