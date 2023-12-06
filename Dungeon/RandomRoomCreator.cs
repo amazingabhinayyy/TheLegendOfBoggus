@@ -37,7 +37,7 @@ namespace Sprint2_Attempt3.Dungeon
                 }
             }
 
-            if (currentX != map.GetLength(1) - 1)
+            if (currentX != map.GetLength(0) - 1)
                 File.AppendAllText(fileName, randRoomSpriteCreator.CheckIfDoorExist(typeof(WestDoor), map[currentX + 1, currentY]));
             else
                 File.AppendAllText(fileName, "Door,East,4\n");
@@ -49,7 +49,7 @@ namespace Sprint2_Attempt3.Dungeon
                 File.AppendAllText(fileName, randRoomSpriteCreator.CheckIfDoorExist(typeof(SouthDoor), map[currentX, currentY - 1]));
             else
                 File.AppendAllText(fileName, "Door,North,4\n");
-            if (currentY != map.GetLength(0) - 1)
+            if (currentY != map.GetLength(1) - 1)
                 File.AppendAllText(fileName, randRoomSpriteCreator.CheckIfDoorExist(typeof(NorthDoor), map[currentX, currentY + 1]));
             else
                 File.AppendAllText(fileName, "Door,South,4\n");
