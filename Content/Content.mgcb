@@ -13,6 +13,12 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin 44 Temple of Droplets.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:44 Temple of Droplets.mp3;templeOfDroplets.mp3
+
 #begin blocks.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -343,6 +349,18 @@
 /processorParam:Quality=Best
 /build:ping.wav
 
+#begin portal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:portal.png
+
 #begin rickRoll.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -379,6 +397,12 @@
 /processorParam:TextureFormat=Color
 /build:TargetSpriteNoBackground.png
 
+#begin TeleportNoise.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:TeleportNoise.wav
+
 #begin TitleScreen.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -397,9 +421,9 @@
 /processorParam:Quality=Best
 /build:triforce_obtained.wav
 
-#begin Underworld_BGM.wav
+#begin Underworld.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:Underworld_BGM.wav
+/build:Underworld.wav
 

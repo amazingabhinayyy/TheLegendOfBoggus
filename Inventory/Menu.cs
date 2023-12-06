@@ -4,11 +4,12 @@ using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Items.ItemSprites;
 using System;
 
+
 namespace Sprint2_Attempt3.Inventory
 {
     internal class Menu
     {
-        private static String[] ItemMenuStrings = { "Boomerang", "Bomb", "Arrow", "BlueCandle", "BlueBoomerang", "Clock", "BluePotion", "Fairy" };
+        private static String[] ItemMenuStrings = { "Boomerang", "Bomb", "Arrow", "BlueCandle", "BlueBoomerang", "BlueArrow", "BluePotion", "Fairy" };
         private static int ItemAIndex = 1;
         private static int ItemBIndex = 0;
         private static int ItemSelectedIndex = 0;

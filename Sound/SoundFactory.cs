@@ -26,6 +26,7 @@ namespace Sprint2_Attempt3.Sounds
         public SoundEffect bossHurt { get; set; }
         public SoundEffect secret { get; set; }
         public SoundEffect triforce { get; set; }
+        public SoundEffect teleport { get; set; }
 
         public SoundEffect rickRoll { get; set; }
         public SoundEffect ping { get; set; }
@@ -83,8 +84,9 @@ namespace Sprint2_Attempt3.Sounds
             rickRoll = content.Load<SoundEffect>("rickRoll");
             ping = content.Load<SoundEffect>("ping");
             undertale = content.Load<SoundEffect>("Its_Showtime");
+            teleport = content.Load<SoundEffect>("TeleportNoise");
 
-            SoundEffect backgroundMusic = content.Load<SoundEffect>("Underworld_BGM");
+            SoundEffect backgroundMusic = content.Load<SoundEffect>("Underworld");
             backgroundMusicInstance = backgroundMusic.CreateInstance();
             backgroundMusicInstance.IsLooped = true;
             backgroundMusicInstance.Volume *= 0.1f;

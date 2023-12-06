@@ -17,16 +17,19 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
         private Aquamentus aquamentus;
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
+        public static Rectangle[] rectangles = new Rectangle[] { new Rectangle(51, 0, 24, 33), new Rectangle(76, 0, 24, 33) };
+
         private int currentFrame;
         private int elaspedFrameCount;
         private int endFrame;
         private int stunTimer;
+
         public StunnedAquamentusState(Aquamentus aquamentus)
         {
             this.aquamentus = aquamentus;
             sprite = EnemySpriteFactory.Instance.CreateMovingLeftAquamentusSprite();
             currentFrame = 0;
-            sourceRectangle = Globals.AquamentusGreenLeft;
+            sourceRectangle = rectangles[0];
             this.aquamentus.Position = new Rectangle(this.aquamentus.X, this.aquamentus.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             //implement
             elaspedFrameCount = 0;

@@ -29,7 +29,7 @@ namespace Sprint2_Attempt3.Inventory
         public void SetCount(float c) { count = c; }
         public void ShiftUp() { destRectangle = new Rectangle(destRectangle.X, destRectangle.Y - InventoryController.AnimateRate, destRectangle.Width, destRectangle.Height); }
         public void ShiftDown() { destRectangle = new Rectangle(destRectangle.X, destRectangle.Y + InventoryController.AnimateRate, destRectangle.Width, destRectangle.Height); }
-        public void UseItem() { command.Execute(); }
+        public void UseItem() { if (count > 0) { command.Execute(); } }
         public void Draw(SpriteBatch spriteBatch) { if (count > 0) { sprite.Draw(spriteBatch, destRectangle); } }
         public IItemSprite GetSprite() {  return sprite; }
     }

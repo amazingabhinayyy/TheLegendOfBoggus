@@ -17,6 +17,7 @@ using Sprint2_Attempt3.Enemy.SpikeTrap;
 using Sprint2_Attempt3.Enemy.Stalfos;
 using Sprint2_Attempt3.Enemy.Zol;
 using Sprint2_Attempt3.Items;
+using Sprint2_Attempt3.Portal;
 using Sprint2_Attempt3.Items.ItemClasses;
 using Sprint2_Attempt3.Sounds;
 using System;
@@ -93,6 +94,10 @@ namespace Sprint2_Attempt3.Dungeon
                     else if (words[0].Equals("Door"))
                     {
                         objectList.Add(GetDoor(words[1], int.Parse(words[2])));
+                    }
+                    else if (words[0].Equals("Portal"))
+                    {
+                        objectList.Add(GetPortal(words[1], int.Parse(words[2])));
                     }
 
                 }
@@ -314,6 +319,20 @@ namespace Sprint2_Attempt3.Dungeon
                 door = new StairEntrance(state);
             }
             return door;
+        }
+
+        private static IPortal GetPortal(String Portal, int position)
+        {
+            IPortal portal = null;
+            if (Portal.Equals("First"))
+            {
+                portal = new FirstPortal(Globals.FloorGrid[position]);
+            }
+           else if (Portal.Equals("Second"))
+            {
+                portal = new SecondPortal(Globals.FloorGrid[position]);
+            }
+            return portal;
         }
     }
 }

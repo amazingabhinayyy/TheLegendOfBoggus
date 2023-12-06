@@ -45,6 +45,10 @@ namespace Sprint2_Attempt3.Items
         {
             return new ArrowSprite(itemTexture);
         }
+        public IItemSprite CreateBlueArrowSprite()
+        {
+            return new BlueArrowSprite(itemTexture);
+        }
         public IItemSprite CreateBlueCandleSprite()
         {
             return new BlueCandleSprite(itemTexture);

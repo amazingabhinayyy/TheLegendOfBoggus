@@ -40,8 +40,8 @@ internal class AquamentusFireballBottomRightState : IEnemyProjectileState
         currentFrame = 0;
         currentFrame2 = 0;
 
-        projDistance = Globals.fireBallMaxDistance;
-        change = Globals.fireballSpeed;
+        projDistance = AquamentusFireball.fireBallMaxDistance;
+        change = AquamentusFireball.fireballSpeed;
         traveledDistance = 0;
     }
 
@@ -57,7 +57,7 @@ internal class AquamentusFireballBottomRightState : IEnemyProjectileState
             timeSinceLastUpdate = 0;
         }*/
         currentFrame++;
-        if (currentFrame < Globals.fireballSpriteSwitchSpeed)
+        if (currentFrame < AquamentusFireball.fireballSpriteSwitchSpeed)
         {
             currentFrame2++;
             spriteIndex = currentFrame2 / 10;
@@ -67,7 +67,7 @@ internal class AquamentusFireballBottomRightState : IEnemyProjectileState
                 currentFrame2 = 0;
 
             }
-            AquamentusFireball.Position2 = new Vector2(AquamentusFireball.Position2.X + change, (float)(AquamentusFireball.Position2.Y +change));
+            AquamentusFireball.Position2 = new Vector2(AquamentusFireball.Position2.X + change, (float)(AquamentusFireball.Position2.Y +change*0.5));
             traveledDistance += change;
             if (traveledDistance >= projDistance)
             {
@@ -82,6 +82,6 @@ internal class AquamentusFireballBottomRightState : IEnemyProjectileState
     }
     public void Draw(SpriteBatch spriteBatch)
     {
-        sprite.Draw(spriteBatch, (int)AquamentusFireball.Position2.X + 12, (int)(AquamentusFireball.Position2.Y), Globals.AquamentusFireballLeft[spriteIndex]);
+        sprite.Draw(spriteBatch, (int)AquamentusFireball.Position2.X, (int)(AquamentusFireball.Position2.Y), AquamentusFireball.AquamentusFireballLeft[spriteIndex]);
     }
 }
