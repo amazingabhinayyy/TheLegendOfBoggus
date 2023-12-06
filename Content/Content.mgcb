@@ -415,6 +415,12 @@
 /processorParam:TextureFormat=Color
 /build:TitleScreen.png
 
+#begin titleScreenMusic.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:titleScreenMusic.wav
+
 #begin triforce_obtained.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
