@@ -10,14 +10,13 @@ using Sprint2_Attempt3.Sounds;
 
 namespace Sprint2_Attempt3.Portal
 {
-    public class PortalSecondary : IPortal
+    public class Portal : IPortal
     {
-
         public Rectangle position { get; set; }
-        public PortalSecondary LinkedPortal { get; set; }
+        public Portal LinkedPortal { get; set; }
         private readonly Rectangle sourceRectangle = new Rectangle(263, 20, 227, 466);
 
-        public PortalSecondary(Rectangle position, PortalSecondary linkedPortal) 
+        public Portal(Rectangle position, Portal linkedPortal) 
         {
             this.position = position;
             LinkedPortal = linkedPortal;

@@ -324,12 +324,12 @@ namespace Sprint2_Attempt3.Dungeon
             return door;
         }
 
-        private static PortalSecondary[] GetPortal(int positionPortal1, int positionPortal2)
+        private static Portal.Portal[] GetPortal(int positionPortal1, int positionPortal2)
         {
-            PortalSecondary portal1 = new PortalSecondary(Globals.FloorGrid[positionPortal1], null);
-            PortalSecondary portal2 = new PortalSecondary(Globals.FloorGrid[positionPortal2], portal1);
+            Portal.Portal portal1 = new Portal.Portal(Globals.FloorGrid[positionPortal1], null);
+            Portal.Portal portal2 = new Portal.Portal(Globals.FloorGrid[positionPortal2], portal1);
             portal1.LinkedPortal = portal2;
-            return new PortalSecondary[] { portal1, portal2 };
+            return new Portal.Portal[] { portal1, portal2 };
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Sprint2_Attempt3.Collision
     {
         private static TimeSpan timeBuffer;
         private static DateTime lastTeleportTime { get; set; }
-        public static void HandlePlayerPortalCollision(ILink link, PortalSecondary portal, Game1 game)
+        public static void HandlePlayerPortalCollision(ILink link, Portal.Portal portal, Game1 game)
         {
             timeBuffer = DateTime.Now - lastTeleportTime;
             TimeSpan coolDown = TimeSpan.FromSeconds(1);
