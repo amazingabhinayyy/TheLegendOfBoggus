@@ -61,6 +61,10 @@ namespace Sprint2_Attempt3.Items
         {
             return new BoomerangSprite(itemTexture);
         }
+        public IItemSprite CreateBlueBoomerangSprite()
+        {
+            return new BlueBoomerangSprite(itemTexture);
+        }
         public IItemSprite CreateBowSprite()
         {
             return new BowSprite(itemTexture);

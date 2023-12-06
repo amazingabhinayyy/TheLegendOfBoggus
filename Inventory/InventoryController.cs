@@ -36,6 +36,7 @@ namespace Sprint2_Attempt3.Inventory
         private static Rectangle DungeonMapDestRectangle = new Rectangle(destRectangle.X + 50, destRectangle.Y + 582, 201, 97);
         private static Rectangle TriforceDestRectangle = new Rectangle(destRectangle.X + 210, destRectangle.Y + 618, 9, 9);
         private static Rectangle BoomerangDestRectangle = new Rectangle(destRectangle.X + 415, destRectangle.Y + 145, 26, 49);
+        private static Rectangle BlueBoomerangDestRectangle = new Rectangle(destRectangle.X + 415, destRectangle.Y + 196, 26, 49);
         private static Rectangle BombDestRectangle = new Rectangle(destRectangle.X + 489, destRectangle.Y + 145, 26, 49);
         private static Rectangle ArrowDestRectangle = new Rectangle(destRectangle.X + 563, destRectangle.Y + 145, 26, 49);
         private static Rectangle BlueCandleDestRectangle = new Rectangle(destRectangle.X + 638, destRectangle.Y + 145, 29, 49);
@@ -55,7 +56,8 @@ namespace Sprint2_Attempt3.Inventory
                 { "Clock", new InventoryItem(ClockDestRectangle, ItemSpriteFactory.Instance.CreateClockSprite(), new UseClock()) },
                 { "Fairy", new InventoryItem(FairyDestRectangle, ItemSpriteFactory.Instance.CreateFairySprite(), new UseFairy()) },
                 { "Compass", new InventoryItem(CompassDestRectangle, ItemSpriteFactory.Instance.CreateCompassSprite(), null) },
-                { "Map", new InventoryItem(MapDestRectangle, ItemSpriteFactory.Instance.CreateMapSprite(), null) }
+                { "Map", new InventoryItem(MapDestRectangle, ItemSpriteFactory.Instance.CreateMapSprite(), null) },
+                { "BlueBoomerang", new InventoryItem(BlueBoomerangDestRectangle, ItemSpriteFactory.Instance.CreateBlueBoomerangSprite(), new SetUseBlueBoomerangCommand(game1)) }
             };
         }
         public static void LoadFile(int i) {

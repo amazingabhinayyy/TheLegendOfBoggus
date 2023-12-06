@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Blocks;
-using Sprint2_Attempt3.Blocks.Block;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Dungeon.Doors;
 using Sprint2_Attempt3.Dungeon.Rooms;
@@ -13,8 +12,6 @@ using Sprint2_Attempt3.Player;
 using Sprint2_Attempt3.WallBlocks;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
 
 namespace Sprint2_Attempt3.Dungeon
 {

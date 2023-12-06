@@ -19,7 +19,7 @@ namespace Sprint2_Attempt3.Inventory
     internal class SaveFileLoader
     {
         private static SaveFileLoader instance = new SaveFileLoader();
-        public static int numCounts { get; } = 14;
+        public static int numCounts { get; } = 15;
         private static String[] files = new String[] { 
             "../../../Inventory/SaveFiles/Standard.csv",
             "../../../Inventory/SaveFiles/SaveFile1.csv",
