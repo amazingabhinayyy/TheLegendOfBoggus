@@ -4,16 +4,24 @@ using Sprint2_Attempt3.Enemy.Keese;
 using System;
 using Sprint2_Attempt3.Enemy.Aquamentus;
 using Sprint2_Attempt3.Enemy.Projectile;
-using Sprint2_Attempt3.Player;
 using Sprint2_Attempt3.Collision;
 
 namespace Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles;
 
-internal class AquamentusFireballLeftState : IEnemyProjectileState
+internal class AquamentusFireballDisappearState : IEnemyProjectileState
 {
     private AquamentusFireball AquamentusFireball;
     private IEnemyProjectileSprite sprite;
 
+    private static EnemyProjectileSpriteFactory enemyProjectileSpriteFactory;
+    private bool goRight;
+    /*private bool finished;
+    public bool Finished
+    {
+        get { return finished; }
+        set { finished = value; }
+    }*/
+    private int timeSinceLastUpdate;
     private int spriteIndex;
     private int currentFrame;
     private int currentFrame2;
@@ -21,11 +29,14 @@ internal class AquamentusFireballLeftState : IEnemyProjectileState
     private int projDistance;
     private int traveledDistance;
 
-    public AquamentusFireballLeftState(AquamentusFireball AquamentusFireball)
+
+    public AquamentusFireballDisappearState(AquamentusFireball AquamentusFireball)
     {
         this.AquamentusFireball = AquamentusFireball;
+        enemyProjectileSpriteFactory = new EnemyProjectileSpriteFactory();
         sprite = EnemyProjectileSpriteFactory.Instance.MovingFireball();
 
+        timeSinceLastUpdate = 0;
         spriteIndex = 0;
         currentFrame = 0;
         currentFrame2 = 0;
@@ -46,32 +57,25 @@ internal class AquamentusFireballLeftState : IEnemyProjectileState
             {
                 spriteIndex = 0;
                 currentFrame2 = 0;
-            }
 
-            AquamentusFireball.Position2 = new Vector2(AquamentusFireball.Position2.X - change, AquamentusFireball.Position2.Y);
+            }
+            AquamentusFireball.Position2 = new Vector2(AquamentusFireball.Position2.X + change, AquamentusFireball.Position2.Y);
             traveledDistance += change;
-            
             if (traveledDistance >= projDistance)
             {
                 AquamentusFireball.Fire = false;
-                CollisionManager.GameObjectList.Remove(AquamentusFireball);
-            }/*
-            if (AquamentusFireball.Position2.X <= 100 || AquamentusFireball.Position2.Y <= 89 || AquamentusFireball.Position2.Y >= 336)
-            {
-                AquamentusFireball.Fire = false;
-            }*/
+                //CollisionDetector.GameObjectList.Remove(AquamentusFireball);
+            }
         }
         else
         {
             currentFrame = 0;
         }
 
+
     }
     public void Draw(SpriteBatch spriteBatch)
     {
-        if (AquamentusFireball.Fire)
-        {
-            sprite.Draw(spriteBatch, (int)AquamentusFireball.Position2.X, (int)AquamentusFireball.Position2.Y, AquamentusFireball.AquamentusFireballLeft[spriteIndex]);
-        }
+        
     }
 }

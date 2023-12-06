@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Items;
+using Sprint2_Attempt3.Items.ItemSprites;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +38,11 @@ namespace Sprint2_Attempt3.Item
                     );
             }
             count--;
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Rectangle position)
+        {
+          
         }
     }
 }

@@ -15,12 +15,7 @@ internal class GoriyaBoomerangDownState : IEnemyProjectileState
 
     private static EnemyProjectileSpriteFactory enemyProjectileSpriteFactory;
     private bool goDown;
-    /*private bool finished;
-    public bool Finished
-    {
-        get { return finished; }
-        set { finished = value; }
-    }*/
+    private int currDist;
     private int timeSinceLastUpdate;
     private int spriteIndex;
     private int currentFrame;
@@ -39,9 +34,9 @@ internal class GoriyaBoomerangDownState : IEnemyProjectileState
         spriteIndex = 0;
         currentFrame = 0;
         currentFrame2 = 0;
-        //finished = false;
+        currDist = 0;
         goDown = goriyaBoomerang.GoDown;
-        change = Globals.boomerangSpeed;
+        change = GoriyaBoomerang.boomerangSpeed;
 
     }
 
@@ -50,7 +45,7 @@ internal class GoriyaBoomerangDownState : IEnemyProjectileState
     {
         
         currentFrame++;
-        if (currentFrame < Globals.boomerangSpriteSwitchSpeed)
+        if (currentFrame < GoriyaBoomerang.boomerangSpriteSwitchSpeed)
         {
             currentFrame2++;
             spriteIndex = currentFrame2 / 10;
@@ -64,7 +59,8 @@ internal class GoriyaBoomerangDownState : IEnemyProjectileState
             if (goDown)
             {
                 goriyaBoomerang.Position2 = new Vector2(goriyaBoomerang.Position2.X, goriyaBoomerang.Position2.Y + change);
-                if (goriyaBoomerang.Position2.Y >= 400)
+                currDist += change;
+                if (currDist >= goriyaBoomerang.MaxDist)
                 {
                     goriyaBoomerang.GoDown = false;
                 }
@@ -89,7 +85,7 @@ internal class GoriyaBoomerangDownState : IEnemyProjectileState
     }
     public void Draw(SpriteBatch spriteBatch)
     {
-        Globals.currentIndex = spriteIndex;
-        sprite.Draw(spriteBatch, (int)goriyaBoomerang.Position2.X + 6, (int)goriyaBoomerang.Position2.Y + 18, Globals.GoriyaBoomerangLeft[spriteIndex]);
+        GoriyaBoomerang.currentIndex = spriteIndex;
+        sprite.Draw(spriteBatch, (int)goriyaBoomerang.Position2.X + 6, (int)goriyaBoomerang.Position2.Y + 18, GoriyaBoomerang.GoriyaBoomerangLeft[spriteIndex]);
     }
 }
