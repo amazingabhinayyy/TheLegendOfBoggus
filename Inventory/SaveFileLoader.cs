@@ -19,7 +19,7 @@ namespace Sprint2_Attempt3.Inventory
     internal class SaveFileLoader
     {
         private static SaveFileLoader instance = new SaveFileLoader();
-        public static int numCounts { get; } = 14;
+        public static int numCounts { get; } = 15;
         private static String[] files = new String[] { 
             "../../../Inventory/SaveFiles/Standard.csv",
             "../../../Inventory/SaveFiles/SaveFile1.csv",
@@ -41,9 +41,8 @@ namespace Sprint2_Attempt3.Inventory
 
         public float[] LoadFile(int i)
         {
-            fileNum = i;
             float[] counts = new float[numCounts];
-            StreamReader sr = new StreamReader(files[fileNum]);
+            StreamReader sr = new StreamReader(files[i]);
             while (!sr.EndOfStream)
             {
                 for (int x = 0; x < numCounts; x++)
@@ -75,5 +74,7 @@ namespace Sprint2_Attempt3.Inventory
                 fileNum = i;
             }
         }
+
+        public static int GetFileNum() { return fileNum; }
     }
 }

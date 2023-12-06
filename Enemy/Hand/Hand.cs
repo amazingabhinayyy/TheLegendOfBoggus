@@ -14,7 +14,6 @@ namespace Sprint2_Attempt3.Enemy.Hand
             this.Y = y;
             this.health = 1.5f;
         }
-        public int AttackedAnimateRate { get; } = 5;
         public static Rectangle[] Hands { get; } = new Rectangle[] { new Rectangle(50, 52, 17, 16), new Rectangle(68, 52, 16, 16), new Rectangle(50, 18, 17, 16), new Rectangle(68, 1, 16, 16), new Rectangle(50, 35, 17, 16) };
         public override void Generate() {
             State = new MovingLeftHandState(this);
