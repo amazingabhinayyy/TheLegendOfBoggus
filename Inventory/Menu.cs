@@ -8,7 +8,7 @@ namespace Sprint2_Attempt3.Inventory
 {
     internal class Menu
     {
-        private static String[] ItemMenuStrings = { "Boomerang", "Bomb", "Arrow", "BlueCandle", "SwordProjectile", "Clock", "BluePotion", "Fairy" };
+        private static String[] ItemMenuStrings = { "Boomerang", "Bomb", "Arrow", "BlueCandle", "BlueBoomerang", "BlueArrow", "BluePotion", "Fairy" };
         private static int ItemAIndex = 1;
         private static int ItemBIndex = 0;
         private static int ItemSelectedIndex = 0;
@@ -25,15 +25,18 @@ namespace Sprint2_Attempt3.Inventory
         public Menu() { }
 
         public static void Draw(SpriteBatch spriteBatch) {
-            ItemA.Draw(spriteBatch, ItemADestRectangle);
-            ItemB.Draw(spriteBatch, ItemBDestRectangle);
-            ItemSelected.Draw(spriteBatch, ItemSelectedDestRectangle);
+            if (InventoryController.GetCount(ItemMenuStrings[ItemAIndex]) > 0)
+                ItemA.Draw(spriteBatch, ItemADestRectangle);
+            if (InventoryController.GetCount(ItemMenuStrings[ItemBIndex]) > 0)
+                ItemB.Draw(spriteBatch, ItemBDestRectangle);
+            if (InventoryController.GetCount(ItemMenuStrings[ItemSelectedIndex]) > 0)
+                ItemSelected.Draw(spriteBatch, ItemSelectedDestRectangle);
             cursor.Draw(spriteBatch, CursorDestRectangle);
         }
 
         public static void ShiftCursorRight()
         {
-            if (CursorDestRectangle.X < 627)
+            if (CursorDestRectangle.X < 627 && ItemSelectedIndex <= 6)
             {
                 CursorDestRectangle.X += 75;
                 ItemSelectedIndex++;
@@ -42,7 +45,7 @@ namespace Sprint2_Attempt3.Inventory
         }
         public static void ShiftCursorLeft()
         {
-            if (CursorDestRectangle.X > 402)
+            if (CursorDestRectangle.X > 402 && ItemSelectedIndex >= 1)
             {
                 CursorDestRectangle.X -= 75;
                 ItemSelectedIndex--;
@@ -51,7 +54,7 @@ namespace Sprint2_Attempt3.Inventory
         }
         public static void ShiftCursorUp()
         {
-            if (CursorDestRectangle.Y > 145)
+            if (CursorDestRectangle.Y > 145 && ItemSelectedIndex >= 4)
             {
                 CursorDestRectangle.Y -= 50;
                 ItemSelectedIndex -= 4;
@@ -60,7 +63,7 @@ namespace Sprint2_Attempt3.Inventory
         }
         public static void ShiftCursorDown()
         {
-            if (CursorDestRectangle.Y < 195)
+            if (CursorDestRectangle.Y < 195 && ItemSelectedIndex <= 3)
             {
                 CursorDestRectangle.Y += 50;
                 ItemSelectedIndex += 4;
@@ -87,5 +90,17 @@ namespace Sprint2_Attempt3.Inventory
 
         public static void UseAItem() { InventoryController.UseItem(ItemMenuStrings[ItemAIndex]); }
         public static void UseBItem() { InventoryController.UseItem(ItemMenuStrings[ItemBIndex]); }
+        public static void ShiftUp() {
+            ItemBDestRectangle.Y -= InventoryController.AnimateRate;
+            ItemADestRectangle.Y -= InventoryController.AnimateRate;
+            ItemSelectedDestRectangle.Y -= InventoryController.AnimateRate;
+            CursorDestRectangle.Y -= InventoryController.AnimateRate;
+        }
+        public static void ShiftDown() {
+            ItemBDestRectangle.Y += InventoryController.AnimateRate;
+            ItemADestRectangle.Y += InventoryController.AnimateRate;
+            ItemSelectedDestRectangle.Y += InventoryController.AnimateRate;
+            CursorDestRectangle.Y += InventoryController.AnimateRate;
+        }
     }
 }

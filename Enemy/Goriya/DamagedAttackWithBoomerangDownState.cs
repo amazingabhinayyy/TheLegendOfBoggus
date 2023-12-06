@@ -25,7 +25,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             sprite = EnemySpriteFactory.Instance.CreateMovingDownGoriyaSprite();
             currentFrame = 0;
             currentBoomerangFrame = 0;
-            sourceRectangle = Globals.GoriyaRedDown;
+            sourceRectangle = Goriya.DownGoryia[2];
             Goriya.Position = new Rectangle(Goriya.X, Goriya.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             boomerang = Goriya.Boomerang;
             colorTimer = 0;
@@ -35,42 +35,15 @@ namespace Sprint2_Attempt3.Enemy.Goriya
                 Goriya.State = new MovingAttackedLeftGoriyaState(Goriya);
         }
         public void ChangeAttackedStatus() {
-            if(colorTimer >= 60)
+            if(currentFrame >= 60)
                 Goriya.State = new MovingDownGoriyaState(Goriya);
         }
         public void Update()
         {
             currentFrame++;
-            if (currentFrame <= 20)
-            {
-                if (currentFrame == 5)
-                {
-                    sourceRectangle = Globals.GoriyaGreenDown;
-                }
-                else if (currentFrame == 10)
-                {
-                    sourceRectangle = Globals.GoriyaTealDown;
-                }
-                else if (currentFrame == 15)
-                {
-                    sourceRectangle = Globals.GoriyaRedDown;
-                }
-                else if (currentFrame == 20)
-                {
-                    sourceRectangle = Globals.GoriyaBlueDown;
-                }
-                Goriya.Position = new Rectangle(Goriya.X, Goriya.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
-            }
-            else
-            {
-                currentFrame = 0;
-            }
+            sourceRectangle = Goriya.DownGoryia[Globals.FindIndex(currentFrame % (4 * Goriya.DamageAnimateRate), Goriya.DamageAnimateRate, 4)];
             sprite.Update();
-            if (!((GoriyaBoomerang)Goriya.Boomerang).Throwing)
-            {
-                ChangeDirection();
-            }
-            colorTimer++;
+            if (!((GoriyaBoomerang)Goriya.Boomerang).Throwing) { ChangeDirection(); }
             ChangeAttackedStatus();
 
         }

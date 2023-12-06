@@ -25,7 +25,7 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             sprite = EnemySpriteFactory.Instance.CreateMovingLeftGoriyaSprite();
             currentFrame = 0;
             currentBoomerangFrame = 0;
-            sourceRectangle = Globals.GoriyaRedRight;
+            sourceRectangle = Goriya.RightGoryia[1];
             Goriya.Position = new Rectangle(Goriya.X, Goriya.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             boomerang = Goriya.Boomerang;
             colorTimer = 0;
@@ -36,42 +36,15 @@ namespace Sprint2_Attempt3.Enemy.Goriya
                 Goriya.State = new MovingAttackedUpGoriyaState(Goriya);
         }
         public void ChangeAttackedStatus() {
-            if(colorTimer >= 60)
+            if(currentFrame >= 60)
                 Goriya.State = new MovingLeftGoriyaState(Goriya);
         }
         public void Update()
         {
             currentFrame++;
-            if (currentFrame <= 20)
-            {
-                if (currentFrame == 5)
-                {
-                    sourceRectangle = Globals.GoriyaGreenRight2;
-                }
-                else if (currentFrame == 10)
-                {
-                    sourceRectangle = Globals.GoriyaTealRight;
-                }
-                else if (currentFrame == 15)
-                {
-                    sourceRectangle = Globals.GoriyaRedRight2;
-                }
-                else if (currentFrame == 20)
-                {
-                    sourceRectangle = Globals.GoriyaBlueRight;
-                }
-                Goriya.Position = new Rectangle(Goriya.X, Goriya.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
-            }
-            else
-            {
-                currentFrame = 0;
-            }
-
-            if (!((GoriyaBoomerang)Goriya.Boomerang).Throwing)
-            {
-                ChangeDirection();
-            }
-            colorTimer++;
+            sourceRectangle = Goriya.RightGoryia[Globals.FindIndex(currentFrame % (4 * Goriya.DamageAnimateRate), Goriya.DamageAnimateRate, 4) + 1];
+            Goriya.Position = new Rectangle(Goriya.X, Goriya.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
+            if (!((GoriyaBoomerang)Goriya.Boomerang).Throwing) { ChangeDirection(); }
             ChangeAttackedStatus();
 
         }        

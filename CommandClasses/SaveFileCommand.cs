@@ -8,17 +8,13 @@ using Sprint2_Attempt3.Player;
 
 namespace Sprint2_Attempt3.CommandClasses
 {
-    internal class UseBluePotion : ICommand
+    internal class SaveFileCommand : ICommand
     {
-        public UseBluePotion()
-        {
-        }
+        public SaveFileCommand() { }
 
         public void Execute()
         {
-            float difference = InventoryController.heartContainers - InventoryController.hearts;
-            InventoryController.DecrementCount("BluePotion");
-            InventoryController.hearts += difference;
+            InventoryController.SaveToFile();
         }
     }
 }

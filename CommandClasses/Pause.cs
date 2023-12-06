@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sprint2_Attempt3.Screens;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,8 @@ namespace Sprint2_Attempt3.CommandClasses
 
         public void Execute()
         {
-            game1.gamePaused = true;
+            game1.gameState = Game1.GameState.pause;
+            game1.screenSprite = ScreenSpriteFactory.Instance.CreatePauseScreen();
         }
     }
 }

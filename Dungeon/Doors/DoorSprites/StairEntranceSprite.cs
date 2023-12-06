@@ -27,14 +27,14 @@ namespace Sprint2_Attempt3.Dungeon.Doors.DoorSprites
         public void Draw(SpriteBatch spriteBatch, Rectangle sourceRectangle, Vector2 change)
         {
             Rectangle newSourceRectangle = new Rectangle(sourceRectangle.X, sourceRectangle.Y, sourceRectangle.Width, sourceRectangle.Height);
-            Rectangle destinationRectangle = new Rectangle(Globals.EastDoorPosition.X + (int)(change.X * 3.125), Globals.EastDoorPosition.Y + (int)(change.Y * 3.125), 100, 94);
+            Rectangle destinationRectangle = new Rectangle(EastDoorSprite.EastDoorPosition.X + (int)(change.X * 3.125), EastDoorSprite.EastDoorPosition.Y + (int)(change.Y * 3.125), 100, 94);
             spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, Color.White);
         }
 
         public void Draw(SpriteBatch spriteBatch, Rectangle sourceRectangle, Vector2 change, Vector2 initialPos)
         {
             Rectangle newSourceRectangle = new Rectangle(sourceRectangle.X, sourceRectangle.Y, sourceRectangle.Width, sourceRectangle.Height);
-            Rectangle destinationRectangle = new Rectangle((int)(Globals.EastDoorPosition.X + change.X * 3.125 + initialPos.X), (int)(Globals.EastDoorPosition.Y + change.Y * 3.125 + initialPos.Y), 100, 94);
+            Rectangle destinationRectangle = new Rectangle((int)(EastDoorSprite.EastDoorPosition.X + change.X * 3.125 + initialPos.X), (int)(EastDoorSprite.EastDoorPosition.Y + change.Y * 3.125 + initialPos.Y), 100, 94);
             spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, Color.White);
         }
     }

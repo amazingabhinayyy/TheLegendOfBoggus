@@ -26,13 +26,13 @@ namespace Sprint2_Attempt3.Enemy.Goriya
             sprite = EnemySpriteFactory.Instance.CreateMovingDownGoriyaSprite();
             currentFrame = 0;
             currentBoomerangFrame = 0;
-            sourceRectangle = Globals.GoriyaRedDown;
+            sourceRectangle = Goriya.DownGoryia[2];
             Goriya.Position = new Rectangle(Goriya.X, Goriya.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             boomerang = Goriya.Boomerang;
         }
         public void ChangeDirection()
         {
-                Goriya.State = new MovingLeftGoriyaState(Goriya);
+            Goriya.State = new MovingLeftGoriyaState(Goriya);
         }
         public void ChangeAttackedStatus() {
             Goriya.State = new MovingAttackedLeftGoriyaState(Goriya);
@@ -40,12 +40,10 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         public void Update()
         {            
             sprite.Update();
-           
         }
         public void Draw(SpriteBatch spriteBatch)
         {
             sprite.Draw(spriteBatch, Goriya.X, Goriya.Y, sourceRectangle);
-        
         }
     }
 }

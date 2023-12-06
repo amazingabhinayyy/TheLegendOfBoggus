@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+﻿ using Microsoft.Xna.Framework;
 using Sprint2_Attempt3.Enemy.Dodongo;
 using Sprint2_Attempt3.Enemy.Gel;
 using Sprint2_Attempt3.Enemy.Keese;
@@ -27,8 +27,7 @@ namespace Sprint2_Attempt3
         public const int ScreenWidth = 800;
         public const int YOffset = 175;
         public static Dictionary<int, Rectangle> FloorGrid = new Dictionary<int, Rectangle>();
-       
-        
+     
         public static int FindIndex(int count, int step, int length)
         {
             int index = Math.Min(count / step, length - 1);
@@ -48,44 +47,6 @@ namespace Sprint2_Attempt3
                 }
             }
         }
-
-        public static Rectangle DodongoUp { get { return new Rectangle(35, 35, 15, 16); } }
-        public static Rectangle DodongoDown { get { return new Rectangle(1, 35, 15, 16); } }
-        public static Rectangle DodongoRight1 { get { return new Rectangle(69, 35, 28, 18); } }
-        public static Rectangle DodongoRight2 { get { return new Rectangle(102, 35, 28, 18); } }
-            
-            
-            public static Rectangle DodongoUpAttacked { get { return new Rectangle(52, 35, 16, 16); } }
-        public static Rectangle DodongoDownAttacked { get { return new Rectangle(17, 35, 17, 16); } }
-        public static Rectangle DodongoRightAttacked { get { return new Rectangle(135, 35, 32, 16); } }
-        public static Rectangle[] Dodongos { get; } = new Rectangle[] { new Rectangle(35, 35, 15, 16), new Rectangle(1, 35, 15, 16), new Rectangle(69, 35, 28, 18), new Rectangle(102, 35, 28, 18) };
-        public static Rectangle[] AttackedDodongos { get; } = new Rectangle[] { new Rectangle(52, 35, 16, 16), new Rectangle(17, 35, 17, 16), new Rectangle(135, 35, 32, 16) };
-
-        public static Rectangle GoriyaGreenDown { get { return new Rectangle(84, 1, 14, 16); } }
-        public static Rectangle GoriyaGreenUp { get { return new Rectangle(101, 1, 14, 16); } }
-        public static Rectangle GoriyaGreenRight2 { get { return new Rectangle(135, 1, 15, 16); } }
-        public static Rectangle GoriyaTealDown { get { return new Rectangle(84, 18, 14, 16); } }
-        public static Rectangle GoriyaTealUp { get { return new Rectangle(101, 18, 14, 16); } }
-        public static Rectangle GoriyaTealRight { get { return new Rectangle(117, 18, 14, 16); } }
-        public static Rectangle GoriyaRedDown { get { return new Rectangle(84, 35, 14, 16); } }
-        public static Rectangle GoriyaRedUp { get { return new Rectangle(101, 35, 14, 16); } }
-        public static Rectangle GoriyaRedRight { get { return new Rectangle(117, 35, 14, 16); } }
-        public static Rectangle GoriyaRedRight2 { get { return new Rectangle(135, 35, 15, 16); } }
-        public static Rectangle GoriyaBlueDown { get { return new Rectangle(84, 52, 14, 16); } }
-        public static Rectangle GoriyaBlueUp { get { return new Rectangle(101, 52, 14, 16); } }
-        public static Rectangle GoriyaBlueRight { get { return new Rectangle(117, 52, 14, 16); } }
-        public static Rectangle GoriyaBlueRight2 { get { return new Rectangle(135, 52, 15, 16); } }
-        public static Rectangle[] DownGoryia { get; } = new Rectangle[] { new Rectangle(84, 1, 14, 16), new Rectangle(84, 18, 14, 16), new Rectangle(84, 35, 14, 16), new Rectangle(84, 52, 14, 16) };
-        public static Rectangle[] UpGoryia { get; } = new Rectangle[] { new Rectangle(101, 1, 14, 16), new Rectangle(101, 18, 14, 16), new Rectangle(101, 35, 14, 16), new Rectangle(101, 52, 14, 16) };
-        public static Rectangle[] RightGoryia { get; } = new Rectangle[] { new Rectangle(135, 35, 15, 16), new Rectangle(117, 35, 14, 16), new Rectangle(135, 1, 15, 16), new Rectangle(117, 18, 14, 16), new Rectangle(135, 52, 15, 16) };
-
-        public static Rectangle HandGreen2 { get { return new Rectangle(68, 1, 16, 16); } }
-        public static Rectangle HandTeal1 { get { return new Rectangle(50, 18, 17, 16); } }
-        public static Rectangle HandBlue1 { get { return new Rectangle(50, 35, 17, 16); } }
-        public static Rectangle HandRed1 { get { return new Rectangle(50, 52, 17, 16); } }
-        public static Rectangle HandRed2 { get { return new Rectangle(68, 52, 16, 16); } }
-        public static Rectangle[] Hands { get; } = new Rectangle[] { new Rectangle(50, 52, 17, 16), new Rectangle(68, 52, 16, 16), new Rectangle(50, 18, 17, 16), new Rectangle(68, 1, 16, 16), new Rectangle(50, 35, 17, 16) };
-
         public static Rectangle GoriyaBoomerang1 { get { return new Rectangle(0, 74, 7, 9); } }
         public static Rectangle GoriyaBoomerang2 { get { return new Rectangle(10, 74, 9, 9); } }
         public static Rectangle GoriyaBoomerang3 { get { return new Rectangle(20, 76, 9, 6); } }
@@ -120,55 +81,6 @@ namespace Sprint2_Attempt3
         public static Vector2[] AquamentusOriginsLeft = { temp, temp, temp, temp, temp, temp, temp, temp };
         public static int fireBallMaxDistance = 500;
 
-        public static Rectangle DungeonStandard { get { return new Rectangle(1, 1, 256, 176); } }
-        public static Rectangle NorthDoorPosition { get { return new Rectangle(348, 0 + Globals.YOffset, 105, 100); } }
-        public static Rectangle SouthDoorPosition { get { return new Rectangle(348, 450 + Globals.YOffset, 105, 100); } }
-        public static Rectangle EastDoorPosition { get { return new Rectangle(700, 227 + Globals.YOffset, 100, 94); } }
-        public static Rectangle WestDoorPosition { get { return new Rectangle(0, 227 + Globals.YOffset, 100, 94); } }
-        public static Rectangle StairExitPosition { get { return new Rectangle(150, 0 + Globals.YOffset, 50, 10); } }
-
-        public static Rectangle OpenNorthDoor { get { return new Rectangle(259, 1, 30, 32); } }
-        public static Rectangle OpenSouthDoor { get { return new Rectangle(259, 100, 30, 32); } }
-        public static Rectangle OpenWestDoor { get { return new Rectangle(259, 35, 31, 30); } }
-        public static Rectangle OpenEastDoor { get { return new Rectangle(259, 68, 31, 30); } }
-
-        public static Rectangle ClosedNorthDoor { get { return new Rectangle(291, 1, 31, 32); } }
-        public static Rectangle ClosedSouthDoor { get { return new Rectangle(291, 100, 31, 32); } }
-        public static Rectangle ClosedWestDoor { get { return new Rectangle(291, 34, 31, 32); } }
-        public static Rectangle ClosedEasttDoor { get { return new Rectangle(291, 67, 31, 32); } }
-
-        public static Rectangle DiamondLockedNorthDoor { get { return new Rectangle(324, 1, 31, 32); } }
-        public static Rectangle DiamondLockedSouthDoor { get { return new Rectangle(324, 100, 31, 32); } }
-        public static Rectangle DiamondLockedWestDoor { get { return new Rectangle(324, 34, 31, 32); } }
-        public static Rectangle DiamondLockedEastDoor { get { return new Rectangle(324, 67, 31, 32); } }
-
-        public static Rectangle DamagedNorthDoor { get { return new Rectangle(357, 1, 31, 32); } }
-        public static Rectangle DamagedSouthDoor { get { return new Rectangle(324, 100, 31, 32); } }
-        public static Rectangle DamagedEastDoor { get { return new Rectangle(324, 34, 31, 32); } }
-        public static Rectangle DamagedWestDoor { get { return new Rectangle(324, 67, 31, 32); } }
-
-        public static List<IWall> WallBlocks = new List<IWall>
-        {
-            new NorthEastCollisionBlock(), new NorthWestCollisionBlock(), new SouthEastCollisionBlock(),
-            new SouthWestCollisionBlock(), new EastNorthCollisionBlock(), new EastSouthCollisionBlock(),
-            new NorthDoorCollisionBlock(), new SouthDoorCollisionBlock(), new EastDoorCollisionBlock(),
-            new WestDoorCollisionBlock(), new WestSouthCollisionBlock(), new WestNorthCollisionBlock()
-        };
-
-        public static List<IWall> Room16WallBlocks = new List<IWall> {
-            new Room16Wall1(),
-            new Room16Wall2(),
-            new Room16Wall3(),
-            new Room16Wall4(),
-            new Room16Wall5(),
-            new Room16Wall6(),
-            new Room16Wall7(),
-            new Room16Wall8(),
-            new ScreenBottom(),
-            new ScreenTop(),
-            new ScreenLeft(),
-            new ScreenRight()
-        };
     }
 
 }

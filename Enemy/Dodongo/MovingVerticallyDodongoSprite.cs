@@ -12,7 +12,7 @@ namespace Sprint2_Attempt3.Enemy.Dodongo
         public MovingVerticallyDodongoSprite(Texture2D texture)
         {
             this.texture = texture;
-            sourceRectangle = Globals.DodongoDown;
+            sourceRectangle = Dodongo.Dodongos[1];
             spriteEffect = SpriteEffects.None;
             currentFrame = 0;
         }

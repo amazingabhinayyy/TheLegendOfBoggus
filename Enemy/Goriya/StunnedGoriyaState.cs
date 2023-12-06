@@ -16,28 +16,22 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
         private int currentFrame;
-        private int elaspedFrameCount;
-        private int endFrame;
         private Random random;
         private int direction;
-        private int stunCounter;
         public StunnedGoriyaState(Goriya Goriya)
         {
             this.Goriya = Goriya;
             sprite = EnemySpriteFactory.Instance.CreateMovingLeftGoriyaSprite();
             currentFrame = 0;
-            sourceRectangle = Globals.GoriyaRedRight;
+            sourceRectangle = Goriya.RightGoryia[2];
             Goriya.Position = new Rectangle(Goriya.X, Goriya.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             this.Goriya.Direction = Goriya.ProjectileDirection.Left;
-            elaspedFrameCount = 0;
-            endFrame = 100;
-            stunCounter = 0;
             random = new Random();
             direction = random.Next(0, 3);
         }
         public void ChangeDirection()
         {
-            if (stunCounter == 200)
+            if (currentFrame == 200)
             {
                 direction = random.Next(0, 3);
                 switch (direction)
@@ -64,25 +58,8 @@ namespace Sprint2_Attempt3.Enemy.Goriya
         public void Update()
         {
             currentFrame++;
-            if (currentFrame < 30)
-            {
-                if (currentFrame < 15)
-                {
-                    sourceRectangle = Globals.GoriyaRedRight;
-
-                }
-                else
-                {
-                    sourceRectangle = Globals.GoriyaRedRight2;
-
-                }
-                Goriya.Position = new Rectangle(Goriya.X, Goriya.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
-            }
-            else
-            {
-                currentFrame = 0;
-            }
-            stunCounter++;
+            sourceRectangle = Goriya.RightGoryia[Globals.FindIndex(currentFrame % (2 * Goriya.AnimateRate), Goriya.AnimateRate, 2)];
+            Goriya.Position = new Rectangle(Goriya.X, Goriya.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             ChangeDirection();
             sprite.Update();
         }

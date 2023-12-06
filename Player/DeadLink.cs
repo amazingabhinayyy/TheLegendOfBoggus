@@ -10,6 +10,7 @@ using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Inventory;
 using Sprint2_Attempt3.Player.LinkStates;
+using Sprint2_Attempt3.Screens;
 
 namespace Sprint2_Attempt3.Player
 {
@@ -125,7 +126,8 @@ namespace Sprint2_Attempt3.Player
             }
             else if (timer == 160)
             {
-                game.linkDead = true;
+                game.gameState = Game1.GameState.linkDead;
+                game.screenSprite = ScreenSpriteFactory.Instance.CreateDeathScreen();
             }
             decoratedLink.Update();
         }
@@ -145,16 +147,6 @@ namespace Sprint2_Attempt3.Player
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            /*
-            if (timer % 8 < 4)
-            {
-                decoratedLink.Draw(spriteBatch, Color.OrangeRed);
-            }
-            else
-            {
-                decoratedLink.Draw(spriteBatch, Color.SandyBrown);
-            }
-            */
             if (timer <= 80)
             {
                 decoratedLink.Draw(spriteBatch, Color.White);

@@ -21,7 +21,7 @@ namespace Sprint2_Attempt3.Collision
         
         public CheckPlayerHitWallCollision(Link link)
         {
-            wallBlocks = Globals.WallBlocks; 
+            wallBlocks = IWall.WallBlocks; 
         }
         
         public static bool CheckPlayerWallCollision(ILink link, IWall wall)

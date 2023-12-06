@@ -10,8 +10,6 @@ namespace Sprint2_Attempt3
 {
     public interface IController
     {
-        public int RoomIndex { get; set; }
         void Update(GameTime gametime);
-
     }
 }

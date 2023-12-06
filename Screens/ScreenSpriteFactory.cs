@@ -34,8 +34,6 @@ namespace Sprint2_Attempt3.Screens
         {
             startScreenTexture = content.Load<Texture2D>("TitleScreen");
             deathAndPauseScreenTexture = content.Load<Texture2D>("DeathAndPauseScreen");
-            // More Content.Load calls follow
-            //...
         }
         public ISprite CreateStartScreen()
         {
@@ -48,6 +46,10 @@ namespace Sprint2_Attempt3.Screens
         public ISprite CreatePauseScreen()
         {
             return new PauseScreenSprite(deathAndPauseScreenTexture);
+        }
+        public ISprite CreateChooseFileScreen()
+        {
+            return new ChooseFileScreenSprite(deathAndPauseScreenTexture);
         }
     }
 }
