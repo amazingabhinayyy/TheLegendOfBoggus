@@ -23,24 +23,18 @@ namespace Sprint2_Attempt3.Collision
             {
                 if (portal is FirstPortal)
                 {
-                    if (game.room is Room2)
+                    foreach(IGameObject obj in game.room.gameObjectList)
                     {
-                        link.Position = new Vector2(200, 535);
-                    }
-                    else if (game.room is Room10)
-                    {
-                        link.Position = new Vector2(550, 575);
+                        if (obj is SecondPortal secondaPortal)
+                            link.Position = ((IPortal)portal).Teleport(secondaPortal);
                     }
                 }
                 else if (portal is SecondPortal)
                 {
-                    if (game.room is Room2)
+                    foreach (IGameObject obj in game.room.gameObjectList)
                     {
-                        link.Position = new Vector2(600, 390);
-                    }
-                    else if (game.room is Room10)
-                    {
-                        link.Position = new Vector2(210, 270);
+                        if (obj is FirstPortal firstPortal)
+                            link.Position = ((IPortal)portal).Teleport(firstPortal);
                     }
                 }
             }

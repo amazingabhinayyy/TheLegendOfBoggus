@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sprint2_Attempt3.Sounds;
 
 namespace Sprint2_Attempt3.Portal
 {
@@ -36,6 +37,11 @@ namespace Sprint2_Attempt3.Portal
         public Rectangle GetHitBox()
         {
             return new Rectangle(position.X+24, position.Y+24,  1, 1);
+        }
+        public Vector2 Teleport(PortalSecondary portal)
+        {
+            SoundFactory.PlaySound(SoundFactory.Instance.teleport);
+            return new Vector2(portal.position.X, portal.position.Y);
         }
     }
 }
