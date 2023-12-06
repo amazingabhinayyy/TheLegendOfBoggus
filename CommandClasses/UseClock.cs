@@ -17,7 +17,6 @@ namespace Sprint2_Attempt3.CommandClasses
         public void Execute()
         {
             RoomSecondary.ClockUsed = true;
-            InventoryController.DecrementCount("Clock");
         }
     }
 }

@@ -11,3 +11,4 @@ Enemy,Keese,81,,
 Enemy,Rope,31,,
 Enemy,Zol,29,,
 Enemy,Dodongo,33,,
+Item,Clock,200,400,true
