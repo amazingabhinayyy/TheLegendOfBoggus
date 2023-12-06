@@ -26,8 +26,6 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         public MinigameRoom(Game1 game1) : base(game1, 18)
         {
             roomLayout[4, 10] = this;
-            SoundFactory.Instance.backgroundMusic.Pause();
-            SoundFactory.Instance.undertaleMusic.Play();
             counter = 900;
             scoreKeeper = new ScoreKeeper(score, counter);
             finish = false;
@@ -67,6 +65,8 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                     {
                         minigameRoomHelper.startGame();
                         firstTime = false;
+                        SoundFactory.Instance.backgroundMusic.Pause();
+                        SoundFactory.Instance.undertaleMusic.Play();
                     }
                     else if (trigger.isTriggered())
                     {

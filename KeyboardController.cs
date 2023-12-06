@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Sprint2_Attempt3.CommandClasses;
 using Sprint2_Attempt3.Screens;
+using Sprint2_Attempt3.Sounds;
 
 namespace Sprint2_Attempt3
 {
@@ -144,8 +145,10 @@ namespace Sprint2_Attempt3
             {
                 if(pressedKeys.Contains(Keys.Enter))
                 {
+                    SoundFactory.Instance.titleScreenMusic.Pause();
                     game1.gameState = Game1.GameState.chooseFile;
                     game1.screenSprite = ScreenSpriteFactory.Instance.CreateChooseFileScreen();
+                    SoundFactory.Instance.backgroundMusic.Play();
                 }
             }
         }
