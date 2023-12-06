@@ -71,7 +71,7 @@ namespace Sprint2_Attempt3.Sounds
             triforce = content.Load<SoundEffect>("triforce_obtained");
 
 
-            SoundEffect backgroundMusic = content.Load<SoundEffect>("Underworld_BGM");
+            SoundEffect backgroundMusic = content.Load<SoundEffect>("Underworld");
             backgroundMusicInstance = backgroundMusic.CreateInstance();
             backgroundMusicInstance.IsLooped = true;
             backgroundMusicInstance.Volume *= 0.1f;

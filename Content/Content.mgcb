@@ -349,9 +349,9 @@
 /processorParam:Quality=Best
 /build:triforce_obtained.wav
 
-#begin Underworld_BGM.wav
+#begin Underworld.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:Underworld_BGM.wav
+/build:Underworld.wav
 
