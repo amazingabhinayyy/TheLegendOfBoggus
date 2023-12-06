@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint2_Attempt3.Blocks;
 using Sprint2_Attempt3.Blocks.BlockSprites;
-using Sprint2_Attempt3.Portal;
 using Sprint2_Attempt3.Collision.SideCollisionHandlers;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Dungeon.Doors;
@@ -17,10 +16,6 @@ namespace Sprint2_Attempt3.Collision
     public class PlayerBlockHandler
     {
         private static Vector2 LastLinkPosition = new Vector2(350, 400);
-
-        private static IGameObject switchPortal;
-        private static TimeSpan timeBuffer;
-        private static DateTime lastTeleportTime { get; set; }
         public static void HandleLinkBlockCollision(Rectangle linkRectangle, Rectangle wall, ILink link)
         {
             Rectangle intersectRect = Rectangle.Intersect(linkRectangle, wall);
@@ -122,17 +117,12 @@ namespace Sprint2_Attempt3.Collision
             } 
 
             else{
-               
-                //TransitionHandler transition = new TransitionHandler(door);
-                //TransitionHandler transition = new TransitionHandler();
-                //transition.Door = door;
                 TransitionHandler.Instance.Door = door;
                 link.Items.Clear();
                 if (door is NorthDoor)
                 {
                     
                     game.room.SwitchToNorthRoom();
-                    // link.Position = new Vector2(link.Position.X, 400 + Globals.YOffset);
                     link.Position = new Vector2(link.Position.X, 450 + Globals.YOffset - link.GetHitBox().Height);
                     changedRooms = true;
                     
@@ -185,47 +175,5 @@ namespace Sprint2_Attempt3.Collision
             }
             return changedRooms;
         }
-        public static void HandlePlayerPortalCollision(ILink link, IGameObject portal, ICollision side, Game1 game)
-        {
-            //Rectangle intersectRect = Rectangle.Intersect(linkRectangle, wall);
-            //int width = intersectRect.Width;
-            //ICollision side = CollisionDetector.SideDetector(linkRectangle, wall);
-            //bool switched = false;
-            timeBuffer = DateTime.Now - lastTeleportTime;
-            TimeSpan coolDown = TimeSpan.FromSeconds(1);
-            if (timeBuffer >= coolDown)
-            {
-                if (portal is FirstPortal)
-                {
-                    if (game.room is Room2)
-                    {
-                        link.Position = new Vector2(200, 535);
-                    }
-                    else if (game.room is Room10)
-                    {
-                        link.Position = new Vector2(550, 575);
-                    }
-
-                    //switched = true;
-                }
-                else if (portal is SecondPortal)
-                {
-                    if (game.room is Room2)
-                    {
-                        link.Position = new Vector2(600, 390);
-                    }
-                    else if (game.room is Room10)
-                    {
-                        link.Position = new Vector2(210, 270);
-                    }
-                    
-                    //switched = true;
-                }
-            }
-            //switchPortal = portal;
-            lastTeleportTime = DateTime.Now;
-            
-        }
-
     }
 }
