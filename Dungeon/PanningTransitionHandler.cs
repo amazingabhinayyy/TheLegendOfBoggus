@@ -128,8 +128,6 @@ namespace Sprint2_Attempt3.Dungeon
                         ((IBlock)obj).Draw(spriteBatch, change, initialPos);
                     else if (obj is IDoor)
                         ((IDoor)obj).Draw(spriteBatch, change, initialPos);
-                    /*  else if(obj is IEnemy)
-                          ((IEnemy)obj).Draw(spriteBatch);*/
 
 
                 }

@@ -80,5 +80,10 @@ namespace Sprint2_Attempt3.Dungeon
             else
                 decoratedRoom.Draw(spriteBatch, Color.Black);
         }
+
+        public void SwitchToGanonRoom()
+        {
+          
+        }
     }
 }

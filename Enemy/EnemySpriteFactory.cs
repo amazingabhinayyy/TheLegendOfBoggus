@@ -21,6 +21,7 @@ namespace Sprint2_Attempt3.Enemy
         private static Texture2D GenerationTexture;
         private static Texture2D CharacterTexture;
         private static Texture2D TargetTexture;
+        private static Texture2D GanonTexture;
 
         private static EnemySpriteFactory instance = new EnemySpriteFactory();
 
@@ -43,6 +44,8 @@ namespace Sprint2_Attempt3.Enemy
             GenerationTexture = content.Load<Texture2D>("characterGenerationSprite");
             CharacterTexture = content.Load<Texture2D>("LinkPlayerSpriteSheetFinal");
             TargetTexture = content.Load<Texture2D>("targetSprite");
+            GanonTexture = content.Load<Texture2D>("Bosses2");
+
 
         }
         //Spawn and animation sprites

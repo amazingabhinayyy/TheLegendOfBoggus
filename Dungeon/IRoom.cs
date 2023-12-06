@@ -19,6 +19,7 @@ namespace Sprint2_Attempt3.Dungeon
         public void SetDecorator(IRoom room);
         public void SwitchToLowerRoom();
         public void SwitchToUpperRoom();
+        public void SwitchToGanonRoom();
         public void ResetRooms();
         public void SwitchRoom(int x, int y, ITransitionHandler transition);
     }

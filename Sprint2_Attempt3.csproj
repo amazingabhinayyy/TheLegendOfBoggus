@@ -27,6 +27,7 @@
     <None Remove="Dungeon\RoomFiles\Room18.csv" />
     <None Remove="Dungeon\RoomFiles\Room19.csv" />
     <None Remove="Dungeon\RoomFiles\Room2.csv" />
+    <None Remove="Dungeon\RoomFiles\Room20.csv" />
     <None Remove="Dungeon\RoomFiles\Room3.csv" />
     <None Remove="Dungeon\RoomFiles\Room4.csv" />
     <None Remove="Dungeon\RoomFiles\Room5.csv" />
@@ -42,6 +43,9 @@
     <None Remove="Inventory\SaveFiles\Standard.csv" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Dungeon\RoomFiles\Room20.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Dungeon\RoomFiles\Room19.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

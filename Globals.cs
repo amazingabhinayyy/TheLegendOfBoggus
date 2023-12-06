@@ -11,7 +11,7 @@ namespace Sprint2_Attempt3
         public const int ScreenHeight = 725;
         public const int ScreenWidth = 800;
         public const int YOffset = 175;
-        public const int NumberOfRooms = 19;
+        public const int NumberOfRooms = 20;
         public static Dictionary<int, Rectangle> FloorGrid = new Dictionary<int, Rectangle>();
      
         public static int FindIndex(int count, int step, int length)
