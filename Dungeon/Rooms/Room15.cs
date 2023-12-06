@@ -22,10 +22,8 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         {
             mapY += 1;
             int roomNum = RandomRoomCreator.Instance.CreateRandomRoom(roomLayout, mapX, mapY);
-            gameObjectList = RoomGenerator.Instance.LoadFile(roomNum);
             roomLayout[mapX, mapY] = new RandomRooms(game1, roomNum);
-            PanningTransitionHandler.Instance.Start = true;
-            PanningTransitionHandler.Instance.Transition(this, roomLayout[mapX, mapY]);
+            SwitchRoom(mapX, mapY, PanningTransitionHandler.Instance);
         }
 
     }
