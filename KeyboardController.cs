@@ -151,7 +151,6 @@ namespace Sprint2_Attempt3
             {
                 if(pressedKeys.Contains(Keys.Enter))
                 {
-                    SoundFactory.PlaySound(SoundFactory.Instance.text);
                     SoundFactory.Instance.titleScreenMusic.Pause();
                     game1.gameState = Game1.GameState.chooseFile;
                     game1.screenSprite = ScreenSpriteFactory.Instance.CreateChooseFileScreen();
