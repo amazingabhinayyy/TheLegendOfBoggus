@@ -165,11 +165,8 @@ namespace Sprint2_Attempt3.Collision
                 {
                     game.room.SwitchToLowerRoom();
                     link.State = new DownIdleLinkState((Link)link);
-                    
-                    //I moved the below link position to room16transitionhandler and it works there, I think it's because link is colliding with the walls of room17 with the new pos
-                    //link.Position = new Vector2(150, Globals.YOffset + 30);
                     changedRooms = true;
-                    
+
                 }
             }
             return changedRooms;
