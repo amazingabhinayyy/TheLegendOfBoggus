@@ -17,6 +17,7 @@ namespace Sprint2_Attempt3.CommandClasses
         public void Execute()
         {
             float difference = InventoryController.heartContainers - InventoryController.hearts;
+            InventoryController.DecrementCount("BluePotion");
             InventoryController.hearts += difference;
         }
     }

@@ -79,7 +79,7 @@ namespace Sprint2_Attempt3.Collision
             {
                 if (gameObjectList[i] is IEnemy)
                 {
-                    foreach (IWall wall in Globals.WallBlocks)
+                    foreach (IWall wall in IWall.WallBlocks)
                     {
                         CollisionDetector.CheckEnemyWallCollision(wall, (IEnemy)gameObjectList[i]);
                     }
@@ -105,14 +105,14 @@ namespace Sprint2_Attempt3.Collision
                     for (int c = 0; c < gameObjectList.Count; c++)
                     {
                         IGameObject obj = gameObjectList[c];
-                        CollisionDetector.CheckLinkProjectileCollision(projectile, obj);
+                        CollisionDetector.CheckEnemyProjectileCollision(projectile, obj);
                     }
                 }
             }
         }
         public void AddWallBlocks()
         {
-            foreach (IWall wall in Globals.WallBlocks)
+            foreach (IWall wall in IWall.WallBlocks)
                 gameObjectList.Add(wall);
         }
         public void Update()

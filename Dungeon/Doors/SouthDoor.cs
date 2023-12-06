@@ -4,9 +4,10 @@ namespace Sprint2_Attempt3.Dungeon.Doors
 {
     internal class SouthDoor : DoorSecondary
     {
+        private static Rectangle OpenSouthDoor = new Rectangle(259, 100, 30, 32); 
         public SouthDoor(int state){
-            Position = Globals.SouthDoorPosition;
-            sourceRectangle = Globals.OpenSouthDoor;
+            Position = new Rectangle(348, 450 + Globals.YOffset, 105, 100);
+            sourceRectangle = OpenSouthDoor;
             sprite = DungeonSpriteFactory.Instance.CreateSouthDoorSprite();
             actions[state].Invoke();
         }

@@ -18,6 +18,7 @@ using Sprint2_Attempt3.Enemy.Stalfos;
 using Sprint2_Attempt3.Enemy.Zol;
 using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Items.ItemClasses;
+using Sprint2_Attempt3.Sounds;
 using System;
 using System.Collections.Generic;
 using System.IO;
