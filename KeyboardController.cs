@@ -48,10 +48,10 @@ namespace Sprint2_Attempt3
             commandMapping.Add(Keys.Space, new ToggleItemMenu(game1));
             
             //Item Menu
-            commandMapping.Add(Keys.O, new UseAItem());
-            commandMapping.Add(Keys.P, new UseBItem());
-            commandMapping.Add(Keys.V, new SetAItem());
-            commandMapping.Add(Keys.B, new SetBItem());
+            commandMapping.Add(Keys.P, new UseAItem());
+            commandMapping.Add(Keys.O, new UseBItem());
+            commandMapping.Add(Keys.B, new SetAItem());
+            commandMapping.Add(Keys.V, new SetBItem());
             commandMapping.Add(Keys.U, new ShiftItemSelectorUp());
             commandMapping.Add(Keys.J, new ShiftItemSelectorDown());
             commandMapping.Add(Keys.H, new ShiftItemSelectorLeft());
@@ -146,7 +146,6 @@ namespace Sprint2_Attempt3
             {
                 if(pressedKeys.Contains(Keys.Enter))
                 {
-                    //game1.room.ResetRooms();
                     game1.gameState = Game1.GameState.chooseFile;
                     game1.screenSprite = ScreenSpriteFactory.Instance.CreateChooseFileScreen();
                 }

@@ -35,13 +35,5 @@ namespace Sprint2_Attempt3.Items.ItemClasses
                 spawned = true;
             }
         }
-
-        public override void Collect()
-        {
-            InventoryController.heartContainers++;
-            exists = false;
-            CollisionManager.GameObjectList.Remove(this);
-            SoundFactory.PlaySound(SoundFactory.Instance.getItem);
-        }
     }
 }
