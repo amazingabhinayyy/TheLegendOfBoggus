@@ -72,7 +72,7 @@ namespace Sprint2_Attempt3.Dungeon
                 RoomConditionCheck();
             }
         }
-        public void Draw(SpriteBatch spriteBatch, Color color) {
+        public virtual void Draw(SpriteBatch spriteBatch, Color color) {
             if (PanningTransitionHandler.Instance.Start)
                 PanningTransitionHandler.Instance.Draw(spriteBatch);
             else if (FadingTransitionHandler.Instance.Start)

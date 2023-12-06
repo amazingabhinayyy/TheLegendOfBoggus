@@ -9,12 +9,12 @@ namespace Sprint2_Attempt3.Dungeon
 {
     internal class MinigameRoomHelper
     {
-        private List<IGameObject>[] gameObjectLists;
+        private List<IGameObject> gameObjectList;
         private int roomNumber;
-        public MinigameRoomHelper(List<IGameObject>[] gameObjectLists, int roomNumber)
+        public MinigameRoomHelper(List<IGameObject> gameObjectList) //int roomNumber)
         {
-            this.roomNumber = roomNumber;
-            this.gameObjectLists = gameObjectLists;
+            //this.roomNumber = roomNumber;
+            this.gameObjectList = gameObjectList;
         }
         public void startGame() { 
             Target targetTopRight1 = new Target(105, 275, true);
@@ -36,24 +36,24 @@ namespace Sprint2_Attempt3.Dungeon
             Target targetLowerRight5 = new Target(460, 405, true);
             Target targetLowerRight6 = new Target(550, 405, true);
 
-            gameObjectLists[roomNumber].Add(targetTopRight1);
-            gameObjectLists[roomNumber].Add(targetTopRight2);
-            gameObjectLists[roomNumber].Add(targetTopRight3);
-            gameObjectLists[roomNumber].Add(targetTopRight4);
-            gameObjectLists[roomNumber].Add(targetTopRight5);
-            gameObjectLists[roomNumber].Add(targetTopRight6);
-            gameObjectLists[roomNumber].Add(targetMiddleLeft1);
-            gameObjectLists[roomNumber].Add(targetMiddleLeft2);
-            gameObjectLists[roomNumber].Add(targetMiddleLeft3);
-            gameObjectLists[roomNumber].Add(targetMiddleLeft4);
-            gameObjectLists[roomNumber].Add(targetMiddleLeft5);
-            gameObjectLists[roomNumber].Add(targetMiddleLeft6);
-            gameObjectLists[roomNumber].Add(targetLowerRight1);
-            gameObjectLists[roomNumber].Add(targetLowerRight2);
-            gameObjectLists[roomNumber].Add(targetLowerRight3);
-            gameObjectLists[roomNumber].Add(targetLowerRight4);
-            gameObjectLists[roomNumber].Add(targetLowerRight5);
-            gameObjectLists[roomNumber].Add(targetLowerRight6);
+            gameObjectList.Add(targetTopRight1);
+            gameObjectList.Add(targetTopRight2);
+            gameObjectList.Add(targetTopRight3);
+            gameObjectList.Add(targetTopRight4);
+            gameObjectList.Add(targetTopRight5);
+            gameObjectList.Add(targetTopRight6);
+            gameObjectList.Add(targetMiddleLeft1);
+            gameObjectList.Add(targetMiddleLeft2);
+            gameObjectList.Add(targetMiddleLeft3);
+            gameObjectList.Add(targetMiddleLeft4);
+            gameObjectList.Add(targetMiddleLeft5);
+            gameObjectList.Add(targetMiddleLeft6);
+            gameObjectList.Add(targetLowerRight1);
+            gameObjectList.Add(targetLowerRight2);
+            gameObjectList.Add(targetLowerRight3);
+            gameObjectList.Add(targetLowerRight4);
+            gameObjectList.Add(targetLowerRight5);
+            gameObjectList.Add(targetLowerRight6);
         }
     }
 

@@ -23,22 +23,24 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         private TriggerSquare trigger = new TriggerSquare(378, 520);
         MinigameRoomHelper minigameRoomHelper;
         private bool firstTime;
-        public MinigameRoom(Game1 game1) : base(game1, 18) 
+        public MinigameRoom(Game1 game1) : base(game1, 18)
         {
+            roomLayout[4, 10] = this;
             SoundFactory.Instance.backgroundMusic.Pause();
             SoundFactory.Instance.undertaleMusic.Play();
             counter = 900;
             score = 0;
             scoreKeeper = new ScoreKeeper(score, counter);
             finish = false;
-            minigameRoomHelper = new MinigameRoomHelper(gameObjectLists, roomNumber);
-            gameObjectLists[roomNumber].Add(trigger);
+            minigameRoomHelper = new MinigameRoomHelper(gameObjectList);
+            gameObjectList.Add(trigger);
             firstTime = true;
         }
-        
+
         public override void SwitchToSouthRoom()
         {
-            SwitchRoom(mapX, mapY, PanningTransitionHandler.Instance);
+            for (int i = 0; i < gameObjectList.Count; i++)
+            {
                 IGameObject obj = gameObjectList[i];
                 if (obj is IEnemy)
                     ((IEnemy)obj).Kill();
@@ -64,12 +66,12 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                         minigameRoomHelper.startGame();
                         firstTime = false;
                     }
-                    else if(trigger.isTriggered()) 
+                    else if (trigger.isTriggered())
                     {
                         counter--;
                     }
                     scoreKeeper.SetCounter(counter);
-                    for (int i = 0; i < gameObjectLists[roomNumber].Count; i++)
+                    for (int i = 0; i < gameObjectList.Count; i++)
                     {
                         IGameObject obj = gameObjectList[i];
                         if (obj is IEnemy)
@@ -101,7 +103,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                         else if (obj is IBlock)
                             ((IBlock)obj).Update();
                     }
-                    if(trigger.isTriggered())
+                    if (trigger.isTriggered())
                         spawned = true;
                     game1.link.Update();
                     RoomConditionCheck();
@@ -111,15 +113,15 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         }
         public override void Draw(SpriteBatch spriteBatch, Color color)
         {
-            if (TransitionHandler.Instance.Start)
+            if (PanningTransitionHandler.Instance.Start)
             {
-                TransitionHandler.Instance.Draw(spriteBatch);
+                PanningTransitionHandler.Instance.Draw(spriteBatch);
             }
             else
             {
                 room.Draw(spriteBatch, color);
                 scoreKeeper.Draw(spriteBatch, 45, 250);
-                foreach (IGameObject obj in gameObjectLists[roomNumber])
+                foreach (IGameObject obj in gameObjectList)
                 {
                     if (obj is IEnemy && color.Equals(Color.White))
                         ((IEnemy)obj).Draw(spriteBatch);
