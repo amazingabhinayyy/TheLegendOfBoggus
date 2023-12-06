@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using Sprint2_Attempt3.Blocks.BlockSprites;
 
 namespace Sprint2_Attempt3.Portal
 {
@@ -32,7 +31,6 @@ namespace Sprint2_Attempt3.Portal
         public void LoadAllTextures(ContentManager content)
         {
             portal = content.Load<Texture2D>("portal");
-
         }
     }
 }

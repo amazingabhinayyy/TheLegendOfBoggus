@@ -172,7 +172,14 @@ namespace Sprint2_Attempt3.Dungeon
                         ((IItem)obj).Update();
                     }
                     else if (obj is IBlock)
+                    {
                         ((IBlock)obj).Update();
+                    }
+                    else if (obj is IPortal)
+                    {
+                        ((IPortal)obj).Update();
+                    }
+
                 }
                 spawned = true;
 
