@@ -122,6 +122,7 @@ namespace Sprint2_Attempt3.Dungeon
             game1.room = roomLayout[x, y];
             ClockUsed = false;
             MapController.VisitRoom(currentRoomNumber);
+            PlayerTrackerController.UpdatePlayerTrackerPosition(x, y);
             mapX = x;
             mapY = y;
             transition.TransitionGameObjectList = roomLayout[x, y].gameObjectList;
