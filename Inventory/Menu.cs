@@ -36,7 +36,7 @@ namespace Sprint2_Attempt3.Inventory
 
         public static void ShiftCursorRight()
         {
-            if (CursorDestRectangle.X < 627)
+            if (CursorDestRectangle.X < 627 && ItemSelectedIndex <= 6)
             {
                 CursorDestRectangle.X += 75;
                 ItemSelectedIndex++;
@@ -45,7 +45,7 @@ namespace Sprint2_Attempt3.Inventory
         }
         public static void ShiftCursorLeft()
         {
-            if (CursorDestRectangle.X > 402)
+            if (CursorDestRectangle.X > 402 && ItemSelectedIndex >= 1)
             {
                 CursorDestRectangle.X -= 75;
                 ItemSelectedIndex--;
@@ -54,7 +54,7 @@ namespace Sprint2_Attempt3.Inventory
         }
         public static void ShiftCursorUp()
         {
-            if (CursorDestRectangle.Y > 145)
+            if (CursorDestRectangle.Y > 145 && ItemSelectedIndex >= 4)
             {
                 CursorDestRectangle.Y -= 50;
                 ItemSelectedIndex -= 4;
@@ -63,7 +63,7 @@ namespace Sprint2_Attempt3.Inventory
         }
         public static void ShiftCursorDown()
         {
-            if (CursorDestRectangle.Y < 195)
+            if (CursorDestRectangle.Y < 195 && ItemSelectedIndex <= 3)
             {
                 CursorDestRectangle.Y += 50;
                 ItemSelectedIndex += 4;
