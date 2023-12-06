@@ -34,6 +34,7 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         public override void Collect()
         {
             InventoryController.HasBow = true;
+            exists = false;
             SoundFactory.PlaySound(SoundFactory.Instance.getItem);
             CollisionManager.GameObjectList.Remove(this);
         }
