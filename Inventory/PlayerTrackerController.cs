@@ -36,8 +36,8 @@ namespace Sprint2_Attempt3.Inventory
             new Rectangle(x + 210, y + 618, 9, 9),
             new Rectangle(x + 106, y + 605, 9, 9),
             new Rectangle(x + 106, y + 605, 9, 9),
-            new Rectangle(x + 132, y + 605, 9, 9)
-        };
+            new Rectangle(x + 132, y + 605, 9, 9),
+            new Rectangle(x + 106, y + 657, 9, 9)        };
         public PlayerTrackerController() { }
 
         public static void DrawPlayerTracker(SpriteBatch spriteBatch) {

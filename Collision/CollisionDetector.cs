@@ -6,14 +6,12 @@ using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Items;
-using Sprint2_Attempt3.Items.ItemClasses;
 using Sprint2_Attempt3.WallBlocks;
-using System;
 using System.Collections.Generic;
-using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.SpikeTrap;
 using Sprint2_Attempt3.Enemy.Hand;
 using Sprint2_Attempt3.Enemy.Target;
+using Sprint2_Attempt3.Dungeon;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -62,6 +60,10 @@ namespace Sprint2_Attempt3.Collision
                 else if (obj is IEnemyProjectile)
                 {
                     PlayerEnemyProjectileHandler.HandleLinkProjectileCollision(link, (IEnemyProjectile)obj, side);
+                }
+                else if (obj is TriggerSquare)
+                {
+                    ((TriggerSquare)obj).Start();
                 }
             }
             return ChangedRooms;

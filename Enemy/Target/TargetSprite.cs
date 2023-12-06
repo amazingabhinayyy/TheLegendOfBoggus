@@ -7,6 +7,7 @@ namespace Sprint2_Attempt3.Enemy.Target
     {
         private Texture2D texture;
         private Rectangle destinationRectangle;
+        private Rectangle sourceRectangle = new Rectangle(0, 0, 15, 15);
         public TargetSprite(Texture2D texture)
         {
             this.texture = texture;
