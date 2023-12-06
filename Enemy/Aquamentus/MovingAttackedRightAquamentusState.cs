@@ -11,6 +11,7 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
         private Aquamentus Aquamentus;
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
+        private Rectangle[] attackedRectangles;
         private int currentFrame;
         private int elaspedFrameCount;
         private int endFrame;
@@ -20,7 +21,8 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
         {
             this.Aquamentus = Aquamentus;
             sprite = EnemySpriteFactory.Instance.CreateMovingLeftAquamentusSprite();
-            sourceRectangle = Globals.AquamentusOrangeLeft1;
+            attackedRectangles = new Rectangle[] { new Rectangle(140, 0, 24, 33), new Rectangle(171, 0, 24, 33), new Rectangle(202, 0, 24, 33) };
+            sourceRectangle = attackedRectangles[0];
             currentFrame = 0;
             Aquamentus.Position = new Rectangle(Aquamentus.X, Aquamentus.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             random = new Random();
@@ -62,17 +64,21 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
             {
                 if (currentFrame == 5)
                 {
-                    sourceRectangle = Globals.AquamentusOrangeLeft1;
+                    sourceRectangle = attackedRectangles[0];
                 }
                 else if (currentFrame == 10)
                 {
-                    sourceRectangle = Globals.AquamentusBlueLeft;
+                    sourceRectangle = attackedRectangles[1];
                 }
                 else if (currentFrame == 15)
                 {
-                    sourceRectangle = Globals.AquamentusOrangeLeft2;
+                    sourceRectangle = attackedRectangles[2];
                 }
-                Aquamentus.X += 1;
+                if (Aquamentus.MaxLeft < 200)
+                {
+                    Aquamentus.X += 1;
+                    Aquamentus.MaxLeft++;
+                }
                 Aquamentus.Position = new Rectangle(Aquamentus.X, Aquamentus.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             }
             else

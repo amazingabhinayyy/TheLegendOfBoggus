@@ -26,7 +26,7 @@ namespace Sprint2_Attempt3.Enemy.Zol
                 new Vector2(0, 0),
                 Globals.scale,
                 SpriteEffects.None,
-                0f
+                0.1f
             );
         }
     }

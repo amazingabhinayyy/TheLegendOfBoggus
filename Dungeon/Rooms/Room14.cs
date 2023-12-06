@@ -18,8 +18,9 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         private static EastDoor diamondDoor;
         public Room14(Game1 game1) : base(game1, 13) 
         {
+            roomLayout[7, 7] = this;
             doorOpen = false;
-            foreach (IGameObject obj in GameObjectLists[roomNumber])
+            foreach (IGameObject obj in gameObjectList)
             {
                 if (obj is Aquamentus)
                 {
@@ -38,13 +39,13 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
 
         public override void SwitchToSouthRoom()
         {
-            TransitionHandler.Instance.Start = true;
-            TransitionHandler.Instance.Transition(this, new Room12(game1));
+            mapY += 1;
+            SwitchRoom(mapX, mapY, PanningTransitionHandler.Instance);
         }
         public override void SwitchToEastRoom()
         {
-            TransitionHandler.Instance.Start = true;
-            TransitionHandler.Instance.Transition(this, new Room15(game1));
+            mapX += 1;
+            SwitchRoom(mapX, mapY, PanningTransitionHandler.Instance);
         }
         public override void RoomConditionCheck()
         {

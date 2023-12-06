@@ -6,14 +6,10 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Player.Interfaces;
-using Sprint2_Attempt3.Player;
-using Sprint2_Attempt3.Player.LinkProjectiles;
-using Sprint2_Attempt3.Items;
-using Sprint2_Attempt3.Player.Interfaces;
 
 namespace Sprint2_Attempt3.Player.LinkStates
 {
-    public class DownUseItemState : ILinkState
+    public class DownUseItemState : LinkStateAbstract
     {
         private Link link;
         private int frameCounter;
@@ -29,33 +25,7 @@ namespace Sprint2_Attempt3.Player.LinkStates
         {
             link.State = new DownIdleLinkState(link);
         }
-        public void BecomeIdle()
-        {
-
-        }
-        public void MoveUp()
-        {
-
-        }
-        public void MoveDown()
-        {
-
-        }
-        public void MoveLeft()
-        {
-        }
-        public void MoveRight()
-        {
-        }
-        public void GetDamaged()
-        {
-
-        }
-        public void Attack()
-        {
-
-        }
-        public void Update()
+        public override void Update()
         {
             frameCounter++;
             if (frameCounter >= 10)
@@ -63,35 +33,7 @@ namespace Sprint2_Attempt3.Player.LinkStates
                 Stop();
             }
         }
-        public void UseBomb()
-        {
-        }
-        public void UseArrow()
-        {
-
-        }
-        public void UseBoomerang()
-        {
-
-        }
-        public void UseBlueBoomerang() { }
-        public void UseBlueArrow()
-        {
-
-        }
-        public void UseFire()
-        {
-
-        }
-        public void CollectBow()
-        {
-
-        }
-        public void CollectTriForce()
-        {
-
-        }
-        public void Killed()
+        public override void Killed()
         {
             link.State = new KilledLinkState(link);
         }

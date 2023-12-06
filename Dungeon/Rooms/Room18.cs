@@ -15,9 +15,10 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         private static Key key;
         public Room18(Game1 game1) : base(game1, 17) 
         {
+            roomLayout[5, 6] = this;
             keySpawned = false;
             enemies = new List<IEnemy>();
-            foreach (IGameObject obj in gameObjectLists[roomNumber])
+            foreach (IGameObject obj in gameObjectList)
             {
                 if (obj is IEnemy)
                 {
@@ -32,13 +33,13 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
 
         public override void SwitchToSouthRoom()
         {
-            TransitionHandler.Instance.Start = true;
-            TransitionHandler.Instance.Transition(this, new Room13(game1));
+            mapY += 1;
+            SwitchRoom(mapX, mapY, PanningTransitionHandler.Instance);
         }
         public override void SwitchToWestRoom()
         {
-            TransitionHandler.Instance.Start = true;
-            TransitionHandler.Instance.Transition(this, new Room17(game1));
+            mapX -= 1;
+            SwitchRoom(mapX, mapY, PanningTransitionHandler.Instance);
         }
         public override void RoomConditionCheck()
         {

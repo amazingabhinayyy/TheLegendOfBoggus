@@ -12,11 +12,7 @@ namespace Sprint2_Attempt3.Player
         private static Texture2D deathTexture;
         private static Texture2D itemTexture;
         private Texture2D items;
-        // More private Texture2Ds follow
-        // ...
-
         private static LinkSpriteFactory instance = new LinkSpriteFactory();
-
         public static LinkSpriteFactory Instance
         {
             get
@@ -25,17 +21,12 @@ namespace Sprint2_Attempt3.Player
             }
         }
 
-        private LinkSpriteFactory()
-        {
-        }
-
+        private LinkSpriteFactory() { }
         public void LoadAllTextures(ContentManager content)
         {
             linkTexture = content.Load<Texture2D>("LinkPlayerSpriteSheetFinal");
             deathTexture = content.Load<Texture2D>("characterGenerationSprite");
             itemTexture = content.Load<Texture2D>("Items");
-            // More Content.Load calls follow
-            //...
         }
 
         public ILinkSprite CreateDownAttackLinkSprite()

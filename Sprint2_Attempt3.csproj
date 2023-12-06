@@ -14,6 +14,7 @@
   <ItemGroup>
     <None Remove="Content\LinkPlayerSpriteSheet2.png" />
     <None Remove="Content\Room1.csv" />
+    <None Remove="Dungeon\RoomFiles\RandomRoom.csv" />
     <None Remove="Dungeon\RoomFiles\Room1.csv" />
     <None Remove="Dungeon\RoomFiles\Room10.csv" />
     <None Remove="Dungeon\RoomFiles\Room11.csv" />
@@ -24,6 +25,7 @@
     <None Remove="Dungeon\RoomFiles\Room16.csv" />
     <None Remove="Dungeon\RoomFiles\Room17.csv" />
     <None Remove="Dungeon\RoomFiles\Room18.csv" />
+    <None Remove="Dungeon\RoomFiles\Room19.csv" />
     <None Remove="Dungeon\RoomFiles\Room2.csv" />
     <None Remove="Dungeon\RoomFiles\Room3.csv" />
     <None Remove="Dungeon\RoomFiles\Room4.csv" />
@@ -40,6 +42,9 @@
     <None Remove="Inventory\SaveFiles\Standard.csv" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Dungeon\RoomFiles\Room19.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Dungeon\RoomFiles\Room1.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

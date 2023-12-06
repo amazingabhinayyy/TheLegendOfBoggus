@@ -15,10 +15,11 @@ namespace Sprint2_Attempt3.Items
         protected Rectangle sourceRectangle;
         protected int count;
         protected const int AnimateRate = 5; 
-        public bool spawned { get; set; }
+        public bool spawned { get; 
+            set; }
         public bool exists { get; set; }
         public Rectangle position { get { return Position; } }
-        private Rectangle noHitBox = new Rectangle(0, 0, 0, 0);
+        private readonly Rectangle noHitBox = new Rectangle(0, 0, 0, 0);
 
         public ItemSecondary() {
             count = 25;
@@ -38,7 +39,6 @@ namespace Sprint2_Attempt3.Items
             exists = false;
             CollisionManager.GameObjectList.Remove(this);
             InventoryController.IncrementCount(this.GetType().Name);
-            SoundFactory.PlaySound(SoundFactory.Instance.getItem);
         }
         public void Despawn()
         {

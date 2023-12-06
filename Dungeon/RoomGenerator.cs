@@ -17,7 +17,9 @@ using Sprint2_Attempt3.Enemy.SpikeTrap;
 using Sprint2_Attempt3.Enemy.Stalfos;
 using Sprint2_Attempt3.Enemy.Zol;
 using Sprint2_Attempt3.Items;
+using Sprint2_Attempt3.Portal;
 using Sprint2_Attempt3.Items.ItemClasses;
+using Sprint2_Attempt3.Sounds;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -29,7 +31,7 @@ namespace Sprint2_Attempt3.Dungeon
     {
 
         private static RoomGenerator instance = new RoomGenerator();
-        private static String[] fileNames = new String[18];
+        private static List<String> fileNames = new List<String>(Globals.NumberOfRooms);
         private static Dictionary<String, Func<int, int, IEnemy>> AddEnemyFunctions = new Dictionary<string, Func<int, int, IEnemy>> {
         };
 
@@ -44,11 +46,14 @@ namespace Sprint2_Attempt3.Dungeon
         {
         }
         public void LoadAllFiles() {
-            for (int i = 0; i < fileNames.Length; i++)
+            for (int i = 0; i < Globals.NumberOfRooms; i++)
             {
-                fileNames[i] = "Dungeon/RoomFiles/Room" + (i + 1) + ".csv";
+                fileNames.Add("Dungeon/RoomFiles/Room" + (i + 1) + ".csv");
             }
-
+        }
+        public void LoadNewFile(String newFile)
+        {
+            fileNames.Add(newFile);
         }
 
         public List<IGameObject> LoadFile(int fileNumber) {
@@ -80,11 +85,19 @@ namespace Sprint2_Attempt3.Dungeon
                     }
                     else if (words[0].Equals("Item"))
                     {
-                        objectList.Add(GetItem(words[1], new Vector2(int.Parse(words[2]), int.Parse(words[3]) + Globals.YOffset), bool.Parse(words[4])));
+                        if (words[3].Length > 0)
+                            objectList.Add(GetItem(words[1], new Vector2(int.Parse(words[2]), int.Parse(words[3]) + Globals.YOffset), bool.Parse(words[4])));
+                        else
+                            objectList.Add(GetItem(words[1], int.Parse(words[2]), bool.Parse(words[4])));
+
                     }
                     else if (words[0].Equals("Door"))
                     {
                         objectList.Add(GetDoor(words[1], int.Parse(words[2])));
+                    }
+                    else if (words[0].Equals("Portal"))
+                    {
+                        objectList.Add(GetPortal(words[1], int.Parse(words[2])));
                     }
 
                 }
@@ -99,6 +112,10 @@ namespace Sprint2_Attempt3.Dungeon
         {
             int x = Globals.FloorGrid[position].X;
             int y = Globals.FloorGrid[position].Y;
+            return GetEnemy(Enemy, x, y);
+        }
+        private IEnemy GetEnemy(String Enemy, int x, int y)
+        {
             IEnemy enemy = null;
             if (Enemy.Equals("Aquamentus"))
             {
@@ -142,55 +159,6 @@ namespace Sprint2_Attempt3.Dungeon
             }
             return enemy;
         }
-        private IEnemy GetEnemy(String Enemy, int x, int y) {
-            IEnemy enemy = null;
-            if (Enemy.Equals("Aquamentus"))
-            {
-                enemy = new Aquamentus(x, y);
-            }
-            else if (Enemy.Equals("Dodongo"))
-            {
-                enemy = new Dodongo(x, y);
-            }
-            else if (Enemy.Equals("Gel"))
-            {
-                enemy = new Gel(x, y);
-            }
-            else if (Enemy.Equals("Goriya"))
-            {
-                enemy = new Goriya(x, y);
-            }
-            else if (Enemy.Equals("Hand"))
-            {
-                enemy = new Hand(x, y);
-            }
-            else if (Enemy.Equals("Keese"))
-            {
-                enemy = new Keese(x, y);
-            }
-            else if (Enemy.Equals("Rope"))
-            {
-                enemy = new Rope(x, y);
-            }
-            else if (Enemy.Equals("SpikeTrap"))
-            {
-                enemy = new SpikeTrap(x, y);
-            }
-            else if (Enemy.Equals("Stalfos"))
-            {
-                enemy = new Stalfos(x, y);
-            }
-            else if (Enemy.Equals("Zol"))
-            {
-                enemy = new Zol(x, y);
-            }
-            return enemy;
-        }
-
-        public IEnemy AddKeese(int x, int y) {
-            return new Keese(x, y);
-        }
-
         private static IBlock GetBlock(String Block, int position)
         {
             IBlock block = null;
@@ -318,7 +286,12 @@ namespace Sprint2_Attempt3.Dungeon
             }
             return item;
         }
-
+        private IItem GetItem(String item, int position, bool spawned)
+        {
+            int x = Globals.FloorGrid[position].X + 12;
+            int y = Globals.FloorGrid[position].Y;
+            return GetItem(item, new Vector2(x,y), spawned);
+        }
         private IDoor GetDoor(String Door, int state) {
             IDoor door = null;
             if (Door.Equals("North"))
@@ -346,6 +319,20 @@ namespace Sprint2_Attempt3.Dungeon
                 door = new StairEntrance(state);
             }
             return door;
+        }
+
+        private static IPortal GetPortal(String Portal, int position)
+        {
+            IPortal portal = null;
+            if (Portal.Equals("First"))
+            {
+                portal = new FirstPortal(Globals.FloorGrid[position]);
+            }
+           else if (Portal.Equals("Second"))
+            {
+                portal = new SecondPortal(Globals.FloorGrid[position]);
+            }
+            return portal;
         }
     }
 }

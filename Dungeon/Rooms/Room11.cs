@@ -17,9 +17,10 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         private static Boomerang boomerang;
         public Room11(Game1 game1) : base(game1, 10) 
         {
+            roomLayout[6, 8] = this;
             boomerangSpawned = false;
             enemies = new List<IEnemy>();
-            foreach (IGameObject obj in gameObjectLists[roomNumber])
+            foreach (IGameObject obj in gameObjectList)
             {
                 if (obj is IEnemy)
                 {
@@ -34,11 +35,10 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
 
         public override void SwitchToSouthRoom()
         {
-            TransitionHandler.Instance.Start = true;
-            TransitionHandler.Instance.Transition(this, new Room7(game1));
-            for (int i = 0; i < gameObjectLists[6].Count; i++)
+            mapY += 1;
+            for (int i = 0; i < roomLayout[mapX, mapY].gameObjectList.Count; i++)
             {
-                IGameObject obj = gameObjectLists[6][i];
+                IGameObject obj = roomLayout[mapX, mapY].gameObjectList[i];
                 if (obj is NorthDoor)
                 {
                     if (((NorthDoor)obj).IsBombWall)
@@ -48,16 +48,17 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                     break;
                 }
             }
+            SwitchRoom(mapX, mapY, PanningTransitionHandler.Instance);
         }
         public override void SwitchToEastRoom()
         {
-            TransitionHandler.Instance.Start = true;
-            TransitionHandler.Instance.Transition(this, new Room12(game1));
+            mapX += 1;
+            SwitchRoom(mapX, mapY, PanningTransitionHandler.Instance);
         }
         public override void SwitchToWestRoom()
         {
-            TransitionHandler.Instance.Start = true;
-            TransitionHandler.Instance.Transition(this, new Room10(game1));
+            mapX -= 1;
+            SwitchRoom(mapX, mapY, PanningTransitionHandler.Instance);
         }
         public override void RoomConditionCheck()
         {

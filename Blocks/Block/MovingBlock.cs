@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Collision.SideCollisionHandlers;
 using Sprint2_Attempt3.Sounds;
@@ -33,11 +27,11 @@ namespace Sprint2_Attempt3.Blocks.Block
             {
                 if(pushedSide is LeftCollision)
                 {
-                    position = new Rectangle(position.X + 20, position.Y, position.Width, position.Height);
+                    position = new Rectangle(position.X + 3, position.Y, position.Width, position.Height);
                 }
                 else if (pushedSide is RightCollision)
                 {
-                    position = new Rectangle(position.X - 20, position.Y, position.Width, position.Height);
+                    position = new Rectangle(position.X - 3, position.Y, position.Width, position.Height);
                 }
                 else if (pushedSide is TopCollision)
                 {

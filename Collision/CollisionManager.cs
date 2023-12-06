@@ -105,7 +105,7 @@ namespace Sprint2_Attempt3.Collision
                     for (int c = 0; c < gameObjectList.Count; c++)
                     {
                         IGameObject obj = gameObjectList[c];
-                        CollisionDetector.CheckLinkProjectileCollision(projectile, obj);
+                        CollisionDetector.CheckEnemyProjectileCollision(projectile, obj);
                     }
                 }
             }

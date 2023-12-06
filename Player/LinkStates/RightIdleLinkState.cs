@@ -3,7 +3,7 @@ using Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates;
 
 namespace Sprint2_Attempt3.Player.LinkStates
 {
-    public class RightIdleLinkState : ILinkState
+    public class RightIdleLinkState : LinkStateAbstract
     {
         private Link link;
         public RightIdleLinkState(Link link)
@@ -11,72 +11,53 @@ namespace Sprint2_Attempt3.Player.LinkStates
             this.link = link;
             link.Sprite = LinkSpriteFactory.Instance.CreateRightIdleLinkSprite();
         }
-        public void BecomeIdle()
-        {
-        }
-        public void MoveUp()
+        public override void MoveUp()
         {
             link.State = new UpMovingLinkState(link);
         }
-        public void MoveDown()
+        public override void MoveDown()
         {
             link.State = new DownMovingLinkState(link);
         }
-        public void MoveLeft()
+        public override void MoveLeft()
         {
             link.State = new LeftMovingLinkState(link);
         }
-        public void MoveRight()
+        public override void MoveRight()
         {
             link.State = new RightMovingLinkState(link);
         }
-        public void GetDamaged()
-        {
-
-        }
-        public void Attack()
+        public override void Attack()
         {
             link.State = new RightAttackLinkState(link);
         }
-        public void Update()
-        {
-
-        }
-        public void UseBomb()
+        public override void UseBomb()
         {
             link.State = new RightUseItemState(link, new RightBomb(link));
         }
-        public void UseArrow()
+        public override void UseArrow()
         {
             link.State = new RightUseItemState(link, new RightArrow(link));
         }
-        public void UseBoomerang()
+        public override void UseBoomerang()
         {
             link.State = new RightUseItemState(link, new RightBoomerang(link));
         }
-        public void UseBlueBoomerang()
+        public override void UseBlueBoomerang()
         {
             link.State = new RightUseItemState(link, new RightBlueBoomerang(link));
         }
-        public void UseBlueArrow()
+        public override void UseBlueArrow()
         {
             link.State = new RightUseItemState(link, new RightBlueArrow(link));
         }
-        public void UseFire()
+        public override void UseFire()
         {
             link.State = new RightUseItemState(link, new RightFire(link));
         }
-        public void Killed()
+        public override void Killed()
         {
             link.State = new KilledLinkState(link);
-        }
-        public void CollectBow()
-        {
-
-        }
-        public void CollectTriForce()
-        {
-
         }
     }
 }

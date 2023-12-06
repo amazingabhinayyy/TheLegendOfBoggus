@@ -26,11 +26,22 @@ namespace Sprint2_Attempt3.Sounds
         public SoundEffect bossHurt { get; set; }
         public SoundEffect secret { get; set; }
         public SoundEffect triforce { get; set; }
+        public SoundEffect teleport { get; set; }
+
+        public SoundEffect rickRoll { get; set; }
+        public SoundEffect ping { get; set; }
+        public SoundEffect undertale { get; set; }
+        public SoundEffect titleScreen { get; set; }
 
         private SoundEffectInstance backgroundMusicInstance;
-        private SoundEffectInstance fanfareInstance;
+        private SoundEffectInstance undertaleMusicInstance;
+        private SoundEffectInstance titleScreenMusicInstance;
+        private SoundEffectInstance rickRollInstance;
+
+        public SoundEffectInstance rickRollMusic { get => rickRollInstance; }
         public SoundEffectInstance backgroundMusic { get => backgroundMusicInstance; }
-        public SoundEffectInstance fanfare { get => fanfareInstance; }
+        public SoundEffectInstance undertaleMusic { get => undertaleMusicInstance; }
+        public SoundEffectInstance titleScreenMusic { get => titleScreenMusicInstance; }
 
         private static SoundFactory instance = new SoundFactory();
 
@@ -44,6 +55,7 @@ namespace Sprint2_Attempt3.Sounds
 
         public SoundFactory()
         {
+
         }
 
         public void LoadAllTextures(ContentManager content)
@@ -58,7 +70,6 @@ namespace Sprint2_Attempt3.Sounds
             bombDrop = content.Load<SoundEffect>("LOZ_Bomb_Drop");
             bombBlow = content.Load<SoundEffect>("LOZ_Bomb_Blow");
             lowHealth = content.Load<SoundEffect>("LOZ_LowHealth");
-            fanfareInstance = content.Load<SoundEffect>("LOZ_Fanfare").CreateInstance();
             getItem = content.Load<SoundEffect>("LOZ_Get_Item");
             getRupee = content.Load<SoundEffect>("LOZ_Get_Rupee");
             text = content.Load<SoundEffect>("LOZ_Text");
@@ -69,13 +80,32 @@ namespace Sprint2_Attempt3.Sounds
             bossHurt = content.Load<SoundEffect>("LOZ_Boss_Hit");
             secret = content.Load<SoundEffect>("LOZ_Secret");
             triforce = content.Load<SoundEffect>("triforce_obtained");
+            rickRoll = content.Load<SoundEffect>("rickRoll");
+            ping = content.Load<SoundEffect>("ping");
+            undertale = content.Load<SoundEffect>("Its_Showtime");
+            teleport = content.Load<SoundEffect>("TeleportNoise");
+            titleScreen = content.Load<SoundEffect>("titleScreenMusic");
 
+            undertaleMusicInstance = undertale.CreateInstance();
+            undertaleMusicInstance.IsLooped = true;
+            undertaleMusicInstance.Volume *= 0.1f;
+            undertaleMusicInstance.Pause();
 
-            SoundEffect backgroundMusic = content.Load<SoundEffect>("Underworld_BGM");
+            titleScreenMusicInstance = titleScreen.CreateInstance();
+            titleScreenMusicInstance.IsLooped = true;
+            titleScreenMusicInstance.Volume *= 0.1f;
+            titleScreenMusicInstance.Play();
+
+            SoundEffect backgroundMusic = content.Load<SoundEffect>("Underworld");
             backgroundMusicInstance = backgroundMusic.CreateInstance();
             backgroundMusicInstance.IsLooped = true;
             backgroundMusicInstance.Volume *= 0.1f;
-            backgroundMusicInstance.Play();
+            backgroundMusicInstance.Pause();
+
+            rickRollInstance = rickRoll.CreateInstance();
+            rickRollInstance.IsLooped = false;
+            rickRollInstance.Volume *= 0.1f;
+            rickRollInstance.Pause();
         }
 
         public static void PlaySound(SoundEffect sound, float volume = 1)
@@ -85,5 +115,14 @@ namespace Sprint2_Attempt3.Sounds
 
             sound.Play(volume, pitch, pan);
         }
+
+        public static void ResetSounds()
+        {
+            Instance.titleScreenMusic.Pause();
+            Instance.undertaleMusic.Pause();
+            Instance.rickRollMusic.Stop();
+            Instance.backgroundMusic.Resume();
+        }
+
     }
 }

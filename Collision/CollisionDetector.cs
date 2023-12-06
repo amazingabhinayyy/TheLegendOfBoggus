@@ -7,12 +7,13 @@ using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Items.ItemClasses;
+using Sprint2_Attempt3.Portal;
 using Sprint2_Attempt3.WallBlocks;
-using System;
 using System.Collections.Generic;
-using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.SpikeTrap;
 using Sprint2_Attempt3.Enemy.Hand;
+using Sprint2_Attempt3.Enemy.Target;
+using Sprint2_Attempt3.Dungeon;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -22,6 +23,10 @@ namespace Sprint2_Attempt3.Collision
         {
             Rectangle linkRectangle = link.GetHitBox();
             bool ChangedRooms = false;
+            if(obj is Target)
+            {
+                bool why = false;
+            }
             Rectangle collisionRectangle = obj.GetHitBox();
             if(obj is SpikeTrap || obj is Hand)
             {
@@ -46,6 +51,10 @@ namespace Sprint2_Attempt3.Collision
                 {
                     ChangedRooms = PlayerBlockHandler.HandlePlayerDoorCollision(link, (IDoor)obj, side, game);
                 }
+                else if (obj is IPortal)
+                {
+                    PlayerPortalHandler.HandlePlayerPortalCollision(link, (IPortal)obj, game);
+                }
                 else if (obj is ILinkProjectile)
                 {
                     PlayerLinkProjectileHandler.HandlePlayerLinkProjectileCollision(link, (ILinkProjectile)obj, side);
@@ -57,6 +66,10 @@ namespace Sprint2_Attempt3.Collision
                 else if (obj is IEnemyProjectile)
                 {
                     PlayerEnemyProjectileHandler.HandleLinkProjectileCollision(link, (IEnemyProjectile)obj, side);
+                }
+                else if (obj is TriggerSquare)
+                {
+                    ((TriggerSquare)obj).Start();
                 }
             }
             return ChangedRooms;
@@ -134,7 +147,7 @@ namespace Sprint2_Attempt3.Collision
                 }
             }
         }
-        public void CheckEnemyProjectileCollision(IGameObject projectile, IGameObject obj)
+        public static void CheckEnemyProjectileCollision(IGameObject projectile, IGameObject obj)
         {
             Rectangle projectileRectangle = projectile.GetHitBox();
             Rectangle collisionRectangle = obj.GetHitBox();

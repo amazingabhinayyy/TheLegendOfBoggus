@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint2_Attempt3.Dungeon.Rooms;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Player;
@@ -12,6 +11,7 @@ using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Inventory;
 using Sprint2_Attempt3.Sounds;
 using Sprint2_Attempt3.Screens;
+using Sprint2_Attempt3.Portal;
 
 namespace Sprint2_Attempt3
 {
@@ -49,15 +49,12 @@ namespace Sprint2_Attempt3
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }
-
         protected override void Initialize()
         {
             base.Initialize();
             graphics.PreferredBackBufferHeight = Globals.ScreenHeight;
             graphics.ApplyChanges();
-            RoomGenerator.Instance.LoadAllFiles();
         }
-
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
@@ -71,10 +68,11 @@ namespace Sprint2_Attempt3
             SoundFactory.Instance.LoadAllTextures(Content);
             DungeonSpriteFactory.Instance.LoadAllTextures(Content);
             ScreenSpriteFactory.Instance.LoadAllTextures(Content);
+            PortalSpriteFactory.Instance.LoadAllTextures(Content);
             //check if we need start screen
-            TransitionHandler.Instance.setGame1(this);
+            PanningTransitionHandler.Instance.setGame1(this);
             //update into states later
-            Room16TransitionHandler.Instance.setGame1(this);
+            FadingTransitionHandler.Instance.setGame1(this);
             RoomGenerator.Instance.LoadAllFiles();
             InventoryTexture = Content.Load<Texture2D>("Inventory");
             link = new Link(this);
@@ -82,22 +80,18 @@ namespace Sprint2_Attempt3
             gameState = GameState.startScreen;
             screenSprite = ScreenSpriteFactory.Instance.CreateStartScreen();
             inventoryController = new InventoryController(this);
+            room = RoomSecondary.LoadRooms(this);
             keyController = new KeyboardController(this);
             mouseController = new MouseController(this);
-            room = new Room1(this);
             deathAnimationActive = false;
         }
-
-        protected override void UnloadContent()
-        {
-        }
+        protected override void UnloadContent() { }
         public void Reset()
         {
             link = new Link(this);
             gameState = GameState.start;
             deathAnimationActive = false;
             collisionManager = new CollisionManager(this, (Link)link);
-            room = new Room1(this);
         }
 
         protected override void Update(GameTime gameTime)
@@ -107,7 +101,7 @@ namespace Sprint2_Attempt3
             {
                 case GameState.start:
                     room.Update();
-                    if (!deathAnimationActive)
+                    if (!(deathAnimationActive || PanningTransitionHandler.Instance.Start || FadingTransitionHandler.Instance.Start))
                     {
                         inventoryController.Update();
                         collisionManager.Update();

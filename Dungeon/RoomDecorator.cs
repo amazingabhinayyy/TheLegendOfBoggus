@@ -14,7 +14,10 @@ namespace Sprint2_Attempt3.Dungeon
     public class RoomDecorator : IRoom
     {
         private IRoom decoratedRoom;
+        public List<IGameObject> gameObjectList { get; set; }
         private int timer;
+        public int RoomNumber { get; }
+        public IDungeonRoom room { get; protected set; }
         public RoomDecorator(IRoom decoratedRoom)
         {
             this.decoratedRoom = decoratedRoom;
@@ -55,6 +58,10 @@ namespace Sprint2_Attempt3.Dungeon
         {
             decoratedRoom.SetDecorator(room);
         }
+        public void ResetRooms()
+        {
+        }
+        public void SwitchRoom(int x, int y, ITransitionHandler transition) { }
         public void Update()
         {
             decoratedRoom.Update();
@@ -72,11 +79,6 @@ namespace Sprint2_Attempt3.Dungeon
                 decoratedRoom.Draw(spriteBatch, new Color(50, 0, 0));
             else
                 decoratedRoom.Draw(spriteBatch, Color.Black);
-        }
-
-        public DungeonRoom getDungeonRoom()
-        {
-            throw new NotImplementedException();
         }
     }
 }

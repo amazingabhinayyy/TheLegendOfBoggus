@@ -46,7 +46,7 @@ namespace Sprint2_Attempt3.Enemy.Stalfos
                 new Vector2(0, 0),
                 Globals.scale,
                 spriteEffects,
-                0f
+                0.1f
             );
         }
     }

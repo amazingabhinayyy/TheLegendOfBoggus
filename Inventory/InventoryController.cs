@@ -6,6 +6,7 @@ using Sprint2_Attempt3.Items.ItemSprites;
 using System;
 using System.Collections.Generic;
 
+
 namespace Sprint2_Attempt3.Inventory
 {
     public class InventoryController
@@ -17,7 +18,8 @@ namespace Sprint2_Attempt3.Inventory
         private static IItemSprite mapLayoutSprite = ItemSpriteFactory.Instance.CreateMapLayoutSprite();
         private static int count = 0;
         private static Game1 game;
-        public enum ItemMenuState { 
+        public enum ItemMenuState
+        {
             movingUp,
             movingDown,
             fullView,
@@ -45,7 +47,8 @@ namespace Sprint2_Attempt3.Inventory
         private static Rectangle FairyDestRectangle = new Rectangle(destRectangle.X + 639, destRectangle.Y + 196, 26, 49);
         private static Rectangle MapDestRectangle = new Rectangle(destRectangle.X + 150, destRectangle.Y + 339, 26, 49);
         private static Rectangle CompassDestRectangle = new Rectangle(destRectangle.X + 138, destRectangle.Y + 460, 47, 49);
-        public InventoryController(Game1 game1) {
+        public InventoryController(Game1 game1)
+        {
             game = game1;
             LinkItems = new Dictionary<string, InventoryItem>() {
                 { "Arrow", new InventoryItem(ArrowDestRectangle, ItemSpriteFactory.Instance.CreateArrowSprite(), new SetUseArrowCommand(game1)) },
@@ -82,7 +85,8 @@ namespace Sprint2_Attempt3.Inventory
             KeyCount = (int)counts[3];
             HasBow = Convert.ToBoolean(counts[4]);
             int i = 5;
-            foreach(KeyValuePair<String,InventoryItem> item in LinkItems) {
+            foreach (KeyValuePair<String, InventoryItem> item in LinkItems)
+            {
                 item.Value.SetCount(counts[i]);
                 i++;
             }
@@ -104,7 +108,7 @@ namespace Sprint2_Attempt3.Inventory
         }
         public static void IncrementCount(String item) {  LinkItems[item].IncrementCount(); }
         public static void DecrementCount(String item) { LinkItems[item].DecrementCount(); }
-        public static float GetCount(String item) {  return LinkItems[item].Count(); }
+        public static float GetCount(String item) { return LinkItems[item].Count(); }
         public static IItemSprite GetSprite(String item) { return LinkItems[item].GetSprite(); }
         public static void UseItem(String item) { LinkItems[item].UseItem(); }
         public static void ShiftUp() {
@@ -118,7 +122,8 @@ namespace Sprint2_Attempt3.Inventory
                 MapController.ShiftUp();
                 PlayerTrackerController.ShiftUp();
             }
-            else {
+            else
+            {
                 itemMenuState = ItemMenuState.collapsed;
                 game.gameState = Game1.GameState.start;
             }
@@ -136,10 +141,11 @@ namespace Sprint2_Attempt3.Inventory
                 PlayerTrackerController.ShiftDown();
             } else {  itemMenuState = ItemMenuState.fullView; }
         }
-        public void Update() {
+        public void Update()
+        {
             count++;
             triforceSprite = TriforceMarkers[Globals.FindIndex(count % (TriforceMarkers.Length * 5), 5, TriforceMarkers.Length)];
-            if (itemMenuState == ItemMenuState.movingUp) { ShiftUp(); } 
+            if (itemMenuState == ItemMenuState.movingUp) { ShiftUp(); }
             else if (itemMenuState == ItemMenuState.movingDown) { ShiftDown(); }
         }
         public void Draw(SpriteBatch spriteBatch) {
@@ -155,3 +161,4 @@ namespace Sprint2_Attempt3.Inventory
         }
     }
 }
+

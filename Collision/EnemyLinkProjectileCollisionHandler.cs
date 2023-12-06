@@ -1,15 +1,10 @@
 ﻿using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Player.Interfaces;
-using Sprint2_Attempt3.Items.ItemClasses;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Diagnostics;
 using Sprint2_Attempt3.Enemy.Dodongo;
 using Sprint2_Attempt3.Player.LinkProjectiles.ProjectileInterfaces;
-using Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates;
+using Sprint2_Attempt3.Enemy.Target;
+using Sprint2_Attempt3.Sounds;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -28,12 +23,14 @@ namespace Sprint2_Attempt3.Collision
             {
                 if(!(enemy is Dodongo))
                     enemy.GetDamaged(1.0f);
+                if(enemy is Target)
+                    SoundFactory.PlaySound(SoundFactory.Instance.ping);
                 IArrow arrow = (IArrow)item;
                 arrow.DestroyArrow();
             }
             else if(item is ISwordBeam)
             {
-                if (!(enemy is Dodongo))
+                if (!(enemy is Dodongo || enemy is Target))
                     enemy.GetDamaged(0.5f);
                 ((ISwordBeam)item).RemoveSwordBeam();
             }
@@ -44,12 +41,12 @@ namespace Sprint2_Attempt3.Collision
             }
             else if(item is ISword) 
             {
-                if (!(enemy is Dodongo))
+                if (!(enemy is Dodongo || enemy is Target))
                     enemy.GetDamaged(0.5f);
             }
             else if(item is not IBomb)
             {
-                if(!(enemy is Dodongo))
+                if(!(enemy is Dodongo || enemy is Target))
                     enemy.GetDamaged(2.0f);
             }
         }

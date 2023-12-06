@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 
 namespace Sprint2_Attempt3.Player.LinkStates
 {
-    public class LeftMovingLinkState : ILinkState
+    public class LeftMovingLinkState : LinkStateAbstract
     {
         private Link link;
         public LeftMovingLinkState(Link link)
@@ -13,71 +13,63 @@ namespace Sprint2_Attempt3.Player.LinkStates
 
             link.Sprite = LinkSpriteFactory.Instance.CreateLeftMovingLinkSprite();
         }
-        public void BecomeIdle()
+        public override void BecomeIdle()
         {
             link.State = new LeftIdleLinkState(link);
         }
-        public void MoveUp()
+        public override void MoveUp()
         {
             link.State = new UpMovingLinkState(link);
         }
-        public void MoveDown()
+        public override void MoveDown()
         {
             link.State = new DownMovingLinkState(link);
         }
-        public void MoveLeft()
-        {
-        }
-        public void MoveRight()
+        public override void MoveRight()
         {
             link.State = new RightMovingLinkState(link);
         }
-        public void GetDamaged()
-        {
-
-        }
-        public void CollectBow()
+        public override void CollectBow()
         {
             link.State = new CollectBowState(link);
         }
-        public void CollectTriForce()
+        public override void CollectTriForce()
         {
             link.State = new CollectTriForceState(link);
         }
-        public void Attack()
+        public override void Attack()
         {
             link.State = new LeftAttackLinkState(link);
         }
-        public void Update()
+        public override void Update()
         {
             link.Position = new Vector2(link.Position.X - 4, link.Position.Y);
-            //link.Position.X -= 4;
         }
-        public void UseBomb()
+        public override void UseBomb()
         {
             link.State = new LeftUseItemState(link, new LeftBomb(link));
         }
-        public void UseArrow()
+        public override void UseArrow()
         {
             link.State = new LeftUseItemState(link, new LeftArrow(link));
         }
-        public void UseBoomerang()
+        public override void UseBoomerang()
         {
             link.State = new LeftUseItemState(link, new LeftBoomerang(link));
         }
-        public void UseBlueBoomerang()
+        public override void UseBlueBoomerang()
         {
             link.State = new LeftUseItemState(link, new LeftBlueBoomerang(link));
         }
-        public void UseBlueArrow()
+        public override void UseBlueArrow()
         {
             link.State = new LeftUseItemState(link, new LeftBlueArrow(link));
         }
-        public void UseFire()
+        public override void UseFire()
         {
             link.State = new LeftUseItemState(link, new LeftFire(link));
         }
-        public void Killed()
+        public override void Killed()
         {
             link.State = new KilledLinkState(link);
         }

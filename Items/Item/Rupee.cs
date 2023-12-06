@@ -53,6 +53,7 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         public override void Collect()
         {
             exists = false;
+            SoundFactory.PlaySound(SoundFactory.Instance.getRupee);
             CollisionManager.GameObjectList.Remove(this);
             if (InventoryController.RupeeCount < 99)
                 InventoryController.RupeeCount++;

@@ -35,7 +35,8 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         {
             exists = false;
             CollisionManager.GameObjectList.Remove(this);
-            if(InventoryController.KeyCount < 99)
+            SoundFactory.PlaySound(SoundFactory.Instance.getItem);
+            if (InventoryController.KeyCount < 99)
                 InventoryController.KeyCount++;
         }
     }

@@ -19,9 +19,10 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         private static Key key;
         public Room6(Game1 game1) : base(game1, 5) 
         {
+            roomLayout[5, 9] = this;
             keySpawned = false;
             enemies = new List<IEnemy>();
-            foreach (IGameObject obj in gameObjectLists[roomNumber])
+            foreach (IGameObject obj in gameObjectList)
             {
                 if (obj is IEnemy)
                 {
@@ -35,11 +36,10 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         }
         public override void SwitchToNorthRoom()
         {
-            TransitionHandler.Instance.Start = true;
-            TransitionHandler.Instance.Transition(this, new Room10(game1));
-            for(int i = 0; i < gameObjectLists[9].Count; i++)
+            mapY -= 1;
+            for (int i = 0; i < roomLayout[mapX, mapY].gameObjectList.Count; i++)
             {
-                IGameObject obj = gameObjectLists[9][i];
+                IGameObject obj = roomLayout[mapX, mapY].gameObjectList[i];
                 if(obj is SouthDoor)
                 {
                     if (((SouthDoor)obj).IsBombWall)
@@ -49,21 +49,22 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                     break;
                 }
             }
+            SwitchRoom(mapX, mapY, PanningTransitionHandler.Instance);
         }
         public override void SwitchToSouthRoom()
         {
-            TransitionHandler.Instance.Start = true;
-            TransitionHandler.Instance.Transition(this, new Room4(game1));
+            mapY += 1;
+            SwitchRoom(mapX, mapY, PanningTransitionHandler.Instance);
         }
         public override void SwitchToEastRoom()
         {
-            TransitionHandler.Instance.Start = true;
-            TransitionHandler.Instance.Transition(this, new Room7(game1));
+            mapX += 1;
+            SwitchRoom(mapX, mapY, PanningTransitionHandler.Instance);
         }
         public override void SwitchToWestRoom()
         {
-            TransitionHandler.Instance.Start = true;
-            TransitionHandler.Instance.Transition(this, new Room5(game1));
+            mapX -= 1;
+            SwitchRoom(mapX, mapY, PanningTransitionHandler.Instance);
         }
         public override void RoomConditionCheck()
         {

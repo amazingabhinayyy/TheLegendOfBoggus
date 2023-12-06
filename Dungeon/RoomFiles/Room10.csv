@@ -8,6 +8,8 @@ Block,DiamondTile,62,,
 Block,DiamondTile,63,,
 Block,DiamondTile,70,,
 Block,DiamondTile,71,,
+Portal,First,3,,
+Portal,Second,82,,
 Item,Map,612,220,TRUE
 Door,North,0,,
 Door,South,5,,

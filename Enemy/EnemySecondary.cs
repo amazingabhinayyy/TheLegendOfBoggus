@@ -47,9 +47,9 @@ namespace Sprint2_Attempt3.Enemy
         }
         public virtual void Kill()
         {
-            int[] list = RoomSecondary.EnemiesKilledList;
-            list[RoomSecondary.GetCurrentRoomNumber()]++;
-            RoomSecondary.EnemiesKilledList = list;
+            //int[] list = RoomSecondary.EnemiesKilledList;
+           // list[RoomSecondary.GetCurrentRoomNumber()]++;
+            //RoomSecondary.EnemiesKilledList = list;
             death = true;
             State = new DeathAnimationState(this);
         }

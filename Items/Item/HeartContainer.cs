@@ -22,6 +22,13 @@ namespace Sprint2_Attempt3.Items.ItemClasses
             this.spawned = false;
             sprite = ItemSpriteFactory.Instance.CreateSpawnItemSprite();
         }
+        public override void Collect()
+        {
+            InventoryController.heartContainers++;
+            exists = false;
+            CollisionManager.GameObjectList.Remove(this);
+            SoundFactory.PlaySound(SoundFactory.Instance.getItem);
+        }
         public override void Update()
         {
             if (count <= 0)
@@ -29,14 +36,6 @@ namespace Sprint2_Attempt3.Items.ItemClasses
                 sprite = ItemSpriteFactory.Instance.CreateHeartContainerSprite();
                 spawned = true;
             }
-        }
-
-        public override void Collect()
-        {
-            InventoryController.heartContainers++;
-            exists = false;
-            CollisionManager.GameObjectList.Remove(this);
-            SoundFactory.PlaySound(SoundFactory.Instance.getItem);
         }
     }
 }

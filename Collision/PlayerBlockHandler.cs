@@ -9,6 +9,9 @@ using Sprint2_Attempt3.Inventory;
 using Sprint2_Attempt3.Sounds;
 using Sprint2_Attempt3.Player.LinkStates;
 using Sprint2_Attempt3.Player;
+using System.Diagnostics;
+using System;
+using Sprint2_Attempt3.Dungeon.Rooms;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -116,9 +119,7 @@ namespace Sprint2_Attempt3.Collision
             } 
 
             else{
-               
-              
-                TransitionHandler.Instance.Door = door;
+                PanningTransitionHandler.Instance.Door = door;
                 link.Items.Clear();
                 if (door is NorthDoor)
                 {
@@ -163,19 +164,13 @@ namespace Sprint2_Attempt3.Collision
                 }
                 else if (door is StairEntrance) 
                 {
-                    SoundFactory.PlaySound(SoundFactory.Instance.stairs);
-                    SoundFactory.PlaySound(SoundFactory.Instance.stairs);
                     game.room.SwitchToLowerRoom();
                     link.State = new DownIdleLinkState((Link)link);
-                    
-                    //I moved the below link position to room16transitionhandler and it works there, I think it's because link is colliding with the walls of room17 with the new pos
-                    //link.Position = new Vector2(150, Globals.YOffset + 30);
                     changedRooms = true;
-                    
+
                 }
             }
             return changedRooms;
         }
-        
     }
 }

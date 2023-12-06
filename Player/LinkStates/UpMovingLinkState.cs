@@ -3,7 +3,7 @@ using Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates;
 using Microsoft.Xna.Framework;
 namespace Sprint2_Attempt3.Player.LinkStates
 {
-    public class UpMovingLinkState : ILinkState
+    public class UpMovingLinkState : LinkStateAbstract
     {
         private Link link;
 
@@ -12,71 +12,63 @@ namespace Sprint2_Attempt3.Player.LinkStates
             this.link = link;
             link.Sprite = LinkSpriteFactory.Instance.CreateUpMovingLinkSprite();
         }
-        public void BecomeIdle()
+        public override void BecomeIdle()
         {
             link.State = new UpIdleLinkState(link);
         }
-        public void MoveUp()
-        {
-        }
-        public void MoveDown()
+        public override void MoveDown()
         {
             link.State = new DownMovingLinkState(link);
         }
-        public void MoveLeft()
+        public override void MoveLeft()
         {
             link.State = new LeftMovingLinkState(link);
         }
-        public void MoveRight()
+        public override void MoveRight()
         {
             link.State = new RightMovingLinkState(link);
         }
-        public void GetDamaged()
-        {
-
-        }
-        public void Attack()
+        public override void Attack()
         {
             link.State = new UpAttackLinkState(link);
         }
-        public void Update()
+        public override void Update()
         {
             link.Position = new Vector2(link.Position.X, link.Position.Y - 4);
-            //link.Position.Y -= 4;
         }
-        public void UseBomb()
+        public override void UseBomb()
         {
             link.State = new UpUseItemState(link, new UpBomb(link));
         }
-        public void UseArrow()
+        public override void UseArrow()
         {
             link.State = new UpUseItemState(link, new UpArrow(link));
         }
-        public void UseBoomerang()
+        public override void UseBoomerang()
         {
             link.State = new UpUseItemState(link, new UpBoomerang(link));
         }
-        public void UseBlueBoomerang()
+        public override void UseBlueBoomerang()
         {
             link.State = new UpUseItemState(link, new UpBlueBoomerang(link));
         }
-        public void UseBlueArrow()
+        public override void UseBlueArrow()
         {
             link.State = new UpUseItemState(link, new UpBlueArrow(link));
         }
-        public void UseFire()
+        public override void UseFire()
         {
             link.State = new UpUseItemState(link, new UpFire(link));
         }
-        public void Killed()
+        public override void Killed()
         {
             link.State = new KilledLinkState(link);
         }
-        public void CollectBow()
+        public override void CollectBow()
         {
             link.State = new CollectBowState(link);
         }
-        public void CollectTriForce()
+        public override void CollectTriForce()
         {
             link.State = new CollectTriForceState(link);
         }

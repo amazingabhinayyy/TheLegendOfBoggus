@@ -27,7 +27,7 @@ namespace Sprint2_Attempt3.Enemy.Keese
                 new Vector2(0, 0),
                 Globals.scale,
                 SpriteEffects.None,
-                0f
+                0.1f
             );
         }
     }

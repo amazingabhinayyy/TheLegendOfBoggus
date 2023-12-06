@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Sprint2_Attempt3.CommandClasses;
 using Sprint2_Attempt3.Screens;
+using Sprint2_Attempt3.Sounds;
 
 namespace Sprint2_Attempt3
 {
@@ -38,19 +39,19 @@ namespace Sprint2_Attempt3
             commandMapping.Add(Keys.Down, new MoveLinkDown(game1));
             commandMapping.Add(Keys.Left, new MoveLinkLeft(game1));
             commandMapping.Add(Keys.Right, new MoveLinkRight(game1));
-            commandMapping.Add(Keys.Z, new SetAttackLinkCommand(game1));
+            commandMapping.Add(Keys.M, new SetAttackLinkCommand(game1));
             commandMapping.Add(Keys.None, new SetIdleLinkCommand(game1));
             
             //other controls
             commandMapping.Add(Keys.Q, new Quit(game1));
-            commandMapping.Add(Keys.R, new Reset(game1));
+            commandMapping.Add(Keys.R, new Reset(game1, game1.room));
             commandMapping.Add(Keys.Escape, new Pause(game1));
             commandMapping.Add(Keys.Space, new ToggleItemMenu(game1));
             
             //Item Menu
-            commandMapping.Add(Keys.O, new UseAItem());
-            commandMapping.Add(Keys.P, new UseBItem());
-            commandMapping.Add(Keys.V, new SetAItem());
+            commandMapping.Add(Keys.P, new UseAItem());
+            commandMapping.Add(Keys.O, new UseBItem());
+            commandMapping.Add(Keys.N, new SetAItem());
             commandMapping.Add(Keys.B, new SetBItem());
             commandMapping.Add(Keys.U, new ShiftItemSelectorUp());
             commandMapping.Add(Keys.J, new ShiftItemSelectorDown());
@@ -67,6 +68,10 @@ namespace Sprint2_Attempt3
             moveKeyTime.Add(Keys.Right, 0);
 
             moveKeys = moveKeyTime.Keys.ToList();
+
+            //testing Keys
+            commandMapping.Add(Keys.E, new IncreaseKeyCommand(game1));
+            commandMapping.Add(Keys.T, new IncreaseHealthCommand(game1));
         }
 
         public void Update(GameTime gameTime)
@@ -146,8 +151,11 @@ namespace Sprint2_Attempt3
             {
                 if(pressedKeys.Contains(Keys.Enter))
                 {
+                    SoundFactory.PlaySound(SoundFactory.Instance.text);
+                    SoundFactory.Instance.titleScreenMusic.Pause();
                     game1.gameState = Game1.GameState.chooseFile;
                     game1.screenSprite = ScreenSpriteFactory.Instance.CreateChooseFileScreen();
+                    SoundFactory.Instance.backgroundMusic.Play();
                 }
             }
         }
