@@ -23,14 +23,10 @@ namespace Sprint2_Attempt3.Collision
         {
             Rectangle linkRectangle = link.GetHitBox();
             bool ChangedRooms = false;
-            if(obj is Target)
-            {
-                bool why = false;
-            }
             Rectangle collisionRectangle = obj.GetHitBox();
-            if(obj is SpikeTrap || obj is Hand)
+            if(obj is SpikeTrap || obj is HandCreator)
             {
-                TripwireHandler.HandleTripwire((IEnemy)obj, link);
+                TripwireHandler.HandleTripwire(obj, link);
             }
             if (collisionRectangle.Intersects(linkRectangle))
             {
