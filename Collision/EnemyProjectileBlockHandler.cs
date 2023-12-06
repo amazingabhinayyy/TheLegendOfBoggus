@@ -16,7 +16,7 @@ namespace Sprint2_Attempt3.Collision
         {
             if (projectile is GoriyaBoomerang&&block is IWall)
             {
-                a((GoriyaBoomerang)projectile).ReverseBoomerang();
+                ((GoriyaBoomerang)projectile).ReverseBoomerang();
             }
             if (projectile is AquamentusFireball)
             {
