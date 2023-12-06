@@ -14,6 +14,7 @@ namespace Sprint2_Attempt3.Dungeon
         protected Rectangle position;
         private Rectangle sourceRectangle = new Rectangle(0, 0, 15, 15);
         private TriggerSquareSprite sprite;
+        private bool trigger;
         public TriggerSquare(int x, int y)
         {
             position = new Rectangle(x, y, 45, 45);
@@ -25,6 +26,19 @@ namespace Sprint2_Attempt3.Dungeon
             return position;
         }
 
+        public void Start() 
+        {
+            trigger = true;
+        }
+        public bool isTriggered()
+        {
+            return trigger;
+        }
+
+        public void End()
+        {
+            trigger = false;
+        }
         public void Update()
         {
         }

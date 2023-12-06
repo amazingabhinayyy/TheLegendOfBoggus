@@ -1,5 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Sprint2_Attempt3;
 using Sprint2_Attempt3.Blocks;
+using Sprint2_Attempt3.Dungeon.Doors;
+using Sprint2_Attempt3.Dungeon;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Enemy.Target;
@@ -15,71 +19,23 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         private int counter;
         private int score;
         bool finish;
+        private ScoreKeeper scoreKeeper;
+        private TriggerSquare trigger = new TriggerSquare(378, 520);
+        MinigameRoomHelper minigameRoomHelper;
+        private bool firstTime;
         public MinigameRoom(Game1 game1) : base(game1, 18) 
         {
             SoundFactory.Instance.backgroundMusic.Pause();
             SoundFactory.Instance.undertaleMusic.Play();
-            counter = 0;
+            counter = 900;
+            score = 0;
+            scoreKeeper = new ScoreKeeper(score, counter);
             finish = false;
-            Target targetTopRight1 = new Target(105, 275, true);
-            Target targetTopRight2 = new Target(190, 275, true);
-            Target targetTopRight3 = new Target(280, 275, true);
-            Target targetTopRight4 = new Target(370, 275, true);
-            Target targetTopRight5 = new Target(460, 275, true);
-            Target targetTopRight6 = new Target(550, 275, true);
-            Target targetMiddleLeft1 = new Target(155, 340, false);
-            Target targetMiddleLeft2 = new Target(245, 340, false);
-            Target targetMiddleLeft3 = new Target(335, 340, false);
-            Target targetMiddleLeft4 = new Target(425, 340, false);
-            Target targetMiddleLeft5 = new Target(515, 340, false);
-            Target targetMiddleLeft6 = new Target(605, 340, false);
-            Target targetLowerRight1 = new Target(105, 405, true);
-            Target targetLowerRight2 = new Target(190, 405, true);
-            Target targetLowerRight3 = new Target(280, 405, true);
-            Target targetLowerRight4 = new Target(370, 405, true);
-            Target targetLowerRight5 = new Target(460, 405, true);
-            Target targetLowerRight6 = new Target(550, 405, true);
-            TriggerSquare trigger = new TriggerSquare(378, 520);
-
-            enemies = new List<IEnemy>();
-            gameObjectLists[roomNumber].Add(targetTopRight1);
-            gameObjectLists[roomNumber].Add(targetTopRight2);
-            gameObjectLists[roomNumber].Add(targetTopRight3);
-            gameObjectLists[roomNumber].Add(targetTopRight4);
-            gameObjectLists[roomNumber].Add(targetTopRight5);
-            gameObjectLists[roomNumber].Add(targetTopRight6);
-            gameObjectLists[roomNumber].Add(targetMiddleLeft1);
-            gameObjectLists[roomNumber].Add(targetMiddleLeft2);
-            gameObjectLists[roomNumber].Add(targetMiddleLeft3);
-            gameObjectLists[roomNumber].Add(targetMiddleLeft4);
-            gameObjectLists[roomNumber].Add(targetMiddleLeft5);
-            gameObjectLists[roomNumber].Add(targetMiddleLeft6);
-            gameObjectLists[roomNumber].Add(targetLowerRight1);
-            gameObjectLists[roomNumber].Add(targetLowerRight2);
-            gameObjectLists[roomNumber].Add(targetLowerRight3);
-            gameObjectLists[roomNumber].Add(targetLowerRight4);
-            gameObjectLists[roomNumber].Add(targetLowerRight5);
-            gameObjectLists[roomNumber].Add(targetLowerRight6);
+            minigameRoomHelper = new MinigameRoomHelper(gameObjectLists, roomNumber);
             gameObjectLists[roomNumber].Add(trigger);
-
-            foreach (IGameObject obj in gameObjectLists[roomNumber])
-            {
-                if (obj is IEnemy)
-                {
-                    enemies.Add((IEnemy)obj);
-                }
-            }
+            firstTime = true;
         }
-        private static Rectangle GetCount(char i)
-        {
-            Rectangle rectangle = new Rectangle(271 + ((i - 48) * 9), 131, 8, 8);
-            if (i == ' ') { rectangle = new Rectangle(); }
-            return rectangle;
-        }
-        public void drawNumber()
-        {
-            Rectangle sourceRectangle = GetCount('1');
-        }
+        
         public override void SwitchToSouthRoom()
         {
             for (int i = 0; i < gameObjectLists[roomNumber].Count; i++)
@@ -90,6 +46,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                     ((IEnemy)obj).Kill();
                 }
             }
+            trigger.End();
             TransitionHandler.Instance.Start = true;
             TransitionHandler.Instance.Transition(this, new Room2(game1));
             SoundFactory.Instance.undertaleMusic.Pause();
@@ -103,8 +60,17 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                 {
                     if (!game1.deathAnimationActive)
                         collisionManager.Update();
-                    int check = gameObjectLists[roomNumber].Count;
                     score = 0;
+                    if (trigger.isTriggered() && firstTime)
+                    {
+                        minigameRoomHelper.startGame();
+                        firstTime = false;
+                    }
+                    else if(trigger.isTriggered()) 
+                    {
+                        counter--;
+                    }
+                    scoreKeeper.SetCounter(counter);
                     for (int i = 0; i < gameObjectLists[roomNumber].Count; i++)
                     {
                         IGameObject obj = gameObjectLists[roomNumber][i];
@@ -116,10 +82,11 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                             }
                             else
                             {
-                                if (counter > 1000)
+                                if (counter < 0)
                                 {
                                     ((IEnemy)obj).Kill();
                                     finish = true;
+                                    firstTime= true;
                                     SoundFactory.PlaySound(SoundFactory.Instance.rickRoll);
                                 }
                             }
@@ -136,13 +103,41 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
                         else if (obj is IBlock)
                             ((IBlock)obj).Update();
                     }
-                    spawned = true;
+                    if(trigger.isTriggered())
+                        spawned = true;
                     game1.link.Update();
                     RoomConditionCheck();
                 }
-                counter++;
             }
             base.Update();
+        }
+        public override void Draw(SpriteBatch spriteBatch, Color color)
+        {
+            if (TransitionHandler.Instance.Start)
+            {
+                TransitionHandler.Instance.Draw(spriteBatch);
+            }
+            else
+            {
+                room.Draw(spriteBatch, color);
+                scoreKeeper.Draw(spriteBatch, 45, 250);
+                foreach (IGameObject obj in gameObjectLists[roomNumber])
+                {
+                    if (obj is IEnemy && color.Equals(Color.White))
+                        ((IEnemy)obj).Draw(spriteBatch);
+                    else if (obj is IItem && color.Equals(Color.White))
+                        ((IItem)obj).Draw(spriteBatch);
+                    else if (obj is IBlock)
+                        ((IBlock)obj).Draw(spriteBatch, color);
+                    else if (obj is IDoor)
+                        ((IDoor)obj).Draw(spriteBatch, color);
+                    else if (obj is TriggerSquare)
+                        ((TriggerSquare)obj).Draw(spriteBatch);
+
+                }
+
+                game1.link.Draw(spriteBatch, Color.White);
+            }
         }
     }
 }

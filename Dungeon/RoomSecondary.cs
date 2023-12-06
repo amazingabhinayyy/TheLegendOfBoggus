@@ -190,7 +190,7 @@ namespace Sprint2_Attempt3.Dungeon
                 RoomConditionCheck();
             }
         }
-        public void Draw(SpriteBatch spriteBatch, Color color) {
+        public virtual void Draw(SpriteBatch spriteBatch, Color color) {
             if (TransitionHandler.Instance.Start)
             {
                 TransitionHandler.Instance.Draw(spriteBatch);
