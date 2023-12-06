@@ -201,6 +201,10 @@ namespace Sprint2_Attempt3.Dungeon
             {
                 block = new BlackFloor(Globals.FloorGrid[position]);
             }
+            else if (Block.Equals("BlackFloorBig"))
+            {
+                block = new BlackFloor(Globals.FloorGrid[position]);
+            }
             else if (Block.Equals("OldMan"))
             {
                 block = new OldMan(Globals.FloorGrid[position]);

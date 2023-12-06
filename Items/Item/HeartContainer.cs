@@ -24,7 +24,9 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         }
         public override void Collect()
         {
-            base.Collect();
+            InventoryController.heartContainers++;
+            exists = false;
+            CollisionManager.GameObjectList.Remove(this);
             SoundFactory.PlaySound(SoundFactory.Instance.getItem);
         }
         public override void Update()

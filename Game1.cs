@@ -11,6 +11,7 @@ using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Inventory;
 using Sprint2_Attempt3.Sounds;
 using Sprint2_Attempt3.Screens;
+using Sprint2_Attempt3.Dungeon.Rooms;
 
 namespace Sprint2_Attempt3
 {

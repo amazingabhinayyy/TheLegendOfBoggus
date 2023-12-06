@@ -108,7 +108,7 @@ namespace Sprint2_Attempt3.Dungeon
         public static IRoom LoadRooms(Game1 game1)
         {
             roomLayout = new IRoom[11, 12];
-            rooms = new IRoom[Globals.NumberOfRooms] {new Room1(game1), new Room2(game1), new Room3(game1), new Room4(game1), new Room5(game1), new Room6(game1), new Room7(game1), new Room8(game1), new Room9(game1), new Room10(game1), new Room11(game1), new Room12(game1), new Room13(game1), new Room14(game1), new Room15(game1), new Room16(game1), new Room17(game1), new Room18(game1), new MinigameRoom(game1), new Room19(game1)};
+            rooms = new IRoom[Globals.NumberOfRooms] {new Room1(game1), new Room2(game1), new Room3(game1), new Room4(game1), new Room5(game1), new Room6(game1), new Room7(game1), new Room8(game1), new Room9(game1), new Room10(game1), new Room11(game1), new Room12(game1), new Room13(game1), new Room14(game1), new Room15(game1), new Room16(game1), new Room17(game1), new Room18(game1), new MinigameRoom(game1), new Room19(game1) };
             currentRoomNumber = rooms[0].RoomNumber;
             CollisionManager.GameObjectList = rooms[0].gameObjectList;
             return rooms[0];

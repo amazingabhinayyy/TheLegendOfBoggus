@@ -31,7 +31,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         public override void SwitchToNorthRoom()
         {
             mapY -= 1;
-            locationMapTrackerRec.Y -= positionMapYUpdaterValue;
+            //locationMapTrackerRec.Y -= positionMapYUpdaterValue;
             SwitchRoom(mapX, mapY, PanningTransitionHandler.Instance);
 
         }

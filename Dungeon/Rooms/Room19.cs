@@ -18,7 +18,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         public Room19(Game1 game1) : base(game1, 19) 
         {
             roomLayout[8, 6] = this;
-            doorOpen = false;
+            doorOpen = true;
             foreach (IGameObject obj in gameObjectList)
             {
               
