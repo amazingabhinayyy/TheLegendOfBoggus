@@ -10,12 +10,12 @@ using Sprint2_Attempt3.Blocks;
 
 namespace Sprint2_Attempt3.Blocks.BlockSprites
 {
-    public class BlackFloor : BlockSecondary
+    public class BlackFloorBig : BlockSecondary
     {
         private Rectangle BlackFloorScr = new Rectangle(1, 18, 14, 14);
-        public BlackFloor(Rectangle Position)
+        public BlackFloorBig(Rectangle Position)
         {
-            position = Position;
+            position = new Rectangle(Position.X, Position.Y, 599, 352);
             sourceRectangle = BlackFloorScr;
             isWalkable = true;
         }
