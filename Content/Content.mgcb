@@ -55,6 +55,24 @@
 /processorParam:TextureFormat=Color
 /build:Bosses2.png
 
+#begin Bosses2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Bosses2.png
+
+#begin BowserRoar.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:BowserRoar.wav
+
 #begin characterGenerationSprite.png
 /importer:TextureImporter
 /processor:TextureProcessor

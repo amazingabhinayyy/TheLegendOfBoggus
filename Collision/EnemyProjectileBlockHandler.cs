@@ -24,6 +24,12 @@ namespace Sprint2_Attempt3.Collision
 
                 ((AquamentusFireball)projectile).Disappear();
             }
+            if (projectile is GanonFireball)
+            {
+                CollisionManager.GameObjectList.Remove(projectile);
+
+                ((GanonFireball)projectile).Disappear();
+            }
         }
     }
 }

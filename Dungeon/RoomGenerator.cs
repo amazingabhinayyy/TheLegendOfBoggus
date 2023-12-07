@@ -9,6 +9,7 @@ using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Aquamentus;
 using Sprint2_Attempt3.Enemy.Dodongo;
 using Sprint2_Attempt3.Enemy.Gel;
+using Sprint2_Attempt3.Enemy.Ganon;
 using Sprint2_Attempt3.Enemy.Goriya;
 using Sprint2_Attempt3.Enemy.Hand;
 using Sprint2_Attempt3.Enemy.Keese;
@@ -33,7 +34,7 @@ namespace Sprint2_Attempt3.Dungeon
         private static List<String> fileNames = new List<String>(Globals.NumberOfRooms);
         private static Dictionary<String, Func<int, int, IEnemy>> AddEnemyFunctions = new Dictionary<string, Func<int, int, IEnemy>> {
         };
-
+        private Game1 game1;
         public static RoomGenerator Instance
         {
             get
@@ -53,6 +54,10 @@ namespace Sprint2_Attempt3.Dungeon
         public void LoadNewFile(String newFile)
         {
             fileNames.Add(newFile);
+        }
+        public void setGame1(Game1 game1)
+        {
+            this.game1 = game1;
         }
 
         public List<IGameObject> LoadFile(int fileNumber) {
@@ -152,6 +157,10 @@ namespace Sprint2_Attempt3.Dungeon
             {
                 enemy = new Zol(x, y);
             }
+            else if (Enemy.Equals("Ganon"))
+            {
+                enemy = new Ganon(x, y,game1);
+            }
             return enemy;
         }
         private static IBlock GetBlock(String Block, int position)
@@ -203,7 +212,7 @@ namespace Sprint2_Attempt3.Dungeon
             }
             else if (Block.Equals("BlackFloorBig"))
             {
-                block = new BlackFloor(Globals.FloorGrid[position]);
+                block = new BlackFloorBig(Globals.FloorGrid[position]);
             }
             else if (Block.Equals("OldMan"))
             {

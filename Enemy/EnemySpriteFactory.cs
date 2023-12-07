@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Enemy.Rope;
 using Sprint2_Attempt3.Enemy.Gel;
+using Sprint2_Attempt3.Enemy.Ganon;
 using Sprint2_Attempt3.Enemy.Zol;
 using Sprint2_Attempt3.Enemy.SpikeTrap;
 using Sprint2_Attempt3.Enemy.Dodongo;
@@ -150,6 +151,11 @@ namespace Sprint2_Attempt3.Enemy
         public IEnemySprite CreateTargetSprite()
         {
             return new TargetSprite(TargetTexture);
+        }
+
+        public IEnemySprite CreateVisibleGanonSprite()
+        {
+            return new VisibleGanonSprite(GanonTexture);
         }
     }
 }

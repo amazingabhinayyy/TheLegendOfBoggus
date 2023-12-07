@@ -1,0 +1,76 @@
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Sprint2_Attempt3;
+using System;
+using Sprint2_Attempt3.Enemy.Projectile;
+using Sprint2_Attempt3.Enemy.Projectile.GanonProjectiles;
+using Sprint2_Attempt3.Enemy.Ganon;
+using Sprint2_Attempt3.Sounds;
+using Sprint2_Attempt3.Player.Interfaces;
+using System.Collections.Generic;
+
+namespace Sprint2_Attempt3.Enemy.Ganon
+{
+    internal class Ganon : EnemySecondary
+    {
+        private float ganonScale = 0.34f;
+        public float GanonScale { get { return ganonScale; } }
+        public List<IEnemyProjectile> Fireball { get; set; }
+        public Vector2 FireballPosition { get; set; }
+        private Game1 game1;
+        public Game1 Game1 { get { return game1; } }
+
+        private bool startOfBattle;
+        public bool StartOfBattle { get { return startOfBattle; } set { startOfBattle = value; } }
+        
+        public Ganon(int x, int y, Game1 game1)
+        {
+            this.X = x;
+            this.Y = y;
+            FireballPosition = new Vector2(x, y);
+            Fireball = new List<IEnemyProjectile>();
+            this.health = 5;
+            this.game1 = game1;
+            startOfBattle = true;
+            
+        }
+
+        public override void Generate() {
+            SoundFactory.PlaySound(SoundFactory.Instance.bowserRoar);
+            State = new AttackedVisibleState(this);
+        }
+
+        public override void Update()
+        {
+
+            foreach(IEnemyProjectile fireball in Fireball)
+            {
+                fireball.Update();
+            }
+       
+            
+            if(invinciblityTimer > 0) 
+            {
+                invinciblityTimer--;
+            }
+            State.Update();
+        }
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            State.Draw(spriteBatch);
+            foreach (IEnemyProjectile fireball in Fireball)
+            {
+                fireball.Draw(spriteBatch);
+            }
+        }
+
+        public override void MoveUp() { }
+        public override void MoveDown() { }
+        public override void MoveLeft() {}
+        public override void MoveRight(){}
+
+        public override void DropItem() { }
+
+        public override void Stun(){}
+    }
+}

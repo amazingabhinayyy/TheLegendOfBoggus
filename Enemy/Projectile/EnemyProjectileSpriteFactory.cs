@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles;
 using Sprint2_Attempt3.Enemy.Projectile.GoriyaProjectiles;
+using Sprint2_Attempt3.Enemy.Projectile.GanonProjectiles;
 
 namespace Sprint2_Attempt3.Enemy.Projectile
 {
@@ -10,6 +11,7 @@ namespace Sprint2_Attempt3.Enemy.Projectile
         private static Texture2D EnemyTexture;
         private static Texture2D BossEnemyTexture;
         private static Texture2D GenerationTexture;
+        private static Texture2D GanonEnemyTexture;
 
         private static EnemyProjectileSpriteFactory instance = new EnemyProjectileSpriteFactory();
 
@@ -29,6 +31,7 @@ namespace Sprint2_Attempt3.Enemy.Projectile
         {
             EnemyTexture = content.Load<Texture2D>("Enemies");
             BossEnemyTexture = content.Load<Texture2D>("Bosses");
+            GanonEnemyTexture = content.Load<Texture2D>("Bosses2");
             GenerationTexture = content.Load<Texture2D>("characterGenerationSprite");
         }
 
@@ -39,6 +42,11 @@ namespace Sprint2_Attempt3.Enemy.Projectile
         public IEnemyProjectileSprite MovingFireball()
         {
             return new AquamentusFireballSprite(BossEnemyTexture);
+        }
+
+        public IEnemyProjectileSprite MovingGanonFireball()
+        {
+            return new GanonFireballSprite(BossEnemyTexture);
         }
 
 

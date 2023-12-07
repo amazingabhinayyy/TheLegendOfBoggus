@@ -30,6 +30,7 @@ namespace Sprint2_Attempt3.Sounds
         public SoundEffect rickRoll { get; set; }
         public SoundEffect ping { get; set; }
         public SoundEffect undertale { get; set; }
+        public SoundEffect bowserRoar { get; set; }
 
         private SoundEffectInstance backgroundMusicInstance;
         private SoundEffectInstance undertaleMusicInstance;
@@ -83,6 +84,7 @@ namespace Sprint2_Attempt3.Sounds
             rickRoll = content.Load<SoundEffect>("rickRoll");
             ping = content.Load<SoundEffect>("ping");
             undertale = content.Load<SoundEffect>("Its_Showtime");
+            bowserRoar = content.Load<SoundEffect>("BowserRoar");
 
             SoundEffect backgroundMusic = content.Load<SoundEffect>("Underworld");
             backgroundMusicInstance = backgroundMusic.CreateInstance();

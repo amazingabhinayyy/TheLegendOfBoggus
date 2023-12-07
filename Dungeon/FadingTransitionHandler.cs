@@ -128,7 +128,6 @@ namespace Sprint2_Attempt3.Dungeon
         public void Update()
         {
             GameTime gameTime = game1.Gametime;
-
             
             double time = gameTime.ElapsedGameTime.TotalSeconds;
             fadeDelay -= time;
