@@ -96,7 +96,6 @@ namespace Sprint2_Attempt3.Dungeon
                 }
                 foreach (IEnemy enemy in enemyList)
                     enemy.Draw(spriteBatch);
-
                 game1.link.Draw(spriteBatch, Color.White);
             }
         }

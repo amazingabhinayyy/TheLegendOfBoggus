@@ -82,18 +82,9 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         public override void SwitchToWestRoom()
         {
             firstTime = true;
-            mapY -= 1;
+            mapX -= 1;
             SwitchRoom(mapX, mapY, PanningTransitionHandler.Instance);
         }
 
     }
 }
-/*Enemy,Hand,120,132,
-Enemy,Hand,342,243,
-Enemy,Hand,534,312,
-Enemy,Hand,120,321,
-Enemy,Hand,321,231,
-Enemy,Hand,456,187,
-Enemy,Hand,345,276,
-Enemy,Hand,608,157,
-*/
