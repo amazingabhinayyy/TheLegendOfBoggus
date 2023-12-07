@@ -1,11 +1,8 @@
 ﻿using Sprint2_Attempt3.Blocks;
-using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Hand;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Items;
-using Sprint2_Attempt3.Player;
-using System;
 using System.Collections.Generic;
 
 namespace Sprint2_Attempt3.Dungeon.Rooms
@@ -13,7 +10,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
     public class Room12 : RoomSecondary
     {
         HandCreator handCreator;
-        private bool firstTime;
+        public bool firstTime;
         public Room12(Game1 game1) : base(game1, 11) 
         {
             roomLayout[7, 8] = this;
@@ -23,12 +20,7 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         }
         public override void Update()
         {
-            if (FadingTransitionHandler.Instance.Start)
-            {
-                firstTime = true;
-                FadingTransitionHandler.Instance.Update();
-            }
-            else if (!PanningTransitionHandler.Instance.Start)
+            if (!PanningTransitionHandler.Instance.Start)
             {
                 if (firstTime)
                 {
