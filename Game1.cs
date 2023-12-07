@@ -11,6 +11,7 @@ using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.Inventory;
 using Sprint2_Attempt3.Sounds;
 using Sprint2_Attempt3.Screens;
+using Sprint2_Attempt3.Portal;
 using Sprint2_Attempt3.Dungeon.Rooms;
 
 namespace Sprint2_Attempt3
@@ -68,6 +69,7 @@ namespace Sprint2_Attempt3
             SoundFactory.Instance.LoadAllTextures(Content);
             DungeonSpriteFactory.Instance.LoadAllTextures(Content);
             ScreenSpriteFactory.Instance.LoadAllTextures(Content);
+            PortalSpriteFactory.Instance.LoadAllTextures(Content);
             //check if we need start screen
             PanningTransitionHandler.Instance.setGame1(this);
             //update into states later

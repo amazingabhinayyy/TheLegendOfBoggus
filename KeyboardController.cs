@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Sprint2_Attempt3.CommandClasses;
 using Sprint2_Attempt3.Screens;
+using Sprint2_Attempt3.Sounds;
 
 namespace Sprint2_Attempt3
 {
@@ -38,7 +39,7 @@ namespace Sprint2_Attempt3
             commandMapping.Add(Keys.Down, new MoveLinkDown(game1));
             commandMapping.Add(Keys.Left, new MoveLinkLeft(game1));
             commandMapping.Add(Keys.Right, new MoveLinkRight(game1));
-            commandMapping.Add(Keys.Z, new SetAttackLinkCommand(game1));
+            commandMapping.Add(Keys.M, new SetAttackLinkCommand(game1));
             commandMapping.Add(Keys.None, new SetIdleLinkCommand(game1));
             
             //other controls
@@ -50,8 +51,8 @@ namespace Sprint2_Attempt3
             //Item Menu
             commandMapping.Add(Keys.P, new UseAItem());
             commandMapping.Add(Keys.O, new UseBItem());
-            commandMapping.Add(Keys.B, new SetAItem());
-            commandMapping.Add(Keys.V, new SetBItem());
+            commandMapping.Add(Keys.N, new SetAItem());
+            commandMapping.Add(Keys.B, new SetBItem());
             commandMapping.Add(Keys.U, new ShiftItemSelectorUp());
             commandMapping.Add(Keys.J, new ShiftItemSelectorDown());
             commandMapping.Add(Keys.H, new ShiftItemSelectorLeft());
@@ -150,8 +151,10 @@ namespace Sprint2_Attempt3
             {
                 if(pressedKeys.Contains(Keys.Enter))
                 {
+                    SoundFactory.Instance.titleScreenMusic.Pause();
                     game1.gameState = Game1.GameState.chooseFile;
                     game1.screenSprite = ScreenSpriteFactory.Instance.CreateChooseFileScreen();
+                    SoundFactory.Instance.backgroundMusic.Play();
                 }
             }
         }

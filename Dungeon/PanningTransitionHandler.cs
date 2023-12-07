@@ -18,6 +18,7 @@ using Sprint2_Attempt3.Inventory;
 using Sprint2_Attempt3.Dungeon.Rooms;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint2_Attempt3.Items;
+using Sprint2_Attempt3.Portal;
 using Sprint2_Attempt3.Collision;
 
 
@@ -116,7 +117,9 @@ namespace Sprint2_Attempt3.Dungeon
                     if (obj is IBlock)
                         ((IBlock)obj).Draw(spriteBatch, change);
                     else if (obj is IDoor)
-                        ((IDoor)obj).Draw(spriteBatch, change);
+                         ((IDoor)obj).Draw(spriteBatch,change);
+                    else if (obj is IPortal) /////
+                        ((IPortal)obj).Draw(spriteBatch, change);
                 }
 
                 dRoom = (DungeonRoom)nextRoom.room;
@@ -128,6 +131,9 @@ namespace Sprint2_Attempt3.Dungeon
                         ((IBlock)obj).Draw(spriteBatch, change, initialPos);
                     else if (obj is IDoor)
                         ((IDoor)obj).Draw(spriteBatch, change, initialPos);
+                    else if (obj is IPortal)
+                        ((IPortal)obj).Draw(spriteBatch, change, initialPos);
+
 
 
                 }

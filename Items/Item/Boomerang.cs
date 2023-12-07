@@ -27,7 +27,7 @@ namespace Sprint2_Attempt3.Items.ItemClasses
         }
         public override void Update()
         {
-            if (count == 0)
+            if (count <= 0)
             {
                 sprite = ItemSpriteFactory.Instance.CreateBoomerangSprite();
                 spawned = true;

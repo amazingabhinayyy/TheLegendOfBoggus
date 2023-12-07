@@ -8,6 +8,7 @@ using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Keese;
 using Sprint2_Attempt3.Inventory;
 using Sprint2_Attempt3.Items;
+using Sprint2_Attempt3.Portal;
 using Sprint2_Attempt3.WallBlocks;
 using System;
 using System.Collections.Generic;
@@ -16,9 +17,6 @@ namespace Sprint2_Attempt3.Dungeon
 {
     public abstract class RoomSecondary : IRoom
     {
-        public static Rectangle locationMapTrackerRec = new Rectangle(132, 670, 9, 9);
-        protected const int positionMapXUpdaterValue = 26;
-        protected const int positionMapYUpdaterValue = 26;
         private static IRoom[] rooms = new IRoom[Globals.NumberOfRooms];
         public List<IGameObject> gameObjectList { get; protected set; }
         protected static IRoom[,] roomLayout;
@@ -44,7 +42,6 @@ namespace Sprint2_Attempt3.Dungeon
             gameObjectList.Add(this.game1.link);
             if (roomNum != 15)
                 gameObjectList.AddRange(IWall.WallBlocks);
-
             collisionManager = new CollisionManager(game1, game1.link); 
         }
         public virtual void Update() {
@@ -66,6 +63,8 @@ namespace Sprint2_Attempt3.Dungeon
                         ((IItem)obj).Update();
                     else if (obj is IBlock)
                         ((IBlock)obj).Update();
+                    else if (obj is IPortal)
+                        ((IPortal)obj).Update();
                 }
                 spawned = true;
                 game1.link.Update();
@@ -92,6 +91,8 @@ namespace Sprint2_Attempt3.Dungeon
                         ((IDoor)obj).Draw(spriteBatch, color);
                     else if (obj is IEnemy && color.Equals(Color.White))
                         enemyList.Add((IEnemy)obj);
+                    else if (obj is IPortal)
+                        ((IPortal)obj).Draw(spriteBatch, color);
                 }
                 foreach (IEnemy enemy in enemyList)
                     enemy.Draw(spriteBatch);

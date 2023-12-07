@@ -35,10 +35,11 @@ namespace Sprint2_Attempt3.Items.ItemClasses
 
         public override void Update()
         {
-            if (this.count == 0)
+            if (this.count <= 0)
             {
                 sprite = ItemSpriteFactory.Instance.CreateFairySprite();
                 spawned = true;
+                count = 0;
             }
             if (spawned)
             {

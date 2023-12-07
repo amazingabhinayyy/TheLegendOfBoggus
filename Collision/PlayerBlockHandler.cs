@@ -9,6 +9,9 @@ using Sprint2_Attempt3.Inventory;
 using Sprint2_Attempt3.Sounds;
 using Sprint2_Attempt3.Player.LinkStates;
 using Sprint2_Attempt3.Player;
+using System.Diagnostics;
+using System;
+using Sprint2_Attempt3.Dungeon.Rooms;
 
 namespace Sprint2_Attempt3.Collision
 {
@@ -116,8 +119,6 @@ namespace Sprint2_Attempt3.Collision
             } 
 
             else{
-               
-              
                 PanningTransitionHandler.Instance.Door = door;
                 link.Items.Clear();
                 if (door is NorthDoor)
@@ -171,6 +172,5 @@ namespace Sprint2_Attempt3.Collision
             }
             return changedRooms;
         }
-        
     }
 }
