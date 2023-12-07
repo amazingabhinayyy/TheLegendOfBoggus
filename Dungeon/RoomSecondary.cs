@@ -28,6 +28,7 @@ namespace Sprint2_Attempt3.Dungeon
         protected Boolean spawned = false;
         public static bool ClockUsed { get; set; } = false;
         public IDungeonRoom room { get; protected set; }
+
         protected Game1 game1;
         protected static CollisionManager collisionManager;
         public RoomSecondary(Game1 game, int roomNum)
