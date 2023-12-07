@@ -8,6 +8,7 @@ using Sprint2_Attempt3.Enemy.Ganon;
 using Sprint2_Attempt3.Sounds;
 using Sprint2_Attempt3.Player.Interfaces;
 using System.Collections.Generic;
+using Sprint2_Attempt3.Inventory;
 
 namespace Sprint2_Attempt3.Enemy.Ganon
 {
@@ -22,7 +23,9 @@ namespace Sprint2_Attempt3.Enemy.Ganon
 
         private bool startOfBattle;
         public bool StartOfBattle { get { return startOfBattle; } set { startOfBattle = value; } }
-        
+        public float Health { get { return this.health; } }
+
+        private Rectangle sourceRectangle = new Rectangle(121, 368, 97, 89);
         public Ganon(int x, int y, Game1 game1)
         {
             this.X = x;
@@ -64,6 +67,21 @@ namespace Sprint2_Attempt3.Enemy.Ganon
             }
         }
 
+        public override void GetDamaged(float damage)
+        {
+            if (State is not AttackedVisibleState)
+            {
+                this.ChangeAttackedStatus();
+                health -= damage;
+                SoundFactory.PlaySound(SoundFactory.Instance.enemyHit);
+
+                if (health <= 0)
+                {
+                    Kill();
+                }
+            }
+        }
+
         public override void MoveUp() { }
         public override void MoveDown() { }
         public override void MoveLeft() {}
@@ -72,5 +90,15 @@ namespace Sprint2_Attempt3.Enemy.Ganon
         public override void DropItem() { }
 
         public override void Stun(){}
+
+        public override Rectangle GetHitBox()
+        {
+            if (!death)
+            {
+                return new Rectangle(this.Position.X, this.Position.Y, (int)(sourceRectangle.Width * Globals.scale * this.GanonScale), (int)(sourceRectangle.Height * Globals.scale * this.GanonScale));
+                
+            }
+            return new Rectangle(0, 0, 0, 0);
+        }
     }
 }

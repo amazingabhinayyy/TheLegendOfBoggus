@@ -46,7 +46,7 @@ namespace Sprint2_Attempt3.Enemy.Projectile
 
         public IEnemyProjectileSprite MovingGanonFireball()
         {
-            return new GanonFireballSprite(BossEnemyTexture);
+            return new GanonFireballSprite(GanonEnemyTexture);
         }
 
 

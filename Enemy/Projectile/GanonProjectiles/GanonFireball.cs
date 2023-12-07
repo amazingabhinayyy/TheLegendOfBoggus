@@ -2,12 +2,13 @@
 using Microsoft.Xna.Framework;
 using System.Net.Http;
 
-namespace Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles
+namespace Sprint2_Attempt3.Enemy.Projectile.GanonProjectiles
 {
     internal class GanonFireball : IEnemyProjectile
     {
         private IEnemyProjectileState state;
-        private Vector2 position2;
+        private float ganonScale = 0.34f;
+        public float GanonScale { get { return ganonScale; } }
         private static Rectangle GanonFireball1 { get { return new Rectangle(16, 194, 23, 27); } }
         private static Rectangle GanonFireball2 { get { return new Rectangle(44, 194, 23, 27); } }
         private static Rectangle GanonFireball3 { get { return new Rectangle(72, 194, 23, 27); } }
@@ -17,12 +18,15 @@ namespace Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles
         public int fireBallWidth { get; } = 23;
         public int fireBallHeight { get; } = 27;
         public int fireballSpeed { get; } = 7;
-        public  int fireballSpriteSwitchSpeed { get; } = 40;
-        public  int fireBallMaxDistance { get; } = 500;
+        public int fireballSpriteSwitchSpeed { get; } = 40;
+ 
+        private Vector2 position2;
         public Vector2 Position2 { get { return position2; } set { position2 = value; } }
-        private int count;
-        private bool fire;
-        public bool Fire { get { return fire; } set { fire = value; } }
+        private Vector2 slope;
+        public Vector2 Slope { get { return slope; } set { position2 = slope; } }
+
+        private GameTime gameTime;
+        public GameTime GameTime { get { return gameTime; } }
 
         public IEnemyProjectileState State
         {
@@ -43,10 +47,12 @@ namespace Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles
             state = new GanonFireballDisappearState(this);
         }
 
-        public GanonFireball(Vector2 fireballPosition)
+        public GanonFireball(Vector2 fireballPosition, Vector2 slope, GameTime gameTime)
         {
             position2 = fireballPosition;
-            fire = false;
+            this.slope = slope;
+            this.gameTime = gameTime;
+            GenerateIdle();
         }
         public void Update()
         {
@@ -57,7 +63,7 @@ namespace Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles
             state.Draw(spriteBatch);
         }
         public Rectangle GetHitBox() {
-            return new Rectangle((int)Position2.X, (int)Position2.Y, fireBallWidth * (int)Globals.scale, fireBallHeight * (int)Globals.scale);
+            return new Rectangle((int)Position2.X, (int)Position2.Y, fireBallWidth * (int)(Globals.scale*ganonScale), fireBallHeight * (int)(Globals.scale* ganonScale));
         }
 
     }

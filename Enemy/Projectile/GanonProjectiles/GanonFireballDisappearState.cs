@@ -2,11 +2,12 @@
 using Microsoft.Xna.Framework;
 using Sprint2_Attempt3.Enemy.Keese;
 using System;
-using Sprint2_Attempt3.Enemy.Aquamentus;
+using Sprint2_Attempt3.Enemy.Ganon;
 using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Collision;
+using Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles;
 
-namespace Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles;
+namespace Sprint2_Attempt3.Enemy.Projectile.GanonProjectiles;
 
 internal class GanonFireballDisappearState : IEnemyProjectileState
 {
@@ -28,7 +29,7 @@ internal class GanonFireballDisappearState : IEnemyProjectileState
     {
         this.GanonFireball = GanonFireball;
         enemyProjectileSpriteFactory = new EnemyProjectileSpriteFactory();
-        sprite = EnemyProjectileSpriteFactory.Instance.MovingFireball();
+        sprite = EnemyProjectileSpriteFactory.Instance.MovingGanonFireball();
         timeSinceLastUpdate = 0;
         spriteIndex = 0;
         currentFrame = 0;
@@ -54,7 +55,7 @@ internal class GanonFireballDisappearState : IEnemyProjectileState
             traveledDistance += change;
             if (traveledDistance >= projDistance)
             {
-                GanonFireball.Fire = false;
+               
             }
         }
         else
@@ -66,6 +67,8 @@ internal class GanonFireballDisappearState : IEnemyProjectileState
     }
     public void Draw(SpriteBatch spriteBatch)
     {
-        
+        //need to go through
+        sprite.Draw(spriteBatch, (int)GanonFireball.Position2.X, (int)GanonFireball.Position2.Y, GanonFireball.GanonFireballs[0]);
+
     }
 }

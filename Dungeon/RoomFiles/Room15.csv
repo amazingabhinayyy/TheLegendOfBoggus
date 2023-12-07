@@ -27,7 +27,7 @@ Block,SideChunk,32,,
 Block,UpChunk,40,,
 Block,SideChunk,45,,
 Item,Triforce,385,265,TRUE
-Door,North,1
+Door,North,0,
 Door,South,0,,
 Door,East,4,,
 Door,West,0,,
