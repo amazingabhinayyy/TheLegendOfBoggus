@@ -25,7 +25,6 @@ namespace Sprint2_Attempt3.Enemy.Ganon
             sourceRectangles = new Rectangle[] { new Rectangle(121, 368, 97, 89), new Rectangle(223, 367, 97, 89), new Rectangle(120, 540, 98, 90), new Rectangle(223, 541, 98, 90), new Rectangle(223, 541, 98, 89),new Rectangle(324, 541, 98, 90) };
            random = new Random();
             elapsedTime = 0;
-            ganon.Position = new Rectangle(ganon.X, ganon.Y, (int)(sourceRectangle.Width * Globals.scale*ganon.GanonScale), (int)(sourceRectangle.Height * Globals.scale * ganon.GanonScale));
 
             if (ganon.StartOfBattle)
             {
@@ -36,11 +35,15 @@ namespace Sprint2_Attempt3.Enemy.Ganon
             {
                 sourceRectangle = sourceRectangles[random.Next(sourceRectangles.Length)];
             }
+            ganon.Invincible = true;
         }
         public void ChangeDirection()
         {
+            ganon.Invincible = false;
             ganon.State = new InvisibleFireballState(ganon);
-           
+            int posX = random.Next(100, 575);
+            int posY = random.Next(Globals.YOffset + 100, 275 + Globals.YOffset);
+            ganon.Position = new Rectangle(posX, posY, (int)(sourceRectangle.Width * Globals.scale * ganon.GanonScale), (int)(sourceRectangle.Height * ganon.GanonScale * Globals.scale));
         }
         public void ChangeAttackedStatus() {
             
@@ -50,7 +53,7 @@ namespace Sprint2_Attempt3.Enemy.Ganon
             GameTime gameTime = ganon.Game1.Gametime;
             double time = gameTime.ElapsedGameTime.TotalSeconds;
             elapsedTime += time;
-            if (elapsedTime >=1.00f)
+            if (elapsedTime >=2.00f)
             {
                 elapsedTime = 0;
                 ChangeDirection();
@@ -59,7 +62,7 @@ namespace Sprint2_Attempt3.Enemy.Ganon
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, ganon.X, ganon.Y, sourceRectangle);
+            sprite.Draw(spriteBatch, ganon.Position.X, ganon.Position.Y, sourceRectangle);
           
         }
     }

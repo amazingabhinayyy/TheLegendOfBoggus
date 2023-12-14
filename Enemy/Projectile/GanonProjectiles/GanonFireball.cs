@@ -22,8 +22,8 @@ namespace Sprint2_Attempt3.Enemy.Projectile.GanonProjectiles
  
         private Vector2 position2;
         public Vector2 Position2 { get { return position2; } set { position2 = value; } }
-        private Vector2 slope;
-        public Vector2 Slope { get { return slope; } set { position2 = slope; } }
+        private Vector2 linkPosition;
+        public Vector2 LinkPosition { get { return linkPosition; } set { position2 = linkPosition; } }
 
         private GameTime gameTime;
         public GameTime GameTime { get { return gameTime; } }
@@ -47,12 +47,12 @@ namespace Sprint2_Attempt3.Enemy.Projectile.GanonProjectiles
             state = new GanonFireballDisappearState(this);
         }
 
-        public GanonFireball(Vector2 fireballPosition, Vector2 slope, GameTime gameTime)
+        public GanonFireball(Vector2 fireballPosition, Vector2 linkPosition, GameTime gameTime)
         {
             position2 = fireballPosition;
-            this.slope = slope;
+            this.linkPosition = linkPosition;
             this.gameTime = gameTime;
-            GenerateIdle();
+            GenerateMoving();
         }
         public void Update()
         {

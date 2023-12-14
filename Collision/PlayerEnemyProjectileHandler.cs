@@ -1,5 +1,6 @@
 ﻿using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Enemy.Projectile.AquamentusProjectiles;
+using Sprint2_Attempt3.Enemy.Projectile.GanonProjectiles;
 using Sprint2_Attempt3.Enemy.Projectile.GoriyaProjectiles;
 using Sprint2_Attempt3.Player;
 using Sprint2_Attempt3.Player.Interfaces;
@@ -26,6 +27,10 @@ namespace Sprint2_Attempt3.Collision
             else if(projectile is GoriyaBoomerang)
             {
                 ((GoriyaBoomerang)projectile).ReverseBoomerang();
+            }
+            else if (projectile is GanonFireball)
+            {
+                ((GanonFireball)projectile).Disappear();
             }
         }
     }

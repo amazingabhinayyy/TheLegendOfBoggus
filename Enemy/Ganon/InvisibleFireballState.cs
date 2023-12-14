@@ -12,22 +12,21 @@ namespace Sprint2_Attempt3.Enemy.Ganon
     internal class InvisibleFireballState : IEnemyState
     {
         private Ganon ganon;
-        private IEnemySprite sprite;
         private Game1 game1;
-        private IEnemyProjectile fireball;
         private double elapsedTime;
-        private int elapsedFrameCount;
-        private int endFrame;
         private Random random;
         private Rectangle sourceRectangle;
+        private int count;
+        private IEnemySprite sprite;
         public InvisibleFireballState(Ganon ganon)
         {
             this.ganon = ganon;
-            /*sprite = EnemySpriteFactory.Instance.CreateVisibleGanonSprite();
-            sourceRectangle = new Rectangle(121, 368, 97, 89);*/
+            sourceRectangle = new Rectangle(121, 368, 97, 89);
             this.game1 = ganon.Game1;
             elapsedTime = 0;
             this.random = new Random();
+            count = 0;
+            sprite = EnemySpriteFactory.Instance.CreateVisibleGanonSprite();
         }
         public void ChangeDirection()
         {
@@ -44,8 +43,9 @@ namespace Sprint2_Attempt3.Enemy.Ganon
             GameTime gameTime = ganon.Game1.Gametime;
             double time = gameTime.ElapsedGameTime.TotalSeconds;
             elapsedTime += time;
-            if (elapsedTime >= 1.30f)
+            if (elapsedTime >= 1.25f)
             {
+                count++;
                 Vector2 linkPos = game1.link.Position;
                 int posX = random.Next(100, 575);
                 while (Math.Abs(posX-linkPos.X)>400)
@@ -59,25 +59,20 @@ namespace Sprint2_Attempt3.Enemy.Ganon
                     posY = random.Next(Globals.YOffset + 100, 275 + Globals.YOffset);
                 }
 
-                
-                    Vector2 FireballPosition = new Vector2(ganon.Position.X, ganon.Position.Y);
-                    Vector2 slope = new Vector2(linkPos.X - FireballPosition.X, linkPos.Y - FireballPosition.Y);
-
-                    GanonFireball fire= new GanonFireball(FireballPosition, slope, gameTime);
-                    CollisionManager.GameObjectList.Add((IGameObject)fire);
-                    ganon.Fireball.Add(fire);
-
-                    elapsedTime = 0;
-               
-
                 ganon.Position = new Rectangle(posX, posY, (int)(sourceRectangle.Width * Globals.scale * ganon.GanonScale), (int)(sourceRectangle.Height * ganon.GanonScale * Globals.scale));
+                Vector2 FireballPosition = new Vector2(ganon.Position.X, ganon.Position.Y);
+                Vector2 linkPosition = new Vector2(linkPos.X + 7, linkPos.Y + 7);
+                GanonFireball fire = new GanonFireball(FireballPosition, linkPosition, gameTime);
+                CollisionManager.GameObjectList.Add((IGameObject)fire);
+                ganon.Fireball.Add(fire);
+                elapsedTime = 0;  
             }
 
             
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            //sprite.Draw(spriteBatch, ganon.Position.X, ganon.Position.Y, sourceRectangle);
+            sprite.Draw(spriteBatch, ganon.Position.X, ganon.Position.Y, sourceRectangle);
         }
     }
 }

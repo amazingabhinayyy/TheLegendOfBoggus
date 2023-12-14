@@ -1,4 +1,5 @@
 ﻿﻿Block,UpChunk,1
+﻿Block,UpChunk,1
 Block,UpChunk,12
 Block,UpChunk,73
 Block,UpChunk,84
@@ -49,4 +50,7 @@ Block,BlackFloor,81,
 Block,BlackFloor,82,
 Block,BlackFloor,83,
 Enemy,Ganon,18,
-
+Door,North,0,,
+Door,South,4,,
+Door,East,0,,
+Door,West,0,,

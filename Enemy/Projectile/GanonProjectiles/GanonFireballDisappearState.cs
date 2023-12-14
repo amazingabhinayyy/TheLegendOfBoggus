@@ -68,7 +68,7 @@ internal class GanonFireballDisappearState : IEnemyProjectileState
     public void Draw(SpriteBatch spriteBatch)
     {
         //need to go through
-        sprite.Draw(spriteBatch, (int)GanonFireball.Position2.X, (int)GanonFireball.Position2.Y, GanonFireball.GanonFireballs[0]);
+        //sprite.Draw(spriteBatch, (int)GanonFireball.Position2.X, (int)GanonFireball.Position2.Y, GanonFireball.GanonFireballs[0]);
 
     }
 }

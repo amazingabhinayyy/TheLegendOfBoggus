@@ -23,9 +23,13 @@ namespace Sprint2_Attempt3.Enemy.Ganon
 
         private bool startOfBattle;
         public bool StartOfBattle { get { return startOfBattle; } set { startOfBattle = value; } }
+        private bool invincible;
+        public bool Invincible { get { return invincible; } set { invincible = value; } }
         public float Health { get { return this.health; } }
 
         private Rectangle sourceRectangle = new Rectangle(121, 368, 97, 89);
+
+        
         public Ganon(int x, int y, Game1 game1)
         {
             this.X = x;
@@ -35,6 +39,7 @@ namespace Sprint2_Attempt3.Enemy.Ganon
             this.health = 5;
             this.game1 = game1;
             startOfBattle = true;
+            invincible = false;
             
         }
 
@@ -61,6 +66,7 @@ namespace Sprint2_Attempt3.Enemy.Ganon
         public override void Draw(SpriteBatch spriteBatch)
         {
             State.Draw(spriteBatch);
+
             foreach (IEnemyProjectile fireball in Fireball)
             {
                 fireball.Draw(spriteBatch);
@@ -69,10 +75,10 @@ namespace Sprint2_Attempt3.Enemy.Ganon
 
         public override void GetDamaged(float damage)
         {
-            if (State is not AttackedVisibleState)
+            if (!invincible)
             {
-                this.ChangeAttackedStatus();
                 health -= damage;
+                this.ChangeAttackedStatus();
                 SoundFactory.PlaySound(SoundFactory.Instance.enemyHit);
 
                 if (health <= 0)

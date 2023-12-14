@@ -27,7 +27,7 @@ namespace Sprint2_Attempt3.Enemy.Ganon
             sprite = EnemySpriteFactory.Instance.CreateVisibleGanonSprite();
             currentFrame = 0;
             sourceRectangle = new Rectangle(425, 541, 100,90);
-            this.ganon.Position = new Rectangle(this.ganon.X, this.ganon.Y, (int)(sourceRectangle.Width * Globals.scale*ganon.GanonScale), (int)(sourceRectangle.Height * Globals.scale*ganon.GanonScale));
+            this.ganon.Position = new Rectangle(this.ganon.Position.X, this.ganon.Position.Y, (int)(sourceRectangle.Width * Globals.scale*ganon.GanonScale), (int)(sourceRectangle.Height * Globals.scale*ganon.GanonScale));
          
             elaspedFrameCount = 0;
             endFrame = 100;
@@ -43,11 +43,11 @@ namespace Sprint2_Attempt3.Enemy.Ganon
         }   
         public void Update()
         {
-            sprite.Update();
+            
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, ganon.X, ganon.Y, sourceRectangle);
+            sprite.Draw(spriteBatch, ganon.Position.X, ganon.Position.Y, sourceRectangle);
         }
 
     }

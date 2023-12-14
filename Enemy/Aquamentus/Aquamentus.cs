@@ -13,7 +13,7 @@ namespace Sprint2_Attempt3.Enemy.Aquamentus
     internal class Aquamentus : EnemyD
     {
 
-        private int maxLeft = 100;
+        private int maxLeft = 50;
 
         public int MaxLeft { get { return maxLeft; } set { maxLeft = value; } }
         public IEnemyProjectile Fireball { get; set; }

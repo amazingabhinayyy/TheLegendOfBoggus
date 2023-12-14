@@ -31,15 +31,14 @@ internal class GanonFireballIdleState : IEnemyProjectileState
         GameTime gameTime = GanonFireball.GameTime;
         double time = gameTime.ElapsedGameTime.TotalSeconds;
         elapsedTime += time;
-        index = (int)(elapsedTime / 0.20f);
-        if (elapsedTime > 0.80f)
+        if (elapsedTime > 0.10f)
         {
-            elapsedTime = 0;
             GanonFireball.State = new GanonFireballMovingState(GanonFireball);
         }
+       
     }
     public void Draw(SpriteBatch spriteBatch)
     {
-        sprite.Draw(spriteBatch, (int)GanonFireball.Position2.X, (int)(GanonFireball.Position2.Y), GanonFireball.GanonFireballs[index]);
+        sprite.Draw(spriteBatch, (int)GanonFireball.Position2.X, (int)(GanonFireball.Position2.Y), GanonFireball.GanonFireballs[0]);
     }
 }

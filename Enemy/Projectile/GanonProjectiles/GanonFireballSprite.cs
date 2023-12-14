@@ -8,7 +8,7 @@ namespace Sprint2_Attempt3.Enemy.Projectile.GanonProjectiles
     {
         private Texture2D texture;
 
-
+        private float ganonScale = 0.34f;
 
         public GanonFireballSprite(Texture2D texture)
         {
@@ -31,7 +31,7 @@ namespace Sprint2_Attempt3.Enemy.Projectile.GanonProjectiles
                 Color.White,
                 0f,
                 new Vector2(0, 0),
-                Globals.scale,
+                Globals.scale*ganonScale,
                 SpriteEffects.None,
                 0.1f
             );
