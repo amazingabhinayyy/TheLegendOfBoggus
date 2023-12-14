@@ -15,7 +15,7 @@ namespace Sprint2_Attempt3.Blocks.BlockSprites
         private Rectangle BlackFloorScr = new Rectangle(1, 18, 14, 14);
         public BlackFloor(Rectangle Position)
         {
-            position = new Rectangle(Position.X, Position.Y, 599, 352);
+            position = Position;
             sourceRectangle = BlackFloorScr;
             isWalkable = true;
         }
