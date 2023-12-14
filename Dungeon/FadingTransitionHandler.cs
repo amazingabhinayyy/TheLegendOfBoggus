@@ -1,23 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint2_Attempt3.Blocks;
-using Sprint2_Attempt3.Blocks.BlockSprites;
-using Sprint2_Attempt3.Collision.SideCollisionHandlers;
-using Sprint2_Attempt3.Enemy;
-using Sprint2_Attempt3.Player.Interfaces;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Sprint2_Attempt3.WallBlocks;
 using Sprint2_Attempt3.Dungeon.Doors;
-using Sprint2_Attempt3.Dungeon;
-using Sprint2_Attempt3.Player;
-using System.Reflection.Metadata.Ecma335;
-using Sprint2_Attempt3.Inventory;
 using Sprint2_Attempt3.Dungeon.Rooms;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Collision;
 
 
@@ -30,12 +16,8 @@ namespace Sprint2_Attempt3.Dungeon
         private int fadeIncrement = 3;
         double fadeDelay = 0.35;
 
-        private bool gameStarted = true;
         private bool start;
-        private int roomNumber;
         private Game1 game1;
-
-        private int end;
         private double elapsedTime = 0;
 
         private List<IGameObject> transitionGameObjectList = new List<IGameObject>();
@@ -105,8 +87,6 @@ namespace Sprint2_Attempt3.Dungeon
 
                 }
             }
-
-
 
             if (colorValue >= 255)
             {
