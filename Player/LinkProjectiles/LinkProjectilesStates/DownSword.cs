@@ -25,18 +25,24 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates
             if (currentFrame >= 5 && currentFrame < 10)
             {
                 sourceRectangle = new Rectangle(25, 63, 3, 11);
+                itemPosition.X = link.Position.X + 21;
+                itemPosition.Y = link.Position.Y + 45;
                 HitBoxWidth = 9;
                 HitBoxHeight = 33;
             }
             else if (currentFrame >= 10 && currentFrame < 15)
             {
                 sourceRectangle = new Rectangle(42, 63, 3, 7);
+                itemPosition.X = link.Position.X + 21;
+                itemPosition.Y = link.Position.Y + 45;
                 HitBoxWidth = 9;
                 HitBoxHeight = 21;
             }
             else if (currentFrame >= 15 && currentFrame < 20)
             {
                 sourceRectangle = new Rectangle(59, 63, 3, 3);
+                itemPosition.X = link.Position.X + 21;
+                itemPosition.Y = link.Position.Y + 45;
                 HitBoxWidth = 9;
                 HitBoxHeight = 9;
             }

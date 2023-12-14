@@ -13,6 +13,5 @@ namespace Sprint2_Attempt3.Portal
         public void Draw(SpriteBatch spriteBatch, Vector2 change);
         public void Draw(SpriteBatch spriteBatch, Vector2 change, Vector2 initialPos);
         public void Draw(SpriteBatch spriteBatch, Color color);
-        public Vector2 Teleport(PortalSecondary portal);
     }
 }

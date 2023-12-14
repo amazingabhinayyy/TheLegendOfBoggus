@@ -6,13 +6,10 @@ using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Enemy.Projectile;
 using Sprint2_Attempt3.Player.Interfaces;
 using Sprint2_Attempt3.Items;
-using Sprint2_Attempt3.Items.ItemClasses;
 using Sprint2_Attempt3.Portal;
 using Sprint2_Attempt3.WallBlocks;
 using System.Collections.Generic;
 using Sprint2_Attempt3.Enemy.SpikeTrap;
-using Sprint2_Attempt3.Enemy.Hand;
-using Sprint2_Attempt3.Enemy.Target;
 using Sprint2_Attempt3.Dungeon;
 
 namespace Sprint2_Attempt3.Collision
@@ -23,14 +20,10 @@ namespace Sprint2_Attempt3.Collision
         {
             Rectangle linkRectangle = link.GetHitBox();
             bool ChangedRooms = false;
-            if(obj is Target)
-            {
-                bool why = false;
-            }
             Rectangle collisionRectangle = obj.GetHitBox();
-            if(obj is SpikeTrap || obj is Hand)
+            if(obj is SpikeTrap || obj is HandCreator)
             {
-                TripwireHandler.HandleTripwire((IEnemy)obj, link);
+                TripwireHandler.HandleTripwire(obj, link);
             }
             if (collisionRectangle.Intersects(linkRectangle))
             {
@@ -53,7 +46,7 @@ namespace Sprint2_Attempt3.Collision
                 }
                 else if (obj is IPortal)
                 {
-                    PlayerPortalHandler.HandlePlayerPortalCollision(link, (IPortal)obj, game);
+                    PlayerPortalHandler.HandlePlayerPortalCollision(link, (Portal.Portal)obj, game);
                 }
                 else if (obj is ILinkProjectile)
                 {

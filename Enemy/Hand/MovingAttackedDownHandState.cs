@@ -11,8 +11,6 @@ namespace Sprint2_Attempt3.Enemy.Hand
         private IEnemySprite sprite;
         private Rectangle sourceRectangle;
         private int currentFrame;
-        private Random random;
-        private int direction;
         public MovingAttackedDownHandState(Hand Hand)
         {
             this.Hand = Hand;
@@ -20,12 +18,10 @@ namespace Sprint2_Attempt3.Enemy.Hand
             sourceRectangle = Hand.Hands[0];
             Hand.Position = new Rectangle(Hand.X, Hand.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             currentFrame = 0;
-            random = new Random();
-            direction = random.Next(0, 3);
         }
         public void ChangeDirection()
         {
-            direction = random.Next(0, 3);
+            /*direction = random.Next(0, 3);
             switch (direction)
             {
                 case 0:
@@ -37,17 +33,30 @@ namespace Sprint2_Attempt3.Enemy.Hand
                 case 2:
                     Hand.State = new MovingAttackedRightHandState(Hand);
                     break;
-            }
+            }*/
         }
         public void ChangeAttackedStatus() {
             if(currentFrame >= 60)
-                Hand.State = new MovingDownHandState(Hand);
+                Hand.State = new CaptureDownHandState(Hand);
         }
         public void Update()
         {
             currentFrame++;
+            if (Hand.counter > 0 && Hand.counter < 60)
+            {
+                Hand.Y--;
+            }
+            else if (Hand.counter > 60 && Hand.counter < 240)
+            {
+                Hand.X++;
+            }
+            else if (Hand.counter > 240 && Hand.counter < 300)
+            {
+                Hand.Y++;
+            }
+
+            Hand.counter++;
             sourceRectangle = Hand.Hands[Globals.FindIndex(currentFrame % (4 * Hand.DamageAnimateRate), Hand.DamageAnimateRate, 4) + 1];
-            Hand.Y += 1;
             Hand.Position = new Rectangle(Hand.X, Hand.Y, (int)(sourceRectangle.Width * Globals.scale), (int)(sourceRectangle.Height * Globals.scale));
             sprite.Update();
             ChangeAttackedStatus();

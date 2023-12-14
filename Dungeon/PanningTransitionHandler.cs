@@ -32,10 +32,9 @@ namespace Sprint2_Attempt3.Dungeon
         public IDoor Door { get { return door; } set { door = value; } }
         private bool gameStarted = true;
         private bool start;
-        private int roomNumber;
         private Game1 game1;
         private int end;
-        private float timeSinceLastUpdate = 0;
+        private double timeSinceLastUpdate = 0;
 
         private List<IGameObject> transitionGameObjectList = new List<IGameObject>();
   
@@ -44,8 +43,6 @@ namespace Sprint2_Attempt3.Dungeon
             get { return transitionGameObjectList; }
             set { transitionGameObjectList = value; }
         }
-
-
         public bool Start { get { return start; } set { start = value; } }
         
        private static PanningTransitionHandler instance = new PanningTransitionHandler();
@@ -64,14 +61,6 @@ namespace Sprint2_Attempt3.Dungeon
         {
             this.game1 = game;
         }
-        public ITransitionHandler getInstance()
-        {
-            return instance;
-        }
-
-        public PanningTransitionHandler()
-        {
-        }
 
         public void Transition(IRoom room1, IRoom room2)
         {
@@ -87,7 +76,6 @@ namespace Sprint2_Attempt3.Dungeon
                 switch (door)
                 {
                     case (NorthDoor):
-                        //change = new Vector2(0, -1*transitionSpeed * multiplier);
                         change = new Vector2(0, transitionSpeed * multiplier);
                         end = 88;
                         initialPos = new Vector2(0, -Globals.ScreenHeight + Globals.YOffset);
@@ -133,9 +121,6 @@ namespace Sprint2_Attempt3.Dungeon
                         ((IDoor)obj).Draw(spriteBatch, change, initialPos);
                     else if (obj is IPortal)
                         ((IPortal)obj).Draw(spriteBatch, change, initialPos);
-
-
-
                 }
 
                 multiplier++;

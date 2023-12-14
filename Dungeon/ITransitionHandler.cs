@@ -8,7 +8,6 @@ namespace Sprint2_Attempt3.Dungeon
 {
     public interface ITransitionHandler
     {
-        public ITransitionHandler getInstance();
         public List<IGameObject> TransitionGameObjectList { get; set; }
         public bool Start { get; set; }
         public void Transition(IRoom room1, IRoom room2);

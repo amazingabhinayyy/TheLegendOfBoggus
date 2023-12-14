@@ -15,12 +15,14 @@ namespace Sprint2_Attempt3.Collision
     {
         private static TimeSpan timeBuffer;
         private static DateTime lastTeleportTime { get; set; }
-        public static void HandlePlayerPortalCollision(ILink link, IGameObject portal, Game1 game)
+        public static void HandlePlayerPortalCollision(ILink link, Portal.Portal portal, Game1 game)
         {
             timeBuffer = DateTime.Now - lastTeleportTime;
             TimeSpan coolDown = TimeSpan.FromSeconds(1);
             if (timeBuffer >= coolDown)
             {
+                link.Position = portal.Teleport();
+                /*
                 if (portal is FirstPortal)
                 {
                     foreach(IGameObject obj in game.room.gameObjectList)
@@ -37,7 +39,9 @@ namespace Sprint2_Attempt3.Collision
                             link.Position = ((IPortal)portal).Teleport(firstPortal);
                     }
                 }
+                */
             }
+                
             lastTeleportTime = DateTime.Now;
 
         }

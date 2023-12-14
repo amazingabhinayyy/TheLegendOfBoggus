@@ -28,6 +28,8 @@ namespace Sprint2_Attempt3.CommandClasses
             game1.Reset();
             room.ResetRooms();
             SoundFactory.ResetSounds();
+            PanningTransitionHandler.Instance.Start = false;
+            FadingTransitionHandler.Instance.Start = false;
         }
     }
 }

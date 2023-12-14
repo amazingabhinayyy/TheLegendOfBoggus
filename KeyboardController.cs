@@ -19,7 +19,6 @@ namespace Sprint2_Attempt3
         private int currentMoveKeyValue = 10;
         private Keys currentMoveKey;
         private List<Keys> heldKeys = new List<Keys>();
-
         public KeyboardController(Game1 game)
         {
             this.game1 = game;
@@ -27,7 +26,6 @@ namespace Sprint2_Attempt3
             RegisterCommands();
             timeSinceLastUpdate = 0;
         }
-
         public void RegisterCommands()
         {
             //Link movements
@@ -73,7 +71,6 @@ namespace Sprint2_Attempt3
             commandMapping.Add(Keys.E, new IncreaseKeyCommand(game1));
             commandMapping.Add(Keys.T, new IncreaseHealthCommand(game1));
         }
-
         public void Update(GameTime gameTime)
         {
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
@@ -111,15 +108,14 @@ namespace Sprint2_Attempt3
                         currentMoveKey = key;
                     }
                 }
-
                 List<Keys> pressedKeys2 = new List<Keys>();
                 for (int j = 0; j < pressedKeys.Length; j++)
                 {
                     if (!moveKeys.Contains(pressedKeys[j])) { pressedKeys2.Add(pressedKeys[j]); }
                 }
                 if (currentMoveKey != Keys.None) { pressedKeys2.Add(currentMoveKey); }
-                pressedKeys = pressedKeys2.ToArray();
 
+                pressedKeys = pressedKeys2.ToArray();
                 for (int c = 0; c < heldKeys.Count; c++)
                 {
                     if (!(pressedKeys.Contains(heldKeys[c])))
@@ -128,9 +124,7 @@ namespace Sprint2_Attempt3
                         c--;
                     }
                 }
-
                 timeSinceLastUpdate += (float)gameTime.ElapsedGameTime.TotalSeconds;
-
                 if (pressedKeys.Length > 0 && timeSinceLastUpdate > 0.1f)
                 {
                     foreach (Keys key in pressedKeys)

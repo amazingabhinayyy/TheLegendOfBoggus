@@ -105,9 +105,6 @@ namespace Sprint2_Attempt3.Dungeon
 
                 }
             }
-
-
-
             if (colorValue >= 255)
             {
                 start = false;
@@ -121,14 +118,10 @@ namespace Sprint2_Attempt3.Dungeon
                     game1.link.Position = new Vector2(150, Globals.YOffset + 10);
                 }
             }
-
-
         }
-
         public void Update()
         {
-            GameTime gameTime = game1.Gametime;
-            
+            GameTime gameTime = game1.Gametime;         
             double time = gameTime.ElapsedGameTime.TotalSeconds;
             fadeDelay -= time;
             elapsedTime += time;

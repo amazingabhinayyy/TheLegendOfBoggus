@@ -30,6 +30,7 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates
             {
                 sourceRectangle = new Rectangle(25, 63, 3, 11);
                 itemPosition.Y = link.Position.Y - 33;
+                itemPosition.X = link.Position.X + 17;
                 HitBoxWidth = 9;
                 HitBoxHeight = 33;
             }
@@ -37,6 +38,7 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates
             {
                 sourceRectangle = new Rectangle(42, 63, 3, 7);
                 itemPosition.Y = link.Position.Y - 21;
+                itemPosition.X = link.Position.X + 17;
                 HitBoxWidth = 9;
                 HitBoxHeight = 21;
             }
@@ -44,6 +46,7 @@ namespace Sprint2_Attempt3.Player.LinkProjectiles.LinkProjectilesStates
             {
                 sourceRectangle = new Rectangle(59, 63, 3, 3);
                 itemPosition.Y = link.Position.Y - 9;
+                itemPosition.X = link.Position.X + 17;
                 HitBoxWidth = 9;
                 HitBoxHeight = 9;
             }

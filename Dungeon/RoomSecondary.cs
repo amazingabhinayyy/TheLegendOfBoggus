@@ -28,6 +28,7 @@ namespace Sprint2_Attempt3.Dungeon
         protected Boolean spawned = false;
         public static bool ClockUsed { get; set; } = false;
         public IDungeonRoom room { get; protected set; }
+
         protected Game1 game1;
         protected static CollisionManager collisionManager;
         public RoomSecondary(Game1 game, int roomNum)
@@ -96,7 +97,6 @@ namespace Sprint2_Attempt3.Dungeon
                 }
                 foreach (IEnemy enemy in enemyList)
                     enemy.Draw(spriteBatch);
-
                 game1.link.Draw(spriteBatch, Color.White);
             }
         }
@@ -122,6 +122,7 @@ namespace Sprint2_Attempt3.Dungeon
             game1.room = roomLayout[x, y];
             ClockUsed = false;
             MapController.VisitRoom(currentRoomNumber);
+            PlayerTrackerController.UpdatePlayerTrackerPosition(x, y);
             mapX = x;
             mapY = y;
             transition.TransitionGameObjectList = roomLayout[x, y].gameObjectList;

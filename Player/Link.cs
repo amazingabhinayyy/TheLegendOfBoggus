@@ -6,9 +6,8 @@ using System.Collections.Generic;
 using Sprint2_Attempt3.Collision;
 using Sprint2_Attempt3.CommandClasses;
 using Sprint2_Attempt3.Collision.SideCollisionHandlers;
-using Sprint2_Attempt3.Dungeon.Rooms;
 using Sprint2_Attempt3.Dungeon;
-
+using Sprint2_Attempt3.Dungeon.Rooms;
 namespace Sprint2_Attempt3.Player
 {
     public class Link : ILink
@@ -144,6 +143,7 @@ namespace Sprint2_Attempt3.Player
         {
             position = new Vector2(375, 300);
             State = new DownIdleLinkState(this);
+            ((Room12)game.room).firstTime = true;
             game.room.SwitchRoom(5, 11, FadingTransitionHandler.Instance);
         }
     }

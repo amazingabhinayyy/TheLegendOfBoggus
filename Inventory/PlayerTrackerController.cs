@@ -16,44 +16,24 @@ namespace Sprint2_Attempt3.Inventory
         private static int x = InventoryController.destRectangle.X;
         private static int y = InventoryController.destRectangle.Y;
         private static IItemSprite sprite = ItemSpriteFactory.Instance.CreatePlayerMarkerSprite();
-
-        private static Rectangle[] MarkerDestRectangles = new Rectangle[]
-        {
-            new Rectangle(x + 132, y + 670, 9, 9),
-            new Rectangle(x + 106, y + 670, 9, 9),
-            new Rectangle(x + 158, y + 670, 9, 9),
-            new Rectangle(x + 132, y + 657, 9, 9),
-            new Rectangle(x + 106, y + 644, 9, 9),
-            new Rectangle(x + 132, y + 644, 9, 9),
-            new Rectangle(x + 158, y + 644, 9, 9),
-            new Rectangle(x + 80, y + 631, 9, 9),
-            new Rectangle(x + 106, y + 631, 9, 9),
-            new Rectangle(x + 132, y + 631, 9, 9),
-            new Rectangle(x + 158, y + 631, 9, 9),
-            new Rectangle(x + 184, y + 631, 9, 9),
-            new Rectangle(x + 132, y + 618, 9, 9),
-            new Rectangle(x + 184, y + 618, 9, 9),
-            new Rectangle(x + 210, y + 618, 9, 9),
-            new Rectangle(x + 106, y + 605, 9, 9),
-            new Rectangle(x + 106, y + 605, 9, 9),
-            new Rectangle(x + 132, y + 605, 9, 9),
-            new Rectangle(x + 106, y + 657, 9, 9)        };
+        private static Rectangle playerTracker = new Rectangle(132 + InventoryController.destRectangle.X, 670 + InventoryController.destRectangle.Y, 9, 9);
         public PlayerTrackerController() { }
 
+        public static void UpdatePlayerTrackerPosition(int mapX, int mapY)
+        {
+            playerTracker.X = 2 + mapX * 26 + x;
+            playerTracker.Y = 527 + mapY * 13 + y;
+        }
         public static void DrawPlayerTracker(SpriteBatch spriteBatch) {
-            //if (RoomSecondary.currentRoomNumber < 18)
-            sprite.Draw(spriteBatch, new Rectangle(2 + RoomSecondary.mapX * 26 + x, 527 + RoomSecondary.mapY * 13 + y, 9, 9));//MarkerDestRectangles[RoomSecondary.currentRoomNumber]);
+            sprite.Draw(spriteBatch, playerTracker);
         }
-        public static void ShiftUp() {
-            for (int i = 0; i < MarkerDestRectangles.Length; i++) {
-                MarkerDestRectangles[i].Y -= InventoryController.AnimateRate;
-            }
+        public static void ShiftUp()
+        {
+            playerTracker.Y -= InventoryController.AnimateRate;
         }
-        public static void ShiftDown() {
-            for (int i = 0; i < MarkerDestRectangles.Length; i++)
-            {
-                MarkerDestRectangles[i].Y += InventoryController.AnimateRate;
-            }
+        public static void ShiftDown() 
+        {
+            playerTracker.Y += InventoryController.AnimateRate;
         }
     }
 }
