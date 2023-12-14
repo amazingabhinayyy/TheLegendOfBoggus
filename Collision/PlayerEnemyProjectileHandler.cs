@@ -30,6 +30,7 @@ namespace Sprint2_Attempt3.Collision
             }
             else if (projectile is GanonFireball)
             {
+                CollisionManager.GameObjectList.Remove(projectile);
                 ((GanonFireball)projectile).Disappear();
             }
         }

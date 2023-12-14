@@ -23,9 +23,10 @@ internal class GanonFireballMovingState : IEnemyProjectileState
 
     private Vector2 fireballPosition;
     private Vector2 linkPosition;
+    private Vector2 velocity;
     private GameTime gameTime;
     private Vector2 change;
-    private int speed;
+    private int distance;
     private double elapsedTime;
     private int count;
     private bool goLeft;
@@ -36,21 +37,20 @@ internal class GanonFireballMovingState : IEnemyProjectileState
         fireballPosition = GanonFireball.Position2;
         linkPosition = GanonFireball.LinkPosition;
         elapsedTime = 0;
-        speed = 50;
+        distance = 50;
 
         this.gameTime = GanonFireball.GameTime;
         goLeft = fireballPosition.X > linkPosition.X;
-
+        Vector2 direction = new Vector2(linkPosition.X - fireballPosition.X, linkPosition.Y - fireballPosition.Y);
+        direction.Normalize();
+        velocity = direction * distance;
     }
 
 
     public void Update()
     {
+        /*
         Vector2 slope = new Vector2(linkPosition.X - fireballPosition.X, linkPosition.Y - fireballPosition.Y);
-        if(slope.X == 0)
-        {
-            int test = 0;
-        }
         float yIntercept = fireballPosition.Y - slope.Y / slope.X * fireballPosition.X;
         double time = gameTime.ElapsedGameTime.TotalSeconds;
         elapsedTime += time;
@@ -74,8 +74,24 @@ internal class GanonFireballMovingState : IEnemyProjectileState
 
 
         index = (int)(elapsedTime / (0.25f/4));
+        */
+        
+        double time = gameTime.ElapsedGameTime.TotalSeconds;
+        elapsedTime += time;
 
- 
+        if (elapsedTime >= 0.25f)
+        {
+           
+                fireballPosition += velocity;
+            
+            GanonFireball.Position2 = fireballPosition;
+            elapsedTime = 0;
+        }
+
+
+        index = (int)(elapsedTime / (0.25f / 4));
+
+
 
     }
     public void Draw(SpriteBatch spriteBatch)

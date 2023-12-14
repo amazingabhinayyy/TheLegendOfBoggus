@@ -34,6 +34,8 @@ namespace Sprint2_Attempt3.Enemy.Ganon
         {
             this.X = x;
             this.Y = y;
+            Position = new Rectangle(x,y, (int)(sourceRectangle.Width * Globals.scale * ganonScale), (int)(sourceRectangle.Height * ganonScale * Globals.scale));
+
             FireballPosition = new Vector2(x, y);
             Fireball = new List<IEnemyProjectile>();
             this.health = 5;
@@ -78,12 +80,14 @@ namespace Sprint2_Attempt3.Enemy.Ganon
             if (!invincible)
             {
                 health -= damage;
-                this.ChangeAttackedStatus();
+                State.ChangeAttackedStatus();
                 SoundFactory.PlaySound(SoundFactory.Instance.enemyHit);
 
                 if (health <= 0)
                 {
                     Kill();
+                    SoundFactory.Instance.ganonBossMusic.Pause();
+                    SoundFactory.Instance.backgroundMusic.Play();
                 }
             }
         }

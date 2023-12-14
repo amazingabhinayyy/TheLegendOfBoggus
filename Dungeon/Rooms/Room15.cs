@@ -4,6 +4,7 @@ using Sprint2_Attempt3.Enemy;
 using Sprint2_Attempt3.Items;
 using Sprint2_Attempt3.Items.ItemClasses;
 using Sprint2_Attempt3.Player;
+using Sprint2_Attempt3.Sounds;
 using System;
 
 namespace Sprint2_Attempt3.Dungeon.Rooms
@@ -58,9 +59,9 @@ namespace Sprint2_Attempt3.Dungeon.Rooms
         public override void SwitchToNorthRoom()
         {
             mapY -= 1;
-            //locationMapTrackerRec.Y -= positionMapYUpdaterValue;
             SwitchRoom(mapX, mapY, PanningTransitionHandler.Instance);
-
+            SoundFactory.Instance.backgroundMusic.Pause();
+            SoundFactory.Instance.ganonBossMusic.Play();
         }
 
     }

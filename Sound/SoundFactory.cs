@@ -32,17 +32,20 @@ namespace Sprint2_Attempt3.Sounds
         public SoundEffect ping { get; set; }
         public SoundEffect undertale { get; set; }
         public SoundEffect bowserRoar { get; set; }
+        public SoundEffect ganon { get; set; }
         public SoundEffect titleScreen { get; set; }
 
         private SoundEffectInstance backgroundMusicInstance;
         private SoundEffectInstance undertaleMusicInstance;
         private SoundEffectInstance titleScreenMusicInstance;
         private SoundEffectInstance rickRollInstance;
+        private SoundEffectInstance ganonBossMusicInstance;
 
         public SoundEffectInstance rickRollMusic { get => rickRollInstance; }
         public SoundEffectInstance backgroundMusic { get => backgroundMusicInstance; }
         public SoundEffectInstance undertaleMusic { get => undertaleMusicInstance; }
         public SoundEffectInstance titleScreenMusic { get => titleScreenMusicInstance; }
+        public SoundEffectInstance ganonBossMusic { get => ganonBossMusicInstance; }
 
         private static SoundFactory instance = new SoundFactory();
 
@@ -82,23 +85,30 @@ namespace Sprint2_Attempt3.Sounds
             secret = content.Load<SoundEffect>("LOZ_Secret");
             triforce = content.Load<SoundEffect>("triforce_obtained");
             rickRoll = content.Load<SoundEffect>("rickRoll");
+            ganon = content.Load<SoundEffect>("GerudoValley");
             ping = content.Load<SoundEffect>("ping");
             undertale = content.Load<SoundEffect>("Its_Showtime");
             teleport = content.Load<SoundEffect>("TeleportNoise");
             titleScreen = content.Load<SoundEffect>("titleScreenMusic");
+            bowserRoar = content.Load<SoundEffect>("BowserRoar");
+            SoundEffect backgroundMusic = content.Load<SoundEffect>("Underworld");
+           
 
             undertaleMusicInstance = undertale.CreateInstance();
             undertaleMusicInstance.IsLooped = true;
             undertaleMusicInstance.Volume *= 0.1f;
             undertaleMusicInstance.Pause();
-            bowserRoar = content.Load<SoundEffect>("BowserRoar");
+
+            ganonBossMusicInstance = ganon.CreateInstance();
+            ganonBossMusicInstance.IsLooped = true;
+            ganonBossMusicInstance.Volume *= 0.1f;
+            ganonBossMusicInstance.Pause();
 
             titleScreenMusicInstance = titleScreen.CreateInstance();
             titleScreenMusicInstance.IsLooped = true;
             titleScreenMusicInstance.Volume *= 0.1f;
             titleScreenMusicInstance.Play();
 
-            SoundEffect backgroundMusic = content.Load<SoundEffect>("Underworld");
             backgroundMusicInstance = backgroundMusic.CreateInstance();
             backgroundMusicInstance.IsLooped = true;
             backgroundMusicInstance.Volume *= 0.1f;

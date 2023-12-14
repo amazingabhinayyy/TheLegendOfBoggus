@@ -1,8 +1,7 @@
-﻿﻿Block,UpChunk,1
-﻿Block,UpChunk,1
-Block,UpChunk,12
+﻿Block,UpChunk,12
 Block,UpChunk,73
 Block,UpChunk,84
+Block,UpChunk,1
 Block,BlackFloor,2,
 Block,BlackFloor,3,
 Block,BlackFloor,10,
@@ -50,7 +49,11 @@ Block,BlackFloor,81,
 Block,BlackFloor,82,
 Block,BlackFloor,83,
 Enemy,Ganon,18,
-Door,North,0,,
-Door,South,4,,
-Door,East,0,,
-Door,West,0,,
+Item,Heart,175,100,TRUE
+Item,Heart,625,100,TRUE
+Item,Heart,175,400,TRUE
+Item,Heart,625,400,TRUE
+Door,North,4,,
+Door,South,2,,
+Door,East,4,,
+Door,West,4,,

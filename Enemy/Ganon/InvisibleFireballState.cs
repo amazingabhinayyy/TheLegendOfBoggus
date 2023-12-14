@@ -33,7 +33,7 @@ namespace Sprint2_Attempt3.Enemy.Ganon
                             
         }
         public void ChangeAttackedStatus() {
-            if (ganon.Health > 1)
+            if (ganon.Health > 2)
                 ganon.State = new AttackedVisibleState(ganon);
             else
                 ganon.State = new GanonDefeatedIdleState(ganon);
@@ -48,13 +48,13 @@ namespace Sprint2_Attempt3.Enemy.Ganon
                 count++;
                 Vector2 linkPos = game1.link.Position;
                 int posX = random.Next(100, 575);
-                while (Math.Abs(posX-linkPos.X)>400)
+                while (Math.Abs(posX-linkPos.X)>200|| Math.Abs(posX - linkPos.X) < 50)
                 {
                     posX = random.Next(100, 575);
                 }
 
                 int posY = random.Next(Globals.YOffset+100, 275+Globals.YOffset);
-                while (Math.Abs(posY - linkPos.Y) > 400)
+                while (Math.Abs(posY - linkPos.Y) > 200 || Math.Abs(posY - linkPos.Y) <50)
                 {
                     posY = random.Next(Globals.YOffset + 100, 275 + Globals.YOffset);
                 }
@@ -72,7 +72,7 @@ namespace Sprint2_Attempt3.Enemy.Ganon
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, ganon.Position.X, ganon.Position.Y, sourceRectangle);
+            //sprite.Draw(spriteBatch, ganon.Position.X, ganon.Position.Y, sourceRectangle);
         }
     }
 }

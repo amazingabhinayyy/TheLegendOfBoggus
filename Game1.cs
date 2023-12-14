@@ -58,7 +58,7 @@ namespace Sprint2_Attempt3
         }
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
+
             spriteBatch = new SpriteBatch(GraphicsDevice);
             Globals.MakeFloorGrid();
             EnemySpriteFactory.Instance.LoadAllTextures(Content);
@@ -70,9 +70,9 @@ namespace Sprint2_Attempt3
             DungeonSpriteFactory.Instance.LoadAllTextures(Content);
             ScreenSpriteFactory.Instance.LoadAllTextures(Content);
             PortalSpriteFactory.Instance.LoadAllTextures(Content);
-            //check if we need start screen
+
             PanningTransitionHandler.Instance.setGame1(this);
-            //update into states later
+
             FadingTransitionHandler.Instance.setGame1(this);
             RoomGenerator.Instance.setGame1(this);
             RoomGenerator.Instance.LoadAllFiles();
@@ -118,7 +118,6 @@ namespace Sprint2_Attempt3
                 case GameState.itemMenu:
                     inventoryController.Update();
                     break;
-
             } 
             base.Update(gameTime);
         }
